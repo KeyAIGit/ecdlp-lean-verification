@@ -1,0 +1,43 @@
+{
+  "claims_not_made": [
+    "No parity oracle is constructed.",
+    "No circuit-size lower bound follows from the degree lower bound.",
+    "High-degree low-circuit and non-character transports remain open."
+  ],
+  "curve": "secp256k1",
+  "doubling_index": 64,
+  "doubling_order_M": "1809251394333065553493296640760748560200586941860545380978205674086221273349",
+  "doubling_order_bits": 250,
+  "exact_rational_value_degree_lower_bound": "57896044618658097711785492504343953926418782139537452191302581570759080747168",
+  "exact_rational_value_degree_lower_bound_bits": 255,
+  "external_theorem_dependency": {
+    "arxiv": "0912.5246v4",
+    "paper": "Shparlinski-Stange, Character Sums with Division Polynomials",
+    "result": "Lemma 5",
+    "use": "|sum_{P in H} chi(f(P))| <= 2*deg(f)*sqrt(p) under the Kummer non-power hypothesis"
+  },
+  "field_prime_p": "115792089237316195423570985008687907853269984665640564039457584007908834671663",
+  "multipliers": {
+    "3": {
+      "carry_bias_nonzero_scalars": "38597363079105398474523661669562635950945854759691634794201721047172720498112",
+      "character_degree_lower_bound": "56713727820156410577229101238628035243",
+      "character_degree_lower_bound_bits": 126,
+      "crosses_doubling_cycles": true,
+      "cycle_label_multiplier": "28753419091237382081200855134719146376608622043721172897295546008650244685376",
+      "cycle_label_multiplier_order": 32
+    },
+    "5": {
+      "carry_bias_nonzero_scalars": "23158417847463239084714197001737581570567512855814980876521032628303632298868",
+      "character_degree_lower_bound": "34028236692093846346337460743176821146",
+      "character_degree_lower_bound_bits": 125,
+      "crosses_doubling_cycles": true,
+      "cycle_label_multiplier": "5935823964821025323989572438274080387711385950438445110091940095437092606514",
+      "cycle_label_multiplier_order": 64
+    }
+  },
+  "random_transport_and_cocycle_checks": 10000,
+  "schema": "uorc056.cross_cycle_carry.certificate.v1",
+  "small_prime_exhaustive_limit": 5000,
+  "small_primes_checked": 668,
+  "subgroup_order_n": "115792089237316195423570985008687907852837564279074904382605163141518161494337"
+}
