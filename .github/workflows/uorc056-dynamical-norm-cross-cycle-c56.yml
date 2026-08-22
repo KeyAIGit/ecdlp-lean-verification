@@ -1,0 +1,116 @@
+name: UORC056 dynamical norm cross cycle C56
+
+on:
+  push:
+    paths:
+      - "Ecdlp/Proved/ScalarParity.lean"
+      - "experiments/uorc056_cross_cycle_carry_c56/**"
+      - "artifacts/uorc056_cross_cycle_carry_c56/**"
+      - "notes/UORC056_CROSS_CYCLE_CARRY_CHARACTER_BOUND_C56.md"
+      - "notes/UORC056_TAU3_SHIFT_ORACLE_REDUCTION_C56.md"
+      - ".github/workflows/uorc056-dynamical-norm-cross-cycle-c56.yml"
+  pull_request:
+    paths:
+      - "Ecdlp/Proved/ScalarParity.lean"
+      - "experiments/uorc056_cross_cycle_carry_c56/**"
+      - "artifacts/uorc056_cross_cycle_carry_c56/**"
+      - "notes/UORC056_CROSS_CYCLE_CARRY_CHARACTER_BOUND_C56.md"
+      - "notes/UORC056_TAU3_SHIFT_ORACLE_REDUCTION_C56.md"
+      - ".github/workflows/uorc056-dynamical-norm-cross-cycle-c56.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile C56 replay scripts
+        run: |
+          python -m py_compile \
+            experiments/uorc056_cross_cycle_carry_c56/validate.py \
+            experiments/uorc056_cross_cycle_carry_c56/recover_tau3.py
+
+      - name: Replay cross-cycle character-degree certificate
+        run: |
+          python experiments/uorc056_cross_cycle_carry_c56/validate.py \
+            --output /tmp/secp256k1_certificate.json >/dev/null
+          cmp \
+            /tmp/secp256k1_certificate.json \
+            artifacts/uorc056_cross_cycle_carry_c56/secp256k1_certificate.json
+
+      - name: Replay tau3 shift-oracle reduction
+        run: |
+          python experiments/uorc056_cross_cycle_carry_c56/recover_tau3.py \
+            --output /tmp/tau3_recovery_certificate.json >/dev/null
+          cmp \
+            /tmp/tau3_recovery_certificate.json \
+            artifacts/uorc056_cross_cycle_carry_c56/tau3_recovery_certificate.json
+
+      - name: Check exact C56 boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          carry = json.loads(
+              Path('/tmp/secp256k1_certificate.json').read_text()
+          )
+          assert carry['doubling_index'] == 64
+          assert carry['multipliers']['3']['cycle_label_multiplier_order'] == 32
+          assert carry['multipliers']['5']['cycle_label_multiplier_order'] == 64
+          assert carry['multipliers']['3']['character_degree_lower_bound_bits'] == 126
+          assert carry['multipliers']['5']['character_degree_lower_bound_bits'] == 125
+          assert carry['exact_rational_value_degree_lower_bound_bits'] == 255
+          assert carry['small_primes_checked'] == 668
+
+          recovery = json.loads(
+              Path('/tmp/tau3_recovery_certificate.json').read_text()
+          )
+          assert recovery['exact_query_bound'] == 257
+          assert recovery['maximum_queries_observed_on_secp256k1'] == 257
+          assert recovery['random_secp256k1_scalars_checked'] == 10000
+          assert recovery['small_prime_orders_checked'] == 667
+          assert recovery['exhaustive_small_scalar_cases'] == 1548131
+          PY
+
+      - name: Install Lean toolchain
+        run: |
+          installed=0
+          if curl --retry 5 --retry-delay 2 --retry-all-errors -fsSL \
+              https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+              -o /tmp/elan-init.sh; then
+            if sh /tmp/elan-init.sh -y --default-toolchain none; then
+              installed=1
+              echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+            fi
+          fi
+          if [ "$installed" = 0 ]; then
+            curl --retry 8 --retry-delay 3 --retry-all-errors -fsSL \
+              https://releases.lean-lang.org/lean4/v4.31.0/lean-4.31.0-linux.tar.zst \
+              -o /tmp/lean.tar.zst
+            mkdir -p /tmp/lean-dist
+            tar --zstd -xf /tmp/lean.tar.zst -C /tmp/lean-dist
+            echo "/tmp/lean-dist/lean-4.31.0-linux/bin" >> "$GITHUB_PATH"
+          fi
+
+      - name: Fetch Mathlib cache
+        run: lake exe cache get
+
+      - name: Kernel-check scalar carry arithmetic
+        run: |
+          lake build Ecdlp.Proved.ScalarParity
+          lake env lean Ecdlp/Proved/ScalarParity.lean
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: uorc056-dynamical-norm-cross-cycle-c56
+          path: |
+            /tmp/secp256k1_certificate.json
+            /tmp/tau3_recovery_certificate.json
+          retention-days: 90
