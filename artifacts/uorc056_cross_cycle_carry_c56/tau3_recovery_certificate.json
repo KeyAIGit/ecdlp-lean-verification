@@ -1,0 +1,21 @@
+{
+  "claims_not_made": [
+    "No evaluator for tau_3 is constructed.",
+    "No unconditional per-query time lower bound is proved.",
+    "No sub-square-root ECDLP algorithm is constructed."
+  ],
+  "curve": "secp256k1",
+  "exact_query_bound": 257,
+  "exhaustive_small_scalar_cases": 1548131,
+  "maximum_queries_observed_on_secp256k1": 257,
+  "maximum_queries_observed_on_small_orders": 13,
+  "middle_third_length": "38597363079105398474523661669562635950945854759691634794201721047172720498112",
+  "middle_third_start": "38597363079105398474523661669562635950945854759691634794201721047172720498113",
+  "random_secp256k1_scalars_checked": 10000,
+  "reduction": "A uniform exact evaluator for tau_3([r]G) on adaptively shifted points Q+[t]G recovers the canonical discrete logarithm.",
+  "schema": "uorc056.tau3_shift_reduction.certificate.v1",
+  "small_prime_limit": 5000,
+  "small_prime_orders_checked": 667,
+  "subgroup_order_n": "115792089237316195423570985008687907852837564279074904382605163141518161494337",
+  "worst_initial_candidate_length": "77194726158210796949047323339125271901891709519383269588403442094345440996225"
+}
