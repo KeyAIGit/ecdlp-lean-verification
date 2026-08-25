@@ -5,27 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KeyAI Workspace | secp256k1 reference environment</title>
   <meta name="description" content="The live KeyAI operator workspace for the secp256k1 ECDLP reference environment: decision routes, formal state, evidence, tasks, and trust boundaries.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://keyai.org/dashboard.html">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="KeyAI Workspace | secp256k1 reference environment">
   <meta property="og:description" content="The live KeyAI operator workspace for the secp256k1 ECDLP reference environment: decision routes, formal state, evidence, tasks, and trust boundaries.">
-  <meta property="og:image" content="assets/logo-wordmark.png">
+  <meta property="og:url" content="https://keyai.org/dashboard.html">
+  <meta property="og:image" content="https://keyai.org/assets/logo-wordmark.png">
+  <meta property="og:image:alt" content="KeyAI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="KeyAI Workspace | secp256k1 reference environment">
+  <meta name="twitter:description" content="The live KeyAI operator workspace for the secp256k1 ECDLP reference environment: decision routes, formal state, evidence, tasks, and trust boundaries.">
+  <meta name="twitter:image" content="https://keyai.org/assets/logo-wordmark.png">
   <meta name="theme-color" content="#07182d">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=20260816-1">
+  <link rel="stylesheet" href="assets/site.css?v=20260825-1">
 </head>
 <body data-page="workspace">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="shell site-header__inner">
     <a class="brand-link" href="index.html" aria-label="KeyAI home">
-      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="44">
+      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="59">
     </a>
     <nav class="primary-nav" aria-label="Primary navigation">
+      <a data-nav-page="product" href="index.html#research-system">Research system</a>
       <a data-nav-page="results" href="results.html">Verified results</a>
-      <a data-nav-page="routes" href="explore.html">Route map</a>
-      <a data-nav-page="workspace" href="dashboard.html">Workspace</a>
-      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">GitHub</a>
+      <a data-nav-page="routes" href="explore.html">ECDLP deployment</a>
+      <a data-nav-page="pilot" href="pilot.html">Collaborate</a>
+      <a class="nav-cta" href="https://github.com/KeyAIGit/-ecdlp-lean-verification">GitHub</a>
     </nav>
   </div>
 </header>
@@ -58,16 +68,18 @@
 
   <div class="tabbar-wrap">
     <div class="shell tabbar" role="tablist" aria-label="Workspace views" data-tabs>
-      <button type="button" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview">Overview</button>
-      <button type="button" role="tab" id="tab-routes" aria-controls="panel-routes" aria-selected="false" tabindex="-1" data-tab="routes">Routes</button>
-      <button type="button" role="tab" id="tab-formal" aria-controls="panel-formal" aria-selected="false" tabindex="-1" data-tab="formal">Formal substrate</button>
-      <button type="button" role="tab" id="tab-evidence" aria-controls="panel-evidence" aria-selected="false" tabindex="-1" data-tab="evidence">Evidence</button>
-      <button type="button" role="tab" id="tab-activity" aria-controls="panel-activity" aria-selected="false" tabindex="-1" data-tab="activity">Queue</button>
+      <a role="tab" id="tab-overview" href="#overview" aria-controls="overview" aria-selected="true" data-tab="overview">Overview</a>
+      <a role="tab" id="tab-routes" href="#routes" aria-controls="routes" aria-selected="false" data-tab="routes">Routes</a>
+      <a role="tab" id="tab-formal" href="#formal" aria-controls="formal" aria-selected="false" data-tab="formal">Formal substrate</a>
+      <a role="tab" id="tab-evidence" href="#evidence" aria-controls="evidence" aria-selected="false" data-tab="evidence">Evidence</a>
+      <a role="tab" id="tab-activity" href="#activity" aria-controls="activity" aria-selected="false" data-tab="activity">Queue</a>
     </div>
   </div>
 
+  <noscript><div class="shell noscript-note">JavaScript is off, so every workspace panel is shown in sequence.</div></noscript>
+
   <div class="shell workspace-body">
-    <section class="tab-panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" data-tab-panel="overview">
+    <section class="tab-panel" role="tabpanel" id="overview" aria-labelledby="tab-overview" data-tab-panel="overview">
       <div class="panel-heading"><div><h2>Current operating state</h2>
         <p>The decision layer controls what work is justified; proof volume does not select an attack route.</p></div>
         <span class="status status--blue">Reference deployment</span></div>
@@ -99,12 +111,12 @@
           Typed screens, seeds, and drafts authorize nothing.</p></div>
         <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/ECDLP_TYPED_EVIDENCE_V0.json">Open evidence</a></div>
       <div class="surface" style="margin-bottom:22px"><div class="surface__body"><article class="task-row">
-  <div class="task-row__top"><div><h4>Can this target-property cell be decided without an ECDLP run: Construct or rule out a fully priced auxiliary-curve instance over the secp256k1 base field under the exact PKC 2016 conditions. The answer must instantiate or refute the typed construction and price every named precomputation term.</h4>
+  <div class="task-row__top"><div><h3>Can this target-property cell be decided without an ECDLP run: Construct or rule out a fully priced auxiliary-curve instance over the secp256k1 base field under the exact PKC 2016 conditions. The answer must instantiate or refute the typed construction and price every named precomputation term.</h3>
     <small>HGS-5CC94AD51AE6 · CELL-M-PKC-AUXILIARY-CURVE · R-PETIT-COMPOSED-MAPS</small>
     <p>The first output is a bounded arithmetic construction or no-instance record plus a complete precomputation estimate, not an ECDLP experiment.</p></div>
     <span class="status status--amber">Property resolution</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>Can an exact desk derivation price Total construction, representation, solving, and recovery cost of the corresponding S17 system. against the declared baseline before any solver run?</h4>
+  <div class="task-row__top"><div><h3>Can an exact desk derivation price Total construction, representation, solving, and recovery cost of the corresponding S17 system. against the declared baseline before any solver run?</h3>
     <small>HGS-3266E42A729C · CELL-M-PKC-SMOOTH-M16 · R-PETIT-COMPOSED-MAPS</small>
     <p>This open desk-cost cell has exact input presentations, an exact set-theoretic projective-tree bridge on the stated nonsingular characteristic domain, a complete named exceptional-fiber classification, deterministic control and secp256k1 GLV recovery checks, a frozen recursive projective S17 contract, kernel-checked fixed-degree projective resultant plus literal Sylvester unit-one and end-to-end common-root theorems, the actual frozenC specialization, the exact all-stage frozen projective witness chain, an exact literal finite MvPolynomial family in guarded form, an exact affine/infinity chart-polynomial cover for the frozen stage-14 predicate after injective base change, exact necessary infinity-stratum pruning, and exact conditional infinity propagation. Each fixed InfinityMask I uses 14 - I.card affine variables, no guard equations, and fifteen H equations with degree ceilings 2/4/2; the existential cover is exact and retains [1:0]. Affine external inputs reduce the exact logical cover from 16384 masks to 987 separated masks, and nonzero endpoint determinants conditionally reduce it to 377 interior masks. TASK-025 gives the nested local reductions 377 to 129 to 69 to 36 and the independent boundary-only branch 129 to 60. Under endpoint and BalancedPropagatedRegular assumptions it proves an exact single empty-mask affine chart, not a unique witness. The direct propagation applies over any field, but the source-stage bridge still requires injective base change into an algebraically closed target and separately assumed mapped-target regularity. Symbolic nonzeroness, nonemptiness, density, probability, and genericity are not proved, and source-field computation does not automatically establish mapped regularity. The 2^14 logical masks are not enumerated or materialized, and neither are the pruned families. It is not an expanded direct S17 polynomial, an unconditional base-field descent theorem, a solver run, or evidence of independent dimensions or relations. The complete cost bridge remains open. CQ-SEMAEV-S17-SYSTEM-COST remains partial; solving cost, rank, and yield remain unpriced. The scoped result has zero_retention_success and does not justify a production mask sweep, solver run, target computation, hypothesis retention, experiment authorization, cost inference, route rejection, or route promotion.</p></div>
     <span class="status status--amber">Desk cost</span></div>
@@ -118,11 +130,11 @@
           <div class="surface__head"><div><h3>Split work queues</h3><p>20 research / 2 product contracts</p></div>
             <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/tasks/NEXT.md">Open source</a></div>
           <div class="surface__body"><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-008 · Maintain evidence-gated candidate intake</h4>
+  <div class="task-row__top"><div><h3>TASK-008 · Maintain evidence-gated candidate intake</h3>
     <small>ECDLP research</small>
     <p>New progress must enter through source-pinned mathematical evidence or a concrete mechanism, not by silently reviving a parked route. Generated research seeds reduce dependence on one agent noticing an intersection, while adversarial compilation prevents fluent text from becoming authorization.</p></div><span class="status status--blue">Active</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-011 · Validate the external product pilot</h4>
+  <div class="task-row__top"><div><h3>TASK-011 · Validate the external product pilot</h3>
     <small>KeyAI product</small>
     <p>The secp256k1 repository demonstrates an owner-operated research-state loop. It does not establish that another team has the same pain, can use the contracts, or will return.</p></div><span class="status status--blue">Active</span></div>
 </article></div>
@@ -130,7 +142,7 @@
       </div>
     </section>
 
-    <section class="tab-panel" role="tabpanel" id="panel-routes" aria-labelledby="tab-routes" data-tab-panel="routes" hidden>
+    <section class="tab-panel" role="tabpanel" id="routes" aria-labelledby="tab-routes" data-tab-panel="routes">
       <div class="panel-heading"><div><h2>Route portfolio</h2>
         <p>All routes are bound to an exact threat model, evidence gate, stop condition, and next action.</p></div>
         <a class="button" href="explore.html">Open detailed route map</a></div>
@@ -138,7 +150,8 @@
         <div class="surface__head"><div><h3>Disposition distribution</h3><p>17 canonical routes</p></div></div>
         <div class="surface__body"><div class="distribution"><span class="distribution__segment segment--guardrail" style="width:5.882%" title="Guardrail: 1"></span><span class="distribution__segment segment--baseline" style="width:5.882%" title="Baseline: 1"></span><span class="distribution__segment segment--constant_factor_only" style="width:5.882%" title="Constant factor: 1"></span><span class="distribution__segment segment--ruled_out_for_target" style="width:23.529%" title="Ruled out for target: 4"></span><span class="distribution__segment segment--open_parked" style="width:23.529%" title="Open, parked: 4"></span><span class="distribution__segment segment--monitor" style="width:5.882%" title="Monitor: 1"></span><span class="distribution__segment segment--conditional_only" style="width:11.765%" title="Conditional inputs: 2"></span><span class="distribution__segment segment--separate_threat_model" style="width:17.647%" title="Separate threat model: 3"></span></div><div class="legend-list"><span class="legend-item"><i class="segment--guardrail"></i>Guardrail <strong>1</strong></span><span class="legend-item"><i class="segment--baseline"></i>Baseline <strong>1</strong></span><span class="legend-item"><i class="segment--constant_factor_only"></i>Constant factor <strong>1</strong></span><span class="legend-item"><i class="segment--ruled_out_for_target"></i>Ruled out for target <strong>4</strong></span><span class="legend-item"><i class="segment--open_parked"></i>Open, parked <strong>4</strong></span><span class="legend-item"><i class="segment--monitor"></i>Monitor <strong>1</strong></span><span class="legend-item"><i class="segment--conditional_only"></i>Conditional inputs <strong>2</strong></span><span class="legend-item"><i class="segment--separate_threat_model"></i>Separate threat model <strong>3</strong></span></div></div>
       </div>
-      <div class="table-wrap"><table class="data-table">
+      <div class="table-wrap" tabindex="0" role="region" aria-label="ECDLP route portfolio table"><table class="data-table">
+        <caption class="sr-only">ECDLP route portfolio</caption>
         <thead><tr><th>Route</th><th>Disposition</th><th>Threat model</th><th>Priority</th><th>Next action</th></tr></thead>
         <tbody><tr>
   <td><strong>Generic-group lower bound</strong><small>R-GENERIC-LOWER-BOUND</small></td>
@@ -246,11 +259,12 @@
       </table></div>
     </section>
 
-    <section class="tab-panel" role="tabpanel" id="panel-formal" aria-labelledby="tab-formal" data-tab-panel="formal" hidden>
+    <section class="tab-panel" role="tabpanel" id="formal" aria-labelledby="tab-formal" data-tab-panel="formal">
       <div class="panel-heading"><div><h2>Formal substrate</h2>
         <p>11 of 17 critical nodes are closed. Blocked nodes retain exact resume conditions.</p></div>
         <a class="button" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/FORMAL_SUBSTRATE.json">Open canonical map</a></div>
-      <div class="table-wrap" style="margin-bottom:28px"><table class="data-table">
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Formal substrate table" style="margin-bottom:28px"><table class="data-table">
+        <caption class="sr-only">Formal substrate critical nodes</caption>
         <thead><tr><th>Critical node</th><th>Status</th><th>Depends on</th><th>Blocker</th><th>Evidence</th></tr></thead>
         <tbody><tr>
   <td><strong>Canonical counts, registries, generated views, and active queue</strong><small>truth-layer</small></td>
@@ -358,7 +372,8 @@
       </table></div>
       <div class="panel-heading"><div><h2>Accepted blockers</h2>
         <p>Missing foundations are recorded, but do not authorize work without a selected route.</p></div></div>
-      <div class="table-wrap"><table class="data-table">
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Accepted blockers table"><table class="data-table">
+        <caption class="sr-only">Accepted formal blockers and resume conditions</caption>
         <thead><tr><th>Blocker</th><th>What is missing</th><th>Resume condition</th></tr></thead>
         <tbody><tr>
   <td><strong>No uniform Point-to-division-polynomial multiplication map</strong><small>upstream-foundation</small></td>
@@ -384,7 +399,7 @@
       </table></div>
     </section>
 
-    <section class="tab-panel" role="tabpanel" id="panel-evidence" aria-labelledby="tab-evidence" data-tab-panel="evidence" hidden>
+    <section class="tab-panel" role="tabpanel" id="evidence" aria-labelledby="tab-evidence" data-tab-panel="evidence">
       <div class="panel-heading"><div><h2>Sync Health</h2>
         <p>The public and agent-facing views resolve back to canonical machine sources and their gates.</p></div></div>
       <div class="layout-two" style="margin-bottom:30px"><article class="surface">
@@ -426,7 +441,7 @@
       </div>
     </section>
 
-    <section class="tab-panel" role="tabpanel" id="panel-activity" aria-labelledby="tab-activity" data-tab-panel="activity" hidden>
+    <section class="tab-panel" role="tabpanel" id="activity" aria-labelledby="tab-activity" data-tab-panel="activity">
       <div class="panel-heading"><div><h2>Work queues</h2>
         <p>Research and product contracts have separate owners and KPIs; neither can count as progress in the other.</p></div>
         <a class="button" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/tasks/NEXT.md">Open queue router</a></div>
@@ -434,91 +449,91 @@
         <a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/tasks/ECDLP_RESEARCH.md">tasks/ECDLP_RESEARCH.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/tasks/KEYAI_PRODUCT.md">tasks/KEYAI_PRODUCT.md</a>
       </div>
       <div class="surface"><div class="surface__body"><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-013 · Build and calibrate Research Engine v0</h4>
+  <div class="task-row__top"><div><h3>TASK-013 · Build and calibrate Research Engine v0</h3>
     <small>ECDLP research</small>
     <p>The repository needs a closed evidence -&gt; generation -&gt; adversarial proposal review -&gt; selection -&gt; bounded exploration -&gt; validation -&gt; retention loop without weakening the independent promotion gate. Creative model output remains untrusted; deterministic gates compile it into a candidate or retain its exact blockers.</p></div><span class="status status--gray">Maintenance Non Executable During Task026</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-008 · Maintain evidence-gated candidate intake</h4>
+  <div class="task-row__top"><div><h3>TASK-008 · Maintain evidence-gated candidate intake</h3>
     <small>ECDLP research</small>
     <p>New progress must enter through source-pinned mathematical evidence or a concrete mechanism, not by silently reviving a parked route. Generated research seeds reduce dependence on one agent noticing an intersection, while adversarial compilation prevents fluent text from becoming authorization.</p></div><span class="status status--blue">Active</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-009 · Resolve the bounded GLV-Semaev structural uncertainty</h4>
+  <div class="task-row__top"><div><h3>TASK-009 · Resolve the bounded GLV-Semaev structural uncertainty</h3>
     <small>ECDLP research</small>
     <p>The exact coordinatewise C3 action on S3 and S4 decides whether the naive invariant quotient has the symmetry it claims. This bounded structural uncertainty is now resolved; it was not route promotion or an experiment hypothesis run.</p></div><span class="status status--gray">Completed Bounded Structural</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-010 · Independent adversarial audit at a stable checkpoint</h4>
+  <div class="task-row__top"><div><h3>TASK-010 · Independent adversarial audit at a stable checkpoint</h3>
     <small>ECDLP research</small>
     <p>The independent audit found reproducibility, lifecycle, calibration, semantic-drift, and authorization defects. This task repairs those findings before Research Engine v0.2 is treated as stable.</p></div><span class="status status--gray">Completed Accepted</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-014 · Run the first post-v0.2 scientific activation cycle</h4>
+  <div class="task-row__top"><div><h3>TASK-014 · Run the first post-v0.2 scientific activation cycle</h3>
     <small>ECDLP research</small>
     <p>A new prime-field Semaev/Petit proposal cannot be assessed honestly without claim-level source boundaries and a full-cost bridge. Yokoyama and Amadori are now bound to inspected primary artifacts and exact extracts; Kudo CANS 2018 remains full-text unread. The deterministic smooth-subgroup desk screen resolves the two arithmetic predicates but leaves solving degree, recovery, relation independence, and total work unknown, so it does not justify a solver or native experiment.</p></div><span class="status status--gray">Evidence Closed Phase D Blocked</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-015 · Map the bounded hypothesis frontier and select one desk question</h4>
+  <div class="task-row__top"><div><h3>TASK-015 · Map the bounded hypothesis frontier and select one desk question</h3>
     <small>ECDLP research</small>
     <p>The mathematical idea space is open-ended, but the actionable frontier can be made finite relative to a versioned evidence snapshot, mechanism grammar, route model, target properties, recovery contract, and cost quantities. The existing knowledge graph already supplies that projection. Choosing the exact M16 desk-cost cell avoids both a free-form idea search and an unbounded auxiliary-curve search.</p></div><span class="status status--gray">Completed Non Executable Scoped Blocker</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-016 · Fix the source-faithful M16 ideal and recovery semantics</h4>
+  <div class="task-row__top"><div><h3>TASK-016 · Fix the source-faithful M16 ideal and recovery semantics</h3>
     <small>ECDLP research</small>
     <p>TASK-015 showed that low input degree can be obtained only by adding variables, while solving degree, fill-in, recovery, and rank remain unknown. Those quantities are not meaningful until direct S17, the recursive S3 tree, and the source-factor membership circuit are related by an exact base-field semantics with every exceptional fiber accounted for.</p></div><span class="status status--gray">Completed Non Executable Scoped Blocker</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-017 · Classify M16 exceptional fibers, liftability, and recovery domain</h4>
+  <div class="task-row__top"><div><h3>TASK-017 · Classify M16 exceptional fibers, liftability, and recovery domain</h3>
     <small>ECDLP research</small>
     <p>TASK-016 disproved the naive global affine substitution and isolated two independent exceptional mechanisms: identity prefixes and extension-only or non-liftable fibers. The next useful result is a complete set-theoretic classification of those fibers and a recovery domain, not a choice from an unbounded hypothesis space and not a solving-degree estimate.</p></div><span class="status status--gray">Completed Non Executable Scoped Blocker</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-018 · Freeze recursive projective S17 and prove the reverse projection</h4>
+  <div class="task-row__top"><div><h3>TASK-018 · Freeze recursive projective S17 and prove the reverse projection</h3>
     <small>ECDLP research</small>
     <p>TASK-017 proves the complete set-theoretic projective S3-tree semantics and recovery domain. TASK-018 was required to freeze the exact recursive projective S17 object before any attempt to certify its universal reverse projection or price a solver.</p></div><span class="status status--gray">Completed Non Executable Scoped Blocker</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-019 · Kernelize fixed-degree projective resultants and reverse projection</h4>
+  <div class="task-row__top"><div><h3>TASK-019 · Kernelize fixed-degree projective resultants and reverse projection</h3>
     <small>ECDLP research</small>
     <p>TASK-018 freezes the recursive projective S17 contract, records its forward algebraic argument, and replays bounded S4/S5 forward/reverse fixtures, but finite fixtures cannot replace a universal proof. TASK-019 isolates which part of that gap is generic resultant algebra and which part still depends on the actual frozen recursion.</p></div><span class="status status--gray">Completed Non Executable Scoped Blocker</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-020 · Kernelize frozen recursive C_r specialization</h4>
+  <div class="task-row__top"><div><h3>TASK-020 · Kernelize frozen recursive C_r specialization</h3>
     <small>ECDLP research</small>
     <p>TASK-019 proved the generic fixed-degree resultant theorem, but that theorem did not name or constrain the actual frozen recursive symbolic family. TASK-020 binds the real recursion before any universal projective witness extraction is attempted.</p></div><span class="status status--gray">Completed Non Executable Scoped Blocker</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-021 · Kernelize universal frozen C16-to-C2 projective witness extraction</h4>
+  <div class="task-row__top"><div><h3>TASK-021 · Kernelize universal frozen C16-to-C2 projective witness extraction</h3>
     <small>ECDLP research</small>
     <p>TASK-020 returns a non-irrelevant common projective root of the fixed homogenized predecessor and local slices at every vanishing successor. To recurse, those homogenized evaluations must be identified with the actual projective frozen-family specialization, including `[1:0]`, and the witnesses must be assembled into one exact chain.</p></div><span class="status status--gray">Completed Non Executable Kernel Result</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-022 · Materialize the frozen stage-14 guarded projective system</h4>
+  <div class="task-row__top"><div><h3>TASK-022 · Materialize the frozen stage-14 guarded projective system</h3>
     <small>ECDLP research</small>
     <p>TASK-021 proves an exact recursive chain of fourteen valid projective witnesses, but the existential `ProjectivePair` representation is not yet a finite scalar polynomial inventory. A guard `A*U + B*V - 1 = 0` expresses exactly that `(U,V)` is not `[0:0]` over a field while retaining `[1:0]`. The target representation is one literal finite `MvPolynomial` family: `∃ assignment : GuardVar → K, ∀ e : GuardedEquation, MvPolynomial.eval assignment (guardedEquation q y e) = 0`.</p></div><span class="status status--gray">Completed Non Executable Kernel Result</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-023 · Replace guarded projective redundancy by an exact chart cover</h4>
+  <div class="task-row__top"><div><h3>TASK-023 · Replace guarded projective redundancy by an exact chart cover</h3>
     <small>ECDLP research</small>
     <p>TASK-022 gives an exact finite polynomial system, but its four `(U,V,A,B)` scalars and one guard per projective slot retain both projective-scale and guard-witness redundancy. Every valid projective pair over a field lies in exactly the needed two-chart cover: the infinity branch uses `[1:0]`, while the affine branch uses `[X:1]`. Selecting one branch for each of fourteen intermediate slots leaves, for a fixed mask `I`, exactly `14 - |I|` scalar variables and fifteen literal `H` equations.</p></div><span class="status status--gray">Completed Non Executable Kernel Result</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-024 · Prove necessary infinity-stratum pruning</h4>
+  <div class="task-row__top"><div><h3>TASK-024 · Prove necessary infinity-stratum pruning</h3>
     <small>ECDLP research</small>
     <p>TASK-023 proves an exact cover over all `2^14 = 16384` affine/infinity masks but does not distinguish masks that cannot occur. The local triquadratic `H` identities at `[1:0]` expose exact necessary conditions. With affine external inputs, adjacent infinity slots would force an external projective `v` coordinate to vanish, so every solution mask is a separated subset of the fourteen-slot path. This reduces the exact logical cover to 987 masks without a solver or production enumeration.</p></div><span class="status status--gray">Completed Non Executable Kernel Result</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-025 · Propagate infinity constraints to a conditional affine chart</h4>
+  <div class="task-row__top"><div><h3>TASK-025 · Propagate infinity constraints to a conditional affine chart</h3>
     <small>ECDLP research</small>
     <p>TASK-024 conditionally leaves 377 interior separated masks and proves that every isolated infinity fixes its adjacent affine coordinates. TASK-025 substitutes those forced coordinates into the neighboring literal `H` equations, extracts explicit exceptional polynomial conditions, and proves that a precisely stated balanced nonvanishing condition makes the empty infinity mask complete. A one-chart conclusion means only one affine representation branch on that conditional locus, not one solution or an ECDLP shortcut.</p></div><span class="status status--gray">Completed Non Executable Kernel Result</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-026 · Measure fixed-target balanced-regular yield on frozen toy E7 subgroups</h4>
+  <div class="task-row__top"><div><h3>TASK-026 · Measure fixed-target balanced-regular yield on frozen toy E7 subgroups</h3>
     <small>ECDLP research</small>
     <p>TASK-025 proves that explicit endpoint and balanced nonvanishing assumptions reduce the exact projective cover to one affine chart, but it does not show that fixed-before-sampling targets admit enough such relations to make that chart usable. This task performs the cheapest precommitted test that can kill that continuation before any solver work. It does not test a secp256k1 key, a faithful PKC factor base, solver scaling, rank, recovery, or total ECDLP cost.</p></div><span class="status status--gray">Completed Independently Validated Terminal</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-027 · Recompute the exact M16 factor-base census and current proposal regime</h4>
+  <div class="task-row__top"><div><h3>TASK-027 · Recompute the exact M16 factor-base census and current proposal regime</h3>
     <small>ECDLP research</small>
     <p>the source heuristic used all `D=564522` subgroup coordinates, while the exact curve factor base depends on whether `x^3+7` is a square. This task resolves that target property and records separate exact conditioned null comparators before any solver proposal can interpret a toy slope. These comparators do not establish the actual group-sum distribution and may leave additional zero-sum configurations uncounted. The task also binds the immutable proposal&#x27;s own statement that its current at-most-24-bit ladder is calibration-only.</p></div><span class="status status--gray">Completed Non Experimental Certificate</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-028 · Close the source-faithful M16 mechanism and sound acceptance contract</h4>
+  <div class="task-row__top"><div><h3>TASK-028 · Close the source-faithful M16 mechanism and sound acceptance contract</h3>
     <small>ECDLP research</small>
     <p>the typed cell previously cited a coarse source summary while the exact map chain, System (4), recovery boundary, and partial cost formula were distributed across prose and older certificates. This task binds those facts to exact primary-source locators and separates source statements from repository-derived completion semantics.</p></div><span class="status status--gray">Completed Nonexperimental Certificate</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-029 · Formulate and review the current-seed M16 solver-slope proposal</h4>
+  <div class="task-row__top"><div><h3>TASK-029 · Formulate and review the current-seed M16 solver-slope proposal</h3>
     <small>ECDLP research</small>
     <p>TASK-028 produced the current typed seed and exact source input, but it did not supply a generalized-root algorithm or complete cost bridge. TASK-029 tests whether the same scientific mechanism can now clear proposal intake without renaming an old premise or converting a design specification into evidence.</p></div><span class="status status--gray">Completed Reviewed Hard Rejected Zero Retention</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-011 · Validate the external product pilot</h4>
+  <div class="task-row__top"><div><h3>TASK-011 · Validate the external product pilot</h3>
     <small>KeyAI product</small>
     <p>The secp256k1 repository demonstrates an owner-operated research-state loop. It does not establish that another team has the same pain, can use the contracts, or will return.</p></div><span class="status status--blue">Active</span></div>
 </article><article class="task-row">
-  <div class="task-row__top"><div><h4>TASK-012 · Build configurable intake after a pilot contract</h4>
+  <div class="task-row__top"><div><h3>TASK-012 · Build configurable intake after a pilot contract</h3>
     <small>KeyAI product</small>
     <p>A hosted or multi-project platform is justified only after a real team exposes the minimum adapter boundary.</p></div><span class="status status--blocked">Blocked</span></div>
 </article></div></div>
@@ -527,20 +542,22 @@
 </main>
 <footer class="site-footer">
   <div class="shell site-footer__inner">
-    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="38">
+    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
     <p>verification workspace for AI research. Current stage: Reference deployment.
       The Lean kernel checks declared statements and proof terms; semantic, empirical,
       security, and product claims remain separately evidence-gated.</p>
     <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html#research-system">Research system</a>
       <a href="results.html">Verified results</a>
-      <a href="explore.html">Decision routes</a>
-      <a href="dashboard.html">Reference workspace</a>
-      <a href="pilot.html">External pilot</a>
+      <a href="index.html#reference">ECDLP deployment</a>
+      <a href="explore.html">Detailed route map</a>
+      <a href="dashboard.html">Technical workspace</a>
+      <a href="pilot.html">Collaborate</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PRODUCT_MODEL.json">Product model</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">Repository</a>
     </nav>
   </div>
 </footer>
-<script src="assets/site.js?v=20260816-1"></script>
+<script src="assets/site.js?v=20260825-1"></script>
 </body>
 </html>

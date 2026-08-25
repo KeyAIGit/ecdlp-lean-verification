@@ -3,315 +3,379 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KeyAI | Verification workspace for AI research</title>
-  <meta name="description" content="KeyAI turns model-generated research into evidence-linked, verifier-scoped assets.">
-  <meta property="og:title" content="KeyAI | Verification workspace for AI research">
-  <meta property="og:description" content="KeyAI turns model-generated research into evidence-linked, verifier-scoped assets.">
-  <meta property="og:image" content="assets/logo-wordmark.png">
+  <title>KeyAI | Research infrastructure that remembers</title>
+  <meta name="description" content="KeyAI is a public reference deployment for long-running AI research, preserving hypotheses, evidence, bounded experiments, counterexamples, replay, and formal results.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://keyai.org/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KeyAI | Research infrastructure that remembers">
+  <meta property="og:description" content="KeyAI is a public reference deployment for long-running AI research, preserving hypotheses, evidence, bounded experiments, counterexamples, replay, and formal results.">
+  <meta property="og:url" content="https://keyai.org/">
+  <meta property="og:image" content="https://keyai.org/assets/logo-wordmark.png">
+  <meta property="og:image:alt" content="KeyAI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="KeyAI | Research infrastructure that remembers">
+  <meta name="twitter:description" content="KeyAI is a public reference deployment for long-running AI research, preserving hypotheses, evidence, bounded experiments, counterexamples, replay, and formal results.">
+  <meta name="twitter:image" content="https://keyai.org/assets/logo-wordmark.png">
   <meta name="theme-color" content="#07182d">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=20260816-1">
+  <link rel="stylesheet" href="assets/site.css?v=20260825-1">
 </head>
 <body data-page="product">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="shell site-header__inner">
     <a class="brand-link" href="index.html" aria-label="KeyAI home">
-      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="44">
+      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="59">
     </a>
     <nav class="primary-nav" aria-label="Primary navigation">
+      <a data-nav-page="product" href="index.html#research-system">Research system</a>
       <a data-nav-page="results" href="results.html">Verified results</a>
-      <a data-nav-page="routes" href="explore.html">Route map</a>
-      <a data-nav-page="workspace" href="dashboard.html">Workspace</a>
-      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">GitHub</a>
+      <a data-nav-page="routes" href="explore.html">ECDLP deployment</a>
+      <a data-nav-page="pilot" href="pilot.html">Collaborate</a>
+      <a class="nav-cta" href="https://github.com/KeyAIGit/-ecdlp-lean-verification">GitHub</a>
     </nav>
   </div>
 </header>
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
-    <canvas class="hero__canvas" id="route-canvas" aria-hidden="true"></canvas>
     <div class="shell hero__inner">
       <div class="hero__copy">
-        <p class="eyebrow">verification workspace for AI research</p>
-        <h1 id="hero-title">A public map of what is proved, blocked, and still open.</h1>
-        <p class="hero__lede">KeyAI keeps formal claims, evidence, decisions, negative results,
-          verifier outcomes, and provenance in one inspectable state. The current reference deployment
-          is ECDLP and curve research, not an ECDLP solution.</p>
-        <div class="hero-boundary" role="note" aria-label="Public claim boundary">
-          <strong>Claim boundary</strong>
-          <span>No secp256k1 shortcut is claimed. The two verified ledgers remain isolated,
-            and compiler-trusted results are labeled separately.</span>
-        </div>
+        <p class="eyebrow">KeyAI · verification workspace for AI research</p>
+        <h1 id="hero-title">An operating system for long-running AI research.</h1>
+        <p class="hero__lede">Today, KeyAI is a public reference deployment—not a
+          self-serve or hosted multi-project product. It preserves hypotheses, evidence, bounded experiments,
+          counterexamples, formal results, barriers, and provenance in one inspectable state—so
+          the next researcher or agent can continue from the last known boundary.</p>
         <div class="actions">
-          <a class="button button--primary" href="results.html">Browse verified results</a>
-          <a class="button button--on-dark" href="dashboard.html">Open current research state</a>
+          <a class="button button--primary" href="#research-system">Explore the Research System</a>
+          <a class="button button--on-dark" href="results.html">View Verified Results</a>
         </div>
-        <p class="stage-note"><span class="status status--blue">Reference deployment</span>
-          <span>The repository demonstrates the full research-state loop on one difficult domain, but it is not yet a self-serve hosted product.</span></p>
+        <nav class="hero__links" aria-label="More ways to explore">
+          <a href="#reference">See the ECDLP Reference Deployment</a>
+          <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">GitHub</a>
+        </nav>
       </div>
-      <div class="hero__signal" aria-label="Verified research index">
-        <span>Verified research index</span>
-        <strong>479 rows across 2 isolated ledgers</strong>
-        <span>307 ECDLP / 172 ResearchOS /
-          aggregate total is navigation only</span>
-        <code>0 sorry · 0 custom axioms</code>
-        <code>104 rows disclose compiler trust in ledger metadata</code>
-        <code>0 native experiments selected</code>
-        <code>1 exact synthetic-toy run completed</code>
-        <code>AUTH-HYP-M16-FIXED-TARGET-YIELD-001-20260730-01</code>
-      </div>
-    </div>
-    <script type="application/json" id="route-visual-data">[{"id":"R-GENERIC-LOWER-BOUND","status":"guardrail"},{"id":"R-GENERIC-BASELINE","status":"baseline"},{"id":"R-GLV","status":"constant_factor_only"},{"id":"R-POHLIG-HELLMAN","status":"ruled_out_for_target"},{"id":"R-PAIRING-TRANSFER","status":"ruled_out_for_target"},{"id":"R-ANOMALOUS-PADIC","status":"ruled_out_for_target"},{"id":"R-WEIL-DESCENT","status":"ruled_out_for_target"},{"id":"R-PRIME-FIELD-INDEX-CALCULUS","status":"open_parked"},{"id":"R-GLV-SEMAEV","status":"open_parked"},{"id":"R-PETIT-COMPOSED-MAPS","status":"open_parked"},{"id":"R-EDS-DIVISION-POLYNOMIAL","status":"open_parked"},{"id":"R-ISOGENY-ENDOMORPHISM-TRANSFER","status":"monitor"},{"id":"R-MULTI-TARGET-PRECOMPUTATION","status":"conditional_only"},{"id":"R-INTERVAL-AUXILIARY-INPUT","status":"conditional_only"},{"id":"R-HNP-NONCE-LEAKAGE","status":"separate_threat_model"},{"id":"R-PROTOCOL-FAULT-SIDECHANNEL","status":"separate_threat_model"},{"id":"R-QUANTUM-SHOR","status":"separate_threat_model"}]</script>
-  </section>
-
-  <section class="live-band" aria-label="Live reference environment">
-    <div class="shell live-band__inner">
-      <div class="live-band__context">
-        <strong>Verified results, separated by trust lane</strong>
-        <span>Browse theorem names, source files, proof methods, trust labels, and exact source anchors.</span>
-      </div>
-      <div class="live-metric"><div class="live-metric__value" data-metric="ledger-rows">307</div>
-        <div class="live-metric__label">ECDLP ledger rows</div></div>
-      <div class="live-metric"><div class="live-metric__value" data-metric="distinct-results">~268</div>
-        <div class="live-metric__label">ECDLP distinct results</div></div>
-      <div class="live-metric"><div class="live-metric__value">172</div>
-        <div class="live-metric__label">ResearchOS ledger rows</div></div>
-      <div class="live-metric"><div class="live-metric__value">0 / 0</div>
-        <div class="live-metric__label">sorry / custom axioms</div></div>
+      <aside class="hero-state" aria-labelledby="hero-state-title">
+        <div class="hero-state__head">
+          <span>What exists today</span>
+          <span class="status status--blue">Reference deployment</span>
+        </div>
+        <h2 id="hero-state-title">A public reference deployment, not a product promise.</h2>
+        <ol class="hero-state__list">
+          <li><span>01</span><div><strong>One inspectable research state</strong>
+            <small>Claims, evidence, tasks, decisions, outcomes, and provenance.</small></div></li>
+          <li><span>02</span><div><strong>One difficult reference environment</strong>
+            <small>secp256k1 ECDLP demonstrates the workflow; no break is claimed.</small></div></li>
+          <li><span>03</span><div><strong>One evidence-gated next milestone</strong>
+            <small>An external team must complete the loop before the MVP claim advances.</small></div></li>
+        </ol>
+        <p>The repository demonstrates the full research-state loop on one difficult domain, but it is not yet a self-serve hosted product.</p>
+      </aside>
     </div>
   </section>
 
-  <section class="band band--white verified-entry" aria-labelledby="verified-entry-title">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Evidence first</p>
-        <h2 id="verified-entry-title">Start with the results, their limits, and the open frontier.</h2>
-        <p>The public interface now exposes theorem names and exact source anchors before asking
-          visitors to interpret the product thesis or the research workflow.</p>
+  <section class="evidence-rail" aria-labelledby="evidence-rail-title">
+    <div class="shell evidence-rail__inner">
+      <div class="evidence-rail__intro">
+        <p class="eyebrow">Demonstrated, not implied</p>
+        <h2 id="evidence-rail-title">Evidence is inspectable from the first click.</h2>
       </div>
-      <div class="evidence-grid">
-        <article class="evidence-card">
-          <h3>Verified result browser</h3>
-          <p>479 navigation rows across two isolated ledgers,
-            with method and trust metadata.</p>
-          <a class="source-link" href="results.html">Browse verified results</a>
-        </article>
-        <article class="evidence-card">
-          <h3>Decision frontier</h3>
-          <p>17 canonical ECDLP routes with explicit dispositions, evidence, blockers,
-            and reconsideration triggers.</p>
-          <a class="source-link" href="explore.html">Inspect the route map</a>
-        </article>
-        <article class="evidence-card">
-          <h3>Canonical repository state</h3>
-          <p>Counts, architecture, and machine-readable provenance remain generated from repository
-            sources rather than copied into marketing prose.</p>
-          <a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/STATUS.md">Open STATUS.md</a>
-          <a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/REPOSITORY_ARCHITECTURE.md">Read the architecture map</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="product">
-    <div class="shell split">
-      <div class="split__lead">
-        <p class="eyebrow">The missing layer</p>
-        <h2>AI can propose. KeyAI keeps the research state.</h2>
-        <p>Individual agents already write proofs and code. A long research program needs a durable answer
-          to a different question: what should the next agent trust, challenge, or stop doing?</p>
-      </div>
-      <div class="principle-list">
-        <article class="principle">
-          <span class="principle__number">01</span>
-          <div><h3>Before execution</h3><p>Bind each task to a source, exact scope, route, and falsifiable exit condition.</p></div>
-        </article>
-        <article class="principle">
-          <span class="principle__number">02</span>
-          <div><h3>At verification</h3><p>Record what the declared verifier accepted and what remains a semantic or empirical assumption.</p></div>
-        </article>
-        <article class="principle">
-          <span class="principle__number">03</span>
-          <div><h3>After the attempt</h3><p>Retain accepted results, negative evidence, stop conditions, and a reproducible rollback path.</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="workflow">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Product loop</p>
-        <h2>One state from source material to a governed result.</h2>
-        <p>The current repository implements this loop through machine-readable contracts. The next product
-          step is to make the same loop configurable for an external team.</p>
-      </div>
-      <div class="workflow"><article class="workflow__step">
-  <span class="workflow__index">01</span>
-  <h3>Ingest</h3>
-  <p>Pin the corpus, sources, target, and verifier contract.</p>
-</article><article class="workflow__step">
-  <span class="workflow__index">02</span>
-  <h3>Structure</h3>
-  <p>Convert material into claims, dependencies, barriers, and threat models.</p>
-</article><article class="workflow__step">
-  <span class="workflow__index">03</span>
-  <h3>Decide</h3>
-  <p>Select, park, or reject routes under explicit evidence gates.</p>
-</article><article class="workflow__step">
-  <span class="workflow__index">04</span>
-  <h3>Execute</h3>
-  <p>Give a human or model one bounded task with a falsifiable exit condition.</p>
-</article><article class="workflow__step">
-  <span class="workflow__index">05</span>
-  <h3>Verify</h3>
-  <p>Run the declared verifier and an independent result validator where needed.</p>
-</article><article class="workflow__step">
-  <span class="workflow__index">06</span>
-  <h3>Retain</h3>
-  <p>Promote accepted results and preserve negative evidence, provenance, and rollback.</p>
-</article></div>
-    </div>
-  </section>
-
-  <section class="pilot-callout" aria-labelledby="pilot-callout-title">
-    <div class="shell pilot-callout__inner">
-      <div>
-        <p class="eyebrow">Active validation / TASK-011</p>
-        <h2 id="pilot-callout-title">The next result must come from another team.</h2>
-        <p>We are recruiting one formal-research team to test the current workspace, map one repeated
-          workflow, and make an evidence-based build, change, stop, or pending decision.</p>
-      </div>
-      <dl class="pilot-callout__facts">
-        <div><dt>Status</dt><dd>recruiting</dd></div>
-        <div><dt>Session</dt><dd>60 minutes</dd></div>
-        <div><dt>Completed discovery</dt><dd>0 sessions</dd></div>
+      <dl class="evidence-rail__metrics">
+        <div><dt>Proof navigation</dt><dd><strong>479</strong>
+          entries across two isolated ledgers</dd></div>
+        <div><dt>ECDLP route memory</dt><dd><strong>17</strong>
+          routes with recorded dispositions</dd></div>
+        <div><dt>Built proof surface</dt><dd><strong>0 / 0</strong>
+          <code>sorry</code> / custom axioms</dd></div>
       </dl>
-      <div class="actions">
-        <a class="button button--light" href="pilot.html">Read the pilot contract</a>
-        <a class="text-link text-link--light" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/issues/new?template=keyai-pilot.yml">Apply on GitHub</a>
+    </div>
+  </section>
+
+  <section class="band band--white" id="what-keyai-is" aria-labelledby="what-keyai-title">
+    <div class="shell problem-layout">
+      <div class="section-heading section-heading--sticky">
+        <p class="eyebrow">What KeyAI is</p>
+        <h2 id="what-keyai-title">The missing infrastructure between a research question and the next agent.</h2>
+        <p>Research agents can generate claims, proofs, experiments, and code faster than a team can establish what is true, why a decision was made, and what should happen next.</p>
+        <p class="section-note">Give a research team one inspectable state for claims, evidence, decisions, tasks, candidate outputs, verifier results, and provenance.</p>
+      </div>
+      <div class="problem-cards">
+        <article class="problem-card problem-card--risk">
+          <span>Without durable memory</span>
+          <h3>Research restarts in fragments.</h3>
+          <ul><li>A plausible claim is repeated without a source or verifier result.</li><li>A failed route is rediscovered because its scope and stop condition were not retained.</li><li>Generated views drift from the canonical research state.</li><li>A proof checker validates syntax while the surrounding claim, assumptions, or threat model still overstate the result.</li><li>A new agent spends most of its context reconstructing project state.</li></ul>
+        </article>
+        <article class="problem-card problem-card--system">
+          <span>With an inspectable state</span>
+          <h3>Each recorded handoff has evidence and a boundary.</h3>
+          <p>Models can propose proofs, experiments, and code. KeyAI preserves the research program
+            around those attempts: what was asked, what was tried, what a verifier accepted, what
+            failed in scope, and what should happen next.</p>
+          <a href="#research-system">See the research loop</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="band band--muted" id="reference">
+  <section class="band research-system" id="research-system" aria-labelledby="research-system-title">
     <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Reference deployment</p>
-        <h2>A difficult research boundary, represented honestly.</h2>
-        <p>secp256k1 is the test case, not the product claim. It forces KeyAI to distinguish a theorem,
-          an experiment, a threat model, a failed route, and a practical attack.</p>
+      <div class="section-heading section-heading--wide">
+        <p class="eyebrow">How Research OS works</p>
+        <h2 id="research-system-title">A research loop that remembers what happened.</h2>
+        <p>The canonical workflow moves from pinned inputs to a retained outcome. Open each stage to see
+          what it contributes; the full explanation remains available without JavaScript.</p>
       </div>
-      <div class="reference-grid">
-        <article class="surface decision-summary">
-          <div class="surface__head">
-            <div><h3>Current route decision</h3><p>RS-2026-07-24-001 · 2026-07-24</p></div>
-            <span class="status status--amber">Monitoring</span>
-          </div>
-          <div class="surface__body">
-            <div class="decision-summary__code">SELECT_NONE</div>
-            <h3>No current route clears the proposal gate.</h3>
-            <p>Completed the bounded, non-experimental GLV-SEMAEV-ITER-001. Only the diagonal C3 scalar polynomial covariance survives for S3 and S4; the naive independent-cube premise and the S4 fixed-target coordinate-scaling premise are bounded negatives. The S4 certificate isolates r=0, and Lean proves that no F_p-rational affine secp256k1 target inhabits that slice. No route or hypothesis is promoted, no solver run is authorized, and the primary ECDLP objective remains unchanged.</p>
-            <ul><li>RS-2026-07-22-001 is historical after supersession; this current decision explicitly carries forward its zero-promotion assessment.</li><li>The owner selected the exact S3/S4 coordinatewise C3 polynomial classification and the S4 fixed-target consequence as the sole current structural uncertainty because they can resolve the premise of the naive GLV-Semaev quotient without an attack run.</li><li>Exact symbolic certificates and narrowly scoped Lean covariance theorems can reduce this uncertainty while preserving the parked experiment status and every P0-P4 result.</li></ul>
-            <p><a href="explore.html">Inspect all 17 route dispositions</a></p>
-          </div>
-        </article>
-        <aside class="surface">
-          <div class="surface__head"><div><h3>Trust snapshot</h3><p>Current generated repository state</p></div></div>
-          <div class="surface__body trust-list">
-            <div class="trust-row"><div><strong>Lean ledger</strong><span>307 rows / ~268 distinct</span></div><span class="status status--closed">Checked</span></div>
-            <div class="trust-row"><div><strong>Built proof surface</strong><span>179 proved modules</span></div><span class="status status--closed">0 sorry</span></div>
-            <div class="trust-row"><div><strong>Formal release map</strong><span>11 of 17 critical nodes closed</span></div><span class="status status--blue">Mapped</span></div>
-            <div class="trust-row"><div><strong>Corpus frontier</strong><span>486 claims classified</span></div><span class="status status--blue">100.0%</span></div>
-          </div>
+      <div class="research-loop" data-research-loop>
+        <ol class="research-loop__steps"><li class="research-loop__item">
+  <details class="research-loop__step" data-loop-step open>
+    <summary>
+      <span class="research-loop__index">01</span>
+      <span class="research-loop__label"><strong>Ingest</strong>
+        <small>Pinned question + sources</small></span>
+    </summary>
+    <div class="research-loop__detail"><p>Pin the corpus, sources, target, and verifier contract.</p></div>
+  </details>
+</li><li class="research-loop__item">
+  <details class="research-loop__step" data-loop-step >
+    <summary>
+      <span class="research-loop__index">02</span>
+      <span class="research-loop__label"><strong>Structure</strong>
+        <small>Hypotheses + dependencies</small></span>
+    </summary>
+    <div class="research-loop__detail"><p>Convert material into claims, dependencies, barriers, and threat models.</p></div>
+  </details>
+</li><li class="research-loop__item">
+  <details class="research-loop__step" data-loop-step >
+    <summary>
+      <span class="research-loop__index">03</span>
+      <span class="research-loop__label"><strong>Decide</strong>
+        <small>Prior evidence + barriers</small></span>
+    </summary>
+    <div class="research-loop__detail"><p>Select, park, or reject routes under explicit evidence gates.</p></div>
+  </details>
+</li><li class="research-loop__item">
+  <details class="research-loop__step" data-loop-step >
+    <summary>
+      <span class="research-loop__index">04</span>
+      <span class="research-loop__label"><strong>Execute</strong>
+        <small>Bounded experiment / proof</small></span>
+    </summary>
+    <div class="research-loop__detail"><p>Give a human or model one bounded task with a falsifiable exit condition.</p></div>
+  </details>
+</li><li class="research-loop__item">
+  <details class="research-loop__step" data-loop-step >
+    <summary>
+      <span class="research-loop__index">05</span>
+      <span class="research-loop__label"><strong>Verify</strong>
+        <small>Verifier / scoped outcome</small></span>
+    </summary>
+    <div class="research-loop__detail"><p>Run the declared verifier and an independent result validator where needed.</p></div>
+  </details>
+</li><li class="research-loop__item">
+  <details class="research-loop__step" data-loop-step >
+    <summary>
+      <span class="research-loop__index">06</span>
+      <span class="research-loop__label"><strong>Retain</strong>
+        <small>Updated frontier + next hypothesis</small></span>
+    </summary>
+    <div class="research-loop__detail"><p>Promote accepted results and preserve negative evidence, provenance, and rollback.</p></div>
+  </details>
+</li></ol>
+        <aside class="research-loop__memory" aria-labelledby="research-memory-title">
+          <p class="eyebrow">Durable research memory</p>
+          <h3 id="research-memory-title">The state survives every loop.</h3>
+          <ul><li>claims and their sources</li><li>route and scope decisions</li><li>active tasks and stop conditions</li><li>candidate artifacts and independent validation</li><li>verified results and trust boundaries</li><li>generated public and agent-facing views</li></ul>
+          <p class="research-loop__foot">Retaining failed approaches and counterexamples is part of
+            the output—not an afterthought.</p>
         </aside>
       </div>
     </div>
   </section>
 
-  <section class="band band--white">
+  <section class="band band--white" id="research-map" aria-labelledby="research-map-title">
     <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">What exists now</p>
-        <h2>Evidence, not a product demo made of placeholders.</h2>
-        <p>Each capability below links to a live artifact in the reference repository.</p>
+      <div class="section-heading section-heading--wide">
+        <p class="eyebrow">Research map · generated projection</p>
+        <h2 id="research-map-title">One starting question. A frontier that records what changed.</h2>
+        <p>This small public map is generated from the same decision, formal, result, and engine state
+          that drive the technical workspace. It intentionally leaves the full internal graph in the repository.</p>
       </div>
-      <div class="evidence-grid"><article class="evidence-card">
+      <ol class="research-map" data-research-map aria-label="ECDLP reference research map">
+        <li class="research-map__node research-map__node--question" data-map-kind="question">
+          <span class="research-map__kind">Starting question</span>
+          <h3>Recover the discrete logarithm in the prime-order secp256k1 group.</h3>
+          <p>The target, inputs, output, threat models, and promotion gates are pinned before work begins.</p>
+        </li>
+        <li class="research-map__node" data-map-kind="branches">
+          <span class="research-map__kind">Major branches</span>
+          <h3>17 named routes are retained.</h3>
+          <p>4 are ruled out for the exact target;
+            4 remain open and parked. Every status is scoped.</p>
+          <a href="explore.html">Inspect every route and stop condition</a>
+        </li>
+        <li class="research-map__node" data-map-kind="formal">
+          <span class="research-map__kind">Verified substrate</span>
+          <h3>11 of 17 critical formal nodes are closed.</h3>
+          <p>Formal results establish their encoded statements and assumptions; they do not automatically
+            establish an attack or a product claim.</p>
+          <a href="results.html">Browse source-linked formal results</a>
+        </li>
+        <li class="research-map__node research-map__node--empirical" data-map-kind="replayed">
+          <span class="research-map__kind">Independently replayed evidence</span>
+          <h3>1 exact synthetic-toy run completed.</h3>
+          <p>The consumed bounded run was independently validated on frozen toy instances. It is empirical
+            evidence, not a secp256k1 result, route promotion, or rerun authorization.</p>
+          <a href="dashboard.html#overview">Inspect the retained outcome</a>
+        </li>
+        <li class="research-map__node research-map__node--barrier" data-map-kind="frontier">
+          <span class="research-map__kind">Updated frontier</span>
+          <h3>0 attack routes are promoted.</h3>
+          <p>Scoped negatives and unresolved cost, recovery, and validation obligations remain visible so
+            the next attempt does not quietly repeat them.</p>
+        </li>
+        <li class="research-map__node research-map__node--frontier" data-map-kind="next-gap">
+          <span class="research-map__kind">Next unresolved gap</span>
+          <h3>New execution needs new evidence and a dated decision.</h3>
+          <p>8 common promotion requirements
+            preserve the boundary between a plausible idea and an authorized research route.</p>
+          <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/ECDLP_DECISION_SUBSTRATE.json">Open the canonical decision contract</a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band reference-deployment" id="reference" aria-labelledby="reference-title">
+    <div class="shell">
+      <div class="reference-deployment__intro">
+        <div class="section-heading">
+          <p class="eyebrow">ECDLP reference deployment</p>
+          <h2 id="reference-title">A hard testbed for durable research memory.</h2>
+          <p>secp256k1 is precise, technically demanding, and rich in formal proofs, experiments,
+            threat-model boundaries, failed routes, and unresolved gaps. That makes it a useful test of
+            whether research state can remain inspectable over a long-running program.</p>
+          <p><strong>The boundary is explicit:</strong> no secp256k1 break, shortcut, or validated
+            subgeneric route is claimed.</p>
+          <div class="actions">
+            <a class="button button--primary" href="explore.html">Explore the ECDLP route map</a>
+            <a class="button" href="dashboard.html">Open the technical workspace</a>
+          </div>
+        </div>
+        <aside class="reference-snapshot" aria-labelledby="reference-snapshot-title">
+          <span class="reference-snapshot__label">Current generated state</span>
+          <h3 id="reference-snapshot-title">What the reference deployment demonstrates</h3>
+          <dl>
+            <div><dt>ECDLP proof ledger</dt><dd><strong data-metric="ledger-rows">307</strong> rows</dd></div>
+            <div><dt>Distinct ECDLP results</dt><dd><strong data-metric="distinct-results">~268</strong> results</dd></div>
+            <div><dt>Route memory</dt><dd><strong>17</strong> named routes evaluated</dd></div>
+            <div><dt>Current route decision</dt><dd><strong>0</strong> promoted routes</dd></div>
+            <div><dt>Current experiment state</dt><dd><strong data-metric="native-experiments">0</strong> native experiments selected</dd></div>
+            <div><dt>Consumed bounded run</dt><dd><code>AUTH-HYP-M16-FIXED-TARGET-YIELD-001-20260730-01</code></dd></div>
+          </dl>
+          <p>Negative and barrier results are retained because they narrow what should be tried next;
+            they are not claims that every wider approach is impossible.</p>
+        </aside>
+      </div>
+      <div class="capability-grid">
+        <article class="capability-card">
+  <span class="capability-card__state">Available in the reference deployment</span>
   <h3>Kernel-checked result ledger</h3>
-  <p>Inspectable in the reference repository and checked by the repository gates.</p>
+  <p>Exact declarations, source anchors, proof methods, and disclosed trust labels.</p>
   <a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/VERIFIED.md">VERIFIED.md</a>
-</article><article class="evidence-card">
+</article><article class="capability-card">
+  <span class="capability-card__state">Available in the reference deployment</span>
   <h3>Evidence-gated route decisions</h3>
-  <p>Inspectable in the reference repository and checked by the repository gates.</p>
+  <p>Routes retain their scope, evidence, stop conditions, and reasons to reopen.</p>
   <a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/ECDLP_DECISION_SUBSTRATE.json">repo/ECDLP_DECISION_SUBSTRATE.json</a>
-</article><article class="evidence-card">
+</article><article class="capability-card">
+  <span class="capability-card__state">Available in the reference deployment</span>
   <h3>Reproducible candidate and independent validation contract</h3>
-  <p>Inspectable in the reference repository and checked by the repository gates.</p>
+  <p>Selected outputs bind pinned inputs to a separate validation path.</p>
   <a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/framework/candidate_run.schema.json">experiments/framework/candidate_run.schema.json</a>
-</article><article class="evidence-card">
+</article><article class="capability-card">
+  <span class="capability-card__state">Available in the reference deployment</span>
   <h3>Tasks, hypotheses, graph, provenance, and generated views</h3>
-  <p>Inspectable in the reference repository and checked by the repository gates.</p>
+  <p>Tasks, hypotheses, outcomes, provenance, and generated views persist across sessions.</p>
   <a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/tasks/NEXT.md">tasks/NEXT.md</a>
-</article></div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="shell boundary-columns">
-      <div class="boundary-column">
-        <p class="eyebrow">Current capability</p>
-        <h3>Reference system</h3>
-        <ul class="check-list"><li>Kernel-checked result ledger</li><li>Evidence-gated route decisions</li><li>Reproducible candidate and independent validation contract</li><li>Tasks, hypotheses, graph, provenance, and generated views</li></ul>
-      </div>
-      <div class="boundary-column">
-        <p class="eyebrow">Not yet</p>
-        <h3>Hosted product</h3>
-        <ul class="check-list check-list--not"><li>Self-serve repository or corpus import</li><li>Hosted multi-project workspaces</li><li>Authentication, collaboration, and organization controls</li><li>A verifier adapter beyond the current repository contracts</li><li>Validated external users, retention, or willingness to pay</li></ul>
+</article>
       </div>
     </div>
   </section>
 
-  <section class="band mvp-band" id="mvp">
+  <section class="band band--white" aria-labelledby="stage-title">
     <div class="shell">
+      <div class="section-heading section-heading--wide">
+        <p class="eyebrow">Current stage</p>
+        <h2 id="stage-title">Built today and still being developed are deliberately separate.</h2>
+      </div>
+      <div class="stage-grid">
+        <article class="stage-card stage-card--now">
+          <span><span class="status status--green">Exists today</span></span>
+          <h3>Public reference system</h3>
+          <ul class="check-list"><li>Kernel-checked result ledger</li><li>Evidence-gated route decisions</li><li>Reproducible candidate and independent validation contract</li><li>Tasks, hypotheses, graph, provenance, and generated views</li></ul>
+        </article>
+        <article class="stage-card stage-card--next">
+          <span><span class="status status--amber">Not yet</span></span>
+          <h3>Hosted, configurable product</h3>
+          <ul class="check-list check-list--not"><li>Self-serve repository or corpus import</li><li>Hosted multi-project workspaces</li><li>Authentication, collaboration, and organization controls</li><li>A verifier adapter beyond the current repository contracts</li><li>Validated external users, retention, or willingness to pay</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band collaboration" id="collaboration" aria-labelledby="collaboration-title">
+    <div class="shell collaboration__grid">
+      <div>
+        <p class="eyebrow">For researchers and AI labs</p>
+        <h2 id="collaboration-title">Inspect the evidence—or help test the workflow.</h2>
+        <p>KeyAI is recruiting one formal-research team to test orientation in the current workspace,
+          map one repeated research-state problem, and reach an explicit build, change, stop, or pending decision.</p>
+        <p class="collaboration__boundary">No external pilot session has been completed or recorded.
+          Interest is not counted as adoption, retention, or product validation.</p>
+        <div class="actions">
+          <a class="button button--light" href="pilot.html">Read the collaboration protocol</a>
+          <a class="text-link text-link--light" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/issues/new?template=keyai-pilot.yml">Open the public GitHub intake</a>
+        </div>
+      </div>
+      <dl class="collaboration__facts">
+        <div><dt>Pilot status</dt><dd>Recruiting</dd></div>
+        <div><dt>Planned session</dt><dd>60 minutes</dd></div>
+        <div><dt>Completed discovery</dt><dd>0</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band band--muted mvp-band" id="mvp" aria-labelledby="mvp-title">
+    <div class="shell mvp-layout">
       <div class="section-heading">
         <p class="eyebrow">The next product milestone</p>
-        <h2>We will call it an MVP when another team can run the loop.</h2>
-        <p>A non-owner research team can connect a second project, obtain a trustworthy initial map, run one candidate through its verifier, and understand the resulting decision without editing KeyAI&#x27;s generator code. A technical MVP still does not establish a repeatable buyer or willingness to pay.</p>
+        <h2 id="mvp-title">Another team must complete the loop.</h2>
+        <p>A non-owner research team can connect a second project, obtain a trustworthy initial map, run one candidate through its verifier, and understand the resulting decision without editing KeyAI&#x27;s generator code. A technical MVP still would not establish repeatable demand or willingness to pay.</p>
       </div>
-      <div class="metric-lines"><div class="metric-line">
-  <span class="metric-line__id">orientation-time</span>
-  <p>A new collaborator identifies current state, blockers, and next action in 10 minutes or less.</p>
-</div><div class="metric-line">
-  <span class="metric-line__id">provenance-completeness</span>
-  <p>Every promoted result links to its source, task, verifier result, and trust boundary.</p>
-</div><div class="metric-line">
-  <span class="metric-line__id">state-drift</span>
-  <p>Zero stale generated or public artifacts after a canonical state change.</p>
-</div><div class="metric-line">
-  <span class="metric-line__id">external-pilot</span>
-  <p>At least one external team completes the core loop and returns for a second session.</p>
-</div></div>
+      <ol class="mvp-metrics"><li><span>orientation-time</span><p>A new collaborator identifies current state, blockers, and next action in 10 minutes or less.</p></li><li><span>provenance-completeness</span><p>Every promoted result links to its source, task, verifier result, and trust boundary.</p></li><li><span>state-drift</span><p>Zero stale generated or public artifacts after a canonical state change.</p></li><li><span>external-pilot</span><p>At least one external team completes the core loop and returns for a second session.</p></li></ol>
     </div>
   </section>
 </main>
 <footer class="site-footer">
   <div class="shell site-footer__inner">
-    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="38">
+    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
     <p>verification workspace for AI research. Current stage: Reference deployment.
       The Lean kernel checks declared statements and proof terms; semantic, empirical,
       security, and product claims remain separately evidence-gated.</p>
     <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html#research-system">Research system</a>
       <a href="results.html">Verified results</a>
-      <a href="explore.html">Decision routes</a>
-      <a href="dashboard.html">Reference workspace</a>
-      <a href="pilot.html">External pilot</a>
+      <a href="index.html#reference">ECDLP deployment</a>
+      <a href="explore.html">Detailed route map</a>
+      <a href="dashboard.html">Technical workspace</a>
+      <a href="pilot.html">Collaborate</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PRODUCT_MODEL.json">Product model</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">Repository</a>
     </nav>
   </div>
 </footer>
-<script src="assets/site.js?v=20260816-1"></script>
+<script src="assets/site.js?v=20260825-1"></script>
 </body>
 </html>

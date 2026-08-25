@@ -52,8 +52,11 @@ jobs:
       - name: Test product-model evidence lifecycle
         run: python3 scripts/test_check_product_model.py
 
-      - name: Test canonical task rendering
-        run: python3 scripts/test_site_generator.py
+      - name: Test canonical task and public-site rendering
+        run: |
+          python3 scripts/test_site_generator.py
+          python3 scripts/test_public_site.py
+          node --check assets/site.js
 
       - name: Check formal-substrate architecture
         run: python3 scripts/check_formal_substrate.py

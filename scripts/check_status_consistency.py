@@ -140,11 +140,11 @@ def main() -> int:
     )
 
     check(
-        f'data-metric="ledger-rows">{ledger_rows}</div>' in index,
+        f'data-metric="ledger-rows">{ledger_rows}</strong>' in index,
         "index.html ledger counter does not match data/stats.json",
     )
     check(
-        f'data-metric="distinct-results">~{distinct}</div>' in index,
+        f'data-metric="distinct-results">~{distinct}</strong>' in index,
         "index.html distinct-results counter does not match data/stats.json",
     )
     verified_counts = verified_index.get("counts", {})
@@ -172,6 +172,14 @@ def main() -> int:
         "One browser, two isolated ledgers" in results
         and "not an ECDLP security metric" in results,
         "results.html must expose the cross-lane accounting boundary",
+    )
+    rh_rows = verified_counts.get("domains", {}).get("riemann-hypothesis", 0)
+    check(
+        f"The {rh_rows} ResearchOS rows in this domain" in results
+        and "no proof candidate, and no progress on RH itself" in results
+        and "Ledger scope" in results
+        and "proves neither side" in results,
+        "results.html must retain the canonical RH no-progress boundary and per-row scope",
     )
     check(f"snapshot {ledger_rows} ledger rows / ~{distinct} distinct" in dashboard,
           "dashboard.html snapshot stamp does not match data/stats.json")
@@ -284,7 +292,7 @@ def main() -> int:
         "dashboard and explore must expose the canonical structural decision",
     )
     check(
-        f"{selected_explorations} native experiments selected" in index
+        f'data-metric="native-experiments">{selected_explorations}</strong> native experiments selected' in index
         and f"{selected_explorations} selected;" in dashboard
         and f"{len(selected_structural)} structural route completed" in explore
         and f"{len(promoted_routes)} promoted" in explore

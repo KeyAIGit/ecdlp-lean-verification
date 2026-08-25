@@ -77,7 +77,15 @@ PURE_ARTIFACTS = [
     "bundles/MANIFEST.json",
 ]
 
-SITE_ARTIFACTS = ["dashboard.html", "index.html", "results.html", "explore.html", "pilot.html"]
+SITE_ARTIFACTS = [
+    "dashboard.html",
+    "index.html",
+    "results.html",
+    "explore.html",
+    "pilot.html",
+    "robots.txt",
+    "sitemap.xml",
+]
 ALL_ARTIFACTS = PURE_ARTIFACTS + SITE_ARTIFACTS
 
 

@@ -4,28 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KeyAI Route Map | secp256k1 ECDLP</title>
-  <meta name="description" content="A canonical, searchable map of all ECDLP routes evaluated for the plain single-target secp256k1 objective, including scope, evidence, gates, and stop conditions.">
+  <meta name="description" content="A canonical, searchable map of all recorded routes in the ECDLP portfolio for the plain single-target secp256k1 objective, including scope, evidence, gates, and stop conditions.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://keyai.org/explore.html">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="KeyAI Route Map | secp256k1 ECDLP">
-  <meta property="og:description" content="A canonical, searchable map of all ECDLP routes evaluated for the plain single-target secp256k1 objective, including scope, evidence, gates, and stop conditions.">
-  <meta property="og:image" content="assets/logo-wordmark.png">
+  <meta property="og:description" content="A canonical, searchable map of all recorded routes in the ECDLP portfolio for the plain single-target secp256k1 objective, including scope, evidence, gates, and stop conditions.">
+  <meta property="og:url" content="https://keyai.org/explore.html">
+  <meta property="og:image" content="https://keyai.org/assets/logo-wordmark.png">
+  <meta property="og:image:alt" content="KeyAI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="KeyAI Route Map | secp256k1 ECDLP">
+  <meta name="twitter:description" content="A canonical, searchable map of all recorded routes in the ECDLP portfolio for the plain single-target secp256k1 objective, including scope, evidence, gates, and stop conditions.">
+  <meta name="twitter:image" content="https://keyai.org/assets/logo-wordmark.png">
   <meta name="theme-color" content="#07182d">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=20260816-1">
+  <link rel="stylesheet" href="assets/site.css?v=20260825-1">
 </head>
 <body data-page="routes">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="shell site-header__inner">
     <a class="brand-link" href="index.html" aria-label="KeyAI home">
-      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="44">
+      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="59">
     </a>
     <nav class="primary-nav" aria-label="Primary navigation">
+      <a data-nav-page="product" href="index.html#research-system">Research system</a>
       <a data-nav-page="results" href="results.html">Verified results</a>
-      <a data-nav-page="routes" href="explore.html">Route map</a>
-      <a data-nav-page="workspace" href="dashboard.html">Workspace</a>
-      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">GitHub</a>
+      <a data-nav-page="routes" href="explore.html">ECDLP deployment</a>
+      <a data-nav-page="pilot" href="pilot.html">Collaborate</a>
+      <a class="nav-cta" href="https://github.com/KeyAIGit/-ecdlp-lean-verification">GitHub</a>
     </nav>
   </div>
 </header>
@@ -34,8 +44,8 @@
     <div class="shell explorer-mast__title">
       <div><p class="eyebrow">Canonical decision explorer</p>
         <h1>secp256k1 ECDLP route map</h1>
-        <p>Every route is generated from <code>repo/ECDLP_DECISION_SUBSTRATE.json</code>.
-          Search by mechanism, scope, evidence, or next action.</p></div>
+        <p>This is the detailed route memory for KeyAI's public reference deployment. Every route is
+          generated from <code>repo/ECDLP_DECISION_SUBSTRATE.json</code>; no status silently closes a wider claim.</p></div>
       <aside class="decision-inline"><strong>RS-2026-07-24-001 · Structural selection</strong>
         <span>1 structural route completed; 0 promoted;
           1 exact synthetic-toy run completed under
@@ -44,12 +54,12 @@
   </section>
 
   <div class="shell explorer-layout">
-    <aside class="explorer-sidebar">
+    <aside class="explorer-sidebar" aria-label="Route filters">
       <h2>Disposition</h2>
       <ul class="filter-list"><li><button class="filter-button" type="button" aria-pressed="true" data-route-filter="all"><span>All routes</span><span>17</span></button></li><li><button class="filter-button" type="button" aria-pressed="false" data-route-filter="guardrail"><span>Guardrail</span><span>1</span></button></li><li><button class="filter-button" type="button" aria-pressed="false" data-route-filter="baseline"><span>Baseline</span><span>1</span></button></li><li><button class="filter-button" type="button" aria-pressed="false" data-route-filter="constant_factor_only"><span>Constant factor</span><span>1</span></button></li><li><button class="filter-button" type="button" aria-pressed="false" data-route-filter="ruled_out_for_target"><span>Ruled out for target</span><span>4</span></button></li><li><button class="filter-button" type="button" aria-pressed="false" data-route-filter="open_parked"><span>Open, parked</span><span>4</span></button></li><li><button class="filter-button" type="button" aria-pressed="false" data-route-filter="monitor"><span>Monitor</span><span>1</span></button></li><li><button class="filter-button" type="button" aria-pressed="false" data-route-filter="conditional_only"><span>Conditional inputs</span><span>2</span></button></li><li><button class="filter-button" type="button" aria-pressed="false" data-route-filter="separate_threat_model"><span>Separate threat model</span><span>3</span></button></li></ul>
-      <label for="route-search"><h2>Search</h2></label>
+      <h2><label for="route-search">Search</label></h2>
       <input class="route-search" id="route-search" type="search" placeholder="GLV, leakage, pairing..."
-        autocomplete="off" data-route-search>
+        autocomplete="off" data-route-search aria-controls="route-list">
       <p style="margin-top:18px"><span data-metric="ledger-rows">307</span> verified ledger rows support the surrounding
         substrate. A formal result is not automatically an attack route.</p>
     </aside>
@@ -57,13 +67,13 @@
     <section class="explorer-results" aria-labelledby="route-results-title">
       <div class="explorer-results__head"><h2 id="route-results-title">Evaluated routes</h2>
         <span class="result-count" data-route-count aria-live="polite">17 routes</span></div>
-      <div class="route-list" data-route-list><details class="route-card" data-route-status="guardrail"
-  data-route-searchable="R-GENERIC-LOWER-BOUND Generic-group lower bound guardrail classical-generic direct within the generic-group model The collision-counting core and square-root consequence are Lean-verified. Retain as a mandatory comparison and scope guard; no new experiment.">
+      <noscript><p class="noscript-note">JavaScript is off, so all routes are shown. Every route can still be opened.</p></noscript>
+      <div class="route-list" id="route-list" data-route-list><details class="route-card" data-route-status="guardrail">
   <summary>
-    <div class="route-title"><strong>Generic-group lower bound</strong><code>R-GENERIC-LOWER-BOUND</code></div>
-    <div><span class="status status--guardrail">Guardrail</span></div>
-    <div class="route-meta"><strong>P0</strong>
-      classical-generic</div>
+    <span class="route-title"><strong>Generic-group lower bound</strong><code>R-GENERIC-LOWER-BOUND</code></span>
+    <span class="route-status"><span class="status status--guardrail">Guardrail</span></span>
+    <span class="route-meta"><strong>P0</strong>
+      classical-generic</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>direct within the generic-group model</p></section>
@@ -75,13 +85,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Retain as a mandatory comparison and scope guard; no new experiment.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/GenericGroupBound.lean">Ecdlp/Proved/GenericGroupBound.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/SECURITY_SCOPE.md">notes/SECURITY_SCOPE.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="baseline"
-  data-route-searchable="R-GENERIC-BASELINE Baby-step giant-step and Pollard rho baseline classical-single-target-plain classical-generic direct Core decomposition, step bound, and collision/periodicity statements are Lean-verified; implementation constants are not a secp256k1 break. Use as the benchmark comparator in the evaluation harness.">
+</details><details class="route-card" data-route-status="baseline">
   <summary>
-    <div class="route-title"><strong>Baby-step giant-step and Pollard rho</strong><code>R-GENERIC-BASELINE</code></div>
-    <div><span class="status status--baseline">Baseline</span></div>
-    <div class="route-meta"><strong>P0</strong>
-      classical-single-target-plain, classical-generic</div>
+    <span class="route-title"><strong>Baby-step giant-step and Pollard rho</strong><code>R-GENERIC-BASELINE</code></span>
+    <span class="route-status"><span class="status status--baseline">Baseline</span></span>
+    <span class="route-meta"><strong>P0</strong>
+      classical-single-target-plain, classical-generic</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>direct</p></section>
@@ -93,13 +102,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Use as the benchmark comparator in the evaluation harness.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/BabyStepGiantStep.lean">Ecdlp/Proved/BabyStepGiantStep.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/PollardRho.lean">Ecdlp/Proved/PollardRho.lean</a></section>
   </div>
-</details><details class="route-card" data-route-status="constant_factor_only"
-  data-route-searchable="R-GLV GLV endomorphism acceleration constant_factor_only classical-single-target-plain direct The rational point action, eigenvalue scope on multiples of G, and orbit facts are Lean-verified. Keep as target structure available to a selected route; do not treat it as a standalone attack.">
+</details><details class="route-card" data-route-status="constant_factor_only">
   <summary>
-    <div class="route-title"><strong>GLV endomorphism acceleration</strong><code>R-GLV</code></div>
-    <div><span class="status status--constant_factor_only">Constant factor</span></div>
-    <div class="route-meta"><strong>P0</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>GLV endomorphism acceleration</strong><code>R-GLV</code></span>
+    <span class="route-status"><span class="status status--constant_factor_only">Constant factor</span></span>
+    <span class="route-meta"><strong>P0</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>direct</p></section>
@@ -111,13 +119,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Keep as target structure available to a selected route; do not treat it as a standalone attack.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/GlvTorsionAction.lean">Ecdlp/Proved/GlvTorsionAction.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p0_glv_semaev/RESULTS.md">experiments/p0_glv_semaev/RESULTS.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="ruled_out_for_target"
-  data-route-searchable="R-POHLIG-HELLMAN Pohlig-Hellman subgroup reduction ruled_out_for_target classical-single-target-plain the algorithm applies, but secp256k1 has no smaller prime-order factors to exploit n is Lean-verified prime and the reduction/reconstruction algebra is formalized. Retain as a machine-checked elimination certificate.">
+</details><details class="route-card" data-route-status="ruled_out_for_target">
   <summary>
-    <div class="route-title"><strong>Pohlig-Hellman subgroup reduction</strong><code>R-POHLIG-HELLMAN</code></div>
-    <div><span class="status status--ruled_out_for_target">Ruled out for target</span></div>
-    <div class="route-meta"><strong>P0</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>Pohlig-Hellman subgroup reduction</strong><code>R-POHLIG-HELLMAN</code></span>
+    <span class="route-status"><span class="status status--ruled_out_for_target">Ruled out for target</span></span>
+    <span class="route-meta"><strong>P0</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>the algorithm applies, but secp256k1 has no smaller prime-order factors to exploit</p></section>
@@ -129,13 +136,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Retain as a machine-checked elimination certificate.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/Secp256k1PrimeN.lean">Ecdlp/Proved/Secp256k1PrimeN.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/PohligHellman.lean">Ecdlp/Proved/PohligHellman.lean</a></section>
   </div>
-</details><details class="route-card" data-route-status="ruled_out_for_target"
-  data-route-searchable="R-PAIRING-TRANSFER MOV, Frey-Ruck, and Tate/Weil pairing transfer ruled_out_for_target classical-single-target-plain no useful low-embedding-degree transfer is available for secp256k1 Lean proves the secp256k1 embedding degree is greater than 100, which is a strong practical exclusion of low-degree MOV-style transfers. Keep the target-specific exclusion; defer a full pairing library unless a new route needs it.">
+</details><details class="route-card" data-route-status="ruled_out_for_target">
   <summary>
-    <div class="route-title"><strong>MOV, Frey-Ruck, and Tate/Weil pairing transfer</strong><code>R-PAIRING-TRANSFER</code></div>
-    <div><span class="status status--ruled_out_for_target">Ruled out for target</span></div>
-    <div class="route-meta"><strong>P0</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>MOV, Frey-Ruck, and Tate/Weil pairing transfer</strong><code>R-PAIRING-TRANSFER</code></span>
+    <span class="route-status"><span class="status status--ruled_out_for_target">Ruled out for target</span></span>
+    <span class="route-meta"><strong>P0</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>no useful low-embedding-degree transfer is available for secp256k1</p></section>
@@ -147,13 +153,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Keep the target-specific exclusion; defer a full pairing library unless a new route needs it.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/EmbeddingDegree.lean">Ecdlp/Proved/EmbeddingDegree.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/BARRIERS.md">BARRIERS.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="ruled_out_for_target"
-  data-route-searchable="R-ANOMALOUS-PADIC Smart, Satoh-Araki, and Semaev anomalous-curve lifting ruled_out_for_target classical-single-target-plain inapplicable because secp256k1 is not anomalous Lean proves the anomalous iff trace-one scope and that secp256k1 is ordinary and non-anomalous. Retain the formal exclusion; do not build an elliptic formal-group stack for this target now.">
+</details><details class="route-card" data-route-status="ruled_out_for_target">
   <summary>
-    <div class="route-title"><strong>Smart, Satoh-Araki, and Semaev anomalous-curve lifting</strong><code>R-ANOMALOUS-PADIC</code></div>
-    <div><span class="status status--ruled_out_for_target">Ruled out for target</span></div>
-    <div class="route-meta"><strong>P0</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>Smart, Satoh-Araki, and Semaev anomalous-curve lifting</strong><code>R-ANOMALOUS-PADIC</code></span>
+    <span class="route-status"><span class="status status--ruled_out_for_target">Ruled out for target</span></span>
+    <span class="route-meta"><strong>P0</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>inapplicable because secp256k1 is not anomalous</p></section>
@@ -165,13 +170,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Retain the formal exclusion; do not build an elliptic formal-group stack for this target now.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/AnomalousScope.lean">Ecdlp/Proved/AnomalousScope.lean</a></section>
   </div>
-</details><details class="route-card" data-route-status="ruled_out_for_target"
-  data-route-searchable="R-WEIL-DESCENT Weil descent and GHS-style transfer ruled_out_for_target classical-single-target-plain the standard extension-field descent mechanism has no nontrivial degree to exploit over the prime field F_p Target-field structure rules out the standard GHS setting; no dedicated Lean theorem is claimed. Document as a target-applicability exclusion; no formal stack now.">
+</details><details class="route-card" data-route-status="ruled_out_for_target">
   <summary>
-    <div class="route-title"><strong>Weil descent and GHS-style transfer</strong><code>R-WEIL-DESCENT</code></div>
-    <div><span class="status status--ruled_out_for_target">Ruled out for target</span></div>
-    <div class="route-meta"><strong>P1</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>Weil descent and GHS-style transfer</strong><code>R-WEIL-DESCENT</code></span>
+    <span class="route-status"><span class="status status--ruled_out_for_target">Ruled out for target</span></span>
+    <span class="route-meta"><strong>P1</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>the standard extension-field descent mechanism has no nontrivial degree to exploit over the prime field F_p</p></section>
@@ -183,13 +187,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Document as a target-applicability exclusion; no formal stack now.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/data/attack_registry.json">data/attack_registry.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/SECURITY_SCOPE.md">notes/SECURITY_SCOPE.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="open_parked"
-  data-route-searchable="R-PRIME-FIELD-INDEX-CALCULUS Prime-field index calculus open_parked classical-single-target-plain conceptually direct, with no validated subgeneric secp256k1 algorithm in the audited evidence S3/S4 foundations and limited toy measurements exist, but they do not establish a degree-of-regularity law or subgeneric scaling. WCC 2017 adds bounded m=2 practicality evidence on selected small primes and explicitly makes no asymptotic claim. Preserve evidence and prerequisites; wait for explicit route selection before any new experiment.">
+</details><details class="route-card" data-route-status="open_parked">
   <summary>
-    <div class="route-title"><strong>Prime-field index calculus</strong><code>R-PRIME-FIELD-INDEX-CALCULUS</code></div>
-    <div><span class="status status--open_parked">Open, parked</span></div>
-    <div class="route-meta"><strong>P1</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>Prime-field index calculus</strong><code>R-PRIME-FIELD-INDEX-CALCULUS</code></span>
+    <span class="route-status"><span class="status status--open_parked">Open, parked</span></span>
+    <span class="route-meta"><strong>P1</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>conceptually direct, with no validated subgeneric secp256k1 algorithm in the audited evidence</p></section>
@@ -201,13 +204,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Preserve evidence and prerequisites; wait for explicit route selection before any new experiment.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevThree.lean">Ecdlp/Proved/SemaevThree.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean">Ecdlp/Proved/SemaevFour.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p1_petit_m3/RESULTS.md">experiments/p1_petit_m3/RESULTS.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="open_parked"
-  data-route-searchable="R-GLV-SEMAEV GLV-symmetrized Semaev systems open_parked classical-single-target-plain direct to the j=0 target structure, but only constant-factor evidence exists GLV-SEMAEV-ITER-001 exactly enumerates all 27 S3 and 81 S4 coordinatewise C3 scalings in the universal and primitive cube-root quotients and after secp256k1 specialization. Only the diagonal C3 is a scalar polynomial covariance. Certificate 2142e8d66a8422768b609e42f5ce09377d5f93609941139fc9fc4e5abe4dfe59 gives every rejected S3/S4 pair a coefficient +1 witness over Z[b], making the polynomial classification uniform across characteristics whenever a primitive cube root exists. The fixed-target certificate is S4-specific: 9db5e0375421659f9abb905c12ae77232ef9957867f7194baaf548d45a1f091d proves that every nonzero affine S4 target has only identity coordinate-scaling covariance in characteristic outside {2,3}; the r=0 slice has exactly the diagonal C3 stabilizer. Standard-library validators independently reconstruct S4 from the Sylvester determinant and replay both classifications. Lean separately proves secp256k1_seven_not_isSquare, secp256k1_x_ne_zero, and the diagonal corollary secp256k1_glv_affine_target_moves, so no F_p-rational affine secp256k1 target inhabits r=0. Exhaustiveness is still certificate-backed, not a Lean theorem; source-author independence is not established. The original 14-theorem covariance and point-group transport module passed the full Lean build, built-source no-sorry scan, and exhaustive axiom audit in workflow run 30163027316 at content head be7a4d8e7da94b33ef74b0c146d732314b293827. The affine closeout extension requires its own build and axiom audit; earlier P0-P4 evidence is retained unchanged. Keep GLV-SEMAEV-ITER-001 closed without a solver run. Accept only a materially different phase-preserving mechanism with an exact recovery map, orbit tags, excluded components, a falsifiable full-cost prediction, and an independent validator through TASK-008 before any new decision.">
+</details><details class="route-card" data-route-status="open_parked">
   <summary>
-    <div class="route-title"><strong>GLV-symmetrized Semaev systems</strong><code>R-GLV-SEMAEV</code></div>
-    <div><span class="status status--open_parked">Open, parked</span></div>
-    <div class="route-meta"><strong>P1</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>GLV-symmetrized Semaev systems</strong><code>R-GLV-SEMAEV</code></span>
+    <span class="route-status"><span class="status status--open_parked">Open, parked</span></span>
+    <span class="route-meta"><strong>P1</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>direct to the j=0 target structure, but only constant-factor evidence exists</p></section>
@@ -219,13 +221,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Keep GLV-SEMAEV-ITER-001 closed without a solver run. Accept only a materially different phase-preserving mechanism with an exact recovery map, orbit tags, excluded components, a falsifiable full-cost prediction, and an independent validator through TASK-008 before any new decision.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/GlvSemaevSymmetry.lean">Ecdlp/Proved/GlvSemaevSymmetry.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/glv_diagonal_obstruction/artifact.json">experiments/glv_diagonal_obstruction/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/glv_semaev_symmetry/certificate.json">experiments/glv_semaev_symmetry/certificate.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/glv_semaev_symmetry/fixed_target_certificate.json">experiments/glv_semaev_symmetry/fixed_target_certificate.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p0_glv_semaev/RESULTS.md">experiments/p0_glv_semaev/RESULTS.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p1_petit/RESULTS.md">experiments/p1_petit/RESULTS.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p1_petit_m3/RESULTS.md">experiments/p1_petit_m3/RESULTS.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p3_sm_system/RESULTS.md">experiments/p3_sm_system/RESULTS.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p4_petit/RESULTS.md">experiments/p4_petit/RESULTS.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/GLV_SEMAEV_ITERATION_001.md">notes/GLV_SEMAEV_ITERATION_001.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="open_parked"
-  data-route-searchable="R-PETIT-COMPOSED-MAPS Petit-style composed rational maps open_parked classical-single-target-plain source-grounded but target applicability remains unresolved: PKC 2016 specifies a p-1-smooth construction and a separate auxiliary-curve construction whose own self-isogeny defines the root map; neither has a validated secp256k1 full-cost bridge The official PKC 2016 primary source has now been inspected. It defines the faithful prime-field factor base F={(x,y):L(x)=0}, with L a composition of low-degree rational maps, and gives p-1-smooth-subgroup and auxiliary-curve realizations. In the second construction the auxiliary curve only shares the base field with the target; a self-isogeny of the auxiliary curve defines the root map. The paper explicitly leaves the asymptotic complexity of the resulting generalized root-finding problem open. WCC 2017 adds bounded m=2 practicality evidence on selected small primes and a distinct p-plus-one trace extension; it cannot be transferred quantitatively to m=16 or substituted for the auxiliary curve. Historical P4 did not implement either PKC construction and remains only an inconclusive negative control; it is not evidence against the faithful route. For nonsingular y^2=x^3+7 in characteristic not in {2,3,7}, TASK-017 independently replayed an exact set-theoretic homogeneous projective S3-tree bridge, every named exceptional lift and identity stratum, deterministic supplied-coordinate recovery, and raw and compressed secp256k1 GLV lift-sign checks. TASK-018 freezes the recursive projective S17 contract, including fixed degrees and the literal Sylvester determinant under the frozen coefficient, argument, and row order. TASK-019 kernel-checks the fixed-degree projective resultant common-root theorem, coefficient-map and algebraic-closure reflection variants, the literal TASK-018 Sylvester matrix and determinant with coefficient unit 1, and its end-to-end common-root corollary. Formal-degree drops, zero forms, affine witnesses, and [1:0] are retained without primitive/content, monic, or actual-degree normalization. The TASK-019 non-run binding is PKC-SMOOTH-M16-PROJECTIVE-RESULTANT-KERNEL-001 with SHA-256 0b9d8b48953aae2defa28ade67992084cecca3a01b43490bc338a0fd5ce97c5a and typed claim SC-PKC-M16-PROJECTIVE-RESULTANT-KERNEL-RESULT. TASK-020 kernel-checks the actual recursive frozen C_r family, exact same-field and coefficient-map successor specialization at formal degrees (2^(r-2),2), coefficient unit 1, affine [y:1] and infinity [1:0] output branches, the uniform predecessor output-degree bound, and the unconditional one-step resultant/common-projective-root equivalence. Its non-run binding is PKC-SMOOTH-M16-FROZEN-CR-SPECIALIZATION-001 with SHA-256 d025053b9f882c88086fd5f04bcbd9627c72987e263e9b55af6024794305acbe and typed claim SC-PKC-M16-FROZEN-CR-SPECIALIZATION-RESULT. TASK-021 kernel-checks exact declared-degree projective evaluation and the universal all-stage frozen witness-chain equivalence. At C16 the chain has fourteen valid intermediate projective slots, [1:0] is allowed throughout, and [0:0] is excluded. Its non-run binding is PKC-SMOOTH-M16-FROZEN-PROJECTIVE-WITNESS-001 with SHA-256 89c645545d89334473d51654a41ff7ec2364857d034c64ce08d505337fa1e2d4 and typed claim SC-PKC-M16-FROZEN-PROJECTIVE-WITNESS-RESULT. TASK-022 now kernel-checks an exact literal finite MvPolynomial family for the frozen stage-14 predicate after an injective source-to-target field map: one GuardVar assignment satisfies every GuardedEquation. This is exactly equivalent to the recursive chain, not a parallel recursive syntax. Four raw scalars U,V,A,B for each of fourteen projective witness slots give 56 variables; fifteen literal H equations and fourteen guards give 29 equation-family members; every equation has total degree at most four; [0:0] is excluded and [1:0] is retained. Its non-run binding is PKC-SMOOTH-M16-GUARDED-PROJECTIVE-SYSTEM-001 with SHA-256 3445da55b44a71d0f40ee60206c90f2ef1798c28abd125542ce3acbeeb8e1d46 and typed claim SC-PKC-M16-GUARDED-PROJECTIVE-SYSTEM-RESULT. The source binding is 37feeef48e77437b44b6ae6dd4750782e19ecd824e3ea2e73b657e2fb8296fb9. TASK-023 now kernel-checks the exact affine/infinity chart-polynomial cover: each fixed InfinityMask I uses exactly 14 - I.card affine variables, no guard equations, and fifteen literal H equations with degree ceilings 2/4/2. The existential cover is equivalent to the projective chain, guarded system, and source frozen stage-14 predicate after the existing injective base change; [1:0] is retained and [0:0] is never introduced. The 2^14 logical masks are not enumerated or materialized. Its non-run binding is PKC-SMOOTH-M16-EXACT-CHART-COVER-001 with SHA-256 934809fabbb8c98c5ed9356a0a1f3367a23f8fbc1bc86239069942537fd678ed and typed claim SC-PKC-M16-EXACT-CHART-COVER-RESULT. The TASK-023 source binding is 4f7b95453d8fafba3ec9cae0a9bbad5d8f782c6c0202f6e7cf37e17981b63019. TASK-024 kernel-checks necessary infinity-stratum pruning from 16384 masks to 987 separated masks and conditionally to 377 interior masks. Its binding is PKC-SMOOTH-M16-INFINITY-STRATA-001 with SHA-256 54b0f3c5f2f1880b1f805911df21b72e5427b18871f14907ac17a1d8b48bdd39 and typed claim SC-PKC-M16-INFINITY-STRATA-RESULT. TASK-025 kernel-checks explicit infinity propagation: the nested conditional mask counts are 377 to 129 to 69 to 36, while the independent boundary-only refinement is 129 to 60. It also proves over any field that internal infinity forces an explicit frozen prefix or suffix obstruction to vanish and that endpoint plus BalancedPropagatedRegular assumptions make the exact chart cover the single empty-mask affine chart. Its binding is PKC-SMOOTH-M16-INFINITY-PROPAGATION-001 with SHA-256 9330603ba1f0af9ee4902c263200709e2ec6f8c50d8d7eaab3b55bcba78e388f and typed claim SC-PKC-M16-INFINITY-PROPAGATION-RESULT. The TASK-025 source binding is 7f868aab5b946a55a213ce26a461477321d6387830eed218c414f1e62853b4b4. Its source-stage bridge requires injective base change into an algebraically closed target and mapped-target balanced regularity; source-field computation does not automatically establish that regularity. Symbolic nonzeroness, nonemptiness, density, probability, genericity, and witness uniqueness are not proved. Assurance is kernel_bound_non_run_certificate, source independence is not_established, calibration is excluded_nonexperimental, and retention is zero_retention_success. The M16 cell remains open_non_executable. The exact remaining blocker is symbolic nonzeroness and nonemptiness of a usable regular locus or orchestration of its exceptional complement, followed by relation yield, rank, solving, recovery, and total cost. CQ-SEMAEV-S17-SYSTEM-COST remains partial while relation yield, rank, and solving cost remain unpriced. Keep the route parked. TASK-023 through TASK-025 completed the exact chart cover, necessary infinity-stratum filters, and conditional single-affine-chart propagation. TASK-026 then consumed its one external synthetic-toy authorization: all 3000000 trials completed, 911 exact relations were accepted, 907 were affine regular, and all six curve-arm regularity gates passed. REO-2026-07-31-001 records the result. This supports the bounded enabling claim that the named regular locus is usable in the frozen toy construction. Matched orbit/plain controls retained no H_NEW qualifying size, so the GLV-specific explanation is bounded negative and the terminal is CLASSIFY_AS_KNOWN_LOCAL_SIMPLIFICATION. The result is not source-faithful PKC relation generation, rank, solver scaling, recovery, total cost, 256-bit persistence, or an ECDLP improvement. Only formulate and review a source-faithful, non-executable HYP-M16-SOLVER-SLOPE-001 proposal with end-to-end metrics and scaling death criteria. Keep every TASK-026 rerun, production mask sweep, solver, experiment, route rejection, route promotion, cost claim, and exact-target inference closed until a separate dated authorization. Keep the auxiliary-curve cell parked until a primary source supplies a finite family or search domain with a completeness criterion.">
+</details><details class="route-card" data-route-status="open_parked">
   <summary>
-    <div class="route-title"><strong>Petit-style composed rational maps</strong><code>R-PETIT-COMPOSED-MAPS</code></div>
-    <div><span class="status status--open_parked">Open, parked</span></div>
-    <div class="route-meta"><strong>P2</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>Petit-style composed rational maps</strong><code>R-PETIT-COMPOSED-MAPS</code></span>
+    <span class="route-status"><span class="status status--open_parked">Open, parked</span></span>
+    <span class="route-meta"><strong>P2</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>source-grounded but target applicability remains unresolved: PKC 2016 specifies a p-1-smooth construction and a separate auxiliary-curve construction whose own self-isogeny defines the root map; neither has a validated secp256k1 full-cost bridge</p></section>
@@ -237,13 +238,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Keep the route parked. TASK-023 through TASK-025 completed the exact chart cover, necessary infinity-stratum filters, and conditional single-affine-chart propagation. TASK-026 then consumed its one external synthetic-toy authorization: all 3000000 trials completed, 911 exact relations were accepted, 907 were affine regular, and all six curve-arm regularity gates passed. REO-2026-07-31-001 records the result. This supports the bounded enabling claim that the named regular locus is usable in the frozen toy construction. Matched orbit/plain controls retained no H_NEW qualifying size, so the GLV-specific explanation is bounded negative and the terminal is CLASSIFY_AS_KNOWN_LOCAL_SIMPLIFICATION. The result is not source-faithful PKC relation generation, rank, solver scaling, recovery, total cost, 256-bit persistence, or an ECDLP improvement. Only formulate and review a source-faithful, non-executable HYP-M16-SOLVER-SLOPE-001 proposal with end-to-end metrics and scaling death criteria. Keep every TASK-026 rerun, production mask sweep, solver, experiment, route rejection, route promotion, cost claim, and exact-target inference closed until a separate dated authorization. Keep the auxiliary-curve cell parked until a primary source supplies a finite family or search domain with a completeness criterion.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p4_petit/README.md">experiments/p4_petit/README.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p4_petit/RESULTS.md">experiments/p4_petit/RESULTS.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_semantic_bridge/artifact.json">experiments/engine/pkc_smooth_m16_semantic_bridge/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_semantic_bridge/README.md">experiments/engine/pkc_smooth_m16_semantic_bridge/README.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_exceptional_fibers/artifact.json">experiments/engine/pkc_smooth_m16_exceptional_fibers/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_exceptional_fibers/README.md">experiments/engine/pkc_smooth_m16_exceptional_fibers/README.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_projective_bridge/artifact.json">experiments/engine/pkc_smooth_m16_projective_bridge/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_projective_resultant_kernel/artifact.json">experiments/engine/pkc_smooth_m16_projective_resultant_kernel/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_frozen_cr_specialization/artifact.json">experiments/engine/pkc_smooth_m16_frozen_cr_specialization/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_frozen_projective_witness/artifact.json">experiments/engine/pkc_smooth_m16_frozen_projective_witness/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_guarded_projective_system/artifact.json">experiments/engine/pkc_smooth_m16_guarded_projective_system/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_exact_chart_cover/artifact.json">experiments/engine/pkc_smooth_m16_exact_chart_cover/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_infinity_strata/artifact.json">experiments/engine/pkc_smooth_m16_infinity_strata/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_infinity_propagation/artifact.json">experiments/engine/pkc_smooth_m16_infinity_propagation/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_fixed_target_yield/RESULTS.md">experiments/engine/pkc_smooth_m16_fixed_target_yield/RESULTS.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/pkc_smooth_m16_fixed_target_yield/artifact.json">experiments/engine/pkc_smooth_m16_fixed_target_yield/artifact.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/engine/outcomes/REO-2026-07-31-001.json">experiments/engine/outcomes/REO-2026-07-31-001.json</a></section>
   </div>
-</details><details class="route-card" data-route-status="open_parked"
-  data-route-searchable="R-EDS-DIVISION-POLYNOMIAL Elliptic divisibility sequences and division-polynomial re-encodings open_parked classical-single-target-plain structurally direct, with no known independent information source or subgeneric inversion method Lean formalizes substantial division-polynomial and normEDS structure. Toy measurements confirm apparition/torsion equivalence and no advantage. Keep HYP_WARD_EDS_001 parked; finish no additional point-division bridge unless a selected route needs it.">
+</details><details class="route-card" data-route-status="open_parked">
   <summary>
-    <div class="route-title"><strong>Elliptic divisibility sequences and division-polynomial re-encodings</strong><code>R-EDS-DIVISION-POLYNOMIAL</code></div>
-    <div><span class="status status--open_parked">Open, parked</span></div>
-    <div class="route-meta"><strong>P2</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>Elliptic divisibility sequences and division-polynomial re-encodings</strong><code>R-EDS-DIVISION-POLYNOMIAL</code></span>
+    <span class="route-status"><span class="status status--open_parked">Open, parked</span></span>
+    <span class="route-meta"><strong>P2</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>structurally direct, with no known independent information source or subgeneric inversion method</p></section>
@@ -255,13 +255,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Keep HYP_WARD_EDS_001 parked; finish no additional point-division bridge unless a selected route needs it.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/NormEDSSomos4.lean">Ecdlp/Proved/NormEDSSomos4.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/experiments/p2_ward_eds/RESULTS.md">experiments/p2_ward_eds/RESULTS.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="monitor"
-  data-route-searchable="R-ISOGENY-ENDOMORPHISM-TRANSFER Isogeny, endomorphism-ring, and Frobenius transfer monitor classical-single-target-plain no concrete efficiently computable transfer to a weaker target is identified The repository has target endomorphism facts but no general isogeny stack or candidate weak codomain. Monitor literature and reuse GLV facts; no build now.">
+</details><details class="route-card" data-route-status="monitor">
   <summary>
-    <div class="route-title"><strong>Isogeny, endomorphism-ring, and Frobenius transfer</strong><code>R-ISOGENY-ENDOMORPHISM-TRANSFER</code></div>
-    <div><span class="status status--monitor">Monitor</span></div>
-    <div class="route-meta"><strong>P3</strong>
-      classical-single-target-plain</div>
+    <span class="route-title"><strong>Isogeny, endomorphism-ring, and Frobenius transfer</strong><code>R-ISOGENY-ENDOMORPHISM-TRANSFER</code></span>
+    <span class="route-status"><span class="status status--monitor">Monitor</span></span>
+    <span class="route-meta"><strong>P3</strong>
+      classical-single-target-plain</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>no concrete efficiently computable transfer to a weaker target is identified</p></section>
@@ -273,13 +272,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Monitor literature and reuse GLV facts; no build now.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/GlvTorsionAction.lean">Ecdlp/Proved/GlvTorsionAction.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/BARRIERS.md">BARRIERS.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="conditional_only"
-  data-route-searchable="R-MULTI-TARGET-PRECOMPUTATION Multi-target and reusable-precomputation tradeoffs conditional_only classical-conditioned not applicable to the primary one-target/no-precomputation objective unless costs are explicitly amortized Covered in the attack registry as a separate conditioned model. Represent in the evaluation contract; no experiment in this phase.">
+</details><details class="route-card" data-route-status="conditional_only">
   <summary>
-    <div class="route-title"><strong>Multi-target and reusable-precomputation tradeoffs</strong><code>R-MULTI-TARGET-PRECOMPUTATION</code></div>
-    <div><span class="status status--conditional_only">Conditional inputs</span></div>
-    <div class="route-meta"><strong>P1</strong>
-      classical-conditioned</div>
+    <span class="route-title"><strong>Multi-target and reusable-precomputation tradeoffs</strong><code>R-MULTI-TARGET-PRECOMPUTATION</code></span>
+    <span class="route-status"><span class="status status--conditional_only">Conditional inputs</span></span>
+    <span class="route-meta"><strong>P1</strong>
+      classical-conditioned</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>not applicable to the primary one-target/no-precomputation objective unless costs are explicitly amortized</p></section>
@@ -291,13 +289,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Represent in the evaluation contract; no experiment in this phase.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/data/attack_registry.json">data/attack_registry.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/SECURITY_SCOPE.md">notes/SECURITY_SCOPE.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="conditional_only"
-  data-route-searchable="R-INTERVAL-AUXILIARY-INPUT Interval DLP, partial-key knowledge, and auxiliary-power algorithms conditional_only classical-conditioned not applicable to an arbitrary full-range scalar without the promised interval or auxiliary data The current target contract supplies neither an interval promise nor auxiliary powers. Keep as a scope category for future protocol or leakage analyses.">
+</details><details class="route-card" data-route-status="conditional_only">
   <summary>
-    <div class="route-title"><strong>Interval DLP, partial-key knowledge, and auxiliary-power algorithms</strong><code>R-INTERVAL-AUXILIARY-INPUT</code></div>
-    <div><span class="status status--conditional_only">Conditional inputs</span></div>
-    <div class="route-meta"><strong>P2</strong>
-      classical-conditioned</div>
+    <span class="route-title"><strong>Interval DLP, partial-key knowledge, and auxiliary-power algorithms</strong><code>R-INTERVAL-AUXILIARY-INPUT</code></span>
+    <span class="route-status"><span class="status status--conditional_only">Conditional inputs</span></span>
+    <span class="route-meta"><strong>P2</strong>
+      classical-conditioned</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>not applicable to an arbitrary full-range scalar without the promised interval or auxiliary data</p></section>
@@ -309,13 +306,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Keep as a scope category for future protocol or leakage analyses.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/SECURITY_SCOPE.md">notes/SECURITY_SCOPE.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="separate_threat_model"
-  data-route-searchable="R-HNP-NONCE-LEAKAGE Hidden-number and lattice attacks on biased or reused ECDSA nonces separate_threat_model implementation-leakage important for key security but not a plain ECDLP algorithm The repository catalogs the attack family but lacks an LLL/BKZ and HNP formal stack. Preserve as a separate security track; no lattice foundation build for the primary objective now.">
+</details><details class="route-card" data-route-status="separate_threat_model">
   <summary>
-    <div class="route-title"><strong>Hidden-number and lattice attacks on biased or reused ECDSA nonces</strong><code>R-HNP-NONCE-LEAKAGE</code></div>
-    <div><span class="status status--separate_threat_model">Separate threat model</span></div>
-    <div class="route-meta"><strong>P1</strong>
-      implementation-leakage</div>
+    <span class="route-title"><strong>Hidden-number and lattice attacks on biased or reused ECDSA nonces</strong><code>R-HNP-NONCE-LEAKAGE</code></span>
+    <span class="route-status"><span class="status status--separate_threat_model">Separate threat model</span></span>
+    <span class="route-meta"><strong>P1</strong>
+      implementation-leakage</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>important for key security but not a plain ECDLP algorithm</p></section>
@@ -327,13 +323,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Preserve as a separate security track; no lattice foundation build for the primary objective now.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/data/attack_registry.json">data/attack_registry.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/SECURITY_SCOPE.md">notes/SECURITY_SCOPE.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="separate_threat_model"
-  data-route-searchable="R-PROTOCOL-FAULT-SIDECHANNEL Invalid-curve, twist, fault, and side-channel routes separate_threat_model implementation-leakage relevant only when an implementation exposes attacker-controlled inputs or physical leakage Protocol algebra is formalized at an abstract level; implementation leakage is outside that proof model. Record scope; do not expand the Lean substrate until a concrete implementation-verification goal exists.">
+</details><details class="route-card" data-route-status="separate_threat_model">
   <summary>
-    <div class="route-title"><strong>Invalid-curve, twist, fault, and side-channel routes</strong><code>R-PROTOCOL-FAULT-SIDECHANNEL</code></div>
-    <div><span class="status status--separate_threat_model">Separate threat model</span></div>
-    <div class="route-meta"><strong>P1</strong>
-      implementation-leakage</div>
+    <span class="route-title"><strong>Invalid-curve, twist, fault, and side-channel routes</strong><code>R-PROTOCOL-FAULT-SIDECHANNEL</code></span>
+    <span class="route-status"><span class="status status--separate_threat_model">Separate threat model</span></span>
+    <span class="route-meta"><strong>P1</strong>
+      implementation-leakage</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>relevant only when an implementation exposes attacker-controlled inputs or physical leakage</p></section>
@@ -345,13 +340,12 @@
     <section class="route-detail route-detail--wide"><h3>Next action</h3><p>Record scope; do not expand the Lean substrate until a concrete implementation-verification goal exists.</p></section>
     <section class="route-detail route-detail--wide"><h3>Evidence files</h3><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/SECURITY_SCOPE.md">notes/SECURITY_SCOPE.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/ABSTRACT_SCOPE.md">ABSTRACT_SCOPE.md</a></section>
   </div>
-</details><details class="route-card" data-route-status="separate_threat_model"
-  data-route-searchable="R-QUANTUM-SHOR Fault-tolerant quantum ECDLP separate_threat_model fault-tolerant-quantum algorithmically direct given sufficiently capable fault-tolerant quantum hardware Shor gives the algorithmic route; Luo et al. provide the current project-tracked logical-resource estimate. Update the registry estimate and monitor primary literature; do not build a quantum Lean stack now.">
+</details><details class="route-card" data-route-status="separate_threat_model">
   <summary>
-    <div class="route-title"><strong>Fault-tolerant quantum ECDLP</strong><code>R-QUANTUM-SHOR</code></div>
-    <div><span class="status status--separate_threat_model">Separate threat model</span></div>
-    <div class="route-meta"><strong>P1</strong>
-      fault-tolerant-quantum</div>
+    <span class="route-title"><strong>Fault-tolerant quantum ECDLP</strong><code>R-QUANTUM-SHOR</code></span>
+    <span class="route-status"><span class="status status--separate_threat_model">Separate threat model</span></span>
+    <span class="route-meta"><strong>P1</strong>
+      fault-tolerant-quantum</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>algorithmically direct given sufficiently capable fault-tolerant quantum hardware</p></section>
@@ -370,20 +364,22 @@
 </main>
 <footer class="site-footer">
   <div class="shell site-footer__inner">
-    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="38">
+    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
     <p>verification workspace for AI research. Current stage: Reference deployment.
       The Lean kernel checks declared statements and proof terms; semantic, empirical,
       security, and product claims remain separately evidence-gated.</p>
     <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html#research-system">Research system</a>
       <a href="results.html">Verified results</a>
-      <a href="explore.html">Decision routes</a>
-      <a href="dashboard.html">Reference workspace</a>
-      <a href="pilot.html">External pilot</a>
+      <a href="index.html#reference">ECDLP deployment</a>
+      <a href="explore.html">Detailed route map</a>
+      <a href="dashboard.html">Technical workspace</a>
+      <a href="pilot.html">Collaborate</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PRODUCT_MODEL.json">Product model</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">Repository</a>
     </nav>
   </div>
 </footer>
-<script src="assets/site.js?v=20260816-1"></script>
+<script src="assets/site.js?v=20260825-1"></script>
 </body>
 </html>

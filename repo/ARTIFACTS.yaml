@@ -111,6 +111,8 @@ classes:
       - results.html
       - explore.html
       - pilot.html
+      - robots.txt
+      - sitemap.xml
       - bundles/MANIFEST.json
       - data/result_registry.json
       - data/source_registry.json
@@ -210,6 +212,8 @@ classes:
       - results.html
       - explore.html
       - pilot.html
+      - robots.txt
+      - sitemap.xml
       - assets/
       - fonts/
       - llms.txt
@@ -406,6 +410,8 @@ allowed_overlap_paths:
   - results.html
   - explore.html
   - pilot.html
+  - robots.txt
+  - sitemap.xml
   - llms.txt
   - Ecdlp/LedgerAxiomAudit.lean
   - ResearchOS/LedgerAxiomAudit.lean
