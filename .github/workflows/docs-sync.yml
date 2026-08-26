@@ -11,8 +11,8 @@ name: Docs sync
 # SUPERSEDES stats.yml: this is a strict superset (it regenerates stats.json + badge +
 # dashboard as well), so stats.yml was retired to avoid two workflows racing to push.
 #
-# The public site generator is deterministic. Machine-readable views and all five site pages
-# are regenerated and drift-gated together on pull requests.
+# The public site generator is deterministic. Machine-readable views, all five site pages,
+# and the search-engine discovery files are regenerated and drift-gated together on pull requests.
 #
 # Derived files (never hand-edit — regenerate via the scripts below):
 #   PURE  (drift-gated on PRs):
@@ -41,7 +41,8 @@ name: Docs sync
 #     data/hypothesis_ranker_state.json        (hypothesis_ranker.py)
 #     repo/ECDLP_DECISION_SUBSTRATE.md         (build_ecdlp_decision_view.py)
 #     bundles/MANIFEST.json                    (export_agent_bundle.py)
-#     dashboard.html, index.html, results.html, explore.html, pilot.html (build_dashboard.py -> site_generator.py)
+#     dashboard.html, index.html, results.html, explore.html, pilot.html,
+#     robots.txt, sitemap.xml                    (build_dashboard.py -> site_generator.py)
 
 on:
   push:
@@ -80,7 +81,10 @@ on:
       - 'index.html'
       - 'explore.html'
       - 'pilot.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
       - 'assets/**'
+      - 'CNAME'
   pull_request:
     paths:
       - 'README.md'
@@ -116,7 +120,10 @@ on:
       - 'index.html'
       - 'explore.html'
       - 'pilot.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
       - 'assets/**'
+      - 'CNAME'
   workflow_dispatch:
 
 permissions:
@@ -165,6 +172,8 @@ env:
     results.html
     explore.html
     pilot.html
+    robots.txt
+    sitemap.xml
 
 jobs:
   docs-sync:
@@ -226,7 +235,7 @@ jobs:
       # (STATUS.md, COVERAGE.md, knowledge_graph.json, …), so its inputs must be fresh first.
       - name: Agent-bundle manifest (bundles/MANIFEST.json)
         run: python3 scripts/export_agent_bundle.py --manifest
-      - name: Dashboard + public site (dashboard.html, index.html, results.html, explore.html, pilot.html)
+      - name: Dashboard + public site
         run: python3 scripts/build_dashboard.py
 
       # ---- consistency gate: no retired headline counts, canonical figure present ----
@@ -242,6 +251,8 @@ jobs:
         run: |
           python3 scripts/test_gen_verified_index.py
           python3 scripts/test_site_generator.py
+          python3 scripts/test_public_site.py
+          node --check assets/site.js
       - name: Formal-substrate architecture gate
         run: python3 scripts/check_formal_substrate.py
       - name: ECDLP decision-substrate gate

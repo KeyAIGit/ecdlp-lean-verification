@@ -8,10 +8,11 @@ import re
 from collections import Counter
 from pathlib import Path
 
+from ledger_utils import parse_researchos_ledger, strip_md
 from pilot_evidence import primary_dispositions, valid_second_projects
 
 ROOT = Path(__file__).resolve().parent.parent
-ASSET_VERSION = "20260816-1"
+ASSET_VERSION = "20260825-1"
 
 PRODUCT_PATH = ROOT / "repo" / "PRODUCT_MODEL.json"
 PILOT_PATH = ROOT / "repo" / "PILOT_PROTOCOL.json"
@@ -30,6 +31,17 @@ DASHBOARD_PATH = ROOT / "dashboard.html"
 EXPLORE_PATH = ROOT / "explore.html"
 PILOT_OUTPUT_PATH = ROOT / "pilot.html"
 RESULTS_PATH = ROOT / "results.html"
+ROBOTS_PATH = ROOT / "robots.txt"
+SITEMAP_PATH = ROOT / "sitemap.xml"
+CNAME_PATH = ROOT / "CNAME"
+
+PUBLIC_PAGES = (
+    ("", "Home"),
+    ("results.html", "Verified results"),
+    ("explore.html", "ECDLP route map"),
+    ("dashboard.html", "Technical workspace"),
+    ("pilot.html", "Collaboration"),
+)
 
 ROUTE_STATUS = {
     "guardrail": ("Guardrail", "guardrail"),
@@ -83,6 +95,14 @@ def repo_url(product: dict, path: str) -> str:
 def pilot_intake_url(product: dict) -> str:
     template = Path(product["pilot"]["intake_surface"]).name
     return f"{product['repository_url'].rstrip('/')}/issues/new?template={template}"
+
+
+def researchos_claim_scopes() -> dict[str, str]:
+    """Read public claim scopes from the canonical ResearchOS ledger."""
+    return {
+        row["claim_id"]: re.sub(r"\s+", " ", strip_md(row["claim_scope"])).strip()
+        for row in parse_researchos_ledger(ROOT)
+    }
 
 
 def evidence_links(product: dict, paths: list[str], limit: int | None = None) -> str:
@@ -224,7 +244,17 @@ def task_status_badge(status: str) -> str:
     return status_badge("gray", status.replace("_", " ").title())
 
 
-def page_head(title: str, description: str) -> str:
+def site_origin() -> str:
+    hostname = CNAME_PATH.read_text(encoding="utf-8").strip()
+    if not hostname or any(character.isspace() for character in hostname):
+        raise ValueError("CNAME must contain exactly one public hostname")
+    return f"https://{hostname}"
+
+
+def page_head(title: str, description: str, path: str = "") -> str:
+    origin = site_origin()
+    canonical = f"{origin}/{path}" if path else f"{origin}/"
+    social_image = f"{origin}/assets/logo-wordmark.png"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -232,9 +262,18 @@ def page_head(title: str, description: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="{esc(canonical)}">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="{esc(title)}">
   <meta property="og:description" content="{esc(description)}">
-  <meta property="og:image" content="assets/logo-wordmark.png">
+  <meta property="og:url" content="{esc(canonical)}">
+  <meta property="og:image" content="{esc(social_image)}">
+  <meta property="og:image:alt" content="KeyAI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{esc(title)}">
+  <meta name="twitter:description" content="{esc(description)}">
+  <meta name="twitter:image" content="{esc(social_image)}">
   <meta name="theme-color" content="#07182d">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
@@ -249,13 +288,14 @@ def site_header(product: dict) -> str:
 <header class="site-header">
   <div class="shell site-header__inner">
     <a class="brand-link" href="index.html" aria-label="KeyAI home">
-      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="44">
+      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="59">
     </a>
     <nav class="primary-nav" aria-label="Primary navigation">
+      <a data-nav-page="product" href="index.html#research-system">Research system</a>
       <a data-nav-page="results" href="results.html">Verified results</a>
-      <a data-nav-page="routes" href="explore.html">Route map</a>
-      <a data-nav-page="workspace" href="dashboard.html">Workspace</a>
-      <a href="{repository}">GitHub</a>
+      <a data-nav-page="routes" href="explore.html">ECDLP deployment</a>
+      <a data-nav-page="pilot" href="pilot.html">Collaborate</a>
+      <a class="nav-cta" href="{esc(repository)}">GitHub</a>
     </nav>
   </div>
 </header>"""
@@ -265,17 +305,19 @@ def site_footer(product: dict) -> str:
     repository = product["repository_url"].rstrip("/")
     return f"""<footer class="site-footer">
   <div class="shell site-footer__inner">
-    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="38">
+    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
     <p>{esc(product["category"])}. Current stage: {esc(product["current_stage"]["label"])}.
       The Lean kernel checks declared statements and proof terms; semantic, empirical,
       security, and product claims remain separately evidence-gated.</p>
     <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html#research-system">Research system</a>
       <a href="results.html">Verified results</a>
-      <a href="explore.html">Decision routes</a>
-      <a href="dashboard.html">Reference workspace</a>
-      <a href="pilot.html">External pilot</a>
-      <a href="{repository}/blob/main/repo/PRODUCT_MODEL.json">Product model</a>
-      <a href="{repository}">Repository</a>
+      <a href="index.html#reference">ECDLP deployment</a>
+      <a href="explore.html">Detailed route map</a>
+      <a href="dashboard.html">Technical workspace</a>
+      <a href="pilot.html">Collaborate</a>
+      <a href="{esc(f'{repository}/blob/main/repo/PRODUCT_MODEL.json')}">Product model</a>
+      <a href="{esc(repository)}">Repository</a>
     </nav>
   </div>
 </footer>
@@ -295,276 +337,334 @@ def build_index(
     verified_index: dict,
 ) -> str:
     selection = decisions["route_selection"]
-    authorization = decisions["bounded_experiment_authorization"]
-    selected_structural = selection.get("selected_route_ids", [])
     promoted_routes = selection.get("promoted_route_ids", [])
     routes = decisions["routes"]
     current_stage = product["current_stage"]
     mvp = product["mvp"]
     verified_counts = verified_index["counts"]
     pilot_model = product["pilot"]
+    route_counts = Counter(route["status"] for route in routes)
     completed_discovery = sum(
         record.get("disposition") in {"build", "change", "stop"}
         for record in primary_dispositions(pilot)
     )
+    workflow_context = {
+        "ingest": "Pinned question + sources",
+        "structure": "Hypotheses + dependencies",
+        "decide": "Prior evidence + barriers",
+        "execute": "Bounded experiment / proof",
+        "verify": "Verifier / scoped outcome",
+        "retain": "Updated frontier + next hypothesis",
+    }
     workflow_html = "".join(
-        f"""<article class="workflow__step">
-  <span class="workflow__index">{index:02d}</span>
-  <h3>{esc(step["label"])}</h3>
-  <p>{esc(step["outcome"])}</p>
-</article>"""
+        f"""<li class="research-loop__item">
+  <details class="research-loop__step" data-loop-step {"open" if index == 1 else ""}>
+    <summary>
+      <span class="research-loop__index">{index:02d}</span>
+      <span class="research-loop__label"><strong>{esc(step["label"])}</strong>
+        <small>{esc(workflow_context[step["id"]])}</small></span>
+    </summary>
+    <div class="research-loop__detail"><p>{esc(step["outcome"])}</p></div>
+  </details>
+</li>"""
         for index, step in enumerate(product["workflow"], start=1)
     )
+    memory_html = "".join(
+        f"<li>{esc(item)}</li>" for item in product["product"]["system_of_record"]
+    )
+    failure_html = "".join(
+        f"<li>{esc(item)}</li>" for item in product["problem"]["failure_modes"]
+    )
+    capability_copy = {
+        "verified-ledger": "Exact declarations, source anchors, proof methods, and disclosed trust labels.",
+        "decision-substrate": "Routes retain their scope, evidence, stop conditions, and reasons to reopen.",
+        "candidate-contract": "Selected outputs bind pinned inputs to a separate validation path.",
+        "research-memory": "Tasks, hypotheses, outcomes, provenance, and generated views persist across sessions.",
+    }
     capabilities_html = "".join(
-        f"""<article class="evidence-card">
+        f"""<article class="capability-card">
+  <span class="capability-card__state">Available in the reference deployment</span>
   <h3>{esc(capability["label"])}</h3>
-  <p>Inspectable in the reference repository and checked by the repository gates.</p>
+  <p>{esc(capability_copy[capability["id"]])}</p>
   {evidence_links(product, capability["evidence"], limit=1)}
 </article>"""
         for capability in current_stage["capabilities_now"]
     )
-    current_html = "".join(f"<li>{esc(item['label'])}</li>" for item in current_stage["capabilities_now"])
+    current_html = "".join(
+        f"<li>{esc(item['label'])}</li>" for item in current_stage["capabilities_now"]
+    )
     not_yet_html = "".join(f"<li>{esc(item)}</li>" for item in current_stage["not_yet"])
     metric_html = "".join(
-        f"""<div class="metric-line">
-  <span class="metric-line__id">{esc(metric["id"])}</span>
-  <p>{esc(metric["target"])}</p>
-</div>"""
+        f"""<li><span>{esc(metric["id"])}</span><p>{esc(metric["target"])}</p></li>"""
         for metric in mvp["exit_metrics"]
     )
-    rationale_html = "".join(f"<li>{esc(item)}</li>" for item in selection["rationale"][:3])
-    route_visual = json.dumps(
-        [{"id": route["id"], "status": route["status"]} for route in routes],
-        ensure_ascii=False,
-        separators=(",", ":"),
-    ).replace("</", "<\\/")
     proof_closed = sum(1 for node in formal["critical_nodes"] if node["status"] == "closed")
-    description = product["one_liner"]
-    return f"""{page_head("KeyAI | Verification workspace for AI research", description)}
+    description = (
+        "KeyAI is a public reference deployment for long-running AI research, preserving "
+        "hypotheses, evidence, bounded experiments, counterexamples, replay, and formal results."
+    )
+    return f"""{page_head("KeyAI | Research infrastructure that remembers", description)}
 <body data-page="product">
 {site_header(product)}
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
-    <canvas class="hero__canvas" id="route-canvas" aria-hidden="true"></canvas>
     <div class="shell hero__inner">
       <div class="hero__copy">
-        <p class="eyebrow">{esc(product["category"])}</p>
-        <h1 id="hero-title">A public map of what is proved, blocked, and still open.</h1>
-        <p class="hero__lede">KeyAI keeps formal claims, evidence, decisions, negative results,
-          verifier outcomes, and provenance in one inspectable state. The current reference deployment
-          is ECDLP and curve research, not an ECDLP solution.</p>
-        <div class="hero-boundary" role="note" aria-label="Public claim boundary">
-          <strong>Claim boundary</strong>
-          <span>No secp256k1 shortcut is claimed. The two verified ledgers remain isolated,
-            and compiler-trusted results are labeled separately.</span>
-        </div>
+        <p class="eyebrow">KeyAI · {esc(product["category"])}</p>
+        <h1 id="hero-title">An operating system for long-running AI research.</h1>
+        <p class="hero__lede">Today, KeyAI is a public reference deployment—not a
+          self-serve or hosted multi-project product. It preserves hypotheses, evidence, bounded experiments,
+          counterexamples, formal results, barriers, and provenance in one inspectable state—so
+          the next researcher or agent can continue from the last known boundary.</p>
         <div class="actions">
-          <a class="button button--primary" href="results.html">Browse verified results</a>
-          <a class="button button--on-dark" href="dashboard.html">Open current research state</a>
+          <a class="button button--primary" href="#research-system">Explore the Research System</a>
+          <a class="button button--on-dark" href="results.html">View Verified Results</a>
         </div>
-        <p class="stage-note">{status_badge("blue", current_stage["label"])}
-          <span>{esc(current_stage["summary"])}</span></p>
+        <nav class="hero__links" aria-label="More ways to explore">
+          <a href="#reference">See the ECDLP Reference Deployment</a>
+          <a href="{esc(product['repository_url'])}">GitHub</a>
+        </nav>
       </div>
-      <div class="hero__signal" aria-label="Verified research index">
-        <span>Verified research index</span>
-        <strong>{verified_counts["navigation_rows_total"]} rows across {verified_counts["lanes"]} isolated ledgers</strong>
-        <span>{verified_counts["ecdlp_rows"]} ECDLP / {verified_counts["researchos_rows"]} ResearchOS /
-          aggregate total is navigation only</span>
-        <code>{stats["sorry_count"]} sorry · {stats["custom_axioms"]} custom axioms</code>
-        <code>{verified_counts["kernel_plus_compiler_rows"]} rows disclose compiler trust in ledger metadata</code>
-        <code>{engine["counts"]["selected_explorations"]} native experiments selected</code>
-        <code>1 exact synthetic-toy run completed</code>
-        <code>{esc(authorization["authorization_id"])}</code>
-      </div>
-    </div>
-    <script type="application/json" id="route-visual-data">{route_visual}</script>
-  </section>
-
-  <section class="live-band" aria-label="Live reference environment">
-    <div class="shell live-band__inner">
-      <div class="live-band__context">
-        <strong>Verified results, separated by trust lane</strong>
-        <span>Browse theorem names, source files, proof methods, trust labels, and exact source anchors.</span>
-      </div>
-      <div class="live-metric"><div class="live-metric__value" data-metric="ledger-rows">{stats["ledger_rows"]}</div>
-        <div class="live-metric__label">ECDLP ledger rows</div></div>
-      <div class="live-metric"><div class="live-metric__value" data-metric="distinct-results">~{stats["distinct_results"]}</div>
-        <div class="live-metric__label">ECDLP distinct results</div></div>
-      <div class="live-metric"><div class="live-metric__value">{verified_counts["researchos_rows"]}</div>
-        <div class="live-metric__label">ResearchOS ledger rows</div></div>
-      <div class="live-metric"><div class="live-metric__value">{stats["sorry_count"]} / {stats["custom_axioms"]}</div>
-        <div class="live-metric__label">sorry / custom axioms</div></div>
+      <aside class="hero-state" aria-labelledby="hero-state-title">
+        <div class="hero-state__head">
+          <span>What exists today</span>
+          {status_badge("blue", current_stage["label"])}
+        </div>
+        <h2 id="hero-state-title">A public reference deployment, not a product promise.</h2>
+        <ol class="hero-state__list">
+          <li><span>01</span><div><strong>One inspectable research state</strong>
+            <small>Claims, evidence, tasks, decisions, outcomes, and provenance.</small></div></li>
+          <li><span>02</span><div><strong>One difficult reference environment</strong>
+            <small>secp256k1 ECDLP demonstrates the workflow; no break is claimed.</small></div></li>
+          <li><span>03</span><div><strong>One evidence-gated next milestone</strong>
+            <small>An external team must complete the loop before the MVP claim advances.</small></div></li>
+        </ol>
+        <p>{esc(current_stage["summary"])}</p>
+      </aside>
     </div>
   </section>
 
-  <section class="band band--white verified-entry" aria-labelledby="verified-entry-title">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Evidence first</p>
-        <h2 id="verified-entry-title">Start with the results, their limits, and the open frontier.</h2>
-        <p>The public interface now exposes theorem names and exact source anchors before asking
-          visitors to interpret the product thesis or the research workflow.</p>
+  <section class="evidence-rail" aria-labelledby="evidence-rail-title">
+    <div class="shell evidence-rail__inner">
+      <div class="evidence-rail__intro">
+        <p class="eyebrow">Demonstrated, not implied</p>
+        <h2 id="evidence-rail-title">Evidence is inspectable from the first click.</h2>
       </div>
-      <div class="evidence-grid">
-        <article class="evidence-card">
-          <h3>Verified result browser</h3>
-          <p>{verified_counts["navigation_rows_total"]} navigation rows across two isolated ledgers,
-            with method and trust metadata.</p>
-          <a class="source-link" href="results.html">Browse verified results</a>
-        </article>
-        <article class="evidence-card">
-          <h3>Decision frontier</h3>
-          <p>{len(routes)} canonical ECDLP routes with explicit dispositions, evidence, blockers,
-            and reconsideration triggers.</p>
-          <a class="source-link" href="explore.html">Inspect the route map</a>
-        </article>
-        <article class="evidence-card">
-          <h3>Canonical repository state</h3>
-          <p>Counts, architecture, and machine-readable provenance remain generated from repository
-            sources rather than copied into marketing prose.</p>
-          <a class="source-link" href="{esc(repo_url(product, 'STATUS.md'))}">Open STATUS.md</a>
-          <a class="source-link" href="{esc(repo_url(product, 'REPOSITORY_ARCHITECTURE.md'))}">Read the architecture map</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="product">
-    <div class="shell split">
-      <div class="split__lead">
-        <p class="eyebrow">The missing layer</p>
-        <h2>AI can propose. KeyAI keeps the research state.</h2>
-        <p>Individual agents already write proofs and code. A long research program needs a durable answer
-          to a different question: what should the next agent trust, challenge, or stop doing?</p>
-      </div>
-      <div class="principle-list">
-        <article class="principle">
-          <span class="principle__number">01</span>
-          <div><h3>Before execution</h3><p>Bind each task to a source, exact scope, route, and falsifiable exit condition.</p></div>
-        </article>
-        <article class="principle">
-          <span class="principle__number">02</span>
-          <div><h3>At verification</h3><p>Record what the declared verifier accepted and what remains a semantic or empirical assumption.</p></div>
-        </article>
-        <article class="principle">
-          <span class="principle__number">03</span>
-          <div><h3>After the attempt</h3><p>Retain accepted results, negative evidence, stop conditions, and a reproducible rollback path.</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="workflow">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Product loop</p>
-        <h2>One state from source material to a governed result.</h2>
-        <p>The current repository implements this loop through machine-readable contracts. The next product
-          step is to make the same loop configurable for an external team.</p>
-      </div>
-      <div class="workflow">{workflow_html}</div>
-    </div>
-  </section>
-
-  <section class="pilot-callout" aria-labelledby="pilot-callout-title">
-    <div class="shell pilot-callout__inner">
-      <div>
-        <p class="eyebrow">Active validation / {esc(pilot_model["task_id"])}</p>
-        <h2 id="pilot-callout-title">The next result must come from another team.</h2>
-        <p>We are recruiting one formal-research team to test the current workspace, map one repeated
-          workflow, and make an evidence-based build, change, stop, or pending decision.</p>
-      </div>
-      <dl class="pilot-callout__facts">
-        <div><dt>Status</dt><dd>{esc(pilot_model["status"])}</dd></div>
-        <div><dt>Session</dt><dd>{sum(item["minutes"] for item in pilot["session_plan"])} minutes</dd></div>
-        <div><dt>Completed discovery</dt><dd>{completed_discovery} sessions</dd></div>
+      <dl class="evidence-rail__metrics">
+        <div><dt>Proof navigation</dt><dd><strong>{verified_counts["navigation_rows_total"]}</strong>
+          entries across two isolated ledgers</dd></div>
+        <div><dt>ECDLP route memory</dt><dd><strong>{len(routes)}</strong>
+          routes with recorded dispositions</dd></div>
+        <div><dt>Built proof surface</dt><dd><strong>{stats["sorry_count"]} / {stats["custom_axioms"]}</strong>
+          <code>sorry</code> / custom axioms</dd></div>
       </dl>
-      <div class="actions">
-        <a class="button button--light" href="pilot.html">Read the pilot contract</a>
-        <a class="text-link text-link--light" href="{pilot_intake_url(product)}">Apply on GitHub</a>
+    </div>
+  </section>
+
+  <section class="band band--white" id="what-keyai-is" aria-labelledby="what-keyai-title">
+    <div class="shell problem-layout">
+      <div class="section-heading section-heading--sticky">
+        <p class="eyebrow">What KeyAI is</p>
+        <h2 id="what-keyai-title">The missing infrastructure between a research question and the next agent.</h2>
+        <p>{esc(product["problem"]["statement"])}</p>
+        <p class="section-note">{esc(product["product"]["promise"])}</p>
+      </div>
+      <div class="problem-cards">
+        <article class="problem-card problem-card--risk">
+          <span>Without durable memory</span>
+          <h3>Research restarts in fragments.</h3>
+          <ul>{failure_html}</ul>
+        </article>
+        <article class="problem-card problem-card--system">
+          <span>With an inspectable state</span>
+          <h3>Each recorded handoff has evidence and a boundary.</h3>
+          <p>Models can propose proofs, experiments, and code. KeyAI preserves the research program
+            around those attempts: what was asked, what was tried, what a verifier accepted, what
+            failed in scope, and what should happen next.</p>
+          <a href="#research-system">See the research loop</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="band band--muted" id="reference">
+  <section class="band research-system" id="research-system" aria-labelledby="research-system-title">
     <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Reference deployment</p>
-        <h2>A difficult research boundary, represented honestly.</h2>
-        <p>secp256k1 is the test case, not the product claim. It forces KeyAI to distinguish a theorem,
-          an experiment, a threat model, a failed route, and a practical attack.</p>
+      <div class="section-heading section-heading--wide">
+        <p class="eyebrow">How Research OS works</p>
+        <h2 id="research-system-title">A research loop that remembers what happened.</h2>
+        <p>The canonical workflow moves from pinned inputs to a retained outcome. Open each stage to see
+          what it contributes; the full explanation remains available without JavaScript.</p>
       </div>
-      <div class="reference-grid">
-        <article class="surface decision-summary">
-          <div class="surface__head">
-            <div><h3>Current route decision</h3><p>{esc(selection["decision_id"])} · {esc(selection["performed_on"])}</p></div>
-            {status_badge("amber", "Monitoring")}
-          </div>
-          <div class="surface__body">
-            <div class="decision-summary__code">SELECT_NONE</div>
-            <h3>No current route clears the proposal gate.</h3>
-            <p>{esc(selection["gate_result"])}</p>
-            <ul>{rationale_html}</ul>
-            <p><a href="explore.html">Inspect all {len(routes)} route dispositions</a></p>
-          </div>
-        </article>
-        <aside class="surface">
-          <div class="surface__head"><div><h3>Trust snapshot</h3><p>Current generated repository state</p></div></div>
-          <div class="surface__body trust-list">
-            <div class="trust-row"><div><strong>Lean ledger</strong><span>{stats["ledger_rows"]} rows / ~{stats["distinct_results"]} distinct</span></div>{status_badge("closed", "Checked")}</div>
-            <div class="trust-row"><div><strong>Built proof surface</strong><span>{stats["proved_modules"]} proved modules</span></div>{status_badge("closed", "0 sorry")}</div>
-            <div class="trust-row"><div><strong>Formal release map</strong><span>{proof_closed} of {len(formal["critical_nodes"])} critical nodes closed</span></div>{status_badge("blue", "Mapped")}</div>
-            <div class="trust-row"><div><strong>Corpus frontier</strong><span>{frontier["meta"]["corpus_claims"]} claims classified</span></div>{status_badge("blue", f'{frontier["meta"]["frontier_completeness_pct"]}%')}</div>
-          </div>
+      <div class="research-loop" data-research-loop>
+        <ol class="research-loop__steps">{workflow_html}</ol>
+        <aside class="research-loop__memory" aria-labelledby="research-memory-title">
+          <p class="eyebrow">Durable research memory</p>
+          <h3 id="research-memory-title">The state survives every loop.</h3>
+          <ul>{memory_html}</ul>
+          <p class="research-loop__foot">Retaining failed approaches and counterexamples is part of
+            the output—not an afterthought.</p>
         </aside>
       </div>
     </div>
   </section>
 
-  <section class="band band--white">
+  <section class="band band--white" id="research-map" aria-labelledby="research-map-title">
     <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">What exists now</p>
-        <h2>Evidence, not a product demo made of placeholders.</h2>
-        <p>Each capability below links to a live artifact in the reference repository.</p>
+      <div class="section-heading section-heading--wide">
+        <p class="eyebrow">Research map · generated projection</p>
+        <h2 id="research-map-title">One starting question. A frontier that records what changed.</h2>
+        <p>This small public map is generated from the same decision, formal, result, and engine state
+          that drive the technical workspace. It intentionally leaves the full internal graph in the repository.</p>
       </div>
-      <div class="evidence-grid">{capabilities_html}</div>
+      <ol class="research-map" data-research-map aria-label="ECDLP reference research map">
+        <li class="research-map__node research-map__node--question" data-map-kind="question">
+          <span class="research-map__kind">Starting question</span>
+          <h3>Recover the discrete logarithm in the prime-order secp256k1 group.</h3>
+          <p>The target, inputs, output, threat models, and promotion gates are pinned before work begins.</p>
+        </li>
+        <li class="research-map__node" data-map-kind="branches">
+          <span class="research-map__kind">Major branches</span>
+          <h3>{len(routes)} named routes are retained.</h3>
+          <p>{route_counts.get("ruled_out_for_target", 0)} are ruled out for the exact target;
+            {route_counts.get("open_parked", 0)} remain open and parked. Every status is scoped.</p>
+          <a href="explore.html">Inspect every route and stop condition</a>
+        </li>
+        <li class="research-map__node" data-map-kind="formal">
+          <span class="research-map__kind">Verified substrate</span>
+          <h3>{proof_closed} of {len(formal["critical_nodes"])} critical formal nodes are closed.</h3>
+          <p>Formal results establish their encoded statements and assumptions; they do not automatically
+            establish an attack or a product claim.</p>
+          <a href="results.html">Browse source-linked formal results</a>
+        </li>
+        <li class="research-map__node research-map__node--empirical" data-map-kind="replayed">
+          <span class="research-map__kind">Independently replayed evidence</span>
+          <h3>1 exact synthetic-toy run completed.</h3>
+          <p>The consumed bounded run was independently validated on frozen toy instances. It is empirical
+            evidence, not a secp256k1 result, route promotion, or rerun authorization.</p>
+          <a href="dashboard.html#overview">Inspect the retained outcome</a>
+        </li>
+        <li class="research-map__node research-map__node--barrier" data-map-kind="frontier">
+          <span class="research-map__kind">Updated frontier</span>
+          <h3>{len(promoted_routes)} attack routes are promoted.</h3>
+          <p>Scoped negatives and unresolved cost, recovery, and validation obligations remain visible so
+            the next attempt does not quietly repeat them.</p>
+        </li>
+        <li class="research-map__node research-map__node--frontier" data-map-kind="next-gap">
+          <span class="research-map__kind">Next unresolved gap</span>
+          <h3>New execution needs new evidence and a dated decision.</h3>
+          <p>{len(decisions["acceptance_gate"]["required_for_route_promotion"])} common promotion requirements
+            preserve the boundary between a plausible idea and an authorized research route.</p>
+          <a href="{esc(repo_url(product, 'repo/ECDLP_DECISION_SUBSTRATE.json'))}">Open the canonical decision contract</a>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <section class="band">
-    <div class="shell boundary-columns">
-      <div class="boundary-column">
-        <p class="eyebrow">Current capability</p>
-        <h3>Reference system</h3>
-        <ul class="check-list">{current_html}</ul>
+  <section class="band reference-deployment" id="reference" aria-labelledby="reference-title">
+    <div class="shell">
+      <div class="reference-deployment__intro">
+        <div class="section-heading">
+          <p class="eyebrow">ECDLP reference deployment</p>
+          <h2 id="reference-title">A hard testbed for durable research memory.</h2>
+          <p>secp256k1 is precise, technically demanding, and rich in formal proofs, experiments,
+            threat-model boundaries, failed routes, and unresolved gaps. That makes it a useful test of
+            whether research state can remain inspectable over a long-running program.</p>
+          <p><strong>The boundary is explicit:</strong> no secp256k1 break, shortcut, or validated
+            subgeneric route is claimed.</p>
+          <div class="actions">
+            <a class="button button--primary" href="explore.html">Explore the ECDLP route map</a>
+            <a class="button" href="dashboard.html">Open the technical workspace</a>
+          </div>
+        </div>
+        <aside class="reference-snapshot" aria-labelledby="reference-snapshot-title">
+          <span class="reference-snapshot__label">Current generated state</span>
+          <h3 id="reference-snapshot-title">What the reference deployment demonstrates</h3>
+          <dl>
+            <div><dt>ECDLP proof ledger</dt><dd><strong data-metric="ledger-rows">{stats["ledger_rows"]}</strong> rows</dd></div>
+            <div><dt>Distinct ECDLP results</dt><dd><strong data-metric="distinct-results">~{stats["distinct_results"]}</strong> results</dd></div>
+            <div><dt>Route memory</dt><dd><strong>{len(routes)}</strong> named routes evaluated</dd></div>
+            <div><dt>Current route decision</dt><dd><strong>{len(promoted_routes)}</strong> promoted routes</dd></div>
+            <div><dt>Current experiment state</dt><dd><strong data-metric="native-experiments">{engine["counts"]["selected_explorations"]}</strong> native experiments selected</dd></div>
+            <div><dt>Consumed bounded run</dt><dd><code>{esc(decisions["bounded_experiment_authorization"]["authorization_id"])}</code></dd></div>
+          </dl>
+          <p>Negative and barrier results are retained because they narrow what should be tried next;
+            they are not claims that every wider approach is impossible.</p>
+        </aside>
       </div>
-      <div class="boundary-column">
-        <p class="eyebrow">Not yet</p>
-        <h3>Hosted product</h3>
-        <ul class="check-list check-list--not">{not_yet_html}</ul>
+      <div class="capability-grid">
+        {capabilities_html}
       </div>
     </div>
   </section>
 
-  <section class="band mvp-band" id="mvp">
+  <section class="band band--white" aria-labelledby="stage-title">
     <div class="shell">
+      <div class="section-heading section-heading--wide">
+        <p class="eyebrow">Current stage</p>
+        <h2 id="stage-title">Built today and still being developed are deliberately separate.</h2>
+      </div>
+      <div class="stage-grid">
+        <article class="stage-card stage-card--now">
+          <span>{status_badge("green", "Exists today")}</span>
+          <h3>Public reference system</h3>
+          <ul class="check-list">{current_html}</ul>
+        </article>
+        <article class="stage-card stage-card--next">
+          <span>{status_badge("amber", "Not yet")}</span>
+          <h3>Hosted, configurable product</h3>
+          <ul class="check-list check-list--not">{not_yet_html}</ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band collaboration" id="collaboration" aria-labelledby="collaboration-title">
+    <div class="shell collaboration__grid">
+      <div>
+        <p class="eyebrow">For researchers and AI labs</p>
+        <h2 id="collaboration-title">Inspect the evidence—or help test the workflow.</h2>
+        <p>KeyAI is recruiting one formal-research team to test orientation in the current workspace,
+          map one repeated research-state problem, and reach an explicit build, change, stop, or pending decision.</p>
+        <p class="collaboration__boundary">No external pilot session has been completed or recorded.
+          Interest is not counted as adoption, retention, or product validation.</p>
+        <div class="actions">
+          <a class="button button--light" href="pilot.html">Read the collaboration protocol</a>
+          <a class="text-link text-link--light" href="{esc(pilot_intake_url(product))}">Open the public GitHub intake</a>
+        </div>
+      </div>
+      <dl class="collaboration__facts">
+        <div><dt>Pilot status</dt><dd>{esc(pilot_model["status"].title())}</dd></div>
+        <div><dt>Planned session</dt><dd>{sum(item["minutes"] for item in pilot["session_plan"])} minutes</dd></div>
+        <div><dt>Completed discovery</dt><dd>{completed_discovery}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band band--muted mvp-band" id="mvp" aria-labelledby="mvp-title">
+    <div class="shell mvp-layout">
       <div class="section-heading">
         <p class="eyebrow">The next product milestone</p>
-        <h2>We will call it an MVP when another team can run the loop.</h2>
-        <p>{esc(mvp["definition"])} A technical MVP still does not establish a repeatable buyer or willingness to pay.</p>
+        <h2 id="mvp-title">Another team must complete the loop.</h2>
+        <p>{esc(mvp["definition"])} A technical MVP still would not establish repeatable demand or willingness to pay.</p>
       </div>
-      <div class="metric-lines">{metric_html}</div>
+      <ol class="mvp-metrics">{metric_html}</ol>
     </div>
   </section>
 </main>
 {site_footer(product)}"""
 
 
-def build_results(product: dict, verified_index: dict) -> str:
+def build_results(
+    product: dict,
+    verified_index: dict,
+    decisions: dict,
+    engine: dict,
+    researchos_scopes: dict[str, str],
+) -> str:
     counts = verified_index["counts"]
     results = verified_index["results"]
     repository = product["repository_url"].rstrip("/")
+    authorization = decisions["bounded_experiment_authorization"]
 
     def reference_link(reference: dict) -> str:
         source_file = reference.get("file", "")
@@ -593,24 +693,24 @@ def build_results(product: dict, verified_index: dict) -> str:
             "kernel_audited": "Kernel audited",
         }[trust]
         title = result.get("title") or result["claim_id"]
+        title = re.sub(r"^\*\(([^)]+)\)\*\s*", r"\1 · ", title).replace("`", "")
         full_claim = result["claim_id"]
         display = (result.get("display") or "Declaration group").replace("`", "")
+        ledger_scope = researchos_scopes.get(full_claim, "") if lane == "researchos" else ""
+        if lane == "researchos" and not ledger_scope:
+            raise ValueError(f"missing ResearchOS ledger scope for {full_claim}")
         claim_details = ""
-        if full_claim != title:
+        if lane == "ecdlp" and full_claim != title:
             claim_details = (
-                '<details class="result-card__scope"><summary>Full ledger claim and scope</summary>'
+                '\n  <details class="result-card__scope"><summary>Full ledger claim and scope</summary>'
                 f'<p>{esc(full_claim)}</p></details>'
             )
-        searchable = " ".join(
-            [
-                full_claim,
-                result.get("display", ""),
-                result["method"],
-                domain,
-                " ".join(result["files"]),
-                " ".join(ref.get("declaration", "") for ref in result["references"]),
-            ]
-        )
+        ledger_scope_html = ""
+        if ledger_scope:
+            ledger_scope_html = (
+                '\n  <div class="result-card__ledger-scope"><strong>Ledger scope</strong>'
+                f'<p>{esc(ledger_scope)}</p></div>'
+            )
         sources = "".join(reference_link(reference) for reference in result["references"])
         if not sources:
             sources = "".join(
@@ -620,8 +720,7 @@ def build_results(product: dict, verified_index: dict) -> str:
             )
         cards.append(
             f"""<article class="result-card" id="{esc(result['slug'])}"
-  data-result-tags="{esc(f'{lane} {trust} {domain}')}"
-  data-result-searchable="{esc(searchable)}">
+  data-result-tags="{esc(f'{lane} {trust} {domain}')}">
   <div class="result-card__top">
     <div class="result-card__badges">
       <span class="lane-badge lane-badge--{esc(lane)}">{lane_label}</span>
@@ -629,9 +728,8 @@ def build_results(product: dict, verified_index: dict) -> str:
     </div>
     <a class="result-card__anchor" href="#{esc(result['slug'])}" aria-label="Permanent link to {esc(title)}">#</a>
   </div>
-  <h2>{esc(title)}</h2>
-  <p class="result-card__display"><code>{esc(display)}</code></p>
-  {claim_details}
+  <h3>{esc(title)}</h3>
+  <p class="result-card__display"><code>{esc(display)}</code></p>{ledger_scope_html}{claim_details}
   <dl class="result-card__meta">
     <div><dt>Domain</dt><dd>{esc(domain)}</dd></div>
     <div><dt>Method</dt><dd>{esc(result['method'])}</dd></div>
@@ -662,12 +760,59 @@ def build_results(product: dict, verified_index: dict) -> str:
         f"<li><span>{esc(domain)}</span><strong>{count}</strong></li>"
         for domain, count in counts["domains"].items()
     )
+    evidence_types = [
+        (
+            "formal",
+            "Formally proved",
+            "Lean accepted the exact built declaration. This establishes the encoded statement under its assumptions—not semantic faithfulness, empirical validity, or practical impact.",
+            "#result-browser",
+            "Browse formal results",
+        ),
+        (
+            "replayed",
+            "Independently replayed",
+            "A separate validator path recomputed a certificate or result from pinned artifacts. Replay is not automatically a kernel proof, peer review, or external institutional reproduction.",
+            "dashboard.html#overview",
+            f"Inspect the {esc(authorization['status'])} bounded run",
+        ),
+        (
+            "empirical",
+            "Empirical",
+            "Observed under named instances, controls, and budgets. It does not establish an asymptotic result or transfer automatically to a real-world target.",
+            "dashboard.html#overview",
+            "See bounded evidence",
+        ),
+        (
+            "negative",
+            "Scoped negative",
+            "A specific mechanism or prediction failed, or was inapplicable, inside a declared scope. The wider route may remain open.",
+            "explore.html",
+            f"Inspect {engine['counts']['outcomes_by_taxonomy']['bounded_negative']} retained bounded negatives",
+        ),
+        (
+            "open",
+            "Proposal / open",
+            "A research question or mechanism awaits evidence, review, or authorization. It is non-executable and is not a result.",
+            "dashboard.html#activity",
+            "Open the governed queues",
+        ),
+    ]
+    evidence_type_html = "".join(
+        f"""<article class="evidence-type evidence-type--{esc(kind)}">
+  <span class="evidence-type__marker" aria-hidden="true"></span>
+  <h3>{esc(label)}</h3>
+  <p>{esc(explanation)}</p>
+  <a href="{esc(href)}">{esc(link_label)}</a>
+</article>"""
+        for kind, label, explanation, href, link_label in evidence_types
+    )
+    rh_rows = counts["domains"].get("riemann-hypothesis", 0)
 
     description = (
         "Browse every ledgered, machine-checked KeyAI result with its source file, "
         "method, trust label, and canonical ledger boundary."
     )
-    return f"""{page_head("Verified results | KeyAI", description)}
+    return f"""{page_head("Verified results | KeyAI", description, "results.html")}
 <body data-page="results">
 {site_header(product)}
 <main id="main">
@@ -698,31 +843,65 @@ def build_results(product: dict, verified_index: dict) -> str:
     </div>
   </section>
 
-  <section class="band band--white">
+  <section class="band evidence-guide" aria-labelledby="evidence-guide-title">
+    <div class="shell">
+      <div class="section-heading section-heading--wide">
+        <p class="eyebrow">What “verified” means here</p>
+        <h2 id="evidence-guide-title">Evidence status and trust path answer different questions.</h2>
+        <p>Status says what kind of evidence exists. Trust labels say which checker path a formal row
+          used. Neither label silently expands the scope of the underlying claim.</p>
+      </div>
+      <div class="evidence-type-grid">{evidence_type_html}</div>
+      <aside class="trust-axis" aria-labelledby="trust-axis-title">
+        <h3 id="trust-axis-title">Formal trust labels</h3>
+        <dl>
+          <div><dt><span class="trust-badge trust-badge--kernel_standard">Kernel standard</span></dt>
+            <dd>A ResearchOS row declares the standard kernel trust base.</dd></div>
+          <div><dt><span class="trust-badge trust-badge--kernel_audited">Kernel audited</span></dt>
+            <dd>An ECDLP declaration passed the allowed-TCB audit; this index does not infer a standard-only base.</dd></div>
+          <div><dt><span class="trust-badge trust-badge--kernel_plus_compiler">Kernel + compiler</span></dt>
+            <dd>Ledger metadata discloses <code>native_decide</code> or equivalent compiler trust.</dd></div>
+        </dl>
+      </aside>
+      <aside class="domain-boundary" aria-labelledby="rh-boundary-title">
+        <div>
+          <p class="eyebrow">Exploratory domain boundary</p>
+          <h3 id="rh-boundary-title">Riemann Hypothesis rows are foundation interfaces—not a proof candidate.</h3>
+          <p>The {rh_rows} ResearchOS rows in this domain are exact built declarations, including
+            definitions, reformulations, and symmetry infrastructure. The repository claims no selected
+            route, no authorized route execution, no proof candidate, and no progress on RH itself.</p>
+        </div>
+        <a class="button" href="{esc(repo_url(product, 'domains/riemann-hypothesis/README.md'))}">Read the canonical RH boundary</a>
+      </aside>
+    </div>
+  </section>
+
+  <div class="band band--white results-browser" id="result-browser">
     <div class="shell results-layout">
       <aside class="results-sidebar" aria-label="Result filters">
+        <h2 id="result-browser-title">Browse formal results</h2>
+        <p>Search exact claims, declarations, files, domains, and proof methods.</p>
         <label class="filter-search">
           <span>Search results</span>
-          <input type="search" data-result-search placeholder="Claim, theorem, file, method" autocomplete="off">
+          <input type="search" data-result-search placeholder="Claim, theorem, file, method"
+            autocomplete="off" aria-controls="result-list">
         </label>
-        <div class="filter-list" aria-label="Filter verified results">{filter_buttons}</div>
+        <div class="filter-list" role="group" aria-label="Filter verified results">{filter_buttons}</div>
         <p class="filter-count" data-result-count aria-live="polite">{counts["navigation_rows_total"]} results</p>
         <div class="results-domain-summary">
-          <h2>Domains</h2>
+          <h3>Domains</h3>
           <ul>{domain_rows}</ul>
         </div>
-        <p class="results-sidebar__note"><strong>Kernel standard</strong> is an exact per-row ResearchOS
-          declaration. <strong>Kernel audited</strong> means the ECDLP declaration passed the allowed-TCB
-          audit, but this navigation index does not infer a standard-only base from missing metadata.
-          <strong>Kernel + compiler</strong> is shown when ledger metadata discloses <code>native_decide</code>
-          or equivalent compiler trust.</p>
+        <p class="results-sidebar__note">The complete list remains in the HTML and readable without
+          JavaScript. Filters change only the current view.</p>
       </aside>
       <div>
-        <div class="results-list" data-result-list>{''.join(cards)}</div>
+        <noscript><p class="noscript-note">JavaScript is off, so all results are shown. Browser find remains available.</p></noscript>
+        <div class="results-list" id="result-list" data-result-list>{''.join(cards)}</div>
         <p class="empty-state" data-result-empty role="status" aria-live="polite" hidden>No verified results match this filter.</p>
       </div>
     </div>
-  </section>
+  </div>
 </main>
 {site_footer(product)}"""
 
@@ -769,7 +948,7 @@ def build_dashboard(
         (
             task,
             f"""<article class="task-row">
-  <div class="task-row__top"><div><h4>{esc(task["id"])} · {esc(task["title"])}</h4>
+  <div class="task-row__top"><div><h3>{esc(task["id"])} · {esc(task["title"])}</h3>
     <small>{esc(task["queue_label"])}</small>
     <p>{esc(task["why"])}</p></div>{task_status_badge(task["status"])}</div>
 </article>""",
@@ -819,7 +998,7 @@ def build_dashboard(
     closed_count = sum(node["status"] == "closed" for node in formal["critical_nodes"])
     engine_sequence_html = "".join(
         f"""<article class="task-row">
-  <div class="task-row__top"><div><h4>{candidate["position"]:02d} · {esc(candidate["title"])}</h4>
+  <div class="task-row__top"><div><h3>{candidate["position"]:02d} · {esc(candidate["title"])}</h3>
     <small>{esc(candidate["candidate_id"])} · {esc(candidate["kind"])}</small>
     <p>{esc(candidate["stop_condition"])}</p></div>
     {engine_execution_badge(candidate["execution_state"])}</div>
@@ -841,7 +1020,7 @@ def build_dashboard(
     ]
     engine_intake_html = "".join(
         f"""<article class="task-row">
-  <div class="task-row__top"><div><h4>{esc(candidate["title"])}</h4>
+  <div class="task-row__top"><div><h3>{esc(candidate["title"])}</h3>
     <small>{esc(candidate["candidate_id"])}</small>
     <p>{esc("; ".join(reason.replace("_", " ") for reason in candidate["reasons"]))}</p></div>
     {status_badge("amber", "Intake")}</div>
@@ -864,7 +1043,7 @@ def build_dashboard(
     }
     generation_seed_html = "".join(
         f"""<article class="task-row">
-  <div class="task-row__top"><div><h4>{esc(seed["research_question"])}</h4>
+  <div class="task-row__top"><div><h3>{esc(seed["research_question"])}</h3>
     <small>{esc(seed["seed_id"])} · {esc(seed["cell_id"])} · {esc(seed["route_id"])}</small>
     <p>{esc(seed["typed_cell"]["boundary"])}</p></div>
     {status_badge(*generation_status[seed["status"]])}</div>
@@ -880,7 +1059,7 @@ def build_dashboard(
           {generation["counts"]["submitted_proposals"]} submitted;
           {generation["counts"]["quality_cleared_proposals"]} quality-cleared.
           Typed screens, seeds, and drafts authorize nothing.</p></div>
-        <a href="{repo_url(product, 'repo/ECDLP_TYPED_EVIDENCE_V0.json')}">Open evidence</a></div>
+        <a href="{esc(repo_url(product, 'repo/ECDLP_TYPED_EVIDENCE_V0.json'))}">Open evidence</a></div>
       <div class="surface" style="margin-bottom:22px"><div class="surface__body">{generation_seed_html}</div></div>"""
 
     health_cards = [
@@ -936,7 +1115,7 @@ def build_dashboard(
         "The live KeyAI operator workspace for the secp256k1 ECDLP reference environment: "
         "decision routes, formal state, evidence, tasks, and trust boundaries."
     )
-    return f"""{page_head("KeyAI Workspace | secp256k1 reference environment", description)}
+    return f"""{page_head("KeyAI Workspace | secp256k1 reference environment", description, "dashboard.html")}
 <body data-page="workspace">
 {site_header(product)}
 <main id="main">
@@ -968,16 +1147,18 @@ def build_dashboard(
 
   <div class="tabbar-wrap">
     <div class="shell tabbar" role="tablist" aria-label="Workspace views" data-tabs>
-      <button type="button" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview">Overview</button>
-      <button type="button" role="tab" id="tab-routes" aria-controls="panel-routes" aria-selected="false" tabindex="-1" data-tab="routes">Routes</button>
-      <button type="button" role="tab" id="tab-formal" aria-controls="panel-formal" aria-selected="false" tabindex="-1" data-tab="formal">Formal substrate</button>
-      <button type="button" role="tab" id="tab-evidence" aria-controls="panel-evidence" aria-selected="false" tabindex="-1" data-tab="evidence">Evidence</button>
-      <button type="button" role="tab" id="tab-activity" aria-controls="panel-activity" aria-selected="false" tabindex="-1" data-tab="activity">Queue</button>
+      <a role="tab" id="tab-overview" href="#overview" aria-controls="overview" aria-selected="true" data-tab="overview">Overview</a>
+      <a role="tab" id="tab-routes" href="#routes" aria-controls="routes" aria-selected="false" data-tab="routes">Routes</a>
+      <a role="tab" id="tab-formal" href="#formal" aria-controls="formal" aria-selected="false" data-tab="formal">Formal substrate</a>
+      <a role="tab" id="tab-evidence" href="#evidence" aria-controls="evidence" aria-selected="false" data-tab="evidence">Evidence</a>
+      <a role="tab" id="tab-activity" href="#activity" aria-controls="activity" aria-selected="false" data-tab="activity">Queue</a>
     </div>
   </div>
 
+  <noscript><div class="shell noscript-note">JavaScript is off, so every workspace panel is shown in sequence.</div></noscript>
+
   <div class="shell workspace-body">
-    <section class="tab-panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" data-tab-panel="overview">
+    <section class="tab-panel" role="tabpanel" id="overview" aria-labelledby="tab-overview" data-tab-panel="overview">
       <div class="panel-heading"><div><h2>Current operating state</h2>
         <p>The decision layer controls what work is justified; proof volume does not select an attack route.</p></div>
         {status_badge("blue", product["current_stage"]["label"])}</div>
@@ -1007,13 +1188,13 @@ def build_dashboard(
         </article>
         <aside class="surface">
           <div class="surface__head"><div><h3>Split work queues</h3><p>{research_task_count} research / {product_task_count} product contracts</p></div>
-            <a href="{repo_url(product, "tasks/NEXT.md")}">Open source</a></div>
+            <a href="{esc(repo_url(product, "tasks/NEXT.md"))}">Open source</a></div>
           <div class="surface__body">{active_task_html}</div>
         </aside>
       </div>
     </section>
 
-    <section class="tab-panel" role="tabpanel" id="panel-routes" aria-labelledby="tab-routes" data-tab-panel="routes" hidden>
+    <section class="tab-panel" role="tabpanel" id="routes" aria-labelledby="tab-routes" data-tab-panel="routes">
       <div class="panel-heading"><div><h2>Route portfolio</h2>
         <p>All routes are bound to an exact threat model, evidence gate, stop condition, and next action.</p></div>
         <a class="button" href="explore.html">Open detailed route map</a></div>
@@ -1021,29 +1202,32 @@ def build_dashboard(
         <div class="surface__head"><div><h3>Disposition distribution</h3><p>{len(routes)} canonical routes</p></div></div>
         <div class="surface__body"><div class="distribution">{distribution_html}</div><div class="legend-list">{legend_html}</div></div>
       </div>
-      <div class="table-wrap"><table class="data-table">
+      <div class="table-wrap" tabindex="0" role="region" aria-label="ECDLP route portfolio table"><table class="data-table">
+        <caption class="sr-only">ECDLP route portfolio</caption>
         <thead><tr><th>Route</th><th>Disposition</th><th>Threat model</th><th>Priority</th><th>Next action</th></tr></thead>
         <tbody>{route_rows}</tbody>
       </table></div>
     </section>
 
-    <section class="tab-panel" role="tabpanel" id="panel-formal" aria-labelledby="tab-formal" data-tab-panel="formal" hidden>
+    <section class="tab-panel" role="tabpanel" id="formal" aria-labelledby="tab-formal" data-tab-panel="formal">
       <div class="panel-heading"><div><h2>Formal substrate</h2>
         <p>{closed_count} of {len(formal["critical_nodes"])} critical nodes are closed. Blocked nodes retain exact resume conditions.</p></div>
-        <a class="button" href="{repo_url(product, "repo/FORMAL_SUBSTRATE.json")}">Open canonical map</a></div>
-      <div class="table-wrap" style="margin-bottom:28px"><table class="data-table">
+        <a class="button" href="{esc(repo_url(product, "repo/FORMAL_SUBSTRATE.json"))}">Open canonical map</a></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Formal substrate table" style="margin-bottom:28px"><table class="data-table">
+        <caption class="sr-only">Formal substrate critical nodes</caption>
         <thead><tr><th>Critical node</th><th>Status</th><th>Depends on</th><th>Blocker</th><th>Evidence</th></tr></thead>
         <tbody>{formal_rows}</tbody>
       </table></div>
       <div class="panel-heading"><div><h2>Accepted blockers</h2>
         <p>Missing foundations are recorded, but do not authorize work without a selected route.</p></div></div>
-      <div class="table-wrap"><table class="data-table">
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Accepted blockers table"><table class="data-table">
+        <caption class="sr-only">Accepted formal blockers and resume conditions</caption>
         <thead><tr><th>Blocker</th><th>What is missing</th><th>Resume condition</th></tr></thead>
         <tbody>{blocker_rows}</tbody>
       </table></div>
     </section>
 
-    <section class="tab-panel" role="tabpanel" id="panel-evidence" aria-labelledby="tab-evidence" data-tab-panel="evidence" hidden>
+    <section class="tab-panel" role="tabpanel" id="evidence" aria-labelledby="tab-evidence" data-tab-panel="evidence">
       <div class="panel-heading"><div><h2>Sync Health</h2>
         <p>The public and agent-facing views resolve back to canonical machine sources and their gates.</p></div></div>
       <div class="layout-two" style="margin-bottom:30px">{health_html}</div>
@@ -1070,10 +1254,10 @@ def build_dashboard(
       </div>
     </section>
 
-    <section class="tab-panel" role="tabpanel" id="panel-activity" aria-labelledby="tab-activity" data-tab-panel="activity" hidden>
+    <section class="tab-panel" role="tabpanel" id="activity" aria-labelledby="tab-activity" data-tab-panel="activity">
       <div class="panel-heading"><div><h2>Work queues</h2>
         <p>Research and product contracts have separate owners and KPIs; neither can count as progress in the other.</p></div>
-        <a class="button" href="{repo_url(product, "tasks/NEXT.md")}">Open queue router</a></div>
+        <a class="button" href="{esc(repo_url(product, "tasks/NEXT.md"))}">Open queue router</a></div>
       <div class="source-list" style="margin-bottom:18px">
         {evidence_links(product, ["tasks/ECDLP_RESEARCH.md", "tasks/KEYAI_PRODUCT.md"])}
       </div>
@@ -1107,28 +1291,16 @@ def build_explore(product: dict, stats: dict, decisions: dict, engine: dict) -> 
 
     route_cards = []
     for route in routes:
-        searchable = " ".join(
-            [
-                route["id"],
-                route["title"],
-                route["status"],
-                " ".join(route.get("threat_models", [])),
-                route.get("applicability", ""),
-                route.get("current_evidence", ""),
-                route.get("next_action", ""),
-            ]
-        )
         evidence = route.get("evidence_files", [])
         assumptions = route.get("assumptions", [])
         assumptions_text = "; ".join(assumptions) if assumptions else "No extra assumptions recorded."
         route_cards.append(
-            f"""<details class="route-card" data-route-status="{esc(route["status"])}"
-  data-route-searchable="{esc(searchable)}">
+            f"""<details class="route-card" data-route-status="{esc(route["status"])}">
   <summary>
-    <div class="route-title"><strong>{esc(route["title"])}</strong><code>{esc(route["id"])}</code></div>
-    <div>{status_badge(route["status"])}</div>
-    <div class="route-meta"><strong>{esc(route.get("priority", "unassigned"))}</strong>
-      {esc(", ".join(route.get("threat_models", [])))}</div>
+    <span class="route-title"><strong>{esc(route["title"])}</strong><code>{esc(route["id"])}</code></span>
+    <span class="route-status">{status_badge(route["status"])}</span>
+    <span class="route-meta"><strong>{esc(route.get("priority", "unassigned"))}</strong>
+      {esc(", ".join(route.get("threat_models", [])))}</span>
   </summary>
   <div class="route-card__body">
     <section class="route-detail"><h3>Applicability</h3><p>{esc(route.get("applicability", ""))}</p></section>
@@ -1143,10 +1315,10 @@ def build_explore(product: dict, stats: dict, decisions: dict, engine: dict) -> 
 </details>"""
         )
     description = (
-        "A canonical, searchable map of all ECDLP routes evaluated for the plain single-target "
-        "secp256k1 objective, including scope, evidence, gates, and stop conditions."
+        "A canonical, searchable map of all recorded routes in the ECDLP portfolio for the plain "
+        "single-target secp256k1 objective, including scope, evidence, gates, and stop conditions."
     )
-    return f"""{page_head("KeyAI Route Map | secp256k1 ECDLP", description)}
+    return f"""{page_head("KeyAI Route Map | secp256k1 ECDLP", description, "explore.html")}
 <body data-page="routes">
 {site_header(product)}
 <main id="main">
@@ -1154,8 +1326,8 @@ def build_explore(product: dict, stats: dict, decisions: dict, engine: dict) -> 
     <div class="shell explorer-mast__title">
       <div><p class="eyebrow">Canonical decision explorer</p>
         <h1>secp256k1 ECDLP route map</h1>
-        <p>Every route is generated from <code>repo/ECDLP_DECISION_SUBSTRATE.json</code>.
-          Search by mechanism, scope, evidence, or next action.</p></div>
+        <p>This is the detailed route memory for KeyAI's public reference deployment. Every route is
+          generated from <code>repo/ECDLP_DECISION_SUBSTRATE.json</code>; no status silently closes a wider claim.</p></div>
       <aside class="decision-inline"><strong>{esc(selection["decision_id"])} · Structural selection</strong>
         <span>{len(selected_structural)} structural route completed; {len(promoted_routes)} promoted;
           1 exact synthetic-toy run completed under
@@ -1164,12 +1336,12 @@ def build_explore(product: dict, stats: dict, decisions: dict, engine: dict) -> 
   </section>
 
   <div class="shell explorer-layout">
-    <aside class="explorer-sidebar">
+    <aside class="explorer-sidebar" aria-label="Route filters">
       <h2>Disposition</h2>
       <ul class="filter-list">{"".join(filter_buttons)}</ul>
-      <label for="route-search"><h2>Search</h2></label>
+      <h2><label for="route-search">Search</label></h2>
       <input class="route-search" id="route-search" type="search" placeholder="GLV, leakage, pairing..."
-        autocomplete="off" data-route-search>
+        autocomplete="off" data-route-search aria-controls="route-list">
       <p style="margin-top:18px"><span data-metric="ledger-rows">{stats["ledger_rows"]}</span> verified ledger rows support the surrounding
         substrate. A formal result is not automatically an attack route.</p>
     </aside>
@@ -1177,7 +1349,8 @@ def build_explore(product: dict, stats: dict, decisions: dict, engine: dict) -> 
     <section class="explorer-results" aria-labelledby="route-results-title">
       <div class="explorer-results__head"><h2 id="route-results-title">Evaluated routes</h2>
         <span class="result-count" data-route-count aria-live="polite">{len(routes)} routes</span></div>
-      <div class="route-list" data-route-list>{"".join(route_cards)}</div>
+      <noscript><p class="noscript-note">JavaScript is off, so all routes are shown. Every route can still be opened.</p></noscript>
+      <div class="route-list" id="route-list" data-route-list>{"".join(route_cards)}</div>
       <div class="empty-state" hidden data-route-empty role="status" aria-live="polite">No route matches this filter.</div>
     </section>
   </div>
@@ -1240,7 +1413,7 @@ def build_pilot(product: dict, pilot: dict) -> str:
         "The evidence-gated KeyAI external pilot for formal-research teams: "
         "qualification, observed orientation, workflow mapping, measures, and decision rules."
     )
-    return f"""{page_head("KeyAI External Pilot | Test one research workflow", description)}
+    return f"""{page_head("KeyAI External Pilot | Test one research workflow", description, "pilot.html")}
 <body data-page="pilot">
 {site_header(product)}
 <main id="main">
@@ -1252,13 +1425,13 @@ def build_pilot(product: dict, pilot: dict) -> str:
         <p>We will observe how your team understands the current KeyAI reference environment, map one
           repeated formal-research workflow, and decide whether a bounded TASK-012 adapter test is justified.</p>
         <div class="actions">
-          <a class="button button--primary" href="{intake_url}">Apply on GitHub</a>
-          <a class="button button--on-dark" href="{repo_url(product, product["pilot"]["protocol_source"])}">Inspect the protocol JSON</a>
+          <a class="button button--primary" href="{esc(intake_url)}">Apply on GitHub</a>
+          <a class="button button--on-dark" href="{esc(repo_url(product, product["pilot"]["protocol_source"]))}">Inspect the protocol JSON</a>
         </div>
       </div>
       <aside class="pilot-state" aria-label="Pilot evidence state">
         <div><span>Status</span><strong>{esc(pilot["status"].title())}</strong></div>
-        <div><span>Observed session</span><strong>{session_total} minutes</strong></div>
+        <div><span>Planned session</span><strong>{session_total} minutes</strong></div>
         <div><span>Completed external pilots</span><strong>{completed_external_pilots}</strong></div>
         <p>{esc(pilot["evidence_state"])}</p>
       </aside>
@@ -1299,8 +1472,8 @@ def build_pilot(product: dict, pilot: dict) -> str:
   <section class="band">
     <div class="shell">
       <div class="section-heading">
-        <p class="eyebrow">Observed session</p>
-        <h2>{session_total} minutes from qualification to an explicit decision.</h2>
+        <p class="eyebrow">Session plan</p>
+        <h2>A {session_total}-minute path from qualification to an explicit decision.</h2>
         <p>The first session tests orientation and problem fit. It does not count a scheduled follow-up
           or polite interest as product validation.</p>
       </div>
@@ -1316,7 +1489,8 @@ def build_pilot(product: dict, pilot: dict) -> str:
         <p>Every measure has an operational definition, target, and evidence source. The pilot remains
           recruiting until an external session is actually recorded.</p>
       </div>
-      <div class="table-wrap pilot-measures"><table class="data-table">
+      <div class="table-wrap pilot-measures" tabindex="0" role="region" aria-label="Pilot measurement contract"><table class="data-table">
+        <caption class="sr-only">Pilot measurements, targets, and evidence sources</caption>
         <thead><tr><th>Measure</th><th>What is observed</th><th>Target</th><th>Evidence</th></tr></thead>
         <tbody>{measurement_rows}</tbody>
       </table></div>
@@ -1358,11 +1532,31 @@ def build_pilot(product: dict, pilot: dict) -> str:
       <div><p class="eyebrow">Recruiting now</p>
         <h2>One real workflow is more valuable than another speculative feature.</h2>
         <p>Open the public intake with a repeated failure, current verifier, and a safe project boundary.</p></div>
-      <a class="button button--light" href="{intake_url}">Start the pilot intake</a>
+      <a class="button button--light" href="{esc(intake_url)}">Start the pilot intake</a>
     </div>
   </section>
 </main>
 {site_footer(product)}"""
+
+
+def build_robots() -> str:
+    return f"""User-agent: *
+Allow: /
+
+Sitemap: {site_origin()}/sitemap.xml
+"""
+
+
+def build_sitemap() -> str:
+    origin = site_origin()
+    urls = "\n".join(
+        f"  <url><loc>{esc(f'{origin}/{path}' if path else f'{origin}/')}</loc></url>"
+        for path, _label in PUBLIC_PAGES
+    )
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{urls}
+</urlset>"""
 
 
 def main() -> int:
@@ -1380,7 +1574,9 @@ def main() -> int:
     index = build_index(
         product, pilot, stats, frontier, decisions, formal, engine, verified_index
     )
-    results_page = build_results(product, verified_index)
+    results_page = build_results(
+        product, verified_index, decisions, engine, researchos_claim_scopes()
+    )
     dashboard = build_dashboard(
         product, stats, frontier, decisions, formal, graph, engine, tasks
     )
@@ -1391,6 +1587,8 @@ def main() -> int:
     write_text(DASHBOARD_PATH, dashboard)
     write_text(EXPLORE_PATH, explore)
     write_text(PILOT_OUTPUT_PATH, pilot_page)
+    write_text(ROBOTS_PATH, build_robots())
+    write_text(SITEMAP_PATH, build_sitemap())
 
     print(
         "wrote KeyAI public site: "
@@ -1400,7 +1598,7 @@ def main() -> int:
         f"{len(formal['critical_nodes'])} formal nodes, "
         f"{len(tasks)} task contracts, "
         f"{engine['counts']['selected_explorations']} bounded explorations, "
-        f"pilot {pilot['status']}"
+        f"pilot {pilot['status']}, sitemap {len(PUBLIC_PAGES)} pages"
     )
     return 0
 

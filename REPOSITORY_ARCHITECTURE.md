@@ -83,7 +83,7 @@ publication reviewers. Each audience needs a stable route through the repo.
 | Product and pilot decision layer | Product category, reference-deployment boundary, customer hypotheses, discovery evidence, safety, and MVP gates | `repo/PRODUCT_MODEL.json`, `repo/PILOT_PROTOCOL.json` | Both JSON contracts are canonical. Public surfaces are generated from them; planned features and unvalidated users remain explicit. |
 | Verified ledger and trust boundary | Human-auditable theorem ledgers and scope statements | `VERIFIED.md`, `VERIFIED_RESEARCHOS.md`, generated `VERIFIED_INDEX.md`, `TRUST_REPORT.md`, `ABSTRACT_SCOPE.md`, `BARRIERS.md`, `COVERAGE.md` | Keep counts delegated to `STATUS.md`/`data/stats.json`; keep scope wording adversarially honest. The ResearchOS ledger never feeds the ECDLP headline counts (`scripts/check_ledger_isolation.py`). |
 | Generated machine views | Derived stats, registries, graphs, engine state, audits, badges, and snapshots | `data/stats.json`, `data/{result_registry,researchos_result_registry,verified_index,source_registry,knowledge_graph,research_engine_state,research_engine_v02_state,research_engine_shadow_intake}.json`, `VERIFIED_INDEX.md`, `llms.txt`, `Ecdlp/LedgerAxiomAudit.lean`, `ResearchOS/LedgerAxiomAudit.lean`, `badges/theorems.json`, `STATUS.md` | Do not hand-edit. Change generators and regenerate. |
-| Public surfaces | Research-first homepage, verified-result browser, operator workspace, route explorer, and external-pilot contract | `index.html`, `results.html`, `dashboard.html`, `explore.html`, `pilot.html`, `llms.txt`, `assets/`, `fonts/`, `CNAME` | Generate all five pages through `scripts/site_generator.py`; canonical counters must remain useful without JavaScript. |
+| Public surfaces | Research-first homepage, verified-result browser, operator workspace, route explorer, external-pilot contract, and search-engine discovery files | `index.html`, `results.html`, `dashboard.html`, `explore.html`, `pilot.html`, `robots.txt`, `sitemap.xml`, `llms.txt`, `assets/`, `fonts/`, `CNAME` | Generate all five pages plus `robots.txt` and `sitemap.xml` through `scripts/site_generator.py`; canonical counters and research explanations must remain useful without JavaScript. |
 | Research OS control plane | Routed research/product tasks, hypotheses, formal architecture, automation, and agent orientation | `AGENTS.md`, `CLAUDE.md`, `ROADMAP.md`, `tasks/NEXT.md`, `tasks/ECDLP_RESEARCH.md`, `tasks/KEYAI_PRODUCT.md`, `experiments/HYPOTHESES.yaml`, `REPOSITORY_ARCHITECTURE.md`, `repo/` | Keep short, current, and executable by low-context agents. Never count product activity as ECDLP progress. |
 | Reproducible experiments | Non-kernel scripts, manifests, review-anchored outcomes, and measured evidence | `experiments/` | Measurements are evidence, never proofs. Only the selected bounded sequence may run; promotion remains separately gated. |
 | Automation and scripts | CI, generators, checks, autonomous loops, server helpers | `.github/workflows/`, `scripts/`, `requirements.txt`, `prompts/` | Prefer explicit gates over narrative promises. Scripts that generate committed artifacts must document outputs. |
@@ -116,6 +116,17 @@ publication reviewers. Each audience needs a stable route through the repo.
 | What must any future candidate report and pass? | `experiments/framework/candidate_run.schema.json` plus `candidate_contract.py` | deterministic positive/negative fixtures and independent `ec_oracle.py` validation |
 | What should be archived or deleted? | `repo/CLEANUP_PLAN.md` after a dedicated retention audit | `repo/ARTIFACTS.yaml`, reference scans, and the audit record |
 
+### Public research-map boundary
+
+The compact research map on `index.html` is a server-rendered projection owned by
+`scripts/site_generator.py`. It derives only public summary fields from
+`repo/ECDLP_DECISION_SUBSTRATE.json`, `repo/FORMAL_SUBSTRATE.json`,
+`data/research_engine_state.json`, and `data/verified_index.json`; it does not ship the
+full knowledge graph as a browser payload or duplicate scientific state in JavaScript.
+A richer public graph should first add a generator-owned public projection schema and a
+freshness gate, then render that bounded schema. It must not expose internal-only fields
+or hand-copy route, proof, experiment, or frontier claims into a client bundle.
+
 ## Generated Artifact Rules
 
 Generated artifacts should be updated through their generators whenever
@@ -140,7 +151,7 @@ possible:
 | `Ecdlp/LedgerAxiomAudit.lean` | `scripts/gen_axiom_audit.py` |
 | `ResearchOS/LedgerAxiomAudit.lean` | `scripts/gen_axiom_audit.py` |
 | `COVERAGE.md` | `scripts/coverage_report.py` |
-| `index.html`, `results.html`, `dashboard.html`, `explore.html`, `pilot.html` | `scripts/build_dashboard.py` compatibility entry point → `scripts/site_generator.py` |
+| `index.html`, `results.html`, `dashboard.html`, `explore.html`, `pilot.html`, `robots.txt`, `sitemap.xml` | `scripts/build_dashboard.py` compatibility entry point → `scripts/site_generator.py` |
 | obvious cross-surface drift | `scripts/check_status_consistency.py`, `scripts/check_counts.py` |
 | repository artifact classification | `scripts/check_repo_artifacts.py` |
 | formal dependency/release map | `scripts/check_formal_substrate.py` |

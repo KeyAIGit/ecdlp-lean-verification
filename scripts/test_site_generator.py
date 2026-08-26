@@ -128,7 +128,13 @@ Inputs:
             engine,
             verified_index,
         )
-        results_page = site_generator.build_results(product, verified_index)
+        results_page = site_generator.build_results(
+            product,
+            verified_index,
+            decisions,
+            engine,
+            site_generator.researchos_claim_scopes(),
+        )
         dashboard = site_generator.build_dashboard(
             product,
             stats,
@@ -143,10 +149,17 @@ Inputs:
             product, stats, decisions, engine
         )
 
-        self.assertIn("Browse verified results", index)
+        self.assertIn("View Verified Results", index)
         self.assertIn("One browser, two isolated ledgers", results_page)
         self.assertIn(str(verified_index["counts"]["navigation_rows_total"]), results_page)
         self.assertIn("data-result-list", results_page)
+        self.assertIn("no proof candidate, and no progress on RH itself", results_page)
+        self.assertIn("proves neither side", results_page)
+        self.assertIn("Ledger scope", results_page)
+        self.assertEqual(
+            results_page.count('class="result-card__ledger-scope"'),
+            verified_index["counts"]["researchos_rows"],
+        )
         self.assertIn(authorization_id, dashboard)
         self.assertIn(authorization_id, explore)
         self.assertIn("1 exact synthetic-toy run completed", index)
@@ -156,6 +169,61 @@ Inputs:
             "no experiment is authorized", dashboard.casefold()
         )
         self.assertNotIn("0 experiments authorized", explore.casefold())
+
+    def test_public_research_system_is_progressively_enhanced(self) -> None:
+        product = site_generator.load_json(site_generator.PRODUCT_PATH)
+        pilot = site_generator.load_json(site_generator.PILOT_PATH)
+        stats = site_generator.load_json(site_generator.STATS_PATH)
+        frontier = site_generator.load_json(site_generator.FRONTIER_PATH)
+        decisions = site_generator.load_json(site_generator.DECISION_PATH)
+        formal = site_generator.load_json(site_generator.FORMAL_PATH)
+        engine = site_generator.load_json(site_generator.ENGINE_PATH)
+        verified_index = site_generator.load_json(site_generator.VERIFIED_INDEX_PATH)
+
+        index = site_generator.build_index(
+            product,
+            pilot,
+            stats,
+            frontier,
+            decisions,
+            formal,
+            engine,
+            verified_index,
+        )
+
+        self.assertIn("data-research-loop", index)
+        self.assertEqual(index.count("data-loop-step"), len(product["workflow"]))
+        self.assertIn("data-research-map", index)
+        self.assertEqual(index.count("data-map-kind="), 6)
+        self.assertIn("not a\n          self-serve or hosted multi-project product", index)
+        self.assertNotIn("foundations.point_counting.mathlib_gap", index)
+
+    def test_site_discovery_files_follow_cname_and_public_pages(self) -> None:
+        origin = site_generator.site_origin()
+        robots = site_generator.build_robots()
+        sitemap = site_generator.build_sitemap()
+
+        self.assertIn(f"Sitemap: {origin}/sitemap.xml", robots)
+        self.assertEqual(sitemap.count("<url>"), len(site_generator.PUBLIC_PAGES))
+        for path, _label in site_generator.PUBLIC_PAGES:
+            url = f"{origin}/{path}" if path else f"{origin}/"
+            self.assertIn(f"<loc>{url}</loc>", sitemap)
+
+    def test_shared_navigation_escapes_repository_url_attributes(self) -> None:
+        repository_url = 'https://github.com/example/repo?x=1&next="quoted"'
+        product = {
+            "repository_url": repository_url,
+            "category": "test workspace",
+            "current_stage": {"label": "test stage"},
+        }
+
+        rendered = site_generator.site_header(product) + site_generator.site_footer(product)
+
+        self.assertNotIn(repository_url, rendered)
+        self.assertIn(
+            "https://github.com/example/repo?x=1&amp;next=&quot;quoted&quot;",
+            rendered,
+        )
 
 
 if __name__ == "__main__":

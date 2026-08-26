@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://keyai.org/sitemap.xml
