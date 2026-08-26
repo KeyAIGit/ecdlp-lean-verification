@@ -1011,7 +1011,7 @@
         "path": "REPOSITORY_ARCHITECTURE.md",
         "reason": "whole-repo map: canonical / generated / scratch / archive",
         "exists": true,
-        "bytes": 22618
+        "bytes": 23458
       },
       {
         "path": "PUBLISHABLE_UNITS.md",
