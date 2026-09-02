@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "status": "untrusted_non_executable_bounded_evidence",
+  "workflow_run_id": 31537739286,
+  "workflow_head_sha": "ee1c70e8915b24c4b6a71bbf9c65f07ef701b570",
+  "msolve_version": "0.10.1",
+  "threads": 4,
+  "flags": [
+    "-v",
+    "2",
+    "-g",
+    "1"
+  ],
+  "input_archive_sha256": "6e96df7baa54536d868bcb7894e047e49a2e737471563e2e22cf27b9607cd5c0",
+  "actions_artifact_id": 9119474335,
+  "actions_artifact_sha256": "051d132852b739aa7f814af9f54c2c09a65e105b4a82d1007bf9cdac5bfc3e63",
+  "systems_expected": 52,
+  "systems_observed": 52,
+  "timeouts": 0,
+  "nonzero_exits": 0,
+  "scope": {
+    "toy_only": true,
+    "real_world_key_material": false,
+    "secp256k1_dlog_target": false,
+    "route_promotion": false,
+    "experiment_authorization": false
+  }
+}
