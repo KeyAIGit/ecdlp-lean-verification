@@ -1,0 +1,191 @@
+{
+  "schema_version": "0.1",
+  "attempt_id": "HGA-M16-COST-BRIDGE-ABSTAIN-001",
+  "task_id": "TASK-029",
+  "attempted_on": "2026-08-01",
+  "scientific_identity": "untrusted_source_grounded_draft_attempt",
+  "seed_binding": {
+    "seed_id": "HGS-3266E42A729C",
+    "cell_id": "CELL-M-PKC-SMOOTH-M16",
+    "route_id": "R-PETIT-COMPOSED-MAPS",
+    "threat_model": "classical-single-target-plain",
+    "typed_evidence_digest": "602d93c115099c81f02b8a8ac531e33036e6988d5d3ddf2ec257b1118e5cd75d",
+    "source_commit": "b8871e529923c1189da6330dfa0b320edf1f3fa9",
+    "source_main_ancestor": true
+  },
+  "packet_binding": {
+    "binding_mode": "posthoc_parser_replay_against_commit_bound_packet",
+    "packet_contract_version": "0.2",
+    "drafter_id": "keyai-hypothesis-model-drafter-v0",
+    "lane": "typed_evidence",
+    "policy_sha256": "ddd42370eecc65f43132219f3d72b220c2b7ebad910eff3686c835b7d7f26748",
+    "source_state_sha256": "7a585d2e6d4b8f3618fff5d6ec396675d01a8692548434d91df32c64ee2488c9",
+    "typed_evidence_state_sha256": "c63f2355626f141d01b8f228bfe49df80af984e5d76cd6be0821514402d33c3a",
+    "decision_state_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
+    "source_claim_packet_sha256": "716f3bdd1f62e571f599d64fb73e904000d5534ab5bca77fa360688db2c2c5d0",
+    "evidence_manifest_sha256": "04ead02688b84497fda81c76290e797ecc1bed40708e4ce1ac03446e246df3d5",
+    "context_documents_sha256": "de34f6253decc763e82b652200addb3f76b11e3ea0d0b6ad8bdc3bd6b2cfe3f3",
+    "decision_mode": "post_task026_proposal_only_promotion_closed",
+    "research_object_id": "HYP-M16-SOLVER-SLOPE-001",
+    "canonical_prompt_sha256": "5a717f8370c7bc671b01a7f5464ccfdfd4de3cdf9dc379600d425025ea20c3d3",
+    "scientific_packet_sha256": "fb4384aedf160cd435f4a7950b73dca57d074f32eeb792b00571d1e95376d23f",
+    "prior_draft_attempts_sha256": null,
+    "canonical_prompt_delivered_to_synthesis_agent": false,
+    "allowed_evidence_claim_ids": [
+      "SC-PKC-M16-EXACT-CHART-COVER-RESULT",
+      "SC-PKC-M16-EXCEPTIONAL-FIBER-RESULT",
+      "SC-PKC-M16-FROZEN-CR-SPECIALIZATION-RESULT",
+      "SC-PKC-M16-FROZEN-PROJECTIVE-WITNESS-RESULT",
+      "SC-PKC-M16-GUARDED-PROJECTIVE-SYSTEM-RESULT",
+      "SC-PKC-M16-INFINITY-PROPAGATION-RESULT",
+      "SC-PKC-M16-INFINITY-STRATA-RESULT",
+      "SC-PKC-M16-PROJECTIVE-RESULTANT-KERNEL-RESULT",
+      "SC-PKC-M16-PROJECTIVE-S17-BRIDGE-RESULT",
+      "SC-PKC-M16-SECP-FACTOR-BASE-CENSUS",
+      "SC-PKC-M16-SEMANTIC-BRIDGE-RESULT",
+      "SC-PKC-M16-SOURCE-MECHANISM-RECOVERY",
+      "SC-PKC-M16-SYMBOLIC-DESK-RESULT",
+      "SC-PKC-PARTIAL-COST-EXACT",
+      "SC-PKC-PMINUS1-MAP-EXACT",
+      "SC-PKC-RELATION-YIELD",
+      "SC-PKC-SMOOTH-SUBGROUP",
+      "SC-PKC-SYSTEM4-EXACT",
+      "SC-SECP-PMINUS1-FACTORIZATION",
+      "SC-SECP-PMINUS1-LARGE-COFACTOR-PRIME",
+      "SC-SECP-PMINUS1-SMOOTH-DIVISOR-CEILING",
+      "SC-SEMAEV-RELATION-SEMANTICS"
+    ]
+  },
+  "synthesis_provenance": {
+    "mode": "offline_agent_synthesis",
+    "family": "openai-codex",
+    "version": "runtime-unattested",
+    "provider_transport_attested": false,
+    "source_independence": "not_established",
+    "model_family_independence": "not_established",
+    "shared_parent_context": true
+  },
+  "fragment": {
+    "abstain": true,
+    "new_premise": "No supplied claim introduces an algorithmic lever that bounds the generalized-root solving term T(E,16,L); the packet fixes the source map, direct System (4), and a partial cost identity only.",
+    "exact_map": "For a sampled nonidentity affine target R=(X,Y)=aP+bQ, use S17(x_11,...,x_16,X)=0 and, for each of sixteen leaves, L1(x)=x^2, L2(x)=x^3, L3(x)=x^7, L4(x)=1-x^13441, so L=1-x^564522. The specialization has 64 factor coordinates and 65 equation members. This is an exact input presentation, not a generalized-root solver.",
+    "fixed_target_semantics": "The S17 equation is bound to the sampled target x-coordinate X. If R=O, X is undefined and the affine specialization must resample or handle that case separately; transforming this into a target-free relation would change the stated problem.",
+    "recovery_map": "The repository completion enumerates F_p curve lifts and signs and accepts only a relation satisfying sum_i epsilon_i P_i + epsilon_R R = O under separately checked elliptic-curve arithmetic. That is a sound acceptance filter only. The printed source check is target-ambiguous, and completeness, multiplicity, acceptance probability, and cost of recovering every direct-System-(4) solution remain unestablished.",
+    "cost_changing_quantity": "The source prices C=P(p,16)+(16!*p/D^15)*T(E,16,L)+D^omega with D=564522 and gives the necessary balanced-regime threshold T(E,16,L)<p^(1/2-1/16)=p^(7/16). No supplied claim specifies an algorithm A for T, bounds its fill-in or memory, or completes recovery, preprocessing, relation-rank, and sparse-linear-algebra costs in common units against the matched baseline.",
+    "falsifiable_prediction": "No evidence-supported directional prediction can be frozen. Until a concrete solver A and its representation are specified, any runtime slope would measure an arbitrary implementation rather than the source-faithful mechanism, so a solver run would not discriminate the claimed cost bridge.",
+    "missing_evidence": [
+      "MISSING-M16-GR-SOLVER-001: a fully specified source-faithful generalized-root algorithm A for the exact 65-member nonidentity-target M16 System (4), including representation, exceptional-locus policy, termination, and complete direct-System-(4) recovery semantics.",
+      "MISSING-M16-COST-THEOREM-001: a correctness and common-unit cost theorem for A that bounds T_A, recovery, preprocessing, memory, independent-relation collection, rank, and sparse linear algebra and implies total cost below the matched baseline over a declared scaling family."
+    ],
+    "evidence_claim_ids": [
+      "SC-PKC-SYSTEM4-EXACT",
+      "SC-PKC-PMINUS1-MAP-EXACT",
+      "SC-PKC-PARTIAL-COST-EXACT",
+      "SC-PKC-M16-SOURCE-MECHANISM-RECOVERY",
+      "SC-PKC-M16-SECP-FACTOR-BASE-CENSUS"
+    ],
+    "field_evidence_claim_ids": {
+      "new_premise": [
+        "SC-PKC-PARTIAL-COST-EXACT",
+        "SC-PKC-M16-SOURCE-MECHANISM-RECOVERY"
+      ],
+      "exact_map": [
+        "SC-PKC-SYSTEM4-EXACT",
+        "SC-PKC-PMINUS1-MAP-EXACT",
+        "SC-PKC-M16-SOURCE-MECHANISM-RECOVERY"
+      ],
+      "fixed_target_semantics": [
+        "SC-PKC-SYSTEM4-EXACT",
+        "SC-PKC-M16-SOURCE-MECHANISM-RECOVERY"
+      ],
+      "recovery_map": [
+        "SC-PKC-SYSTEM4-EXACT",
+        "SC-PKC-M16-SOURCE-MECHANISM-RECOVERY"
+      ],
+      "cost_changing_quantity": [
+        "SC-PKC-PARTIAL-COST-EXACT",
+        "SC-PKC-M16-SECP-FACTOR-BASE-CENSUS"
+      ],
+      "falsifiable_prediction": [
+        "SC-PKC-PARTIAL-COST-EXACT",
+        "SC-PKC-M16-SOURCE-MECHANISM-RECOVERY"
+      ],
+      "claim_boundary": [
+        "SC-PKC-SYSTEM4-EXACT",
+        "SC-PKC-PMINUS1-MAP-EXACT",
+        "SC-PKC-PARTIAL-COST-EXACT",
+        "SC-PKC-M16-SOURCE-MECHANISM-RECOVERY",
+        "SC-PKC-M16-SECP-FACTOR-BASE-CENSUS"
+      ]
+    },
+    "claim_boundary": "This packet specifies the source-faithful M16 input and a sound target-bound acceptance filter, but not a complete direct-System-(4) recovery algorithm or a cost-changing solver. Source and model-family independence are not_established. The result is a non-executable abstention; it changes no route, cell, authorization, retention, calibration, or novelty state."
+  },
+  "fragment_sha256": "804c2843eef630184d156dbcfd490c887fc503fbacedc5f95ca1d80cd2da24b4",
+  "parser_replay": {
+    "contract": "hypothesis-fragment-v0.2",
+    "accepted": true,
+    "problems": [],
+    "provenance_bound": true,
+    "replayed_on": "2026-08-01"
+  },
+  "review_observations": [
+    {
+      "role": "creative_proposer",
+      "session_id": "019fc047-4239-7aa0-bd21-daa13e4a1e16",
+      "family": "openai-codex",
+      "version": "runtime-unattested",
+      "prompt_sha256": "cf1e019c4e5c7ed1143f87c980c66065f92b6626064df91d0d14fec0319c025b",
+      "verdict": "abstain",
+      "source_independence": "not_established",
+      "summary": "The packet specifies an input presentation but no algorithmic lever for T(E,16,L); creating a proposal would manufacture the missing solver and cost theorem."
+    },
+    {
+      "role": "computational_algebra_cost",
+      "session_id": "019fc047-747f-7561-a0a1-d5814ff0e0a8",
+      "family": "openai-codex",
+      "version": "runtime-unattested",
+      "prompt_sha256": "99e6f8f3aa39654293ca506c8c541b196cc0b21be8b0222662495b644eebe533",
+      "verdict": "abstain",
+      "source_independence": "not_established",
+      "summary": "Exact representation counts do not order the direct, recursive, quadratic-circuit, or chart encodings by solving degree, fill-in, memory, or runtime."
+    },
+    {
+      "role": "recovery_provenance_skeptic",
+      "session_id": "019fc047-9db7-7b01-a9b6-0e0261beaf03",
+      "family": "openai-codex",
+      "version": "runtime-unattested",
+      "prompt_sha256": "7aed89b12ee0df16faa1fc805d54941ed7aeae5c2d7862fdf50167abe99108b2",
+      "verdict": "block_proposal",
+      "source_independence": "not_established",
+      "summary": "Sound acceptance does not establish complete recovery, acceptance probability, multiplicity, or online cost, so the source yield heuristic cannot be promoted to usable-relation yield."
+    }
+  ],
+  "blockers": [
+    "missing_exact_mechanism",
+    "missing_cost_changing_bridge",
+    "missing_independent_validator_plan",
+    "review_independence_unestablished"
+  ],
+  "reopening_conditions": [
+    "Specify one source-faithful generalized-root algorithm A for a frozen System-(4) representation with complete base-field recovery semantics.",
+    "Prove or preregister an evidence-supported law T_A(p,16,L_p)=O(p^(7/16-epsilon)) for some epsilon>0 while charging preprocessing, failures, recovery, memory, rank, and sparse linear algebra.",
+    "Alternatively provide a strict lower bound that remains decisive even under optimistically free and complete recovery.",
+    "Obtain source and model-family review that is not derived from the same repository authoring context."
+  ],
+  "disposition": {
+    "status": "not_specified_due_to_abstention",
+    "proposal_created": false,
+    "scientific_outcome": false,
+    "calibration": "excluded_nonexperimental",
+    "ranker_label": false,
+    "retention": "zero",
+    "candidate_admissible": false,
+    "recommended": false,
+    "authorized": false,
+    "executable": false,
+    "route_effect": "none",
+    "cell_effect": "open_to_open",
+    "novelty_claimed": false
+  },
+  "boundary": "This record preserves an untrusted source-grounded drafting attempt. It does not close the M16 cell, falsify the route, prove a lower bound, validate a solver, satisfy five-role proposal review, create a scientific outcome, train the ranker, or authorize execution."
+}
