@@ -18,6 +18,20 @@ principles:
   - product_claims_and_mvp_boundaries_are_canonical
 
 classes:
+  release_candidate_evidence:
+    description: Unpromoted release candidates, scoped claims, and preparation evidence.
+    paths:
+      - release_candidates/
+    owner: release_assurance
+    hand_edit: true
+    generated: mixed
+    gates:
+      - scripts/verify_v02.py --candidate-only
+      - full existing repository CI before any promotion
+    risks:
+      - Candidate files are not canonical ledger results.
+      - Python replays and arithmetic bounds do not certify analytic theorems.
+
   kernel_verified_surface:
     description: Machine-checked Lean source and project build pins.
     paths:

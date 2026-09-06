@@ -1,152 +1,182 @@
 #!/usr/bin/env python3
-"""Axiom-audit checker (CI trust gate).
+"""Strict Lean axiom-log gate. Logs are evidence, not independent proof certificates.
 
-Reads the output of `lake env lean Ecdlp/LedgerAxiomAudit.lean` (a sequence of
-`#print axioms` results) and FAILS (exit 1) if any audited result:
+The Lean invocation must itself succeed. This checker validates its output against
+an optional trusted registry. It cannot establish the authenticity of a text log
+or of a compiler-generated declaration from its name alone.
 
-  * depends on `sorryAx`  — a `sorry`/`admit` leaked into a built proof, or
-  * depends on any axiom outside the allowed trusted base.
-
-Allowed trusted base:
-  - propext, Classical.choice, Quot.sound  (Lean/Mathlib standard axioms)
-  - Lean.ofReduceBool                      (native_decide; trusts the compiler — disclosed)
-
-Usage:  python3 scripts/check_axioms.py axiom_audit.txt [result_registry.json]
+Usage: python3 scripts/check_axioms.py LOG [REGISTRY]
 """
 from __future__ import annotations
 
+from collections import Counter
+import json
+from pathlib import Path
 import re
 import sys
-from pathlib import Path
+from typing import Any
 
-# Lean/Mathlib's three standard axioms — used by essentially every Mathlib proof.
 ALLOWED_STANDARD = {"propext", "Classical.choice", "Quot.sound"}
-# `native_decide` trusts the Lean COMPILER. Depending on the toolchain it shows up as the
-# generic `Lean.ofReduceBool` OR a per-declaration auxiliary axiom named like
-# `<decl>._native.native_decide.ax_<n>_<m>` (Lean v4.31). Both are the same compiler-trust
-# extension of the TCB — allowed, but flagged (catalogued in TRUST_REPORT.md).
 NATIVE_DECIDE_EXACT = {"Lean.ofReduceBool", "Lean.trustCompiler"}
-# `sorryAx` is the axiom Lean inserts for `sorry`/`admit`; it must never appear.
 FORBIDDEN_ALWAYS = {"sorryAx", "Lean.guardMsgsAx"}
+VALID_BASES = {"standard", "standard+native_decide"}
+MAX_INPUT_BYTES = 32 * 1024 * 1024
+# Deliberately narrow: an unfamiliar toolchain format needs review, not a wildcard.
+NATIVE_AUX = re.compile(r"(?P<owner>[^\s\[\],]+)\._native\.native_decide\.ax_[0-9]+(?:_[0-9]+)*\Z")
+RECORD = re.compile(
+    r"^'(?P<name>[^\r\n]+)' (?:depends on axioms: \[(?P<axioms>[^\[\]]*)\]"
+    r"|(?P<free>does not depend on any axioms))[ \t]*$", re.MULTILINE
+)
+
+
+class AuditError(ValueError):
+    """An input cannot safely be interpreted as a complete axiom audit."""
 
 
 def is_native_decide(ax: str) -> bool:
-    """True for compiler-trust axioms introduced by `native_decide`."""
-    return ax in NATIVE_DECIDE_EXACT or ".native_decide.ax" in ax or "_native.native_decide" in ax
+    return ax in NATIVE_DECIDE_EXACT or NATIVE_AUX.fullmatch(ax) is not None
+
+
+def _records(text: str) -> list[tuple[str, str | None]]:
+    text = text.replace("\r\n", "\n")
+    if "\x00" in text or "\x1b" in text:
+        raise AuditError("control characters in audit output")
+    if re.search(r"\berror:", text) or "unknown identifier" in text:
+        raise AuditError("Lean reported an elaboration error")
+    matches = list(RECORD.finditer(text))
+    if not matches:
+        raise AuditError("no complete #print axioms records")
+    remainder = RECORD.sub("", text)
+    # Do not silently discard a malformed record while accepting the other ones.
+    if re.search(r"depends on axioms|does not depend on any axioms", remainder):
+        raise AuditError("malformed or incomplete axiom record")
+    rows: list[tuple[str, str | None]] = []
+    for match in matches:
+        name, atoms = match.group("name"), match.group("axioms")
+        if not name or name != name.strip() or any(c.isspace() for c in name):
+            raise AuditError("invalid declaration name")
+        if atoms is not None and atoms.strip():
+            tokens = [a.strip() for a in atoms.split(",")]
+            if any(not a or any(c.isspace() for c in a) for a in tokens):
+                raise AuditError(f"invalid axiom list for {name}")
+            if len(tokens) != len(set(tokens)):
+                raise AuditError(f"duplicate axiom in record for {name}")
+        rows.append((name, atoms))
+    duplicates = sorted(k for k, n in Counter(name for name, _ in rows).items() if n > 1)
+    if duplicates:
+        raise AuditError(f"duplicate declaration records: {duplicates}")
+    return rows
 
 
 def parse_audit_output(text: str) -> tuple[list[tuple[str, str]], list[str]]:
-    """Parse Lean output while preserving apostrophes inside identifiers."""
-    blocks = re.findall(
-        r"^'(.+)' depends on axioms: \[([^\]]*)\]",
-        text,
-        flags=re.MULTILINE,
-    )
-    nodep = re.findall(
-        r"^'(.+)' does not depend on any axioms$",
-        text,
-        flags=re.MULTILINE,
-    )
-    return blocks, nodep
+    """Compatible return shape; malformed and duplicate records now raise AuditError."""
+    rows = _records(text)
+    return ([(name, atoms) for name, atoms in rows if atoms is not None],
+            [name for name, atoms in rows if atoms is None])
+
+
+def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise AuditError(f"duplicate JSON object key: {key}")
+        result[key] = value
+    return result
+
+
+def read_text_bounded(path: Path) -> str:
+    with path.open("rb") as stream:
+        data = stream.read(MAX_INPUT_BYTES + 1)
+    if len(data) > MAX_INPUT_BYTES:
+        raise AuditError(f"input exceeds {MAX_INPUT_BYTES} bytes")
+    return data.decode("utf-8")
+
+
+def load_registry(path: Path) -> dict[str, Any]:
+    raw = json.loads(read_text_bounded(path), object_pairs_hook=_unique_object)
+    if not isinstance(raw, dict):
+        raise AuditError("registry must be a JSON object")
+    return raw
+
+
+def validate_registry(registry: dict[str, Any]) -> tuple[set[str], set[str], dict[str, str] | None]:
+    expected = registry.get("ledger_declarations")
+    if (not isinstance(expected, list) or not expected or
+            any(not isinstance(x, str) or not x or x != x.strip() for x in expected)):
+        raise AuditError("registry needs a nonempty ledger_declarations list of names")
+    if len(expected) != len(set(expected)):
+        raise AuditError("registry contains duplicate ledger declarations")
+    declarations = registry.get("declarations")
+    if not isinstance(declarations, dict) or not set(expected).issubset(declarations):
+        raise AuditError("declarations map must cover every ledger declaration")
+    known = set(declarations)
+    # Absence supports the existing legacy ECDLP registry; an explicitly present
+    # map must be complete. An empty map must not silently disable per-row checks.
+    bases = registry.get("axiom_base")
+    if "axiom_base" in registry:
+        if not isinstance(bases, dict) or set(bases) != set(expected):
+            raise AuditError("axiom_base must cover exactly the audited declarations")
+        if any(not isinstance(v, str) or v not in VALID_BASES for v in bases.values()):
+            raise AuditError("unknown axiom_base value")
+    return set(expected), known, bases
+
+
+def audit(text: str, registry: dict[str, Any] | None = None) -> dict[str, Any]:
+    rows = _records(text)
+    known: set[str] = set()
+    bases: dict[str, str] | None = None
+    if registry is not None:
+        expected, known, bases = validate_registry(registry)
+        observed = {name for name, _ in rows}
+        if observed != expected:
+            raise AuditError(f"registry mismatch: missing={sorted(expected-observed)}, "
+                             f"unexpected={sorted(observed-expected)}")
+    compiler_users: list[str] = []
+    violations: list[str] = []
+    for name, atoms in rows:
+        axioms = {a.strip() for a in (atoms or "").split(",") if a.strip()}
+        compiler = False
+        for ax in sorted(axioms):
+            if ax in FORBIDDEN_ALWAYS:
+                violations.append(f"{name}: forbidden axiom {ax}")
+            elif ax in ALLOWED_STANDARD:
+                continue
+            elif ax in NATIVE_DECIDE_EXACT:
+                compiler = True
+            else:
+                aux = NATIVE_AUX.fullmatch(ax)
+                if aux is None:
+                    violations.append(f"{name}: unrecognized axiom {ax}")
+                else:
+                    compiler = True
+                    if aux.group("owner") not in known:
+                        violations.append(f"{name}: native auxiliary owner is not in the registry")
+        if compiler:
+            compiler_users.append(name)
+            if bases is not None and bases[name] != "standard+native_decide":
+                violations.append(f"{name}: compiler trust exceeds declared standard base")
+    if violations:
+        raise AuditError("; ".join(violations))
+    return {"audited_declarations": len(rows), "compiler_trusted": sorted(compiler_users),
+            "exact_registry_match": registry is not None, "per_row_base_checked": bases is not None}
 
 
 def main(argv: list[str]) -> int:
     if len(argv) not in {2, 3}:
-        print("usage: check_axioms.py <axiom_audit.txt> [result_registry.json]",
-              file=sys.stderr)
+        print("usage: check_axioms.py LOG [REGISTRY]", file=sys.stderr)
         return 2
-    text = Path(argv[1]).read_text(encoding="utf-8")
-
-    # A Lean error in the audit file (e.g. an unknown theorem name) means the audit is
-    # not actually checking what it claims — treat as failure so names stay correct.
-    if re.search(r"^.*\berror:", text, re.MULTILINE) or "unknown identifier" in text:
-        print("AXIOM AUDIT FAILED: the audit file did not elaborate cleanly "
-              "(unknown name or error). Output:\n" + text)
+    try:
+        registry = load_registry(Path(argv[2])) if len(argv) == 3 else None
+        report = audit(read_text_bounded(Path(argv[1])), registry)
+    except (AuditError, OSError, UnicodeError, json.JSONDecodeError) as exc:
+        print(f"AXIOM AUDIT FAILED: {exc}", file=sys.stderr)
         return 1
-
-    # Each `#print axioms foo` yields either
-    #   'foo' depends on axioms: [a, b, c]
-    # or
-    #   'foo' does not depend on any axioms
-    blocks, nodep = parse_audit_output(text)
-
-    if not blocks and not nodep:
-        print("AXIOM AUDIT FAILED: no `#print axioms` output found — did the audit run?\n"
-              + text)
-        return 1
-
-    audited_names = {name for name, _ in blocks} | set(nodep)
-    declared_bases: dict[str, str] = {}
-    known_declarations: set[str] = set()
-    per_row_mode = False
-    if len(argv) == 3:
-        import json
-
-        registry = json.loads(Path(argv[2]).read_text(encoding="utf-8"))
-        expected = set(registry.get("ledger_declarations", []))
-        missing = sorted(expected - audited_names)
-        unexpected = sorted(audited_names - expected)
-        if missing or unexpected:
-            print("AXIOM AUDIT FAILED: output does not match the ledger registry.")
-            for name in missing:
-                print(f"  [missing] {name}")
-            for name in unexpected:
-                print(f"  [unexpected] {name}")
-            return 1
-        # Per-row mode (S0_TRUST_DESIGN.md §2.3): when the registry carries an
-        # `axiom_base` map, a declaration whose observed axioms exceed its
-        # declared base fails, and per-declaration native_decide aux axioms
-        # must be provenance-checked against the registry's declarations map
-        # (a hand-declared axiom NAMED like a compiler aux axiom must not pass
-        # as compiler trust — review finding ADV-1).
-        declared_bases = registry.get("axiom_base", {})
-        known_declarations = set(registry.get("declarations", {}))
-        per_row_mode = bool(declared_bases)
-
-    violations: list[str] = []
-    native_decide_users: list[str] = []
-    for name, axlist in blocks:
-        axioms = {a.strip() for a in axlist.split(",") if a.strip()}
-        bad = set()
-        uses_native = False
-        for ax in axioms:
-            if ax in FORBIDDEN_ALWAYS:
-                bad.add(ax)
-            elif ax in ALLOWED_STANDARD:
-                pass
-            elif is_native_decide(ax):
-                uses_native = True
-                if per_row_mode and ax not in NATIVE_DECIDE_EXACT:
-                    # Provenance: `<decl>._native.native_decide.ax_*` is
-                    # compiler trust only if `<decl>` is a real built
-                    # declaration known to the registry.
-                    owner = ax.split("._native", 1)[0]
-                    if owner not in known_declarations:
-                        bad.add(ax)
-            else:
-                bad.add(ax)
-        if per_row_mode and uses_native and declared_bases.get(name) == "standard":
-            violations.append(
-                f"  {name}: declared axiom_base 'standard' but the audit "
-                "observed a native_decide/compiler-trust axiom"
-            )
-        if bad:
-            violations.append(f"  {name}: disallowed axiom(s) {sorted(bad)}")
-        if uses_native:
-            native_decide_users.append(name)
-
-    print(f"axiom audit: {len(blocks) + len(nodep)} results checked, "
-          f"{len(native_decide_users)} transitively use native_decide (compiler-trusted axiom).")
-    for n in native_decide_users:
-        print(f"  [native_decide / compiler-trusted] {n}")
-
-    if violations:
-        print("\nAXIOM AUDIT FAILED — disallowed axioms found:")
-        print("\n".join(violations))
-        return 1
-
-    print("\nAXIOM AUDIT OK: every audited result depends only on the allowed trusted "
-          "base (no sorryAx, no custom axioms).")
+    print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+    print("AXIOM AUDIT OK: observed dependencies fit the allowed base.")
+    if registry is None:
+        print("UNSCOPED LOG CHECK: completeness against a ledger was not established.")
+    elif not report["per_row_base_checked"]:
+        print("LEGACY REGISTRY: no per-row trust classification was supplied.")
     return 0
 
 

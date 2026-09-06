@@ -1,0 +1,41 @@
+{
+  "large_local_control": {
+    "anchors_correct": true,
+    "correct": 32768,
+    "negation_checks_satisfied": 65536,
+    "nonzero_observations": 65536,
+    "order": 65537,
+    "ordinary_edges": 65536,
+    "ordinary_edges_satisfied": 65534,
+    "wraparound_correct": true
+  },
+  "lean_status": "not_run",
+  "literature_novelty_established": false,
+  "local_control_family": {
+    "all_contracts_satisfied": true,
+    "instances": 64,
+    "m_max": 64,
+    "m_min": 1
+  },
+  "negation_pair_controls": {
+    "all_balanced": true,
+    "observations": 16512,
+    "odd_orders": 128
+  },
+  "production_keys_used": false,
+  "rational_envelope": {
+    "analytic_cycle_bound_formalized": false,
+    "comparison": "17*179*2^128*10^36 < 9*(n-1)",
+    "exponential_lower_sum": {
+      "denominator": "4123168604160",
+      "numerator": "8263495069369"
+    },
+    "holds": true,
+    "left": "1035479242540415744319048930414870667460608000000000000000000000000000000000000",
+    "multiplicative_order_reverified": false,
+    "order_parameter": "115792089237316195423570985008687907852837564279074904382605163141518161494337",
+    "right": "1042128803135845758812138865078191170675538078511674139443446468273663453449024"
+  },
+  "schema_version": 1,
+  "scope": "synthetic finite scalar controls and exact arithmetic only"
+}

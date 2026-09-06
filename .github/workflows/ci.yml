@@ -8,21 +8,55 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: prover-trial-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
+  v02-candidates:
+    name: Isolated v0.2 candidates
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout candidate source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Additional consistency and failure-path fixtures
+        run: python3 scripts/test_v02_assurance.py
+      - name: Replay Python controls and axiom-gate fixtures
+        run: python3 scripts/verify_v02.py --python-only
+      - name: Install pinned elan bootstrap source
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/0e36a07b9bbcc5381fa6250df109f9a4f94d7bac/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      # This reviewed candidate imports only Init. Use the pinned Lean toolchain
+      # directly so unrelated Mathlib builds cannot hide its acceptance result.
+      - name: Compile all six isolated candidates and audit exact axioms
+        run: |
+          set -euo pipefail
+          lean --version
+          lean release_candidates/v0.2/InformationLoss.lean > candidate_axioms.log 2>&1 \
+            || { cat candidate_axioms.log; exit 1; }
+          cat candidate_axioms.log
+          python3 scripts/check_axioms.py candidate_axioms.log release_candidates/v0.2/axiom_registry.json
+
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, resolved 2026-09-05
         with:
           # Research Engine outcomes bind evidence to prior source commits.
           # A shallow checkout makes valid provenance look nonexistent.
           fetch-depth: 0
+          persist-credentials: false
 
       # Cheap doc gate: fail on count drift (the headline count regressed 3x).
       - name: Check count consistency (docs)
@@ -393,9 +427,11 @@ jobs:
           fi
           echo "Lane separation holds: no Ecdlp↔ResearchOS cross-imports outside the ECDLP audit harness."
 
+      # Only the bootstrap script source is pinned here; binary supply-chain
+      # attestation is still a release-review obligation.
       - name: Install elan (Lean toolchain manager)
         run: |
-          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/0e36a07b9bbcc5381fa6250df109f9a4f94d7bac/elan-init.sh \
             | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
@@ -406,9 +442,9 @@ jobs:
       # rebuilds only files that actually changed instead of recompiling everything — most
       # of the wall-clock is the repo's `native_decide` facts on 256-bit numbers (primality
       # Pratt certificates, GLV), which rarely change. Safe: lake is trace-based, so it
-      # re-verifies every artifact against its inputs (source + dep oleans + toolchain) and
-      # rebuilds anything stale; a stale restore can only slow a run, never admit a wrong
-      # result. Key is per-commit (always saves a fresh cache); restore-keys fall back to
+      # checks traces against its inputs. This is not an independent authenticity check
+      # of a cache. Release acceptance additionally requires the clean project rebuild
+      # in scripts/verify_v02.py --full. Key is per-commit; restore-keys fall back to
       # the most recent build for the same toolchain/manifest.
       - name: Cache project build (.lake/build) for incremental rebuilds
         uses: actions/cache@v4
@@ -417,9 +453,8 @@ jobs:
           key: lake-build-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-${{ github.sha }}
           restore-keys: |
             lake-build-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-
-            lake-build-${{ runner.os }}-
 
-      - name: Build and verify ALL proofs
+      - name: Build both canonical proof libraries
         run: lake build
 
       # Trust gate: assert no built result depends on `sorryAx` or any axiom outside the
@@ -442,6 +477,9 @@ jobs:
             || { echo "::error::ResearchOS axiom audit failed to elaborate"; cat researchos_axiom_audit.txt; exit 1; }
           cat researchos_axiom_audit.txt
           python3 scripts/check_axioms.py researchos_axiom_audit.txt data/researchos_result_registry.json
+
+      - name: Verify isolated v0.2 proof candidates and exact controls
+        run: python3 scripts/verify_v02.py --candidate-only
 
       # Open conjecture stems in Ecdlp/Targets/ are not part of the build graph. This
       # step typechecks them so the generator's output is at least well-formed Lean.

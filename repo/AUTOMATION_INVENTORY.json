@@ -101,7 +101,7 @@
       "trigger_policy": "manual_only",
       "disposition": "park",
       "spends_external_budget": true,
-      "reason": "Discovery plus proof generation is outside monitored candidate intake after a select-none decision."
+      "reason": "Disabled at job level in the v0.2 candidate: model-generated code must not share a live-secret execution context. Re-enabling requires reviewed isolation, a separate publisher, and an explicit selected-target decision."
     },
     {
       "file": ".github/workflows/prove.yml",
