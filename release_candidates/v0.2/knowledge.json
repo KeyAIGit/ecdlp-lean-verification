@@ -14,11 +14,12 @@
       "lean_declarations": [
         "Ecdlp.ReleaseV02.noExactDecoderOfCollision"
       ],
-      "formal_status": "candidate_not_compiled",
+      "formal_status": "lean_verified_candidate_not_canonical",
       "limitations": [
         "Conditional on an actual feature collision and different labels.",
         "No unrestricted ECDLP lower bound."
-      ]
+      ],
+      "verification_evidence": "verification.json#/candidate_check"
     },
     {
       "id": "V02-PAIR-CEILING",
@@ -28,14 +29,15 @@
         "Ecdlp.ReleaseV02.complementaryPair",
         "Ecdlp.ReleaseV02.pairedHits_eq_length"
       ],
-      "formal_status": "candidate_not_compiled",
+      "formal_status": "lean_verified_candidate_not_canonical",
       "python_status": "replayed",
       "replay": "replay.json#/negation_pair_controls",
       "limitations": [
         "Finite paired-list formulation only.",
         "An elliptic-curve involution and probability-measure bridge is not formalized here.",
         "Additional non-invariant features or adaptive point queries are outside scope."
-      ]
+      ],
+      "verification_evidence": "verification.json#/candidate_check"
     },
     {
       "id": "V02-LOCAL-CONTROL",
@@ -44,14 +46,15 @@
       "lean_declarations": [
         "Ecdlp.ReleaseV02.maskedEdgeIdentity"
       ],
-      "formal_status": "local_identity_candidate_not_compiled",
+      "formal_status": "local_identity_lean_verified_full_family_not_formalized",
       "python_status": "replayed",
       "replay": "replay.json#/large_local_control",
       "limitations": [
         "The concrete count and arbitrary-size counterexample family are not fully formalized in Lean.",
         "No defect of parity lab is asserted.",
         "This is known-scalar synthetic validation, not a public point decoder."
-      ]
+      ],
+      "verification_evidence": "verification.json#/candidate_check"
     },
     {
       "id": "V02-ANCHOR-UNIQUENESS",
@@ -60,11 +63,12 @@
       "lean_declarations": [
         "Ecdlp.ReleaseV02.anchoredSequenceUnique"
       ],
-      "formal_status": "candidate_not_compiled",
+      "formal_status": "lean_verified_candidate_not_canonical",
       "limitations": [
         "An infinite path statement, not an odd cyclic wraparound rule.",
         "Uniqueness does not construct an efficient hidden-scalar evaluator."
-      ]
+      ],
+      "verification_evidence": "verification.json#/candidate_check"
     },
     {
       "id": "V02-ENVELOPE",
@@ -73,12 +77,13 @@
       "lean_declarations": [
         "Ecdlp.ReleaseV02.rationalEnvelope"
       ],
-      "formal_status": "candidate_not_compiled",
+      "formal_status": "lean_verified_candidate_not_canonical",
       "python_status": "replayed",
       "replay": "replay.json#/rational_envelope",
       "limitations": [
         "Does not prove primality, ord_n(2), or the analytic cycle-label inequality."
-      ]
+      ],
+      "verification_evidence": "verification.json#/candidate_check"
     },
     {
       "id": "V02-CYCLE-ANALYTIC-PENDING",
@@ -111,5 +116,7 @@
       "head": "db37d45e15fbe8e2ac8282973352e42fb24e15cb",
       "integration": "open_draft_observed_not_merged_by_this_package"
     }
-  ]
+  ],
+  "verification_evidence": "verification.json",
+  "preparation_status_note": "The initial package was not compiled locally. Candidate declarations were subsequently checked in GitHub Actions; see digest-bound verification.json. Canonical ledger promotion and release acceptance are separate."
 }
