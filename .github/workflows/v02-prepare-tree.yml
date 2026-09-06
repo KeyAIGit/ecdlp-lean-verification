@@ -1,0 +1,89 @@
+name: Prepare reviewed v0.2 Git tree
+
+# Temporary, data-only source transfer. Never executes the reconstructed source.
+# This job creates Git objects only. It cannot advance a branch or publish a release.
+# The final tree excludes this workflow and all transport chunks.
+on:
+  push:
+    branches: ['release/v0.2-assurance']
+    paths: ['.github/workflows/v02-prepare-tree.yml', '.release-v02/**']
+
+permissions:
+  contents: read
+
+jobs:
+  prepare-reviewed-tree:
+    if: github.repository == 'KeyAIGit/ecdlp-lean-verification' && github.ref == 'refs/heads/release/v0.2-assurance'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Reconstruct reviewed text and create the hash-bound Git tree only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, lzma, os, subprocess, urllib.request
+          from pathlib import Path, PurePosixPath
+          base = '3fd892991e2830bc0f933251ac9b605bf1dd04cd'
+          expected = '3825d97641fc8e51be25315c18b6e1f076cf5634'
+          packed = b''.join(Path(f'.release-v02/{i:02d}.bin').read_bytes() for i in range(10))
+          if len(packed) != 28088 or hashlib.sha256(packed).hexdigest() != '6eabb77768a1ddf0c1ceab3d0279e1d5fe3716eb240c5a7506910c3cd62876e0':
+              raise SystemExit('Source transport digest mismatch')
+          decoder = lzma.LZMADecompressor(memlimit=128 * 1024 * 1024)
+          raw = decoder.decompress(packed, max_length=1024 * 1024)
+          if not decoder.eof or decoder.unused_data:
+              raise SystemExit('Invalid or excessive source transport')
+          changes = json.loads(raw)
+          if not isinstance(changes, list) or len(changes) != 70:
+              raise SystemExit('Unexpected source-change count')
+          seen, entries = set(), []
+          for path, mode, edits in changes:
+              p = PurePosixPath(path)
+              if p.is_absolute() or '..' in p.parts or path in seen or str(p) != path:
+                  raise SystemExit('Invalid source path')
+              if path.startswith(('fonts/', 'archive/', '.release-v02/')) or 'parity-lab' in path.lower():
+                  raise SystemExit('Out-of-scope source path')
+              if mode not in ('100644', '100755') or not isinstance(edits, list):
+                  raise SystemExit('Invalid source edit')
+              seen.add(path)
+              original = subprocess.run(['git', 'show', f'{base}:{path}'], capture_output=True)
+              if original.returncode not in (0, 128):
+                  raise SystemExit('Cannot read fixed source baseline')
+              lines = original.stdout.decode('utf-8').splitlines(keepends=True) if original.returncode == 0 else []
+              previous_end = 0
+              for start, end, replacement in edits:
+                  if type(start) is not int or type(end) is not int or not isinstance(replacement, str):
+                      raise SystemExit('Invalid line-edit types')
+                  if not previous_end <= start <= end <= len(lines):
+                      raise SystemExit('Invalid or overlapping line edits')
+                  previous_end = end
+              for start, end, replacement in reversed(edits):
+                  lines[start:end] = replacement.splitlines(keepends=True)
+              content = ''.join(lines)
+              if len(content.encode('utf-8')) > 2 * 1024 * 1024:
+                  raise SystemExit('Oversized reconstructed file')
+              entries.append({'path': path, 'mode': mode, 'type': 'blob', 'content': content})
+          payload = json.dumps({'base_tree': 'e973f586858ce2093f8f0d127b1d28e42b69d15e', 'tree': entries}).encode('utf-8')
+          request = urllib.request.Request(
+              'https://api.github.com/repos/KeyAIGit/ecdlp-lean-verification/git/trees',
+              data=payload, method='POST', headers={
+                  'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                  'Accept': 'application/vnd.github+json',
+                  'Content-Type': 'application/json',
+                  'X-GitHub-Api-Version': '2022-11-28'})
+          with urllib.request.urlopen(request, timeout=120) as response:
+              result = json.load(response)
+          if result.get('sha') != expected:
+              raise SystemExit('Reconstructed Git tree does not match reviewed local tree')
+          print('V02_PREPARED_TREE=' + result['sha'])
+          print('Reconstructed files:', len(entries))
+          print('No branch refs were changed and no reconstructed code was executed.')
+          PY
