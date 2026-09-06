@@ -1,0 +1,39 @@
+name: v0.2 release assurance
+
+# Branch-scoped assurance only; no deployments, external services, or secrets.
+on:
+  push:
+    branches: ['release/v0.2-assurance']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-v02-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout the exact revision without retained credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Archive tracked review sources and record provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/release-v02"
+          git rev-parse HEAD > "$RUNNER_TEMP/release-v02/SOURCE_COMMIT"
+          git ls-files -z | grep -zv '^fonts/' | tar --null -T - -czf "$RUNNER_TEMP/release-v02/source.tar.gz"
+          (cd "$RUNNER_TEMP/release-v02" && sha256sum source.tar.gz > SHA256SUMS)
+      - name: Preserve commit-bound review sources
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: release-v02-source-${{ github.sha }}
+          path: ${{ runner.temp }}/release-v02/
+          retention-days: 7
+          if-no-files-found: error
