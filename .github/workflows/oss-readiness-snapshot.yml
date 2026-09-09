@@ -1,0 +1,39 @@
+name: OSS readiness source snapshot
+
+on:
+  push:
+    branches: [review/oss-readiness-20260909]
+    paths: [.github/workflows/oss-readiness-snapshot.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    if: github.repository == 'KeyAIGit/ecdlp-lean-verification'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact audit source without persistent credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Package tracked source and factual Git inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/oss-review"
+          git archive --format=tar.gz -o "$RUNNER_TEMP/oss-review/source.tar.gz" HEAD
+          git rev-parse HEAD > "$RUNNER_TEMP/oss-review/source-commit.txt"
+          git ls-tree -r HEAD > "$RUNNER_TEMP/oss-review/tree.txt"
+          git shortlog -sne HEAD > "$RUNNER_TEMP/oss-review/git-authors.txt"
+          git log --format='%H%x09%aN%x09%s' HEAD > "$RUNNER_TEMP/oss-review/commit-subjects.txt"
+          sha256sum "$RUNNER_TEMP/oss-review/source.tar.gz" > "$RUNNER_TEMP/oss-review/source.sha256"
+      - name: Retain audit input for this review only
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: oss-readiness-source-${{ github.sha }}
+          path: ${{ runner.temp }}/oss-review/
+          retention-days: 3
+          if-no-files-found: error
