@@ -29,7 +29,10 @@ jobs:
           git ls-tree -r HEAD > "$RUNNER_TEMP/oss-review/tree.txt"
           git shortlog -sne HEAD > "$RUNNER_TEMP/oss-review/git-authors.txt"
           git log --format='%H%x09%aN%x09%s' HEAD > "$RUNNER_TEMP/oss-review/commit-subjects.txt"
+          # A Git bundle contains objects/refs, not .git/config, credentials or hooks.
+          git bundle create "$RUNNER_TEMP/oss-review/history.bundle" --all
           sha256sum "$RUNNER_TEMP/oss-review/source.tar.gz" > "$RUNNER_TEMP/oss-review/source.sha256"
+          sha256sum "$RUNNER_TEMP/oss-review/history.bundle" > "$RUNNER_TEMP/oss-review/history.sha256"
       - name: Retain audit input for this review only
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
