@@ -1,0 +1,30 @@
+name: Handoff review source snapshot
+on:
+  push:
+    branches: [feat/reproducible-handoff-20260910]
+    paths: [.github/workflows/handoff-source-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Export source and credential-free Git objects
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/handoff-review"
+          git bundle create "$RUNNER_TEMP/handoff-review/history.bundle" --all
+          git rev-parse HEAD > "$RUNNER_TEMP/handoff-review/source-commit.txt"
+          sha256sum "$RUNNER_TEMP/handoff-review/history.bundle" > "$RUNNER_TEMP/handoff-review/checksums.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: handoff-review-${{ github.sha }}
+          path: ${{ runner.temp }}/handoff-review/
+          retention-days: 3
+          if-no-files-found: error
