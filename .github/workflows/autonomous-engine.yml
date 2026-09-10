@@ -54,6 +54,10 @@ concurrency:
 
 jobs:
   engine:
+    # v0.2: disabled until secret-free, network-isolated candidate execution
+    # and a separate reviewed publisher are implemented and approved.
+    # Manual dispatch is not a sandbox. This job must not run with live secrets.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 300
     steps:

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "record_kind": "observed_github_actions_candidate_verification",
+  "release_candidate": "0.2.0-rc.1",
+  "source_commit": "084e0e5eafd95ec74cd8237c1c0e5aef174e1a81",
+  "base_commit": "a67c7558f0a02cd96bd852a68b68ca8799143556",
+  "tested_pr_merge_commit": "a8280bc15676faa0260219022241d5bfa8ad1050",
+  "pull_request": 432,
+  "candidate_check": {
+    "workflow_run_id": 34014997352,
+    "job_id": 101437125386,
+    "job_url": "https://github.com/KeyAIGit/ecdlp-lean-verification/actions/runs/34014997352/job/101437125386",
+    "checked_at_utc": "2026-09-06T05:51:12Z",
+    "lean_version": "4.31.0",
+    "lean_commit": "68218e876d2a38b1985b8590fff244a83c321783",
+    "commands": [
+      "lean release_candidates/v0.2/InformationLoss.lean",
+      "python3 scripts/check_axioms.py candidate_axioms.log release_candidates/v0.2/axiom_registry.json"
+    ],
+    "elaboration": "passed",
+    "axiom_audit": "passed",
+    "exact_registry_match": true,
+    "per_row_base_checked": true,
+    "observed_axioms": {
+      "Ecdlp.ReleaseV02.noExactDecoderOfCollision": [],
+      "Ecdlp.ReleaseV02.complementaryPair": [],
+      "Ecdlp.ReleaseV02.pairedHits_eq_length": [],
+      "Ecdlp.ReleaseV02.maskedEdgeIdentity": [],
+      "Ecdlp.ReleaseV02.anchoredSequenceUnique": [],
+      "Ecdlp.ReleaseV02.rationalEnvelope": []
+    },
+    "compiler_trusted_declarations": [],
+    "source_sha256": {
+      "release_candidates/v0.2/InformationLoss.lean": "feea6e662669db7914b4d980c7d9c609722ef04602af4d18031369f753254514",
+      "release_candidates/v0.2/axiom_registry.json": "d01514c75934c6328bb95c4b5e62fcd3d6af73261ff4701bce3edfaa7b9e0935",
+      "scripts/check_axioms.py": "43b8041275b221e171136bfc3545c54243e8f886c16a1156450cc35278a3e7ac"
+    }
+  },
+  "python_checks": {
+    "axiom_regression_tests": 40,
+    "additional_assurance_tests": 15,
+    "exact_replay": "passed",
+    "optimized_python_replay": "passed",
+    "local_package_tests": 26
+  },
+  "canonical_results_added": 0,
+  "release_accepted": false,
+  "scope_limits": [
+    "A maintained record of observed CI output, not an independently authenticated proof certificate.",
+    "Source digests bind the candidate acceptance evidence to the listed files, not arbitrary future modifications.",
+    "The standard two canonical ledger audits and the full repository CI are separate gates.",
+    "No formal analytic cycle-label bound, full counterexample-family theorem, novel ECDLP solver, or release approval follows.",
+    "Prepared-package replay.json records a Python-only invocation; its lean_status is not the status of this later CI invocation."
+  ]
+}

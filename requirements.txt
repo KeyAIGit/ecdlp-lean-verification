@@ -1,10 +1,11 @@
 # Optional Python dependencies for the auxiliary scripts.
 #
-# IMPORTANT: the correctness pipeline needs NONE of these. Lean + Mathlib is the
-# verifier; the doc/stats/graph generators (gen_stats, build_frontier_map,
-# build_knowledge_graph, build_dashboard, coverage_report, gen_status, check_counts)
-# use the Python 3 standard library only. Install these only to run the *optional*
-# CAS-certificate and model-prover/explorer scripts below.
+# The Lean proof build uses the pinned Lean/Mathlib toolchain. Most metadata
+# generators use the Python standard library, but full CI ALSO runs symbolic
+# certificate checks with their pinned experiment requirements (for example
+# experiments/glv_semaev_symmetry/requirements.txt). Thus full CI is not free of
+# Python dependencies. Model SDKs below are optional and are not proof authorities.
+# Install only the dependencies required for the specific workflow being run.
 #
 #   sympy      — offline CAS certificates (scripts/certify.py, pratt_certificate.py,
 #                scripts/certs/*): independent-verification of division-polynomial /

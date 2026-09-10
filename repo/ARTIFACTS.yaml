@@ -18,6 +18,41 @@ principles:
   - product_claims_and_mvp_boundaries_are_canonical
 
 classes:
+  oss_readiness:
+    description: Default licensing policy, preserved third-party notices, and contributor entry points.
+    paths:
+      - LICENSE
+      - NOTICE
+      - LICENSING.md
+      - LICENSES/
+      - THIRD_PARTY_NOTICES.md
+      - CONTRIBUTING.md
+      - SECURITY.md
+      - repo/OSS_READINESS.json
+    owner: maintainer_rights_review
+    hand_edit: true
+    generated: false
+    gates:
+      - scripts/check_oss_readiness.py
+      - scripts/test_check_oss_readiness.py
+    risks:
+      - A passing metadata check is not a legal ownership attestation or OSS clearance.
+      - Existing third-party licenses and attributed source must be preserved.
+
+  release_candidate_evidence:
+    description: Unpromoted release candidates, scoped claims, and preparation evidence.
+    paths:
+      - release_candidates/
+    owner: release_assurance
+    hand_edit: true
+    generated: mixed
+    gates:
+      - scripts/verify_v02.py --candidate-only
+      - full existing repository CI before any promotion
+    risks:
+      - Candidate files are not canonical ledger results.
+      - Python replays and arithmetic bounds do not certify analytic theorems.
+
   kernel_verified_surface:
     description: Machine-checked Lean source and project build pins.
     paths:

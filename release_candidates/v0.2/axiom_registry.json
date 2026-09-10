@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "purpose": "candidate audit only; not a canonical theorem ledger",
+  "ledger_declarations": [
+    "Ecdlp.ReleaseV02.noExactDecoderOfCollision",
+    "Ecdlp.ReleaseV02.complementaryPair",
+    "Ecdlp.ReleaseV02.pairedHits_eq_length",
+    "Ecdlp.ReleaseV02.maskedEdgeIdentity",
+    "Ecdlp.ReleaseV02.anchoredSequenceUnique",
+    "Ecdlp.ReleaseV02.rationalEnvelope"
+  ],
+  "declarations": {
+    "Ecdlp.ReleaseV02.noExactDecoderOfCollision": {
+      "file": "release_candidates/v0.2/InformationLoss.lean"
+    },
+    "Ecdlp.ReleaseV02.complementaryPair": {
+      "file": "release_candidates/v0.2/InformationLoss.lean"
+    },
+    "Ecdlp.ReleaseV02.pairedHits_eq_length": {
+      "file": "release_candidates/v0.2/InformationLoss.lean"
+    },
+    "Ecdlp.ReleaseV02.maskedEdgeIdentity": {
+      "file": "release_candidates/v0.2/InformationLoss.lean"
+    },
+    "Ecdlp.ReleaseV02.anchoredSequenceUnique": {
+      "file": "release_candidates/v0.2/InformationLoss.lean"
+    },
+    "Ecdlp.ReleaseV02.rationalEnvelope": {
+      "file": "release_candidates/v0.2/InformationLoss.lean"
+    }
+  },
+  "axiom_base": {
+    "Ecdlp.ReleaseV02.noExactDecoderOfCollision": "standard",
+    "Ecdlp.ReleaseV02.complementaryPair": "standard",
+    "Ecdlp.ReleaseV02.pairedHits_eq_length": "standard",
+    "Ecdlp.ReleaseV02.maskedEdgeIdentity": "standard",
+    "Ecdlp.ReleaseV02.anchoredSequenceUnique": "standard",
+    "Ecdlp.ReleaseV02.rationalEnvelope": "standard"
+  }
+}

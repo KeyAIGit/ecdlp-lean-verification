@@ -1,6 +1,12 @@
-# ECDLP Lean formalization (v0.1)
+# ECDLP Lean formalization (v0.2 release candidate)
 
-![Verified theorems](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/KeyAIGit/-ecdlp-lean-verification/main/badges/theorems.json)
+**Release candidate, not an accepted v0.2 release.** This update prepares
+assurance fixes and isolated information-loss proof candidates. Its new
+Lean source is not part of the canonical theorem counts. See
+`release_candidates/v0.2/README.md` for exact verification status,
+scope limits, and the remaining release gates.
+
+![Verified theorems](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/KeyAIGit/ecdlp-lean-verification/main/badges/theorems.json)
 
 KeyAI is a **verification workspace for AI research**. This repository is its public
 reference deployment: a kernel-verified Lean 4 + Mathlib library about the secp256k1
@@ -22,11 +28,26 @@ This file is the front door for humans and low-context agents alike. Strategy li
 `repo/RESEARCH_ENGINE_V0.json`; product category, current-vs-future capability, and the
 MVP evidence gate live in `repo/PRODUCT_MODEL.json`; agents start at `AGENTS.md`.
 
+## Reuse, contributions, and release status
+
+**Apache-2.0 for original project contributions.** See [LICENSE](LICENSE) and
+[LICENSING.md](LICENSING.md). Known third-party components retain their terms in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); cited papers are not relicensed.
+No custom license or noncommercial restriction is added.
+
+For a first contribution, use [CONTRIBUTING.md](CONTRIBUTING.md) and
+[SETUP.md](SETUP.md). For integrity issues, see [SECURITY.md](SECURITY.md).
+The [2026-09-09 readiness review](docs/OSS_READINESS_REVIEW_20260909.md) records
+the earlier pending state. The [adoption record](docs/LICENSE_ADOPTION_20260909.md)
+records the current licensing decision. Neither document certifies a release,
+grant award, or ECDLP result.
+
 ## The one invariant (never violate)
 
-**A green build means every built theorem is fully proved.** The Lean kernel is the primary
-proof authority. Rows using `native_decide` additionally trust the Lean compiler and are
-disclosed separately. Never `sorry`/`admit`, weaken/delete a proof to pass CI, or add an
+**A successful build and the exact axiom audits validate the statements actually checked,
+relative to their declared hypotheses and trusted base.** Lean checks proof terms;
+`native_decide` additionally trusts the compiler. A green status alone does not
+establish scientific novelty, cryptographic security, or coverage of an unbuilt file. Never `sorry`/`admit`, weaken/delete a proof to pass CI, or add an
 axiom. Open conjecture stems live in `Ecdlp/Targets/` (one `sorry` each) and are
 intentionally never built or imported, so the invariant holds.
 
@@ -96,7 +117,7 @@ A positive toy result is `supported`, never `proved`.
 
 ## Highlights (for a Lean / formal-methods reader)
 
-The genuinely substantive results — each kernel-checked, each disclosed at its exact scope:
+Selected formalized results, with theorem-specific scope and compiler-trust disclosures:
 
 - **The exact curve cardinality `#E(𝔽_p) = n` — proved without Hasse or Schoof**
   (`CurveCardinalityExact.lean`): a curve-specific certificate (`n ∣ #E`,
@@ -108,13 +129,14 @@ The genuinely substantive results — each kernel-checked, each disclosed at its
   reusable artifacts in the repo (Mathlib lacks them).
 - **Generic-group DLP lower bound — the combinatorial core** (`generic_dlog_query_bound`):
   the information-theoretic heart of Shoup/Nechaev `Ω(√p)` via affine collision counting,
-  with BSGS/Pollard-rho upper bounds giving generic DLP `Θ(√n)`. Not the full adaptive
-  Shoup theorem (no adversary/probability model — disclosed in-file).
+  to be read alongside the classical BSGS/Pollard-rho baselines. The repository
+  does not formalize the complete adaptive adversary/probability theorem, so this
+  entry is not a machine-checked end-to-end asymptotic security theorem.
 - **The GLV/CM endomorphism, complete**: `(x,y) ↦ (βx, y)` proved an additive
   endomorphism (`glvHom`) with full slope/branch analysis, and the eigenvalue
   `glvHom = [λ]` **unconditional on the whole point group**
   (`secp256k1_glvHom_eq_zsmul_unconditional`) via the cardinality keystone.
-- **Semaev summation polynomials `S₃`/`S₄` — first formalized in Lean/Mathlib**, plus a
+- **Lean formalizations of Semaev summation polynomials `S₃`/`S₄`**, plus a
   division-polynomial / torsion-disjointness ladder (`Ψ₂…Ψ₇` coprimality via explicit
   Bézout certificates) and the early Weil ladder (W1–W3).
 - **Audited attack boundaries**: Pohlig–Hellman, anti-MOV/Frey–Rück (embedding degree
@@ -170,19 +192,22 @@ CI is the verifier of record: build + no-sorry gate + axiom audit + consistency 
 ## Legacy proving automation (honest)
 
 The scaffolded loop — discover → attempt → scoped PR — is
-`.github/workflows/autonomous-engine.yml`, **dispatch-only**. The zero-cost tactic ladder
+`.github/workflows/autonomous-engine.yml`, **dispatch-only and job-disabled in this candidate**.
+Re-enabling it requires reviewed isolation and a separate publisher; a manual trigger
+is not a sandbox. The zero-cost tactic ladder
 plus human-in-loop promotion is what has landed every proof; the free Featherless prover
 tier is dead from CI (Cloudflare bot-block of GitHub runners, verified 2026-07-15) and
-external model-provers stand at 0 accepted. `notes/ENGINE.md` documents how the loop
-works, its safety model (branch-isolated, kernel-judged twice, budget-capped), and exactly
-what it does vs does not do autonomously. The prover-tier protocol and promotion rules
-live in `AGENTS.md`.
+external model-provers stand at 0 accepted. `notes/ENGINE.md` documents the historical loop;
+its branch isolation and budget caps do not provide a secret-free execution sandbox.
+The prover-tier protocol and promotion rules live in `AGENTS.md`.
 
 ## Authorship & AI disclosure
 
 The human maintainer is the author and bears intellectual responsibility for every claim
-of novelty and significance; correctness of each listed theorem is guaranteed by the Lean
-kernel. AI tooling (assistant models for formalization, code, and proof search) was used
+of novelty and significance. Formal acceptance is relative to the stated hypotheses,
+the audited trusted base, and the actual source/toolchain used. It is not a guarantee
+that an informal scientific interpretation is correct. Literature priority is not
+established merely by formalization. AI tooling (assistant models for formalization, code, and proof search) was used
 as an aid — it is disclosed here and is not an author. CI-bot commits are git metadata,
 not authorship. License and the final author list are set by the maintainer.
 

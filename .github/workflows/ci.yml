@@ -8,21 +8,69 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
-  group: prover-trial-${{ github.ref }}
-  cancel-in-progress: false
+  group: verify-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  v02-candidates:
+    name: Isolated v0.2 candidates
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout candidate source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Additional consistency and failure-path fixtures
+        run: python3 scripts/test_v02_assurance.py
+      - name: Replay Python controls and axiom-gate fixtures
+        run: python3 scripts/verify_v02.py --python-only
+      - name: Install pinned elan bootstrap source
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/0e36a07b9bbcc5381fa6250df109f9a4f94d7bac/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      # This reviewed candidate imports only Init. Use the pinned Lean toolchain
+      # directly so unrelated Mathlib builds cannot hide its acceptance result.
+      - name: Compile all six isolated candidates and audit exact axioms
+        run: |
+          set -euo pipefail
+          lean --version
+          lean release_candidates/v0.2/InformationLoss.lean > candidate_axioms.log 2>&1 \
+            || { cat candidate_axioms.log; exit 1; }
+          cat candidate_axioms.log
+          python3 scripts/check_axioms.py candidate_axioms.log release_candidates/v0.2/axiom_registry.json
+
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 55
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, resolved 2026-09-05
         with:
           # Research Engine outcomes bind evidence to prior source commits.
           # A shallow checkout makes valid provenance look nonexistent.
           fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check license and notice metadata (not legal clearance)
+        run: |
+          python3 scripts/check_oss_readiness.py
+          python3 scripts/test_check_oss_readiness.py
+
+      - name: Test hosted-runner disk preparation guards
+        run: python3 scripts/test_prepare_lean_ci.py
+
+      - name: Reserve disk for Lean and Mathlib on the disposable runner
+        run: python3 scripts/prepare_lean_ci.py --apply
+
+      - name: Check agent-bundle manifest
+        run: python3 scripts/export_agent_bundle.py --check
 
       # Cheap doc gate: fail on count drift (the headline count regressed 3x).
       - name: Check count consistency (docs)
@@ -317,8 +365,6 @@ jobs:
       # Agent-bundle gate: the committed context-tier routing table
       # (bundles/MANIFEST.json) must reference only files that exist and stay in
       # sync with the tier definitions in scripts/export_agent_bundle.py.
-      - name: Check agent-bundle manifest
-        run: python3 scripts/export_agent_bundle.py --check
 
       - name: Check generated-artifact fixpoint
         run: python3 scripts/check_generated_fixpoint.py --check
@@ -393,34 +439,41 @@ jobs:
           fi
           echo "Lane separation holds: no Ecdlp↔ResearchOS cross-imports outside the ECDLP audit harness."
 
+      # Only the bootstrap script source is pinned here; binary supply-chain
+      # attestation is still a release-review obligation.
       - name: Install elan (Lean toolchain manager)
         run: |
-          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/0e36a07b9bbcc5381fa6250df109f9a4f94d7bac/elan-init.sh \
             | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
       - name: Fetch prebuilt Mathlib cache
-        run: lake exe cache get
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/lean-ci-diagnostics"
+          if lake exe cache get > "$RUNNER_TEMP/lean-ci-diagnostics/mathlib-cache.log" 2>&1; then
+            tail -n 12 "$RUNNER_TEMP/lean-ci-diagnostics/mathlib-cache.log"
+          else
+            tail -n 80 "$RUNNER_TEMP/lean-ci-diagnostics/mathlib-cache.log"
+            df -h
+            exit 1
+          fi
 
-      # Cache the project's OWN compiled artifacts (.lake/build) across runs so `lake build`
-      # rebuilds only files that actually changed instead of recompiling everything — most
-      # of the wall-clock is the repo's `native_decide` facts on 256-bit numbers (primality
-      # Pratt certificates, GLV), which rarely change. Safe: lake is trace-based, so it
-      # re-verifies every artifact against its inputs (source + dep oleans + toolchain) and
-      # rebuilds anything stale; a stale restore can only slow a run, never admit a wrong
-      # result. Key is per-commit (always saves a fresh cache); restore-keys fall back to
-      # the most recent build for the same toolchain/manifest.
-      - name: Cache project build (.lake/build) for incremental rebuilds
-        uses: actions/cache@v4
-        with:
-          path: .lake/build
-          key: lake-build-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-${{ github.sha }}
-          restore-keys: |
-            lake-build-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-
-            lake-build-${{ runner.os }}-
-
-      - name: Build and verify ALL proofs
-        run: lake build
+      # No restored project build cache is accepted as release evidence.
+      # Dependency caches remain a disclosed upstream trust boundary.
+      - name: Build both canonical proof libraries
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake clean ecdlp
+          if lake build > "$RUNNER_TEMP/lean-ci-diagnostics/lean-build.log" 2>&1; then
+            tail -n 30 "$RUNNER_TEMP/lean-ci-diagnostics/lean-build.log"
+          else
+            tail -n 120 "$RUNNER_TEMP/lean-ci-diagnostics/lean-build.log"
+            df -h
+            exit 1
+          fi
 
       # Trust gate: assert no built result depends on `sorryAx` or any axiom outside the
       # allowed base {propext, Classical.choice, Quot.sound, Lean.ofReduceBool}. This is
@@ -442,6 +495,9 @@ jobs:
             || { echo "::error::ResearchOS axiom audit failed to elaborate"; cat researchos_axiom_audit.txt; exit 1; }
           cat researchos_axiom_audit.txt
           python3 scripts/check_axioms.py researchos_axiom_audit.txt data/researchos_result_registry.json
+
+      - name: Verify isolated v0.2 proof candidates and exact controls
+        run: python3 scripts/verify_v02.py --candidate-only
 
       # Open conjecture stems in Ecdlp/Targets/ are not part of the build graph. This
       # step typechecks them so the generator's output is at least well-formed Lean.
@@ -465,3 +521,23 @@ jobs:
       # smoke target (targets/001, status=verified) on every push, spending model
       # attempts for no new information. The standalone dispatch workflow
       # (.github/workflows/prover-target-attempt.yml) remains for on-demand runs.
+
+      - name: Record source-bound Lean diagnostics
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/lean-ci-diagnostics"
+          { git rev-parse HEAD; df -h; } > "$RUNNER_TEMP/lean-ci-diagnostics/source-and-disk.txt"
+          for log in axiom_audit.txt researchos_axiom_audit.txt; do
+            if [ -f "$log" ]; then cp -- "$log" "$RUNNER_TEMP/lean-ci-diagnostics/$log"; fi
+          done
+
+      - name: Retain Lean diagnostics without source or credentials
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: lean-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/lean-ci-diagnostics/
+          retention-days: 7
+          if-no-files-found: error

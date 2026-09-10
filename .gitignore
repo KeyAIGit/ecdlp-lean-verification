@@ -26,3 +26,6 @@ bundles/large.md
 platform/next-env.d.ts
 platform/.next/
 *.tsbuildinfo
+
+# Local v0.2 validation logs; never canonical proof evidence by themselves.
+_v02_validation/
