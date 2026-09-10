@@ -58,6 +58,14 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Check OSS notice metadata (not legal clearance)
+        run: |
+          python3 scripts/check_oss_readiness.py
+          python3 scripts/test_check_oss_readiness.py
+
+      - name: Check agent-bundle manifest
+        run: python3 scripts/export_agent_bundle.py --check
+
       # Cheap doc gate: fail on count drift (the headline count regressed 3x).
       - name: Check count consistency (docs)
         run: python3 scripts/check_counts.py
@@ -351,8 +359,6 @@ jobs:
       # Agent-bundle gate: the committed context-tier routing table
       # (bundles/MANIFEST.json) must reference only files that exist and stay in
       # sync with the tier definitions in scripts/export_agent_bundle.py.
-      - name: Check agent-bundle manifest
-        run: python3 scripts/export_agent_bundle.py --check
 
       - name: Check generated-artifact fixpoint
         run: python3 scripts/check_generated_fixpoint.py --check

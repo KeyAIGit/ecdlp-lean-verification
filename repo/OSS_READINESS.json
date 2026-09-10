@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-09-09",
+  "audited_source_commit": "5cc58439f109aa22db06787a464ce72054e6502e",
+  "status": "pending_rights_confirmation",
+  "proposed_default_license": "Apache-2.0",
+  "repository_license_granted": false,
+  "owner_approval": null,
+  "scope": "Bounded metadata and notice review, not exhaustive provenance or legal clearance.",
+  "third_party_files": [
+    {
+      "path": "Ecdlp/Proved/NormEDSIsElliptic.lean",
+      "license": "Apache-2.0",
+      "notice_path": "LICENSES/Apache-2.0.txt",
+      "source_sha256": "ed9c3a3fdc1e0c45666d815961337e0ab6faaa8ec379ca292c482eed9337aba1",
+      "copyright": "Copyright (c) 2024 David Kurniadi Angdinata. All rights reserved.",
+      "upstream": "https://github.com/leanprover-community/mathlib4/pull/13155",
+      "evidence": "existing source header and port attribution; not a full upstream diff"
+    },
+    {
+      "path": "archive/scratch/pr13155_eds.lean",
+      "license": "Apache-2.0",
+      "notice_path": "LICENSES/Apache-2.0.txt",
+      "source_sha256": "4ef31cf1a734e0aa72006288a4d5a1148056203acadd26b35396fb13ce0da481",
+      "copyright": "Copyright (c) 2024 David Kurniadi Angdinata. All rights reserved.",
+      "upstream": "https://github.com/leanprover-community/mathlib4/pull/13155",
+      "evidence": "existing source header and port attribution; not a full upstream diff"
+    },
+    {
+      "path": "fonts/Nunito-Variable.woff2",
+      "license": "OFL-1.1",
+      "notice_path": "fonts/OFL-Nunito.txt",
+      "source_sha256": "ba344451eab25b217a165363b1982048a5e5830a0daf36577973955a04cac793",
+      "copyright": "Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)",
+      "upstream": "https://github.com/google/fonts/blob/main/ofl/nunito/OFL.txt",
+      "upstream_notice_blob": "c8210f08ca3cece05b4f7baa428afe8e1abe3293",
+      "evidence": "embedded name table copyright and OFL URL; upstream notice matched; binary origin commit unverified"
+    },
+    {
+      "path": "fonts/Baloo2-Variable.woff2",
+      "license": "OFL-1.1",
+      "notice_path": "fonts/OFL-Baloo2.txt",
+      "source_sha256": "26fb4610d4bc976d2584ca15e66c11465dbc1f267a10dca668fcb3080dfe59c1",
+      "copyright": "Copyright 2019 The Baloo 2 Project Authors (https://github.com/EkType/Baloo2)",
+      "upstream": "https://github.com/google/fonts/blob/main/ofl/baloo2/OFL.txt",
+      "upstream_notice_blob": "72adb492d4f0ede2a9dbdefed607f33ad3a6fc68",
+      "evidence": "embedded name table copyright and OFL URL; upstream notice matched; binary origin commit unverified"
+    }
+  ],
+  "license_texts": [
+    {
+      "path": "LICENSES/Apache-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "fonts/OFL-Nunito.txt",
+      "sha256": "ee9491ad3ea5d390878695bd6cce49beb3cacd5c4312f8ab574b541e9f7afa21"
+    },
+    {
+      "path": "fonts/OFL-Baloo2.txt",
+      "sha256": "273d4bb4d30d7f7011adfa11ee858b1d70a6b1f94cae89e6fa261ed8f1b8839a"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "RIGHTS-HOLDER",
+      "required": "Confirm the legal releasing party and authority over original contributions, including coauthor/employment/contractor rights."
+    },
+    {
+      "id": "LICENSE-DECISION",
+      "required": "Approve Apache-2.0 commercial reuse, modification and scoped patent terms for an explicit release scope."
+    },
+    {
+      "id": "CORPUS-RIGHTS",
+      "required": "Confirm provenance and redistribution terms for the imported CSV, extracts and research archive, or prepare a separately scoped package."
+    },
+    {
+      "id": "ASSET-RIGHTS",
+      "required": "Confirm original brand-artwork rights and resolve any additional third-party material found before release."
+    },
+    {
+      "id": "RELEASE-VERIFICATION",
+      "required": "After rights resolution, verify root licensing metadata and clean full release CI; metadata tests alone do not clear a release."
+    }
+  ]
+}

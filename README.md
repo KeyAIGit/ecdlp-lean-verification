@@ -28,6 +28,18 @@ This file is the front door for humans and low-context agents alike. Strategy li
 `repo/RESEARCH_ENGINE_V0.json`; product category, current-vs-future capability, and the
 MVP evidence gate live in `repo/PRODUCT_MODEL.json`; agents start at `AGENTS.md`.
 
+## Reuse, contributions, and release status
+
+**Repository-wide licensing is pending rights confirmation.** Public visibility
+is not a blanket permission to reuse every file. Read [LICENSING.md](LICENSING.md)
+and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the proposed Apache-2.0
+default, existing third-party terms, and unresolved corpus/asset rights.
+
+For a first contribution, use [CONTRIBUTING.md](CONTRIBUTING.md) and
+[SETUP.md](SETUP.md). For integrity issues, see [SECURITY.md](SECURITY.md).
+The [2026-09-09 readiness review](docs/OSS_READINESS_REVIEW_20260909.md) records
+this maintenance pass; it does not certify a release, grant award, or ECDLP result.
+
 ## The one invariant (never violate)
 
 **A successful build and the exact axiom audits validate the statements actually checked,
