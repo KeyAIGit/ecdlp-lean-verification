@@ -72,7 +72,7 @@ def main() -> int:
             if args.full:
                 # This intentionally invalidates the PROJECT build cache for release
                 # evidence. Dependency caches/toolchain binaries remain a trust boundary.
-                execute(['lake', 'clean'], output / 'lake-clean.log')
+                execute(['lake', 'clean', 'ecdlp'], output / 'lake-clean.log')
                 execute(['lake', 'build'], output / 'lake-build.log', 7200)
                 for lane, stem, registry in (
                     ('ecdlp', 'Ecdlp/LedgerAxiomAudit.lean', 'data/result_registry.json'),

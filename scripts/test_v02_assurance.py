@@ -21,6 +21,39 @@ CANDIDATES = ROOT / 'release_candidates/v0.2'
 
 
 class AssuranceTests(unittest.TestCase):
+    def test_private_native_name_is_not_silently_allowed(self):
+        name = 'Fixture.public_result'
+        text = (f"'{name}' depends on axioms: [propext,\n "
+                "Fixture.hidden._native.native_decide.ax_1_1✝]\n")
+        registry = {'ledger_declarations': [name], 'declarations': {name: {}}}
+        with self.assertRaises(checker.AuditError):
+            checker.audit(text, registry)
+
+    def test_private_glv_leaf_uses_kernel_arithmetic(self):
+        source = (ROOT / 'Ecdlp/Proved/GlvSemaevSymmetry.lean').read_text(encoding='utf-8')
+        leaf = source.split('private theorem secp256k1_beta_ne_one :', 1)[1].split('/--', 1)[0]
+        self.assertNotIn('native_decide', leaf)
+        self.assertIn('norm_num [Secp256k1.p]', leaf)
+        # This source regression is not a substitute for the CI Lean build.
+
+    def test_full_mode_cleans_only_root_package(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            for name in (verifier.CANDIDATE, verifier.REGISTRY,
+                         'scripts/check_axioms.py', 'scripts/v02_replay.py'):
+                target = root / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / name).read_bytes())
+            with patch.object(verifier, 'ROOT', root), \
+                 patch.object(verifier, 'execute') as execute, \
+                 patch.object(verifier.shutil, 'which', return_value='/fixture/lake'), \
+                 patch.object(sys, 'argv', ['verify_v02.py', '--full']), \
+                 contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(verifier.main(), 0)
+            clean = [call.args[0] for call in execute.call_args_list
+                     if call.args[0][:2] == ['lake', 'clean']]
+            self.assertEqual(clean, [['lake', 'clean', 'ecdlp']])
+
     def test_exact_candidate_registry(self):
         registry = checker.load_registry(CANDIDATES / 'axiom_registry.json')
         expected, known, bases = checker.validate_registry(registry)

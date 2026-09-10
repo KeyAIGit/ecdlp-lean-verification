@@ -312,7 +312,7 @@ private theorem secp256k1_beta_ne_one :
     linear_combination h0
   have h3 : (3 : ZMod Secp256k1.p) ≠ 0 := by
     have h : ((3 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-      rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+      rw [Ne, ZMod.natCast_eq_zero_iff]; norm_num [Secp256k1.p]
     simpa using h
   intro h1
   exact h3 (by linear_combination hβeig - (Secp256k1.beta + 2 : ZMod Secp256k1.p) * h1)
