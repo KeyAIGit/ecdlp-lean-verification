@@ -1,0 +1,45 @@
+name: Source handoff checks
+on:
+  push:
+    paths:
+      - 'scripts/source_handoff.py'
+      - 'scripts/test_source_handoff.py'
+      - 'scripts/lean_portability.py'
+      - 'rehearsals/keyai-portability-001/snapshot.json'
+      - '.github/workflows/source-handoff-ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/source_handoff.py'
+      - 'scripts/test_source_handoff.py'
+      - 'scripts/lean_portability.py'
+      - 'rehearsals/keyai-portability-001/snapshot.json'
+      - '.github/workflows/source-handoff-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-handoff:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Regression and malformed-input tests
+        run: python3 scripts/test_source_handoff.py
+      - name: Render the pinned historical demo twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONHASHSEED=1 python3 scripts/source_handoff.py --demo --output "$RUNNER_TEMP/handoff-a"
+          PYTHONHASHSEED=2 python3 scripts/source_handoff.py --demo --output "$RUNNER_TEMP/handoff-b"
+          cmp "$RUNNER_TEMP/handoff-a/report.md" "$RUNNER_TEMP/handoff-b/report.md"
+          cmp "$RUNNER_TEMP/handoff-a/report.json" "$RUNNER_TEMP/handoff-b/report.json"
+          git diff --exit-code
+      - name: Retain source-only example reports
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: source-handoff-${{ github.sha }}
+          path: ${{ runner.temp }}/handoff-a/
+          retention-days: 7
+          if-no-files-found: error

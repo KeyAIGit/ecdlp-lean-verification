@@ -8,6 +8,14 @@
   },
   "workflows": [
     {
+      "file": ".github/workflows/source-handoff-ci.yml",
+      "class": "product_diagnostic",
+      "trigger_policy": "scoped_push_pr_manual",
+      "disposition": "keep",
+      "spends_external_budget": false,
+      "reason": "Tests source-only report validation and byte-identical rendering of the pinned internal snapshot; no target execution, model calls, proof promotion or customer-evidence claim."
+    },
+    {
       "file": ".github/workflows/ci.yml",
       "class": "core_gate",
       "trigger_policy": "push_pr_manual",

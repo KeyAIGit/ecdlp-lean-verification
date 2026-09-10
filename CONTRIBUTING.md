@@ -7,6 +7,14 @@ review. Keep third-party attribution and explain the source and permission for
 imported code or data. You retain your copyright; no assignment or automated
 sign-off is imposed. See [LICENSING.md](LICENSING.md).
 
+## First working example
+
+Run `python3 scripts/source_handoff.py --demo` to produce a source-only handoff
+from the existing internal snapshot without a model key, network or Lean install.
+[The guide](docs/SOURCE_HANDOFF.md) covers JSON/Markdown export, reproducibility,
+input hashes and the distinction between source inventory and compiled evidence.
+This is contributor onboarding, not a completed external pilot.
+
 ## Choose a bounded task
 
 Use `STATUS.md` for current evidence and `tasks/NEXT.md` for the appropriate
