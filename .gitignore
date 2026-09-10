@@ -29,3 +29,6 @@ platform/.next/
 
 # Local v0.2 validation logs; never canonical proof evidence by themselves.
 _v02_validation/
+
+# Local source-only handoff reports.
+_source_handoff_demo/
