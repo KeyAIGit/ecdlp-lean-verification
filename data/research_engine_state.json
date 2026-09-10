@@ -4,7 +4,7 @@
   "source_hashes": {
     "policy_sha256": "fb3e74227bd5613e33f5bab234a40d0d1dccf23a6c048e6094433a2dbebcdddf",
     "hypothesis_generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-    "typed_evidence_state_sha256": "c63f2355626f141d01b8f228bfe49df80af984e5d76cd6be0821514402d33c3a",
+    "typed_evidence_state_sha256": "ee7d88da7ca26b7f0defe7fbba7a748a69bb31bc83a254615941b46af2c85f55",
     "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
     "decision_substrate_sha256": "0d3dd95e3079d5ad21db2c1f517ba8e29b1e170e61c9dbc8a2dfcb7d56745879",
     "hypotheses_sha256": "12f0df0623f2a104389cb191da565e69bacbf926b305d3f298051d7bc7489afb",
@@ -1259,7 +1259,7 @@
     "generator_id": "ecdlp-hypothesis-generation-v0",
     "source_hashes": {
       "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-      "typed_evidence_state_sha256": "c63f2355626f141d01b8f228bfe49df80af984e5d76cd6be0821514402d33c3a",
+      "typed_evidence_state_sha256": "ee7d88da7ca26b7f0defe7fbba7a748a69bb31bc83a254615941b46af2c85f55",
       "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
       "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
       "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
@@ -1298,7 +1298,7 @@
         "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
         "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
         "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-        "evidence_files_sha256": "c0e2366acda6428f7f4cdbfcb3ea915f90243adedab2e505835a3ea764cb173c",
+        "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
         "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
       },
       "authorization_boundary": "Typed cells and desk decisions authorize nothing. Only an open cell may seed an untrusted proposal, and every later experiment and promotion gate remains separate.",

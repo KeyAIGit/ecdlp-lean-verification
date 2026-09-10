@@ -4,7 +4,7 @@
   "status": "shadow_non_executing",
   "source_hashes": {
     "source_registry_sha256": "4fad0eff139704107e69096302bfe0ffa7b8910af4a6d7d1a3ed72085cca8f21",
-    "typed_evidence_state_sha256": "19814ee5ac12eb24246cadf28b9b5ad3869d077106e089baab4d92fe183907ed",
+    "typed_evidence_state_sha256": "b216c09778a3f3c137605c0456dc2048adf69faef4f9f2114e14518e1dad1d03",
     "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38"
   },
   "counts": {
