@@ -22,7 +22,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = 3092c8ba73e4bb1c40edc88c9bb9a1627e9a811c
+          test "$(git rev-parse HEAD^)" = 2a85a3e6ec72e980694f1b7f72d2056cd609dbf6
+          test "$(git diff --name-only 3092c8ba73e4bb1c40edc88c9bb9a1627e9a811c HEAD)" = .github/workflows/maintenance-rebind-20260909.yml
           python3 - <<'PY'
           import hashlib, json, os, pathlib, subprocess, sys
           sys.path.insert(0, 'scripts')
@@ -30,11 +31,13 @@ jobs:
           expected = {
             'data/hypothesis_funnel_state.json': ('08c80efa132b33a3fe05da15f407dd7625ccdd28ceded9563cd5c13d820162aa','4eeacc21611119f58cbb3e721cd350ab176ef9822559c7df06c226bdaf8ba3c0'),
             'data/hypothesis_ranker_state.json': ('c5c5b95474c50f7a8160518e5fbb4c17282e262ecd56fde7b7abeb22ee1d9eae','bdbad45f71effb29370aed7ff1ec1d1582aadad210989e014c93a89321c11ab4'),
-            'data/hypothesis_space_campaign_state.json': ('39d7ee8eac2ecacc7b69986055fc0c461097b43a68ddd6a2b3733336cc49f044','f834b898b712a5b930937520ec578d14b472f50ad290182c3bc01aa006a75325'),
-            'data/hypothesis_space_map.json': ('c147bef6de4d005d07e1c1584ff65ec042f6f1d82b001309025b96d1f871567a','ad705436f23d9ae0e9a05129ea464ef663579024e053b97673452c72e7c68123'),
-            'data/hypothesis_space_state.json': ('298bff3d979b8ea52c5d563b00ecbfafee856be0490090920b953c82916ba38a','3d5a91a5ab7a51136d9cade23ba900a7154d3e4b1ccea3cce9fe64ae16c854bd'),
-            'data/knowledge_graph.json': ('c237ca1177b2571c6526c18d5c9a9c08e18f7d39eb6a6ed3de51d9783f56c771','d99f4be221574e0239a277d3c0751ed70b725c882eed40c785693b663484e4f9'),
+            'data/hypothesis_space_campaign_state.json': ('39d7ee8eac2ecacc7b69986055fc0c461097b43a68ddd6a2b3733336cc49f044','af9cf1924b7570c1ca937c66d5ed5e1f8e0914fbcb022c4897a236daddf64227'),
+            'data/hypothesis_space_map.json': ('c147bef6de4d005d07e1c1584ff65ec042f6f1d82b001309025b96d1f871567a','2f44c8c9d3c8037e68b8726f55624a78faebd27fbaae854f727fc74e4bced036'),
+            'data/hypothesis_space_state.json': ('298bff3d979b8ea52c5d563b00ecbfafee856be0490090920b953c82916ba38a','706df7ff62dba4ab7fc8691952ea70adc35808b5676a4c433a271f2b07c6f602'),
+            'data/knowledge_graph.json': ('c237ca1177b2571c6526c18d5c9a9c08e18f7d39eb6a6ed3de51d9783f56c771','3bd5f06cdcc9493cb2ee416a35f7dc6a6bc2e6be477bf940d77676a07c69d8f6'),
+            'data/research_engine_shadow_intake.json': ('d2b0ec72ee96d13a5813a1f560d18034df45bfbbaaafde7c25384d966771090b','08934ff9e6a8fe25e152b715f4583446c758240716c4719fb73f67c4a808f0e6'),
             'data/research_engine_state.json': ('7d08b757f57d86a6bea978ca87276b6ba40e73dc938e2f39db8b8d3c5f9c37b7','8147e66b3541d2a177e45bba084a8b4449d36129694e7b90b287081425553056'),
+            'data/research_engine_v02_state.json': ('1743b0b6e7dab62fd5e291f12d87725b456e2ead491baf6f197c215b72328142','bd47f93bbbc57f57c62a3053ce242bf0488969baab4534159487bfddebae94ea'),
             'data/typed_evidence_state.json': ('7395313aadb2c1d0a49456a0601a6648a7d9ba1ac7f686f25d95d68c400edb7b','ebeb447cdb3715160a075f7fa35fd33586f3ab7c4544e108cdbdefa4a1f2176b'),
             'repo/HYPOTHESIS_SPACE_V2.json': ('787442349e24d05d4baf4b0c73b8cfa485f624685dd262648e4839845c0a685a','83498cb73850a5e4e7a92bfe6958f1e6d35978dce1488742c9e7f422b37e1801'),
           }
@@ -69,7 +72,7 @@ jobs:
           out=pathlib.Path(os.environ['RUNNER_TEMP'])/'maintenance-rebind';out.mkdir()
           (out/'expected.json').write_text(json.dumps(expected,indent=2)+'\n')
           (out/'rebind.patch').write_bytes(subprocess.check_output(['git','diff','--cached','--binary']))
-          (out/'summary.txt').write_text('Exact nine-file source rebind reproduced twice. Scientific counts, typed decisions, historical runs and outcomes preserved. Seed IDs and deterministic diagnostic samples refresh for the changed evidence identity; no new scientific experiment or accepted proof is counted. Full canonical CI remains required.\n')
+          (out/'summary.txt').write_text('Exact eleven-file source rebind reproduced twice. Scientific counts, typed decisions, historical runs and outcomes preserved. Seed IDs and deterministic diagnostic samples refresh for the changed evidence identity; no new scientific experiment or accepted proof is counted. Full canonical CI remains required.\n')
           PY
       - name: Replay regression gates
         shell: bash
@@ -91,7 +94,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore(provenance): rebind generated evidence after kernel-only GLV repair' -m 'Nine exact pre/post-hashed files, regenerated twice. Preserve scientific counts, decisions, historical run/outcome records, trust rules, and proof statements. Diagnostic samples and instance IDs refresh because the actual evidence source changed. Full canonical CI is still required.'
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore(provenance): rebind generated evidence after kernel-only GLV repair' -m 'Eleven exact pre/post-hashed files, regenerated twice. Preserve scientific counts, decisions, historical run/outcome records, trust rules, and proof statements. Diagnostic samples and instance IDs refresh because the actual evidence source changed. Full canonical CI is still required.'
           AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
           git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin HEAD:refs/heads/review/oss-readiness-20260909
           git rev-parse HEAD > "$RUNNER_TEMP/maintenance-rebind/published-commit.txt"
