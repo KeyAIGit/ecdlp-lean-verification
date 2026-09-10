@@ -1,65 +1,61 @@
-# Licensing status and proposed release policy
+# Licensing
 
-**Status: pending rights confirmation. There is no repository-wide license grant.**
-The presence of license reference texts or a green metadata check does not license
-otherwise unlicensed material. Existing third-party licenses remain in effect.
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and the bounded inventory in
-[repo/OSS_READINESS.json](repo/OSS_READINESS.json).
+**Default license: Apache-2.0.** The unmodified license is in [LICENSE](LICENSE).
+It applies to original project contributions: software, Lean formalizations,
+tests, configuration, technical documentation, and project-authored annotations.
+This includes those contributions wherever they occur in the repository; moving
+an original file into an archive does not by itself change its license.
 
-## Proposed default: Apache-2.0
+The maintainer requested adoption of this policy on 2026-09-09. The
+[decision record](docs/LICENSE_ADOPTION_20260909.md) records that instruction,
+not a transfer of ownership or a legal opinion. Existing contributor rights,
+attribution, and separately stated licenses are preserved.
 
-Apache-2.0 is proposed for original code, Lean formalizations, tests, and technical
-documentation that the releasing rights holder can actually license. This proposal
-is not adoption. The unmodified reference text is in
-[LICENSES/Apache-2.0.txt](LICENSES/Apache-2.0.txt); it is also supplied for existing
-Apache-licensed third-party source identified in the notices.
+## Three rules for reuse
 
-Apache-2.0 permits commercial reuse and modifications, subject to its conditions.
-It includes an express, scoped contributor patent license and does not grant
-trademark rights. Recipients need not publish all their modifications. Existing
-grants are not revoked merely by changing a later release's license. The
-maintainer should understand these tradeoffs before adopting it.
+1. **Original project material:** use Apache-2.0. Commercial use and modifications
+   are allowed subject to its terms. Keep the license and applicable notices.
+2. **Third-party material:** keep its existing terms and attribution. The bundled
+   fonts use OFL-1.1; the attributed elliptic-sequence code uses Apache-2.0.
+   Details are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+3. **Research sources:** our original summaries, metadata and annotations are
+   covered by the default license. Citing a paper does not license the paper;
+   quotations and independently owned material retain their applicable rights.
+   No new permission over another party's work is asserted by this repository.
 
-## What is not being relicensed
+The frozen CSV is a project claim compilation, and the claim-extract JSON files
+contain source locators, paraphrases, and scope notes. Their provenance remains
+recorded in `data/README.md` and the files themselves; their bytes are not changed
+by this licensing update. The original annotations are distinct from the cited
+publications. Where the authorship or redistribution permission of a particular
+imported passage cannot be established, check that passage's source before
+redistributing it as separately licensed content. This is not a blanket clearance
+of all historical imports.
 
-- The two attributed elliptic-sequence source files retain their upstream
-  Apache-2.0 terms and authorship. Their source bytes are unchanged by this review.
-- The two bundled font binaries retain OFL-1.1, not Apache-2.0. Their original
-  copyright notices and full license texts are now provided alongside them.
-- The imported claim corpus, excerpts, research archives, and brand artwork need
-  their own provenance/rights review. Citation or a checksum is not permission.
-- Dependencies keep their own terms. A Mathlib import does not establish ownership
-  of this repository's other files, and Git author labels do not establish rights.
+Apache-2.0 includes a scoped contributor patent grant, permits proprietary
+modifications, and grants no trademark rights. This policy does not add a
+noncommercial, research-only, or acceptable-use restriction to that license.
+Internal experiment/review controls govern this project's own workflow, not the
+license rights of downstream users. Future contributors use the same default
+terms unless a reviewed contribution explicitly states compatible other terms.
 
-## Adoption checklist
+## Maintenance
 
-The rights holder, not an agent, must supply a dated decision stating:
+For original work, no new license needs to be invented for each file. Preserve
+third-party headers; record a new imported component's source, license and notices
+in `repo/OSS_READINESS.json` and `THIRD_PARTY_NOTICES.md`. License texts belong in
+`LICENSES/` or alongside the component. Run:
 
-1. Who is granting the license: the individual maintainer, RFID INC, or another
-   actual rights holder; which original contributions that party controls; and
-   whether employment, contractor, coauthor, or assignment rights are involved.
-2. Consent to Apache-2.0 for those contributions, including its commercial and
-   scoped patent permissions. Do not forge a signature, DCO sign-off, or CLA.
-3. For third-party material: the source and applicable permission, or a plan to
-   exclude/replace it in a clearly scoped distributable. Do not erase provenance
-   or silently delete archives to manufacture apparent clearance.
-4. The release scope. Resolve the specific blockers in `repo/OSS_READINESS.json`
-   rather than declaring the whole tree cleared because some files have licenses.
+```sh
+python3 scripts/check_oss_readiness.py
+python3 scripts/test_check_oss_readiness.py
+```
 
-After that review: put the standard text in a root `LICENSE`, record the releasing
-party and scope, retain all third-party notices, update contribution terms and
-package metadata together, and verify a clean release build. Update the readiness
-checker through review when the legal state changes; do not merely flip a flag.
+These commands check license/notice consistency, not legal ownership or the truth
+of mathematics. Full build and axiom audits remain separate release requirements.
+Older audit documents describe the state at their recorded commit; this document
+and the root license are the current policy. There is no required registration,
+custom-license approval step, or license fee introduced by this repository.
 
-Do not describe this repository as fully open-source licensed in a grant
-application until this process is complete. A narrower licensed package is an
-alternative if the imported research corpus cannot yet be cleared.
-
-## Sources
-
-- GitHub, Licensing a repository:
-  https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository
-- Apache License 2.0, sections 2-6:
-  https://www.apache.org/licenses/LICENSE-2.0
-
-This is a release checklist, not a legal opinion or a warranty of ownership.
+References: [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0),
+[GitHub licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).

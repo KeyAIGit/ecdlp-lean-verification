@@ -1,7 +1,9 @@
 # Third-party attribution and license notices
 
-This is a bounded inventory, not a repository-wide license or complete clearance.
-Original source headers are retained. See [LICENSING.md](LICENSING.md).
+Original project contributions use [Apache-2.0](LICENSE). This inventory preserves
+the different or pre-existing terms of known third-party components. It is not
+a full legal-clearance report. Source headers remain authoritative. See
+[LICENSING.md](LICENSING.md).
 
 ## Elliptic divisibility sequences: Apache-2.0
 
@@ -39,13 +41,16 @@ Notice copies normalize a UTF-8 BOM/trailing whitespace only. No font binary was
 modified or replaced. This matches embedded attribution to the font families;
 it does not establish the precise upstream commit used to create each WOFF2 file.
 
-## Dependencies and unresolved material
+## Dependencies and research references
 
 Lean, Mathlib and optional Python/JavaScript dependencies are external components
 with their own licenses. Consult the pinned dependency source and its notices
 when distributing their code or build artifacts. This is not a complete SBOM.
 
-The imported claim CSV, extracted research notes, archive, and brand artwork have
-not been granted a new blanket license. Their rights review is explicitly open.
-New copied code, datasets, figures, or assets must arrive with source and license
-information; a citation alone is insufficient.
+Project-authored summaries, annotations and code follow the default license.
+The claim CSV and source-extract records retain their provenance and citations;
+these do not grant rights over the cited publications themselves. Any externally
+owned quotation or imported material retains its applicable rights, not a newly
+invented blanket license. New copied code, datasets, figures, or assets must
+arrive with source and permission information. The root license grants no
+trademark rights to the KeyAI name or marks.

@@ -1,5 +1,8 @@
 # OSS readiness review, 2026-09-09
 
+> Historical pending-state review at the commit below. Current licensing is in
+> `LICENSING.md`; adoption is recorded in `docs/LICENSE_ADOPTION_20260909.md`.
+
 ## Scope and decision
 
 A maintenance and licensing-readiness pass, not a new mathematical result,

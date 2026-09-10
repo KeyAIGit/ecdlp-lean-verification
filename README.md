@@ -30,15 +30,17 @@ MVP evidence gate live in `repo/PRODUCT_MODEL.json`; agents start at `AGENTS.md`
 
 ## Reuse, contributions, and release status
 
-**Repository-wide licensing is pending rights confirmation.** Public visibility
-is not a blanket permission to reuse every file. Read [LICENSING.md](LICENSING.md)
-and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the proposed Apache-2.0
-default, existing third-party terms, and unresolved corpus/asset rights.
+**Apache-2.0 for original project contributions.** See [LICENSE](LICENSE) and
+[LICENSING.md](LICENSING.md). Known third-party components retain their terms in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); cited papers are not relicensed.
+No custom license or noncommercial restriction is added.
 
 For a first contribution, use [CONTRIBUTING.md](CONTRIBUTING.md) and
 [SETUP.md](SETUP.md). For integrity issues, see [SECURITY.md](SECURITY.md).
 The [2026-09-09 readiness review](docs/OSS_READINESS_REVIEW_20260909.md) records
-this maintenance pass; it does not certify a release, grant award, or ECDLP result.
+the earlier pending state. The [adoption record](docs/LICENSE_ADOPTION_20260909.md)
+records the current licensing decision. Neither document certifies a release,
+grant award, or ECDLP result.
 
 ## The one invariant (never violate)
 

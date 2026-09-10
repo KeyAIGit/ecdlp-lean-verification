@@ -1,10 +1,11 @@
 # Contributing
 
-Start with [LICENSING.md](LICENSING.md): repository-wide contribution/reuse terms
-are not yet adopted. Discuss substantial contributions in an issue first. A PR
-must identify authorship, sources and the license under which the submitter is
-entitled to contribute it. A reviewer must resolve those terms before merging.
-No automatic copyright assignment or implied maintainer-signed DCO is asserted.
+Original contributions are accepted under [Apache-2.0](LICENSE), the same
+license as the project. By intentionally submitting work for inclusion, you
+provide it under those terms unless you explicitly identify different terms for
+review. Keep third-party attribution and explain the source and permission for
+imported code or data. You retain your copyright; no assignment or automated
+sign-off is imposed. See [LICENSING.md](LICENSING.md).
 
 ## Choose a bounded task
 
@@ -42,9 +43,9 @@ python3 scripts/check_repo_artifacts.py
 python3 scripts/check_generated_fixpoint.py --check
 ```
 
-The first check verifies consistency of a pending legal review, not permission
-to distribute the whole repository. `--require-release-ready` is intentionally
-nonzero until a separately reviewed rights decision changes that state.
+The first check verifies the adopted license and notice metadata. It does not
+certify legal ownership or replace a Lean build. No API key is needed for these
+checks, and none of them spends model credits.
 
 Formal acceptance additionally requires both canonical library builds and the
 exact registry-bound axiom audits in CI. `native_decide` has additional compiler

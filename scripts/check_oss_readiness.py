@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Check a bounded, pending rights-review inventory; never grant a license.
+"""Check default-license and third-party-notice consistency without inferring rights.
 
-Default exit 0 means notice metadata is internally consistent, NOT OSS clearance.
---require-release-ready intentionally fails while the owner decision is absent.
+Exit 0 means the declared license text, scope record and notices are consistent.
+It does not attest ownership, comprehensive legal clearance, or a formal release.
 No network, model calls, signatures, file writes, or new experiments.
 """
 from __future__ import annotations
@@ -18,14 +18,14 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = "repo/OSS_READINESS.json"
-BLOCKERS = {"RIGHTS-HOLDER", "LICENSE-DECISION", "CORPUS-RIGHTS", "ASSET-RIGHTS", "RELEASE-VERIFICATION"}
+APACHE_SHA256 = "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
 REQUIRED_SOURCE = {
     "Ecdlp/Proved/NormEDSIsElliptic.lean": "Apache-2.0",
     "archive/scratch/pr13155_eds.lean": "Apache-2.0",
     "fonts/Nunito-Variable.woff2": "OFL-1.1",
     "fonts/Baloo2-Variable.woff2": "OFL-1.1",
 }
-DOCUMENTS = ("LICENSING.md", "THIRD_PARTY_NOTICES.md", "CONTRIBUTING.md", "SECURITY.md")
+DOCUMENTS = ("LICENSE", "NOTICE", "LICENSING.md", "THIRD_PARTY_NOTICES.md", "CONTRIBUTING.md", "SECURITY.md", "docs/LICENSE_ADOPTION_20260909.md")
 
 
 def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -72,26 +72,22 @@ def inspect(root: Path) -> dict[str, Any]:
     raw = safe_file(root, MANIFEST).read_text(encoding="utf-8")
     m = json.loads(raw, object_pairs_hook=unique_object)
     require(isinstance(m, dict), "manifest must be an object")
-    require(type(m.get("schema_version")) is int and m["schema_version"] == 1, "unsupported schema version")
-    require(m.get("status") == "pending_rights_confirmation", "rights-state transition requires separate owner review and checker update")
-    require(m.get("repository_license_granted") is False, "metadata cannot assert a repository-wide license grant")
-    require("owner_approval" in m and m["owner_approval"] is None, "do not fabricate an owner approval")
-    require(m.get("proposed_default_license") == "Apache-2.0", "proposed default changed without rights review")
+    require(type(m.get("schema_version")) is int and m["schema_version"] == 2, "unsupported schema version")
+    require(m.get("status") == "default_license_adopted", "invalid licensing state")
+    require(m.get("default_license") == "Apache-2.0", "default license changed without policy review")
+    require(m.get("license_path") == "LICENSE", "root license must be explicit")
+    require(m.get("adoption_record") == "docs/LICENSE_ADOPTION_20260909.md", "missing adoption record")
     require(isinstance(m.get("scope"), str) and bool(m["scope"].strip()), "scope is required")
     date.fromisoformat(m.get("review_date", ""))
     require(bool(re.fullmatch(r"[0-9a-f]{40}", m.get("audited_source_commit", ""))), "invalid audited source commit")
-    # An accidental root license would contradict the pending state. A later
-    # genuine adoption must update the policy and evidence together, not a flag.
-    for p in root.iterdir():
-        require(not (p.is_file() and p.name.lower().split(".")[0] in {"license", "licence", "copying"}),
-                "root license contradicts the pending review; complete adoption through review")
     for name in DOCUMENTS:
         safe_file(root, name)
-    rows = records(m.get("blockers"), "blockers")
-    ids = [row.get("id") for row in rows]
-    require(all(isinstance(x, str) for x in ids), "invalid blocker ID")
-    require(len(ids) == len(set(ids)) and set(ids) == BLOCKERS, "required unresolved blocker set was altered")
-    require(all(isinstance(row.get("required"), str) and row["required"].strip() for row in rows), "blocker needs a resolution requirement")
+    require(digest(root / "LICENSE") == APACHE_SHA256, "root LICENSE is not the reviewed unmodified Apache-2.0 text")
+    limits = m.get("evidence_limits")
+    require(isinstance(limits, list) and bool(limits) and all(isinstance(x, str) and x.strip() for x in limits), "evidence limits are required")
+    # A policy declaration is not a signature, ownership opinion, or release pass.
+    require(not any(k in m for k in ("owner_approval", "legal_clearance", "release_ready", "repository_license_granted")),
+            "do not infer ownership, blanket clearance or release acceptance in notice metadata")
 
     notices: dict[str, str] = {}
     for row in records(m.get("license_texts"), "license_texts"):
@@ -102,7 +98,8 @@ def inspect(root: Path) -> dict[str, Any]:
         notices[name] = path.read_text(encoding="utf-8")
 
     seen: dict[str, str] = {}
-    used_notices: set[str] = set()
+    used_notices: set[str] = {"LICENSE"}
+    require("LICENSE" in notices, "root LICENSE must be inventoried")
     for row in records(m.get("third_party_files"), "third_party_files"):
         path = safe_file(root, row.get("path"))
         name, license_id = row["path"], row.get("license")
@@ -142,14 +139,15 @@ def inspect(root: Path) -> dict[str, Any]:
             rel = p.relative_to(root).as_posix()
             safe_file(root, rel)
             require(rel in seen, f"unregistered bundled font: {rel}")
-    return {"metadata_consistent": True, "release_ready": False, "status": m["status"],
-            "reviewed_third_party_files": len(seen), "unresolved_blockers": sorted(BLOCKERS)}
+    return {"metadata_consistent": True, "default_license": m["default_license"],
+            "status": m["status"], "reviewed_third_party_files": len(seen),
+            "legal_clearance": "not_automatically_determined",
+            "formal_release": "separate_build_and_review_required"}
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="repository root (also useful for fixtures)")
-    parser.add_argument("--require-release-ready", action="store_true")
     args = parser.parse_args(argv)
     try:
         result = inspect(args.root.resolve())
@@ -157,10 +155,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"OSS NOTICE CHECK FAILED: {exc}", file=sys.stderr)
         return 1
     print(json.dumps(result, sort_keys=True))
-    if args.require_release_ready:
-        print("RELEASE BLOCKED: rights-holder/license decision and other listed gates remain unresolved.", file=sys.stderr)
-        return 1
-    print("OSS NOTICE METADATA OK; legal clearance and repository-wide licensing remain PENDING.")
+    print("LICENSE AND NOTICE METADATA OK; this is not an ownership or formal-release certificate.")
     return 0
 
 

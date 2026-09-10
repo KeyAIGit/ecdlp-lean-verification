@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mutation fixtures for pending-rights metadata, not a test of legal ownership."""
+"""Mutation fixtures for adopted licensing metadata, not a test of legal ownership."""
 from __future__ import annotations
 
 from contextlib import redirect_stderr, redirect_stdout
@@ -36,24 +36,22 @@ class ReadinessTests(unittest.TestCase):
         with self.assertRaises((ValueError, TypeError, KeyError, OSError)):
             gate.inspect(self.root)
 
-    def test_valid_pending_metadata_is_not_clearance(self):
+    def test_adopted_metadata_is_not_legal_clearance(self):
         result = gate.inspect(self.root)
-        self.assertFalse(result['release_ready'])
+        self.assertNotIn('release_ready', result)
+        self.assertEqual(result['default_license'], 'Apache-2.0')
+        self.assertEqual(result['legal_clearance'], 'not_automatically_determined')
         self.assertEqual(result['reviewed_third_party_files'], 4)
-
-    def test_release_required_fails(self):
-        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
-            self.assertEqual(gate.main(['--root', str(self.root), '--require-release-ready']), 1)
 
     def test_default_cli_is_consistency_only(self):
         out = io.StringIO()
         with redirect_stdout(out):
             self.assertEqual(gate.main(['--root', str(self.root)]), 0)
-        self.assertIn('PENDING', out.getvalue())
+        self.assertIn('not an ownership', out.getvalue())
 
     def test_duplicate_json_keys(self):
         p = self.root / gate.MANIFEST
-        p.write_text(p.read_text().replace('"schema_version": 1,', '"schema_version": 1, "schema_version": 1,'))
+        p.write_text(p.read_text().replace('"schema_version": 2,', '"schema_version": 2, "schema_version": 2,'))
         with self.assertRaises(ValueError): gate.inspect(self.root)
 
     def test_malformed_json(self):
@@ -63,8 +61,8 @@ class ReadinessTests(unittest.TestCase):
     def test_boolean_schema_rejected(self):
         self.m['schema_version'] = True; self.invalid()
 
-    def test_missing_approval_field_rejected(self):
-        self.m.pop('owner_approval'); self.invalid()
+    def test_missing_adoption_record(self):
+        self.m.pop('adoption_record'); self.invalid()
 
     def test_fabricated_owner_approval(self):
         self.m['owner_approval'] = {'signed': True}; self.invalid()
@@ -73,19 +71,37 @@ class ReadinessTests(unittest.TestCase):
         self.m['repository_license_granted'] = True; self.invalid()
 
     def test_false_status_promotion(self):
-        self.m['status'] = 'approved'; self.invalid()
+        self.m['status'] = 'all_rights_cleared'; self.invalid()
 
-    def test_root_license_contradiction(self):
-        (self.root / 'LICENSE').write_text('Apache License'); self.invalid()
+    def test_custom_root_license_rejected(self):
+        (self.root / 'LICENSE').write_text('Apache License but noncommercial only'); self.invalid()
 
-    def test_blocker_removal(self):
-        self.m['blockers'].pop(); self.invalid()
+    def test_rehashed_custom_root_license_rejected(self):
+        p = self.root / 'LICENSE'; p.write_text(p.read_text() + '\nResearch use only.\n')
+        self.m['license_texts'][0]['sha256'] = hashlib.sha256(p.read_bytes()).hexdigest()
+        self.invalid()
 
-    def test_duplicate_blocker(self):
-        self.m['blockers'].append(deepcopy(self.m['blockers'][0])); self.invalid()
+    def test_missing_root_license(self):
+        (self.root / 'LICENSE').unlink(); self.invalid()
 
-    def test_empty_blocker_detail(self):
-        self.m['blockers'][0]['required'] = ''; self.invalid()
+    def test_missing_notice_file(self):
+        (self.root / 'NOTICE').unlink(); self.invalid()
+
+    def test_unrecorded_root_license(self):
+        self.m['license_texts'] = [r for r in self.m['license_texts'] if r['path'] != 'LICENSE']
+        self.invalid()
+
+    def test_missing_evidence_limits(self):
+        self.m['evidence_limits'] = []; self.invalid()
+
+    def test_fabricated_release_acceptance(self):
+        self.m['release_ready'] = True; self.invalid()
+
+    def test_missing_adoption_document(self):
+        (self.root / self.m['adoption_record']).unlink(); self.invalid()
+
+    def test_changed_default_license(self):
+        self.m['default_license'] = 'KeyAI-Custom'; self.invalid()
 
     def test_missing_known_input(self):
         self.m['third_party_files'].pop(); self.invalid()

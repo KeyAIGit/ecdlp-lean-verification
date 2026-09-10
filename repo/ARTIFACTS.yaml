@@ -19,8 +19,10 @@ principles:
 
 classes:
   oss_readiness:
-    description: Bounded license notices, pending rights decisions, and contributor entry points.
+    description: Default licensing policy, preserved third-party notices, and contributor entry points.
     paths:
+      - LICENSE
+      - NOTICE
       - LICENSING.md
       - LICENSES/
       - THIRD_PARTY_NOTICES.md
