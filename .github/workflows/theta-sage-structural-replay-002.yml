@@ -1,0 +1,91 @@
+name: Theta screen 002 structural Sage certificate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/theta-screen-002
+    paths:
+      - .github/workflows/theta-sage-structural-replay-002.yml
+      - experiments/theta_screen_002/verify_secp_independent.sage
+
+permissions:
+  contents: write
+
+concurrency:
+  group: theta-sage-structural-002-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  certificate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout theta branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Pull pinned SageMath image
+        shell: bash
+        run: |
+          set -euxo pipefail
+          docker pull sagemath/sagemath:10.9
+          docker image inspect sagemath/sagemath:10.9 \
+            --format '{{json .RepoDigests}}' | tee sage-image-digests.json
+
+      - name: Run independent native-Sage certificate
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm -rf experiments/theta_screen_002/sage_structural_replay
+          mkdir -p experiments/theta_screen_002/sage_structural_replay
+          docker run --rm --user 0:0 -e HOME=/root \
+            -v "$PWD:/work" -w /work sagemath/sagemath:10.9 \
+            sage experiments/theta_screen_002/verify_secp_independent.sage
+          test -f experiments/theta_screen_002/sage_replay/independent_verify_result.json
+          sudo mv experiments/theta_screen_002/sage_replay/independent_verify_result.json \
+            experiments/theta_screen_002/sage_structural_replay/result.json
+          mv sage-image-digests.json \
+            experiments/theta_screen_002/sage_structural_replay/image_digests.json
+          sudo chown -R "$(id -u):$(id -g)" \
+            experiments/theta_screen_002/sage_structural_replay
+          sudo rm -rf experiments/theta_screen_002/sage_replay
+          python3 - <<'PY'
+          import hashlib, json, pathlib
+          root = pathlib.Path('experiments/theta_screen_002/sage_structural_replay')
+          result = json.loads((root/'result.json').read_text())
+          assert result['scope'].startswith('independent native-Sage structural replay')
+          assert all(
+              all(value for key, value in row.items() if key != 'x')
+              for row in result['samples']
+          )
+          files = sorted(p for p in root.iterdir() if p.name != 'SHA256SUMS')
+          (root/'SHA256SUMS').write_text('\n'.join(
+              f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}"
+              for p in files
+          )+'\n')
+          PY
+          (cd experiments/theta_screen_002/sage_structural_replay && sha256sum -c SHA256SUMS)
+
+      - name: Commit permanent certificate
+        shell: bash
+        run: |
+          set -euxo pipefail
+          git config user.name "KeyAI Evidence Bot"
+          git config user.email "bekzaddzhanpolatov@gmail.com"
+          git add experiments/theta_screen_002/sage_structural_replay
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m "research(theta): retain independent Sage structural certificate"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
+
+      - name: Upload certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: theta-sage-structural-002
+          path: experiments/theta_screen_002/sage_structural_replay
+          if-no-files-found: warn
+          retention-days: 14

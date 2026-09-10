@@ -1,0 +1,137 @@
+# Branch-local, bounded replay. Result commits do not retrigger this workflow.
+name: Theta screen 002 independent Sage replay
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/theta-screen-002
+    paths:
+      - .github/workflows/theta-sage-replay-002.yml
+      - experiments/theta_screen_002/verify_secp.py
+      - experiments/theta_screen_002/verify_secp_independent.sage
+      - experiments/theta_screen_002/singular_factorbase.py
+      - experiments/theta_screen_002/summarize_sage_replay.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: theta-sage-replay-002-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - name: Checkout theta branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Pull official SageMath image
+        shell: bash
+        run: |
+          set -euxo pipefail
+          docker pull sagemath/sagemath:10.9
+          docker image inspect sagemath/sagemath:10.9 \
+            --format '{{json .RepoDigests}}' > "$RUNNER_TEMP/sage-image-digests.json"
+
+      - name: Run independent structural replay and bounded Singular matrix
+        shell: bash
+        run: |
+          set -euxo pipefail
+          IMAGE="sagemath/sagemath:10.9"
+          ROOT="experiments/theta_screen_002/sage_replay"
+          rm -rf "$ROOT"
+          mkdir -p "$ROOT/cases" "$ROOT/logs"
+
+          {
+            echo "workflow_run_id=${GITHUB_RUN_ID}"
+            echo "workflow_attempt=${GITHUB_RUN_ATTEMPT}"
+            echo "source_commit=${GITHUB_SHA}"
+            echo "runner_os=${RUNNER_OS}"
+            echo "runner_arch=${RUNNER_ARCH}"
+            echo "sage_image=${IMAGE}"
+            echo -n "sage_image_digests="
+            cat "$RUNNER_TEMP/sage-image-digests.json"
+          } > "$ROOT/environment.txt"
+
+          docker run --rm --user 0:0 -e HOME=/root \
+            -v "$PWD:/work" -w /work "$IMAGE" \
+            sage -python experiments/theta_screen_002/verify_secp.py \
+            > "$ROOT/logs/verify_secp_original.log" 2>&1
+          mv experiments/theta_screen_002/verify_secp_result.json \
+            "$ROOT/verify_secp_result.json"
+
+          docker run --rm --user 0:0 -e HOME=/root \
+            -v "$PWD:/work" -w /work "$IMAGE" \
+            sage experiments/theta_screen_002/verify_secp_independent.sage \
+            > "$ROOT/logs/verify_secp_independent.log" 2>&1
+
+          run_case() {
+            local h="$1"
+            local system="$2"
+            local order="$3"
+            local layout="$4"
+            local suffix=""
+            if [[ "$system" == "projective" ]]; then
+              suffix="_${layout}"
+            fi
+            local name="h${h}_${system}_${order}${suffix}"
+            docker run --rm --user 0:0 -e HOME=/root \
+              -v "$PWD:/work" -w /work "$IMAGE" \
+              sage -python experiments/theta_screen_002/singular_factorbase.py \
+                --h "$h" \
+                --system "$system" \
+                --order "$order" \
+                --layout "$layout" \
+                --timeout 180 \
+                --out "$ROOT/cases/${name}.json" \
+              > "$ROOT/logs/${name}.log" 2>&1
+          }
+
+          run_case 1 direct lex coordinate
+          run_case 1 direct degrevlex coordinate
+          run_case 1 projective degrevlex coordinate
+          run_case 1 projective degrevlex intermediate_first
+          run_case 2 direct lex coordinate
+          run_case 2 direct degrevlex coordinate
+          run_case 2 projective degrevlex coordinate
+          run_case 2 projective degrevlex intermediate_first
+          run_case 3 direct lex coordinate
+          run_case 3 projective degrevlex intermediate_first
+          run_case 4 direct lex coordinate
+          run_case 4 projective degrevlex intermediate_first
+
+          python3 experiments/theta_screen_002/summarize_sage_replay.py \
+            > "$ROOT/logs/summarize.log" 2>&1
+          (cd "$ROOT" && sha256sum -c SHA256SUMS)
+          tar --exclude='sage_replay/theta-sage-replay-002.tar.gz' \
+            -C experiments/theta_screen_002 -czf \
+            "$ROOT/theta-sage-replay-002.tar.gz" sage_replay
+
+      - name: Commit permanent replay evidence
+        shell: bash
+        run: |
+          set -euxo pipefail
+          git config user.name "KeyAI Evidence Bot"
+          git config user.email "bekzaddzhanpolatov@gmail.com"
+          git add experiments/theta_screen_002/sage_replay
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "Replay evidence is already current"
+          else
+            git commit -m "research(theta): retain independent Sage replay"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
+
+      - name: Upload replay bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: theta-sage-replay-002
+          path: experiments/theta_screen_002/sage_replay
+          if-no-files-found: error
+          retention-days: 14
