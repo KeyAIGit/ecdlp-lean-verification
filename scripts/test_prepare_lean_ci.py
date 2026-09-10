@@ -17,6 +17,11 @@ class DiskPreparationTests(TestCase):
         self.env = dict(GITHUB_ACTIONS='true', RUNNER_ENVIRONMENT='github-hosted',
                         RUNNER_OS='Linux', ImageOS='ubuntu24', GITHUB_WORKSPACE=str(self.root))
 
+    def test_project_clean_preserves_dependency_builds(self):
+        workflow = (Path(__file__).resolve().parent.parent / '.github/workflows/ci.yml').read_text()
+        self.assertIn('          lake clean ecdlp\n', workflow)
+        self.assertNotIn('          lake clean\n', workflow)
+
     def test_hosted_environment(self):
         self.assertEqual(prep.hosted_workspace(self.env), self.root)
 

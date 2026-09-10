@@ -466,7 +466,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake clean
+          lake clean ecdlp
           if lake build > "$RUNNER_TEMP/lean-ci-diagnostics/lean-build.log" 2>&1; then
             tail -n 30 "$RUNNER_TEMP/lean-ci-diagnostics/lean-build.log"
           else
