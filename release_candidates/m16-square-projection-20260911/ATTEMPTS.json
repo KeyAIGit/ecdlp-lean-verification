@@ -1,0 +1,15 @@
+{
+  "failed_checks": [
+    {
+      "stage": "First deterministic report comparison and one of nine regression tests",
+      "cause": "In-memory histogram keys were integers and point coordinates were tuples; JSON round-trip produces string keys and lists.",
+      "fix": "Return JSON-native string keys and point-coordinate lists. The saved numeric report was not changed to match different mathematics.",
+      "after_fix": "--check reproduced the original saved report and all 9 tests passed."
+    }
+  ],
+  "limits": [
+    "Only finite base-field counts are bounded.",
+    "No cost bound for a global polynomial solver.",
+    "No independently supplied 256-bit point was decomposed."
+  ]
+}

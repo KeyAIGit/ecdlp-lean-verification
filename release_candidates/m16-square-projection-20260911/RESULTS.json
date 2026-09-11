@@ -1,0 +1,129 @@
+{
+  "conditional_mean_certificate_upper": "21941365730882498772848337651908004877908920542048160885595659452016578631091/465028470832595162343658574332079951216215117586646202339779771652683377218",
+  "elapsed_seconds": 0.7246291709998331,
+  "external_review": false,
+  "lean_checked": false,
+  "linear_exhaustive": [
+    {
+      "assignments_per_selector": 9,
+      "expected_extra_zeros": "7/13",
+      "original_zeros": 2,
+      "p": 3,
+      "projective_selectors": 13,
+      "regular_probability": "9/13",
+      "regular_selectors_per_original_zero": 9,
+      "total_extra_zeros": 7
+    },
+    {
+      "assignments_per_selector": 25,
+      "expected_extra_zeros": "23/31",
+      "original_zeros": 2,
+      "p": 5,
+      "projective_selectors": 31,
+      "regular_probability": "25/31",
+      "regular_selectors_per_original_zero": 25,
+      "total_extra_zeros": 23
+    },
+    {
+      "assignments_per_selector": 49,
+      "expected_extra_zeros": "47/57",
+      "original_zeros": 2,
+      "p": 7,
+      "projective_selectors": 57,
+      "regular_probability": "49/57",
+      "regular_selectors_per_original_zero": 49,
+      "total_extra_zeros": 47
+    },
+    {
+      "assignments_per_selector": 121,
+      "expected_extra_zeros": "17/19",
+      "original_zeros": 2,
+      "p": 11,
+      "projective_selectors": 133,
+      "regular_probability": "121/133",
+      "regular_selectors_per_original_zero": 121,
+      "total_extra_zeros": 119
+    }
+  ],
+  "new_256_bit_targets_solved": 0,
+  "norm_census": {
+    "admissible_assignments": 893952,
+    "admissible_original_zeros": 1,
+    "assignments_checked": 912673,
+    "certificates": [
+      {
+        "g": [
+          35,
+          93,
+          75,
+          54,
+          1
+        ],
+        "parameters": [
+          20,
+          1,
+          19
+        ],
+        "points": [
+          [
+            35,
+            28
+          ],
+          [
+            35,
+            28
+          ],
+          [
+            35,
+            28
+          ],
+          [
+            35,
+            28
+          ]
+        ]
+      }
+    ],
+    "expected_extra_admissible_roots": "893951/922180",
+    "extra_root_histogram": {
+      "0": 361599,
+      "1": 331787,
+      "2": 156088,
+      "3": 51485,
+      "4": 14624,
+      "5": 4299,
+      "6": 1420,
+      "7": 493,
+      "8": 171,
+      "9": 104,
+      "10": 40,
+      "11": 29,
+      "12": 21,
+      "13": 5,
+      "14": 9,
+      "15": 4,
+      "16": 1,
+      "29": 1
+    },
+    "fixture": {
+      "D": 3,
+      "R": [
+        17,
+        19
+      ],
+      "p": 97,
+      "q": 4
+    },
+    "independent_scalar_checks": 258,
+    "multiset_oracle_agrees": true,
+    "probability_of_no_extra_admissible_root": "51657/131740",
+    "raw_original_zeros": 1,
+    "scope": "Full enumeration for validation, not scalable search.",
+    "selector_count": 922180
+  },
+  "original_research_archives_modified": false,
+  "plan_sha256": "463e1956c9516c51f72fa8bbda4c68b328778017337d8850cc4d58f8b7668544",
+  "random_parameter_slice_bound_log2": -250.43980952802343,
+  "schema": "m16-equation-projection-check/v1",
+  "status": "PASS"
+}

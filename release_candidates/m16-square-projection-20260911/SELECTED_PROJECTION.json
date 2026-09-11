@@ -1,0 +1,12 @@
+{
+  "selector": [
+    62,
+    61,
+    94,
+    42
+  ],
+  "rational_roots_before_admissibility": 3,
+  "admissible_rational_roots": 3,
+  "extra_admissible_rational_roots": 2,
+  "all_original_roots_retained": true
+}
