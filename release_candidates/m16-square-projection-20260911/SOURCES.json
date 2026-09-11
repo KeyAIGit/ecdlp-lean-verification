@@ -1,0 +1,22 @@
+{
+  "primary_sources": [
+    {
+      "authors": [
+        "Timothy Duff",
+        "Nickolas Hein",
+        "Frank Sottile"
+      ],
+      "title": "Certification for Polynomial Systems via Square Subsystems",
+      "url": "https://arxiv.org/html/1812.02851v3",
+      "scope_inspected": "Abstract and introduction, especially the distinction between original and excess solutions; numerical results are over complex numbers, not adopted as finite-field complexity estimates.",
+      "role": "Prior-art context only; the elementary finite-field counting and rank arguments are given explicitly in README_RU.md.",
+      "novelty_claim": false
+    }
+  ],
+  "project_input": {
+    "repository": "KeyAIGit/ecdlp-lean-verification",
+    "commit": "31e0ac23b73d36ee7cc6d17295b3fc28d58688f5",
+    "path": "archive/m16-20260910/M16_derivative_continuation/"
+  },
+  "independence": "Same AI authorship; alternate arithmetic checks are not independent human review."
+}

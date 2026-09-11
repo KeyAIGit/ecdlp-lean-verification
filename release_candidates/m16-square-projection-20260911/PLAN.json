@@ -1,0 +1,12 @@
+{
+  "schema": "m16-equation-projection-plan/v1",
+  "date": "2026-09-11",
+  "scope": "Verification of equation projection on an existing small-field fixture, not a new secp256k1 search",
+  "fixture": {"p": 97, "D": 3, "q": 4, "R": [17,19]},
+  "parameter_order": ["a1","a2","b0"],
+  "exhaustive_parameter_count": 912673,
+  "linear_projection_checks": [{"p":3,"dimension":2},{"p":5,"dimension":2},{"p":7,"dimension":2},{"p":11,"dimension":2}],
+  "independent_residual_samples": 257,
+  "acceptance": ["All original valid solutions survive every equation projection", "Exact extra-solution histogram over all projective selectors", "Agreement with exhaustive point-multiset oracle", "Agreement with separately implemented scalar polynomial arithmetic"],
+  "disallowed_claims": ["ECDLP speedup", "100 percent M16 coverage", "Lean acceptance", "external independent review", "new 256-bit target solved"]
+}

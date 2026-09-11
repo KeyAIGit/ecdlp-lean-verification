@@ -1,0 +1,11 @@
+{
+  "mode": "projected",
+  "status": "completed",
+  "returncode": 0,
+  "wall_seconds": 3.3259177349996207,
+  "stdout": "{\"stage\": \"constructed\", \"mode\": \"projected\", \"degrees\": [6, 6, 6], \"term_counts\": [46, 45, 43], \"elapsed_seconds\": 0.035280933000194636}\n{\"stage\": \"basis_completed\", \"mode\": \"projected\", \"basis_seconds\": 2.4285293110001476, \"quotient_vector_space_dimension\": 80, \"basis_size\": 27, \"maximum_output_basis_degree\": 8, \"zero_dimensional\": true, \"elapsed_seconds\": 2.470269541000107, \"solving_degree_measured\": false, \"root_extraction_performed\": false}\n",
+  "stderr": "",
+  "plan_sha256": "8e9cc9ae0cc960e7167597d0aa20ecedb7f6453abcb677ee8da31afa39dcdec6",
+  "timeout_is_not_unsatisfiability": true,
+  "global_speedup_established": false
+}

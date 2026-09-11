@@ -1,0 +1,19 @@
+{
+  "first_representation_probe": [
+    {
+      "mode": "original",
+      "basis_seconds": 1.8133221950001825,
+      "wall_seconds": 2.850223143000221,
+      "basis_size": 3,
+      "maximum_output_basis_degree": 1
+    },
+    {
+      "mode": "projected",
+      "basis_seconds": 2.5285451059999104,
+      "wall_seconds": 3.441346595000141,
+      "basis_size": 27,
+      "maximum_output_basis_degree": 8
+    }
+  ],
+  "followup": "Both arms were rerun with a standard-monomial count added. The newer complete logs are in SYMBOLIC_original.json and SYMBOLIC_projected.json. Timings are individual observations, not a statistical speed estimate or solving-degree bound."
+}

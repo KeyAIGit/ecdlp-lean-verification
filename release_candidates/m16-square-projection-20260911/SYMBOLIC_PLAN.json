@@ -1,0 +1,23 @@
+{
+  "p": 97,
+  "D": 3,
+  "q": 4,
+  "R": [
+    17,
+    19
+  ],
+  "selector": [
+    62,
+    61,
+    94,
+    42
+  ],
+  "selector_generation": "SHA256 of public fixed string KeyAI-square-projection-20260911-cost-fixture-1, 4 big-endian 8-byte blocks modulo 97; deterministic diagnostic, not a uniform probability sample",
+  "modes": [
+    "original",
+    "projected"
+  ],
+  "child_wall_budget_seconds": 35,
+  "method": "SymPy grevlex Groebner basis, identical variable order and field",
+  "scope": "Representation diagnostic on the previously easy fixture; not a timing theorem or full ECDLP comparison; no extrapolation from output degree to solving degree"
+}
