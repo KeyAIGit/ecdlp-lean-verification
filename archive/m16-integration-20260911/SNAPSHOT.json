@@ -1,0 +1,31 @@
+{
+  "source_commit": "31e0ac23b73d36ee7cc6d17295b3fc28d58688f5",
+  "scope": "Historical pre-integration records; never relabelled as newly generated evidence",
+  "files": [
+    {
+      "original_path": "data/research_engine_shadow_intake.json",
+      "snapshot_file": "research_engine_shadow_intake.json",
+      "sha256": "08934ff9e6a8fe25e152b715f4583446c758240716c4719fb73f67c4a808f0e6"
+    },
+    {
+      "original_path": "data/hypothesis_funnel_state.json",
+      "snapshot_file": "hypothesis_funnel_state.json",
+      "sha256": "4eeacc21611119f58cbb3e721cd350ab176ef9822559c7df06c226bdaf8ba3c0"
+    },
+    {
+      "original_path": "repo/HYPOTHESIS_SPACE_V2.json",
+      "snapshot_file": "HYPOTHESIS_SPACE_V2.json",
+      "sha256": "83498cb73850a5e4e7a92bfe6958f1e6d35978dce1488742c9e7f422b37e1801"
+    },
+    {
+      "original_path": "data/hypothesis_space_state.json",
+      "snapshot_file": "hypothesis_space_state.json",
+      "sha256": "706df7ff62dba4ab7fc8691952ea70adc35808b5676a4c433a271f2b07c6f602"
+    },
+    {
+      "original_path": "data/hypothesis_space_map.json",
+      "snapshot_file": "hypothesis_space_map.json",
+      "sha256": "2f44c8c9d3c8037e68b8726f55624a78faebd27fbaae854f727fc74e4bced036"
+    }
+  ]
+}

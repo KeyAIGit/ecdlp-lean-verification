@@ -372,6 +372,9 @@ classes:
       - archive/platform/
       - archive/generator-report.md
       - archive/untrusted_intake/
+      - archive/m16-20260910/
+      - archive/m16-transfer-20260910/
+      - archive/m16-integration-20260911/
     owner: history
     hand_edit: false
     generated: false

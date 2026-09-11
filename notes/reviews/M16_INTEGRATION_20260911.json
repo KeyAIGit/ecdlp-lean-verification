@@ -1,0 +1,15 @@
+{
+  "status": "PASS_LOCAL_METADATA_INVARIANTS",
+  "source_commit": "31e0ac23b73d36ee7cc6d17295b3fc28d58688f5",
+  "old_parent_root": "f3a8307285b1efd765d03021998c4a0cc338b0c995bde1cfb71b915676de903e",
+  "new_parent_root": "54f96896f413777d617da2d563cdc6bae16875dc8f46de69a0208b750498e4c4",
+  "old_instance_root": "e6df07821a3c94483fb3dac568512c5c2dd1137c6a20381227a0205e4ba2bf89",
+  "new_instance_root": "e634f9148e252803cc5e8510d0c73007527e632dc04e226863668afb7614133f",
+  "coverage_root_unchanged": true,
+  "structural_counts_unchanged": true,
+  "canonical_proof_ledgers_unchanged": true,
+  "route_decisions_unchanged": true,
+  "historical_operational_ledger_unchanged": true,
+  "full_repository_ci": "NOT_YET_COMPLETED_FOR_THE_NEW_COMMIT",
+  "scientific_progress_claimed": false
+}

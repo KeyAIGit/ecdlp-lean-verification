@@ -221,3 +221,10 @@ not authorship. License and the final author list are set by the maintainer.
 (the ECDLP ledger) · `BARRIERS.md` (the no-go map) · `TRUST_REPORT.md` (what "verified" rests
 on) · `PUBLISHABLE_UNITS.md` (the 3 standalone results) · `notes/INDEX.md` (research
 memory) · `SETUP.md` (build + CI + regen) · `tasks/NEXT.md` (queue router).
+
+## M16 research archive
+
+The [M16 evidence package](release_candidates/m16-20260910/README.md) preserves
+four original research archives, expanded sources, reproducible finite checks,
+and the remaining open questions. These are unpromoted research materials,
+not additional accepted proof-ledger results or a solved discrete logarithm.
