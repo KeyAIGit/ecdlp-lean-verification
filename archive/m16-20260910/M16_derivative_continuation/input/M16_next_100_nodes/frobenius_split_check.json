@@ -1,0 +1,119 @@
+{
+  "status": "PASS",
+  "generation": "PLANTED_EXCEPTIONAL_Q6_OVER_Fp2",
+  "p": 163,
+  "D": 9,
+  "n": 139,
+  "group_order_Fp2": 26271,
+  "extension_w_square": 8,
+  "R": [
+    89,
+    1
+  ],
+  "rational_points": [
+    [
+      38,
+      33
+    ],
+    [
+      40,
+      33
+    ],
+    [
+      53,
+      37
+    ]
+  ],
+  "nonrational_points": [
+    [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    [
+      [
+        58,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    [
+      [
+        104,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  ],
+  "A_over_Fp2": [
+    [
+      107,
+      9
+    ],
+    [
+      0,
+      78
+    ],
+    [
+      0,
+      162
+    ],
+    [
+      155,
+      0
+    ]
+  ],
+  "B_over_Fp2": [
+    [
+      154,
+      8
+    ],
+    [
+      85,
+      0
+    ],
+    [
+      1,
+      0
+    ]
+  ],
+  "g_over_Fp": [
+    38,
+    51,
+    131,
+    124,
+    112,
+    32,
+    1
+  ],
+  "usable_polynomial": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+  ],
+  "checks": [
+    "nonrational GLV triple sums to O",
+    "rational triple sums to target outside factorbase",
+    "all six points have distinct x in H",
+    "norm identity",
+    "nonvanishing B at all roots",
+    "full-H membership accepts; usable membership rejects",
+    "Frobenius fixes target and negates nonsquare lifts"
+  ],
+  "scope": "Demonstrates exceptional non-base-field norm solutions. Does not prove frequency; frequency bound is an analytic consequence."
+}

@@ -1,0 +1,131 @@
+{
+  "status": "PASS_COMPLETE_SQUAREFREE_Q4",
+  "membership_encoding": "usable",
+  "p": 163,
+  "D": 9,
+  "n": 139,
+  "index": 2,
+  "R": [
+    126,
+    79
+  ],
+  "target_scalar_harness_only": 101,
+  "profile": [
+    {
+      "degree": 6,
+      "terms": 42
+    },
+    {
+      "degree": 6,
+      "terms": 36
+    },
+    {
+      "degree": 6,
+      "terms": 24
+    },
+    {
+      "degree": 6,
+      "terms": 15
+    }
+  ],
+  "build_seconds": 0.07583283100007066,
+  "grevlex_seconds": 1.8353673500000696,
+  "lex_and_extract_seconds": 0.0052208699999027885,
+  "gb_size": 3,
+  "gb_max_output_degree": 2,
+  "parameter_solutions": 2,
+  "accepted": [
+    {
+      "p": 163,
+      "D": 9,
+      "q": 4,
+      "R": [
+        126,
+        79
+      ],
+      "A": [
+        110,
+        11,
+        56
+      ],
+      "B": [
+        69,
+        1
+      ],
+      "g": [
+        1,
+        62,
+        94,
+        62,
+        1
+      ],
+      "generation": "UNPLANTED_Q4_SQUAREFREE_GROEBNER_SEARCH",
+      "recovered_points": [
+        [
+          38,
+          33
+        ],
+        [
+          40,
+          130
+        ],
+        [
+          53,
+          37
+        ],
+        [
+          133,
+          126
+        ]
+      ],
+      "distinct_x_count": 4
+    },
+    {
+      "p": 163,
+      "D": 9,
+      "q": 4,
+      "R": [
+        126,
+        79
+      ],
+      "A": [
+        149,
+        123,
+        43
+      ],
+      "B": [
+        93,
+        1
+      ],
+      "g": [
+        1,
+        93,
+        9,
+        93,
+        1
+      ],
+      "generation": "UNPLANTED_Q4_SQUAREFREE_GROEBNER_SEARCH",
+      "recovered_points": [
+        [
+          38,
+          130
+        ],
+        [
+          85,
+          130
+        ],
+        [
+          133,
+          37
+        ],
+        [
+          140,
+          37
+        ]
+      ],
+      "distinct_x_count": 4
+    }
+  ],
+  "rejected": [],
+  "scope": "Unplanted q4 search, all base-field solutions in square-free chart. Not solving-degree measurement."
+}

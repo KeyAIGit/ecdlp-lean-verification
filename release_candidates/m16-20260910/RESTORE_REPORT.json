@@ -1,0 +1,31 @@
+{
+  "schema": "m16-archive-restoration/v1",
+  "status": "PASS",
+  "archive_count": 4,
+  "snapshot_files": 98,
+  "archives": [
+    {
+      "file": "M16_cost_bridge_research_pass_2026-09-10.zip",
+      "sha256": "2df1386357b0efdf3050666813ec6b64ccdfb3c6fa14ffa81dce26d074cfb3ac",
+      "bytes": 50470
+    },
+    {
+      "file": "M16_derivative_continuation_2026-09-10.zip",
+      "sha256": "4def9ea4cfd7a743ea262a4b5a1fde667c08511346f92d410c23a58de3323d80",
+      "bytes": 6415728
+    },
+    {
+      "file": "M16_next_100_nodes_2026-09-10.zip",
+      "sha256": "01d7eb92c20cf51de399ecba7e237760a843186b3fb56a97c7a247c935ad8688",
+      "bytes": 6250466
+    },
+    {
+      "file": "ecdlp_M16_factorbase_check.zip",
+      "sha256": "327af8761370ad061f9282ec457b5dede3f6ba2ac9d210728463c4f655e57a56",
+      "bytes": 4183
+    }
+  ],
+  "scope": "Byte-identical archival restoration; not new scientific results or historical timing reruns.",
+  "new_target_searches": 0,
+  "lean_checked": false
+}

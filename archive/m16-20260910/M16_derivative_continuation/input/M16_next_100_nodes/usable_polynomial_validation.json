@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "Euler_vs_Jacobi_all_cube_roots_checked": 188174,
+  "positive": 94509,
+  "negative": 93665,
+  "exact_polynomial_identity": "J(T)*K(T) = T^188174 - 1",
+  "coefficients_checked": 188175,
+  "euler_seconds": 18.516149700999904,
+  "total_seconds": 21.245530351999832,
+  "J_sha256": "b1bb4a4fe41bcf571fc9fa34b71a7091eb8bf3cc3052a0e8cd6964ea13a7109d",
+  "scope": [
+    "All root-classification decisions independently checked by Euler criterion.",
+    "All coefficients of product checked, not just random evaluations.",
+    "Polynomial multiplication shares the exact Kronecker/GMP backend with the producer.",
+    "Preparation only; no independently targeted secp256k1 M16 decomposition found."
+  ]
+}

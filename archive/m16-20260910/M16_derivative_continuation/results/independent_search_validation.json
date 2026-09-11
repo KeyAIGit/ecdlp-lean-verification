@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "completed_run_records": 5,
+  "unique_target_cases": 4,
+  "certificate_records_including_repeat_runs": 4,
+  "distinct_target_witness_pairs": 3,
+  "records": [
+    {
+      "file": "probe_97_3_4_0_derivative_usable.json",
+      "expected_and_found": 0,
+      "multisets_checked_independently": 66,
+      "with_repeated_x": 0
+    },
+    {
+      "file": "probe_97_3_4_1_derivative_usable.json",
+      "expected_and_found": 1,
+      "multisets_checked_independently": 66,
+      "with_repeated_x": 1
+    },
+    {
+      "file": "probe_97_3_4_1_quotient_usable.json",
+      "expected_and_found": 1,
+      "multisets_checked_independently": 66,
+      "with_repeated_x": 1
+    },
+    {
+      "file": "probe_97_3_4_2_derivative_usable.json",
+      "expected_and_found": 1,
+      "multisets_checked_independently": 66,
+      "with_repeated_x": 1
+    },
+    {
+      "file": "probe_97_3_4_3_derivative_usable.json",
+      "expected_and_found": 1,
+      "multisets_checked_independently": 66,
+      "with_repeated_x": 1
+    }
+  ],
+  "scope": "Complete norm-map multisets without opposite pairs, including repeated points. Tiny fields only. Solver does not see enumeration."
+}

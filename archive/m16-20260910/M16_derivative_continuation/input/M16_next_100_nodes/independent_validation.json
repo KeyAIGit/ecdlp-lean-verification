@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "certificates_checked": 343,
+  "toy_certificates": 319,
+  "planted_256_certificates": 24,
+  "polynomial_implementation": "SymPy, independent of producer",
+  "group_implementation": "Jacobian, independent of producer affine arithmetic",
+  "quantitative_counts": "independent differential recurrence and truncated powering",
+  "not_claimed": [
+    "Lean proof",
+    "new-target 256-bit search",
+    "complexity improvement"
+  ]
+}

@@ -26,7 +26,7 @@ python3 -m unittest discover -s release_candidates/m16-20260910 -p 'test_*.py' -
 The first command checks all 5,043 monic polynomials in the declared small-field
 families. It cross-checks the derivative condition, modular exponentiation and
 linear-factor removal, and verifies 57 nonzero Jacobian determinants. It also
-checks the characteristic counterexample. The second runs 17 regression tests,
+checks the characteristic counterexample. The second runs 17 polynomial regression tests plus 2 archive-integrity tests,
 including malformed inputs and omitted-assumption failures. Python 3.10+ is
 required. The public modulus guard deliberately limits this small-field replay
 to primes at most 10,000; it is not a secp256k1 primality test.
@@ -37,22 +37,34 @@ The existing read-only verification workflow now has a separate `M16 candidate e
 of these finite checks only. Alternative algebraic checks share arithmetic and
 AI authorship; this is not an independent human review or proof-kernel audit.
 
-## What is and is not published here
+## Complete archival publication
 
-The standalone polynomial replay, reviewed summaries, source hashes and grant
-work plan are in Git. Full original archives, all historical scripts, fixture
-matrices, and large generated polynomial/root binaries are **not** included in
-this compact intake. They remain the original conversation attachments named
-in `ARCHIVES.sha256`; a checksum is not a public download endpoint. Exact
-archival replay requires those bytes. Do not imply that this is a complete
-public replication package for every previous claim.
+All four original ZIP archives are now included in [archives/](archives/), with
+exact original byte lengths and SHA-256 hashes recorded in `ARCHIVES.sha256`.
+The [expanded latest snapshot](../../archive/m16-20260910/M16_derivative_continuation/)
+contains 98 original files, including nested earlier inputs, all historical
+scripts, fixture matrices, the research-node lists and the large finite-field
+polynomial/root arrays. The separate first factor-base ZIP is preserved too.
 
-During intake the original latest archive was recovered, all 97 manifest
-entries matched, and its structural and independent tiny-answer validators
-were rerun successfully. The original 24 large-field cases are planted
-certificates. No independently supplied 256-bit target was solved. Retained
-solver timeouts are censored observations, not proofs of failure or measured
-speedup factors.
+```sh
+python3 release_candidates/m16-20260910/audit_archives.py
+```
+
+The audit checks the four ZIP files, every embedded checksum manifest and all
+98 expanded files against the original archive bytes. It requires only the
+Python standard library. `ARCHIVE_AUDIT.json` is the expected deterministic
+report. [Archival replay instructions](ARCHIVAL_REPLAY.md) explain how to run
+historical numerical checks in a disposable working copy.
+
+`RESTORE_REPORT.json` records a byte-identical archival restoration. During
+transport, deterministic bulky data were regenerated and required to match the
+original SHA-256 hashes. Original timing fields were restored as historical
+metadata, not represented as new timings. No new-target search was launched.
+
+Historical notes are frozen: statements in them such as "GitHub unchanged"
+describe the time of the original research pass, not this publication. The
+current publication status is this README and `EVIDENCE.json`. Publishing an
+archive does not promote its mathematical assertions or grant status.
 
 ## Acceptance and attribution
 

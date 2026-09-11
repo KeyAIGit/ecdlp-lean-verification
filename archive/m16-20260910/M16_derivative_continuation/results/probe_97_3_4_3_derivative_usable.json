@@ -1,0 +1,97 @@
+{
+  "p": 97,
+  "D": 3,
+  "q": 4,
+  "index": 3,
+  "R": [
+    67,
+    19
+  ],
+  "encoding": "derivative",
+  "membership": "usable",
+  "target_rule": "SHA256-selected from all affine curve points independently of A, before search",
+  "build_seconds": 0.048746349999987615,
+  "profile": [
+    {
+      "degree": 6,
+      "terms": 43
+    },
+    {
+      "degree": 6,
+      "terms": 36
+    },
+    {
+      "degree": 6,
+      "terms": 27
+    },
+    {
+      "degree": 6,
+      "terms": 12
+    }
+  ],
+  "F": [
+    96,
+    0,
+    0,
+    1
+  ],
+  "grevlex_seconds": 2.290928306000069,
+  "gb_size": 3,
+  "gb_output_max_degree": 1,
+  "extract_seconds": 0.005088705999924059,
+  "accepted": [
+    {
+      "p": 97,
+      "D": 3,
+      "q": 4,
+      "R": [
+        67,
+        19
+      ],
+      "A": [
+        57,
+        20,
+        35
+      ],
+      "B": [
+        92,
+        1
+      ],
+      "g": [
+        1,
+        93,
+        6,
+        93,
+        1
+      ],
+      "generation": "UNPLANTED_DERIVATIVE_NORM_SOLVER",
+      "points": [
+        [
+          1,
+          28
+        ],
+        [
+          1,
+          28
+        ],
+        [
+          1,
+          28
+        ],
+        [
+          1,
+          28
+        ]
+      ],
+      "parameters": [
+        20,
+        35,
+        92
+      ],
+      "jacobian_rank": 3
+    }
+  ],
+  "rejected": [],
+  "raw_solutions": 1,
+  "status": "SOLVER_FINISHED"
+}

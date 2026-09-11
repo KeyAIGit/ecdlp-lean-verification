@@ -1,0 +1,20 @@
+[
+  {
+    "case": "initial derivative p163 D9 q4 index0",
+    "status": "TOOL_TIMEOUT_20_SECONDS",
+    "scope": "exploratory call, not included as a second statistical trial; later rerun with 60s budget"
+  },
+  {
+    "case": "streamed terminal session",
+    "status": "StreamingExecNotEnabledContainerError",
+    "scope": "tool availability, not a mathematical or algorithmic result"
+  },
+  {
+    "case": "supervised sequential benchmark",
+    "status": "COMPLETE_LOG",
+    "jobs": 6,
+    "finished": 2,
+    "right_censored": 4,
+    "scope": "all child processes ended before this report"
+  }
+]

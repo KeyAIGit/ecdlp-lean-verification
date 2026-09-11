@@ -62,8 +62,8 @@ node list as 100 benchmark tasks or 100 discoveries.
 The main repository already includes Apache-2.0 licensing and source-only
 contributor handoff from PRs #433 and #435. This intake adds a standalone
 5,043-polynomial replay and 17 regression tests; no new canonical Lean theorem
-is claimed. Historical large-field checks used planted inputs. Full historical
-archives are not yet publicly replicated by this compact Git package.
+is claimed. Historical large-field checks used planted inputs. All four historical archives and the expanded latest snapshot are now public
+in this feature branch; archival publication does not imply external replication.
 
 Before making a strong application update, obtain the current PR's required
 checks, preserve its exact accepted commit, and link the tested entry point.

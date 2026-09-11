@@ -1,0 +1,74 @@
+{
+  "date_local": "2026-09-10",
+  "primary_result": "Exact norm-certificate reduction, bounded exceptional coverage, full usable-coordinate polynomial, independently verified small searches.",
+  "node_counts": {
+    "CHECKED": 27,
+    "DERIVED": 44,
+    "SCOPED_NEGATIVE": 9,
+    "OPEN": 20
+  },
+  "certificate_validation": {
+    "status": "PASS",
+    "certificates_checked": 343,
+    "toy_certificates": 319,
+    "planted_256_certificates": 24,
+    "polynomial_implementation": "SymPy, independent of producer",
+    "group_implementation": "Jacobian, independent of producer affine arithmetic",
+    "quantitative_counts": "independent differential recurrence and truncated powering",
+    "not_claimed": [
+      "Lean proof",
+      "new-target 256-bit search",
+      "complexity improvement"
+    ]
+  },
+  "search_validation": {
+    "status": "PASS",
+    "q2_complete_target_cases": 39,
+    "q2_certificates": 26,
+    "q4_completed_run_records": 8,
+    "q4_certificate_records": 23,
+    "q4_distinct_target_cases": 6,
+    "q4_distinct_target_witness_pairs": 17,
+    "q4_records": [
+      {
+        "file": "q4_163_9_1_usable.json",
+        "solutions": 2
+      },
+      {
+        "file": "q4_163_9_1_usable_repeat.json",
+        "solutions": 2
+      },
+      {
+        "file": "q4_163_9_2_usable.json",
+        "solutions": 2
+      },
+      {
+        "file": "q4_163_9_3_usable.json",
+        "solutions": 2
+      },
+      {
+        "file": "q4_97_6_0.json",
+        "solutions": 4
+      },
+      {
+        "file": "q4_97_6_0_usable.json",
+        "solutions": 4
+      },
+      {
+        "file": "q4_97_6_1_usable.json",
+        "solutions": 4
+      },
+      {
+        "file": "q4_97_6_2_usable.json",
+        "solutions": 3
+      }
+    ],
+    "scope": "Exact complete solution sets on the stated tiny cases. No 256-bit targeted decomposition or asymptotic gain."
+  },
+  "main_barrier_status": "OPEN",
+  "new_target_secp256k1_M16_solved": false,
+  "repo_modified": false,
+  "Lean_verified": false,
+  "polynomial_data": "Full degree-94509 J, 3024320 bytes, plus exact 94509 roots.",
+  "source_files_before_manifest": 61
+}

@@ -1,0 +1,1060 @@
+{
+  "status": "EVIDENCE_LEDGER_NOT_100_SOLVED_OPEN_PROBLEMS",
+  "node_count": 100,
+  "counts": {
+    "CHECKED": 27,
+    "DERIVED": 44,
+    "SCOPED_NEGATIVE": 9,
+    "OPEN": 20
+  },
+  "meaning": {
+    "DERIVED": "Analytic derivation written in note; not Lean checked",
+    "CHECKED": "Actually executed finite check in stated scope",
+    "SCOPED_NEGATIVE": "Specific proposed inference or procedure rejected, not a universal lower bound",
+    "OPEN": "Reviewed question remains unanswered; not counted as closed"
+  },
+  "nodes": [
+    {
+      "id": "M16-CB-001",
+      "question": "Сохранена ли исходная доказательная база?",
+      "status": "CHECKED",
+      "result": "Все 17 файлов исходного манифеста совпали по SHA256.",
+      "evidence": "input/M16_cost_bridge_research_pass/manifest.sha256",
+      "depends_on": []
+    },
+    {
+      "id": "M16-CB-002",
+      "question": "Перепроверяются ли прежние найденные разложения?",
+      "status": "CHECKED",
+      "result": "Независимо подтверждены 319 разложений и девять восстановлений тестового скаляра.",
+      "evidence": "input/M16_cost_bridge_research_pass/independent_validation.json",
+      "depends_on": [
+        "M16-CB-001"
+      ]
+    },
+    {
+      "id": "M16-CB-003",
+      "question": "Какие размеры поля, группы и факторбазы используются?",
+      "status": "CHECKED",
+      "result": "p и n различаются; D=564522, |A|=567054, B=94509.",
+      "evidence": "quantitative_bounds.json",
+      "depends_on": [
+        "M16-CB-001"
+      ]
+    },
+    {
+      "id": "M16-CB-004",
+      "question": "Как убрать порядок слагаемых без потери знаков?",
+      "status": "DERIVED",
+      "result": "Использовать единственную нормированную функцию a+y*b с заданным дивизором.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-003"
+      ]
+    },
+    {
+      "id": "M16-CB-005",
+      "question": "Какой порядок полюса соответствует q слагаемым?",
+      "status": "DERIVED",
+      "result": "q+1, поскольку добавляется точка -R.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-004"
+      ]
+    },
+    {
+      "id": "M16-CB-006",
+      "question": "Как выглядит базис функции при четном q?",
+      "status": "DERIVED",
+      "result": "1,x,...,x^(q/2),y,...,x^(q/2-1)y.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-005"
+      ]
+    },
+    {
+      "id": "M16-CB-007",
+      "question": "Почему разрешено нормировать старший коэффициент b?",
+      "status": "DERIVED",
+      "result": "Он ненулевой вследствие точного нечетного порядка полюса q+1.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-006"
+      ]
+    },
+    {
+      "id": "M16-CB-008",
+      "question": "Какая линейная связь задается целевой точкой?",
+      "status": "DERIVED",
+      "result": "a(r)=z*b(r), то есть функция обращается в ноль в -R.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-007"
+      ]
+    },
+    {
+      "id": "M16-CB-009",
+      "question": "Сколько свободных параметров остается?",
+      "status": "DERIVED",
+      "result": "q-1; в основной M16-карте 15. Это не оценка времени.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-007",
+        "M16-CB-008"
+      ]
+    },
+    {
+      "id": "M16-CB-010",
+      "question": "Какой нормовый полином кодирует слагаемые?",
+      "status": "DERIVED",
+      "result": "g=((X^3+7)b^2-a^2)/(X-r), монic степени q.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-008"
+      ]
+    },
+    {
+      "id": "M16-CB-011",
+      "question": "Как точно выразить поддержку в H с кратностями?",
+      "status": "DERIVED",
+      "result": "g делит (X^D-1)^q.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-010"
+      ]
+    },
+    {
+      "id": "M16-CB-012",
+      "question": "Почему первой степени X^D-1 недостаточно?",
+      "status": "CHECKED",
+      "result": "Сертификаты повторной одной точки имеют кратный g и отвергаются первой степенью.",
+      "evidence": "certificate_suite.json",
+      "depends_on": [
+        "M16-CB-011"
+      ]
+    },
+    {
+      "id": "M16-CB-013",
+      "question": "Как исключаются противоположные ветви одной координаты?",
+      "status": "DERIVED",
+      "result": "Условием gcd(g,b)=1.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-010"
+      ]
+    },
+    {
+      "id": "M16-CB-014",
+      "question": "Как восстанавливается знак y?",
+      "status": "DERIVED",
+      "result": "y=-a(alpha)/b(alpha), не перебор 2^q вариантов.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-011",
+        "M16-CB-013"
+      ]
+    },
+    {
+      "id": "M16-CB-015",
+      "question": "Почему полученный y лежит на кривой?",
+      "status": "DERIVED",
+      "result": "Это следует из нормы после подстановки корня g.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-014"
+      ]
+    },
+    {
+      "id": "M16-CB-016",
+      "question": "Как сохраняются кратности нулей?",
+      "status": "DERIVED",
+      "result": "У другой ветви функция ненулевая, поэтому порядок нормы совпадает с порядком выбранной ветви.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-013",
+        "M16-CB-014"
+      ]
+    },
+    {
+      "id": "M16-CB-017",
+      "question": "Почему восстановленные точки суммируются в R?",
+      "status": "DERIVED",
+      "result": "Главный дивизор функции равен сумме точек плюс -R минус (q+1)O.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-016"
+      ]
+    },
+    {
+      "id": "M16-CB-018",
+      "question": "Есть ли обратное построение для каждого несокращающегося ответа?",
+      "status": "DERIVED",
+      "result": "Да, из соответствующего главного дивизора и одномерности пространства функций.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-006",
+        "M16-CB-017"
+      ]
+    },
+    {
+      "id": "M16-CB-019",
+      "question": "Почему рациональный свидетель дает коэффициенты в F_p?",
+      "status": "DERIVED",
+      "result": "Нормированную единственную функцию фиксирует Фробениус.",
+      "evidence": "RESEARCH_NOTE_RU.md#2",
+      "depends_on": [
+        "M16-CB-018"
+      ]
+    },
+    {
+      "id": "M16-CB-020",
+      "question": "Убраны ли перестановочные дубликаты строго?",
+      "status": "CHECKED",
+      "result": "Обратный порядок слагаемых дает точно те же нормированные a,b,g; уникальность доказана отдельно.",
+      "evidence": "certificate_suite.json",
+      "depends_on": [
+        "M16-CB-018",
+        "M16-CB-019"
+      ]
+    },
+    {
+      "id": "M16-CB-021",
+      "question": "Как строятся кратные сертификаты вычислительно?",
+      "status": "CHECKED",
+      "result": "Условия Тейлора на ветвь y(x+t), а не повторение одинаковых строк интерполяции.",
+      "evidence": "norm_bridge.py",
+      "depends_on": [
+        "M16-CB-016"
+      ]
+    },
+    {
+      "id": "M16-CB-022",
+      "question": "Какие четные длины покрывает реализация?",
+      "status": "CHECKED",
+      "result": "2,4,6,8,10,12,14,16; на каждой проверены три 256-битных построенных шаблона.",
+      "evidence": "certificate_suite.json",
+      "depends_on": [
+        "M16-CB-021"
+      ]
+    },
+    {
+      "id": "M16-CB-023",
+      "question": "Как получить точное покрытие всей M16-задачи?",
+      "status": "DERIVED",
+      "result": "Удалить противоположные пары и использовать восемь карт с последующим дополнением парами.",
+      "evidence": "RESEARCH_NOTE_RU.md#3",
+      "depends_on": [
+        "M16-CB-018",
+        "M16-CB-022"
+      ]
+    },
+    {
+      "id": "M16-CB-024",
+      "question": "Как обрабатывается цель O?",
+      "status": "DERIVED",
+      "result": "Восемь известных противоположных пар дают 16 слагаемых.",
+      "evidence": "RESEARCH_NOTE_RU.md#3",
+      "depends_on": [
+        "M16-CB-023"
+      ]
+    },
+    {
+      "id": "M16-CB-025",
+      "question": "Как обрабатывается цель внутри самой факторбазы?",
+      "status": "DERIVED",
+      "result": "R плюс пять нулевых GLV-троек.",
+      "evidence": "RESEARCH_NOTE_RU.md#3",
+      "depends_on": [
+        "M16-CB-023"
+      ]
+    },
+    {
+      "id": "M16-CB-026",
+      "question": "Сколько покрытия может потерять только карта q16?",
+      "status": "DERIVED",
+      "result": "Не более K14/n=3.519864537451805e-8 абсолютной вероятности.",
+      "evidence": "quantitative_bounds.json",
+      "depends_on": [
+        "M16-CB-023"
+      ]
+    },
+    {
+      "id": "M16-CB-027",
+      "question": "Следует ли из этой границы почти полное покрытие группы?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "Нет. Не установлена нижняя граница исходной delta16; относительная доля тоже неизвестна.",
+      "evidence": "RESEARCH_NOTE_RU.md#3",
+      "depends_on": [
+        "M16-CB-026"
+      ]
+    },
+    {
+      "id": "M16-CB-028",
+      "question": "Где лежат цели с повторяющимися x?",
+      "status": "DERIVED",
+      "result": "В 2A+14A; противоположные пары также приводят в это множество.",
+      "evidence": "RESEARCH_NOTE_RU.md#3",
+      "depends_on": [
+        "M16-CB-003"
+      ]
+    },
+    {
+      "id": "M16-CB-029",
+      "question": "Как посчитать этот образ без заявления независимости орбит?",
+      "status": "DERIVED",
+      "result": "Ограничить размер образом объединения переводов формального GLV-шара.",
+      "evidence": "RESEARCH_NOTE_RU.md#3",
+      "depends_on": [
+        "M16-CB-028"
+      ]
+    },
+    {
+      "id": "M16-CB-030",
+      "question": "Какова точная локальная геометрия вычитания 2*unit?",
+      "status": "CHECKED",
+      "result": "Классификация подтверждена на 3169 векторах и описана аналитически.",
+      "evidence": "quantitative_bounds.json",
+      "depends_on": [
+        "M16-CB-029"
+      ]
+    },
+    {
+      "id": "M16-CB-031",
+      "question": "Как выглядит точный формальный подсчет повторов?",
+      "status": "DERIVED",
+      "result": "K16-6^15*C(B,15)-[t^16](1+6t+6t^2)^B.",
+      "evidence": "RESEARCH_NOTE_RU.md#3",
+      "depends_on": [
+        "M16-CB-030"
+      ]
+    },
+    {
+      "id": "M16-CB-032",
+      "question": "Согласованы ли две реализации подсчета?",
+      "status": "CHECKED",
+      "result": "Замкнутая формула, прямые малые объединения и независимое усеченное возведение согласованы.",
+      "evidence": "independent_validation.json",
+      "depends_on": [
+        "M16-CB-031"
+      ]
+    },
+    {
+      "id": "M16-CB-033",
+      "question": "Какова потеря квадратсвободной карты?",
+      "status": "DERIVED",
+      "result": "Не более 0.019955379407882636 абсолютной вероятности.",
+      "evidence": "quantitative_bounds.json",
+      "depends_on": [
+        "M16-CB-031",
+        "M16-CB-032"
+      ]
+    },
+    {
+      "id": "M16-CB-034",
+      "question": "Как Фробениус действует на непригодные подъемы?",
+      "status": "DERIVED",
+      "result": "При рациональном x нерациональное y лежит в F_(p^2) и меняет знак.",
+      "evidence": "RESEARCH_NOTE_RU.md#4",
+      "depends_on": [
+        "M16-CB-011"
+      ]
+    },
+    {
+      "id": "M16-CB-035",
+      "question": "Что следует из рациональности целевой суммы?",
+      "status": "DERIVED",
+      "result": "2*S_non=O для нерациональной части суммы.",
+      "evidence": "RESEARCH_NOTE_RU.md#4",
+      "depends_on": [
+        "M16-CB-034"
+      ]
+    },
+    {
+      "id": "M16-CB-036",
+      "question": "Может ли S_non быть ненулевой точкой порядка 2?",
+      "status": "DERIVED",
+      "result": "Нет: кубический полином без корней в F_p не имеет корня в расширении степени 2.",
+      "evidence": "RESEARCH_NOTE_RU.md#4",
+      "depends_on": [
+        "M16-CB-035"
+      ]
+    },
+    {
+      "id": "M16-CB-037",
+      "question": "Сколько нерациональных слагаемых нужно для исключения?",
+      "status": "DERIVED",
+      "result": "Не меньше трех в карте без противоположных пар.",
+      "evidence": "RESEARCH_NOTE_RU.md#4",
+      "depends_on": [
+        "M16-CB-013",
+        "M16-CB-036"
+      ]
+    },
+    {
+      "id": "M16-CB-038",
+      "question": "Где находятся цели нерациональных M16-сертификатов?",
+      "status": "DERIVED",
+      "result": "В 13A; доля не больше 8.690579035429138e-13.",
+      "evidence": "quantitative_bounds.json",
+      "depends_on": [
+        "M16-CB-037"
+      ]
+    },
+    {
+      "id": "M16-CB-039",
+      "question": "Существует ли сам исключительный механизм?",
+      "status": "CHECKED",
+      "result": "Построен точный q6-пример над F_(163^2): рациональная тройка плюс нерациональная нулевая тройка.",
+      "evidence": "frobenius_split_check.json",
+      "depends_on": [
+        "M16-CB-038"
+      ]
+    },
+    {
+      "id": "M16-CB-040",
+      "question": "Закрывает ли спуск поля стоимость поиска?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "Нет. Он характеризует поле ответов и исключения, но не стоимость получения коэффициентов.",
+      "evidence": "RESEARCH_NOTE_RU.md#4",
+      "depends_on": [
+        "M16-CB-038"
+      ]
+    },
+    {
+      "id": "M16-CB-041",
+      "question": "Как точно исключить непригодные x до решения?",
+      "status": "DERIVED",
+      "result": "Полиномом F_U, корни которого ровно пригодные координаты; рациональные ответы сохраняются.",
+      "evidence": "RESEARCH_NOTE_RU.md#5",
+      "depends_on": [
+        "M16-CB-011"
+      ]
+    },
+    {
+      "id": "M16-CB-042",
+      "question": "Какая GLV-структура сохраняется у F_U?",
+      "status": "DERIVED",
+      "result": "F_U(X)=J(X^3), без независимого факторизования группового соотношения по кубам.",
+      "evidence": "RESEARCH_NOTE_RU.md#5",
+      "depends_on": [
+        "M16-CB-041"
+      ]
+    },
+    {
+      "id": "M16-CB-043",
+      "question": "Как определить J без неявной информации о ключе?",
+      "status": "DERIVED",
+      "result": "По u^188174=1 и квадратичности u+7.",
+      "evidence": "RESEARCH_NOTE_RU.md#5",
+      "depends_on": [
+        "M16-CB-042"
+      ]
+    },
+    {
+      "id": "M16-CB-044",
+      "question": "Построены ли все реальные корни J?",
+      "status": "CHECKED",
+      "result": "Да, 94509 значений; 5.840 секунды на классификацию в данном окружении.",
+      "evidence": "usable_roots_report.json",
+      "depends_on": [
+        "M16-CB-043"
+      ]
+    },
+    {
+      "id": "M16-CB-045",
+      "question": "Построены ли все коэффициенты J?",
+      "status": "CHECKED",
+      "result": "Да, степень 94509, файл 3024320 байт; дерево произведений с GMP завершилось.",
+      "evidence": "usable_polynomial_report.json",
+      "depends_on": [
+        "M16-CB-044"
+      ]
+    },
+    {
+      "id": "M16-CB-046",
+      "question": "Независимо ли перепроверены решения о квадратичности?",
+      "status": "CHECKED",
+      "result": "Все 188174 решений сравнивались по Якоби и критерию Эйлера.",
+      "evidence": "usable_polynomial_validation.json",
+      "depends_on": [
+        "M16-CB-044"
+      ]
+    },
+    {
+      "id": "M16-CB-047",
+      "question": "Проверено ли полиномиальное тождество целиком?",
+      "status": "CHECKED",
+      "result": "Все 188175 коэффициентов J*K равны T^188174-1; общий множитель явно отмечен.",
+      "evidence": "usable_polynomial_validation.json",
+      "depends_on": [
+        "M16-CB-045",
+        "M16-CB-046"
+      ]
+    },
+    {
+      "id": "M16-CB-048",
+      "question": "Как влияет степень на разреженность настоящего экземпляра?",
+      "status": "CHECKED",
+      "result": "У J все 94510 коэффициентов ненулевые, у исходного бинома два члена.",
+      "evidence": "usable_polynomial_report.json",
+      "depends_on": [
+        "M16-CB-045"
+      ]
+    },
+    {
+      "id": "M16-CB-049",
+      "question": "Обоснован ли перенос малого ускорения на настоящий J?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "Нет: понижение степени сопровождается резким ростом числа членов.",
+      "evidence": "RESEARCH_NOTE_RU.md#5",
+      "depends_on": [
+        "M16-CB-048"
+      ]
+    },
+    {
+      "id": "M16-CB-050",
+      "question": "Сохранены ли неудачные технические ветки?",
+      "status": "CHECKED",
+      "result": "Да: чистый Python, недоступная необязательная установка и цензурированный q4-прогон.",
+      "evidence": "attempt_limits.json",
+      "depends_on": [
+        "M16-CB-045"
+      ]
+    },
+    {
+      "id": "M16-CB-051",
+      "question": "Есть ли конкретный настоящий поисковый алгоритм q2?",
+      "status": "DERIVED",
+      "result": "Однопараметрическая нормовая система, gcd уравнений и пересечение с t^p-t.",
+      "evidence": "q2_slope_solver.py",
+      "depends_on": [
+        "M16-CB-010"
+      ]
+    },
+    {
+      "id": "M16-CB-052",
+      "question": "Как выглядит явный g_t для q2?",
+      "status": "DERIVED",
+      "result": "X^2+(r-t^2)X+(r^2+r*t^2-2zt).",
+      "evidence": "RESEARCH_NOTE_RU.md#6",
+      "depends_on": [
+        "M16-CB-051"
+      ]
+    },
+    {
+      "id": "M16-CB-053",
+      "question": "Как растет степень остатка по параметру t?",
+      "status": "DERIVED",
+      "result": "Точно 2D-2; для настоящего D равна 1129042.",
+      "evidence": "RESEARCH_NOTE_RU.md#6",
+      "depends_on": [
+        "M16-CB-052"
+      ]
+    },
+    {
+      "id": "M16-CB-054",
+      "question": "Учтены ли в q2 касания и повтор одного слагаемого?",
+      "status": "DERIVED",
+      "result": "Используется квадрат полинома принадлежности, а не только простой делитель.",
+      "evidence": "q2_slope_solver.py",
+      "depends_on": [
+        "M16-CB-011",
+        "M16-CB-051"
+      ]
+    },
+    {
+      "id": "M16-CB-055",
+      "question": "Видит ли q2-решатель скрытый скаляр или свидетель?",
+      "status": "CHECKED",
+      "result": "Его интерфейс состоит только из p,D,R; контрольные метки используются отдельным стендом.",
+      "evidence": "q2_benchmark_plan.json",
+      "depends_on": [
+        "M16-CB-051"
+      ]
+    },
+    {
+      "id": "M16-CB-056",
+      "question": "Проверены ли все успехи и неуспехи q2?",
+      "status": "CHECKED",
+      "result": "39 полных целевых проверок, 26 свидетелей, одна отдельная цель; полные множества совпали.",
+      "evidence": "independent_search_validation.json",
+      "depends_on": [
+        "M16-CB-055"
+      ]
+    },
+    {
+      "id": "M16-CB-057",
+      "question": "Удалось ли получить q2-выигрыш над готовой таблицей дополнений?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "На этих малых примерах нет; таблица быстрее онлайн, подготовка учитывается отдельно.",
+      "evidence": "q2_benchmark.json",
+      "depends_on": [
+        "M16-CB-056"
+      ]
+    },
+    {
+      "id": "M16-CB-058",
+      "question": "Как построена действительно решаемая q4-система?",
+      "status": "DERIVED",
+      "result": "Четыре коэффициента остатка от принадлежности, три неизвестных a1,a2,b0.",
+      "evidence": "q4_symbolic_probe.py",
+      "depends_on": [
+        "M16-CB-010",
+        "M16-CB-041"
+      ]
+    },
+    {
+      "id": "M16-CB-059",
+      "question": "Есть ли контроль с совпадающими H и U?",
+      "status": "CHECKED",
+      "result": "Да, p97,D6: три цели, число квадратсвободных ответов 4,4,3.",
+      "evidence": "independent_search_validation.json",
+      "depends_on": [
+        "M16-CB-058"
+      ]
+    },
+    {
+      "id": "M16-CB-060",
+      "question": "Есть ли парное сравнение H и U на одинаковой цели?",
+      "status": "CHECKED",
+      "result": "p163,D9,index1: исходный вариант цензурирован, отфильтрованный завершился.",
+      "evidence": "q4_followup_plan.json",
+      "depends_on": [
+        "M16-CB-058"
+      ]
+    },
+    {
+      "id": "M16-CB-061",
+      "question": "Что изменилось в степенях q4 после фильтра?",
+      "status": "CHECKED",
+      "result": "Степень каждого входного уравнения снизилась с 12 до 6 на конкретном примере.",
+      "evidence": "q4_163_9_1_usable.json",
+      "depends_on": [
+        "M16-CB-060"
+      ]
+    },
+    {
+      "id": "M16-CB-062",
+      "question": "Повторяется ли результат на заранее выбранных дополнительных целях?",
+      "status": "CHECKED",
+      "result": "На шести целях получены 17 различных пар цель-свидетель; записан также повтор одного прогона.",
+      "evidence": "q4_followup_plan.json",
+      "depends_on": [
+        "M16-CB-059",
+        "M16-CB-060"
+      ]
+    },
+    {
+      "id": "M16-CB-063",
+      "question": "Проверена ли полнота q4-ответов отдельно?",
+      "status": "CHECKED",
+      "result": "Да, независимым перечислением различных x, знаков и проективной суммой.",
+      "evidence": "independent_search_validation.json",
+      "depends_on": [
+        "M16-CB-062"
+      ]
+    },
+    {
+      "id": "M16-CB-064",
+      "question": "Что означает выходная степень базиса 2?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "Это не solving degree и не оценка максимальной промежуточной степени.",
+      "evidence": "RESEARCH_NOTE_RU.md#6",
+      "depends_on": [
+        "M16-CB-061"
+      ]
+    },
+    {
+      "id": "M16-CB-065",
+      "question": "Есть ли корректный точный коэффициент ускорения q4?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "Нет: исходное время цензурировано; сообщаются только наблюдавшиеся времена и бюджет.",
+      "evidence": "attempt_limits.json",
+      "depends_on": [
+        "M16-CB-060"
+      ]
+    },
+    {
+      "id": "M16-CB-066",
+      "question": "Достаточно ли равномерно угадывать 15 коэффициентов?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "Средняя вероятность успеха ограничена сверху 2^(-3834.439809528...).",
+      "evidence": "RESEARCH_NOTE_RU.md#8",
+      "depends_on": [
+        "M16-CB-009",
+        "M16-CB-018"
+      ]
+    },
+    {
+      "id": "M16-CB-067",
+      "question": "Почему эта граница не запрещает структурный выбор?",
+      "status": "DERIVED",
+      "result": "Она использует равномерность параметров; распределение, зависящее от структуры цели, не покрыто.",
+      "evidence": "RESEARCH_NOTE_RU.md#8",
+      "depends_on": [
+        "M16-CB-066"
+      ]
+    },
+    {
+      "id": "M16-CB-068",
+      "question": "Дает ли интерполяция по 15 выбранным точкам новый алгоритм?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "Нет для независимого префикса: последний ноль равен R минус сумма 15 точек.",
+      "evidence": "RESEARCH_NOTE_RU.md#8",
+      "depends_on": [
+        "M16-CB-017"
+      ]
+    },
+    {
+      "id": "M16-CB-069",
+      "question": "Что дают быстрые операции с полиномами?",
+      "status": "DERIVED",
+      "result": "Они удешевили реальную подготовку J; из этого не следует решение многомерных ограничений.",
+      "evidence": "usable_polynomial_report.json",
+      "depends_on": [
+        "M16-CB-045"
+      ]
+    },
+    {
+      "id": "M16-CB-070",
+      "question": "Сохраняется ли опубликованная полная формула стоимости?",
+      "status": "DERIVED",
+      "result": "Нужны подготовка, C_try/delta_alg, число отношений и линейная алгебра.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-051",
+        "M16-CB-058"
+      ]
+    },
+    {
+      "id": "M16-CB-071",
+      "question": "Что проверено на настоящих 256-битных сертификатах?",
+      "status": "CHECKED",
+      "result": "24 заранее построенных шаблона, восстановление кратностей и знаков, но не поиск неизвестного разложения.",
+      "evidence": "certificate_suite.json",
+      "depends_on": [
+        "M16-CB-022"
+      ]
+    },
+    {
+      "id": "M16-CB-072",
+      "question": "Проверены ли все 343 преобразованных сертификата другим кодом?",
+      "status": "CHECKED",
+      "result": "Да: SymPy для полиномов и отдельная проективная арифметика.",
+      "evidence": "independent_validation.json",
+      "depends_on": [
+        "M16-CB-071"
+      ]
+    },
+    {
+      "id": "M16-CB-073",
+      "question": "Отвергаются ли поврежденные сертификаты?",
+      "status": "CHECKED",
+      "result": "Семь мутаций коэффициентов, цели, длины и D отвергнуты.",
+      "evidence": "certificate_suite.json",
+      "depends_on": [
+        "M16-CB-072"
+      ]
+    },
+    {
+      "id": "M16-CB-074",
+      "question": "Не перепутано ли быстрое восстановление с поиском?",
+      "status": "DERIVED",
+      "result": "Восстановление 256-битного построенного примера около 0.37с помечено только как проверка готового ответа.",
+      "evidence": "RESEARCH_NOTE_RU.md#7",
+      "depends_on": [
+        "M16-CB-071"
+      ]
+    },
+    {
+      "id": "M16-CB-075",
+      "question": "Как ведет себя конечнополевое разбиение при неудаче?",
+      "status": "DERIVED",
+      "result": "Ограничение числа попыток вызывает явную ошибку, не ложное отсутствие корней.",
+      "evidence": "norm_bridge.py",
+      "depends_on": [
+        "M16-CB-014"
+      ]
+    },
+    {
+      "id": "M16-CB-076",
+      "question": "Можно ли считать новую нормовую конструкцию новым общим методом?",
+      "status": "SCOPED_NEGATIVE",
+      "result": "Нет. Дивизоры, Риман-Рох и связь с кодами имеют опубликованные предшествующие работы.",
+      "evidence": "sources.json",
+      "depends_on": [
+        "M16-CB-004"
+      ]
+    },
+    {
+      "id": "M16-CB-077",
+      "question": "Какой артефакт действительно нужен для продолжения?",
+      "status": "DERIVED",
+      "result": "Фиксированный J, точная спецификация сертификата, решатели контроля, валидаторы и раздельные статусы.",
+      "evidence": "README_RU.md",
+      "depends_on": [
+        "M16-CB-045",
+        "M16-CB-063",
+        "M16-CB-072"
+      ]
+    },
+    {
+      "id": "M16-CB-078",
+      "question": "Пересчитаны ли повторные q4-прогоны как новые цели?",
+      "status": "CHECKED",
+      "result": "Нет: восемь записей запусков, шесть различных целей, 17 различных пар цель-свидетель.",
+      "evidence": "independent_search_validation.json",
+      "depends_on": [
+        "M16-CB-063"
+      ]
+    },
+    {
+      "id": "M16-CB-079",
+      "question": "Какая часть C_pre теперь измерена?",
+      "status": "DERIVED",
+      "result": "Генерация корней J и полный полином; подготовка будущего M16-решателя еще не измерена.",
+      "evidence": "RESEARCH_NOTE_RU.md#5",
+      "depends_on": [
+        "M16-CB-044",
+        "M16-CB-045"
+      ]
+    },
+    {
+      "id": "M16-CB-080",
+      "question": "Какой установлен общий научный результат прохода?",
+      "status": "DERIVED",
+      "result": "Точная карта и восстановление, количественные исключения, реальный полином и контролируемые малые поиски; не быстрый M16.",
+      "evidence": "RESEARCH_NOTE_RU.md#0",
+      "depends_on": [
+        "M16-CB-026",
+        "M16-CB-038",
+        "M16-CB-045",
+        "M16-CB-063",
+        "M16-CB-070"
+      ]
+    },
+    {
+      "id": "M16-CB-081",
+      "question": "ONE_CERTIFICATE_SEARCH: найти один M16-сертификат независимо заданной цели",
+      "status": "OPEN",
+      "result": "Проверенные q2/q4-решатели не дали масштабируемого правила выбора 15 коэффициентов. Целевой q16-ответ не получен.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-080"
+      ]
+    },
+    {
+      "id": "M16-CB-082",
+      "question": "Положительная нижняя граница delta16 на настоящей факторбазе",
+      "status": "OPEN",
+      "result": "Среднее K16/n и верхние границы исключений не дают нижнюю границу покрытия.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-026",
+        "M16-CB-038"
+      ]
+    },
+    {
+      "id": "M16-CB-083",
+      "question": "Второй момент распределения формальных M16-представлений",
+      "status": "OPEN",
+      "result": "Нужна оценка S2, например через аддитивные характеры группы; точного вычисления на n~2^256 нет.",
+      "evidence": "input/M16_cost_bridge_research_pass/RESEARCH_NOTE_RU.md",
+      "depends_on": [
+        "M16-CB-082"
+      ]
+    },
+    {
+      "id": "M16-CB-084",
+      "question": "Существенно неравномерное предложение коэффициентов по цели",
+      "status": "OPEN",
+      "result": "Равномерный вариант отвергнут, но новое распределение с контролируемой вероятностью не построено.",
+      "evidence": "RESEARCH_NOTE_RU.md#8",
+      "depends_on": [
+        "M16-CB-066",
+        "M16-CB-067"
+      ]
+    },
+    {
+      "id": "M16-CB-085",
+      "question": "Solving degree q16 для данной нормовой системы",
+      "status": "OPEN",
+      "result": "Из степеней входа, q2 и выходных базисов q4 это значение не следует; теорема отсутствует.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-053",
+        "M16-CB-064"
+      ]
+    },
+    {
+      "id": "M16-CB-086",
+      "question": "Пиковая память q16 с плотным J",
+      "status": "OPEN",
+      "result": "Размер файла J известен, размер промежуточных полиномов и матриц нет.",
+      "evidence": "RESEARCH_NOTE_RU.md#5",
+      "depends_on": [
+        "M16-CB-048",
+        "M16-CB-085"
+      ]
+    },
+    {
+      "id": "M16-CB-087",
+      "question": "Получение одной компоненты без полного базиса",
+      "status": "OPEN",
+      "result": "Нормовая запись убрала перестановки, но текущий q4-контроль строит полный базис. Масштабируемая процедура не реализована.",
+      "evidence": "q4_symbolic_probe.py",
+      "depends_on": [
+        "M16-CB-020",
+        "M16-CB-058"
+      ]
+    },
+    {
+      "id": "M16-CB-088",
+      "question": "Оптимальный порядок устранения и блочная структура",
+      "status": "OPEN",
+      "result": "Проверен один grevlex/lex маршрут q4; выбор для q16 и его стоимость не установлены.",
+      "evidence": "RESEARCH_NOTE_RU.md#6",
+      "depends_on": [
+        "M16-CB-085",
+        "M16-CB-087"
+      ]
+    },
+    {
+      "id": "M16-CB-089",
+      "question": "Плотный F_U против схемы возведения в степень для H",
+      "status": "OPEN",
+      "result": "Есть реальный артефакт обоих типов, но полный сравнительный q16-прогон и доказанная стоимость отсутствуют.",
+      "evidence": "RESEARCH_NOTE_RU.md#5",
+      "depends_on": [
+        "M16-CB-045",
+        "M16-CB-048",
+        "M16-CB-060"
+      ]
+    },
+    {
+      "id": "M16-CB-090",
+      "question": "Стоимость и вероятность успешной попытки на криптографическом размере",
+      "status": "OPEN",
+      "result": "Не получены измерения C_try и delta_alg для независимо заданных q16-целей secp256k1.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-081",
+        "M16-CB-085"
+      ]
+    },
+    {
+      "id": "M16-CB-091",
+      "question": "Гарантированная польза многократных целей с одним J",
+      "status": "OPEN",
+      "result": "Полином можно переиспользовать, но амортизируемые структуры решателя и их цена неизвестны.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-079",
+        "M16-CB-090"
+      ]
+    },
+    {
+      "id": "M16-CB-092",
+      "question": "Сколько независимых информативных отношений даст новый решатель",
+      "status": "OPEN",
+      "result": "Алгебраическая редукция и малый контроль есть; настоящего генератора отношений нет.",
+      "evidence": "input/M16_cost_bridge_research_pass/toy_end_to_end.json",
+      "depends_on": [
+        "M16-CB-090"
+      ]
+    },
+    {
+      "id": "M16-CB-093",
+      "question": "Стоимость разреженной линейной алгебры при B=94509",
+      "status": "OPEN",
+      "result": "Размер числа столбцов известен; реальная разреженность, структура и calibrated cost не измерены.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-092"
+      ]
+    },
+    {
+      "id": "M16-CB-094",
+      "question": "Равноправное сравнение полной процедуры с базовым алгоритмом",
+      "status": "OPEN",
+      "result": "Нет q16-конкурента с одинаковой вероятностью успеха и полным учетом работ.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-090",
+        "M16-CB-093"
+      ]
+    },
+    {
+      "id": "M16-CB-095",
+      "question": "Контроль повторяющихся ответов и корреляции целей",
+      "status": "OPEN",
+      "result": "Прежняя редукция описывает независимые метки; поведение будущего адаптивного генератора не проверено.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-091",
+        "M16-CB-092"
+      ]
+    },
+    {
+      "id": "M16-CB-096",
+      "question": "Согласованное асимптотическое семейство с аналогичным D",
+      "status": "OPEN",
+      "result": "Малые поля выбраны для точной проверки логики, не для экстраполяции показателя сложности.",
+      "evidence": "q2_benchmark_plan.json",
+      "depends_on": [
+        "M16-CB-090",
+        "M16-CB-094"
+      ]
+    },
+    {
+      "id": "M16-CB-097",
+      "question": "Внешняя проверка вычислений другим полноценным алгебраическим решателем",
+      "status": "OPEN",
+      "result": "Нет Sage/Singular/msolve-прогона q16. Независимая проверка сертификатов не заменяет независимый solver benchmark.",
+      "evidence": "environment.json",
+      "depends_on": [
+        "M16-CB-085",
+        "M16-CB-090"
+      ]
+    },
+    {
+      "id": "M16-CB-098",
+      "question": "Формализация нормового и фробениусового перехода в Lean",
+      "status": "OPEN",
+      "result": "Приведены доказательства и вычислительные проверки, но Lean-ядро их в этом проходе не проверяло.",
+      "evidence": "environment.json",
+      "depends_on": [
+        "M16-CB-017",
+        "M16-CB-019",
+        "M16-CB-038"
+      ]
+    },
+    {
+      "id": "M16-CB-099",
+      "question": "Новый алгоритмический механизм сверх представления и фильтра",
+      "status": "OPEN",
+      "result": "Дешевой процедуры для целевых коэффициентов не найдено; случайное угадывание и слепая интерполяция не подходят.",
+      "evidence": "RESEARCH_NOTE_RU.md#8",
+      "depends_on": [
+        "M16-CB-066",
+        "M16-CB-068",
+        "M16-CB-081"
+      ]
+    },
+    {
+      "id": "M16-CB-100",
+      "question": "Закрытие B-PKC-M16-COMPLETE-COST-BRIDGE",
+      "status": "OPEN",
+      "result": "Не закрыт: необходима полная доказанная или воспроизводимая оценка C_pre+(B+1)C_try/delta_alg+C_LA.",
+      "evidence": "RESEARCH_NOTE_RU.md#9",
+      "depends_on": [
+        "M16-CB-081",
+        "M16-CB-082",
+        "M16-CB-090",
+        "M16-CB-093",
+        "M16-CB-094",
+        "M16-CB-099"
+      ]
+    }
+  ]
+}

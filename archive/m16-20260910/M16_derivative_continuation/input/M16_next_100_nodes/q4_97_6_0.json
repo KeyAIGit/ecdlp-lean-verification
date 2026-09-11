@@ -1,0 +1,220 @@
+{
+  "status": "PASS_COMPLETE_SQUAREFREE_Q4",
+  "p": 97,
+  "D": 6,
+  "n": 79,
+  "index": 0,
+  "R": [
+    85,
+    5
+  ],
+  "target_scalar_harness_only": 16,
+  "profile": [
+    {
+      "degree": 6,
+      "terms": 42
+    },
+    {
+      "degree": 6,
+      "terms": 36
+    },
+    {
+      "degree": 6,
+      "terms": 24
+    },
+    {
+      "degree": 6,
+      "terms": 15
+    }
+  ],
+  "build_seconds": 0.09221498899995595,
+  "grevlex_seconds": 1.786651715000005,
+  "lex_and_extract_seconds": 0.015580450000015844,
+  "gb_size": 6,
+  "gb_max_output_degree": 2,
+  "parameter_solutions": 4,
+  "accepted": [
+    {
+      "p": 97,
+      "D": 6,
+      "q": 4,
+      "R": [
+        85,
+        5
+      ],
+      "A": [
+        84,
+        24,
+        30
+      ],
+      "B": [
+        1,
+        1
+      ],
+      "g": [
+        35,
+        26,
+        72,
+        60,
+        1
+      ],
+      "generation": "UNPLANTED_Q4_SQUAREFREE_GROEBNER_SEARCH",
+      "recovered_points": [
+        [
+          1,
+          28
+        ],
+        [
+          35,
+          69
+        ],
+        [
+          36,
+          43
+        ],
+        [
+          62,
+          43
+        ]
+      ],
+      "distinct_x_count": 4
+    },
+    {
+      "p": 97,
+      "D": 6,
+      "q": 4,
+      "R": [
+        85,
+        5
+      ],
+      "A": [
+        74,
+        29,
+        55
+      ],
+      "B": [
+        28,
+        1
+      ],
+      "g": [
+        1,
+        71,
+        95,
+        26,
+        1
+      ],
+      "generation": "UNPLANTED_Q4_SQUAREFREE_GROEBNER_SEARCH",
+      "recovered_points": [
+        [
+          1,
+          28
+        ],
+        [
+          35,
+          28
+        ],
+        [
+          36,
+          54
+        ],
+        [
+          96,
+          43
+        ]
+      ],
+      "distinct_x_count": 4
+    },
+    {
+      "p": 97,
+      "D": 6,
+      "q": 4,
+      "R": [
+        85,
+        5
+      ],
+      "A": [
+        24,
+        56,
+        59
+      ],
+      "B": [
+        49,
+        1
+      ],
+      "g": [
+        35,
+        0,
+        61,
+        0,
+        1
+      ],
+      "generation": "UNPLANTED_Q4_SQUAREFREE_GROEBNER_SEARCH",
+      "recovered_points": [
+        [
+          1,
+          69
+        ],
+        [
+          36,
+          43
+        ],
+        [
+          61,
+          69
+        ],
+        [
+          96,
+          54
+        ]
+      ],
+      "distinct_x_count": 4
+    },
+    {
+      "p": 97,
+      "D": 6,
+      "q": 4,
+      "R": [
+        85,
+        5
+      ],
+      "A": [
+        58,
+        83,
+        82
+      ],
+      "B": [
+        52,
+        1
+      ],
+      "g": [
+        36,
+        96,
+        0,
+        61,
+        1
+      ],
+      "generation": "UNPLANTED_Q4_SQUAREFREE_GROEBNER_SEARCH",
+      "recovered_points": [
+        [
+          1,
+          69
+        ],
+        [
+          35,
+          69
+        ],
+        [
+          36,
+          43
+        ],
+        [
+          61,
+          28
+        ]
+      ],
+      "distinct_x_count": 4
+    }
+  ],
+  "rejected": [],
+  "scope": "Unplanted q4 search, all base-field solutions in square-free chart. Not solving-degree measurement."
+}
