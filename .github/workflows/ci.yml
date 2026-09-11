@@ -16,6 +16,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  m16-intake:
+    name: M16 candidate evidence (not Lean)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout evidence source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Replay unpromoted polynomial evidence and adverse-input tests
+        run: |
+          set -euo pipefail
+          (cd release_candidates/m16-20260910 && sha256sum -c MANIFEST.sha256)
+          python3 release_candidates/m16-20260910/replay.py > "$RUNNER_TEMP/m16-replay.json"
+          cmp "$RUNNER_TEMP/m16-replay.json" release_candidates/m16-20260910/replay_result.json
+          python3 -m unittest discover -s release_candidates/m16-20260910 -p 'test_*.py' -v
+
   v02-candidates:
     name: Isolated v0.2 candidates
     runs-on: ubuntu-24.04

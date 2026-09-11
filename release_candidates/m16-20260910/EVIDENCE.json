@@ -16,7 +16,9 @@
     "polynomials": 5043,
     "full_rank_cases": 57,
     "unit_tests": 17,
-    "dependencies": "Python 3.10+ standard library only"
+    "dependencies": "Python 3.10+ standard library only",
+    "ci_job": "M16 candidate evidence (not Lean)",
+    "ci_success": "Must be established from the actual run, not this metadata."
   },
   "historical_replay_this_session": {
     "scope": "Original attached archive recovered in isolated working directory; results not reclassified as new science",
@@ -66,7 +68,7 @@
     "included": "Curated progress, scoped mathematical statements, standalone support replay, regression tests, source archive hashes, grant work plan",
     "not_in_git": "Original bulk archives, their full fixture matrices, all historical scripts, and the 3 MB polynomial/root binaries. The original archives remain conversation attachments; hashes are provenance, not a download service.",
     "repeatability": "The public polynomial replay is self-contained. Exact archival replay requires the named original archive.",
-    "solver_authorization": "None added; no paid model, remote job, live key or new-target attack launched."
+    "solver_authorization": "No paid inference, new-target solver campaign or wallet operation introduced; only deterministic verification and publication checks."
   },
   "environment": {
     "python": "3.13.5",

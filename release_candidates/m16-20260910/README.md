@@ -31,6 +31,8 @@ including malformed inputs and omitted-assumption failures. Python 3.10+ is
 required. The public modulus guard deliberately limits this small-field replay
 to primes at most 10,000; it is not a secp256k1 primality test.
 
+The existing read-only verification workflow now has a separate `M16 candidate evidence (not Lean)` job. It checks the manifest, compares the replay report byte-for-byte, and runs the regression suite. The job does not promote prose into Lean results.
+
 `replay_result.json` is a deterministic expected report. Rerunning is evidence
 of these finite checks only. Alternative algebraic checks share arithmetic and
 AI authorship; this is not an independent human review or proof-kernel audit.
