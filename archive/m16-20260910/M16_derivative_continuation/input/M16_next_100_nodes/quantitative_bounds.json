@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "p": "115792089237316195423570985008687907853269984665640564039457584007908834671663",
+  "n": "115792089237316195423570985008687907852837564279074904382605163141518161494337",
+  "D": 564522,
+  "B": 94509,
+  "U": 283527,
+  "signed_size": 567054,
+  "K14": "4075724686238840879699255687928678950808124461866499150013180747784767",
+  "K16": "5460086805895150333751470293172283757192955036555384469097075588783429673904497",
+  "noncancelling_chart_absolute_coverage_loss": {
+    "numerator": "4075724686238840879699255687928678950808124461866499150013180747784767",
+    "denominator": "115792089237316195423570985008687907852837564279074904382605163141518161494337",
+    "upper": 3.519864537451805e-08
+  },
+  "squarefree_chart_absolute_coverage_loss": {
+    "numerator": "2310675073162048269378219142967365134703041694194831676256373428136593053297",
+    "denominator": "115792089237316195423570985008687907852837564279074904382605163141518161494337",
+    "upper": 0.019955379407882636,
+    "coarser_union_upper": 0.01995953265420196
+  },
+  "random_15_coefficients_average_success_log2_upper": -3834.4398095280235,
+  "random_squarefree_15_coefficients_average_success_log2_upper": -3834.440725445991,
+  "local_hex_lattice_vectors_checked": 3169,
+  "direct_two_orbit_union_checks": [
+    {
+      "B": 2,
+      "m": 4,
+      "all_formal_vectors": 661,
+      "union_count": 625
+    },
+    {
+      "B": 2,
+      "m": 5,
+      "all_formal_vectors": 1441,
+      "union_count": 1441
+    },
+    {
+      "B": 2,
+      "m": 6,
+      "all_formal_vectors": 2773,
+      "union_count": 2773
+    },
+    {
+      "B": 2,
+      "m": 8,
+      "all_formal_vectors": 7993,
+      "union_count": 7993
+    },
+    {
+      "B": 2,
+      "m": 10,
+      "all_formal_vectors": 18481,
+      "union_count": 18481
+    },
+    {
+      "B": 2,
+      "m": 12,
+      "all_formal_vectors": 36973,
+      "union_count": 36973
+    },
+    {
+      "B": 2,
+      "m": 16,
+      "all_formal_vectors": 111793,
+      "union_count": 111793
+    }
+  ],
+  "scope": [
+    "Coverage losses are absolute probabilities, not conditional percentages of successful targets.",
+    "The K16/n mean is not an existence lower bound.",
+    "Random coefficient bound is for uniform parameters and uniform targets outside the separate branches.",
+    "Neither counting argument establishes a general root-finding lower bound."
+  ],
+  "K13": "100630030319436002234325444333232848557385512728182232626961949683",
+  "non_base_field_noncancelling_exception_upper": {
+    "numerator": "100630030319436002234325444333232848557385512728182232626961949683",
+    "denominator": "115792089237316195423570985008687907852837564279074904382605163141518161494337",
+    "upper": 8.690579035429138e-13,
+    "scope": "Uniform target: existence of an algebraic-closure norm solution with any nonrational factor point. Not a lower bound for rational-solvable targets."
+  },
+  "q2_true_D_exact_remainder_slope_degree": 1129042
+}

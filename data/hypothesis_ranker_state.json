@@ -11,7 +11,7 @@
     "model_path": "models/hypothesis_ranker_v0/model.json",
     "model_sha256": "ae192abc6995da510840373b66bb7536b77b68bb74e08d14dca4b657fbe96e74",
     "funnel_state_path": "data/hypothesis_funnel_state.json",
-    "funnel_state_sha256": "4eeacc21611119f58cbb3e721cd350ab176ef9822559c7df06c226bdaf8ba3c0",
+    "funnel_state_sha256": "9c68b39b329d658c4f9188d8d845f2fff6d7158011d0aeefb84e4380ce6eedf4",
     "current_review_policy_path": "repo/HYPOTHESIS_FUNNEL_V1.json",
     "current_review_records_sha256": "1577b808a4d845a8dd30c9e0e61463d7f01f9ba5b51955eefc657b85b0d2dd6c",
     "persistent_review_ledger_path": "data/hypothesis_review_ledger.jsonl",
@@ -52,7 +52,7 @@
       "review_id": "HFR-2026-07-31-004",
       "label_id": "HRL-86B96DB225CAF29ED3713F9F",
       "source_batch_merkle_root_sha256": "30ccc4af1cced508d7249be519bb541658ba972025fbac127fe2d1c8302221ef",
-      "current_batch_merkle_root_sha256": "f3a8307285b1efd765d03021998c4a0cc338b0c995bde1cfb71b915676de903e",
+      "current_batch_merkle_root_sha256": "54f96896f413777d617da2d563cdc6bae16875dc8f46de69a0208b750498e4c4",
       "reused_across_evidence_snapshot": true,
       "reviewed_evidence_closure_sha256": null,
       "reviewed_evidence_manifest": [],
@@ -64,7 +64,7 @@
       "review_id": "HFR-2026-07-31-005",
       "label_id": "HRL-9EB61F851DCAE8619CD9CA98",
       "source_batch_merkle_root_sha256": "30ccc4af1cced508d7249be519bb541658ba972025fbac127fe2d1c8302221ef",
-      "current_batch_merkle_root_sha256": "f3a8307285b1efd765d03021998c4a0cc338b0c995bde1cfb71b915676de903e",
+      "current_batch_merkle_root_sha256": "54f96896f413777d617da2d563cdc6bae16875dc8f46de69a0208b750498e4c4",
       "reused_across_evidence_snapshot": true,
       "reviewed_evidence_closure_sha256": null,
       "reviewed_evidence_manifest": [],
@@ -76,7 +76,7 @@
       "review_id": "HFR-2026-07-31-006",
       "label_id": "HRL-FBBE2AD601B404BD6BAA7B3E",
       "source_batch_merkle_root_sha256": "30ccc4af1cced508d7249be519bb541658ba972025fbac127fe2d1c8302221ef",
-      "current_batch_merkle_root_sha256": "f3a8307285b1efd765d03021998c4a0cc338b0c995bde1cfb71b915676de903e",
+      "current_batch_merkle_root_sha256": "54f96896f413777d617da2d563cdc6bae16875dc8f46de69a0208b750498e4c4",
       "reused_across_evidence_snapshot": true,
       "reviewed_evidence_closure_sha256": null,
       "reviewed_evidence_manifest": [],
@@ -369,7 +369,7 @@
   "shadow_ranking": [
     {
       "semantic_signature_sha256": "04a8e74464d44704a7e36a545778addec93b395f6467146314c296a3c578cf36",
-      "seed_id": "HQS1-602364DE071209C2A23C12145D45FA39",
+      "seed_id": "HQS1-C8AC3747F7626490C274B0F8D378CE0F",
       "base_id": "H4-E05",
       "family": "nonsplit-torus-trace",
       "type": "ATTACK",
@@ -386,7 +386,7 @@
     },
     {
       "semantic_signature_sha256": "0b2f73fd8d4dd51fd7d0dac8b85dcc00a12f693257edd296d74a14ec1aedf943",
-      "seed_id": "HQS1-7530584D8913F2B7B4FF0AE9B1335A4E",
+      "seed_id": "HQS1-88D50F1FBABF0DD6A69BA3D7731D5107",
       "base_id": "ALG-012",
       "family": "arithmetic-radding",
       "type": "ATTACK",
@@ -403,7 +403,7 @@
     },
     {
       "semantic_signature_sha256": "0b684c64bb245ea31915392fc03df47d12089c6ce877fe54b789dd91e2014717",
-      "seed_id": "HQS1-A6BD5A08299430ACBF888818401A8944",
+      "seed_id": "HQS1-AD4FA59CE03ABA0F66D47E883F131840",
       "base_id": "H4-E28",
       "family": "pminus1-m16",
       "type": "ATTACK",
@@ -420,7 +420,7 @@
     },
     {
       "semantic_signature_sha256": "0d3590d385f518d3f53eb04ea1d38b6a161d2d968b1612cd62f1da560b72a94c",
-      "seed_id": "HQS1-75EBEB548E1D10FC0712238076DABF8A",
+      "seed_id": "HQS1-5050B75AA79DA7A8EBB2B2FFA4313ACC",
       "base_id": "H4-E02",
       "family": "signed-coordinates",
       "type": "ATTACK",
@@ -437,7 +437,7 @@
     },
     {
       "semantic_signature_sha256": "0d62c41c12d8c0d0d3894d56bf6b164a6e8685184240edfa39c2061921cfef9f",
-      "seed_id": "HQS1-F4BB8D150BA3C80BD9EE0F46784EF433",
+      "seed_id": "HQS1-39D64DE1254749D01190BCB2DB4496B4",
       "base_id": "HCS-021",
       "family": "frobenius-characteristic",
       "type": "ATTACK",
@@ -454,7 +454,7 @@
     },
     {
       "semantic_signature_sha256": "0d7e4742a5d13ceb7eb99dddafb7c5b1bb19083dcf93e1a051f62d80ab97cd23",
-      "seed_id": "HQS1-80DE658879C578FE91DC74D26D674AB3",
+      "seed_id": "HQS1-4A44A9AEF65F9581C683660462E7E23B",
       "base_id": "H4-E01",
       "family": "semaev-tree",
       "type": "ATTACK",
@@ -471,7 +471,7 @@
     },
     {
       "semantic_signature_sha256": "00413d4a83f944803a8f3e1a9c6366495e4f492d158942a91341ce1326d4465a",
-      "seed_id": "HQS1-53F7CDD12DFE76AB89A1019731D4E897",
+      "seed_id": "HQS1-41731C3E35DA7EF4593C3173517AAA64",
       "base_id": "HCS-009",
       "family": "c6-rho",
       "type": "ATTACK",
@@ -488,7 +488,7 @@
     },
     {
       "semantic_signature_sha256": "00d939f60bd256aab7eaa99d0ae6fc8fac937450e7e93465ecc2ca3f9bf7505e",
-      "seed_id": "HQS1-4C07BC15EF569CBBF698331A9B5B3568",
+      "seed_id": "HQS1-0FB7F9763A50ABFF98FCEC92D6436C89",
       "base_id": "HCS-019",
       "family": "multiple-padiclifts",
       "type": "ATTACK",
@@ -505,7 +505,7 @@
     },
     {
       "semantic_signature_sha256": "03869ede7a28158ee8970176565e689c3352dadb439b054c99b6ce2cb6d3bcba",
-      "seed_id": "HQS1-187475478F8C4D02E0CC7A71789C58B5",
+      "seed_id": "HQS1-0245F75CE71D945E03B2FD37333C5419",
       "base_id": "ALG-016",
       "family": "exception-aware-walk",
       "type": "ATTACK",
@@ -522,7 +522,7 @@
     },
     {
       "semantic_signature_sha256": "0565fa656a8c32b6bb8ef7e16edeb18ececd1b58f8df5fb1895329307e6548fe",
-      "seed_id": "HQS1-2BE753DF44E006752A0C1B3E67266D58",
+      "seed_id": "HQS1-A426E5000092340C64E8B7C66D37FE9E",
       "base_id": "H4-E11",
       "family": "toric-elimination",
       "type": "ATTACK",
@@ -539,7 +539,7 @@
     },
     {
       "semantic_signature_sha256": "05d8428d038648841737e12ce96304d82a700004e5f03f95364a554ddc424c53",
-      "seed_id": "HQS1-FEE9A72A54E2D43C4555E562BA9BD08F",
+      "seed_id": "HQS1-F7003C88E4744C66FC13E23EDDAF85D6",
       "base_id": "HCS-006",
       "family": "growing-cm-shell",
       "type": "ATTACK",
@@ -556,7 +556,7 @@
     },
     {
       "semantic_signature_sha256": "0909be12f22a42cacbe4a97017583af7e55b7f887b9548ddf1fb49f5545d0dff",
-      "seed_id": "HQS1-13FB3AF7B7B5C833977FF1052D6AF6F8",
+      "seed_id": "HQS1-3351378C8338EFF9E842B53856BC7D1F",
       "base_id": "ALG-007",
       "family": "algebraic-preprocessing",
       "type": "ATTACK",
@@ -573,7 +573,7 @@
     },
     {
       "semantic_signature_sha256": "02608c42e3a2f4bdb740a90cb5a11db5f031be383b9aa52b8d8791e2e9f591c9",
-      "seed_id": "HQS1-C0C3693B9475933963B6B524F3AE1214",
+      "seed_id": "HQS1-7600137D1DCD2C1DDFBFE1BF3A13C633",
       "base_id": "ALG-017",
       "family": "rayleigh-null",
       "type": "BARRIER",
@@ -590,7 +590,7 @@
     },
     {
       "semantic_signature_sha256": "038bc0e758ea6a2d18131a98d7bcbe07d6bd067f4a24262c73a885aa54251634",
-      "seed_id": "HQS1-AD6676F107B4AC4632AF1B675BDCB0F5",
+      "seed_id": "HQS1-9D87560C1649B45FA1003641939409EF",
       "base_id": "HCS-005",
       "family": "endomorphism-ring",
       "type": "BARRIER",
@@ -607,7 +607,7 @@
     },
     {
       "semantic_signature_sha256": "043d2f854faa4a052cd30e63c816de749a5902de1dca43786a8e7a914c68f8af",
-      "seed_id": "HQS1-2BEAF3DBF78E50168344D61A338FCDE8",
+      "seed_id": "HQS1-8E2A52547B0FE843333BB6BD39805E1A",
       "base_id": "H4-E17",
       "family": "repetition-stabilizer",
       "type": "BARRIER",
@@ -624,7 +624,7 @@
     },
     {
       "semantic_signature_sha256": "06e4ff5f7ebbfa5c6764fa8f334db2f870b4310c6353daff895d7d13f1759ccf",
-      "seed_id": "HQS1-234195D8E4B3BF813F8790D54AC81035",
+      "seed_id": "HQS1-B3218ED384E4B6B78CA1C6CB9FA8038D",
       "base_id": "H4-E18",
       "family": "singular-locus",
       "type": "BARRIER",
@@ -641,7 +641,7 @@
     },
     {
       "semantic_signature_sha256": "0739acd53e94775217d0c66ebe09d77fff73a653644c8de2db3a8bfab6933986",
-      "seed_id": "HQS1-EE252BA8C89BC893AEC612D494E8F75A",
+      "seed_id": "HQS1-A80156B40B1BD707F152397ED2AF69A3",
       "base_id": "ALG-014",
       "family": "induced-subset",
       "type": "BARRIER",
@@ -658,7 +658,7 @@
     },
     {
       "semantic_signature_sha256": "097db59084ca784b98a436c8d1c6747a3d6715a0da5b12486dfe4f1483f7587a",
-      "seed_id": "HQS1-AB6BCDF4FC82E8130377FD399AB3B57B",
+      "seed_id": "HQS1-F19BB9985DE821183214037058AD6D27",
       "base_id": "ALG-002",
       "family": "x-only-operation",
       "type": "BARRIER",
@@ -675,7 +675,7 @@
     },
     {
       "semantic_signature_sha256": "0158da79b8a619efb33ab562ac8f392f27305eb522d0ddc9af94bb6318f358e7",
-      "seed_id": "HQS1-D3E84014556B13C63CF0621121DB6C9D",
+      "seed_id": "HQS1-B2509104F2E7E93948FB91A8E48E00FE",
       "base_id": "H4-E20",
       "family": "relation-uniformity",
       "type": "ENABLING",
@@ -692,7 +692,7 @@
     },
     {
       "semantic_signature_sha256": "0d5b1055585b7cd98d8f022580c2a977c3c05d044d466e9118cf95c8d5dc9ecf",
-      "seed_id": "HQS1-AD90B6DC7106D811EF2C96C08767E9D7",
+      "seed_id": "HQS1-B933346BAB5C660852FA64A7F5E796EB",
       "base_id": "H4-E16",
       "family": "regular-locus-density",
       "type": "ENABLING",
@@ -709,7 +709,7 @@
     },
     {
       "semantic_signature_sha256": "177c68d47c17cca97fe726281b0e17f359947e13a01334f59f367cdce1491cfa",
-      "seed_id": "HQS1-0028704A874D3A3A975FA17C3BD78D73",
+      "seed_id": "HQS1-6418F84C79980F14DC499A77F4DB3339",
       "base_id": "HCS-025",
       "family": "division-polynomial-invariants",
       "type": "ENABLING",
@@ -726,7 +726,7 @@
     },
     {
       "semantic_signature_sha256": "17e294b2518cc3e1062d55465667b0d885cca5b8876b90bb75ca669c46a6d5d5",
-      "seed_id": "HQS1-6BF9F6A0B140A07178A48AF5D6FC05B0",
+      "seed_id": "HQS1-3B735B83E0AAAE32DC95D7C9688C1EE2",
       "base_id": "ALG-029",
       "family": "ml-counterexample-search",
       "type": "ENABLING",
@@ -743,7 +743,7 @@
     },
     {
       "semantic_signature_sha256": "20f5d7acb6d070560132035450a51cc7fba54ea5daf0a17aaf317e3cd0f98cc0",
-      "seed_id": "HQS1-A0422850128C74D7436354C7171EA249",
+      "seed_id": "HQS1-9F4F379149B9AF02031069C7CB93B467",
       "base_id": "ALG-015",
       "family": "coordinate-ablation",
       "type": "ENABLING",
@@ -760,7 +760,7 @@
     },
     {
       "semantic_signature_sha256": "312cf42db7c32244d56a9a73f1d9fd3c72ccd120969808d3fea539572d2c7a51",
-      "seed_id": "HQS1-C57852BBD30A7695C365597AC315F282",
+      "seed_id": "HQS1-756AF7A5429BBA6AE734E8383CE54C85",
       "base_id": "ALG-030",
       "family": "ml-relation-invariant",
       "type": "ENABLING",
@@ -777,7 +777,7 @@
     },
     {
       "semantic_signature_sha256": "086751e9408bb6874301e93593c5b66cd348c9adf63cae825db2a9fb9f30e0e5",
-      "seed_id": "HQS1-0B923375A51C5AD6B2904CE66AC21476",
+      "seed_id": "HQS1-9D95EF8B288ED44D0ACF3E5BDA487B09",
       "base_id": "HCS-026",
       "family": "infinity-density",
       "type": "ENABLING",
@@ -794,7 +794,7 @@
     },
     {
       "semantic_signature_sha256": "099cc94ef1aef4e95991634b1fd7b8a0f8cbe19f3c70ee9201ad446b4bcc9b5a",
-      "seed_id": "HQS1-B05600F5C99C9E300204BA7B7EC03EAC",
+      "seed_id": "HQS1-F7A1956A63188A72FCBF28C185D81119",
       "base_id": "ALG-028",
       "family": "ml-solver-predictor",
       "type": "ENABLING",
@@ -811,7 +811,7 @@
     },
     {
       "semantic_signature_sha256": "10e22ef9b39c5862ae55a279db8cf685a8405c7e1ebc520c45eeca5d22889401",
-      "seed_id": "HQS1-11E01AEE2C93296E9416ED920E28B82B",
+      "seed_id": "HQS1-D4745421DD4B217029B24564B51F54AB",
       "base_id": "H4-E25",
       "family": "norm-one-dickson-circuit",
       "type": "ENABLING",
@@ -828,7 +828,7 @@
     },
     {
       "semantic_signature_sha256": "1afa951efafbfcb607708b8b122ba223ff6923a6c4edb516398ba4179187b0a4",
-      "seed_id": "HQS1-E259D9157711DEBAFA7D42DEE2BAB9EA",
+      "seed_id": "HQS1-EEDAA9360BF3D66D67EB15448B474E49",
       "base_id": "ALG-031",
       "family": "mechanism-registry",
       "type": "ENABLING",
@@ -845,7 +845,7 @@
     },
     {
       "semantic_signature_sha256": "56ddf6359e0bdb520c02fce8469b01d866f361a77180afc6e7ad4ef10cbb9f76",
-      "seed_id": "HQS1-D0ECC4AB627B4B909C6FCF9F7CF8997F",
+      "seed_id": "HQS1-858463E4E5B7339F60C5D63A72B7742C",
       "base_id": "H4-E19",
       "family": "monodromy-rank",
       "type": "ENABLING",

@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    [
+      4159,
+      18
+    ],
+    [
+      4159,
+      42
+    ],
+    [
+      4159,
+      126
+    ],
+    [
+      16879,
+      174
+    ],
+    [
+      64303,
+      42
+    ]
+  ],
+  "targets_per_configuration": 8,
+  "selection": "SHA256(p,index) modulo exact group order; chart-excluded targets are logged, not replaced",
+  "scope": "Online q2 control. All-point enumeration is ground-truth preparation, not a solver step."
+}

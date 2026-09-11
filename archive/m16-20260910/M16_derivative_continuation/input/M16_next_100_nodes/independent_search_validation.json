@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "q2_complete_target_cases": 39,
+  "q2_certificates": 26,
+  "q4_completed_run_records": 8,
+  "q4_certificate_records": 23,
+  "q4_distinct_target_cases": 6,
+  "q4_distinct_target_witness_pairs": 17,
+  "q4_records": [
+    {
+      "file": "q4_163_9_1_usable.json",
+      "solutions": 2
+    },
+    {
+      "file": "q4_163_9_1_usable_repeat.json",
+      "solutions": 2
+    },
+    {
+      "file": "q4_163_9_2_usable.json",
+      "solutions": 2
+    },
+    {
+      "file": "q4_163_9_3_usable.json",
+      "solutions": 2
+    },
+    {
+      "file": "q4_97_6_0.json",
+      "solutions": 4
+    },
+    {
+      "file": "q4_97_6_0_usable.json",
+      "solutions": 4
+    },
+    {
+      "file": "q4_97_6_1_usable.json",
+      "solutions": 4
+    },
+    {
+      "file": "q4_97_6_2_usable.json",
+      "solutions": 3
+    }
+  ],
+  "scope": "Exact complete solution sets on the stated tiny cases. No 256-bit targeted decomposition or asymptotic gain."
+}

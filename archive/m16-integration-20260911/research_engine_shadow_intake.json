@@ -1,0 +1,189 @@
+{
+  "schema_version": "0.1-generated",
+  "state_id": "research-engine-shadow-intake-v0",
+  "status": "shadow_non_executing",
+  "source_hashes": {
+    "source_registry_sha256": "4fad0eff139704107e69096302bfe0ffa7b8910af4a6d7d1a3ed72085cca8f21",
+    "typed_evidence_state_sha256": "b216c09778a3f3c137605c0456dc2048adf69faef4f9f2114e14518e1dad1d03",
+    "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38"
+  },
+  "counts": {
+    "proposal_stubs": 4,
+    "parked_ideas": 1,
+    "admissible": 0,
+    "recommended": 0,
+    "authorized": 0,
+    "route_promotions": 0,
+    "exact_target_experiments": 0
+  },
+  "proposal_stubs": [
+    {
+      "stub_id": "RSI-2AD454D97023",
+      "stub_kind": "literature_full_text_ingestion",
+      "anchor_id": "kudo_yokota_takahashi_yasuda2018",
+      "route_id": null,
+      "lane": "literature_applicability",
+      "title": "Primary-source ingestion: Acceleration of Index Calculus for Solving ECDLP over Prime Fields and Its Limitation",
+      "purpose": "Obtain the primary full text and extract exact mechanism, limitations, assumptions, and claim-level anchors without inferring novelty from absence.",
+      "required_output": [
+        "primary artifact hash or a documented access failure",
+        "page, section, theorem, or algorithm anchors",
+        "exact mechanism and limitation extraction",
+        "read-status update only after full-text inspection"
+      ],
+      "evidence_refs": [
+        "https://link.springer.com/chapter/10.1007/978-3-030-00434-7_19",
+        "source:kudo_yokota_takahashi_yasuda2018"
+      ],
+      "lifecycle_state": "idea",
+      "scientific_identity": "research_question_seed",
+      "executable": false,
+      "admissible": false,
+      "recommended": false,
+      "authorized": false,
+      "route_promotion": false,
+      "exact_target_experiment": false,
+      "boundary": "This is a non-executable intake stub, not a hypothesis, candidate, route promotion, or experiment authorization."
+    },
+    {
+      "stub_id": "RSI-C6924493AA26",
+      "stub_kind": "full_cost_contract",
+      "anchor_id": "CELL-M-PKC-AUXILIARY-CURVE",
+      "route_id": "R-PETIT-COMPOSED-MAPS",
+      "lane": "mechanism",
+      "title": "Full cost contract: Generalized root-finding and recovery cost",
+      "purpose": "Specify the faithful generalized-root and recovery pipeline as a separate full-cost obligation after, and not as a substitute for, applicability.",
+      "required_output": [
+        "source and target objects",
+        "generalized-root solver interface",
+        "recovery and spurious-fiber accounting",
+        "offline and online costs",
+        "matched end-to-end baseline and cost-changing bridge"
+      ],
+      "evidence_refs": [
+        "cell:CELL-M-PKC-AUXILIARY-CURVE",
+        "cost_quantity:CQ-PKC-GENERALIZED-ROOT-COST",
+        "data/source_claim_extracts/petit_kosters_messeng2016.json"
+      ],
+      "lifecycle_state": "idea",
+      "scientific_identity": "research_question_seed",
+      "executable": false,
+      "admissible": false,
+      "recommended": false,
+      "authorized": false,
+      "route_promotion": false,
+      "exact_target_experiment": false,
+      "boundary": "This is a non-executable intake stub, not a hypothesis, candidate, route promotion, or experiment authorization."
+    },
+    {
+      "stub_id": "RSI-D8BBA6340789",
+      "stub_kind": "desk_cost_contract",
+      "anchor_id": "CELL-M-PKC-SMOOTH-M16",
+      "route_id": "R-PETIT-COMPOSED-MAPS",
+      "lane": "mechanism",
+      "title": "Desk cost bridge: M-PKC-SMOOTH-M16",
+      "purpose": "Price the exact symbolic system before any solver run and compare it with matched generic and plain-relation baselines.",
+      "required_output": [
+        "degree and monomial-size bounds",
+        "online and offline compute",
+        "memory, storage, money, and reviewer effort",
+        "preprocessing, amortization, and recovery",
+        "a scoped stop decision with no solver execution"
+      ],
+      "evidence_refs": [
+        "Ecdlp/Proved/Secp256k1PMinusOneSmoothness.lean",
+        "Ecdlp/Proved/Secp256k1PrimeP.lean",
+        "Ecdlp/Proved/SemaevFour.lean",
+        "cell:CELL-M-PKC-SMOOTH-M16",
+        "data/source_claim_extracts/petit_kosters_messeng2016.json",
+        "data/source_claim_extracts/petit_kosters_messeng2016_task028.json",
+        "experiments/engine/pkc_smooth_desk_screen/artifact.json",
+        "experiments/engine/pkc_smooth_m16_exact_chart_cover/artifact.json",
+        "experiments/engine/pkc_smooth_m16_exceptional_fibers/artifact.json",
+        "experiments/engine/pkc_smooth_m16_frozen_cr_specialization/artifact.json",
+        "experiments/engine/pkc_smooth_m16_frozen_projective_witness/artifact.json",
+        "experiments/engine/pkc_smooth_m16_guarded_projective_system/artifact.json",
+        "experiments/engine/pkc_smooth_m16_infinity_propagation/artifact.json",
+        "experiments/engine/pkc_smooth_m16_infinity_strata/artifact.json",
+        "experiments/engine/pkc_smooth_m16_projective_bridge/artifact.json",
+        "experiments/engine/pkc_smooth_m16_projective_resultant_kernel/artifact.json",
+        "experiments/engine/pkc_smooth_m16_regime_assurance_desk/artifact.json",
+        "experiments/engine/pkc_smooth_m16_semantic_bridge/artifact.json",
+        "experiments/engine/pkc_smooth_m16_source_faithful_mechanism/artifact.json",
+        "experiments/engine/pkc_smooth_m16_symbolic_desk/artifact.json"
+      ],
+      "lifecycle_state": "idea",
+      "scientific_identity": "research_question_seed",
+      "executable": false,
+      "admissible": false,
+      "recommended": false,
+      "authorized": false,
+      "route_promotion": false,
+      "exact_target_experiment": false,
+      "boundary": "This is a non-executable intake stub, not a hypothesis, candidate, route promotion, or experiment authorization."
+    },
+    {
+      "stub_id": "RSI-F01A8A1FA604",
+      "stub_kind": "structural_applicability",
+      "anchor_id": "CELL-M-PKC-AUXILIARY-CURVE",
+      "route_id": "R-PETIT-COMPOSED-MAPS",
+      "lane": "structural",
+      "title": "Applicability resolution: M-PKC-AUXILIARY-CURVE",
+      "purpose": "Resolve the unknown target-property requirement with an exact construction or a scoped no-instance result. Do not run an ECDLP experiment.",
+      "required_output": [
+        "exact map, domain, codomain, kernel, and degree",
+        "target and fixed-target semantics",
+        "recovery map and exceptional components",
+        "complete preprocessing estimate",
+        "property verdict limited to this mechanism instance"
+      ],
+      "evidence_refs": [
+        "cell:CELL-M-PKC-AUXILIARY-CURVE",
+        "data/source_claim_extracts/petit_kosters_messeng2016.json"
+      ],
+      "lifecycle_state": "idea",
+      "scientific_identity": "research_question_seed",
+      "executable": false,
+      "admissible": false,
+      "recommended": false,
+      "authorized": false,
+      "route_promotion": false,
+      "exact_target_experiment": false,
+      "boundary": "This is a non-executable intake stub, not a hypothesis, candidate, route promotion, or experiment authorization."
+    }
+  ],
+  "parked_ideas": [
+    {
+      "parked_id": "PARKED-M-GLV-FAITHFUL-PHASE-QUOTIENT",
+      "cell_id": "CELL-M-GLV-FAITHFUL-PHASE-QUOTIENT",
+      "route_id": "R-GLV-SEMAEV",
+      "claim_id": "CLM-GLV-PHASE-PRESERVING-COST-BRIDGE",
+      "status": "desired_properties_only",
+      "seed_eligible": false,
+      "executable": false,
+      "authorized": false,
+      "missing_before_intake": [
+        "exact phase-preserving map",
+        "complete recovery semantics",
+        "exceptional-locus treatment",
+        "non-orbit cost-changing bridge"
+      ],
+      "boundary": "This is a parked desired-property record, not a mechanism. It cannot emit a seed until a new claim supplies an exact map, recovery semantics, and cost-changing bridge."
+    }
+  ],
+  "generation_contract": {
+    "inputs": [
+      "unread primary sources",
+      "typed property-resolution cells",
+      "typed missing cost bridges",
+      "inconclusive claims with desired properties only"
+    ],
+    "excluded_inputs": [
+      "closed child claims",
+      "decided-inapplicable cells",
+      "prose-only desired mechanisms",
+      "lexical duplicates"
+    ],
+    "rule": "A stub remains a non-executable research-question seed until an immutable exact mechanism snapshot and all required independent reviews exist."
+  }
+}

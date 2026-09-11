@@ -1,0 +1,46 @@
+{
+  "p": 97,
+  "D": 3,
+  "q": 4,
+  "index": 0,
+  "R": [
+    33,
+    32
+  ],
+  "encoding": "derivative",
+  "membership": "usable",
+  "target_rule": "SHA256-selected from all affine curve points independently of A, before search",
+  "build_seconds": 0.052460711999970044,
+  "profile": [
+    {
+      "degree": 6,
+      "terms": 43
+    },
+    {
+      "degree": 6,
+      "terms": 36
+    },
+    {
+      "degree": 6,
+      "terms": 27
+    },
+    {
+      "degree": 6,
+      "terms": 12
+    }
+  ],
+  "F": [
+    96,
+    0,
+    0,
+    1
+  ],
+  "grevlex_seconds": 2.2561822600000028,
+  "gb_size": 1,
+  "gb_output_max_degree": 0,
+  "extract_seconds": 0.0003873269999985496,
+  "accepted": [],
+  "rejected": [],
+  "raw_solutions": 0,
+  "status": "SOLVER_FINISHED"
+}

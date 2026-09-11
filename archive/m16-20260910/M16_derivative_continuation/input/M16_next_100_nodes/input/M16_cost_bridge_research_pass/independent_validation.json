@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "bound_rows_checked": 20,
+  "coefficient_count_check": "independent differential recurrence",
+  "secp256k1_structural_witness": "projective arithmetic PASS",
+  "divisor_membership": "independent Horner evaluations PASS",
+  "negative_mutation_test": "PASS",
+  "toy_witnesses_checked": 319,
+  "toy_validation": "independent projective addition and scalar multiplication",
+  "coverage_validation": "producer separately cross-checks all seven smallest-curve sumsets using explicit Python sets",
+  "not_claimed": [
+    "Lean verification",
+    "256-bit uniform-target M16 solver",
+    "solving-degree bound",
+    "asymptotic acceleration"
+  ],
+  "end_to_end_matrix_recoveries_checked": 9
+}

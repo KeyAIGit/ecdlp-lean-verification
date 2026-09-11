@@ -1,0 +1,150 @@
+{
+  "status": "PASS_CONSTRUCTION_AND_POINT_CHECKS",
+  "integer_backend": "GMP",
+  "p": "115792089237316195423570985008687907853269984665640564039457584007908834671663",
+  "D": 564522,
+  "degree_J": 94509,
+  "degree_F_usable": 283527,
+  "seconds": 2.54028907299994,
+  "levels": [
+    {
+      "level": 1,
+      "polynomials": 47255,
+      "max_degree": 2,
+      "seconds": 0.07477646400002413
+    },
+    {
+      "level": 2,
+      "polynomials": 23628,
+      "max_degree": 4,
+      "seconds": 0.08013597199999367
+    },
+    {
+      "level": 3,
+      "polynomials": 11814,
+      "max_degree": 8,
+      "seconds": 0.11563918199999534
+    },
+    {
+      "level": 4,
+      "polynomials": 5907,
+      "max_degree": 16,
+      "seconds": 0.10730141099998036
+    },
+    {
+      "level": 5,
+      "polynomials": 2954,
+      "max_degree": 32,
+      "seconds": 0.11538522799992279
+    },
+    {
+      "level": 6,
+      "polynomials": 1477,
+      "max_degree": 64,
+      "seconds": 0.1056438519999574
+    },
+    {
+      "level": 7,
+      "polynomials": 739,
+      "max_degree": 128,
+      "seconds": 0.1002120499999819
+    },
+    {
+      "level": 8,
+      "polynomials": 370,
+      "max_degree": 256,
+      "seconds": 0.1092804669999623
+    },
+    {
+      "level": 9,
+      "polynomials": 185,
+      "max_degree": 512,
+      "seconds": 0.12255658300000505
+    },
+    {
+      "level": 10,
+      "polynomials": 93,
+      "max_degree": 1024,
+      "seconds": 0.13715570199997273
+    },
+    {
+      "level": 11,
+      "polynomials": 47,
+      "max_degree": 2048,
+      "seconds": 0.16244861699999547
+    },
+    {
+      "level": 12,
+      "polynomials": 24,
+      "max_degree": 4096,
+      "seconds": 0.1619520360000024
+    },
+    {
+      "level": 13,
+      "polynomials": 12,
+      "max_degree": 8192,
+      "seconds": 0.17131450800002312
+    },
+    {
+      "level": 14,
+      "polynomials": 6,
+      "max_degree": 16384,
+      "seconds": 0.1672354989999576
+    },
+    {
+      "level": 15,
+      "polynomials": 3,
+      "max_degree": 32768,
+      "seconds": 0.19454417000008561
+    },
+    {
+      "level": 16,
+      "polynomials": 2,
+      "max_degree": 65536,
+      "seconds": 0.1388925210000025
+    },
+    {
+      "level": 17,
+      "polynomials": 1,
+      "max_degree": 94509,
+      "seconds": 0.20068745399998988
+    }
+  ],
+  "bytes": 3024320,
+  "sha256": "b1bb4a4fe41bcf571fc9fa34b71a7091eb8bf3cc3052a0e8cd6964ea13a7109d",
+  "evaluations": [
+    {
+      "x": "0",
+      "value": "90617814197633550576096311535412610527022091633535940999915548829811381570538"
+    },
+    {
+      "x": "1",
+      "value": "0"
+    },
+    {
+      "x": "2",
+      "value": "112351532950103473869894487051194342541264019023458681925874409920121068471128"
+    },
+    {
+      "x": "7",
+      "value": "15796085562332928908368756380027233080942844327372088583215819826144926722866"
+    },
+    {
+      "x": "42",
+      "value": "76069597529303742561756086204296477034185911600300969322570722450419624318170"
+    },
+    {
+      "x": "115792089237316195423570985008687907853269984665640564039457584007908834671662",
+      "value": "100609358805529062370916281472535851900312725687738894856089243973008165655709"
+    }
+  ],
+  "scope": [
+    "Exact Kronecker multiplication with no integer coefficient carry.",
+    "Six evaluations cross-check construction, not a standalone identity proof.",
+    "This does not find a decomposition for an independently specified target.",
+    "Precomputed polynomial has many terms; lower degree is not automatically lower total cost."
+  ],
+  "nonzero_coefficients_J": 94510,
+  "nonzero_coefficients_F_usable": 94510,
+  "comparison_original_membership_terms": 2
+}

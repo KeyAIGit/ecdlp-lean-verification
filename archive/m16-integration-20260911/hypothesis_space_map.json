@@ -1,0 +1,3076 @@
+{
+  "schema_version": "2.0-generated",
+  "space_id": "HYP-SELECT-006-1M",
+  "status": "evidence_bounded_projection",
+  "instance_root_sha256": "e6df07821a3c94483fb3dac568512c5c2dd1137c6a20381227a0205e4ba2bf89",
+  "coverage_boundary": "Coverage is complete only for this frozen finite Cartesian projection. It is not coverage of all ECDLP ideas or literature.",
+  "temperature_legend": {
+    "cold": "A typed cell rejected by at least one deterministic structural gate.",
+    "warm": "A structurally coherent research-question cell that still lacks an assured exact mechanism and independent source review.",
+    "hot": "A cell with an assured mechanism, cost bridge, and independent review. This generator cannot create hot cells."
+  },
+  "counts": {
+    "attempts": 1000000,
+    "typed_cells": 1000000,
+    "cold": 768880,
+    "warm": 231120,
+    "hot": 0,
+    "pareto_records_before_review_queue": 4064,
+    "review_queue": 35,
+    "admissible": 0,
+    "recommended": 0,
+    "authorized": 0,
+    "route_promotions": 0,
+    "experiment_events": 0
+  },
+  "regions": [
+    {
+      "family": "addition-chain-causality",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E29"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "additive-energy",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E07"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "algebraic-preprocessing",
+      "type": "ATTACK",
+      "base_ids": [
+        "ALG-007"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "anomalous-isogeny",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-011"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "arithmetic-radding",
+      "type": "ATTACK",
+      "base_ids": [
+        "ALG-012"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "artificial-weil-restriction",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E22"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "auxiliary-curve",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E09"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "auxiliary-torsion-crt",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-024"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "c6-rho",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-009"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "c6-xcube-quotient",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-016"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "character-partition",
+      "type": "ATTACK",
+      "base_ids": [
+        "ALG-013"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "cm-canonical-lift",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-020"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "cm-mov",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-023"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "cm-norm-shell",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E26"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "cm-residue-map",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-007"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "collision-rank",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-018"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "complete-cost",
+      "type": "BARRIER",
+      "base_ids": [
+        "H4-E34"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "coordinate-ablation",
+      "type": "ENABLING",
+      "base_ids": [
+        "ALG-015"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "coordinate-character-shift",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-030"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "coordinate-linear-complexity",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-031"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "coset-factor-base",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E06"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "diagonal-c3-quotient",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E31"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "division-polynomial-invariants",
+      "type": "ENABLING",
+      "base_ids": [
+        "HCS-025"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "dwave-no-leakage",
+      "type": "ADJACENT",
+      "base_ids": [
+        "ALG-027"
+      ],
+      "cells": 10000,
+      "cold": 10000,
+      "warm": 0,
+      "hot": 0,
+      "retained_by_challenge": {},
+      "primary_rejections": {
+        "forbidden_type": 10000
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "eds-feature-recovery",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-028"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "eds-homomorphism",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-029"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "elimination-width",
+      "type": "BARRIER",
+      "base_ids": [
+        "H4-E33"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "end-to-end-exponent",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-033"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "endomorphism-ring",
+      "type": "BARRIER",
+      "base_ids": [
+        "HCS-005"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "exception-aware-walk",
+      "type": "ATTACK",
+      "base_ids": [
+        "ALG-016"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "exceptional-density",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-005"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "exceptional-mask-density",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-023"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "exceptional-relations",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E21"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "exceptional-saturation",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E12"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "frobenius-characteristic",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-021"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "frobenius-twist",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-014"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "generic-preprocessing",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-006"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "genericity-trace",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-004"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "glv-quotient",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-003"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "glv-rank-amplification",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-003"
+      ],
+      "cells": 10000,
+      "cold": 9500,
+      "warm": 500,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 50,
+        "G02-TARGET-PROPERTY": 50,
+        "G03-PRIOR-ART": 50,
+        "G04-MECHANISM-COMPLETENESS": 50,
+        "G05-RECOVERY-COMPLETENESS": 50,
+        "G06-PRECOMPUTATION": 50,
+        "G07-END-TO-END-COST": 50,
+        "G08-SCALING-SEPARATION": 50,
+        "G09-VALIDATOR-INDEPENDENCE": 50,
+        "G10-REOPENING-PREMISE": 50
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "known_closed_pattern_unreopened": 1500,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "glv-relation-yield",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-002"
+      ],
+      "cells": 10000,
+      "cold": 9500,
+      "warm": 500,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 50,
+        "G02-TARGET-PROPERTY": 50,
+        "G03-PRIOR-ART": 50,
+        "G04-MECHANISM-COMPLETENESS": 50,
+        "G05-RECOVERY-COMPLETENESS": 50,
+        "G06-PRECOMPUTATION": 50,
+        "G07-END-TO-END-COST": 50,
+        "G08-SCALING-SEPARATION": 50,
+        "G09-VALIDATOR-INDEPENDENCE": 50,
+        "G10-REOPENING-PREMISE": 50
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "known_closed_pattern_unreopened": 1500,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "glv-scalar-split",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-008"
+      ],
+      "cells": 10000,
+      "cold": 9500,
+      "warm": 500,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 50,
+        "G02-TARGET-PROPERTY": 50,
+        "G03-PRIOR-ART": 50,
+        "G04-MECHANISM-COMPLETENESS": 50,
+        "G05-RECOVERY-COMPLETENESS": 50,
+        "G06-PRECOMPUTATION": 50,
+        "G07-END-TO-END-COST": 50,
+        "G08-SCALING-SEPARATION": 50,
+        "G09-VALIDATOR-INDEPENDENCE": 50,
+        "G10-REOPENING-PREMISE": 50
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "known_closed_pattern_unreopened": 1500,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "glv-trace-norm",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E27"
+      ],
+      "cells": 10000,
+      "cold": 9500,
+      "warm": 500,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 50,
+        "G02-TARGET-PROPERTY": 50,
+        "G03-PRIOR-ART": 50,
+        "G04-MECHANISM-COMPLETENESS": 50,
+        "G05-RECOVERY-COMPLETENESS": 50,
+        "G06-PRECOMPUTATION": 50,
+        "G07-END-TO-END-COST": 50,
+        "G08-SCALING-SEPARATION": 50,
+        "G09-VALIDATOR-INDEPENDENCE": 50,
+        "G10-REOPENING-PREMISE": 50
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "known_closed_pattern_unreopened": 1500,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "glv-walk-scheduling",
+      "type": "ATTACK",
+      "base_ids": [
+        "ALG-011"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "growing-cm-shell",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-006"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "guessed-nonce-bits",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-025"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "higher-dimensional-glv",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-004"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "hybrid-resultant",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E04"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "hybrid-variable-fixing",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E13"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "induced-subset",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-014"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 2,
+      "independent_review_records": 0
+    },
+    {
+      "family": "infinity-density",
+      "type": "ENABLING",
+      "base_ids": [
+        "HCS-026"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "isogeny-representation",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-010"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "j0-invariantization",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-001"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "kummer-x-only",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-015"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "large-prime-variant",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E08"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "lean-glv-orbit",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-032"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "mechanism-registry",
+      "type": "ENABLING",
+      "base_ids": [
+        "ALG-031"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "ml-counterexample-search",
+      "type": "ENABLING",
+      "base_ids": [
+        "ALG-029"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "ml-relation-invariant",
+      "type": "ENABLING",
+      "base_ids": [
+        "ALG-030"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "ml-solver-predictor",
+      "type": "ENABLING",
+      "base_ids": [
+        "ALG-028"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "modulus-carry-leakage",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-022"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "monodromy-rank",
+      "type": "ENABLING",
+      "base_ids": [
+        "H4-E19"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "multi-target",
+      "type": "ATTACK",
+      "base_ids": [
+        "ALG-009"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "multihomogeneous-groebner",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E10"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "multiple-padiclifts",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-019"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "multiplication-map-factor-base",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E30"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "no-character-hom",
+      "type": "BARRIER",
+      "base_ids": [
+        "HCS-033"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "noisy-hnp-map",
+      "type": "ADJACENT",
+      "base_ids": [
+        "ALG-026"
+      ],
+      "cells": 10000,
+      "cold": 10000,
+      "warm": 0,
+      "hot": 0,
+      "retained_by_challenge": {},
+      "primary_rejections": {
+        "forbidden_type": 10000
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "nonanomalous-smart-lift",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-018"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "nonce-hnp",
+      "type": "ADJACENT",
+      "base_ids": [
+        "ALG-024"
+      ],
+      "cells": 10000,
+      "cold": 10000,
+      "warm": 0,
+      "hot": 0,
+      "retained_by_challenge": {},
+      "primary_rejections": {
+        "forbidden_type": 10000
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "nonsplit-torus-trace",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E05"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 2,
+      "independent_review_records": 0
+    },
+    {
+      "family": "norm-one-dickson-circuit",
+      "type": "ENABLING",
+      "base_ids": [
+        "H4-E25"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "one-system-index-calculus",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E03"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "orbit-cycle-escape",
+      "type": "ATTACK",
+      "base_ids": [
+        "ALG-010"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "pairing-friendly-isogeny",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-012"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "pminus1-m16",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E28"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 2,
+      "independent_review_records": 0
+    },
+    {
+      "family": "pseudo-mersenne-bit-descent",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E23"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "pseudo-mersenne-field",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-032"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "quotient-batch-circuit",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-017"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "rational-univariate",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E14"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "rayleigh-null",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-017"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "regular-locus-density",
+      "type": "ENABLING",
+      "base_ids": [
+        "H4-E16"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "relation-incidence",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-022"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "relation-uniformity",
+      "type": "ENABLING",
+      "base_ids": [
+        "H4-E20"
+      ],
+      "cells": 10000,
+      "cold": 7312,
+      "warm": 2688,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 336,
+        "G02-TARGET-PROPERTY": 336,
+        "G03-PRIOR-ART": 336,
+        "G04-MECHANISM-COMPLETENESS": 336,
+        "G05-RECOVERY-COMPLETENESS": 336,
+        "G06-PRECOMPUTATION": 336,
+        "G09-VALIDATOR-INDEPENDENCE": 336,
+        "G10-REOPENING-PREMISE": 336
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 672,
+        "cost_type_mismatch": 1800,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 840
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "repetition-stabilizer",
+      "type": "BARRIER",
+      "base_ids": [
+        "H4-E17"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "root-unity-glv",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-020"
+      ],
+      "cells": 10000,
+      "cold": 8848,
+      "warm": 1152,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 144,
+        "G02-TARGET-PROPERTY": 144,
+        "G03-PRIOR-ART": 144,
+        "G06-PRECOMPUTATION": 144,
+        "G07-END-TO-END-COST": 144,
+        "G08-SCALING-SEPARATION": 144,
+        "G09-VALIDATOR-INDEPENDENCE": 144,
+        "G10-REOPENING-PREMISE": 144
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "known_closed_pattern_unreopened": 2304,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "semaev-tree",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E01"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "semaev-yield",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-019"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "signed-coordinates",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E02"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "singular-locus",
+      "type": "BARRIER",
+      "base_ids": [
+        "H4-E18"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "specialization-degree-drop",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E15"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "structured-factor-base-bound",
+      "type": "BARRIER",
+      "base_ids": [
+        "H4-E32"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "structured-generic-group",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-001"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "sum-product",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-021"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "toric-elimination",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E11"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "torsion-locus-disjointness",
+      "type": "BARRIER",
+      "base_ids": [
+        "HCS-027"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "twist-frobenius-descent",
+      "type": "ATTACK",
+      "base_ids": [
+        "H4-E24"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "twist-transfer",
+      "type": "ATTACK",
+      "base_ids": [
+        "HCS-013"
+      ],
+      "cells": 10000,
+      "cold": 8000,
+      "warm": 2000,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 200,
+        "G02-TARGET-PROPERTY": 200,
+        "G03-PRIOR-ART": 200,
+        "G04-MECHANISM-COMPLETENESS": 200,
+        "G05-RECOVERY-COMPLETENESS": 200,
+        "G06-PRECOMPUTATION": 200,
+        "G07-END-TO-END-COST": 200,
+        "G08-SCALING-SEPARATION": 200,
+        "G09-VALIDATOR-INDEPENDENCE": 200,
+        "G10-REOPENING-PREMISE": 200
+      },
+      "primary_rejections": {
+        "attack_without_scaling_bridge": 1200,
+        "cost_type_mismatch": 1600,
+        "mechanism_type_mismatch": 2000,
+        "test_type_mismatch": 3200
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "vow-frontier",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-008"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    },
+    {
+      "family": "x-only-operation",
+      "type": "BARRIER",
+      "base_ids": [
+        "ALG-002"
+      ],
+      "cells": 10000,
+      "cold": 6544,
+      "warm": 3456,
+      "hot": 0,
+      "retained_by_challenge": {
+        "G01-THREAT-MODEL": 432,
+        "G02-TARGET-PROPERTY": 432,
+        "G03-PRIOR-ART": 432,
+        "G06-PRECOMPUTATION": 432,
+        "G07-END-TO-END-COST": 432,
+        "G08-SCALING-SEPARATION": 432,
+        "G09-VALIDATOR-INDEPENDENCE": 432,
+        "G10-REOPENING-PREMISE": 432
+      },
+      "primary_rejections": {
+        "challenge_type_mismatch": 864,
+        "cost_type_mismatch": 600,
+        "mechanism_type_mismatch": 4000,
+        "test_type_mismatch": 1080
+      },
+      "review_records": 0,
+      "independent_review_records": 0
+    }
+  ],
+  "review_queue_seed_ids": [
+    "HQS2-FCB2801D9030B4080D81BACD17F4C45E",
+    "HQS2-DD2BFA4786B70AC64D1D422F362988EA",
+    "HQS2-B245E3EDA30F6D8825F29F45DE9D1990",
+    "HQS2-B7083916C1FBE4E0FE11F183940CB03D",
+    "HQS2-B51AC5AC6D9673C1BBB023A25BA78256",
+    "HQS2-90E1B22028A4B143C85D2E820BFEA281",
+    "HQS2-41A91C9F40C41FB7FE19B7F11F78F172",
+    "HQS2-1DB0A31991737AB5DCBD7BFC966C0E8B",
+    "HQS2-DD07B5B1D1684E0C50AEE8D57A94D677",
+    "HQS2-0A0D2A38DD24880A8AA8A5286CDEA058",
+    "HQS2-6B6B050AE736DBA4B614997CDF6E3B5F",
+    "HQS2-C5257A66768F662EB6DF64F95BD20792",
+    "HQS2-655ED34DA834E526C11A2B42E5D4C21E",
+    "HQS2-B50BB34FF2699F3891A53E31A3F96D58",
+    "HQS2-EDE346C5203BEBA89A0D16E7A4DD7566",
+    "HQS2-ACA6FBF21ED623540A63F1DEB4F49EF8",
+    "HQS2-4BC7405324B3689797755C2780B455BD",
+    "HQS2-9E5A7299094D4A65D2E2AB05C7BDC3DE",
+    "HQS2-523751306C593A028A84934E55B74490",
+    "HQS2-918D67DA246C395DC56C7364AD894D21",
+    "HQS2-58FC65775892347D485862304DB6F560",
+    "HQS2-504B6D6D9FFD51AB6D1E77290FB2F5F3",
+    "HQS2-707A7742FC0D1A2FBE14091AEB5E6064",
+    "HQS2-725EE99F539664605D4515618D907F5B",
+    "HQS2-D1AE12EE28683E8473622BB6341930AC",
+    "HQS2-A046DB30E69C440379C122A7778D0C2E",
+    "HQS2-1C70B2578BDB00DA8A4516E60BF25B3D",
+    "HQS2-9C214A9F1CBA5AE7D04BF108CE0431A1",
+    "HQS2-9E43AC7A2AFF8BCE2BB5EBBB82D5D046",
+    "HQS2-20C64041FC23E95A148040E29A48D815",
+    "HQS2-A854174B5039F44CBD54C0BE21B320DD",
+    "HQS2-4DE76AE597DF76BFE920297C003A153F",
+    "HQS2-6825A73535555C0D4CC7DF6DCE52BD04",
+    "HQS2-46E5C9321630B15EC249FE65A722C9BC",
+    "HQS2-C5481E94969BBD23FCBC1EF4529F0D9B"
+  ],
+  "feedback_context": {
+    "review_records": 6,
+    "independent_review_records": 0,
+    "review_records_by_base": {
+      "ALG-014": {
+        "review_records": 2
+      },
+      "H4-E05": {
+        "review_records": 2
+      },
+      "H4-E28": {
+        "review_records": 2
+      }
+    },
+    "outcome_events": 9,
+    "historical_migration_outcomes": 8,
+    "native_engine_outcomes": 0,
+    "external_bounded_outcomes": 1,
+    "automatic_hot_promotions": 0,
+    "binding_rule": "Every listed evidence change invalidates the instance root. Digest-bound reviews are summarized by base ID, but no label automatically clears a hard gate or creates hot state."
+  },
+  "authorization": "none"
+}

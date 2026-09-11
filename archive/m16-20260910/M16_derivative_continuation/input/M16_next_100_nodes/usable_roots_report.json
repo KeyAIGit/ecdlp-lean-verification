@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "roots": 94509,
+  "negative": 93665,
+  "seconds": 5.839751652000018,
+  "bytes": 3024288,
+  "sha256": "a07d40e1f29c93e21e05342fa99aab6685cb8dd9bd43f4093955c5a34e76750f",
+  "scope": "Exact field-coordinate preparation, not independently targeted decomposition."
+}

@@ -1,0 +1,41 @@
+{
+  "archives": [
+    {
+      "bytes": 50470,
+      "file": "M16_cost_bridge_research_pass_2026-09-10.zip",
+      "inner_hash_checks": 17,
+      "sha256": "2df1386357b0efdf3050666813ec6b64ccdfb3c6fa14ffa81dce26d074cfb3ac",
+      "snapshot_files_checked": 0,
+      "zip_entries": 18
+    },
+    {
+      "bytes": 6415728,
+      "file": "M16_derivative_continuation_2026-09-10.zip",
+      "inner_hash_checks": 159,
+      "sha256": "4def9ea4cfd7a743ea262a4b5a1fde667c08511346f92d410c23a58de3323d80",
+      "snapshot_files_checked": 98,
+      "zip_entries": 98
+    },
+    {
+      "bytes": 6250466,
+      "file": "M16_next_100_nodes_2026-09-10.zip",
+      "inner_hash_checks": 62,
+      "sha256": "01d7eb92c20cf51de399ecba7e237760a843186b3fb56a97c7a247c935ad8688",
+      "snapshot_files_checked": 0,
+      "zip_entries": 63
+    },
+    {
+      "bytes": 4183,
+      "file": "ecdlp_M16_factorbase_check.zip",
+      "inner_hash_checks": 0,
+      "sha256": "327af8761370ad061f9282ec457b5dede3f6ba2ac9d210728463c4f655e57a56",
+      "snapshot_files_checked": 0,
+      "zip_entries": 4
+    }
+  ],
+  "lean_checked": false,
+  "new_target_searches": 0,
+  "schema": "m16-public-archive-audit/v1",
+  "scope": "Exact byte preservation, not new science or Lean acceptance.",
+  "status": "PASS"
+}

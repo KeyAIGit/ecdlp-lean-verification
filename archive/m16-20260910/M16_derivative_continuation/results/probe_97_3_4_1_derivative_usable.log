@@ -1,0 +1,4 @@
+{"stage": "built", "p": 97, "D": 3, "q": 4, "index": 1, "R": [17, 19], "encoding": "derivative", "membership": "usable", "target_rule": "SHA256-selected from all affine curve points independently of A, before search", "build_seconds": 0.04563236900003176, "profile": [{"degree": 6, "terms": 43}, {"degree": 6, "terms": 36}, {"degree": 6, "terms": 27}, {"degree": 6, "terms": 12}], "F": [96, 0, 0, 1]}
+{"stage": "grevlex", "seconds": 2.2671106779999946, "gb_size": 3}
+{"stage": "done", "accepted": 1, "rejected": 0, "ranks": [3]}
+SAVED /mnt/data/m16_continuation/results/probe_97_3_4_1_derivative_usable.json

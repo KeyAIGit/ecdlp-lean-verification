@@ -1,0 +1,32 @@
+[
+  {
+    "source": "Petit, Kosters, Messeng, PKC 2016",
+    "url": "https://people.maths.ox.ac.uk/petit/files/16PKC_primeECDLP.pdf",
+    "used": "Sections 3.2, 5; root-finding and partial cost, no proven low cost for M16"
+  },
+  {
+    "source": "Faugere, Mou, Sparse FGLM",
+    "url": "https://arxiv.org/abs/1304.1238",
+    "used": "Quotient degree and explicit multiplication-matrix costs"
+  },
+  {
+    "source": "Improvement of FPPR method to solve ECDLP, 2015",
+    "url": "https://doi.org/10.1186/s40736-015-0012-6",
+    "used": "Prior symmetry exploitation on binary extension fields, not a prime-field speedup"
+  },
+  {
+    "source": "Victor Shoup, Lower Bounds for Discrete Logarithms and Related Problems",
+    "url": "https://www.shoup.net/papers/dlbounds1.pdf",
+    "used": "Generic model only"
+  },
+  {
+    "source": "project BARRIERS.md",
+    "url": "https://github.com/KeyAIGit/ecdlp-lean-verification/blob/e887029e21a5b97c05372b63b53f2d341ad15bda/BARRIERS.md",
+    "used": "State of TASK-026 and open cost bridge"
+  },
+  {
+    "source": "project M16 symbolic desk",
+    "url": "https://github.com/KeyAIGit/ecdlp-lean-verification/blob/e887029e21a5b97c05372b63b53f2d341ad15bda/experiments/engine/pkc_smooth_m16_symbolic_desk/README.md",
+    "used": "D, m, representation counts, undefined solving-cost quantities"
+  }
+]

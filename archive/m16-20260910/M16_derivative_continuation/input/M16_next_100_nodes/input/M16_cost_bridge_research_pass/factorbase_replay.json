@@ -1,0 +1,29 @@
+{
+  "status": "PASS_TWO_ARITHMETIC_METHODS",
+  "field_prime": "115792089237316195423570985008687907853269984665640564039457584007908834671663",
+  "subgroup_order": 564522,
+  "subgroup_generator": "82848990384721873837542085774364474839392473759419163642662585798722904926012",
+  "counts": {
+    "cube_positive": 94509,
+    "cube_negative": 93665,
+    "cube_zero": 0,
+    "usable_x": 283527,
+    "non_lifting_x": 280995,
+    "zero_y_x": 0,
+    "character_sum": 2532,
+    "signed_points": 567054,
+    "glv_and_sign_classes": 94509
+  },
+  "runtime_seconds": {
+    "euler_cube": 24.701285567,
+    "jacobi_full": 26.722261839000012
+  },
+  "not_claimed": [
+    "formal Lean verification",
+    "global mathematical novelty",
+    "relation-generation success probability",
+    "relation rank",
+    "solving degree",
+    "sub-square-root ECDLP algorithm"
+  ]
+}

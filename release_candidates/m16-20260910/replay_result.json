@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "max_q": 4,
+      "p": 5,
+      "polynomials": 780,
+      "roots": [
+        1,
+        2
+      ],
+      "supported_full_rank": 14
+    },
+    {
+      "max_q": 4,
+      "p": 7,
+      "polynomials": 2800,
+      "roots": [
+        0,
+        1,
+        3
+      ],
+      "supported_full_rank": 34
+    },
+    {
+      "max_q": 3,
+      "p": 11,
+      "polynomials": 1463,
+      "roots": [
+        2,
+        5
+      ],
+      "supported_full_rank": 9
+    }
+  ],
+  "characteristic_counterexample_rejected": true,
+  "full_rank_cases": 57,
+  "independence": "Alternative algebraic checks share arithmetic and authorship; not external review.",
+  "lean_checked": false,
+  "new_target_secp256k1_solutions": 0,
+  "polynomials_checked": 5043,
+  "schema": "m16-support-replay/v1",
+  "status": "PASS"
+}

@@ -1,0 +1,117 @@
+{
+  "schema": "m16-evidence-intake/v1",
+  "status": "UNPROMOTED_RESEARCH_CANDIDATE",
+  "date_local": "2026-09-10",
+  "baseline_commit": "e887029e21a5b97c05372b63b53f2d341ad15bda",
+  "barrier": "B-PKC-M16-COMPLETE-COST-BRIDGE",
+  "canonical_ledgers_modified": false,
+  "lean_checked": false,
+  "external_human_review": false,
+  "new_target_secp256k1_solutions": 0,
+  "global_search_complexity_established": false,
+  "grant_status": "PREPARED_NOT_SUBMITTED_BY_THIS_SESSION",
+  "grant_kind": "API_CREDITS_NOT_CASH",
+  "public_replay": {
+    "command": "python3 release_candidates/m16-20260910/replay.py",
+    "polynomials": 5043,
+    "full_rank_cases": 57,
+    "unit_tests": 19,
+    "dependencies": "Python 3.10+ standard library only",
+    "ci_job": "M16 candidate evidence (not Lean)",
+    "ci_success": "Must be established from the actual run, not this metadata.",
+    "polynomial_unit_tests": 17,
+    "archive_unit_tests": 2
+  },
+  "historical_replay_this_session": {
+    "scope": "Original attached archive recovered in isolated working directory; results not reclassified as new science",
+    "support_polynomials": 5043,
+    "planted_256_certificates": 24,
+    "dual_columns": 15,
+    "unique_tiny_targets": 4,
+    "distinct_target_witness_pairs": 3,
+    "completed_run_records": 5,
+    "commands": [
+      "python check_derivative_structure.py",
+      "python validate_searches.py"
+    ],
+    "result": "PASS"
+  },
+  "archive_inventory": [
+    {
+      "file": "ecdlp_M16_factorbase_check.zip",
+      "bytes": 4183,
+      "sha256": "327af8761370ad061f9282ec457b5dede3f6ba2ac9d210728463c4f655e57a56",
+      "entries": 4,
+      "manifest_entries_verified": 0
+    },
+    {
+      "file": "M16_cost_bridge_research_pass_2026-09-10.zip",
+      "bytes": 50470,
+      "sha256": "2df1386357b0efdf3050666813ec6b64ccdfb3c6fa14ffa81dce26d074cfb3ac",
+      "entries": 18,
+      "manifest_entries_verified": 17
+    },
+    {
+      "file": "M16_next_100_nodes_2026-09-10.zip",
+      "bytes": 6250466,
+      "sha256": "01d7eb92c20cf51de399ecba7e237760a843186b3fb56a97c7a247c935ad8688",
+      "entries": 63,
+      "manifest_entries_verified": 62
+    },
+    {
+      "file": "M16_derivative_continuation_2026-09-10.zip",
+      "bytes": 6415728,
+      "sha256": "4def9ea4cfd7a743ea262a4b5a1fde667c08511346f92d410c23a58de3323d80",
+      "entries": 98,
+      "manifest_entries_verified": 97
+    }
+  ],
+  "publication_boundary": {
+    "included": "All four original ZIPs, 98 expanded latest-snapshot files, nested historical source and fixtures, original finite-field polynomial/root arrays, plus the compact intake and tests.",
+    "not_in_git": [],
+    "repeatability": "Public clone contains exact archives and expanded bytes. Standard-library archive audit checks integrity; historical numerical replays require their documented dependencies.",
+    "solver_authorization": "No paid inference, new-target solver campaign or wallet operation introduced; only deterministic verification and publication checks.",
+    "publication_status": "COMPLETE_ARCHIVAL_BYTES_PUBLISHED_IN_FEATURE_BRANCH_NOT_MERGED",
+    "historical_notes": "Frozen original statements about no GitHub changes are superseded by this publication metadata only."
+  },
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41"
+  },
+  "archive_restoration": {
+    "schema": "m16-archive-restoration/v1",
+    "status": "PASS",
+    "archive_count": 4,
+    "snapshot_files": 98,
+    "archives": [
+      {
+        "file": "M16_cost_bridge_research_pass_2026-09-10.zip",
+        "sha256": "2df1386357b0efdf3050666813ec6b64ccdfb3c6fa14ffa81dce26d074cfb3ac",
+        "bytes": 50470
+      },
+      {
+        "file": "M16_derivative_continuation_2026-09-10.zip",
+        "sha256": "4def9ea4cfd7a743ea262a4b5a1fde667c08511346f92d410c23a58de3323d80",
+        "bytes": 6415728
+      },
+      {
+        "file": "M16_next_100_nodes_2026-09-10.zip",
+        "sha256": "01d7eb92c20cf51de399ecba7e237760a843186b3fb56a97c7a247c935ad8688",
+        "bytes": 6250466
+      },
+      {
+        "file": "ecdlp_M16_factorbase_check.zip",
+        "sha256": "327af8761370ad061f9282ec457b5dede3f6ba2ac9d210728463c4f655e57a56",
+        "bytes": 4183
+      }
+    ],
+    "scope": "Byte-identical archival restoration; not new scientific results or historical timing reruns.",
+    "new_target_searches": 0,
+    "lean_checked": false
+  },
+  "public_archive_audit": {
+    "command": "python3 release_candidates/m16-20260910/audit_archives.py",
+    "expected_report": "ARCHIVE_AUDIT.json",
+    "scope": "Integrity only, not scientific promotion."
+  }
+}

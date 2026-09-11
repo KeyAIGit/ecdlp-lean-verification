@@ -1,0 +1,23 @@
+{
+  "attempts": [
+    {
+      "case": "q4 p=163 D=9 index=1 full_H",
+      "outcome": "CENSORED_TIMEOUT",
+      "tool_budget_seconds": 45,
+      "mathematical_unsatisfiability": false,
+      "finished_groebner": false
+    },
+    {
+      "case": "usable polynomial, pure Python big-integer backend",
+      "outcome": "CENSORED_TOOL_TIMEOUT",
+      "last_reported_product_tree_level": 16,
+      "final_polynomial_produced_in_that_attempt": false
+    },
+    {
+      "case": "optional python-flint installation",
+      "outcome": "NETWORK_NAME_RESOLUTION_FAILED",
+      "fallback": "preinstalled GMP, local C helper compiled"
+    }
+  ],
+  "scope": "Failures and censored runs are retained. No timed-out attempt is counted as a completed negative mathematical result."
+}

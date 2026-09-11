@@ -1,0 +1,1861 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "p": 4159,
+      "D": 18,
+      "n": 4243,
+      "i": 0,
+      "R": [
+        2240,
+        324
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 12,
+      "target_scalar_harness_only": 3532,
+      "solver_seconds": 0.0016063400000234651,
+      "lookup_online_seconds": 1.2007999998786545e-05,
+      "lookup_additions": 12,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 34,
+      "membership_equation_degrees": [
+        70,
+        70
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 18,
+      "n": 4243,
+      "i": 1,
+      "R": [
+        1987,
+        2504
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 12,
+      "target_scalar_harness_only": 640,
+      "solver_seconds": 0.0016239459999951578,
+      "lookup_online_seconds": 1.1927999992167315e-05,
+      "lookup_additions": 12,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 34,
+      "membership_equation_degrees": [
+        70,
+        70
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 18,
+      "n": 4243,
+      "i": 2,
+      "R": [
+        2680,
+        2974
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 12,
+      "target_scalar_harness_only": 2012,
+      "solver_seconds": 0.001574600999958875,
+      "lookup_online_seconds": 1.0214999974778038e-05,
+      "lookup_additions": 12,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 34,
+      "membership_equation_degrees": [
+        70,
+        70
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 18,
+      "n": 4243,
+      "i": 3,
+      "R": [
+        3228,
+        2280
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 12,
+      "target_scalar_harness_only": 3261,
+      "solver_seconds": 0.0015672700000095574,
+      "lookup_online_seconds": 9.594000005108683e-06,
+      "lookup_additions": 12,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 34,
+      "membership_equation_degrees": [
+        70,
+        70
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 18,
+      "n": 4243,
+      "i": 4,
+      "R": [
+        657,
+        2406
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 12,
+      "target_scalar_harness_only": 3291,
+      "solver_seconds": 0.0015645459999973355,
+      "lookup_online_seconds": 9.404000024915149e-06,
+      "lookup_additions": 12,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 34,
+      "membership_equation_degrees": [
+        70,
+        70
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 18,
+      "n": 4243,
+      "i": 5,
+      "R": [
+        2867,
+        3503
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 12,
+      "target_scalar_harness_only": 60,
+      "solver_seconds": 0.003803290999996989,
+      "lookup_online_seconds": 1.155699999344506e-05,
+      "lookup_additions": 12,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 34,
+      "membership_equation_degrees": [
+        70,
+        70
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 18,
+      "n": 4243,
+      "i": 6,
+      "R": [
+        4094,
+        667
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 12,
+      "target_scalar_harness_only": 989,
+      "solver_seconds": 0.0015645259999814698,
+      "lookup_online_seconds": 9.65499998528685e-06,
+      "lookup_additions": 12,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 34,
+      "membership_equation_degrees": [
+        70,
+        70
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 18,
+      "n": 4243,
+      "i": 7,
+      "R": [
+        3024,
+        835
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 12,
+      "target_scalar_harness_only": 1818,
+      "solver_seconds": 0.001558357000021715,
+      "lookup_online_seconds": 8.91299998784234e-06,
+      "lookup_additions": 12,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 34,
+      "membership_equation_degrees": [
+        70,
+        70
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 42,
+      "n": 4243,
+      "i": 0,
+      "R": [
+        2240,
+        324
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 36,
+      "target_scalar_harness_only": 3532,
+      "solver_seconds": 0.00776181800000586,
+      "lookup_online_seconds": 2.541899999641828e-05,
+      "lookup_additions": 36,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 42,
+      "n": 4243,
+      "i": 1,
+      "R": [
+        1987,
+        2504
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 36,
+      "target_scalar_harness_only": 640,
+      "solver_seconds": 0.008121782999978677,
+      "lookup_online_seconds": 3.0326000000968634e-05,
+      "lookup_additions": 36,
+      "solutions": 1,
+      "certificates": [
+        {
+          "p": 4159,
+          "D": 42,
+          "q": 2,
+          "R": [
+            1987,
+            2504
+          ],
+          "A": [
+            3521,
+            1787
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            2254,
+            2730,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              1843,
+              1125
+            ],
+            [
+              3745,
+              154
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 2,
+      "base_field_slope_count": 1
+    },
+    {
+      "p": 4159,
+      "D": 42,
+      "n": 4243,
+      "i": 2,
+      "R": [
+        2680,
+        2974
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 36,
+      "target_scalar_harness_only": 2012,
+      "solver_seconds": 0.007796401000007336,
+      "lookup_online_seconds": 3.81570000058673e-05,
+      "lookup_additions": 36,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 42,
+      "n": 4243,
+      "i": 3,
+      "R": [
+        3228,
+        2280
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 36,
+      "target_scalar_harness_only": 3261,
+      "solver_seconds": 0.007769370000005438,
+      "lookup_online_seconds": 2.5288000017553713e-05,
+      "lookup_additions": 36,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 42,
+      "n": 4243,
+      "i": 4,
+      "R": [
+        657,
+        2406
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 36,
+      "target_scalar_harness_only": 3291,
+      "solver_seconds": 0.007744862000038211,
+      "lookup_online_seconds": 2.410600001212515e-05,
+      "lookup_additions": 36,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 42,
+      "n": 4243,
+      "i": 5,
+      "R": [
+        2867,
+        3503
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 36,
+      "target_scalar_harness_only": 60,
+      "solver_seconds": 0.007808870000019397,
+      "lookup_online_seconds": 2.5358000016240112e-05,
+      "lookup_additions": 36,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 42,
+      "n": 4243,
+      "i": 6,
+      "R": [
+        4094,
+        667
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 36,
+      "target_scalar_harness_only": 989,
+      "solver_seconds": 0.008016763999989962,
+      "lookup_online_seconds": 2.700099997809957e-05,
+      "lookup_additions": 36,
+      "solutions": 1,
+      "certificates": [
+        {
+          "p": 4159,
+          "D": 42,
+          "q": 2,
+          "R": [
+            4094,
+            667
+          ],
+          "A": [
+            1237,
+            3208
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            1605,
+            2196,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              2377,
+              953
+            ],
+            [
+              3745,
+              154
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 2,
+      "base_field_slope_count": 1
+    },
+    {
+      "p": 4159,
+      "D": 42,
+      "n": 4243,
+      "i": 7,
+      "R": [
+        3024,
+        835
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 36,
+      "target_scalar_harness_only": 1818,
+      "solver_seconds": 0.007983674000001884,
+      "lookup_online_seconds": 2.609000000575179e-05,
+      "lookup_additions": 36,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 126,
+      "n": 4243,
+      "i": 0,
+      "R": [
+        2240,
+        324
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 108,
+      "target_scalar_harness_only": 3532,
+      "solver_seconds": 0.07066306600000871,
+      "lookup_online_seconds": 8.431799994923495e-05,
+      "lookup_additions": 108,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 250,
+      "membership_equation_degrees": [
+        502,
+        502
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 126,
+      "n": 4243,
+      "i": 1,
+      "R": [
+        1987,
+        2504
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 108,
+      "target_scalar_harness_only": 640,
+      "solver_seconds": 0.07226146300001801,
+      "lookup_online_seconds": 0.00011437300003080964,
+      "lookup_additions": 108,
+      "solutions": 3,
+      "certificates": [
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            1987,
+            2504
+          ],
+          "A": [
+            1134,
+            210
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            2554,
+            3636,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              2323,
+              1798
+            ],
+            [
+              2359,
+              2556
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            1987,
+            2504
+          ],
+          "A": [
+            3521,
+            1787
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            2254,
+            2730,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              1843,
+              1125
+            ],
+            [
+              3745,
+              154
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            1987,
+            2504
+          ],
+          "A": [
+            479,
+            1889
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            1836,
+            2088,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              3064,
+              953
+            ],
+            [
+              3166,
+              3748
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 250,
+      "membership_equation_degrees": [
+        502,
+        502
+      ],
+      "gcd_degree": 6,
+      "base_field_slope_count": 3
+    },
+    {
+      "p": 4159,
+      "D": 126,
+      "n": 4243,
+      "i": 2,
+      "R": [
+        2680,
+        2974
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 108,
+      "target_scalar_harness_only": 2012,
+      "solver_seconds": 0.07573568700001942,
+      "lookup_online_seconds": 9.162899999637375e-05,
+      "lookup_additions": 108,
+      "solutions": 1,
+      "certificates": [
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            2680,
+            2974
+          ],
+          "A": [
+            390,
+            1528
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            139,
+            1095,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              286,
+              3456
+            ],
+            [
+              2778,
+              1165
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 250,
+      "membership_equation_degrees": [
+        502,
+        502
+      ],
+      "gcd_degree": 2,
+      "base_field_slope_count": 1
+    },
+    {
+      "p": 4159,
+      "D": 126,
+      "n": 4243,
+      "i": 3,
+      "R": [
+        3228,
+        2280
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 108,
+      "target_scalar_harness_only": 3261,
+      "solver_seconds": 0.07190053700003318,
+      "lookup_online_seconds": 0.00010616100001925588,
+      "lookup_additions": 108,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 250,
+      "membership_equation_degrees": [
+        502,
+        502
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 4159,
+      "D": 126,
+      "n": 4243,
+      "i": 4,
+      "R": [
+        657,
+        2406
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 108,
+      "target_scalar_harness_only": 3291,
+      "solver_seconds": 0.0748265930000116,
+      "lookup_online_seconds": 9.730800002216711e-05,
+      "lookup_additions": 108,
+      "solutions": 1,
+      "certificates": [
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            657,
+            2406
+          ],
+          "A": [
+            4077,
+            947
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            2555,
+            2192,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              2106,
+              2020
+            ],
+            [
+              4020,
+              2786
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 250,
+      "membership_equation_degrees": [
+        502,
+        502
+      ],
+      "gcd_degree": 2,
+      "base_field_slope_count": 1
+    },
+    {
+      "p": 4159,
+      "D": 126,
+      "i": 5,
+      "status": "SEPARATE_CHART_TARGET"
+    },
+    {
+      "p": 4159,
+      "D": 126,
+      "n": 4243,
+      "i": 6,
+      "R": [
+        4094,
+        667
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 108,
+      "target_scalar_harness_only": 989,
+      "solver_seconds": 0.07326390000002903,
+      "lookup_online_seconds": 9.529399994789856e-05,
+      "lookup_additions": 108,
+      "solutions": 5,
+      "certificates": [
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            4094,
+            667
+          ],
+          "A": [
+            1845,
+            530
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            3745,
+            1847,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              3166,
+              411
+            ],
+            [
+              3305,
+              1603
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            4094,
+            667
+          ],
+          "A": [
+            2305,
+            857
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            2529,
+            1629,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              1,
+              997
+            ],
+            [
+              2529,
+              1340
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            4094,
+            667
+          ],
+          "A": [
+            2388,
+            2010
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            2359,
+            2383,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              2653,
+              1079
+            ],
+            [
+              3282,
+              1125
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            4094,
+            667
+          ],
+          "A": [
+            1491,
+            2828
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            2654,
+            108,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              1137,
+              2139
+            ],
+            [
+              2914,
+              855
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            4094,
+            667
+          ],
+          "A": [
+            1237,
+            3208
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            1605,
+            2196,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              2377,
+              953
+            ],
+            [
+              3745,
+              154
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 250,
+      "membership_equation_degrees": [
+        502,
+        502
+      ],
+      "gcd_degree": 10,
+      "base_field_slope_count": 5
+    },
+    {
+      "p": 4159,
+      "D": 126,
+      "n": 4243,
+      "i": 7,
+      "R": [
+        3024,
+        835
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 108,
+      "target_scalar_harness_only": 1818,
+      "solver_seconds": 0.07047827700000653,
+      "lookup_online_seconds": 9.056699997245232e-05,
+      "lookup_additions": 108,
+      "solutions": 2,
+      "certificates": [
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            3024,
+            835
+          ],
+          "A": [
+            1734,
+            1756
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            286,
+            1307,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              868,
+              411
+            ],
+            [
+              1984,
+              3763
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 4159,
+          "D": 126,
+          "q": 2,
+          "R": [
+            3024,
+            835
+          ],
+          "A": [
+            595,
+            3829
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            868,
+            2258,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              2778,
+              1165
+            ],
+            [
+              3282,
+              1125
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 250,
+      "membership_equation_degrees": [
+        502,
+        502
+      ],
+      "gcd_degree": 4,
+      "base_field_slope_count": 2
+    },
+    {
+      "p": 16879,
+      "D": 174,
+      "n": 17107,
+      "i": 0,
+      "R": [
+        891,
+        3591
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 180,
+      "target_scalar_harness_only": 9445,
+      "solver_seconds": 0.13899377399997093,
+      "lookup_online_seconds": 0.00015937099999518978,
+      "lookup_additions": 180,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 346,
+      "membership_equation_degrees": [
+        694,
+        694
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 16879,
+      "D": 174,
+      "n": 17107,
+      "i": 1,
+      "R": [
+        7429,
+        5546
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 180,
+      "target_scalar_harness_only": 738,
+      "solver_seconds": 0.1397406730000057,
+      "lookup_online_seconds": 0.000160223000023052,
+      "lookup_additions": 180,
+      "solutions": 2,
+      "certificates": [
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            7429,
+            5546
+          ],
+          "A": [
+            9216,
+            3787
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            12144,
+            13210,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              1216,
+              10638
+            ],
+            [
+              2453,
+              1602
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            7429,
+            5546
+          ],
+          "A": [
+            5700,
+            4151
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            879,
+            10087,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              7666,
+              6528
+            ],
+            [
+              16005,
+              10168
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 346,
+      "membership_equation_degrees": [
+        694,
+        694
+      ],
+      "gcd_degree": 4,
+      "base_field_slope_count": 2
+    },
+    {
+      "p": 16879,
+      "D": 174,
+      "n": 17107,
+      "i": 2,
+      "R": [
+        500,
+        2973
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 180,
+      "target_scalar_harness_only": 16463,
+      "solver_seconds": 0.1441713749999849,
+      "lookup_online_seconds": 0.0001592010000308619,
+      "lookup_additions": 180,
+      "solutions": 2,
+      "certificates": [
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            500,
+            2973
+          ],
+          "A": [
+            1370,
+            14958
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            1492,
+            6760,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              2453,
+              1602
+            ],
+            [
+              7666,
+              6528
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            500,
+            2973
+          ],
+          "A": [
+            62,
+            16581
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            6658,
+            12970,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              4698,
+              15864
+            ],
+            [
+              16090,
+              1122
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 346,
+      "membership_equation_degrees": [
+        694,
+        694
+      ],
+      "gcd_degree": 4,
+      "base_field_slope_count": 2
+    },
+    {
+      "p": 16879,
+      "D": 174,
+      "n": 17107,
+      "i": 3,
+      "R": [
+        1174,
+        16063
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 180,
+      "target_scalar_harness_only": 2066,
+      "solver_seconds": 0.13927567100000715,
+      "lookup_online_seconds": 0.00015552500002513625,
+      "lookup_additions": 180,
+      "solutions": 1,
+      "certificates": [
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            1174,
+            16063
+          ],
+          "A": [
+            3025,
+            10104
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            5379,
+            11429,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              8485,
+              9855
+            ],
+            [
+              13844,
+              10351
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 346,
+      "membership_equation_degrees": [
+        694,
+        694
+      ],
+      "gcd_degree": 2,
+      "base_field_slope_count": 1
+    },
+    {
+      "p": 16879,
+      "D": 174,
+      "n": 17107,
+      "i": 4,
+      "R": [
+        1965,
+        5929
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 180,
+      "target_scalar_harness_only": 2529,
+      "solver_seconds": 0.13628997500001105,
+      "lookup_online_seconds": 0.00015811899999107482,
+      "lookup_additions": 180,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 346,
+      "membership_equation_degrees": [
+        694,
+        694
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 16879,
+      "D": 174,
+      "n": 17107,
+      "i": 5,
+      "R": [
+        10946,
+        15026
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 180,
+      "target_scalar_harness_only": 3344,
+      "solver_seconds": 0.13642409799996358,
+      "lookup_online_seconds": 0.00016840499995396385,
+      "lookup_additions": 180,
+      "solutions": 5,
+      "certificates": [
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            10946,
+            15026
+          ],
+          "A": [
+            6556,
+            4926
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            15663,
+            593,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              7402,
+              6711
+            ],
+            [
+              8884,
+              14986
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            10946,
+            15026
+          ],
+          "A": [
+            4013,
+            8055
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            11223,
+            10797,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              8285,
+              16757
+            ],
+            [
+              14676,
+              1323
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            10946,
+            15026
+          ],
+          "A": [
+            4902,
+            10021
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            4735,
+            3676,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              17,
+              10410
+            ],
+            [
+              13186,
+              3883
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            10946,
+            15026
+          ],
+          "A": [
+            2407,
+            10655
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            12554,
+            10075,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              276,
+              10638
+            ],
+            [
+              6528,
+              112
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            10946,
+            15026
+          ],
+          "A": [
+            7819,
+            12067
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            4987,
+            13590,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              17,
+              6469
+            ],
+            [
+              3272,
+              5817
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 346,
+      "membership_equation_degrees": [
+        694,
+        694
+      ],
+      "gcd_degree": 10,
+      "base_field_slope_count": 5
+    },
+    {
+      "p": 16879,
+      "D": 174,
+      "n": 17107,
+      "i": 6,
+      "R": [
+        9665,
+        10870
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 180,
+      "target_scalar_harness_only": 7921,
+      "solver_seconds": 0.13531768400002875,
+      "lookup_online_seconds": 0.00016195500001003893,
+      "lookup_additions": 180,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 346,
+      "membership_equation_degrees": [
+        694,
+        694
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 16879,
+      "D": 174,
+      "n": 17107,
+      "i": 7,
+      "R": [
+        6370,
+        14315
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 180,
+      "target_scalar_harness_only": 12473,
+      "solver_seconds": 0.13761433799999168,
+      "lookup_online_seconds": 0.00015654600002790175,
+      "lookup_additions": 180,
+      "solutions": 2,
+      "certificates": [
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            6370,
+            14315
+          ],
+          "A": [
+            7570,
+            9103
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            3466,
+            772,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              17,
+              6469
+            ],
+            [
+              16090,
+              1122
+            ]
+          ],
+          "distinct_x_count": 2
+        },
+        {
+          "p": 16879,
+          "D": 174,
+          "q": 2,
+          "R": [
+            6370,
+            14315
+          ],
+          "A": [
+            5744,
+            16830
+          ],
+          "B": [
+            1
+          ],
+          "g": [
+            3693,
+            3969,
+            1
+          ],
+          "generation": "UNPLANTED_Q2_POLYNOMIAL_GCD_SEARCH",
+          "recovered_points": [
+            [
+              4691,
+              4688
+            ],
+            [
+              8219,
+              8770
+            ]
+          ],
+          "distinct_x_count": 2
+        }
+      ],
+      "a_D_degree": 346,
+      "membership_equation_degrees": [
+        694,
+        694
+      ],
+      "gcd_degree": 4,
+      "base_field_slope_count": 2
+    },
+    {
+      "p": 64303,
+      "D": 42,
+      "n": 63799,
+      "i": 0,
+      "R": [
+        56889,
+        52902
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 24,
+      "target_scalar_harness_only": 15939,
+      "solver_seconds": 0.008051306000027125,
+      "lookup_online_seconds": 3.267900001446833e-05,
+      "lookup_additions": 24,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 64303,
+      "D": 42,
+      "n": 63799,
+      "i": 1,
+      "R": [
+        6353,
+        23871
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 24,
+      "target_scalar_harness_only": 51021,
+      "solver_seconds": 0.008029203000035068,
+      "lookup_online_seconds": 1.9759999986490584e-05,
+      "lookup_additions": 24,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 64303,
+      "D": 42,
+      "n": 63799,
+      "i": 2,
+      "R": [
+        29569,
+        9982
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 24,
+      "target_scalar_harness_only": 49684,
+      "solver_seconds": 0.008123054999998658,
+      "lookup_online_seconds": 2.0109999979922577e-05,
+      "lookup_additions": 24,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 64303,
+      "D": 42,
+      "n": 63799,
+      "i": 3,
+      "R": [
+        55843,
+        26280
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 24,
+      "target_scalar_harness_only": 619,
+      "solver_seconds": 0.007980718999988312,
+      "lookup_online_seconds": 1.9598999983827525e-05,
+      "lookup_additions": 24,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 64303,
+      "D": 42,
+      "n": 63799,
+      "i": 4,
+      "R": [
+        26255,
+        24812
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 24,
+      "target_scalar_harness_only": 59960,
+      "solver_seconds": 0.008145939000030467,
+      "lookup_online_seconds": 2.0000000006348273e-05,
+      "lookup_additions": 24,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 64303,
+      "D": 42,
+      "n": 63799,
+      "i": 5,
+      "R": [
+        23509,
+        13530
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 24,
+      "target_scalar_harness_only": 63234,
+      "solver_seconds": 0.007979218000002675,
+      "lookup_online_seconds": 1.89890000115156e-05,
+      "lookup_additions": 24,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 64303,
+      "D": 42,
+      "n": 63799,
+      "i": 6,
+      "R": [
+        22655,
+        7633
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 24,
+      "target_scalar_harness_only": 45523,
+      "solver_seconds": 0.008075261999977101,
+      "lookup_online_seconds": 1.981000002615474e-05,
+      "lookup_additions": 24,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    },
+    {
+      "p": 64303,
+      "D": 42,
+      "n": 63799,
+      "i": 7,
+      "R": [
+        20872,
+        25546
+      ],
+      "status": "COMPLETE_Q2_MATCH",
+      "signed_factorbase_size": 24,
+      "target_scalar_harness_only": 36768,
+      "solver_seconds": 0.008007899999995516,
+      "lookup_online_seconds": 1.8688000011479744e-05,
+      "lookup_additions": 24,
+      "solutions": 0,
+      "certificates": [],
+      "a_D_degree": 82,
+      "membership_equation_degrees": [
+        166,
+        166
+      ],
+      "gcd_degree": 0,
+      "base_field_slope_count": 0
+    }
+  ],
+  "scope": [
+    "Independent target q2 search only.",
+    "No extrapolation to q16 or 256-bit total cost.",
+    "Lookup timings exclude factor-base preparation; timings are not asymptotic estimates."
+  ]
+}

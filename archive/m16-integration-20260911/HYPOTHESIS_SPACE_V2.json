@@ -1,0 +1,163 @@
+{
+  "schema_version": "2.0",
+  "space_id": "HYP-SELECT-006-1M",
+  "status": "shadow_non_executing",
+  "baseline_commit": "907646a170cf60572cc2549456c4a4dc65e11c86",
+  "purpose": "Screen exactly one million typed research-question challenge cells as a finite evidence-bounded projection. Cells are not hypotheses, mechanisms, novelty claims, or experiment authorizations.",
+  "parent_funnel": {
+    "policy_path": "repo/HYPOTHESIS_FUNNEL_V1.json",
+    "state_path": "data/hypothesis_funnel_state.json",
+    "expected_funnel_id": "HYP-SELECT-005-100K",
+    "expected_attempts": 100000,
+    "expected_merkle_root_sha256": "f3a8307285b1efd765d03021998c4a0cc338b0c995bde1cfb71b915676de903e"
+  },
+  "evidence_snapshot": {
+    "paths": [
+      "data/typed_evidence_state.json",
+      "data/research_claim_state.json",
+      "data/research_engine_state.json",
+      "data/research_engine_v02_state.json",
+      "data/hypothesis_review_ledger.jsonl"
+    ],
+    "feedback_rule": "Every listed evidence change invalidates the instance root. Digest-bound reviews are summarized by base ID, but no label automatically clears a hard gate or creates hot state."
+  },
+  "expansion": {
+    "axis_order": [
+      "base_question",
+      "mechanism_obligation",
+      "cost_bridge",
+      "decisive_test",
+      "adversarial_challenge"
+    ],
+    "expected_signatures": 1000000,
+    "materialize_raw_signatures": false,
+    "identity_version": "injective-typed-tuple-v2",
+    "stream_digest_version": "rfc6962-binary-leaf-v2",
+    "uniqueness_rule": "Every axis has unique stable IDs and every base has a unique typed semantic anchor; the encoded Cartesian tuple is therefore injective. This proves typed identity only, not semantic novelty."
+  },
+  "identity_contract": {
+    "scientific_signature_sha256": "Content address of the normalized base question, mechanism obligation, cost bridge, decisive test, adversarial challenge, and threat model. Operator IDs and batch order are excluded.",
+    "evaluation_instance_sha256": "Hash of the scientific signature and the evidence-bound space instance root. Evidence or policy drift invalidates this ID without changing an otherwise unchanged scientific signature.",
+    "batch_occurrence_ordinal": "Mixed-radix position in the frozen sorted Cartesian projection. It is operational provenance, never scientific identity.",
+    "review_binding": "A future native review must bind all three identities plus the evidence snapshot and policy digest; this release imports no v2 review as independent evidence."
+  },
+  "adversarial_challenges": [
+    {
+      "id": "G01-THREAT-MODEL",
+      "label": "Prove that the mechanism remains inside the classical plain single-target threat model",
+      "compatible_types": ["ATTACK", "BARRIER", "ENABLING"]
+    },
+    {
+      "id": "G02-TARGET-PROPERTY",
+      "label": "Bind every required property to an exact secp256k1 value and provenance anchor",
+      "compatible_types": ["ATTACK", "BARRIER", "ENABLING"]
+    },
+    {
+      "id": "G03-PRIOR-ART",
+      "label": "Compare the exact claim with full-text primary prior art and record unread sources",
+      "compatible_types": ["ATTACK", "BARRIER", "ENABLING"]
+    },
+    {
+      "id": "G04-MECHANISM-COMPLETENESS",
+      "label": "Specify map, domain, codomain, fixed-target semantics, and exceptional locus",
+      "compatible_types": ["ATTACK", "ENABLING"]
+    },
+    {
+      "id": "G05-RECOVERY-COMPLETENESS",
+      "label": "Specify inverse recovery, orbit tags, excluded components, and spurious branches",
+      "compatible_types": ["ATTACK", "ENABLING"]
+    },
+    {
+      "id": "G06-PRECOMPUTATION",
+      "label": "Expose offline work, conditioned inputs, amortization, and reusable setup",
+      "compatible_types": ["ATTACK", "BARRIER", "ENABLING"]
+    },
+    {
+      "id": "G07-END-TO-END-COST",
+      "label": "Bridge the changed quantity to full online, offline, memory, storage, and recovery cost",
+      "compatible_types": ["ATTACK", "BARRIER"]
+    },
+    {
+      "id": "G08-SCALING-SEPARATION",
+      "label": "Distinguish a growing asymptotic lever from a constant-factor or encoding effect",
+      "compatible_types": ["ATTACK", "BARRIER"]
+    },
+    {
+      "id": "G09-VALIDATOR-INDEPENDENCE",
+      "label": "Recompute the decisive claim from raw artifacts with path, artifact, and source separation",
+      "compatible_types": ["ATTACK", "BARRIER", "ENABLING"]
+    },
+    {
+      "id": "G10-REOPENING-PREMISE",
+      "label": "Name the new premise that escapes an exact prior barrier without widening the claim",
+      "compatible_types": ["ATTACK", "BARRIER", "ENABLING"]
+    }
+  ],
+  "screening": {
+    "hard_rejections": [
+      "forbidden_type",
+      "mechanism_type_mismatch",
+      "cost_type_mismatch",
+      "test_type_mismatch",
+      "challenge_type_mismatch",
+      "attack_without_scaling_bridge",
+      "attack_without_discriminating_test",
+      "barrier_without_scoped_mechanism",
+      "enabling_without_dependency_bridge",
+      "known_closed_pattern_unreopened",
+      "unsafe_or_exact_target_scope"
+    ],
+    "warnings": [
+      "challenge_unresolved",
+      "typed_identity_not_semantic_novelty",
+      "novelty_unverified",
+      "exact_mechanism_missing",
+      "source_independence_unestablished",
+      "historical_kill_label",
+      "historical_reformulate_label",
+      "historical_shortlist_label",
+      "historical_canonical_cluster"
+    ]
+  },
+  "map_contract": {
+    "cold": "A typed cell rejected by at least one deterministic structural gate.",
+    "warm": "A structurally coherent research-question cell that still lacks an assured exact mechanism and independent source review.",
+    "hot": "A cell with an assured mechanism, cost bridge, and independent review. This generator cannot create hot cells.",
+    "coverage_boundary": "Coverage is complete only for this frozen finite Cartesian projection. It is not coverage of all ECDLP ideas or literature."
+  },
+  "portfolio": {
+    "max_review_queue": 40,
+    "max_per_base_question": 1,
+    "max_per_family": 1,
+    "max_per_challenge": 6,
+    "max_per_mechanism_obligation": 8,
+    "required_types_if_available": ["ATTACK", "BARRIER", "ENABLING"],
+    "dimension_names": [
+      "exactness",
+      "mechanism",
+      "barrier_escape",
+      "discrimination",
+      "falsifiability",
+      "scaling",
+      "strategic_value"
+    ],
+    "zero_retention_allowed": true
+  },
+  "performance_contract": {
+    "target_signatures_per_minute": 1000000,
+    "benchmark_command": "python3 scripts/hypothesis_space_funnel.py --check --benchmark",
+    "ci_enforcement": "correctness_only",
+    "reason": "Wall-clock throughput is hardware-dependent; the benchmark reports the target without weakening deterministic correctness gates."
+  },
+  "safety": {
+    "primary_threat_model": "classical-single-target-plain",
+    "all_outputs_executable": false,
+    "experiments_authorized": false,
+    "admissible": 0,
+    "recommended": 0,
+    "authorized": 0,
+    "route_promotions": 0,
+    "exact_target_execution": false,
+    "language_model_calls": 0
+  }
+}

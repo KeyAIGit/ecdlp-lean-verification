@@ -1,0 +1,12 @@
+{
+  "python": "3.13.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "original_repository_snapshot": "e887029e21a5b97c05372b63b53f2d341ad15bda",
+  "repo_modified": false,
+  "test_date_local": "2026-09-10 America/Los_Angeles",
+  "core": "Python standard library",
+  "symbolic_independent_checks": "SymPy",
+  "optional_accelerated_product_tree": "system GMP via included C source",
+  "Lean_run": false,
+  "independently_targeted_secp256k1_q16_solution": false
+}

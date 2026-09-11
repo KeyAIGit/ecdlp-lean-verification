@@ -1,0 +1,10 @@
+{
+  "sources": [
+    {"id":"S1","title":"Andrew Snowden, Lecture 2: Elliptic curves","url":"https://websites.umich.edu/~asnowden/teaching/2013/679/L02.html","scope":"Divisors, genus-one Riemann-Roch, Picard group and pole orders; not the current computational results."},
+    {"id":"S2","title":"Petit, Kosters, Messeng: Algebraic Approaches for the Elliptic Curve Discrete Logarithm Problem over Prime Fields","url":"https://research.birmingham.ac.uk/en/publications/algebraic-approaches-for-the-elliptic-curve-discrete-logarithm-pr/","scope":"Publication and historical algebraic-approach context; no new complexity bound inferred."},
+    {"id":"S3","title":"Zhang and Liu: Solving ECDLP via List Decoding","url":"https://doi.org/10.1007/978-3-030-31919-9_13","scope":"Prior work connecting ECDLP and algebraic-geometry codes; not a secp256k1 speedup claim."}
+  ],
+  "original_snapshot":"e887029e21a5b97c05372b63b53f2d341ad15bda",
+  "local_derivations":"RESEARCH_NOTE_RU.md",
+  "scope":"Mathematical derivations are explicitly separated from sourced background, finite computations, and still-open complexity claims."
+}

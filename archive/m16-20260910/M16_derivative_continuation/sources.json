@@ -1,0 +1,5 @@
+[
+ {"id":"S1","title":"Ben Lynn: Finding Roots of Polynomials","url":"https://crypto.stanford.edu/pbc/notes/ep/root.html","use":"Squarefree part and degree below characteristic; not source for a new ECDLP complexity claim"},
+ {"id":"S2","title":"Andrew Snowden: Lecture 2, Elliptic curves","url":"https://websites.umich.edu/~asnowden/teaching/2013/679/L02.html","use":"Riemann-Roch and divisor/group correspondence underlying input norm map"},
+ {"id":"S3","title":"Petit, Kosters, Messeng: Algebraic Approaches for the ECDLP over Prime Fields","url":"https://research.birmingham.ac.uk/en/publications/algebraic-approaches-for-the-elliptic-curve-discrete-logarithm-pr/","use":"Original authors' stated scope and limits, not a contemporary security assessment"}
+]

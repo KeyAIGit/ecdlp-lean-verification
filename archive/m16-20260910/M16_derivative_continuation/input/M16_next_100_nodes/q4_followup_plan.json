@@ -1,0 +1,51 @@
+{
+  "timing_scope": "Local wall-clock observations; output Groebner degree is not solving degree.",
+  "cases": [
+    {
+      "p": 97,
+      "D": 6,
+      "index": 0,
+      "usable": true
+    },
+    {
+      "p": 97,
+      "D": 6,
+      "index": 1,
+      "usable": true
+    },
+    {
+      "p": 97,
+      "D": 6,
+      "index": 2,
+      "usable": true
+    },
+    {
+      "p": 163,
+      "D": 9,
+      "index": 1,
+      "usable": true
+    },
+    {
+      "p": 163,
+      "D": 9,
+      "index": 2,
+      "usable": true
+    },
+    {
+      "p": 163,
+      "D": 9,
+      "index": 3,
+      "usable": true
+    }
+  ],
+  "previous_censored_case": {
+    "p": 163,
+    "D": 9,
+    "index": 1,
+    "usable": false,
+    "status": "CENSORED_TIMEOUT",
+    "tool_timeout_seconds": 45,
+    "completed_groebner": false,
+    "claim": "No assertion of no solutions or mathematical lower bound."
+  }
+}

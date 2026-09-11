@@ -1,0 +1,7 @@
+{
+  "source_archive": "M16_next_100_nodes_2026-09-10.zip",
+  "sha256": "01d7eb92c20cf51de399ecba7e237760a843186b3fb56a97c7a247c935ad8688",
+  "input_manifest_verified": true,
+  "input_files": 62,
+  "reused_256_cases": "All are planted; no independently supplied 256-bit target solved."
+}
