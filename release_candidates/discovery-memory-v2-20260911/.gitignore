@@ -1,0 +1,8 @@
+config.json
+*.sqlite3*
+__pycache__/
+source/
+source-cache-v2/
+retained-sources/
+packets/
+backups/

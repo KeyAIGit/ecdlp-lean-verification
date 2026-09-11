@@ -1,0 +1,28 @@
+{
+  "status": "PASS_LOCAL_V2",
+  "source_commit": "b426bb32420bd27d811bebd8934873e060e4de51",
+  "engineering_tests": 39,
+  "matched_queries": 12,
+  "retained_sources": 5,
+  "resume_packet_source_opened": true,
+  "project": {
+    "documents": 1639,
+    "chunks": 15590,
+    "edges": 3761
+  },
+  "code_sha256": {
+    "memory.py": "0a23e0639a1bed6e9f411d2a5f4378d483d6bf98a94050e6951d8e673f2cb898",
+    "build_catalog.py": "e331b9b7116f9a504fa7c72e7c1528a8526a578423239bc4084e49d80390c6da",
+    "build_project.py": "0757fc02f38d2ad5c7b906863d566c582ef00f6df4f03658192ac3e58f2d63ee",
+    "retrieval_v2.py": "42973119922b26351d2012d11d39ea9d0e5e0fde8f04c73ed369aa5d2722b6fb",
+    "source_access_v2.py": "e521eb881c6edcdf1e3621e337d142098bcb7f45300f0e0e409cf55cc4f3466f",
+    "test_memory.py": "8ad072e17b8604e6968f8e9bbea6ddb925fb908d9cc52304483734fcde8afc6e",
+    "test_memory_v2.py": "216bce96711c55de9e47e2f288c75637b4dc35966e7f6b782acd1acd34934de5",
+    "validate_live.py": "b0676297b862e8bc023a57e0deedf0ce36b8213cf17fdac48600259790d1e985"
+  },
+  "new_mathematical_result": false,
+  "new_downloads": 0,
+  "paid_api_calls": 0,
+  "notes": "Heuristic ranking; requested source revisions not automatically verified. Russian source test is synthetic.",
+  "scope": "Observed local deployment and synthetic regression checks, not external review or a mathematical result"
+}
