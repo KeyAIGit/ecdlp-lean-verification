@@ -6,11 +6,11 @@ peer review or a claim of exhaustive literature coverage.
 
 ## Self-contained regression replay
 
-Python3.10+ with SQLite FTS5; no network, model keys or third-party packages:
+Python 3.10+ on Linux/WSL with SQLite FTS5; no network, model keys or third-party packages:
 
     python3 -m unittest discover -s release_candidates/discovery-memory-v2-20260911 -p 'test_memory*.py' -v
 
-There are39 distinct engineering tests across the original14 and new25 tests.
+There are42 distinct engineering tests across the original14 and new28 tests.
 The tests use temporary synthetic databases. The Russian-article fixture tests
 language handling; it does not attest to newly downloaded Russian publications.
 

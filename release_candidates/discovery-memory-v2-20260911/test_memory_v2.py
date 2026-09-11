@@ -47,6 +47,9 @@ class RoutingTests(unittest.TestCase):
         r=memory.snapshot();m=json.loads((Path(r['path'])/'MANIFEST.json').read_text())
         self.assertIn('retrieval_v2.py',m['files_sha256']);self.assertIn('source_access_v2.py',m['files_sha256'])
 
+    def test_lowercase_project_id(self):self.assertEqual(memory.search('b-pkc-m16-complete-cost-bridge')['normalized_identifier'],'B-PKC-M16-COMPLETE-COST-BRIDGE')
+    def test_groebner_spelling_group(self):self.assertIn('"groebner"',retrieval_v2.expression(['grobner']))
+
 class CachedSourceTests(unittest.TestCase):
     def setUp(self):
         self.fixture=test_memory.MemoryTests();self.fixture.setUp();self.home=self.fixture.home
@@ -61,7 +64,7 @@ class CachedSourceTests(unittest.TestCase):
         c.execute('INSERT INTO entries VALUES(?,?,?,?,?,?,?,?,?,?,?)',(self.key,self.hit['id'],'Synthetic source','A','','math.AC','INDEXED',1,0,len(self.line),hashlib.sha256(self.line).hexdigest()));c.commit();c.close()
         config=json.loads((self.home/'config.json').read_text());config.update(library_sha256='b'*64,library_manifest=str(self.home/'manifest.json'),existing_project=str(self.home));(self.home/'config.json').write_text(json.dumps(config))
         cache=self.home/'source-cache-v2';cache.mkdir();self.text_path=cache/(self.pin+'.txt');self.text_path.write_bytes(self.raw)
-        ref=cache/(hashlib.sha256((self.key+config['library_sha256']).encode()).hexdigest()+'.json');ref.write_text(json.dumps({'raw_metadata':self.line.decode()}))
+        ref=cache/(hashlib.sha256((self.key+config['library_sha256']).encode()).hexdigest()+'.json');ref.write_text(json.dumps({'raw_metadata':self.line.decode(),'manifest_sha256':config['library_sha256']}))
         module=types.ModuleType('scripts.library_search');module.classify_source_format=lambda raw,kind:{'members':[{'name':'fixture.tex','format':'TEXT','byte_start':0,'byte_end_exclusive':len(raw)}]}
         package=types.ModuleType('scripts');package.__path__=[]
         self.patch=patch.dict(sys.modules,{'scripts':package,'scripts.library_search':module});self.patch.start()
@@ -84,5 +87,9 @@ class CachedSourceTests(unittest.TestCase):
     def test_missing_find(self):self.assertEqual(memory.read('library:'+self.key,find='not present')['status'],'TEXT_MATCH_NOT_FOUND')
     def test_invalid_source_key(self):
         with self.assertRaises(ValueError):source_access_v2.metadata(memory,'../../outside')
+
+    def test_changed_available_manifest_rejected(self):
+        (self.home/'manifest.json').write_text('changed')
+        with self.assertRaisesRegex(RuntimeError,'LIBRARY_MANIFEST_CHANGED'):memory.read('library:'+self.key)
 
 if __name__=='__main__':unittest.main(verbosity=2)

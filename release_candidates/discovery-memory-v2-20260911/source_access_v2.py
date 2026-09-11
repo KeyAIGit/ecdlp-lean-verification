@@ -16,6 +16,12 @@ def metadata(runtime,key):
         row=c.execute('SELECT entries.*,metadata_files.path AS metadata_path FROM entries JOIN metadata_files ON entries.file_id=metadata_files.id WHERE entries.key=?',(key,)).fetchone()
     if row is None:return None,None,None
     config=runtime.cfg();cache=runtime.HOME/'source-cache-v2';ref=cache/(digest((key+config['library_sha256']).encode())+'.json');raw=None;online=False
+    manifest_path=Path(config['library_manifest'])
+    if manifest_path.is_file():
+        if manifest_path.stat().st_size>8*1024**2 or digest(manifest_path.read_bytes())!=config['library_sha256']:raise RuntimeError('LIBRARY_MANIFEST_CHANGED')
+    elif ref.is_file():
+        if json.loads(ref.read_text()).get('manifest_sha256')!=config['library_sha256']:raise RuntimeError('CACHED_MANIFEST_BINDING_CHANGED')
+    else:raise RuntimeError('MANIFEST_UNAVAILABLE_AND_NO_BOUND_CACHE')
     if Path(row['metadata_path']).is_file():
         if not 0<row['byte_length']<=2*1024**2 or row['byte_offset']<0:raise ValueError('Invalid metadata range')
         with Path(row['metadata_path']).open('rb') as f:f.seek(row['byte_offset']);raw=f.read(row['byte_length'])

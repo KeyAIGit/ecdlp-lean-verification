@@ -22,7 +22,7 @@ def tokens(text):
     text=re.sub(r'\\+["\'`^~]','',text).replace('groebner','grobner')
     return re.findall(r'[^\W_]+',text)
 def expression(ws,join='AND'):
-    return (' '+join+' ').join('"'+w.replace('"','""')+'"' for w in ws)
+    return (' '+join+' ').join('("grobner" OR "groebner" OR ("gr" AND "obner"))' if w=='grobner' else '"'+w.replace('"','""')+'"' for w in ws)
 def parse_query(q):
     if not isinstance(q,str) or not q.strip() or len(q)>800:raise ValueError('Expected a query of1..800 characters')
     original=q.strip();s=original
@@ -32,7 +32,7 @@ def parse_query(q):
     s=re.sub(r'^arxiv\s*:\s*','',s,flags=re.I)
     a=re.fullmatch(r'(\d{4}\.\d{4,5}|[a-z-]+(?:\.[A-Z]{2})?/\d{7})(v[1-9]\d*)?',s,re.I)
     kind,key,version=('arxiv',a[1],a[2]) if a else ('text',original,None)
-    if re.fullmatch(r'(?:B-[A-Z]|NEXT-|TASK-|CQ-|CELL-|HYP-|R-PETIT|R-GLV)[A-Z0-9-]*',original):kind,key='project',original
+    if re.fullmatch(r'(?:B-[A-Z]|NEXT-|TASK-|CQ-|CELL-|HYP-|R-PETIT|R-GLV)[A-Z0-9-]*',original,re.I):kind,key='project',original.upper()
     ws=tuple(dict.fromkeys(t for t in tokens(key) if t not in STOP))
     if not ws or len(ws)>60:raise ValueError('Expected1..60 searchable terms')
     translated=tuple(dict.fromkeys(t for w in ws for t in ALIASES.get(w,w).split()))
