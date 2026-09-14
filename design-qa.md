@@ -23,6 +23,7 @@ The before/after composition and text changes are intended. Source captures are 
 - [Governance](docs/site-review-20260914/governance-desktop.jpg)
 - [Mobile and tablet homepage](docs/site-review-20260914/home-mobile.jpg)
 - [Mobile and tablet collaboration](docs/site-review-20260914/pilot-mobile.jpg)
+- [Mobile results after width repair](docs/site-review-20260914/results-mobile.jpg)
 
 Responsive captures use same-origin browser iframes, 390 × 844 and 768 × 844 pixels, at 1:1 scale. Scrollbars leave 375 and 753 CSS pixels for document content. These are responsive browser checks, not native-device emulation. Mobile collaboration document scroll widths equal the available widths, with no page-level horizontal overflow.
 
@@ -31,6 +32,8 @@ Responsive captures use same-origin browser iframes, 390 × 844 and 768 × 844 p
 1. P2, mobile navigation: the first revision inherited horizontal navigation scrolling, hiding Governance and Collaborate. The mobile header now wraps all links. Recapture in `home-mobile.jpg` and `pilot-mobile.jpg` shows every link and the collaboration action.
 2. P2, results masthead: the inherited narrow heading measure still produced four lines. The heading now uses two concise lines and a wider measure. `results-desktop.jpg` and the results comparison show the corrected hierarchy.
 3. P1, Research OS scope note: an inherited `!important` color made the new scope note dark on navy. Its dark-surface override now uses the disclosed muted foreground. `research-os-desktop.jpg` confirms that the current-stage limitation is readable.
+
+4. P2, technical lists on phones: a full-page width check found min-content grid sizing stretching results to 492px and routes to 898px in a 375px content viewport. Grid children and result cards now shrink, with long mathematical text wrapping. All nine mobile pages were checked; results and routes were rechecked at 375px with scroll width equal to client width. `results-mobile.jpg` records the final responsive view.
 
 Final comparison: no unresolved P0, P1 or P2 visual findings in the inspected states. Individual desktop captures supplement the combined views so that small labels and scope copy can be read at original scale. No separate crops were needed after those focused page views.
 

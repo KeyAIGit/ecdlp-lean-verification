@@ -3433,6 +3433,8 @@ body[data-page="research-os"] .hero__lede { font-size: 1.1rem; }
 body[data-page="research-os"] .hero .section-note { color: var(--on-dark-muted) !important; font-size: .9rem; }
 .results-mast h1, .explorer-mast h1 { font-size: clamp(2.25rem,4.2vw,3.5rem); max-width: 22ch; }
 .site-footer p a { color: inherit; }
+.results-layout > *, .explorer-layout > * { min-width: 0; }
+.result-card { min-width: 0; overflow-wrap: anywhere; }
 
 @media (max-width: 1100px) {
   .research-hero__inner { gap: 36px; }
