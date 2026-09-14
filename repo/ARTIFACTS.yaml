@@ -146,6 +146,10 @@ classes:
       - results.html
       - explore.html
       - pilot.html
+      - research.html
+      - research-os.html
+      - about.html
+      - governance.html
       - robots.txt
       - sitemap.xml
       - bundles/MANIFEST.json
@@ -242,11 +246,16 @@ classes:
   public_site:
     description: Public-facing static site surface and assets.
     paths:
+      - design-qa.md
       - index.html
       - dashboard.html
       - results.html
       - explore.html
       - pilot.html
+      - research.html
+      - research-os.html
+      - about.html
+      - governance.html
       - robots.txt
       - sitemap.xml
       - assets/
@@ -448,6 +457,10 @@ allowed_overlap_paths:
   - results.html
   - explore.html
   - pilot.html
+  - research.html
+  - research-os.html
+  - about.html
+  - governance.html
   - robots.txt
   - sitemap.xml
   - llms.txt

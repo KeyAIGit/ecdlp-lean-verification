@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KeyAI External Pilot | Test one research workflow</title>
-  <meta name="description" content="The evidence-gated KeyAI external pilot for formal-research teams: qualification, observed orientation, workflow mapping, measures, and decision rules.">
+  <title>Collaborate | KeyAI Research</title>
+  <meta name="description" content="Collaborate on formal mathematics, review a result, or help test Research OS on one real research workflow.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://keyai.org/pilot.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="KeyAI External Pilot | Test one research workflow">
-  <meta property="og:description" content="The evidence-gated KeyAI external pilot for formal-research teams: qualification, observed orientation, workflow mapping, measures, and decision rules.">
+  <meta property="og:title" content="Collaborate | KeyAI Research">
+  <meta property="og:description" content="Collaborate on formal mathematics, review a result, or help test Research OS on one real research workflow.">
   <meta property="og:url" content="https://keyai.org/pilot.html">
   <meta property="og:image" content="https://keyai.org/assets/logo-wordmark.png">
   <meta property="og:image:alt" content="KeyAI">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="KeyAI External Pilot | Test one research workflow">
-  <meta name="twitter:description" content="The evidence-gated KeyAI external pilot for formal-research teams: qualification, observed orientation, workflow mapping, measures, and decision rules.">
+  <meta name="twitter:title" content="Collaborate | KeyAI Research">
+  <meta name="twitter:description" content="Collaborate on formal mathematics, review a result, or help test Research OS on one real research workflow.">
   <meta name="twitter:image" content="https://keyai.org/assets/logo-wordmark.png">
   <meta name="theme-color" content="#07182d">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=20260825-1">
+  <link rel="stylesheet" href="assets/site.css?v=20260914-1">
 </head>
 <body data-page="pilot">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -31,76 +31,56 @@
       <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="59">
     </a>
     <nav class="primary-nav" aria-label="Primary navigation">
-      <a data-nav-page="product" href="index.html#research-system">Research system</a>
-      <a data-nav-page="results" href="results.html">Verified results</a>
-      <a data-nav-page="routes" href="explore.html">ECDLP deployment</a>
-      <a data-nav-page="pilot" href="pilot.html">Collaborate</a>
-      <a class="nav-cta" href="https://github.com/KeyAIGit/-ecdlp-lean-verification">GitHub</a>
+      <a data-nav-page="research" href="research.html">Research</a>
+      <a data-nav-page="results" href="results.html">Results</a>
+      <a data-nav-page="research-os" href="research-os.html">Research OS</a>
+      <a data-nav-page="about" href="about.html">About</a>
+      <a data-nav-page="governance" href="governance.html">Governance</a>
+      <a data-nav-page="pilot" class="nav-cta" href="pilot.html">Collaborate</a>
     </nav>
   </div>
 </header>
 <main id="main">
-  <section class="pilot-mast" aria-labelledby="pilot-title">
-    <div class="shell pilot-mast__inner">
-      <div class="pilot-mast__copy">
-        <p class="eyebrow">External pilot / TASK-011</p>
-        <h1 id="pilot-title">Bring one research workflow that keeps losing its state.</h1>
-        <p>We will observe how your team understands the current KeyAI reference environment, map one
-          repeated formal-research workflow, and decide whether a bounded TASK-012 adapter test is justified.</p>
-        <div class="actions">
-          <a class="button button--primary" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/issues/new?template=keyai-pilot.yml">Apply on GitHub</a>
-          <a class="button button--on-dark" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PILOT_PROTOCOL.json">Inspect the protocol JSON</a>
-        </div>
-      </div>
-      <aside class="pilot-state" aria-label="Pilot evidence state">
-        <div><span>Status</span><strong>Recruiting</strong></div>
-        <div><span>Planned session</span><strong>60 minutes</strong></div>
-        <div><span>Completed external pilots</span><strong>0</strong></div>
-        <p>No external pilot session has been completed or recorded.</p>
-      </aside>
-    </div>
-  </section>
-
-  <section class="pilot-safety" aria-label="Public intake boundary">
-    <div class="shell pilot-safety__inner">
-      <strong>Public and sanitized inputs only.</strong>
-      <span>The GitHub intake is public and collects qualification signals only. Detailed workflow mapping is never required in a public issue.</span>
-      <a href="#safety">Read the safety boundary</a>
-    </div>
-  </section>
-
-  <section class="band band--white">
-    <div class="shell split">
-      <div class="split__lead">
-        <p class="eyebrow">Who this is for</p>
-        <h2>A team with a durable coordination problem, not a one-off proof request.</h2>
-        <p>Determine whether a non-owner formal-research lead has the repeated research-state problem KeyAI targets, can orient in the reference environment, and can define a bounded adapter test worth building under TASK-012.</p>
-        <p class="pilot-primary"><strong>Primary hypothesis CH-001</strong>
-          Technical lead of an AI-for-mathematics or formalization team</p>
-        <ul class="role-list"><li>Technical lead of an AI-for-mathematics or formalization team</li><li>Formal-methods researcher reviewing AI-generated artifacts</li><li>Maintainer of a multi-week Lean project with human and AI contributors</li></ul>
-      </div>
-      <div class="qualification">
-        <section>
-          <h3>Signals we need</h3>
-          <ul class="check-list"><li>The team has a real, repeated workflow involving claims, evidence, tasks, and verifier results.</li><li>At least two people or agents contribute across more than one session.</li><li>The participant can provide a public or sanitized summary for qualification.</li><li>The participant can attend one observed onboarding session and make an explicit build, change, stop, or pending decision.</li></ul>
-        </section>
-        <section>
-          <h3>Outside this pilot</h3>
-          <ul class="check-list check-list--not"><li>Requests to solve a cryptographic key or recover a secret.</li><li>A one-off proof request with no durable research-state problem.</li><li>A public intake that requires secrets, credentials, private keys, internal architecture, or confidential workflow details.</li><li>A request for a finished hosted, authenticated, multi-project product.</li></ul>
-        </section>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Session plan</p>
-        <h2>A 60-minute path from qualification to an explicit decision.</h2>
-        <p>The first session tests orientation and problem fit. It does not count a scheduled follow-up
-          or polite interest as product validation.</p>
-      </div>
-      <div class="pilot-steps"><article class="pilot-step">
+  <section class="editorial-mast"><div class="shell">
+    <p class="eyebrow">Contact and collaboration</p><h1>Help make the work stronger.</h1>
+    <p>Review a proof, reproduce a result, or explore a research workflow with us. A short, concrete introduction is enough to start.</p>
+  </div></section>
+  <section class="band band--white" aria-label="Ways to collaborate"><div class="shell research-grid">
+    <article class="research-card"><p class="eyebrow">Research collaboration</p><h2>Bring a question or an idea.</h2>
+      <p>For researchers, AI-for-math teams, and technical collaborators. Tell us what you work on and where it connects to KeyAI.</p>
+      <a class="button" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/issues/new?title=Research+collaboration">Start a conversation on GitHub</a></article>
+    <article class="research-card"><p class="eyebrow">Review and reproducibility</p><h2>Check a specific result.</h2>
+      <p>Point to a theorem, assumption, experiment, or source. A minimal reproduction and the source commit help us investigate.</p>
+      <a class="button" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/issues/new?title=Research+review">Open a research review</a></article>
+    <article class="research-card"><p class="eyebrow">Research OS pilot</p><h2>Test one repeated workflow.</h2>
+      <p>For Lean and formal-methods teams that lose context between research sessions. Help us understand the problem and test the current workspace.</p>
+      <a class="button button--primary" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/issues/new?template=keyai-pilot.yml">Apply for the workflow pilot</a></article>
+  </div></section>
+  <section class="band" id="pilot-session"><div class="shell editorial-split">
+    <div><p class="eyebrow">The workflow pilot</p><h2>One session. A concrete next decision.</h2></div>
+    <div class="editorial-copy"><p>Plan for 60 minutes: a brief fit and scope check, orientation in the public workspace,
+      a walkthrough of a repeated research problem, and a decision about a possible next test.</p>
+      <p>Bring a public or sanitized example, your current verifier, and one place where your workflow loses evidence or context.</p>
+      <dl class="profile-list"><div><dt>Current status</dt><dd>Recruiting</dd></div>
+        <div><dt>Completed external pilots</dt><dd>0</dd></div></dl>
+      <p>This is a research pilot. A hosted multi-project product is not yet available; external adoption and product fit remain unvalidated.</p>
+      <a href="#pilot-details">Read the full session and evaluation protocol</a></div>
+  </div></section>
+  <section class="band band--white" id="safety"><div class="shell editorial-split">
+    <div><p class="eyebrow">Before you contact us</p><h2>GitHub issues are public.</h2></div>
+    <div class="editorial-copy"><p>Share only public or sanitized information. Do not include keys, credentials, personal records,
+      confidential repositories, or unpublished sensitive material.</p>
+      <p>For a sensitive finding, first ask for a private channel without including the details.</p>
+      <p>Any cryptographic instance must be synthetic, a published challenge, or owned and explicitly authorized by the participant. The pilot does not accept requests involving live funds, accounts, third-party assets, or key recovery.</p>
+      <a href="governance.html">Read the research and publication boundaries →</a></div>
+  </div></section>
+  <section class="band"><div class="shell">
+    <details class="protocol-details" id="pilot-details"><summary>Full pilot protocol and evaluation criteria</summary>
+      <div class="protocol-details__body">
+        <h2>Who the pilot is for</h2><p>Technical lead of an AI-for-mathematics or formalization team</p><ul><li>Technical lead of an AI-for-mathematics or formalization team</li><li>Formal-methods researcher reviewing AI-generated artifacts</li><li>Maintainer of a multi-week Lean project with human and AI contributors</li></ul>
+        <div class="research-grid research-grid--two"><section><h3>Fit signals</h3><ul><li>The team has a real, repeated workflow involving claims, evidence, tasks, and verifier results.</li><li>At least two people or agents contribute across more than one session.</li><li>The participant can provide a public or sanitized summary for qualification.</li><li>The participant can attend one observed onboarding session and make an explicit build, change, stop, or pending decision.</li></ul></section>
+          <section><h3>Outside this pilot</h3><ul><li>Requests to solve a cryptographic key or recover a secret.</li><li>A one-off proof request with no durable research-state problem.</li><li>A public intake that requires secrets, credentials, private keys, internal architecture, or confidential workflow details.</li><li>A request for a finished hosted, authenticated, multi-project product.</li></ul></section></div>
+        <h2>Session plan</h2><div class="pilot-steps"><article class="pilot-step">
   <div class="pilot-step__meta"><span>01</span><strong>15 min</strong></div>
   <div class="pilot-step__copy">
     <h3>Qualify</h3>
@@ -129,21 +109,11 @@
     <p class="pilot-step__gate"><strong>Exit gate</strong>A discovery decision is recorded without treating interest, scheduling, or orientation success as retention or MVP validation.</p>
   </div>
 </article></div>
-    </div>
-  </section>
-
-  <section class="band band--muted">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Measurement contract</p>
-        <h2>Behavior first. Claims only after evidence.</h2>
-        <p>Every measure has an operational definition, target, and evidence source. The pilot remains
-          recruiting until an external session is actually recorded.</p>
-      </div>
-      <div class="table-wrap pilot-measures" tabindex="0" role="region" aria-label="Pilot measurement contract"><table class="data-table">
-        <caption class="sr-only">Pilot measurements, targets, and evidence sources</caption>
-        <thead><tr><th>Measure</th><th>What is observed</th><th>Target</th><th>Evidence</th></tr></thead>
-        <tbody><tr>
+        <h2>Evaluation criteria</h2><p>No external pilot session has been completed or recorded.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Pilot measurements"><table class="data-table">
+          <caption class="sr-only">Pilot measurements, targets, and evidence sources</caption>
+          <thead><tr><th>Measure</th><th>What is observed</th><th>Target</th><th>Evidence</th></tr></thead>
+          <tbody><tr>
   <td><code>orientation-time</code><small>usability_diagnostic</small></td>
   <td>Elapsed observed time until the participant correctly states current decision, main blocker, and active next action.</td>
   <td><strong>10 minutes or less</strong></td>
@@ -183,19 +153,9 @@
   <td>Secrets, credentials, private keys, personal data, or confidential material placed in the public intake or evidence log.</td>
   <td><strong>Zero</strong></td>
   <td>Intake and evidence review</td>
-</tr></tbody>
-      </table></div>
-    </div>
-  </section>
-
-  <section class="band band--white">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Decision contract</p>
-        <h2>Discovery ends with build, change, stop, or pending.</h2>
-        <p>One observed discovery session, one explicit build/change/stop/pending disposition for CH-001, and no customer or retention claim beyond the recorded behavior.</p>
-      </div>
-      <div class="decision-rules"><section class="decision-rule decision-rule--build">
+</tr></tbody></table></div>
+        <h2>Decision rules</h2><p>One observed discovery session, one explicit build/change/stop/pending disposition for CH-001, and no customer or retention claim beyond the recorded behavior.</p>
+        <div class="decision-rules"><section class="decision-rule decision-rule--build">
   <h3>Build</h3>
   <ul><li>The participant demonstrates the repeated research-state pain.</li><li>The sanitized workflow maps to the product loop and exposes a minimum adapter boundary.</li><li>The participant authorizes a bounded TASK-012 test; no execution is performed in TASK-011.</li></ul>
 </section><section class="decision-rule decision-rule--change">
@@ -208,55 +168,39 @@
   <h3>Pending</h3>
   <ul><li>The participant appears relevant but the available evidence is insufficient or cannot yet be sanitized.</li><li>A decision owner, authorization basis, or bounded workflow map is still missing.</li><li>Pending does not unlock TASK-012 and is not evidence of retention.</li></ul>
 </section></div>
-    </div>
-  </section>
-
-  <section class="band pilot-boundary" id="safety">
-    <div class="shell split">
-      <div class="split__lead">
-        <p class="eyebrow">Safety and scope</p>
-        <h2>No secrets belong in the intake.</h2>
+        <h2>Authorization and retention</h2>
         <p>The secp256k1 reference environment maps and verifies a research boundary. It does not solve the plain secp256k1 discrete logarithm problem.</p>
         <dl class="scope-contract">
-          <div><dt>TASK-011 authority</dt><dd>TASK-011 authorizes qualification, observation, and workflow mapping only. It does not authorize executing a new research or cryptanalytic candidate.</dd></div>
+          <div><dt>Pilot authority</dt><dd>TASK-011 authorizes qualification, observation, and workflow mapping only. It does not authorize executing a new research or cryptanalytic candidate.</dd></div>
           <div><dt>Experiment gate</dt><dd>A second-project execution requires TASK-012 authorization. Any secp256k1 or ECDLP experiment additionally requires a superseding route-selection decision, a selected route, and a promoted task and hypothesis with success and stop conditions.</dd></div>
           <div><dt>Evidence retention</dt><dd>The repository retains only participant-approved sanitized summaries and decision evidence. Observational evidence is labeled observational and is not presented as machine verification.</dd></div>
-        </dl>
+        </dl><h3>Never submit</h3><ul><li>private keys or seed phrases</li><li>credentials or access tokens</li><li>personal data</li><li>confidential repositories or unpublished material without permission</li><li>internal workflow or architecture details not approved for public disclosure</li><li>live-funds, account-recovery, or third-party cryptographic targets</li></ul>
+        <p>Protocol reference: TASK-011</p>
+        <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PILOT_PROTOCOL.json">Inspect the canonical protocol</a>
       </div>
-      <div>
-        <h3>Never submit</h3>
-        <ul class="check-list check-list--not"><li>private keys or seed phrases</li><li>credentials or access tokens</li><li>personal data</li><li>confidential repositories or unpublished material without permission</li><li>internal workflow or architecture details not approved for public disclosure</li><li>live-funds, account-recovery, or third-party cryptographic targets</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="pilot-cta">
-    <div class="shell pilot-cta__inner">
-      <div><p class="eyebrow">Recruiting now</p>
-        <h2>One real workflow is more valuable than another speculative feature.</h2>
-        <p>Open the public intake with a repeated failure, current verifier, and a safe project boundary.</p></div>
-      <a class="button button--light" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/issues/new?template=keyai-pilot.yml">Start the pilot intake</a>
-    </div>
-  </section>
+    </details>
+  </div></section>
 </main>
 <footer class="site-footer">
   <div class="shell site-footer__inner">
     <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
-    <p>verification workspace for AI research. Current stage: Reference deployment.
-      The Lean kernel checks declared statements and proof terms; semantic, empirical,
-      security, and product claims remain separately evidence-gated.</p>
+    <p>KeyAI Research · Formal mathematics, cryptographic research, and tools for verifiable AI research.
+      <a href="about.html">People and organization</a></p>
     <nav class="footer-links" aria-label="Footer navigation">
-      <a href="index.html#research-system">Research system</a>
+      <a href="research.html">Research</a>
       <a href="results.html">Verified results</a>
-      <a href="index.html#reference">ECDLP deployment</a>
+      <a href="research-os.html">Research OS</a>
+      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PRODUCT_MODEL.json">Product model</a>
       <a href="explore.html">Detailed route map</a>
       <a href="dashboard.html">Technical workspace</a>
       <a href="pilot.html">Collaborate</a>
-      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PRODUCT_MODEL.json">Product model</a>
+      <a href="about.html">About</a>
+      <a href="governance.html">Research governance</a>
+      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/LICENSING.md">Licensing</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">Repository</a>
     </nav>
   </div>
 </footer>
-<script src="assets/site.js?v=20260825-1"></script>
+<script src="assets/site.js?v=20260914-1"></script>
 </body>
 </html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What we work on. | KeyAI Research</title>
+  <meta name="description" content="Formal mathematics, cryptographic research, and the infrastructure needed to make long-running AI research inspectable.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://keyai.org/research.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="What we work on. | KeyAI Research">
+  <meta property="og:description" content="Formal mathematics, cryptographic research, and the infrastructure needed to make long-running AI research inspectable.">
+  <meta property="og:url" content="https://keyai.org/research.html">
+  <meta property="og:image" content="https://keyai.org/assets/logo-wordmark.png">
+  <meta property="og:image:alt" content="KeyAI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="What we work on. | KeyAI Research">
+  <meta name="twitter:description" content="Formal mathematics, cryptographic research, and the infrastructure needed to make long-running AI research inspectable.">
+  <meta name="twitter:image" content="https://keyai.org/assets/logo-wordmark.png">
+  <meta name="theme-color" content="#07182d">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/site.css?v=20260914-1">
+</head>
+<body data-page="research">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="brand-link" href="index.html" aria-label="KeyAI home">
+      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="59">
+    </a>
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <a data-nav-page="research" href="research.html">Research</a>
+      <a data-nav-page="results" href="results.html">Results</a>
+      <a data-nav-page="research-os" href="research-os.html">Research OS</a>
+      <a data-nav-page="about" href="about.html">About</a>
+      <a data-nav-page="governance" href="governance.html">Governance</a>
+      <a data-nav-page="pilot" class="nav-cta" href="pilot.html">Collaborate</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="editorial-mast"><div class="shell">
+    <p class="eyebrow">Research program</p><h1>What we work on.</h1><p>Formal mathematics, cryptographic research, and the infrastructure needed to make long-running AI research inspectable.</p>
+  </div></section>
+  
+  <section class="band band--white" id="cryptography"><div class="shell editorial-split">
+    <div><p class="eyebrow">01 / Cryptographic research</p><h2>Elliptic curves and the discrete logarithm.</h2></div>
+    <div class="editorial-copy"><p>Our reference problem is recovering the discrete logarithm in the prime-order secp256k1 group.
+      Work includes curve arithmetic, torsion structure, polynomial relations, generic-model bounds, and the applicability of proposed routes.</p>
+      <p>The public route map retains 17 routes, including their evidence, assumptions, and reasons to stop or reopen them.
+      The current decision records 0 promoted attack routes.</p>
+      <p class="scope-note">No efficient unknown-target secp256k1 solver or validated subgeneric route is claimed.
+      A scoped algebraic result does not establish a practical attack.</p>
+      <div class="actions"><a class="button" href="explore.html">Explore the ECDLP route map</a>
+        <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/SECURITY_SCOPE.md">Read the security scope</a></div></div>
+  </div></section>
+  <section class="band" id="mathematics"><div class="shell editorial-split">
+    <div><p class="eyebrow">02 / Formal mathematics</p><h2>Reusable foundations, with explicit assumptions.</h2></div>
+    <div class="editorial-copy"><p>The Lean libraries contain elliptic-curve formalizations alongside a separate body of complex analysis
+      and elementary number theory. Source-linked ledger entries disclose declarations and proof trust.</p>
+      <p>Exploratory Riemann Hypothesis work currently provides definitions, reformulations, and symmetry infrastructure.
+      It claims no proof candidate and no progress on RH itself.</p>
+      <a href="results.html">Read the formal results →</a></div>
+  </div></section>
+  <section class="band band--white" id="infrastructure"><div class="shell editorial-split">
+    <div><p class="eyebrow">03 / Research infrastructure</p><h2>Make the next step traceable.</h2></div>
+    <div class="editorial-copy"><p>Research OS records how a question becomes a proposal, a checked attempt, a retained outcome, and a next decision.
+      The current repository is its public reference deployment.</p>
+      <p>We want to learn whether formal-research teams can use that workflow on a second project. External product validation remains open.</p>
+      <a href="research-os.html">See how Research OS works →</a></div>
+  </div></section>
+  <section class="band"><div class="shell"><div class="section-heading"><p class="eyebrow">Inspect the work</p><h2>Start with a checked statement.</h2></div>
+    <div class="research-grid"><article class="research-card featured-result">
+  <p class="eyebrow">Formal result · Kernel audited</p>
+  <h3>The structure of four-torsion points</h3>
+  <p>Over the algebraic closure, secp256k1 has 16 points killed by multiplication by four, forming a group isomorphic to (Z/4Z)².</p>
+  <dl class="result-explainer">
+    <div><dt>Why it is useful</dt><dd>Connects explicit curve calculations to a finite group structure that later formal work can reuse.</dd></div>
+    <div><dt>Scope</dt><dd>This is the concrete n = 4 case, not a theorem for every n or a discrete-logarithm algorithm.</dd></div>
+  </dl>
+  <div class="card-links"><a href="results.html#ecdlp-ledger-292">Read the ledger entry</a>
+    <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/FourTorsionStructure.lean#L481">Lean source</a></div>
+</article><article class="research-card featured-result">
+  <p class="eyebrow">Formal result · Kernel + compiler</p>
+  <h3>A checked foundation for the curve field</h3>
+  <p>A formal primality certificate establishes that the secp256k1 field modulus p is prime.</p>
+  <dl class="result-explainer">
+    <div><dt>Why it is useful</dt><dd>Provides an explicit foundation for subsequent arithmetic over the finite field.</dd></div>
+    <div><dt>Scope</dt><dd>The certificate uses compiler trust. Primality alone does not establish the security of a protocol.</dd></div>
+  </dl>
+  <div class="card-links"><a href="results.html#ecdlp-ledger-065">Read the ledger entry</a>
+    <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/Secp256k1PrimeP.lean#L193">Lean source</a></div>
+</article><article class="research-card featured-result">
+  <p class="eyebrow">Formal result · Kernel standard</p>
+  <h3>From analytic growth to a polynomial</h3>
+  <p>An entire complex function bounded by C · (1 + |z|)ⁿ is represented by a polynomial of degree at most n.</p>
+  <dl class="result-explainer">
+    <div><dt>Why it is useful</dt><dd>Packages a classical analysis result as a reusable Lean theorem with explicit hypotheses.</dd></div>
+    <div><dt>Scope</dt><dd>This formalization is a general analysis result. It is not a proof of the Riemann Hypothesis.</dd></div>
+  </dl>
+  <div class="card-links"><a href="results.html#researchos-pl-3">Read the ledger entry</a>
+    <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/ResearchOS/Analysis/PolyLiouville.lean#L282">Lean source</a></div>
+</article></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
+    <p>KeyAI Research · Formal mathematics, cryptographic research, and tools for verifiable AI research.
+      <a href="about.html">People and organization</a></p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="research.html">Research</a>
+      <a href="results.html">Verified results</a>
+      <a href="research-os.html">Research OS</a>
+      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PRODUCT_MODEL.json">Product model</a>
+      <a href="explore.html">Detailed route map</a>
+      <a href="dashboard.html">Technical workspace</a>
+      <a href="pilot.html">Collaborate</a>
+      <a href="about.html">About</a>
+      <a href="governance.html">Research governance</a>
+      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/LICENSING.md">Licensing</a>
+      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">Repository</a>
+    </nav>
+  </div>
+</footer>
+<script src="assets/site.js?v=20260914-1"></script>
+</body>
+</html>

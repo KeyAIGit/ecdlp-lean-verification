@@ -224,7 +224,7 @@
   "site_surfaces": [
     {
       "path": "index.html",
-      "role": "Product thesis, current stage, reference evidence, and MVP boundary"
+      "role": "Research-program introduction, selected source-linked results, research directions, and collaboration"
     },
     {
       "path": "results.html",
@@ -241,6 +241,29 @@
     {
       "path": "pilot.html",
       "role": "External-pilot qualification, protocol, measures, safety boundary, and public intake"
+    },
+    {
+      "path": "research.html",
+      "role": "Research directions and current scientific boundaries"
+    },
+    {
+      "path": "research-os.html",
+      "role": "Developing verification workspace, six-stage workflow, generated research map, current capabilities and MVP boundary"
+    },
+    {
+      "path": "about.html",
+      "role": "Research-program identity, founder, organization and contact paths"
+    },
+    {
+      "path": "governance.html",
+      "role": "Readable guide to canonical research, verification, publication, licensing and sensitive-information policies"
     }
-  ]
+  ],
+  "research_program": {
+    "name": "KeyAI Research",
+    "founder": "Bekzod Dzhanpolatov",
+    "organization": "RFID INC",
+    "jurisdiction": "Delaware, United States",
+    "relationship": "Independent research initiative; Research OS is the developing verification workspace."
+  }
 }
