@@ -72,6 +72,9 @@ def main() -> int:
     dashboard = read_text("dashboard.html")
     explore = read_text("explore.html")
     pilot = read_text("pilot.html")
+    research_os = read_text("research-os.html")
+    governance = read_text("governance.html")
+    public_pages = [read_text(item["path"]) for item in product["site_surfaces"]]
     tasks = read_text("tasks/NEXT.md")
     research_tasks = read_text("tasks/ECDLP_RESEARCH.md")
     rh_tasks = read_text("tasks/RIEMANN_HYPOTHESIS.md")
@@ -199,37 +202,28 @@ def main() -> int:
     check("repo/ARTIFACTS.yaml" in dashboard and "scripts/check_repo_artifacts.py" in dashboard,
           "dashboard.html Sync Health must link the artifact manifest to its gate")
     check(
-        product.get("category") in index
-        and product.get("category") in results
-        and product.get("category") in dashboard
-        and product.get("category") in explore
-        and product.get("category") in pilot,
-        "all public surfaces must expose the canonical product category",
+        product.get("category") in research_os,
+        "Research OS must expose the canonical product category",
     )
     check(
-        product.get("current_stage", {}).get("label") in index
+        product.get("current_stage", {}).get("label") in research_os
         and product.get("current_stage", {}).get("label") in dashboard,
-        "index and dashboard must expose the canonical product stage",
+        "Research OS and dashboard must expose the canonical product stage",
     )
     check(
-        "repo/PRODUCT_MODEL.json" in index
-        and "repo/PRODUCT_MODEL.json" in results
-        and "repo/PRODUCT_MODEL.json" in dashboard
-        and "repo/PRODUCT_MODEL.json" in explore
-        and "repo/PRODUCT_MODEL.json" in pilot,
-        "all public surfaces must link the canonical product model",
+        "repo/PRODUCT_MODEL.json" in research_os
+        and "research-os.html" in index,
+        "the research program must link the workspace and its canonical product model",
     )
     check(
-        all("assets/site.css" in page and "assets/site.js" in page
-            for page in (index, results, dashboard, explore, pilot)),
+        all("assets/site.css" in page and "assets/site.js" in page for page in public_pages),
         "all public surfaces must use the shared site assets",
     )
     check(
-        all(
-            "The Lean kernel checks declared statements and proof terms" in page
-            for page in (index, results, dashboard, explore, pilot)
-        ),
-        "all public surfaces must expose the verifier-scope caveat",
+        all('href="governance.html"' in page for page in public_pages)
+        and "A checked statement does not automatically establish" in governance
+        and "Formal trust labels" in results,
+        "all public surfaces must link the verifier-scope policy, with trust labels retained in results",
     )
     check(
         pilot_protocol.get("task_id") in pilot
@@ -243,7 +237,7 @@ def main() -> int:
     )
     check(
         bool(intake_template)
-        and intake_url in index
+        and intake_url in research_os
         and intake_url in pilot,
         "product and pilot pages must derive the public intake URL from PRODUCT_MODEL.json",
     )
@@ -252,7 +246,7 @@ def main() -> int:
         and 'data-route-empty role="status" aria-live="polite"' in explore,
         "route result changes must be announced to assistive technology",
     )
-    public_site = (index + results + dashboard + explore + pilot).lower()
+    public_site = "".join(public_pages).lower()
     for retired_claim in (
         "autonomous engine",
         "verified environment for a strong ai",
@@ -292,7 +286,7 @@ def main() -> int:
         "dashboard and explore must expose the canonical structural decision",
     )
     check(
-        f'data-metric="native-experiments">{selected_explorations}</strong> native experiments selected' in index
+        f'data-metric="native-experiments">{selected_explorations}</strong> native experiments selected' in research_os
         and f"{selected_explorations} selected;" in dashboard
         and f"{len(selected_structural)} structural route completed" in explore
         and f"{len(promoted_routes)} promoted" in explore
@@ -482,7 +476,7 @@ def main() -> int:
         and authorization_id in status
         and authorization_id in decision_view
         and authorization_id in knowledge_graph_md
-        and authorization_id in index
+        and authorization_id in research_os
         and authorization_id in dashboard
         and authorization_id in explore,
         "all generated decision surfaces must expose the exact singleton id",
@@ -730,8 +724,8 @@ def main() -> int:
         "repo/PILOT_PROTOCOL.json" in architecture
         and "pilot.html" in architecture
         and "results.html" in architecture
-        and "Generate all five pages" in architecture,
-        "repository architecture must map the pilot protocol and all five public surfaces",
+        and "Generate all public pages" in architecture,
+        "repository architecture must map the pilot protocol and all public surfaces",
     )
     task_012_match = re.search(
         r"^### TASK-012\b.*?^Status:\s*([^\n]+)",

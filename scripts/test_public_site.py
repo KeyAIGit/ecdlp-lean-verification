@@ -78,6 +78,12 @@ class PublicSiteTests(unittest.TestCase):
             site_generator.INDEX_PATH: site_generator.build_index(
                 product, pilot, stats, frontier, decisions, formal, engine, verified_index
             ),
+            site_generator.RESEARCH_OS_PATH: site_generator.build_research_os(
+                product, pilot, stats, frontier, decisions, formal, engine, verified_index
+            ),
+            site_generator.RESEARCH_PATH: site_generator.build_research(product, decisions, verified_index),
+            site_generator.ABOUT_PATH: site_generator.build_about(product),
+            site_generator.GOVERNANCE_PATH: site_generator.build_governance(product),
             site_generator.RESULTS_PATH: site_generator.build_results(
                 product,
                 verified_index,
@@ -108,11 +114,12 @@ class PublicSiteTests(unittest.TestCase):
 
     def test_landmarks_headings_and_navigation_are_present(self) -> None:
         required_nav = {
-            "Research system",
-            "Verified results",
-            "ECDLP deployment",
+            "Research",
+            "Results",
+            "Research OS",
+            "About",
+            "Governance",
             "Collaborate",
-            "GitHub",
         }
         for path, document in self.documents.items():
             tags = [tag for tag, _attrs in document.tags]
@@ -126,7 +133,7 @@ class PublicSiteTests(unittest.TestCase):
                 for label in required_nav:
                     self.assertIn(label, document.primary_nav_text)
                 self.assertIn(
-                    'data-nav-page="routes" href="explore.html"',
+                    'data-nav-page="research" href="research.html"',
                     path.read_text(encoding="utf-8"),
                 )
 
@@ -171,7 +178,7 @@ class PublicSiteTests(unittest.TestCase):
             self.assertNotRegex(label, r"<h[1-6]\b")
 
     def test_public_map_and_results_keep_generated_boundaries(self) -> None:
-        index = (ROOT / "index.html").read_text(encoding="utf-8")
+        index = (ROOT / "research-os.html").read_text(encoding="utf-8")
         results = (ROOT / "results.html").read_text(encoding="utf-8")
         kinds = re.findall(r'data-map-kind="([^"]+)"', index)
         self.assertEqual(

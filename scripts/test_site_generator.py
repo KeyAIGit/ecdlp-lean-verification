@@ -118,7 +118,7 @@ Inputs:
             "bounded_experiment_authorization"
         ]["authorization_id"]
 
-        index = site_generator.build_index(
+        index = site_generator.build_research_os(
             product,
             pilot,
             stats,
@@ -180,7 +180,7 @@ Inputs:
         engine = site_generator.load_json(site_generator.ENGINE_PATH)
         verified_index = site_generator.load_json(site_generator.VERIFIED_INDEX_PATH)
 
-        index = site_generator.build_index(
+        index = site_generator.build_research_os(
             product,
             pilot,
             stats,
@@ -195,7 +195,7 @@ Inputs:
         self.assertEqual(index.count("data-loop-step"), len(product["workflow"]))
         self.assertIn("data-research-map", index)
         self.assertEqual(index.count("data-map-kind="), 6)
-        self.assertIn("not a\n          self-serve or hosted multi-project product", index)
+        self.assertIn("A self-serve or hosted multi-project product is not yet available", index)
         self.assertNotIn("foundations.point_counting.mathlib_gap", index)
 
     def test_site_discovery_files_follow_cname_and_public_pages(self) -> None:

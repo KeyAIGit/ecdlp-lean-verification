@@ -12,7 +12,7 @@ from ledger_utils import parse_researchos_ledger, strip_md
 from pilot_evidence import primary_dispositions, valid_second_projects
 
 ROOT = Path(__file__).resolve().parent.parent
-ASSET_VERSION = "20260825-1"
+ASSET_VERSION = "20260914-1"
 
 PRODUCT_PATH = ROOT / "repo" / "PRODUCT_MODEL.json"
 PILOT_PATH = ROOT / "repo" / "PILOT_PROTOCOL.json"
@@ -31,13 +31,21 @@ DASHBOARD_PATH = ROOT / "dashboard.html"
 EXPLORE_PATH = ROOT / "explore.html"
 PILOT_OUTPUT_PATH = ROOT / "pilot.html"
 RESULTS_PATH = ROOT / "results.html"
+RESEARCH_PATH = ROOT / "research.html"
+RESEARCH_OS_PATH = ROOT / "research-os.html"
+ABOUT_PATH = ROOT / "about.html"
+GOVERNANCE_PATH = ROOT / "governance.html"
 ROBOTS_PATH = ROOT / "robots.txt"
 SITEMAP_PATH = ROOT / "sitemap.xml"
 CNAME_PATH = ROOT / "CNAME"
 
 PUBLIC_PAGES = (
     ("", "Home"),
+    ("research.html", "Research"),
     ("results.html", "Verified results"),
+    ("research-os.html", "Research OS"),
+    ("about.html", "About"),
+    ("governance.html", "Research governance"),
     ("explore.html", "ECDLP route map"),
     ("dashboard.html", "Technical workspace"),
     ("pilot.html", "Collaboration"),
@@ -283,7 +291,6 @@ def page_head(title: str, description: str, path: str = "") -> str:
 
 
 def site_header(product: dict) -> str:
-    repository = product["repository_url"].rstrip("/")
     return f"""<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="shell site-header__inner">
@@ -291,11 +298,12 @@ def site_header(product: dict) -> str:
       <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="59">
     </a>
     <nav class="primary-nav" aria-label="Primary navigation">
-      <a data-nav-page="product" href="index.html#research-system">Research system</a>
-      <a data-nav-page="results" href="results.html">Verified results</a>
-      <a data-nav-page="routes" href="explore.html">ECDLP deployment</a>
-      <a data-nav-page="pilot" href="pilot.html">Collaborate</a>
-      <a class="nav-cta" href="{esc(repository)}">GitHub</a>
+      <a data-nav-page="research" href="research.html">Research</a>
+      <a data-nav-page="results" href="results.html">Results</a>
+      <a data-nav-page="research-os" href="research-os.html">Research OS</a>
+      <a data-nav-page="about" href="about.html">About</a>
+      <a data-nav-page="governance" href="governance.html">Governance</a>
+      <a data-nav-page="pilot" class="nav-cta" href="pilot.html">Collaborate</a>
     </nav>
   </div>
 </header>"""
@@ -306,17 +314,19 @@ def site_footer(product: dict) -> str:
     return f"""<footer class="site-footer">
   <div class="shell site-footer__inner">
     <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
-    <p>{esc(product["category"])}. Current stage: {esc(product["current_stage"]["label"])}.
-      The Lean kernel checks declared statements and proof terms; semantic, empirical,
-      security, and product claims remain separately evidence-gated.</p>
+    <p>KeyAI Research · Formal mathematics, cryptographic research, and tools for verifiable AI research.
+      <a href="about.html">People and organization</a></p>
     <nav class="footer-links" aria-label="Footer navigation">
-      <a href="index.html#research-system">Research system</a>
+      <a href="research.html">Research</a>
       <a href="results.html">Verified results</a>
-      <a href="index.html#reference">ECDLP deployment</a>
+      <a href="research-os.html">Research OS</a>
+      <a href="{esc(repo_url(product, "repo/PRODUCT_MODEL.json"))}">Product model</a>
       <a href="explore.html">Detailed route map</a>
       <a href="dashboard.html">Technical workspace</a>
       <a href="pilot.html">Collaborate</a>
-      <a href="{esc(f'{repository}/blob/main/repo/PRODUCT_MODEL.json')}">Product model</a>
+      <a href="about.html">About</a>
+      <a href="governance.html">Research governance</a>
+      <a href="{esc(f'{repository}/blob/main/LICENSING.md')}">Licensing</a>
       <a href="{esc(repository)}">Repository</a>
     </nav>
   </div>
@@ -326,7 +336,261 @@ def site_footer(product: dict) -> str:
 </html>"""
 
 
-def build_index(
+def featured_results(product: dict, verified_index: dict) -> str:
+    """Resolve editorial examples to current ledger rows, sources, and trust labels."""
+    examples = (
+        (
+            "Ecdlp.Curve.secp256k1Bar_four_torsion_structure",
+            "The structure of four-torsion points",
+            "Over the algebraic closure, secp256k1 has 16 points killed by multiplication by four, forming a group isomorphic to (Z/4Z)².",
+            "Connects explicit curve calculations to a finite group structure that later formal work can reuse.",
+            "This is the concrete n = 4 case, not a theorem for every n or a discrete-logarithm algorithm.",
+        ),
+        (
+            "Ecdlp.Primality.secp256k1_p_prime",
+            "A checked foundation for the curve field",
+            "A formal primality certificate establishes that the secp256k1 field modulus p is prime.",
+            "Provides an explicit foundation for subsequent arithmetic over the finite field.",
+            "The certificate uses compiler trust. Primality alone does not establish the security of a protocol.",
+        ),
+        (
+            "Complex.exists_polynomial_of_norm_le_pow",
+            "From analytic growth to a polynomial",
+            "An entire complex function bounded by C · (1 + |z|)ⁿ is represented by a polynomial of degree at most n.",
+            "Packages a classical analysis result as a reusable Lean theorem with explicit hypotheses.",
+            "This formalization is a general analysis result. It is not a proof of the Riemann Hypothesis.",
+        ),
+    )
+    cards = []
+    for declaration, title, claim, use, boundary in examples:
+        matches = [
+            (row, ref) for row in verified_index["results"] for ref in row["references"]
+            if ref["declaration"] == declaration
+        ]
+        if len(matches) != 1:
+            raise ValueError(f"featured declaration must resolve to one ledger row: {declaration}")
+        row, ref = matches[0]
+        trust = {
+            "kernel_standard": "Kernel standard",
+            "kernel_audited": "Kernel audited",
+            "kernel_plus_compiler": "Kernel + compiler",
+        }[row["trust_level"]]
+        source = f"{repo_url(product, ref['file'])}#L{ref['line']}"
+        cards.append(f"""<article class="research-card featured-result">
+  <p class="eyebrow">Formal result · {esc(trust)}</p>
+  <h3>{esc(title)}</h3>
+  <p>{esc(claim)}</p>
+  <dl class="result-explainer">
+    <div><dt>Why it is useful</dt><dd>{esc(use)}</dd></div>
+    <div><dt>Scope</dt><dd>{esc(boundary)}</dd></div>
+  </dl>
+  <div class="card-links"><a href="results.html#{esc(row['slug'])}">Read the ledger entry</a>
+    <a href="{esc(source)}">Lean source</a></div>
+</article>""")
+    return '<div class="research-grid">' + "".join(cards) + "</div>"
+
+
+def build_index(product: dict, pilot: dict, stats: dict, frontier: dict,
+                decisions: dict, formal: dict, engine: dict, verified_index: dict) -> str:
+    description = "Independent research in formal mathematics, elliptic-curve cryptography, and verifiable AI workflows. Explore source-linked results and collaborate with KeyAI Research."
+    return f"""{page_head("KeyAI Research | Mathematics with inspectable evidence", description)}
+<body data-page="home">
+{site_header(product)}
+<main id="main">
+  <section class="research-hero" aria-labelledby="home-title">
+    <div class="shell research-hero__inner">
+      <div>
+        <p class="eyebrow">KeyAI Research · Independent research</p>
+        <h1 id="home-title">Mathematics with<br>inspectable evidence.</h1>
+        <p class="research-hero__lede">We study elliptic-curve cryptography, formalize mathematics in Lean,
+          and build tools that connect AI research to evidence other people can check.</p>
+        <div class="actions">
+          <a class="button button--primary" href="results.html">View Verified Results</a>
+          <a class="button button--on-dark" href="pilot.html">Collaborate with us</a>
+        </div>
+        <p class="research-hero__byline">An independent research initiative of {esc(product["research_program"]["organization"])}. <a href="about.html">Meet the project</a></p>
+      </div>
+      <aside class="research-brief" aria-label="Explore the research">
+        <p class="eyebrow">Start here</p>
+        <a href="research.html#cryptography"><span>01 / Cryptographic research</span><strong>What can we establish about secp256k1?</strong><small>Formal foundations, route analysis, and scoped limits ↗</small></a>
+        <a href="results.html#selected-results"><span>02 / Formal mathematics</span><strong>What has actually been checked?</strong><small>Readable examples with proofs and assumptions ↗</small></a>
+        <a href="research-os.html"><span>03 / Research OS</span><strong>How does research survive the next handoff?</strong><small>A public verification workspace in development ↗</small></a>
+      </aside>
+    </div>
+  </section>
+  <section class="research-snapshot" aria-label="Current research record">
+    <div class="shell research-snapshot__inner">
+      <div><strong data-metric="ledger-rows">{stats['ledger_rows']}</strong><span>ECDLP ledger rows</span></div>
+      <div><strong data-metric="distinct-results">~{stats['distinct_results']}</strong><span>Distinct ECDLP results</span></div>
+      <div><strong>{verified_index['counts']['researchos_rows']}</strong><span>Separate ResearchOS ledger rows</span></div>
+      <p>Each entry has a source and a scope.<br><a href="results.html#evidence-guide-title">How to read the evidence</a></p>
+    </div>
+  </section>
+  <section class="band band--white" id="selected-results" aria-labelledby="selected-title">
+    <div class="shell">
+      <div class="section-heading section-heading--wide"><p class="eyebrow">Selected results</p>
+        <h2 id="selected-title">A few concrete places to begin.</h2>
+        <p>These examples explain what a checked statement gives you, where it stops, and how to inspect it.</p></div>
+      {featured_results(product, verified_index)}
+      <p class="section-tail"><a href="results.html#result-browser">Browse the complete result index →</a></p>
+    </div>
+  </section>
+  <section class="band" id="reference" aria-labelledby="directions-title">
+    <div class="shell editorial-split">
+      <div><p class="eyebrow">Our research</p><h2 id="directions-title">Difficult questions.<br>Explicit boundaries.</h2></div>
+      <div class="editorial-copy"><p>Our cryptographic program studies the discrete-logarithm problem on secp256k1,
+        including algebraic structure, proposed routes, and the evidence needed to evaluate them.</p>
+        <p>We also develop reusable formal analysis and number theory in a separate ResearchOS ledger.</p>
+        <p class="scope-note">The repository does not solve ECDLP. No secp256k1 break or proof of the Riemann Hypothesis is claimed.</p>
+        <a href="research.html">Explore the research directions →</a></div>
+    </div>
+  </section>
+  <section class="band band--white" id="research-system" aria-labelledby="os-title">
+    <div class="shell editorial-split">
+      <div><p class="eyebrow">Research OS · In development</p><h2 id="os-title">Keep the work.<br>Keep the reasons.</h2></div>
+      <div class="editorial-copy"><p>A research project needs more than its latest successful proof. It needs the sources,
+        failed attempts, assumptions, and decisions that explain what to do next.</p>
+        <p>Research OS connects those records in a public reference deployment. A hosted multi-project product is not yet available.</p>
+        <div class="actions"><a class="button" href="research-os.html">Explore Research OS</a>
+          <a href="dashboard.html">Open the technical workspace</a></div></div>
+    </div>
+  </section>
+  <section class="band collaboration" id="collaboration">
+    <div class="shell editorial-split">
+      <div><p class="eyebrow">For researchers and technical collaborators</p><h2>Bring a question.<br>Help check the work.</h2></div>
+      <div><p>We welcome proof review, reproducibility work, and conversations with teams building AI for mathematics.
+        We are also recruiting a formal-research team to test the Research OS workflow.</p>
+        <a class="button button--light" href="pilot.html">Find a way to collaborate</a></div>
+    </div>
+  </section>
+</main>
+{site_footer(product)}"""
+
+
+def editorial_page(product: dict, page: str, eyebrow: str, title: str, description: str, body: str) -> str:
+    return f"""{page_head(title + " | KeyAI Research", description, page + ".html")}
+<body data-page="{esc(page)}">
+{site_header(product)}
+<main id="main">
+  <section class="editorial-mast"><div class="shell">
+    <p class="eyebrow">{esc(eyebrow)}</p><h1>{esc(title)}</h1><p>{esc(description)}</p>
+  </div></section>
+  {body}
+</main>
+{site_footer(product)}"""
+
+
+def build_research(product: dict, decisions: dict, verified_index: dict) -> str:
+    return editorial_page(product, "research", "Research program", "What we work on.",
+        "Formal mathematics, cryptographic research, and the infrastructure needed to make long-running AI research inspectable.", f"""
+  <section class="band band--white" id="cryptography"><div class="shell editorial-split">
+    <div><p class="eyebrow">01 / Cryptographic research</p><h2>Elliptic curves and the discrete logarithm.</h2></div>
+    <div class="editorial-copy"><p>Our reference problem is recovering the discrete logarithm in the prime-order secp256k1 group.
+      Work includes curve arithmetic, torsion structure, polynomial relations, generic-model bounds, and the applicability of proposed routes.</p>
+      <p>The public route map retains {len(decisions['routes'])} routes, including their evidence, assumptions, and reasons to stop or reopen them.
+      The current decision records {len(decisions['route_selection'].get('promoted_route_ids', []))} promoted attack routes.</p>
+      <p class="scope-note">No efficient unknown-target secp256k1 solver or validated subgeneric route is claimed.
+      A scoped algebraic result does not establish a practical attack.</p>
+      <div class="actions"><a class="button" href="explore.html">Explore the ECDLP route map</a>
+        <a href="{esc(repo_url(product, 'notes/SECURITY_SCOPE.md'))}">Read the security scope</a></div></div>
+  </div></section>
+  <section class="band" id="mathematics"><div class="shell editorial-split">
+    <div><p class="eyebrow">02 / Formal mathematics</p><h2>Reusable foundations, with explicit assumptions.</h2></div>
+    <div class="editorial-copy"><p>The Lean libraries contain elliptic-curve formalizations alongside a separate body of complex analysis
+      and elementary number theory. Source-linked ledger entries disclose declarations and proof trust.</p>
+      <p>Exploratory Riemann Hypothesis work currently provides definitions, reformulations, and symmetry infrastructure.
+      It claims no proof candidate and no progress on RH itself.</p>
+      <a href="results.html">Read the formal results →</a></div>
+  </div></section>
+  <section class="band band--white" id="infrastructure"><div class="shell editorial-split">
+    <div><p class="eyebrow">03 / Research infrastructure</p><h2>Make the next step traceable.</h2></div>
+    <div class="editorial-copy"><p>Research OS records how a question becomes a proposal, a checked attempt, a retained outcome, and a next decision.
+      The current repository is its public reference deployment.</p>
+      <p>We want to learn whether formal-research teams can use that workflow on a second project. External product validation remains open.</p>
+      <a href="research-os.html">See how Research OS works →</a></div>
+  </div></section>
+  <section class="band"><div class="shell"><div class="section-heading"><p class="eyebrow">Inspect the work</p><h2>Start with a checked statement.</h2></div>
+    {featured_results(product, verified_index)}</div></section>""")
+
+
+def build_about(product: dict) -> str:
+    profile = product["research_program"]
+    return editorial_page(product, "about", "About KeyAI", "An independent research initiative.",
+        "KeyAI Research connects AI-assisted exploration with formal verification and a durable public research record.", f"""
+  <section class="band band--white"><div class="shell editorial-split">
+    <div><p class="eyebrow">People and organization</p><h2>Who is behind the work.</h2></div>
+    <div class="editorial-copy"><dl class="profile-list">
+      <div><dt>Research initiative</dt><dd>{esc(profile['name'])}</dd></div>
+      <div><dt>Founder and project lead</dt><dd>{esc(profile['founder'])}</dd></div>
+      <div><dt>Organization</dt><dd>{esc(profile['organization'])}</dd></div>
+      <div><dt>Jurisdiction</dt><dd>{esc(profile['jurisdiction'])}</dd></div>
+      <div><dt>Public project profile</dt><dd><a href="https://github.com/KeyAIGit">KeyAIGit on GitHub</a></dd></div>
+    </dl><p>Human maintainers are responsible for project decisions and published claims. AI systems assist with research and implementation;
+      evidence comes from the disclosed proof or validation path.</p></div>
+  </div></section>
+  <section class="band"><div class="shell editorial-split">
+    <div><p class="eyebrow">Why we are building this</p><h2>Research should be possible to inspect and continue.</h2></div>
+    <div class="editorial-copy"><p>We are interested in the gap between a plausible argument and a result another person can check.
+      Our work combines formal proofs, bounded experiments, and records of the assumptions and unsuccessful approaches that shaped a decision.</p>
+      <p>KeyAI Research is the research program. Research OS is the verification workspace being developed through that work.
+      The current system is a public reference deployment, with external usability and demand still to be established.</p>
+      <div class="actions"><a class="button" href="research.html">Explore the work</a><a href="governance.html">Research governance</a></div></div>
+  </div></section>
+  <section class="band band--white"><div class="shell editorial-split">
+    <div><p class="eyebrow">Contact and collaboration</p><h2>A public place to start.</h2></div>
+    <div class="editorial-copy"><p>For a research question, a reproducibility issue, or an introduction, contact the maintainer through the project on GitHub.
+      Share a short, non-sensitive description and the relevant public source.</p>
+      <p>For sensitive findings, first request a private channel without including the finding itself.</p>
+      <a class="button button--primary" href="pilot.html">Contact and collaboration options</a></div>
+  </div></section>""")
+
+
+def build_governance(product: dict) -> str:
+    return editorial_page(product, "governance", "Research governance", "How we scope, check, and share the work.",
+        "A guide to the project's current research boundaries and source policies, with links to the underlying records.", f"""
+  <section class="band band--white"><div class="shell policy-layout">
+    <nav class="policy-nav" aria-label="On this page"><a href="#scope">Research scope</a><a href="#verification">Verification</a>
+      <a href="#publication">Publication and licensing</a><a href="#sensitive">Sensitive information</a><a href="#accountability">Accountability</a></nav>
+    <div class="policy-copy">
+      <section id="scope"><p class="eyebrow">01 / Scope</p><h2>Research with a declared boundary.</h2>
+        <p>The cryptographic program studies secp256k1 ECDLP and the applicability of candidate research routes.
+        An idea, a formal lemma, a bounded experiment, and an authorized target evaluation are distinct stages.</p>
+        <p>Project experiments require the scope, inputs, budget, validation method, and authorization recorded in the decision contract.
+        A completed run does not authorize another run or promote an attack route.</p>
+        <p>The external pilot accepts synthetic instances, published challenges, or owned and explicitly authorized instances that do not protect live funds,
+        accounts, or third-party assets. It is not a key-recovery service.</p>
+        <p><a href="{esc(repo_url(product, 'repo/ECDLP_DECISION_SUBSTRATE.json'))}">Research decision contract</a> ·
+        <a href="{esc(repo_url(product, 'repo/PILOT_PROTOCOL.json'))}">Pilot scope</a></p></section>
+      <section id="verification"><p class="eyebrow">02 / Evidence</p><h2>State exactly what the checker accepted.</h2>
+        <p>Formal results are linked to Lean declarations and their stated assumptions. Trust labels disclose the checker path, including compiler trust where applicable.
+        A checked statement does not automatically establish that a model captures a real-world system.</p>
+        <p>Empirical observations and independently replayed runs retain their instance and budget limits. Scoped negatives do not rule out every wider approach.
+        ECDLP and ResearchOS results remain in separate canonical ledgers.</p>
+        <p><a href="results.html#evidence-guide-title">Evidence and trust labels</a> · <a href="{esc(repo_url(product, 'TRUST_REPORT.md'))}">Trust report</a></p></section>
+      <section id="publication"><p class="eyebrow">03 / Publication</p><h2>Open work, with its provenance intact.</h2>
+        <p>Original project contributions use Apache-2.0 under the repository's licensing policy. Existing contributor rights, attribution,
+        third-party licenses, and notices are preserved. Citing a paper does not license the paper.</p>
+        <p>Before publication, each artifact must respect its applicable rights and obligations,
+        including third-party material, confidential information, and any applicable provider or program terms.</p>
+        <p>These project research controls do not add a research-only or noncommercial restriction to Apache-2.0.</p>
+        <p><a href="{esc(repo_url(product, 'LICENSING.md'))}">Licensing policy</a> ·
+          <a href="{esc(repo_url(product, 'THIRD_PARTY_NOTICES.md'))}">Third-party notices</a></p></section>
+      <section id="sensitive"><p class="eyebrow">04 / Information handling</p><h2>Keep sensitive material out of public intake.</h2>
+        <p>Do not submit private keys, seed phrases, API credentials, personal records, or confidential datasets to public issues.
+        Use public or sanitized examples when discussing a research workflow.</p>
+        <p>For a sensitive security or integrity finding, use GitHub private reporting when enabled, or first ask the maintainer for a private channel
+        without including the sensitive details. The project does not promise a response deadline.</p>
+        <p><a href="{esc(repo_url(product, 'SECURITY.md'))}">Security and integrity reporting</a> · <a href="pilot.html#safety">Pilot information boundary</a></p></section>
+      <section id="accountability"><p class="eyebrow">05 / Accountability</p><h2>Project decisions remain reviewable.</h2>
+        <p>Maintainers own decisions to accept results, authorize experiments, and change public claims. Proposed changes are reviewed through the repository;
+        generated pages follow canonical state and checked-in sources.</p>
+        <p>This page describes the current project workflow. It is not a certification, external audit, or claim of approval by an AI provider or access program.</p>
+        <p><a href="about.html">People and organization</a> · <a href="{esc(repo_url(product, 'CONTRIBUTING.md'))}">Contribution guide</a></p></section>
+    </div>
+  </div></section>""")
+
+
+def build_research_os(
     product: dict,
     pilot: dict,
     stats: dict,
@@ -403,19 +667,18 @@ def build_index(
         "KeyAI is a public reference deployment for long-running AI research, preserving "
         "hypotheses, evidence, bounded experiments, counterexamples, replay, and formal results."
     )
-    return f"""{page_head("KeyAI | Research infrastructure that remembers", description)}
-<body data-page="product">
+    return f"""{page_head("Research OS | KeyAI Research", description, "research-os.html")}
+<body data-page="research-os">
 {site_header(product)}
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero__inner">
       <div class="hero__copy">
-        <p class="eyebrow">KeyAI · {esc(product["category"])}</p>
-        <h1 id="hero-title">An operating system for long-running AI research.</h1>
-        <p class="hero__lede">Today, KeyAI is a public reference deployment—not a
-          self-serve or hosted multi-project product. It preserves hypotheses, evidence, bounded experiments,
-          counterexamples, formal results, barriers, and provenance in one inspectable state—so
-          the next researcher or agent can continue from the last known boundary.</p>
+        <p class="eyebrow">Research OS · In development</p>
+        <h1 id="hero-title">Research that keeps its memory.</h1>
+        <p class="hero__lede">A {esc(product["category"])}. Connect a question
+          to its sources, proofs, experiments, and next decision, so another researcher can pick up where you left off.</p>
+        <p class="section-note">Current stage: public reference deployment. A self-serve or hosted multi-project product is not yet available.</p>
         <div class="actions">
           <a class="button button--primary" href="#research-system">Explore the Research System</a>
           <a class="button button--on-dark" href="results.html">View Verified Results</a>
@@ -430,7 +693,7 @@ def build_index(
           <span>What exists today</span>
           {status_badge("blue", current_stage["label"])}
         </div>
-        <h2 id="hero-state-title">A public reference deployment, not a product promise.</h2>
+        <h2 id="hero-state-title">From one question to a retained outcome.</h2>
         <ol class="hero-state__list">
           <li><span>01</span><div><strong>One inspectable research state</strong>
             <small>Claims, evidence, tasks, decisions, outcomes, and provenance.</small></div></li>
@@ -820,7 +1083,7 @@ def build_results(
     <div class="shell results-mast__inner">
       <div>
         <p class="eyebrow">Inspectable proof surface</p>
-        <h1>Verified results, with the evidence attached.</h1>
+        <h1>Verified results.<br>Evidence attached.</h1>
         <p>{description}</p>
       </div>
       <dl class="results-summary" aria-label="Verified result counts">
@@ -829,6 +1092,13 @@ def build_results(
         <div><dt>Navigation total</dt><dd>{counts["navigation_rows_total"]}</dd></div>
       </dl>
     </div>
+  </section>
+
+  <section class="band band--white" id="selected-results" aria-labelledby="result-examples-title">
+    <div class="shell"><div class="section-heading section-heading--wide">
+      <p class="eyebrow">Selected results</p><h2 id="result-examples-title">What the work establishes.</h2>
+      <p>Start with three examples, or <a href="#result-browser">go straight to the complete result index</a>.</p>
+    </div>{featured_results(product, verified_index)}</div>
   </section>
 
   <section class="results-boundary" aria-labelledby="results-boundary-title">
@@ -1409,132 +1679,70 @@ def build_pilot(product: dict, pilot: dict) -> str:
         f"<li>{esc(item)}</li>"
         for item in pilot["privacy_and_safety"]["prohibited_inputs"]
     )
-    description = (
-        "The evidence-gated KeyAI external pilot for formal-research teams: "
-        "qualification, observed orientation, workflow mapping, measures, and decision rules."
-    )
-    return f"""{page_head("KeyAI External Pilot | Test one research workflow", description, "pilot.html")}
+    description = "Collaborate on formal mathematics, review a result, or help test Research OS on one real research workflow."
+    return f"""{page_head("Collaborate | KeyAI Research", description, "pilot.html")}
 <body data-page="pilot">
 {site_header(product)}
 <main id="main">
-  <section class="pilot-mast" aria-labelledby="pilot-title">
-    <div class="shell pilot-mast__inner">
-      <div class="pilot-mast__copy">
-        <p class="eyebrow">External pilot / {esc(pilot["task_id"])}</p>
-        <h1 id="pilot-title">Bring one research workflow that keeps losing its state.</h1>
-        <p>We will observe how your team understands the current KeyAI reference environment, map one
-          repeated formal-research workflow, and decide whether a bounded TASK-012 adapter test is justified.</p>
-        <div class="actions">
-          <a class="button button--primary" href="{esc(intake_url)}">Apply on GitHub</a>
-          <a class="button button--on-dark" href="{esc(repo_url(product, product["pilot"]["protocol_source"]))}">Inspect the protocol JSON</a>
-        </div>
-      </div>
-      <aside class="pilot-state" aria-label="Pilot evidence state">
-        <div><span>Status</span><strong>{esc(pilot["status"].title())}</strong></div>
-        <div><span>Planned session</span><strong>{session_total} minutes</strong></div>
-        <div><span>Completed external pilots</span><strong>{completed_external_pilots}</strong></div>
-        <p>{esc(pilot["evidence_state"])}</p>
-      </aside>
-    </div>
-  </section>
-
-  <section class="pilot-safety" aria-label="Public intake boundary">
-    <div class="shell pilot-safety__inner">
-      <strong>Public and sanitized inputs only.</strong>
-      <span>{esc(pilot["privacy_and_safety"]["public_intake"])}</span>
-      <a href="#safety">Read the safety boundary</a>
-    </div>
-  </section>
-
-  <section class="band band--white">
-    <div class="shell split">
-      <div class="split__lead">
-        <p class="eyebrow">Who this is for</p>
-        <h2>A team with a durable coordination problem, not a one-off proof request.</h2>
-        <p>{esc(pilot["purpose"])}</p>
-        <p class="pilot-primary"><strong>Primary hypothesis {esc(primary_hypothesis["id"])}</strong>
-          {esc(primary_hypothesis["user"])}</p>
-        <ul class="role-list">{role_html}</ul>
-      </div>
-      <div class="qualification">
-        <section>
-          <h3>Signals we need</h3>
-          <ul class="check-list">{signal_html}</ul>
-        </section>
-        <section>
-          <h3>Outside this pilot</h3>
-          <ul class="check-list check-list--not">{out_of_scope_html}</ul>
-        </section>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Session plan</p>
-        <h2>A {session_total}-minute path from qualification to an explicit decision.</h2>
-        <p>The first session tests orientation and problem fit. It does not count a scheduled follow-up
-          or polite interest as product validation.</p>
-      </div>
-      <div class="pilot-steps">{session_html}</div>
-    </div>
-  </section>
-
-  <section class="band band--muted">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Measurement contract</p>
-        <h2>Behavior first. Claims only after evidence.</h2>
-        <p>Every measure has an operational definition, target, and evidence source. The pilot remains
-          recruiting until an external session is actually recorded.</p>
-      </div>
-      <div class="table-wrap pilot-measures" tabindex="0" role="region" aria-label="Pilot measurement contract"><table class="data-table">
-        <caption class="sr-only">Pilot measurements, targets, and evidence sources</caption>
-        <thead><tr><th>Measure</th><th>What is observed</th><th>Target</th><th>Evidence</th></tr></thead>
-        <tbody>{measurement_rows}</tbody>
-      </table></div>
-    </div>
-  </section>
-
-  <section class="band band--white">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Decision contract</p>
-        <h2>Discovery ends with build, change, stop, or pending.</h2>
-        <p>{esc(pilot["decision_rules"]["minimum_evidence"])}</p>
-      </div>
-      <div class="decision-rules">{decision_columns}</div>
-    </div>
-  </section>
-
-  <section class="band pilot-boundary" id="safety">
-    <div class="shell split">
-      <div class="split__lead">
-        <p class="eyebrow">Safety and scope</p>
-        <h2>No secrets belong in the intake.</h2>
-        <p>{esc(pilot["privacy_and_safety"]["reference_boundary"])}</p>
+  <section class="editorial-mast"><div class="shell">
+    <p class="eyebrow">Contact and collaboration</p><h1>Help make the work stronger.</h1>
+    <p>Review a proof, reproduce a result, or explore a research workflow with us. A short, concrete introduction is enough to start.</p>
+  </div></section>
+  <section class="band band--white" aria-label="Ways to collaborate"><div class="shell research-grid">
+    <article class="research-card"><p class="eyebrow">Research collaboration</p><h2>Bring a question or an idea.</h2>
+      <p>For researchers, AI-for-math teams, and technical collaborators. Tell us what you work on and where it connects to KeyAI.</p>
+      <a class="button" href="{esc(product['repository_url'] + '/issues/new?title=Research+collaboration')}">Start a conversation on GitHub</a></article>
+    <article class="research-card"><p class="eyebrow">Review and reproducibility</p><h2>Check a specific result.</h2>
+      <p>Point to a theorem, assumption, experiment, or source. A minimal reproduction and the source commit help us investigate.</p>
+      <a class="button" href="{esc(product['repository_url'] + '/issues/new?title=Research+review')}">Open a research review</a></article>
+    <article class="research-card"><p class="eyebrow">Research OS pilot</p><h2>Test one repeated workflow.</h2>
+      <p>For Lean and formal-methods teams that lose context between research sessions. Help us understand the problem and test the current workspace.</p>
+      <a class="button button--primary" href="{esc(intake_url)}">Apply for the workflow pilot</a></article>
+  </div></section>
+  <section class="band" id="pilot-session"><div class="shell editorial-split">
+    <div><p class="eyebrow">The workflow pilot</p><h2>One session. A concrete next decision.</h2></div>
+    <div class="editorial-copy"><p>Plan for {session_total} minutes: a brief fit and scope check, orientation in the public workspace,
+      a walkthrough of a repeated research problem, and a decision about a possible next test.</p>
+      <p>Bring a public or sanitized example, your current verifier, and one place where your workflow loses evidence or context.</p>
+      <dl class="profile-list"><div><dt>Current status</dt><dd>{esc(pilot['status'].title())}</dd></div>
+        <div><dt>Completed external pilots</dt><dd>{completed_external_pilots}</dd></div></dl>
+      <p>This is a research pilot. A hosted multi-project product is not yet available; external adoption and product fit remain unvalidated.</p>
+      <a href="#pilot-details">Read the full session and evaluation protocol</a></div>
+  </div></section>
+  <section class="band band--white" id="safety"><div class="shell editorial-split">
+    <div><p class="eyebrow">Before you contact us</p><h2>GitHub issues are public.</h2></div>
+    <div class="editorial-copy"><p>Share only public or sanitized information. Do not include keys, credentials, personal records,
+      confidential repositories, or unpublished sensitive material.</p>
+      <p>For a sensitive finding, first ask for a private channel without including the details.</p>
+      <p>{esc(pilot['privacy_and_safety']['authorization_attestation'])}</p>
+      <a href="governance.html">Read the research and publication boundaries →</a></div>
+  </div></section>
+  <section class="band"><div class="shell">
+    <details class="protocol-details" id="pilot-details"><summary>Full pilot protocol and evaluation criteria</summary>
+      <div class="protocol-details__body">
+        <h2>Who the pilot is for</h2><p>{esc(primary_hypothesis['user'])}</p><ul>{role_html}</ul>
+        <div class="research-grid research-grid--two"><section><h3>Fit signals</h3><ul>{signal_html}</ul></section>
+          <section><h3>Outside this pilot</h3><ul>{out_of_scope_html}</ul></section></div>
+        <h2>Session plan</h2><div class="pilot-steps">{session_html}</div>
+        <h2>Evaluation criteria</h2><p>{esc(pilot['evidence_state'])}</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Pilot measurements"><table class="data-table">
+          <caption class="sr-only">Pilot measurements, targets, and evidence sources</caption>
+          <thead><tr><th>Measure</th><th>What is observed</th><th>Target</th><th>Evidence</th></tr></thead>
+          <tbody>{measurement_rows}</tbody></table></div>
+        <h2>Decision rules</h2><p>{esc(pilot['decision_rules']['minimum_evidence'])}</p>
+        <div class="decision-rules">{decision_columns}</div>
+        <h2>Authorization and retention</h2>
+        <p>{esc(pilot['privacy_and_safety']['reference_boundary'])}</p>
         <dl class="scope-contract">
-          <div><dt>TASK-011 authority</dt><dd>{esc(pilot["privacy_and_safety"]["task_authority"])}</dd></div>
-          <div><dt>Experiment gate</dt><dd>{esc(pilot["privacy_and_safety"]["experiment_gate"])}</dd></div>
-          <div><dt>Evidence retention</dt><dd>{esc(pilot["privacy_and_safety"]["retention_policy"])}</dd></div>
-        </dl>
+          <div><dt>Pilot authority</dt><dd>{esc(pilot['privacy_and_safety']['task_authority'])}</dd></div>
+          <div><dt>Experiment gate</dt><dd>{esc(pilot['privacy_and_safety']['experiment_gate'])}</dd></div>
+          <div><dt>Evidence retention</dt><dd>{esc(pilot['privacy_and_safety']['retention_policy'])}</dd></div>
+        </dl><h3>Never submit</h3><ul>{prohibited_html}</ul>
+        <p>Protocol reference: {esc(pilot["task_id"])}</p>
+        <a href="{esc(repo_url(product, product['pilot']['protocol_source']))}">Inspect the canonical protocol</a>
       </div>
-      <div>
-        <h3>Never submit</h3>
-        <ul class="check-list check-list--not">{prohibited_html}</ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="pilot-cta">
-    <div class="shell pilot-cta__inner">
-      <div><p class="eyebrow">Recruiting now</p>
-        <h2>One real workflow is more valuable than another speculative feature.</h2>
-        <p>Open the public intake with a repeated failure, current verifier, and a safe project boundary.</p></div>
-      <a class="button button--light" href="{esc(intake_url)}">Start the pilot intake</a>
-    </div>
-  </section>
+    </details>
+  </div></section>
 </main>
 {site_footer(product)}"""
 
@@ -1582,6 +1790,12 @@ def main() -> int:
     )
     explore = build_explore(product, stats, decisions, engine)
     pilot_page = build_pilot(product, pilot)
+    write_text(RESEARCH_PATH, build_research(product, decisions, verified_index))
+    write_text(RESEARCH_OS_PATH, build_research_os(
+        product, pilot, stats, frontier, decisions, formal, engine, verified_index
+    ))
+    write_text(ABOUT_PATH, build_about(product))
+    write_text(GOVERNANCE_PATH, build_governance(product))
     write_text(INDEX_PATH, index)
     write_text(RESULTS_PATH, results_page)
     write_text(DASHBOARD_PATH, dashboard)

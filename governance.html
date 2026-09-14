@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How we scope, check, and share the work. | KeyAI Research</title>
+  <meta name="description" content="A guide to the project&#x27;s current research boundaries and source policies, with links to the underlying records.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://keyai.org/governance.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="How we scope, check, and share the work. | KeyAI Research">
+  <meta property="og:description" content="A guide to the project&#x27;s current research boundaries and source policies, with links to the underlying records.">
+  <meta property="og:url" content="https://keyai.org/governance.html">
+  <meta property="og:image" content="https://keyai.org/assets/logo-wordmark.png">
+  <meta property="og:image:alt" content="KeyAI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How we scope, check, and share the work. | KeyAI Research">
+  <meta name="twitter:description" content="A guide to the project&#x27;s current research boundaries and source policies, with links to the underlying records.">
+  <meta name="twitter:image" content="https://keyai.org/assets/logo-wordmark.png">
+  <meta name="theme-color" content="#07182d">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/site.css?v=20260914-1">
+</head>
+<body data-page="governance">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="brand-link" href="index.html" aria-label="KeyAI home">
+      <img src="assets/logo-wordmark.png" alt="KeyAI" width="116" height="59">
+    </a>
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <a data-nav-page="research" href="research.html">Research</a>
+      <a data-nav-page="results" href="results.html">Results</a>
+      <a data-nav-page="research-os" href="research-os.html">Research OS</a>
+      <a data-nav-page="about" href="about.html">About</a>
+      <a data-nav-page="governance" href="governance.html">Governance</a>
+      <a data-nav-page="pilot" class="nav-cta" href="pilot.html">Collaborate</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="editorial-mast"><div class="shell">
+    <p class="eyebrow">Research governance</p><h1>How we scope, check, and share the work.</h1><p>A guide to the project&#x27;s current research boundaries and source policies, with links to the underlying records.</p>
+  </div></section>
+  
+  <section class="band band--white"><div class="shell policy-layout">
+    <nav class="policy-nav" aria-label="On this page"><a href="#scope">Research scope</a><a href="#verification">Verification</a>
+      <a href="#publication">Publication and licensing</a><a href="#sensitive">Sensitive information</a><a href="#accountability">Accountability</a></nav>
+    <div class="policy-copy">
+      <section id="scope"><p class="eyebrow">01 / Scope</p><h2>Research with a declared boundary.</h2>
+        <p>The cryptographic program studies secp256k1 ECDLP and the applicability of candidate research routes.
+        An idea, a formal lemma, a bounded experiment, and an authorized target evaluation are distinct stages.</p>
+        <p>Project experiments require the scope, inputs, budget, validation method, and authorization recorded in the decision contract.
+        A completed run does not authorize another run or promote an attack route.</p>
+        <p>The external pilot accepts synthetic instances, published challenges, or owned and explicitly authorized instances that do not protect live funds,
+        accounts, or third-party assets. It is not a key-recovery service.</p>
+        <p><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/ECDLP_DECISION_SUBSTRATE.json">Research decision contract</a> ·
+        <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PILOT_PROTOCOL.json">Pilot scope</a></p></section>
+      <section id="verification"><p class="eyebrow">02 / Evidence</p><h2>State exactly what the checker accepted.</h2>
+        <p>Formal results are linked to Lean declarations and their stated assumptions. Trust labels disclose the checker path, including compiler trust where applicable.
+        A checked statement does not automatically establish that a model captures a real-world system.</p>
+        <p>Empirical observations and independently replayed runs retain their instance and budget limits. Scoped negatives do not rule out every wider approach.
+        ECDLP and ResearchOS results remain in separate canonical ledgers.</p>
+        <p><a href="results.html#evidence-guide-title">Evidence and trust labels</a> · <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/TRUST_REPORT.md">Trust report</a></p></section>
+      <section id="publication"><p class="eyebrow">03 / Publication</p><h2>Open work, with its provenance intact.</h2>
+        <p>Original project contributions use Apache-2.0 under the repository's licensing policy. Existing contributor rights, attribution,
+        third-party licenses, and notices are preserved. Citing a paper does not license the paper.</p>
+        <p>Before publication, each artifact must respect its applicable rights and obligations,
+        including third-party material, confidential information, and any applicable provider or program terms.</p>
+        <p>These project research controls do not add a research-only or noncommercial restriction to Apache-2.0.</p>
+        <p><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/LICENSING.md">Licensing policy</a> ·
+          <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/THIRD_PARTY_NOTICES.md">Third-party notices</a></p></section>
+      <section id="sensitive"><p class="eyebrow">04 / Information handling</p><h2>Keep sensitive material out of public intake.</h2>
+        <p>Do not submit private keys, seed phrases, API credentials, personal records, or confidential datasets to public issues.
+        Use public or sanitized examples when discussing a research workflow.</p>
+        <p>For a sensitive security or integrity finding, use GitHub private reporting when enabled, or first ask the maintainer for a private channel
+        without including the sensitive details. The project does not promise a response deadline.</p>
+        <p><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/SECURITY.md">Security and integrity reporting</a> · <a href="pilot.html#safety">Pilot information boundary</a></p></section>
+      <section id="accountability"><p class="eyebrow">05 / Accountability</p><h2>Project decisions remain reviewable.</h2>
+        <p>Maintainers own decisions to accept results, authorize experiments, and change public claims. Proposed changes are reviewed through the repository;
+        generated pages follow canonical state and checked-in sources.</p>
+        <p>This page describes the current project workflow. It is not a certification, external audit, or claim of approval by an AI provider or access program.</p>
+        <p><a href="about.html">People and organization</a> · <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/CONTRIBUTING.md">Contribution guide</a></p></section>
+    </div>
+  </div></section>
+</main>
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
+    <p>KeyAI Research · Formal mathematics, cryptographic research, and tools for verifiable AI research.
+      <a href="about.html">People and organization</a></p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="research.html">Research</a>
+      <a href="results.html">Verified results</a>
+      <a href="research-os.html">Research OS</a>
+      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PRODUCT_MODEL.json">Product model</a>
+      <a href="explore.html">Detailed route map</a>
+      <a href="dashboard.html">Technical workspace</a>
+      <a href="pilot.html">Collaborate</a>
+      <a href="about.html">About</a>
+      <a href="governance.html">Research governance</a>
+      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/LICENSING.md">Licensing</a>
+      <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">Repository</a>
+    </nav>
+  </div>
+</footer>
+<script src="assets/site.js?v=20260914-1"></script>
+</body>
+</html>

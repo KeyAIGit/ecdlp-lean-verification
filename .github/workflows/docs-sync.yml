@@ -11,7 +11,7 @@ name: Docs sync
 # SUPERSEDES stats.yml: this is a strict superset (it regenerates stats.json + badge +
 # dashboard as well), so stats.yml was retired to avoid two workflows racing to push.
 #
-# The public site generator is deterministic. Machine-readable views, all five site pages,
+# The public site generator is deterministic. Machine-readable views, all public site pages,
 # and the search-engine discovery files are regenerated and drift-gated together on pull requests.
 #
 # Derived files (never hand-edit — regenerate via the scripts below):
@@ -81,6 +81,10 @@ on:
       - 'index.html'
       - 'explore.html'
       - 'pilot.html'
+      - 'research.html'
+      - 'research-os.html'
+      - 'about.html'
+      - 'governance.html'
       - 'robots.txt'
       - 'sitemap.xml'
       - 'assets/**'
@@ -120,6 +124,10 @@ on:
       - 'index.html'
       - 'explore.html'
       - 'pilot.html'
+      - 'research.html'
+      - 'research-os.html'
+      - 'about.html'
+      - 'governance.html'
       - 'robots.txt'
       - 'sitemap.xml'
       - 'assets/**'
@@ -172,6 +180,10 @@ env:
     results.html
     explore.html
     pilot.html
+    research.html
+    research-os.html
+    about.html
+    governance.html
     robots.txt
     sitemap.xml
 
