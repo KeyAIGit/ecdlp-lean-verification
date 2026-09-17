@@ -1,0 +1,115 @@
+{
+  "scope": "independent native-Sage structural replay; no ECDLP target",
+  "sage_version": "10.9",
+  "script_sha256": "6e4b5623a84b1ea19472fa24f203ca15f00bed82a3990f8644061e9177e44daf",
+  "p": "115792089237316195423570985008687907853269984665640564039457584007908834671663",
+  "beta_hex": "0x7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee",
+  "beta_roots_hex": [
+    "0x7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee",
+    "0x851695d49a83f8ef919bb86153cbcb16630fb68aed0a766a3ec693d68e6afa40"
+  ],
+  "extension_polynomial": "T^3 + 7",
+  "exact_checks": {
+    "extension_irreducible": true,
+    "alpha_cubed": "alpha^3=-7",
+    "frobenius_ratio": "alpha^p/alpha=beta",
+    "frobenius_order_three": "alpha^(p^3)=alpha",
+    "kummer_frobenius": "z^p=beta^2*(z-1)",
+    "glv_action": "z(beta*x)=1+beta*z=z^(p^2)",
+    "shift": "((beta-1)*alpha)*(z-z0)=x",
+    "cubic_invariant": "((beta-1)*alpha)^3*(z-z0)^3=x^3"
+  },
+  "samples": [
+    {
+      "x": 0,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 1,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 2,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 3,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 5,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 8,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 13,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 21,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 34,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    },
+    {
+      "x": 55,
+      "z_frobenius": true,
+      "z_frobenius_squared": true,
+      "glv_equals_frobenius_squared": true,
+      "fixed_point_shift": true,
+      "shift_equals_scaled_x": true,
+      "cubic_invariant": true
+    }
+  ],
+  "conclusion": "The split cubic Kummer coordinate and secp256k1 GLV expose the same order-three action. After the affine fixed-point shift, the invariant is only an invertible scalar re-expression of x^3."
+}
