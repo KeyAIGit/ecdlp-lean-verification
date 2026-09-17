@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1-untrusted-intake",
+  "intake_id": "INTAKE-GLV-C6-RELATIVE-NORM-2026-08-11",
+  "status": "untrusted_non_executable",
+  "route": "R-GLV-SEMAEV",
+  "threat_model": "classical-single-target-plain",
+  "scope": {
+    "curve_family": "E_b: y^2=x^3+b over prime fields with p congruent to 1 modulo 3",
+    "tested_only_on_synthetic_toy_curves": true,
+    "secp256k1_dlp_target_forbidden": true,
+    "real_world_keys_forbidden": true
+  },
+  "mechanism": {
+    "coordinate": "q=y^2=x^3+b",
+    "coordinate_novelty": "none; q-b is u=x^3",
+    "new_presentation": "relative-phase norm of nine S3 transforms over C3^3/diagonal(C3)",
+    "local_polynomial": "U3(q1,q2,q3)",
+    "multidegree": [6, 6, 6],
+    "total_degree": 12,
+    "terms": 183,
+    "leading_coefficient_in_q3": "(q1-q2)^6"
+  },
+  "exact_identity": "U3(x1^3+b,x2^3+b,x3^3+b)=product_{a,c in Z/3} S3(x1,beta^a*x2,beta^c*x3)",
+  "recovery": {
+    "tested_tree_size": 3,
+    "local_phase_coefficients": "{+-1,+-lambda,+-lambda^2}",
+    "coordinate_relations_tested": 87,
+    "coordinate_relations_recovered": 87,
+    "general_tree_recovery_proved": false
+  },
+  "exceptional_loci": [
+    "characteristic 2 or 3",
+    "b=0 singular curve",
+    "no primitive cube root in the base field",
+    "non-free C6 orbits",
+    "q1=q2 leading-degree drop",
+    "intermediate point at infinity",
+    "T3 regular-recovery denominator e2+9b=0",
+    "local phase collisions"
+  ],
+  "prediction": "For bounded toy factor-base sizes, direct U3 has smaller F4 matrices than the faithful explicit x,u system.",
+  "null_model": "The SymPy advantage is a variable-count artifact and disappears in optimized F4 or by k>=4.",
+  "competing_explanation": "Dense degree-12 Macaulay growth eventually dominates the variable reduction.",
+  "death_criteria": [
+    "No consistent F4 matrix reduction in msolve",
+    "Loss on two independent solvers at k=2 and k=3",
+    "Worse scaling or memory by k=4 to k=6",
+    "Exponential phase-recovery branching on larger trees",
+    "Saturation of exceptional loci removes the advantage"
+  ],
+  "claims_forbidden": [
+    "secp256k1 break",
+    "sub-Pollard algorithm",
+    "asymptotic improvement",
+    "global novelty",
+    "route promotion",
+    "execution authorization"
+  ],
+  "summary_sha256": "a6da382b0cc35bc732bf96b097c06a93b1389c4550aeb37f89f3607b23355f8e"
+}
