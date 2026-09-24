@@ -683,7 +683,7 @@ def build_contact(product: dict) -> str:
 def build_privacy(product: dict) -> str:
     return editorial_page(product, "privacy", "Privacy", "Privacy on this website.",
         "How the current public website and its contact paths handle information.", """
-  <section class="band band--white"><div class="shell policy-copy">
+  <section class="band band--white"><div class="shell policy-copy editorial-copy">
     <h2>Website and hosting.</h2>
     <p>KeyAI Research is an independent research initiative of RFID INC. This is a public research website hosted on GitHub Pages.
     The current site has no sign-in, payment, or on-site submission form. Its search and filters run in your browser.</p>
@@ -708,7 +708,7 @@ def build_privacy(product: dict) -> str:
 def build_terms(product: dict) -> str:
     return editorial_page(product, "terms", "Terms and site use", "Using the research website.",
         "A concise guide to the purpose of the site, its research boundaries, and reuse of its materials.", f"""
-  <section class="band band--white"><div class="shell policy-copy">
+  <section class="band band--white"><div class="shell policy-copy editorial-copy">
     <h2>Purpose and scope.</h2>
     <p>RFID INC publishes this website for its independent research initiative, KeyAI Research. It presents research,
     source-linked results, and a developing verification workspace. Research OS is a reference deployment;
@@ -734,7 +734,7 @@ def build_security(product: dict) -> str:
     repository = product["repository_url"].rstrip("/")
     return editorial_page(product, "security", "Security and responsible disclosure", "Report a concern with care.",
         "A reporting path for security, proof-integrity, and reproducibility concerns.", f"""
-  <section class="band band--white"><div class="shell policy-copy">
+  <section class="band band--white"><div class="shell policy-copy editorial-copy">
     <h2>Sensitive findings.</h2>
     <p>Do not publish private keys, seed phrases, API credentials, personal records, or exploitable secret material in issues.
     Email <a href="mailto:{esc(product['research_program']['contact_email'])}">{esc(product['research_program']['contact_email'])}</a>
