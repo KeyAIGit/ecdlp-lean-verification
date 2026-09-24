@@ -18,6 +18,7 @@
   <meta name="twitter:description" content="A guide to the project&#x27;s current research boundaries and source policies, with links to the underlying records.">
   <meta name="twitter:image" content="https://keyai.org/assets/logo-wordmark.png">
   <meta name="theme-color" content="#07182d">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "RFID INC", "alternateName": "KeyAI Research", "url": "https://keyai.org", "founder": {"@type": "Person", "name": "Bekzod Dzhanpolatov"}}</script>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -44,18 +45,18 @@
   <section class="editorial-mast"><div class="shell">
     <p class="eyebrow">Research governance</p><h1>How we scope, check, and share the work.</h1><p>A guide to the project&#x27;s current research boundaries and source policies, with links to the underlying records.</p>
   </div></section>
-  
-  <section class="band band--white"><div class="shell policy-layout">
+<section class="band band--white"><div class="shell policy-layout">
     <nav class="policy-nav" aria-label="On this page"><a href="#scope">Research scope</a><a href="#verification">Verification</a>
       <a href="#publication">Publication and licensing</a><a href="#sensitive">Sensitive information</a><a href="#accountability">Accountability</a></nav>
     <div class="policy-copy">
       <section id="scope"><p class="eyebrow">01 / Scope</p><h2>Research with a declared boundary.</h2>
-        <p>The cryptographic program studies secp256k1 ECDLP and the applicability of candidate research routes.
+        <p>KeyAI performs controlled cryptographic and formal-methods research. The cryptographic program studies secp256k1 ECDLP and the applicability of candidate research routes.
         An idea, a formal lemma, a bounded experiment, and an authorized target evaluation are distinct stages.</p>
         <p>Project experiments require the scope, inputs, budget, validation method, and authorization recorded in the decision contract.
         A completed run does not authorize another run or promote an attack route.</p>
         <p>The external pilot accepts synthetic instances, published challenges, or owned and explicitly authorized instances that do not protect live funds,
         accounts, or third-party assets. It is not a key-recovery service.</p>
+        <p><a href="research-scope.html">Research methods, authorized inputs, and exclusions</a></p>
         <p><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/ECDLP_DECISION_SUBSTRATE.json">Research decision contract</a> ·
         <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/PILOT_PROTOCOL.json">Pilot scope</a></p></section>
       <section id="verification"><p class="eyebrow">02 / Evidence</p><h2>State exactly what the checker accepted.</h2>
@@ -75,9 +76,9 @@
       <section id="sensitive"><p class="eyebrow">04 / Information handling</p><h2>Keep sensitive material out of public intake.</h2>
         <p>Do not submit private keys, seed phrases, API credentials, personal records, or confidential datasets to public issues.
         Use public or sanitized examples when discussing a research workflow.</p>
-        <p>For a sensitive security or integrity finding, use GitHub private reporting when enabled, or first ask the maintainer for a private channel
-        without including the sensitive details. The project does not promise a response deadline.</p>
-        <p><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/SECURITY.md">Security and integrity reporting</a> · <a href="pilot.html#safety">Pilot information boundary</a></p></section>
+        <p>For a sensitive security or integrity finding, email <a href="mailto:ceo@keyai.org">ceo@keyai.org</a>
+        with a non-sensitive summary first, or use GitHub private reporting when enabled. The project does not promise a response deadline.</p>
+        <p><a href="security.html">Security and responsible disclosure</a> · <a href="pilot.html#safety">Pilot information boundary</a></p></section>
       <section id="accountability"><p class="eyebrow">05 / Accountability</p><h2>Project decisions remain reviewable.</h2>
         <p>Maintainers own decisions to accept results, authorize experiments, and change public claims. Proposed changes are reviewed through the repository;
         generated pages follow canonical state and checked-in sources.</p>
@@ -89,7 +90,8 @@
 <footer class="site-footer">
   <div class="shell site-footer__inner">
     <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
-    <p>KeyAI Research · Formal mathematics, cryptographic research, and tools for verifiable AI research.
+    <p>KeyAI Research, an initiative of RFID INC.
+      Formal mathematics, cryptographic research, and tools for verifiable AI research.
       <a href="about.html">People and organization</a></p>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="research.html">Research</a>
@@ -101,6 +103,11 @@
       <a href="pilot.html">Collaborate</a>
       <a href="about.html">About</a>
       <a href="governance.html">Research governance</a>
+      <a href="research-scope.html">Research scope</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Site use</a>
+      <a href="security.html">Security reporting</a>
+      <a href="contact.html">Contact</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/LICENSING.md">Licensing</a>
       <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification">Repository</a>
     </nav>

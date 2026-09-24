@@ -84,6 +84,11 @@ class PublicSiteTests(unittest.TestCase):
             site_generator.RESEARCH_PATH: site_generator.build_research(product, decisions, verified_index),
             site_generator.ABOUT_PATH: site_generator.build_about(product),
             site_generator.GOVERNANCE_PATH: site_generator.build_governance(product),
+            site_generator.RESEARCH_SCOPE_PATH: site_generator.build_research_scope(product),
+            site_generator.PRIVACY_PATH: site_generator.build_privacy(product),
+            site_generator.TERMS_PATH: site_generator.build_terms(product),
+            site_generator.SECURITY_PATH: site_generator.build_security(product),
+            site_generator.CONTACT_PATH: site_generator.build_contact(product),
             site_generator.RESULTS_PATH: site_generator.build_results(
                 product,
                 verified_index,

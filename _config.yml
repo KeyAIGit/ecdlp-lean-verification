@@ -1,0 +1,4 @@
+# Frozen historical material remains in Git, outside the current website.
+# Current research notes, result sources and technical evidence remain available.
+exclude:
+  - archive

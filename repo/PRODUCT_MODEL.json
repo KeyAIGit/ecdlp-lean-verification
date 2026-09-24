@@ -257,6 +257,26 @@
     {
       "path": "governance.html",
       "role": "Readable guide to canonical research, verification, publication, licensing and sensitive-information policies"
+    },
+    {
+      "path": "research-scope.html",
+      "role": "Research scope"
+    },
+    {
+      "path": "privacy.html",
+      "role": "Privacy"
+    },
+    {
+      "path": "terms.html",
+      "role": "Site use"
+    },
+    {
+      "path": "security.html",
+      "role": "Security reporting"
+    },
+    {
+      "path": "contact.html",
+      "role": "Contact"
     }
   ],
   "research_program": {
@@ -264,6 +284,7 @@
     "founder": "Bekzod Dzhanpolatov",
     "organization": "RFID INC",
     "jurisdiction": "Delaware, United States",
-    "relationship": "Independent research initiative; Research OS is the developing verification workspace."
+    "relationship": "Independent research initiative; Research OS is the developing verification workspace.",
+    "contact_email": "ceo@keyai.org"
   }
 }

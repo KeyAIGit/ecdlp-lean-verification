@@ -217,7 +217,9 @@ Inputs:
             "current_stage": {"label": "test stage"},
         }
 
+        product["research_program"] = {"organization": 'RFID INC "<test>'}
         rendered = site_generator.site_header(product) + site_generator.site_footer(product)
+        self.assertIn("RFID INC &quot;&lt;test&gt;", rendered)
 
         self.assertNotIn(repository_url, rendered)
         self.assertIn(
