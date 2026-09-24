@@ -85,10 +85,16 @@ on:
       - 'research-os.html'
       - 'about.html'
       - 'governance.html'
+      - 'research-scope.html'
+      - 'privacy.html'
+      - 'terms.html'
+      - 'security.html'
+      - 'contact.html'
       - 'robots.txt'
       - 'sitemap.xml'
       - 'assets/**'
       - 'CNAME'
+      - '_config.yml'
   pull_request:
     paths:
       - 'README.md'
@@ -128,10 +134,16 @@ on:
       - 'research-os.html'
       - 'about.html'
       - 'governance.html'
+      - 'research-scope.html'
+      - 'privacy.html'
+      - 'terms.html'
+      - 'security.html'
+      - 'contact.html'
       - 'robots.txt'
       - 'sitemap.xml'
       - 'assets/**'
       - 'CNAME'
+      - '_config.yml'
   workflow_dispatch:
 
 permissions:
@@ -184,10 +196,47 @@ env:
     research-os.html
     about.html
     governance.html
+    research-scope.html
+    privacy.html
+    terms.html
+    security.html
+    contact.html
     robots.txt
     sitemap.xml
 
 jobs:
+  public-site-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check generated public pages and links
+        run: |
+          python3 scripts/test_public_site.py
+          python3 scripts/test_site_generator.py
+          node --check assets/site.js
+      - name: Build the GitHub Pages artifact without deploying
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Verify deployed surfaces and archive exclusion
+        run: |
+          python3 - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from site_generator import PUBLIC_PAGES
+          site = Path('_site')
+          for path, _label in PUBLIC_PAGES:
+              assert (site / (path or 'index.html')).is_file(), path
+          for path in ('robots.txt', 'sitemap.xml', 'assets/site.css', 'assets/site.js'):
+              assert (site / path).is_file(), path
+          assert not (site / 'archive').exists(), 'frozen archive must not be deployed'
+          for path in ('KeyAIPitchDeck.pdf', 'how-to-recover.pdf', 'whitepaper.pdf', 'KeyAI-Whitepaper-01-12-2025.pdf'):
+              assert not (site / path).exists(), path
+          print(f'Pages artifact verified: {len(PUBLIC_PAGES)} pages, shared assets, no archive or obsolete PDFs')
+          PY
+
   docs-sync:
     runs-on: ubuntu-latest
     steps:

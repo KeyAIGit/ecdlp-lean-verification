@@ -150,6 +150,11 @@ classes:
       - research-os.html
       - about.html
       - governance.html
+      - research-scope.html
+      - privacy.html
+      - terms.html
+      - security.html
+      - contact.html
       - robots.txt
       - sitemap.xml
       - bundles/MANIFEST.json
@@ -256,12 +261,18 @@ classes:
       - research-os.html
       - about.html
       - governance.html
+      - research-scope.html
+      - privacy.html
+      - terms.html
+      - security.html
+      - contact.html
       - robots.txt
       - sitemap.xml
       - assets/
       - fonts/
       - llms.txt
       - CNAME
+      - _config.yml
     owner: site
     hand_edit: mixed
     generated: mixed
@@ -461,6 +472,11 @@ allowed_overlap_paths:
   - research-os.html
   - about.html
   - governance.html
+  - research-scope.html
+  - privacy.html
+  - terms.html
+  - security.html
+  - contact.html
   - robots.txt
   - sitemap.xml
   - llms.txt

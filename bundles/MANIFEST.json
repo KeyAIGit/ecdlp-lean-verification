@@ -131,7 +131,7 @@
         "path": "repo/PRODUCT_MODEL.json",
         "reason": "product category, current-vs-future boundary, public claims, and MVP evidence gate",
         "exists": true,
-        "bytes": 11657
+        "bytes": 12055
       },
       {
         "path": "repo/PILOT_PROTOCOL.json",
@@ -319,7 +319,7 @@
         "path": "repo/PRODUCT_MODEL.json",
         "reason": "product category, current-vs-future boundary, public claims, and MVP evidence gate",
         "exists": true,
-        "bytes": 11657
+        "bytes": 12055
       },
       {
         "path": "repo/PILOT_PROTOCOL.json",
@@ -723,7 +723,7 @@
         "path": "repo/PRODUCT_MODEL.json",
         "reason": "product category, current-vs-future boundary, public claims, and MVP evidence gate",
         "exists": true,
-        "bytes": 11657
+        "bytes": 12055
       },
       {
         "path": "repo/PILOT_PROTOCOL.json",
@@ -1011,7 +1011,7 @@
         "path": "REPOSITORY_ARCHITECTURE.md",
         "reason": "whole-repo map: canonical / generated / scratch / archive",
         "exists": true,
-        "bytes": 23606
+        "bytes": 23778
       },
       {
         "path": "PUBLISHABLE_UNITS.md",

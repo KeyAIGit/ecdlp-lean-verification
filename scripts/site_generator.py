@@ -35,6 +35,11 @@ RESEARCH_PATH = ROOT / "research.html"
 RESEARCH_OS_PATH = ROOT / "research-os.html"
 ABOUT_PATH = ROOT / "about.html"
 GOVERNANCE_PATH = ROOT / "governance.html"
+RESEARCH_SCOPE_PATH = ROOT / "research-scope.html"
+PRIVACY_PATH = ROOT / "privacy.html"
+TERMS_PATH = ROOT / "terms.html"
+SECURITY_PATH = ROOT / "security.html"
+CONTACT_PATH = ROOT / "contact.html"
 ROBOTS_PATH = ROOT / "robots.txt"
 SITEMAP_PATH = ROOT / "sitemap.xml"
 CNAME_PATH = ROOT / "CNAME"
@@ -46,6 +51,11 @@ PUBLIC_PAGES = (
     ("research-os.html", "Research OS"),
     ("about.html", "About"),
     ("governance.html", "Research governance"),
+    ("research-scope.html", "Research scope"),
+    ("privacy.html", "Privacy"),
+    ("terms.html", "Site use"),
+    ("security.html", "Security reporting"),
+    ("contact.html", "Contact"),
     ("explore.html", "ECDLP route map"),
     ("dashboard.html", "Technical workspace"),
     ("pilot.html", "Collaboration"),
@@ -263,6 +273,15 @@ def page_head(title: str, description: str, path: str = "") -> str:
     origin = site_origin()
     canonical = f"{origin}/{path}" if path else f"{origin}/"
     social_image = f"{origin}/assets/logo-wordmark.png"
+    profile = load_json(PRODUCT_PATH)["research_program"]
+    organization = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": profile["organization"],
+        "alternateName": profile["name"],
+        "url": origin,
+        "founder": {"@type": "Person", "name": profile["founder"]},
+    }, ensure_ascii=False).replace("<", "\\u003c")
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -283,6 +302,7 @@ def page_head(title: str, description: str, path: str = "") -> str:
   <meta name="twitter:description" content="{esc(description)}">
   <meta name="twitter:image" content="{esc(social_image)}">
   <meta name="theme-color" content="#07182d">
+  <script type="application/ld+json">{organization}</script>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -314,7 +334,8 @@ def site_footer(product: dict) -> str:
     return f"""<footer class="site-footer">
   <div class="shell site-footer__inner">
     <img src="assets/logo-wordmark.png" alt="KeyAI" width="100" height="51">
-    <p>KeyAI Research · Formal mathematics, cryptographic research, and tools for verifiable AI research.
+    <p>KeyAI Research, an initiative of {esc(product["research_program"]["organization"])}.
+      Formal mathematics, cryptographic research, and tools for verifiable AI research.
       <a href="about.html">People and organization</a></p>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="research.html">Research</a>
@@ -326,6 +347,11 @@ def site_footer(product: dict) -> str:
       <a href="pilot.html">Collaborate</a>
       <a href="about.html">About</a>
       <a href="governance.html">Research governance</a>
+      <a href="research-scope.html">Research scope</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Site use</a>
+      <a href="security.html">Security reporting</a>
+      <a href="contact.html">Contact</a>
       <a href="{esc(f'{repository}/blob/main/LICENSING.md')}">Licensing</a>
       <a href="{esc(repository)}">Repository</a>
     </nav>
@@ -475,7 +501,7 @@ def editorial_page(product: dict, page: str, eyebrow: str, title: str, descripti
   <section class="editorial-mast"><div class="shell">
     <p class="eyebrow">{esc(eyebrow)}</p><h1>{esc(title)}</h1><p>{esc(description)}</p>
   </div></section>
-  {body}
+{body.strip()}
 </main>
 {site_footer(product)}"""
 
@@ -492,7 +518,7 @@ def build_research(product: dict, decisions: dict, verified_index: dict) -> str:
       <p class="scope-note">No efficient unknown-target secp256k1 solver or validated subgeneric route is claimed.
       A scoped algebraic result does not establish a practical attack.</p>
       <div class="actions"><a class="button" href="explore.html">Explore the ECDLP route map</a>
-        <a href="{esc(repo_url(product, 'notes/SECURITY_SCOPE.md'))}">Read the security scope</a></div></div>
+        <a href="research-scope.html">Read the research scope</a></div></div>
   </div></section>
   <section class="band" id="mathematics"><div class="shell editorial-split">
     <div><p class="eyebrow">02 / Formal mathematics</p><h2>Reusable foundations, with explicit assumptions.</h2></div>
@@ -516,14 +542,17 @@ def build_research(product: dict, decisions: dict, verified_index: dict) -> str:
 def build_about(product: dict) -> str:
     profile = product["research_program"]
     return editorial_page(product, "about", "About KeyAI", "An independent research initiative.",
-        "KeyAI Research connects AI-assisted exploration with formal verification and a durable public research record.", f"""
+        "KeyAI Research is an independent research initiative of RFID INC, connecting AI-assisted exploration with formal verification and a durable public research record.", f"""
   <section class="band band--white"><div class="shell editorial-split">
     <div><p class="eyebrow">People and organization</p><h2>Who is behind the work.</h2></div>
     <div class="editorial-copy"><dl class="profile-list">
       <div><dt>Research initiative</dt><dd>{esc(profile['name'])}</dd></div>
       <div><dt>Founder and project lead</dt><dd>{esc(profile['founder'])}</dd></div>
-      <div><dt>Organization</dt><dd>{esc(profile['organization'])}</dd></div>
+      <div><dt>Legal entity</dt><dd>{esc(profile['organization'])}</dd></div>
       <div><dt>Jurisdiction</dt><dd>{esc(profile['jurisdiction'])}</dd></div>
+      <div><dt>Official website</dt><dd><a href="{esc(site_origin())}">{esc(site_origin())}</a></dd></div>
+      <div><dt>Public technical repository</dt><dd><a href="{esc(product['repository_url'])}">KeyAIGit research repository</a></dd></div>
+      <div><dt>Official contact</dt><dd><a href="mailto:{esc(profile['contact_email'])}">{esc(profile['contact_email'])}</a></dd></div>
       <div><dt>Public project profile</dt><dd><a href="https://github.com/KeyAIGit">KeyAIGit on GitHub</a></dd></div>
     </dl><p>Human maintainers are responsible for project decisions and published claims. AI systems assist with research and implementation;
       evidence comes from the disclosed proof or validation path.</p></div>
@@ -538,10 +567,10 @@ def build_about(product: dict) -> str:
   </div></section>
   <section class="band band--white"><div class="shell editorial-split">
     <div><p class="eyebrow">Contact and collaboration</p><h2>A public place to start.</h2></div>
-    <div class="editorial-copy"><p>For a research question, a reproducibility issue, or an introduction, contact the maintainer through the project on GitHub.
+    <div class="editorial-copy"><p>For a research question, a reproducibility issue, or an introduction, email <a href="mailto:{esc(profile['contact_email'])}">{esc(profile['contact_email'])}</a> or contact the project on GitHub.
       Share a short, non-sensitive description and the relevant public source.</p>
-      <p>For sensitive findings, first request a private channel without including the finding itself.</p>
-      <a class="button button--primary" href="pilot.html">Contact and collaboration options</a></div>
+      <p>For sensitive findings, email a non-sensitive summary first so the maintainer can agree on a suitable reporting channel.</p>
+      <a class="button button--primary" href="contact.html">Contact options</a> · <a href="pilot.html">Research collaboration</a></div>
   </div></section>""")
 
 
@@ -553,12 +582,13 @@ def build_governance(product: dict) -> str:
       <a href="#publication">Publication and licensing</a><a href="#sensitive">Sensitive information</a><a href="#accountability">Accountability</a></nav>
     <div class="policy-copy">
       <section id="scope"><p class="eyebrow">01 / Scope</p><h2>Research with a declared boundary.</h2>
-        <p>The cryptographic program studies secp256k1 ECDLP and the applicability of candidate research routes.
+        <p>KeyAI performs controlled cryptographic and formal-methods research. The cryptographic program studies secp256k1 ECDLP and the applicability of candidate research routes.
         An idea, a formal lemma, a bounded experiment, and an authorized target evaluation are distinct stages.</p>
         <p>Project experiments require the scope, inputs, budget, validation method, and authorization recorded in the decision contract.
         A completed run does not authorize another run or promote an attack route.</p>
         <p>The external pilot accepts synthetic instances, published challenges, or owned and explicitly authorized instances that do not protect live funds,
         accounts, or third-party assets. It is not a key-recovery service.</p>
+        <p><a href="research-scope.html">Research methods, authorized inputs, and exclusions</a></p>
         <p><a href="{esc(repo_url(product, 'repo/ECDLP_DECISION_SUBSTRATE.json'))}">Research decision contract</a> ·
         <a href="{esc(repo_url(product, 'repo/PILOT_PROTOCOL.json'))}">Pilot scope</a></p></section>
       <section id="verification"><p class="eyebrow">02 / Evidence</p><h2>State exactly what the checker accepted.</h2>
@@ -578,15 +608,150 @@ def build_governance(product: dict) -> str:
       <section id="sensitive"><p class="eyebrow">04 / Information handling</p><h2>Keep sensitive material out of public intake.</h2>
         <p>Do not submit private keys, seed phrases, API credentials, personal records, or confidential datasets to public issues.
         Use public or sanitized examples when discussing a research workflow.</p>
-        <p>For a sensitive security or integrity finding, use GitHub private reporting when enabled, or first ask the maintainer for a private channel
-        without including the sensitive details. The project does not promise a response deadline.</p>
-        <p><a href="{esc(repo_url(product, 'SECURITY.md'))}">Security and integrity reporting</a> · <a href="pilot.html#safety">Pilot information boundary</a></p></section>
+        <p>For a sensitive security or integrity finding, email <a href="mailto:{esc(product['research_program']['contact_email'])}">{esc(product['research_program']['contact_email'])}</a>
+        with a non-sensitive summary first, or use GitHub private reporting when enabled. The project does not promise a response deadline.</p>
+        <p><a href="security.html">Security and responsible disclosure</a> · <a href="pilot.html#safety">Pilot information boundary</a></p></section>
       <section id="accountability"><p class="eyebrow">05 / Accountability</p><h2>Project decisions remain reviewable.</h2>
         <p>Maintainers own decisions to accept results, authorize experiments, and change public claims. Proposed changes are reviewed through the repository;
         generated pages follow canonical state and checked-in sources.</p>
         <p>This page describes the current project workflow. It is not a certification, external audit, or claim of approval by an AI provider or access program.</p>
         <p><a href="about.html">People and organization</a> · <a href="{esc(repo_url(product, 'CONTRIBUTING.md'))}">Contribution guide</a></p></section>
     </div>
+  </div></section>""")
+
+
+
+def build_research_scope(product: dict) -> str:
+    return editorial_page(product, "research-scope", "Research scope", "Controlled research. Explicit authorization.",
+        "The methods we study, the instances we use, and the limits of our research claims.", f"""
+  <section class="band band--white"><div class="shell policy-layout">
+    <nav class="policy-nav" aria-label="On this page"><a href="#methods">Methods</a><a href="#authorized">Authorized instances</a>
+      <a href="#excluded">Exclusions</a><a href="#evidence">Evidence</a></nav>
+    <div class="policy-copy">
+      <section id="methods"><h2>Cryptography and formal methods.</h2>
+        <p>KeyAI Research, an initiative of RFID INC, performs controlled cryptographic and formal-methods research,
+        AI-assisted research verification, Lean formalization, and Research OS infrastructure development.</p>
+        <p>Our secp256k1/ECDLP research may include algebraic methods, generic and subgeneric algorithm analysis,
+        Hidden Number Problem research, lattice methods, partial-information and side-channel models,
+        ML-assisted leakage analysis, bounded experimental cryptanalysis, and formal verification.</p>
+        <p>This describes a research scope. It does not assert that every method is active or successful,
+        or authorize an experiment outside its recorded project decision.</p></section>
+      <section id="authorized"><h2>Only controlled, authorized instances.</h2>
+        <p>Experiments operate only on synthetic or generated keys and instances, published public research challenges,
+        systems and data owned by the organization, or explicitly authorized research targets.</p>
+        <p>Each experiment must record its scope, inputs, authorization, budget, and validation method.
+        Public availability alone is not permission to access a system or use someone else's keys or data.</p>
+        <p>The <a href="pilot.html#safety">external pilot</a> has a stricter boundary: its instances must not protect live funds,
+        accounts, or third-party assets. Existing project gates continue to apply.</p></section>
+      <section id="excluded"><h2>Excluded activities.</h2>
+        <ul><li>Unauthorized third-party systems.</li><li>Third-party wallet or private-key recovery.</li>
+          <li>Live-funds targets without explicit authorization.</li><li>Credential theft.</li>
+          <li>Accessing accounts or data without authorization.</li></ul>
+        <p>KeyAI does not offer third-party cryptocurrency key recovery. This research scope does not imply access to live funds.</p></section>
+      <section id="evidence"><h2>Claims follow the evidence.</h2>
+        <p>No break of secp256k1 or solution to ECDLP is claimed. Formal statements, bounded observations, and open proposals
+        retain their assumptions, proof trust, instance limits, and unresolved obligations.</p>
+        <p><a href="governance.html">Research governance</a> · <a href="results.html">Results and proof scope</a> ·
+          <a href="dashboard.html">Technical workspace</a> · <a href="{esc(repo_url(product, 'repo/ECDLP_DECISION_SUBSTRATE.json'))}">Decision contract</a></p></section>
+    </div>
+  </div></section>""")
+
+
+def build_contact(product: dict) -> str:
+    repository = product["repository_url"].rstrip("/")
+    return editorial_page(product, "contact", "Contact", "Start a research conversation.",
+        "Contact KeyAI Research, an independent research initiative of RFID INC, through its official email or public technical project.", f"""
+  <section class="band band--white"><div class="shell editorial-split">
+    <div><h2>Project contact.</h2></div><div class="editorial-copy">
+      <p>Official contact: <a href="mailto:{esc(product['research_program']['contact_email'])}">{esc(product['research_program']['contact_email'])}</a>.</p>
+      <p>For organization questions, research inquiries, or non-sensitive corrections, email the project or use
+      <a href="{esc(repository + '/issues')}">the KeyAIGit repository issues</a>. A GitHub account is needed to submit an issue.</p>
+      <p>Include a short description and a relevant public link. Issues are public: do not include private keys,
+      seed phrases, credentials, private personal information, or confidential data.</p>
+      <p>For sensitive matters, email a non-sensitive summary first to arrange an appropriate private channel.
+      See <a href="security.html">security and responsible disclosure</a>.</p>
+      <div class="actions"><a class="button button--primary" href="mailto:{esc(product['research_program']['contact_email'])}">Email KeyAI Research</a>
+        <a href="{esc(repository + '/issues')}">Public GitHub issues</a>
+        <a href="pilot.html">Research collaboration options</a></div></div>
+  </div></section>
+  <section class="band"><div class="shell editorial-split"><div><h2>People and organization.</h2></div>
+    <div class="editorial-copy"><p>Founder and Project Lead: Bekzod Dzhanpolatov.<br>Legal entity: RFID INC.<br>Jurisdiction: Delaware, United States.</p>
+      <p><a href="about.html">About KeyAI Research</a> · <a href="{esc(site_origin())}">Official website</a> ·
+      <a href="https://github.com/KeyAIGit">KeyAIGit public profile</a></p></div></div></section>""")
+
+
+def build_privacy(product: dict) -> str:
+    return editorial_page(product, "privacy", "Privacy", "Privacy on this website.",
+        "How the current public website and its contact paths handle information.", """
+  <section class="band band--white"><div class="shell policy-copy editorial-copy">
+    <h2>Website and hosting.</h2>
+    <p>KeyAI Research is an independent research initiative of RFID INC. This is a public research website hosted on GitHub Pages.
+    The current site has no sign-in, payment, or on-site submission form. Its search and filters run in your browser.</p>
+    <p>The current generated research pages do not set analytics cookies or load third-party analytics. GitHub, as the hosting provider,
+    may process technical information such as IP addresses and request logs to deliver and protect its services.
+    See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>
+    for its practices and retention information. Some automatically rendered repository documents load third-party assets,
+    whose providers may receive technical request information.</p>
+    <h2>Contact and public contributions.</h2>
+    <p>Email contact opens your email application. GitHub contact links take you to GitHub, where its terms and privacy practices apply. Information you submit in a public issue,
+    discussion, or contribution is visible to others and may remain in repository history. Share only what you intend to make public.</p>
+    <p>Maintainers can use the email, message, or contribution you provide to respond to your request or review your contribution.
+    Do not submit credentials, private keys, personal records, or confidential research data in public.</p>
+    <h2>Questions and corrections.</h2>
+    <p>Use the <a href="contact.html">project contact path</a> for privacy questions or a request concerning information you shared.
+    If the matter is sensitive, request a private channel before providing details. Information on third-party services is subject
+    to their own controls; removing a repository entry may not remove copies or history.</p>
+    <p>This notice describes the current public site. It should be updated when its functionality or information practices change.</p>
+  </div></section>""")
+
+
+def build_terms(product: dict) -> str:
+    return editorial_page(product, "terms", "Terms and site use", "Using the research website.",
+        "A concise guide to the purpose of the site, its research boundaries, and reuse of its materials.", f"""
+  <section class="band band--white"><div class="shell policy-copy editorial-copy">
+    <h2>Purpose and scope.</h2>
+    <p>RFID INC publishes this website for its independent research initiative, KeyAI Research. It presents research,
+    source-linked results, and a developing verification workspace. Research OS is a reference deployment;
+    a hosted multi-project product is not yet available.</p>
+    <p>Materials must be read with their assumptions, evidence, and limitations. The site does not claim that secp256k1
+    or ECDLP has been broken, offer third-party wallet or key recovery, or provide a security assurance for a deployed system.</p>
+    <h2>Responsible use.</h2>
+    <p>Respect the <a href="research-scope.html">research scope</a> and obtain authorization before testing systems or data.
+    Publishing research does not grant permission to access third-party systems, accounts, funds, or private information.</p>
+    <h2>Licensing and contributions.</h2>
+    <p>Reuse is governed by each material's applicable license. Original repository contributions use Apache-2.0;
+    third-party materials retain their own terms. Citing a paper does not relicense it. This page does not replace or restrict those licenses.</p>
+    <p><a href="{esc(repo_url(product, 'LICENSING.md'))}">Licensing policy</a> ·
+    <a href="{esc(repo_url(product, 'THIRD_PARTY_NOTICES.md'))}">Third-party notices</a> ·
+    <a href="{esc(repo_url(product, 'CONTRIBUTING.md'))}">Contribution guide</a></p>
+    <h2>Questions or errors.</h2>
+    <p>Use <a href="contact.html">Contact</a> for non-sensitive questions and <a href="security.html">Security reporting</a>
+    for sensitive findings. External services linked here have their own terms and privacy practices.</p>
+  </div></section>""")
+
+
+def build_security(product: dict) -> str:
+    repository = product["repository_url"].rstrip("/")
+    return editorial_page(product, "security", "Security and responsible disclosure", "Report a concern with care.",
+        "A reporting path for security, proof-integrity, and reproducibility concerns.", f"""
+  <section class="band band--white"><div class="shell policy-copy editorial-copy">
+    <h2>Sensitive findings.</h2>
+    <p>Do not publish private keys, seed phrases, API credentials, personal records, or exploitable secret material in issues.
+    Email <a href="mailto:{esc(product['research_program']['contact_email'])}">{esc(product['research_program']['contact_email'])}</a>
+    with a non-sensitive summary first, so the maintainer can arrange an appropriate private channel.
+    You may also use GitHub's private vulnerability reporting feature if it is enabled for the repository.</p>
+    <p>This page does not claim that private vulnerability reporting is enabled or promise a response deadline or bounty.</p>
+    <h2>Proof and reproducibility issues.</h2>
+    <p>For non-sensitive issues, include the source commit, a minimal reproduction, the exact theorem and assumptions,
+    toolchain, observed output, and expected behavior. Explain whether the concern affects scope, proof trust,
+    a verifier, generated metadata, or automation.</p>
+    <h2>Research boundaries.</h2>
+    <p>The repository contains research software, not a production wallet, signing service, or audited cryptographic implementation.
+    Formalized algebra at a stated scope is not a security proof for a deployed protocol.</p>
+    <p>Reporting a concern does not authorize testing third-party systems or accessing data or funds.
+    Follow the <a href="research-scope.html">controlled research scope</a>.</p>
+    <p><a href="{esc(repo_url(product, 'SECURITY.md'))}">Repository security policy</a> ·
+    <a href="governance.html">Research governance</a> · <a href="contact.html">Contact</a></p>
   </div></section>""")
 
 
@@ -1796,6 +1961,11 @@ def main() -> int:
     ))
     write_text(ABOUT_PATH, build_about(product))
     write_text(GOVERNANCE_PATH, build_governance(product))
+    write_text(RESEARCH_SCOPE_PATH, build_research_scope(product))
+    write_text(PRIVACY_PATH, build_privacy(product))
+    write_text(TERMS_PATH, build_terms(product))
+    write_text(SECURITY_PATH, build_security(product))
+    write_text(CONTACT_PATH, build_contact(product))
     write_text(INDEX_PATH, index)
     write_text(RESULTS_PATH, results_page)
     write_text(DASHBOARD_PATH, dashboard)
