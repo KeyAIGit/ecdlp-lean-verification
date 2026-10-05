@@ -1,0 +1,13 @@
+{
+  "schema": "keyai-discovery-memory-v1",
+  "baseline": "/path/to/existing/baseline",
+  "existing_project": "/path/to/existing/reader-project",
+  "source_commit": "b426bb32420bd27d811bebd8934873e060e4de51",
+  "library_manifest": "/path/to/existing/pinned/index-manifest.json",
+  "library_sha256": "replace-with-verified-manifest-hash",
+  "snapshot_directory": "/path/to/backup-volume/memory-snapshots",
+  "free_space_floors": {
+    "/mnt/c": 107374182400,
+    "/mnt/d": 800146744935
+  }
+}

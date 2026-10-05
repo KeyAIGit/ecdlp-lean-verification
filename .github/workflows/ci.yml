@@ -16,6 +16,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  discovery-memory:
+    name: Discovery memory synthetic checks (not Lean)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify source manifest and run isolated temporary-data tests
+        run: |
+          set -euo pipefail
+          (cd release_candidates/discovery-memory-v2-20260911 && sha256sum -c MANIFEST.sha256)
+          python3 -m unittest discover -s release_candidates/discovery-memory-v2-20260911 -p 'test_memory*.py' -v
   m16-intake:
     name: M16 candidate evidence (not Lean)
     runs-on: ubuntu-24.04

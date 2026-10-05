@@ -1,0 +1,28 @@
+{
+  "status": "PASS_LOCAL_V2",
+  "source_commit": "b426bb32420bd27d811bebd8934873e060e4de51",
+  "engineering_tests": 42,
+  "matched_queries": 12,
+  "retained_sources": 5,
+  "resume_packet_source_opened": true,
+  "project": {
+    "documents": 1639,
+    "chunks": 15590,
+    "edges": 3761
+  },
+  "code_sha256": {
+    "memory.py": "0a23e0639a1bed6e9f411d2a5f4378d483d6bf98a94050e6951d8e673f2cb898",
+    "build_catalog.py": "e331b9b7116f9a504fa7c72e7c1528a8526a578423239bc4084e49d80390c6da",
+    "build_project.py": "0757fc02f38d2ad5c7b906863d566c582ef00f6df4f03658192ac3e58f2d63ee",
+    "retrieval_v2.py": "a1306ae99f792c22ab160e6fca9c6b0e44462a7c145316b9cc717d16214cb5a4",
+    "source_access_v2.py": "2d5bf60e52c6a5a554378aba6daacc525e620cab404852a9a8d1660f7c453bf2",
+    "test_memory.py": "8ad072e17b8604e6968f8e9bbea6ddb925fb908d9cc52304483734fcde8afc6e",
+    "test_memory_v2.py": "0eb90bdcd76015075d06dc303a638942f1abea66566b7e7c70e4236fcfcbd1dd",
+    "validate_live.py": "b0676297b862e8bc023a57e0deedf0ce36b8213cf17fdac48600259790d1e985"
+  },
+  "new_mathematical_result": false,
+  "new_downloads": 0,
+  "paid_api_calls": 0,
+  "notes": "Heuristic ranking; requested source revisions not automatically verified. Russian source test is synthetic.",
+  "review_followup": "Cache reuse verifies an available manifest hash or its offline cache binding; lowercase project IDs and Groebner spelling variants added."
+}
