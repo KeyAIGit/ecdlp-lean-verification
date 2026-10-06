@@ -483,10 +483,10 @@ def build_index(product: dict, pilot: dict, stats: dict, frontier: dict,
   </section>
   <section class="band collaboration" id="collaboration">
     <div class="shell editorial-split">
-      <div><p class="eyebrow">For researchers and technical collaborators</p><h2>Bring a question.<br>Help check the work.</h2></div>
-      <div><p>We welcome proof review, reproducibility work, and conversations with teams building AI for mathematics.
-        We are also recruiting a formal-research team to test the Research OS workflow.</p>
-        <a class="button button--light" href="pilot.html">Find a way to collaborate</a></div>
+      <div><p class="eyebrow">For researchers and technical collaborators</p><h2>Historical research.<br>Read the record.</h2></div>
+      <div><p>KeyAI Research is inactive. Historical proof review and reproducibility records remain available.
+        Recruitment for the Research OS workflow pilot is closed.</p>
+        <a class="button button--light" href="pilot.html">Read the closed-pilot notice</a></div>
     </div>
   </section>
 </main>
@@ -1050,18 +1050,17 @@ def build_research_os(
     <div class="shell collaboration__grid">
       <div>
         <p class="eyebrow">For researchers and AI labs</p>
-        <h2 id="collaboration-title">Inspect the evidence—or help test the workflow.</h2>
-        <p>KeyAI is recruiting one formal-research team to test orientation in the current workspace,
-          map one repeated research-state problem, and reach an explicit build, change, stop, or pending decision.</p>
+        <h2 id="collaboration-title">Inspect the historical evidence.</h2>
+        <p>KeyAI Research is inactive. The former workflow pilot covered orientation, research-state mapping, and an explicit discovery decision. Recruitment is closed.</p>
         <p class="collaboration__boundary">No external pilot session has been completed or recorded.
           Interest is not counted as adoption, retention, or product validation.</p>
         <div class="actions">
-          <a class="button button--light" href="pilot.html">Read the collaboration protocol</a>
-          <a class="text-link text-link--light" href="{esc(pilot_intake_url(product))}">Open the public GitHub intake</a>
+          <a class="button button--light" href="pilot.html">Read the closed-pilot notice</a>
+
         </div>
       </div>
       <dl class="collaboration__facts">
-        <div><dt>Pilot status</dt><dd>{esc(pilot_model["status"].title())}</dd></div>
+        <div><dt>Pilot status</dt><dd>{"Closed" if pilot.get("intake_open", True) is False else esc(pilot_model["status"].title())}</dd></div>
         <div><dt>Planned session</dt><dd>{sum(item["minutes"] for item in pilot["session_plan"])} minutes</dd></div>
         <div><dt>Completed discovery</dt><dd>{completed_discovery}</dd></div>
       </dl>
@@ -1793,7 +1792,45 @@ def build_explore(product: dict, stats: dict, decisions: dict, engine: dict) -> 
 {site_footer(product)}"""
 
 
+def build_closed_pilot(product: dict, pilot: dict) -> str:
+    description = "KeyAI Research is inactive. The research workflow pilot is closed and no applications are accepted."
+    completed = len(valid_second_projects(pilot))
+    return f"""{page_head("Pilot closed | KeyAI Research", description, "pilot.html")}
+<body data-page="pilot">
+{site_header(product)}
+<main id="main">
+  <section class="editorial-mast"><div class="shell">
+    <p class="eyebrow">Historical research pilot</p><h1>Pilot closed.</h1>
+    <p>KeyAI Research is inactive. Recruitment and applications for the research workflow pilot are closed.</p>
+  </div></section>
+  <section class="band band--white" id="pilot-session"><div class="shell editorial-split">
+    <div><p class="eyebrow">Status</p><h2>No active programme.</h2></div>
+    <div class="editorial-copy">
+      <dl class="profile-list"><div><dt>Current status</dt><dd>Closed</dd></div>
+        <div><dt>Completed external pilots</dt><dd>{completed}</dd></div>
+        <div><dt>Status updated</dt><dd>{esc(pilot.get('administrative_closed_on', ''))}</dd></div></dl>
+      <p>The former application and collaboration intake has been removed. No new participants are being recruited.</p>
+      <p>This administrative closure does not imply completed discovery, product adoption, or validation.</p>
+      <p><a href="results.html">Read the historical results</a> · <a href="research-scope.html">Read the research limitations</a></p>
+    </div>
+  </div></section>
+  <section class="band" id="safety"><div class="shell editorial-copy">
+    <h2>Research boundaries</h2><p>No break of secp256k1 is claimed. No wallet or private-key recovery services are offered.</p>
+    <p>Do not submit keys, credentials, personal records or confidential material. The project is inactive.</p>
+    <p><a href="governance.html">Read the research and publication boundaries</a></p>
+  </div></section>
+  <section class="band band--white" id="pilot-details"><div class="shell editorial-copy">
+    <h2>Historical protocol</h2><p>The former protocol remains a historical research record, not an open application.</p>
+    <p>Protocol task: {esc(pilot.get("task_id", ""))}. {esc(pilot.get("evidence_state", ""))}</p>
+    <p><a href="{esc(repo_url(product, product['pilot']['protocol_source']))}">Read the historical protocol</a></p>
+  </div></section>
+</main>
+{site_footer(product)}"""
+
+
 def build_pilot(product: dict, pilot: dict) -> str:
+    if pilot.get("intake_open", True) is False:
+        return build_closed_pilot(product, pilot)
     intake_url = pilot_intake_url(product)
     session_total = sum(item["minutes"] for item in pilot["session_plan"])
     completed_external_pilots = len(valid_second_projects(pilot))

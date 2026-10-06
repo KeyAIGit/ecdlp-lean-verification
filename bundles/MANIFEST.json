@@ -137,7 +137,7 @@
         "path": "repo/PILOT_PROTOCOL.json",
         "reason": "TASK-011 discovery contract, safety boundary, evidence schema, and disposition gate",
         "exists": true,
-        "bytes": 13855
+        "bytes": 14137
       },
       {
         "path": "tasks/NEXT.md",
@@ -325,7 +325,7 @@
         "path": "repo/PILOT_PROTOCOL.json",
         "reason": "TASK-011 discovery contract, safety boundary, evidence schema, and disposition gate",
         "exists": true,
-        "bytes": 13855
+        "bytes": 14137
       },
       {
         "path": "tasks/NEXT.md",
@@ -729,7 +729,7 @@
         "path": "repo/PILOT_PROTOCOL.json",
         "reason": "TASK-011 discovery contract, safety boundary, evidence schema, and disposition gate",
         "exists": true,
-        "bytes": 13855
+        "bytes": 14137
       },
       {
         "path": "tasks/NEXT.md",
