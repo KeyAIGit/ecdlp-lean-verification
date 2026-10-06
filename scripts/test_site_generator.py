@@ -209,6 +209,23 @@ Inputs:
             url = f"{origin}/{path}" if path else f"{origin}/"
             self.assertIn(f"<loc>{url}</loc>", sitemap)
 
+    def test_administrative_pilot_closure_does_not_claim_validation(self) -> None:
+        product = site_generator.load_json(site_generator.PRODUCT_PATH)
+        pilot = site_generator.load_json(site_generator.PILOT_PATH)
+        self.assertFalse(pilot["intake_open"])
+        self.assertEqual(pilot["administrative_status"], "inactive")
+        html = site_generator.build_pilot(product, pilot)
+        self.assertIn("Pilot closed.", html)
+        self.assertIn("KeyAI Research is inactive.", html)
+        self.assertIn("<dt>Current status</dt><dd>Closed</dd>", html)
+        self.assertIn("does not imply completed discovery", html)
+        self.assertIn("<dt>Completed external pilots</dt><dd>0</dd>", html)
+        self.assertNotIn("issues/new", html)
+        self.assertNotIn("<form", html.lower())
+        for anchor in ("pilot-session", "safety", "pilot-details"):
+            self.assertIn(f'id="{anchor}"', html)
+        self.assertEqual(pilot["evidence_log"], [])
+
     def test_shared_navigation_escapes_repository_url_attributes(self) -> None:
         repository_url = 'https://github.com/example/repo?x=1&next="quoted"'
         product = {

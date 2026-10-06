@@ -243,5 +243,9 @@
     "task_012_unlock_definition": "Only the latest completed external CH-001 discovery disposition may control TASK-012, and it unlocks only when that latest disposition is build. A later change, stop, or pending disposition relocks TASK-012.",
     "completed_external_pilot_definition": "Count only an ordered external CH-001 TASK-012 second_project record for the same opaque case as the latest build discovery, with status completed, a non-empty public summary, and at least one existing sanitized repository evidence file. Qualification, discovery, scheduling, and cancellation never count as completed pilots."
   },
-  "evidence_log": []
+  "evidence_log": [],
+  "intake_open": false,
+  "administrative_status": "inactive",
+  "administrative_closed_on": "2026-10-05",
+  "administrative_closure_reason": "The owner discontinued the research pilot. This is an administrative closure, not a completed discovery session or a validation outcome."
 }
