@@ -227,7 +227,7 @@ def main() -> int:
     )
     check(
         pilot_protocol.get("task_id") in pilot
-        and pilot_protocol.get("status", "").title() in pilot
+        and ("Closed" if pilot_protocol.get("intake_open", True) is False else pilot_protocol.get("status", "").title()) in pilot
         and pilot_protocol.get("evidence_state") in pilot,
         "pilot.html must expose the canonical task, status, and evidence state",
     )
@@ -235,12 +235,24 @@ def main() -> int:
     intake_url = (
         f"{product.get('repository_url', '').rstrip('/')}/issues/new?template={intake_template}"
     )
-    check(
-        bool(intake_template)
-        and intake_url in research_os
-        and intake_url in pilot,
-        "product and pilot pages must derive the public intake URL from PRODUCT_MODEL.json",
-    )
+    if pilot_protocol.get("intake_open", True) is False:
+        check(
+            pilot_protocol.get("administrative_status") == "inactive"
+            and bool(pilot_protocol.get("administrative_closed_on"))
+            and bool(pilot_protocol.get("administrative_closure_reason"))
+            and "issues/new" not in pilot
+            and intake_url not in research_os
+            and "KeyAI Research is inactive." in pilot
+            and "No new participants are being recruited." in pilot,
+            "administratively closed pilot must retain its closure record and disable public intake",
+        )
+    else:
+        check(
+            bool(intake_template)
+            and intake_url in research_os
+            and intake_url in pilot,
+            "product and pilot pages must derive the public intake URL from PRODUCT_MODEL.json",
+        )
     check(
         'data-route-count aria-live="polite"' in explore
         and 'data-route-empty role="status" aria-live="polite"' in explore,

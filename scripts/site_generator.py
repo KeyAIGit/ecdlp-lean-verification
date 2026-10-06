@@ -1821,6 +1821,7 @@ def build_closed_pilot(product: dict, pilot: dict) -> str:
   </div></section>
   <section class="band band--white" id="pilot-details"><div class="shell editorial-copy">
     <h2>Historical protocol</h2><p>The former protocol remains a historical research record, not an open application.</p>
+    <p>Protocol task: {esc(pilot.get("task_id", ""))}. {esc(pilot.get("evidence_state", ""))}</p>
     <p><a href="{esc(repo_url(product, product['pilot']['protocol_source']))}">Read the historical protocol</a></p>
   </div></section>
 </main>
