@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "KEYAI-PILOT-001",
   "task_id": "TASK-011",
-  "status": "recruiting",
+  "status": "inactive",
   "stage": "discovery",
   "evidence_state": "No external pilot session has been completed or recorded.",
   "primary_hypothesis_id": "CH-001",

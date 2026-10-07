@@ -208,7 +208,7 @@ def main() -> int:
         )
     check(
         pilot.get("status")
-        in {"recruiting", "discovery_active", "discovery_complete", "stopped", "mvp_validated"},
+        in {"inactive", "recruiting", "discovery_active", "discovery_complete", "stopped", "mvp_validated"},
         "pilot status is not recognized",
     )
     check(
@@ -446,7 +446,7 @@ def main() -> int:
         )
     else:
         check(
-            pilot.get("status") in {"recruiting", "discovery_active"},
+            pilot.get("status") in {"inactive", "recruiting", "discovery_active"},
             "pilot cannot be closed without completed CH-001 discovery evidence",
         )
     for key in ("protocol_source", "intake_surface"):

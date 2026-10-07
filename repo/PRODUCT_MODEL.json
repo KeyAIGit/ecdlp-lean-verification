@@ -184,7 +184,7 @@
     "id": "KEYAI-PILOT-001",
     "task_id": "TASK-011",
     "task_source": "tasks/KEYAI_PRODUCT.md",
-    "status": "recruiting",
+    "status": "inactive",
     "protocol_source": "repo/PILOT_PROTOCOL.json",
     "public_surface": "pilot.html",
     "intake_surface": ".github/ISSUE_TEMPLATE/keyai-pilot.yml",
@@ -224,7 +224,7 @@
   "site_surfaces": [
     {
       "path": "index.html",
-      "role": "Research-program introduction, selected source-linked results, research directions, and collaboration"
+      "role": "Inactive research initiative, selected source-linked results, historical research directions, and review"
     },
     {
       "path": "results.html",
@@ -240,7 +240,7 @@
     },
     {
       "path": "pilot.html",
-      "role": "External-pilot qualification, protocol, measures, safety boundary, and public intake"
+      "role": "Historical external-pilot protocol, measures, safety boundary, and review; no active intake"
     },
     {
       "path": "research.html",
@@ -248,11 +248,11 @@
     },
     {
       "path": "research-os.html",
-      "role": "Developing verification workspace, six-stage workflow, generated research map, current capabilities and MVP boundary"
+      "role": "Published reference verification workspace, six-stage workflow, generated research map, retained capabilities and MVP boundary"
     },
     {
       "path": "about.html",
-      "role": "Research-program identity, founder, organization and contact paths"
+      "role": "Inactive research initiative, founder, published record and contact paths"
     },
     {
       "path": "governance.html",
@@ -281,10 +281,11 @@
   ],
   "research_program": {
     "name": "KeyAI Research",
+    "status": "inactive",
     "founder": "Bekzod Dzhanpolatov",
     "organization": "RFID INC",
     "jurisdiction": "Delaware, United States",
-    "relationship": "Independent research initiative; Research OS is the developing verification workspace.",
+    "relationship": "Inactive independent research initiative; Research OS is a published reference verification workspace.",
     "contact_email": "ceo@keyai.org"
   }
 }

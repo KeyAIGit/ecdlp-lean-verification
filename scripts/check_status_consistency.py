@@ -235,12 +235,18 @@ def main() -> int:
     intake_url = (
         f"{product.get('repository_url', '').rstrip('/')}/issues/new?template={intake_template}"
     )
-    check(
-        bool(intake_template)
-        and intake_url in research_os
-        and intake_url in pilot,
-        "product and pilot pages must derive the public intake URL from PRODUCT_MODEL.json",
-    )
+    if pilot_protocol.get("status") == "inactive":
+        check(
+            intake_url not in research_os and intake_url not in pilot,
+            "inactive product and pilot pages must not invite new pilot applications",
+        )
+    else:
+        check(
+            bool(intake_template)
+            and intake_url in research_os
+            and intake_url in pilot,
+            "product and pilot pages must derive the public intake URL from PRODUCT_MODEL.json",
+        )
     check(
         'data-route-count aria-live="polite"' in explore
         and 'data-route-empty role="status" aria-live="polite"' in explore,

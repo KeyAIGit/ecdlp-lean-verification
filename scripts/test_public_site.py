@@ -124,7 +124,7 @@ class PublicSiteTests(unittest.TestCase):
             "Research OS",
             "About",
             "Governance",
-            "Collaborate",
+            "Review",
         }
         for path, document in self.documents.items():
             tags = [tag for tag, _attrs in document.tags]

@@ -11,7 +11,7 @@
         "path": "STATUS.md",
         "reason": "canonical live snapshot — counts, active goal, bottleneck; wins over prose",
         "exists": true,
-        "bytes": 18547
+        "bytes": 18545
       },
       {
         "path": "domains/riemann-hypothesis/README.md",
@@ -131,13 +131,13 @@
         "path": "repo/PRODUCT_MODEL.json",
         "reason": "product category, current-vs-future boundary, public claims, and MVP evidence gate",
         "exists": true,
-        "bytes": 12055
+        "bytes": 12122
       },
       {
         "path": "repo/PILOT_PROTOCOL.json",
         "reason": "TASK-011 discovery contract, safety boundary, evidence schema, and disposition gate",
         "exists": true,
-        "bytes": 13855
+        "bytes": 13853
       },
       {
         "path": "tasks/NEXT.md",
@@ -199,7 +199,7 @@
         "path": "STATUS.md",
         "reason": "canonical live snapshot — counts, active goal, bottleneck; wins over prose",
         "exists": true,
-        "bytes": 18547
+        "bytes": 18545
       },
       {
         "path": "domains/riemann-hypothesis/README.md",
@@ -319,13 +319,13 @@
         "path": "repo/PRODUCT_MODEL.json",
         "reason": "product category, current-vs-future boundary, public claims, and MVP evidence gate",
         "exists": true,
-        "bytes": 12055
+        "bytes": 12122
       },
       {
         "path": "repo/PILOT_PROTOCOL.json",
         "reason": "TASK-011 discovery contract, safety boundary, evidence schema, and disposition gate",
         "exists": true,
-        "bytes": 13855
+        "bytes": 13853
       },
       {
         "path": "tasks/NEXT.md",
@@ -603,7 +603,7 @@
         "path": "STATUS.md",
         "reason": "canonical live snapshot — counts, active goal, bottleneck; wins over prose",
         "exists": true,
-        "bytes": 18547
+        "bytes": 18545
       },
       {
         "path": "domains/riemann-hypothesis/README.md",
@@ -723,13 +723,13 @@
         "path": "repo/PRODUCT_MODEL.json",
         "reason": "product category, current-vs-future boundary, public claims, and MVP evidence gate",
         "exists": true,
-        "bytes": 12055
+        "bytes": 12122
       },
       {
         "path": "repo/PILOT_PROTOCOL.json",
         "reason": "TASK-011 discovery contract, safety boundary, evidence schema, and disposition gate",
         "exists": true,
-        "bytes": 13855
+        "bytes": 13853
       },
       {
         "path": "tasks/NEXT.md",

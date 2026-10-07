@@ -195,7 +195,7 @@ Inputs:
         self.assertEqual(index.count("data-loop-step"), len(product["workflow"]))
         self.assertIn("data-research-map", index)
         self.assertEqual(index.count("data-map-kind="), 6)
-        self.assertIn("A self-serve or hosted multi-project product is not yet available", index)
+        self.assertIn("A self-serve or hosted multi-project product is not available", index)
         self.assertNotIn("foundations.point_counting.mathlib_gap", index)
 
     def test_site_discovery_files_follow_cname_and_public_pages(self) -> None:
@@ -217,9 +217,9 @@ Inputs:
             "current_stage": {"label": "test stage"},
         }
 
-        product["research_program"] = {"organization": 'RFID INC "<test>'}
+        product["research_program"] = {"name": 'KeyAI Research "<test>'}
         rendered = site_generator.site_header(product) + site_generator.site_footer(product)
-        self.assertIn("RFID INC &quot;&lt;test&gt;", rendered)
+        self.assertIn("KeyAI Research &quot;&lt;test&gt;", rendered)
 
         self.assertNotIn(repository_url, rendered)
         self.assertIn(

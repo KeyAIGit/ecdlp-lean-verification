@@ -33,7 +33,7 @@ not an ECDLP security metric.
   difficult domain; it is evidence for the product design, not a claim of a hosted multi-project
   product or an ECDLP break.
 - **MVP boundary:** A non-owner research team can connect a second project, obtain a trustworthy initial map, run one candidate through its verifier, and understand the resulting decision without editing KeyAI's generator code.
-- **External pilot:** KEYAI-PILOT-001 is **recruiting**. No external pilot session has been completed or recorded.
+- **External pilot:** KEYAI-PILOT-001 is **inactive**. No external pilot session has been completed or recorded.
 - **Customer evidence:** 2 customer hypotheses are recorded:
   2 unvalidated. Status changes require dated evidence.
 - **Accelerator boundary:** Not ready today. A technical MVP is necessary but not sufficient; a credible accelerator narrative additionally requires repeatable buyer evidence across more than one team and direct willingness-to-pay evidence.
