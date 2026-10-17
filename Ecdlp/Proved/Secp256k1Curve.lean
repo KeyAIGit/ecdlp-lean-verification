@@ -23,8 +23,15 @@ def secp256k1 : WeierstrassCurve (ZMod Secp256k1.p) where
   a₄ := 0
   a₆ := 7
 
-/-- The secp256k1 discriminant is nonzero in `𝔽_p` (`Δ = -21168`, machine-checked). -/
-theorem secp256k1_Δ_ne_zero : secp256k1.Δ ≠ 0 := by native_decide
+/-- The secp256k1 discriminant is nonzero in `𝔽_p` (`Δ = -21168`, machine-checked): the
+value is computed by `ring`, and `p ∤ 21168` is checked by the kernel (`decide +kernel`). -/
+theorem secp256k1_Δ_ne_zero : secp256k1.Δ ≠ 0 := by
+  have hΔ : secp256k1.Δ = -((21168 : ℕ) : ZMod Secp256k1.p) := by
+    simp only [WeierstrassCurve.Δ, WeierstrassCurve.b₂, WeierstrassCurve.b₄,
+      WeierstrassCurve.b₆, WeierstrassCurve.b₈, secp256k1]
+    push_cast; ring
+  rw [hΔ, neg_ne_zero, Ne, ZMod.natCast_eq_zero_iff]
+  decide +kernel
 
 /-- The `c₄` invariant of secp256k1 vanishes (since `a₁ = a₂ = a₄ = 0`). -/
 theorem secp256k1_c₄_eq_zero : secp256k1.c₄ = 0 := by
@@ -73,7 +80,7 @@ theorem secp256k1_generator_nonsingular :
   rw [WeierstrassCurve.Affine.nonsingular_iff]
   refine ⟨secp256k1_generator_equation, Or.inl ?_⟩
   have hne : ((3 * Secp256k1.Gx ^ 2 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-    rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+    rw [Ne, ZMod.natCast_eq_zero_iff]; decide +kernel
   push_cast at hne
   simp only [secp256k1, zero_mul, mul_zero, add_zero, zero_add]
   exact fun h => hne h.symm

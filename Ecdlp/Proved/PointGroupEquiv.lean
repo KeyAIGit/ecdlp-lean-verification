@@ -27,8 +27,9 @@ image of `MulEquiv.subgroupCongr`); the last strips the `⊤` subtype (`AddSubgr
 
 This is the complete additive-group structure theorem for the secp256k1 point group: it is
 isomorphic to `ℤ/n`. Unconditional given `#E = n` (which underlies `grp_eq_top`); no new
-axioms. It inherits the `Lean.ofReduceBool` provenance of the order keystone through
-`secp256k1_grp_eq_top`.
+axioms and no compiler trust: the order keystone and `#E = n` behind
+`secp256k1_grp_eq_top` are kernel-checked (`#print axioms` shows only `propext`,
+`Classical.choice`, `Quot.sound`).
 -/
 
 open WeierstrassCurve.Affine
@@ -63,8 +64,8 @@ now valued in the ambient point group `E(𝔽_p)` (via the coercion `↥⟨G⟩ 
 
 /-- **`E(𝔽_p)` is isomorphic, as an additive group, to `ℤ/n`.** The complete structure theorem
 for the secp256k1 rational point group, packaged as an existence statement. Unconditional given
-`#E = n` (`secp256k1_grp_eq_top`); no new axioms. Inherits `Lean.ofReduceBool` through the order
-keystone. -/
+`#E = n` (`secp256k1_grp_eq_top`); no new axioms and no compiler trust (the order keystone is
+kernel-checked). -/
 theorem secp256k1_point_group_equiv_exists :
     Nonempty (ZMod Secp256k1.n ≃+ secp256k1.toAffine.Point) :=
   ⟨secp256k1_pointGroupEquiv⟩

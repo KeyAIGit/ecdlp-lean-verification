@@ -46,21 +46,20 @@ theorem secp256k1_glv_cube_relation (P : secp256k1.toAffine.Point) :
     intro hb; rw [hb] at hbeig
     have h3 : (3 : ZMod Secp256k1.p) = 0 := by linear_combination hbeig
     have hne3 : ((3 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-      rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+      rw [Ne, ZMod.natCast_eq_zero_iff]; decide +kernel
     exact hne3 (by exact_mod_cast h3)
-  -- Closed arithmetic facts. Route through `Nat.cast`/`ZMod.natCast_eq_zero_iff` rather
-  -- than `native_decide` directly on a `ZMod` (in)equality: the `DecidableEq (ZMod p)`
-  -- instance picked up here resolves through the ambient `[Fact p.Prime]` (`inst✝`), which
-  -- `native_decide` rejects as a "free variable" in the closed term it compiles. The
-  -- `Nat.dvd` route needs no `Fact` instance, matching the working pattern elsewhere in
-  -- this repo (e.g. `Secp256k1Curve.lean`'s `secp256k1_generator_nonsingular`).
+  -- Closed arithmetic facts. Route through `Nat.cast`/`ZMod.natCast_eq_zero_iff` so the
+  -- remaining goal is a closed `Nat` divisibility fact that the kernel decides
+  -- (`decide +kernel`) without unfolding `ZMod` arithmetic or the ambient
+  -- `[Fact p.Prime]` instance, matching the pattern elsewhere in this repo (e.g.
+  -- `Secp256k1Curve.lean`'s `secp256k1_generator_nonsingular`).
   have h7ne : (7 : ZMod Secp256k1.p) ≠ 0 := by
     have h7 : ((7 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-      rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+      rw [Ne, ZMod.natCast_eq_zero_iff]; decide +kernel
     simpa using h7
   have h2ne : (2 : ZMod Secp256k1.p) ≠ 0 := by
     have h2 : ((2 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-      rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+      rw [Ne, ZMod.natCast_eq_zero_iff]; decide +kernel
     simpa using h2
   -- `negY _ y = -y` for secp256k1.
   have hnegY : ∀ a w : ZMod Secp256k1.p, secp256k1.toAffine.negY a w = -w := by
