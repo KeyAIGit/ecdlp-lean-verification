@@ -1,5 +1,6 @@
 import Mathlib
 import Ecdlp.Secp256k1Verified
+import Ecdlp.Proved.Secp256k1KernelFacts
 
 /-!
 # secp256k1 as a Mathlib elliptic curve
@@ -65,7 +66,7 @@ theorem secp256k1_generator_equation :
   have hcast : ((Secp256k1.Gy ^ 2 : ℕ) : ZMod Secp256k1.p)
       = ((Secp256k1.Gx ^ 3 + 7 : ℕ) : ZMod Secp256k1.p) := by
     rw [ZMod.natCast_eq_natCast_iff]
-    exact Secp256k1.generator_on_curve
+    exact Secp256k1.generator_on_curve_kernel
   push_cast at hcast
   simp only [secp256k1]
   linear_combination hcast

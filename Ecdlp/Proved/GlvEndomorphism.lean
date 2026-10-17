@@ -34,7 +34,7 @@ theorem secp256k1_glv_preserves_equation
       + (Secp256k1.beta : ZMod Secp256k1.p) + 1 = 0 := by
     have h0 : ((Secp256k1.beta ^ 2 + Secp256k1.beta + 1 : ℕ) : ZMod Secp256k1.p) = 0 := by
       rw [ZMod.natCast_eq_zero_iff]
-      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue
+      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue_kernel
     push_cast at h0
     linear_combination h0
   -- hence β³ = 1  (β³ − 1 = (β − 1)(β² + β + 1))
@@ -64,7 +64,7 @@ theorem secp256k1_glv_preserves_nonsingular
       + (Secp256k1.beta : ZMod Secp256k1.p) + 1 = 0 := by
     have h0 : ((Secp256k1.beta ^ 2 + Secp256k1.beta + 1 : ℕ) : ZMod Secp256k1.p) = 0 := by
       rw [ZMod.natCast_eq_zero_iff]
-      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue
+      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue_kernel
     push_cast at h0
     linear_combination h0
   -- β ≠ 0: if β = 0 then β² + β + 1 = 1 ≠ 0, contradicting hβeig

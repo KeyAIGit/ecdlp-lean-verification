@@ -1,5 +1,6 @@
 import Mathlib
 import Ecdlp.Secp256k1Verified
+import Ecdlp.Proved.Secp256k1KernelFacts
 import Ecdlp.Proved.CubeRoot
 
 /-!
@@ -20,7 +21,7 @@ theorem secp256k1_beta_orderOf [Fact (Nat.Prime Secp256k1.p)] :
   apply Ecdlp.Proved.orderOf_eigenvalue_eq_three
   · have h : ((Secp256k1.beta ^ 2 + Secp256k1.beta + 1 : ℕ) : ZMod Secp256k1.p) = 0 := by
       rw [ZMod.natCast_eq_zero_iff]
-      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue
+      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue_kernel
     push_cast at h
     linear_combination h
   · -- (3 : 𝔽_p) ≠ 0, reduced to the Fact-free Nat fact ¬ p ∣ 3
@@ -34,7 +35,7 @@ theorem secp256k1_lambda_orderOf [Fact (Nat.Prime Secp256k1.n)] :
   apply Ecdlp.Proved.orderOf_eigenvalue_eq_three
   · have h : ((Secp256k1.lam ^ 2 + Secp256k1.lam + 1 : ℕ) : ZMod Secp256k1.n) = 0 := by
       rw [ZMod.natCast_eq_zero_iff]
-      exact Nat.dvd_of_mod_eq_zero Secp256k1.glv_lambda_eigenvalue
+      exact Nat.dvd_of_mod_eq_zero Secp256k1.glv_lambda_eigenvalue_kernel
     push_cast at h
     linear_combination h
   · -- (3 : ℤ/n) ≠ 0, reduced to the Fact-free Nat fact ¬ n ∣ 3

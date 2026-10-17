@@ -229,10 +229,12 @@ sample that should surface `Lean.ofReduceBool`). `#print axioms` prints each dep
 -- native_decide samples (these SHOULD surface `Lean.ofReduceBool`)
 #print axioms Ecdlp.Curve.p_mod_four
 #print axioms Ecdlp.Curve.secp256k1_c₆_ne_zero
-
--- 256-bit literal facts checked by the kernel (`decide +kernel`; standard base only)
 #print axioms Secp256k1.p_special_form
 #print axioms Secp256k1.beta_field_eigenvalue
+
+-- kernel-checked twins of the same 256-bit literal facts (`decide +kernel`; standard base only)
+#print axioms Secp256k1.p_special_form_kernel
+#print axioms Secp256k1.beta_field_eigenvalue_kernel
 
 -- NON-ECC domain (elementary number theory): the second-subject portability instance.
 -- Pure `norm_num`, so these should depend ONLY on the standard base (no `Lean.ofReduceBool`).

@@ -48,7 +48,8 @@ accepts. The kernel is a small, fixed type-checker; trusting a proof means trust
 
 **Kernel `Nat` arithmetic.** Large closed numeric facts that are *not* `native_decide`
 (for example the 256-bit witness powers of the secp256k1 and P-256 primality certificates,
-`n • G = 0`, and `glvPoint G = λ • G`) are checked with `decide +kernel`: the kernel itself
+`n • G = 0`, `glvPoint G = λ • G`, and the kernel-checked twins of the secp256k1 literal
+facts in `Secp256k1KernelFacts.lean`) are checked with `decide +kernel`: the kernel itself
 evaluates the computation on `Nat` (`Ecdlp.Kernel.powMod`, `Ecdlp.Kernel.mulN`), using its
 built-in arbitrary-precision (GMP-backed) natural-number operations. These operations are part
 of the Lean 4 kernel (item 1); `decide +kernel` adds no axiom and no compiler trust, and
@@ -148,9 +149,13 @@ ring-identity curve invariants. Representative theorems (file → theorem):
   target assumption; none of these structural results uses `native_decide`)
 - **secp256k1 group structure, kernel-only** (large arithmetic evaluated by the kernel with
   `decide +kernel`, see §1 "Kernel `Nat` arithmetic"):
-  - `Ecdlp/Secp256k1Verified.lean` → `Secp256k1.p_special_form`, `glv_lambda_eigenvalue`,
-    `lambda_is_cube_root`, `lambda_ne_one`, `beta_field_eigenvalue`, `beta_is_cube_root`,
-    `lam_lt_n`, `beta_lt_p`, `generator_on_curve`
+  - `Ecdlp/Proved/Secp256k1KernelFacts.lean` → `Secp256k1.p_special_form_kernel`,
+    `glv_lambda_eigenvalue_kernel`, `lambda_is_cube_root_kernel`, `lambda_ne_one_kernel`,
+    `beta_field_eigenvalue_kernel`, `beta_is_cube_root_kernel`, `lam_lt_n_kernel`,
+    `beta_lt_p_kernel`, `generator_on_curve_kernel`: kernel-checked twins, with identical
+    statements, of the nine `native_decide` facts in `Ecdlp/Secp256k1Verified.lean`
+    (bucket (b)). They are infrastructure and have no ledger rows of their own; the
+    downstream proofs below use them instead of the `native_decide` originals
   - `Ecdlp/Proved/Secp256k1PrimeP.lean`, `Secp256k1PrimeN.lean` → `secp256k1_p_prime`,
     `secp256k1_n_prime` (full Pratt certificates; witness powers via `Ecdlp.Kernel.powMod`,
     `KernelPowMod.lean`); likewise `P256PrimeP.lean`, `P256PrimeN.lean` →
@@ -179,6 +184,22 @@ These depend on `Lean.ofReduceBool`. The proof's truth rests on the compiler in
 addition to the kernel. These are concrete large-integer facts currently discharged by
 `native_decide`. Exact `file:line → theorem`:
 
+- `Ecdlp/Secp256k1Verified.lean:8`  → `Secp256k1.p_special_form` (`p = 2²⁵⁶−2³²−977`)
+- `Ecdlp/Secp256k1Verified.lean:10` → `Secp256k1.glv_lambda_eigenvalue`
+- `Ecdlp/Secp256k1Verified.lean:12` → `Secp256k1.lambda_is_cube_root`
+- `Ecdlp/Secp256k1Verified.lean:14` → `Secp256k1.lambda_ne_one`
+- `Ecdlp/Secp256k1Verified.lean:16` → `Secp256k1.beta_field_eigenvalue`
+- `Ecdlp/Secp256k1Verified.lean:18` → `Secp256k1.beta_is_cube_root`
+- `Ecdlp/Secp256k1Verified.lean:20` → `Secp256k1.lam_lt_n`
+- `Ecdlp/Secp256k1Verified.lean:21` → `Secp256k1.beta_lt_p`
+- `Ecdlp/Secp256k1Verified.lean:29` → `Secp256k1.generator_on_curve` (`Gy²≡Gx³+7 mod p`)
+
+  These nine ledger rows are unchanged. `Ecdlp/Secp256k1Verified.lean` stays byte-for-byte
+  as it is because its SHA-256 is pinned as an upstream binding of the committed
+  `experiments/engine/pkc_smooth_m16_regime_assurance_desk` artifact. Each of the nine
+  statements also has a kernel-checked twin in `Ecdlp/Proved/Secp256k1KernelFacts.lean`
+  (bucket (a), suffix `_kernel`), and the kernel-only group-structure chain uses only the
+  twins, so these `native_decide` originals are not in its trust base.
 - `Ecdlp/Proved/Secp256k1Params.lean:8`  → `p_mod_four` (`p ≡ 3 mod 4`)
 - `Ecdlp/Proved/Secp256k1Params.lean:11` → `three_dvd_p_sub_one`
 - `Ecdlp/Proved/Secp256k1Params.lean:15` → `three_dvd_n_sub_one`

@@ -186,3 +186,4 @@ import Ecdlp.Proved.FourTorsionCount
 import Ecdlp.Proved.CompressedDivisionPoly
 import Ecdlp.Proved.KernelPowMod
 import Ecdlp.Proved.KernelScalarMul
+import Ecdlp.Proved.Secp256k1KernelFacts

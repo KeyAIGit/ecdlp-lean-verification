@@ -8,15 +8,15 @@ git history and the GitHub Actions tab.
 
 | claim_id | Lean theorem | file | method | status |
 |---|---|---|---|---|
-| sec2-secp256k1-field-005 | `Secp256k1.p_special_form` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
-| glv-subgroup-eigenvalue-006 | `Secp256k1.glv_lambda_eigenvalue` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
+| sec2-secp256k1-field-005 | `Secp256k1.p_special_form` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
+| glv-subgroup-eigenvalue-006 | `Secp256k1.glv_lambda_eigenvalue` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
 | glv-subgroup-eigenvalue-006 (ZMod form) | `Ecdlp.Targets.glv_eigenvalue_zmod` | Ecdlp/Statements.lean | Mathlib | proved |
-| supporting: lambda^3 = 1 mod n | `Secp256k1.lambda_is_cube_root` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
-| supporting: lambda != 1 | `Secp256k1.lambda_ne_one` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
-| supporting: beta^2+beta+1 = 0 mod p | `Secp256k1.beta_field_eigenvalue` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
-| supporting: beta^3 = 1 mod p | `Secp256k1.beta_is_cube_root` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
-| supporting: lam < n | `Secp256k1.lam_lt_n` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
-| supporting: beta < p | `Secp256k1.beta_lt_p` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
+| supporting: lambda^3 = 1 mod n | `Secp256k1.lambda_is_cube_root` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
+| supporting: lambda != 1 | `Secp256k1.lambda_ne_one` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
+| supporting: beta^2+beta+1 = 0 mod p | `Secp256k1.beta_field_eigenvalue` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
+| supporting: beta^3 = 1 mod p | `Secp256k1.beta_is_cube_root` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
+| supporting: lam < n | `Secp256k1.lam_lt_n` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
+| supporting: beta < p | `Secp256k1.beta_lt_p` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
 | pollard-multistage-004 (Lagrange foundation) | `order_dvd_card` | Ecdlp/Lagrange.lean | Mathlib | proved |
 | sec2-secp256k1-group-006 / sec2-domain-parameters-001 (cofactor) | `Ecdlp.Proved.cofactor_card_mul_index` | Ecdlp/Proved/Cofactor.lean | Mathlib | proved |
 | prime-order ⇒ generator (no small subgroup) | `Ecdlp.Proved.orderOf_eq_card_of_prime` | Ecdlp/Proved/PrimeOrder.lean | Mathlib | proved |
@@ -65,7 +65,7 @@ git history and the GitHub Actions tab.
 | **secp256k1 `β` has order 3 in `𝔽_p`** (GLV CM generator) | `Ecdlp.Curve.secp256k1_beta_orderOf` | Ecdlp/Proved/Secp256k1Order.lean | Mathlib + native_decide | proved² |
 | **secp256k1 `λ` has order 3 in `ℤ/n`** (GLV CM generator) | `Ecdlp.Curve.secp256k1_lambda_orderOf` | Ecdlp/Proved/Secp256k1Order.lean | Mathlib + native_decide | proved² |
 | **`X³ = 1` has exactly 3 roots in `𝔽_p`** (GLV cube-root count) | `Ecdlp.Curve.secp256k1_three_cube_roots_of_unity` | Ecdlp/Proved/Secp256k1Order.lean | Mathlib + native_decide | proved² |
-| **secp256k1 base point `G` is on the curve** (`Gy² ≡ Gx³+7 mod p`) | `Secp256k1.generator_on_curve` | Ecdlp/Secp256k1Verified.lean | kernel (`decide +kernel`) | proved |
+| **secp256k1 base point `G` is on the curve** (`Gy² ≡ Gx³+7 mod p`) | `Secp256k1.generator_on_curve` | Ecdlp/Secp256k1Verified.lean | native_decide | proved |
 | **secp256k1 generator is a point of the Mathlib `EllipticCurve`** | `Ecdlp.Curve.secp256k1_generator_equation` | Ecdlp/Proved/Secp256k1Curve.lean | Mathlib + kernel (`decide +kernel`) | proved² |
 | **secp256k1 generator is nonsingular** (a group element) | `Ecdlp.Curve.secp256k1_generator_nonsingular` | Ecdlp/Proved/Secp256k1Curve.lean | Mathlib + kernel (`decide +kernel`) | proved² |
 | **secp256k1 base point has exact order `n`** (weak point-counting keystone: `⟨G⟩` cyclic of order `n`, no Hasse/`#E`) | `Ecdlp.Curve.secp256k1_generator_addOrderOf` | Ecdlp/Proved/GeneratorOrder.lean | Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`) | proved² |

@@ -37,9 +37,9 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1197,
+    "edges": 1201,
     "by_edge_type": {
-      "imports": 535,
+      "imports": 539,
       "member_of": 307,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
@@ -73,9 +73,8 @@
     "by_method": {
       "Mathlib": 106,
       "Mathlib + native_decide": 19,
+      "native_decide": 18,
       "Bézout certificate + native_decide": 10,
-      "kernel (`decide +kernel`)": 9,
-      "native_decide": 9,
       "Mathlib + kernel (`decide +kernel`)": 6,
       "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)": 4,
       "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)": 3,
@@ -235,7 +234,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "sec2-secp256k1-field-005",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -255,7 +254,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "glv-subgroup-eigenvalue-006",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -295,7 +294,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "supporting: lambda^3 = 1 mod n",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -315,7 +314,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "supporting: lambda != 1",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -335,7 +334,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "supporting: beta^2+beta+1 = 0 mod p",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -355,7 +354,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "supporting: beta^3 = 1 mod p",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -375,7 +374,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "supporting: lam < n",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -395,7 +394,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "supporting: beta < p",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -1039,7 +1038,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1059,7 +1058,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1079,7 +1078,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1099,7 +1098,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1119,7 +1118,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1319,7 +1318,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1339,7 +1338,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1359,7 +1358,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1375,7 +1374,7 @@
         "Ecdlp/Secp256k1Verified.lean"
       ],
       "claim": "secp256k1 base point `G` is on the curve (`Gy² ≡ Gx³+7 mod p`)",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -1399,7 +1398,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1419,7 +1418,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1439,7 +1438,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1459,7 +1458,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1479,7 +1478,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -1499,7 +1498,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1519,7 +1518,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1699,7 +1698,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -1759,7 +1758,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1779,7 +1778,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1799,7 +1798,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1819,7 +1818,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1839,7 +1838,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1859,7 +1858,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1879,7 +1878,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1979,7 +1978,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1999,7 +1998,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2019,7 +2018,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2039,7 +2038,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2299,7 +2298,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2319,7 +2318,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2339,7 +2338,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2359,7 +2358,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2379,7 +2378,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2399,7 +2398,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2419,7 +2418,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2439,7 +2438,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2459,7 +2458,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2479,7 +2478,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2499,7 +2498,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2519,7 +2518,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2539,7 +2538,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2579,7 +2578,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2599,7 +2598,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2619,7 +2618,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2639,7 +2638,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2659,7 +2658,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2679,7 +2678,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2699,7 +2698,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2719,7 +2718,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2739,7 +2738,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -2759,7 +2758,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -2779,7 +2778,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -2799,7 +2798,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -2819,7 +2818,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -2839,7 +2838,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -2859,7 +2858,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2879,7 +2878,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2899,7 +2898,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2919,7 +2918,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2939,7 +2938,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2959,7 +2958,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2979,7 +2978,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2999,7 +2998,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -3019,7 +3018,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3039,7 +3038,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3059,7 +3058,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -3079,7 +3078,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -3099,7 +3098,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3119,7 +3118,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3139,7 +3138,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3159,7 +3158,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3179,7 +3178,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3199,7 +3198,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3219,7 +3218,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3239,7 +3238,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3259,7 +3258,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3279,7 +3278,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3299,7 +3298,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3319,7 +3318,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -3339,7 +3338,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -3639,7 +3638,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3679,7 +3678,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3699,7 +3698,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3719,7 +3718,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3739,7 +3738,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3759,7 +3758,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3779,7 +3778,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3799,7 +3798,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -3819,7 +3818,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -3839,7 +3838,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -3859,7 +3858,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -3879,7 +3878,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -3899,7 +3898,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -3919,7 +3918,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3939,7 +3938,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3959,7 +3958,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -3979,7 +3978,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4019,7 +4018,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -4119,7 +4118,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4223,7 +4222,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4243,7 +4242,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4263,7 +4262,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4283,7 +4282,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -4303,7 +4302,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4323,7 +4322,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4363,7 +4362,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -4383,7 +4382,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -4403,7 +4402,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4423,7 +4422,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -4443,7 +4442,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -4463,7 +4462,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -4483,7 +4482,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4503,7 +4502,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4523,7 +4522,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4543,7 +4542,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4563,7 +4562,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4583,7 +4582,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4603,7 +4602,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4623,7 +4622,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4643,7 +4642,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4663,7 +4662,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4683,7 +4682,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4703,7 +4702,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4723,7 +4722,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -4743,7 +4742,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4763,7 +4762,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4783,7 +4782,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4883,7 +4882,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -4947,7 +4946,7 @@
       "status": "proved",
       "area": "reduction",
       "family_id": "family-reduction",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4967,7 +4966,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -4987,7 +4986,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5007,7 +5006,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5027,7 +5026,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5047,7 +5046,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5067,7 +5066,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5087,7 +5086,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5107,7 +5106,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5127,7 +5126,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5147,7 +5146,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5167,7 +5166,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5187,7 +5186,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5207,7 +5206,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5227,7 +5226,7 @@
       "status": "proved",
       "area": "attack-resistance",
       "family_id": "family-attack-resistance",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -5247,7 +5246,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5267,7 +5266,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5287,7 +5286,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5307,7 +5306,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5327,7 +5326,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5347,7 +5346,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5367,7 +5366,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5387,7 +5386,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -5407,7 +5406,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5427,7 +5426,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5447,7 +5446,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5467,7 +5466,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5487,7 +5486,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5507,7 +5506,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5527,7 +5526,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5547,7 +5546,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5567,7 +5566,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5587,7 +5586,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5607,7 +5606,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5627,7 +5626,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5647,7 +5646,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5667,7 +5666,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5687,7 +5686,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5707,7 +5706,7 @@
       "status": "proved",
       "area": "protocol-soundness",
       "family_id": "family-protocol-soundness",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5727,7 +5726,7 @@
       "status": "proved",
       "area": "protocol-soundness",
       "family_id": "family-protocol-soundness",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5747,7 +5746,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -5767,7 +5766,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -5807,7 +5806,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -5827,7 +5826,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -5847,7 +5846,7 @@
       "status": "proved",
       "area": "attack-resistance",
       "family_id": "family-attack-resistance",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -5867,7 +5866,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -5887,7 +5886,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 11,
+      "dependency_depth": 12,
       "gated": true
     },
     {
@@ -5907,7 +5906,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -5927,7 +5926,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -5947,7 +5946,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -5969,7 +5968,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -5991,7 +5990,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -6011,7 +6010,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -6035,7 +6034,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -6055,7 +6054,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -6075,7 +6074,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -6101,7 +6100,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -6121,7 +6120,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -6141,7 +6140,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -6161,7 +6160,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -6181,7 +6180,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -6201,7 +6200,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -6221,7 +6220,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -6241,7 +6240,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -9426,7 +9425,7 @@
       "generator_id": "ecdlp-hypothesis-generation-v0",
       "source_hashes": {
         "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-        "typed_evidence_state_sha256": "a532bda8e7ad404da57959f3607f686d709a17fea3bb58eca28b1270bf7f0574",
+        "typed_evidence_state_sha256": "2ad4644f2f5bba52b3f2ec626844750c6bbd01c7f8aec4e39484a66951cad4da",
         "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
         "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
         "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
@@ -9465,7 +9464,7 @@
           "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
           "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
           "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-          "evidence_files_sha256": "d30d652198fbbab6e83c390dc3a39f772e6369d1e9e713da312ad92db7f18f04",
+          "evidence_files_sha256": "5c5382a0f094e44f45b8c39336c9c0b11fcd5bba52b91e0f8d7655731b99679d",
           "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
         },
         "authorization_boundary": "Typed cells and desk decisions authorize nothing. Only an open cell may seed an untrusted proposal, and every later experiment and promotion gate remains separate.",
@@ -11197,7 +11196,7 @@
       "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
       "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
       "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-      "evidence_files_sha256": "d30d652198fbbab6e83c390dc3a39f772e6369d1e9e713da312ad92db7f18f04",
+      "evidence_files_sha256": "5c5382a0f094e44f45b8c39336c9c0b11fcd5bba52b91e0f8d7655731b99679d",
       "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
     },
     "trust_boundary": {
@@ -12827,6 +12826,11 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.Secp256k1Curve",
+      "to": "Ecdlp.Proved.Secp256k1KernelFacts",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.Secp256k1GenericSecurity",
       "to": "Ecdlp.Proved.GenericGroupBound",
       "type": "imports"
@@ -12837,8 +12841,18 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.Secp256k1KernelFacts",
+      "to": "Ecdlp.Secp256k1Verified",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.Secp256k1Order",
       "to": "Ecdlp.Secp256k1Verified",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.Secp256k1Order",
+      "to": "Ecdlp.Proved.Secp256k1KernelFacts",
       "type": "imports"
     },
     {
@@ -14159,6 +14173,11 @@
     {
       "from": "Ecdlp",
       "to": "Ecdlp.Proved.KernelScalarMul",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.Secp256k1KernelFacts",
       "type": "imports"
     },
     {

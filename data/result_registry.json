@@ -7,8 +7,8 @@
   "anonymous_instance_exemptions": 7,
   "unresolved_reference_count": 0,
   "coverage_percent": 100.0,
-  "declaration_count": 1202,
-  "distinct_qualified_names": 1202,
+  "declaration_count": 1211,
+  "distinct_qualified_names": 1211,
   "verified_md_citations": 677,
   "unresolved_references": [],
   "resolution_exemptions": [
@@ -19,7 +19,7 @@
       "namespace": "Ecdlp.Curve",
       "target": "secp256k1.IsElliptic",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 45
+      "line": 46
     },
     {
       "ledger_id": "ledger-042",
@@ -28,7 +28,7 @@
       "namespace": "Ecdlp.Curve",
       "target": "secp256k1.IsElliptic",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 45
+      "line": 46
     },
     {
       "ledger_id": "ledger-156",
@@ -764,7 +764,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -784,7 +784,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -824,7 +824,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -844,7 +844,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -864,7 +864,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -884,7 +884,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -904,7 +904,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -924,7 +924,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -1573,7 +1573,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 28
+          "line": 29
         }
       ]
     },
@@ -1614,7 +1614,7 @@
           "namespace": "Ecdlp.Curve",
           "target": "secp256k1.IsElliptic",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 45
+          "line": 46
         },
         {
           "ledger_id": "ledger-042",
@@ -1623,7 +1623,7 @@
           "namespace": "Ecdlp.Curve",
           "target": "secp256k1.IsElliptic",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 45
+          "line": 46
         }
       ]
     },
@@ -1643,7 +1643,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 37
+          "line": 38
         }
       ]
     },
@@ -1663,7 +1663,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 54
+          "line": 55
         }
       ]
     },
@@ -1863,7 +1863,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 18
+          "line": 19
         }
       ]
     },
@@ -1883,7 +1883,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 32
+          "line": 33
         }
       ]
     },
@@ -1903,7 +1903,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 48
+          "line": 49
         }
       ]
     },
@@ -1914,7 +1914,7 @@
       "declared_files": [
         "Ecdlp/Secp256k1Verified.lean"
       ],
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "status": "proved",
       "references": [
         {
@@ -1943,7 +1943,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 61
+          "line": 62
         }
       ]
     },
@@ -1963,7 +1963,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 77
+          "line": 78
         }
       ]
     },
@@ -3387,7 +3387,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 71
+          "line": 72
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_preΨ₅_eval_glv_invariant",
@@ -3395,7 +3395,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 92
+          "line": 93
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_preΨ₇_eval_glv_invariant",
@@ -3403,7 +3403,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 108
+          "line": 109
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_Ψ₂Sq_eval_glv_invariant",
@@ -3411,7 +3411,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 81
+          "line": 82
         }
       ]
     },
@@ -10951,7 +10951,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "def",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 19
+      "line": 20
     },
     "Ecdlp.Curve.secp256k1Bar": {
       "name": "secp256k1Bar",
@@ -11336,7 +11336,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Order.lean",
-      "line": 18
+      "line": 19
     },
     "Ecdlp.Curve.secp256k1_b₂": {
       "name": "secp256k1_b₂",
@@ -11441,7 +11441,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 37
+      "line": 38
     },
     "Ecdlp.Curve.secp256k1_c₆": {
       "name": "secp256k1_c₆",
@@ -11644,7 +11644,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 61
+      "line": 62
     },
     "Ecdlp.Curve.secp256k1_generator_ne_zero": {
       "name": "secp256k1_generator_ne_zero",
@@ -11658,7 +11658,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 77
+      "line": 78
     },
     "Ecdlp.Curve.secp256k1_generator_nsmul_n_eq_zero": {
       "name": "secp256k1_generator_nsmul_n_eq_zero",
@@ -12029,14 +12029,14 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 54
+      "line": 55
     },
     "Ecdlp.Curve.secp256k1_lambda_orderOf": {
       "name": "secp256k1_lambda_orderOf",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Order.lean",
-      "line": 32
+      "line": 33
     },
     "Ecdlp.Curve.secp256k1_mem_torsionBy_iff_addOrderOf_dvd": {
       "name": "secp256k1_mem_torsionBy_iff_addOrderOf_dvd",
@@ -12344,7 +12344,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GlvDivPoly.lean",
-      "line": 92
+      "line": 93
     },
     "Ecdlp.Curve.secp256k1_preΨ₅_natDegree": {
       "name": "secp256k1_preΨ₅_natDegree",
@@ -12400,7 +12400,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GlvDivPoly.lean",
-      "line": 108
+      "line": 109
     },
     "Ecdlp.Curve.secp256k1_preΨ₇_natDegree": {
       "name": "secp256k1_preΨ₇_natDegree",
@@ -12687,7 +12687,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Order.lean",
-      "line": 48
+      "line": 49
     },
     "Ecdlp.Curve.secp256k1_three_nsmul_eq_zero_iff": {
       "name": "secp256k1_three_nsmul_eq_zero_iff",
@@ -12883,7 +12883,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 28
+      "line": 29
     },
     "Ecdlp.Curve.secp256k1_Φ_monic": {
       "name": "secp256k1_Φ_monic",
@@ -12974,7 +12974,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GlvDivPoly.lean",
-      "line": 81
+      "line": 82
     },
     "Ecdlp.Curve.secp256k1_Ψ₂Sq_natDegree": {
       "name": "secp256k1_Ψ₂Sq_natDegree",
@@ -13023,7 +13023,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GlvDivPoly.lean",
-      "line": 71
+      "line": 72
     },
     "Ecdlp.Curve.secp256k1_Ψ₃_natDegree": {
       "name": "secp256k1_Ψ₃_natDegree",
@@ -17309,12 +17309,26 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 16
     },
+    "Secp256k1.beta_field_eigenvalue_kernel": {
+      "name": "beta_field_eigenvalue_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 39
+    },
     "Secp256k1.beta_is_cube_root": {
       "name": "beta_is_cube_root",
       "namespace": "Secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 18
+    },
+    "Secp256k1.beta_is_cube_root_kernel": {
+      "name": "beta_is_cube_root_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 42
     },
     "Secp256k1.beta_lt_p": {
       "name": "beta_lt_p",
@@ -17323,6 +17337,13 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 21
     },
+    "Secp256k1.beta_lt_p_kernel": {
+      "name": "beta_lt_p_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 48
+    },
     "Secp256k1.generator_on_curve": {
       "name": "generator_on_curve",
       "namespace": "Secp256k1",
@@ -17330,12 +17351,26 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 29
     },
+    "Secp256k1.generator_on_curve_kernel": {
+      "name": "generator_on_curve_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 52
+    },
     "Secp256k1.glv_lambda_eigenvalue": {
       "name": "glv_lambda_eigenvalue",
       "namespace": "Secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 10
+    },
+    "Secp256k1.glv_lambda_eigenvalue_kernel": {
+      "name": "glv_lambda_eigenvalue_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 30
     },
     "Secp256k1.lam": {
       "name": "lam",
@@ -17351,6 +17386,13 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 20
     },
+    "Secp256k1.lam_lt_n_kernel": {
+      "name": "lam_lt_n_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 45
+    },
     "Secp256k1.lambda_is_cube_root": {
       "name": "lambda_is_cube_root",
       "namespace": "Secp256k1",
@@ -17358,12 +17400,26 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 12
     },
+    "Secp256k1.lambda_is_cube_root_kernel": {
+      "name": "lambda_is_cube_root_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 33
+    },
     "Secp256k1.lambda_ne_one": {
       "name": "lambda_ne_one",
       "namespace": "Secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 14
+    },
+    "Secp256k1.lambda_ne_one_kernel": {
+      "name": "lambda_ne_one_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 36
     },
     "Secp256k1.n": {
       "name": "n",
@@ -17385,6 +17441,13 @@
       "kind": "theorem",
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 8
+    },
+    "Secp256k1.p_special_form_kernel": {
+      "name": "p_special_form_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 27
     },
     "WeierstrassCurve.Affine.instFinitePoint": {
       "name": "instFinitePoint",

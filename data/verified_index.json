@@ -3,9 +3,9 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "4f6ff6e341afb5f4c4fa6ef9c522513cf401dd3d02fa54bffc268f12398bbaac",
+    "data/result_registry.json": "740b23c29865692df862c72eb945a38a4cc95be0dcd28d410806677c8d7bcfa6",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
-    "data/stats.json": "7edc2b3893c0766808508bdb7b4c6d946e4b5ce0ec3ba489a9110d7598e72bb6"
+    "data/stats.json": "9de9ebb712a11eb88bd391b906cd762607a0b358ea4acfc83411bd630a4ff5a7"
   },
   "invariants": [
     "VERIFIED.md remains the canonical ECDLP ledger.",
@@ -18,8 +18,8 @@
     "ecdlp_rows": 307,
     "researchos_rows": 172,
     "kernel_standard_rows": 172,
-    "kernel_audited_rows": 234,
-    "kernel_plus_compiler_rows": 73,
+    "kernel_audited_rows": 225,
+    "kernel_plus_compiler_rows": 82,
     "lanes": 2,
     "domains": {
       "analysis-generic": 68,
@@ -3116,25 +3116,25 @@
           "declaration": "Ecdlp.Curve.secp256k1_Ψ₃_eval_glv",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 71
+          "line": 72
         },
         {
           "declaration": "Ecdlp.Curve.secp256k1_preΨ₅_eval_glv_invariant",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 92
+          "line": 93
         },
         {
           "declaration": "Ecdlp.Curve.secp256k1_preΨ₇_eval_glv_invariant",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 108
+          "line": 109
         },
         {
           "declaration": "Ecdlp.Curve.secp256k1_Ψ₂Sq_eval_glv_invariant",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 81
+          "line": 82
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -6886,7 +6886,7 @@
           "declaration": "Ecdlp.Curve.secp256k1_three_cube_roots_of_unity",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 48
+          "line": 49
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -7472,9 +7472,9 @@
       "claim_id": "glv-subgroup-eigenvalue-006",
       "title": "glv-subgroup-eigenvalue-006",
       "display": "`Secp256k1.glv_lambda_eigenvalue`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
@@ -8068,9 +8068,9 @@
       "claim_id": "sec2-secp256k1-field-005",
       "title": "sec2-secp256k1-field-005",
       "display": "`Secp256k1.p_special_form`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
@@ -8740,7 +8740,7 @@
           "declaration": "Ecdlp.Curve.secp256k1_beta_orderOf",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 18
+          "line": 19
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -8766,7 +8766,7 @@
           "declaration": "Ecdlp.Curve.secp256k1_lambda_orderOf",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 32
+          "line": 33
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -8832,9 +8832,9 @@
       "claim_id": "secp256k1 base point `G` is on the curve (`Gy² ≡ Gx³+7 mod p`)",
       "title": "secp256k1 base point `G` is on the curve (`Gy² ≡ Gx³+7 mod p`)",
       "display": "`Secp256k1.generator_on_curve`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
@@ -8974,7 +8974,7 @@
           "declaration": "Ecdlp.Curve.secp256k1_Δ_ne_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 28
+          "line": 29
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -9026,7 +9026,7 @@
           "declaration": "Ecdlp.Curve.secp256k1_generator_equation",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 61
+          "line": 62
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -9052,7 +9052,7 @@
           "declaration": "Ecdlp.Curve.secp256k1_generator_nonsingular",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 77
+          "line": 78
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -9182,7 +9182,7 @@
           "declaration": "Ecdlp.Curve.secp256k1_c₄_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 37
+          "line": 38
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -9208,13 +9208,13 @@
           "declaration": "Ecdlp.Curve.secp256k1.IsElliptic",
           "kind": "declaration",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 45
+          "line": 46
         },
         {
           "declaration": "secp256k1.IsElliptic",
           "kind": "declaration",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 45
+          "line": 46
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -9240,7 +9240,7 @@
           "declaration": "Ecdlp.Curve.secp256k1_j_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 54
+          "line": 55
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -9454,9 +9454,9 @@
       "claim_id": "supporting: beta < p",
       "title": "supporting: beta < p",
       "display": "`Secp256k1.beta_lt_p`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
@@ -9480,9 +9480,9 @@
       "claim_id": "supporting: beta^2+beta+1 = 0 mod p",
       "title": "supporting: beta^2+beta+1 = 0 mod p",
       "display": "`Secp256k1.beta_field_eigenvalue`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
@@ -9506,9 +9506,9 @@
       "claim_id": "supporting: beta^3 = 1 mod p",
       "title": "supporting: beta^3 = 1 mod p",
       "display": "`Secp256k1.beta_is_cube_root`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
@@ -9532,9 +9532,9 @@
       "claim_id": "supporting: lam < n",
       "title": "supporting: lam < n",
       "display": "`Secp256k1.lam_lt_n`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
@@ -9558,9 +9558,9 @@
       "claim_id": "supporting: lambda != 1",
       "title": "supporting: lambda != 1",
       "display": "`Secp256k1.lambda_ne_one`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
@@ -9584,9 +9584,9 @@
       "claim_id": "supporting: lambda^3 = 1 mod n",
       "title": "supporting: lambda^3 = 1 mod n",
       "display": "`Secp256k1.lambda_is_cube_root`",
-      "method": "kernel (`decide +kernel`)",
+      "method": "native_decide",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Secp256k1Verified.lean"
