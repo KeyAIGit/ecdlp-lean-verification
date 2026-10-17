@@ -13,11 +13,10 @@ that skips point validation and receives a twist point computes in `Ẽ(𝔽_p)`
 is the twist's, not the curve's.
 
 For P-256 the number certified below is `2p + 2 − n`. **Honest scope:** interpreting it as
-the twist order `#Ẽ = p + 1 + t` rests on `#E(𝔽_p) = n`, which for P-256 this repo has *not*
-yet proved — only `n ∣ #E` is in-repo (`P256Cardinality.lean`; the full count is parked on
-the Hasse bound, see `BARRIERS.md`). `#E = n` is the standard, externally certified P-256
-point count; every theorem below is nevertheless *unconditional arithmetic about the literal
-number* `2p + 2 − n`. Its exact factorization is
+the twist order `#Ẽ = p + 1 + t` rests on `#E(𝔽_p) = n`, which is now proved in
+`P256CardinalityExact.lean` (`p256_card_point_eq_n`, with `native_decide` compiler trust). The
+twist-order identity `#Ẽ = 2p + 2 − #E` itself is not formalized in this repository; every
+theorem below is *unconditional arithmetic about the literal number* `2p + 2 − n`. Its exact factorization is
 ```
 2p + 2 − n = 3 · 5 · 13 · 179 · Q,     Q a 241-bit prime.
 ```
@@ -223,8 +222,9 @@ theorem p256_twist_maxprime_prime :
     Nat.Prime 3317349640749355357762425066592395746459685764401801118712075735758936647 :=
   pr_3317349640749355357762425066592395746459685764401801118712075735758936647
 
-/-- **Exact factorization of `2p + 2 − n` for P-256** (the quadratic-twist order, given the
-standard `#E = n`; in-repo only `n ∣ #E` is proved — see the file docstring). Exhibits the
+/-- **Exact factorization of `2p + 2 − n` for P-256** (the quadratic-twist order, given
+`#E = n`, which is `p256_card_point_eq_n`; the twist-order identity is not formalized — see the
+file docstring). Exhibits the
 `3 · 5 · 13 · 179 = 34905 ≈ 2¹⁵` cofactor and the 241-bit large prime `Q`. -/
 theorem p256_twist_order_factorization :
     2 * p + 2 - n

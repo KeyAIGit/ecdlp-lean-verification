@@ -10,6 +10,34 @@ CI elaborates it standalone and validates the output with
 `scripts/check_axioms.py`.
 -/
 
+#print axioms Ecdlp.CubicCert.brainpoolP256r1.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.brainpoolP256r1.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.brainpoolP256r1.two_mul_add_one_lt_three_mul
+#print axioms Ecdlp.CubicCert.brainpoolP384r1.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.brainpoolP384r1.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.brainpoolP384r1.two_mul_add_one_lt_three_mul
+#print axioms Ecdlp.CubicCert.brainpoolP512r1.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.brainpoolP512r1.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.brainpoolP512r1.two_mul_add_one_lt_three_mul
+#print axioms Ecdlp.CubicCert.natCard_point_eq_of_noRoot
+#print axioms Ecdlp.CubicCert.p192.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.p192.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.p192.two_mul_add_one_lt_three_mul
+#print axioms Ecdlp.CubicCert.p224.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.p224.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.p224.two_mul_add_one_lt_three_mul
+#print axioms Ecdlp.CubicCert.p256.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.p256.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.p256.two_mul_add_one_lt_three_mul
+#print axioms Ecdlp.CubicCert.p384.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.p384.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.p384.two_mul_add_one_lt_three_mul
+#print axioms Ecdlp.CubicCert.p521.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.p521.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.p521.two_mul_add_one_lt_three_mul
+#print axioms Ecdlp.CubicCert.secp256k1.card_eq_of_addOrderOf
+#print axioms Ecdlp.CubicCert.secp256k1.cubic_ne_zero
+#print axioms Ecdlp.CubicCert.secp256k1.two_mul_add_one_lt_three_mul
 #print axioms Ecdlp.Curve.Q5
 #print axioms Ecdlp.Curve.Q5_eval
 #print axioms Ecdlp.Curve.Q5_natDegree_le
@@ -79,6 +107,7 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.Curve.secp256k1_b₈
 #print axioms Ecdlp.Curve.secp256k1_c_relation
 #print axioms Ecdlp.Curve.secp256k1_card_point_eq_n
+#print axioms Ecdlp.Curve.secp256k1_card_point_eq_n_general
 #print axioms Ecdlp.Curve.secp256k1_card_point_le
 #print axioms Ecdlp.Curve.secp256k1_classical_security_profile
 #print axioms Ecdlp.Curve.secp256k1_cubic_isCoprime_derivative
@@ -525,16 +554,19 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.P256.Primality.p256_n_prime
 #print axioms Ecdlp.P256.Primality.p256_p_prime
 #print axioms Ecdlp.P256.instFiniteP256Point
+#print axioms Ecdlp.P256.p256_card_point_eq_n
 #print axioms Ecdlp.P256.p256_embedding_degree_gt_100
 #print axioms Ecdlp.P256.p256_generator_addOrderOf
 #print axioms Ecdlp.P256.p256_generator_nonsingular
 #print axioms Ecdlp.P256.p256_generator_nsmul_n_eq_zero
 #print axioms Ecdlp.P256.p256_grp_card
 #print axioms Ecdlp.P256.p256_n_dvd_card_point
+#print axioms Ecdlp.P256.p256_no_two_torsion_cubic
 #print axioms Ecdlp.P256.p256_trace_ordinary_nonanomalous
 #print axioms Ecdlp.P256.p256_twist_maxprime_prime
 #print axioms Ecdlp.P256.p256_twist_order_factorization
 #print axioms Ecdlp.P256.p256_twist_security_profile
+#print axioms Ecdlp.P256.p256_two_ne_zero
 #print axioms Ecdlp.PohligHellman.component
 #print axioms Ecdlp.PohligHellman.projection
 #print axioms Ecdlp.PohligHellman.reconstruct
@@ -625,6 +657,11 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.Torsion.torsionBy_eq_top
 #print axioms Ecdlp.Torsion.zmod_module_nsmul_eq_zero
 #print axioms Ecdlp.Torsion.zmultiples_le_torsionBy
+#print axioms Ecdlp.Weierstrass.card_eq_of_prime_order_point
+#print axioms Ecdlp.Weierstrass.exists_cubic_root_of_two_nsmul_eq_zero
+#print axioms Ecdlp.Weierstrass.natCard_eq_of_dvd_of_lt_three_mul
+#print axioms Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf
+#print axioms Ecdlp.Weierstrass.natCard_point_le
 #print axioms Ecdlp.Weil.RegularAt
 #print axioms Ecdlp.Weil.RegularAt.exists_atPrime
 #print axioms Ecdlp.Weil.RegularAt.exists_mul_num_den

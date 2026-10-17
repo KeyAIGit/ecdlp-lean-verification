@@ -80,18 +80,20 @@ def test_row_regex_drops_only_the_excluded_secondary_table() -> None:
     `ROW_RE` demands five non-empty cells, so a malformed or empty cell would delete a whole
     row from every generated artifact without any gate noticing. The only pipe-leading lines
     it may reject are the four-column "Ported / upstream-derived" table (header, separator and
-    its single row), which VERIFIED.md excludes from the headline count on purpose.
+    its two rows: `normEDS` and the verified-garbage certificate lemma), which VERIFIED.md
+    excludes from the headline count on purpose.
     """
     lines = (ROOT / "VERIFIED.md").read_text(encoding="utf-8").splitlines()
     dropped = [ln for ln in lines if ln.lstrip().startswith("|") and not ROW_RE.match(ln)]
-    assert len(dropped) == 3, (
+    assert len(dropped) == 4, (
         "unexpected number of unparsed table lines in VERIFIED.md "
-        f"({len(dropped)}, expected the 3 lines of the excluded four-column table): {dropped}"
+        f"({len(dropped)}, expected the 4 lines of the excluded four-column table): {dropped}"
     )
-    assert any("normEDS" in ln for ln in dropped), (
-        "the unparsed lines are no longer the excluded upstream-derived table; a real ledger "
-        f"row may be getting dropped: {dropped}"
-    )
+    for marker in ("normEDS_isEllSequence", "noRoot_of_cert"):
+        assert any(marker in ln for ln in dropped), (
+            "the unparsed lines are no longer the excluded upstream-derived table; a real "
+            f"ledger row may be getting dropped (missing {marker}): {dropped}"
+        )
 
 
 def main() -> int:

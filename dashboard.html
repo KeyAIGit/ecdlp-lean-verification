@@ -50,15 +50,15 @@
           <p>One operator view for the current decision, formal substrate, evidence, active work,
             and generated trust checks.</p></div>
         <div class="snapshot">Canonical snapshot
-          <code>snapshot 307 ledger rows / ~268 distinct</code></div>
+          <code>snapshot 311 ledger rows / ~271 distinct</code></div>
       </div>
       <div class="boundary-notice"><strong>Scope boundary.</strong>
         The environment maps and verifies the research boundary. It does not solve the plain secp256k1 discrete logarithm problem.
         Monitoring means new evidence can reopen a route; it does not mean impossibility was proved.</div>
       <div class="workspace-metrics">
-        <div class="workspace-metric"><div class="workspace-metric__value">307</div><div class="workspace-metric__label">ledger rows</div></div>
-        <div class="workspace-metric"><div class="workspace-metric__value">~268</div><div class="workspace-metric__label">distinct results</div></div>
-        <div class="workspace-metric"><div class="workspace-metric__value">179</div><div class="workspace-metric__label">proved modules</div></div>
+        <div class="workspace-metric"><div class="workspace-metric__value">311</div><div class="workspace-metric__label">ledger rows</div></div>
+        <div class="workspace-metric"><div class="workspace-metric__value">~271</div><div class="workspace-metric__label">distinct results</div></div>
+        <div class="workspace-metric"><div class="workspace-metric__value">183</div><div class="workspace-metric__label">proved modules</div></div>
         <div class="workspace-metric"><div class="workspace-metric__value">486</div><div class="workspace-metric__label">corpus claims</div></div>
         <div class="workspace-metric"><div class="workspace-metric__value">17</div><div class="workspace-metric__label">routes evaluated</div></div>
         <div class="workspace-metric"><div class="workspace-metric__value">8</div><div class="workspace-metric__label">typed cells</div></div>
@@ -263,7 +263,7 @@
 
     <section class="tab-panel" role="tabpanel" id="formal" aria-labelledby="tab-formal" data-tab-panel="formal">
       <div class="panel-heading"><div><h2>Formal substrate</h2>
-        <p>11 of 17 critical nodes are closed. Blocked nodes retain exact resume conditions.</p></div>
+        <p>12 of 17 critical nodes are closed. Blocked nodes retain exact resume conditions.</p></div>
         <a class="button" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/FORMAL_SUBSTRATE.json">Open canonical map</a></div>
       <div class="table-wrap" tabindex="0" role="region" aria-label="Formal substrate table" style="margin-bottom:28px"><table class="data-table">
         <caption class="sr-only">Formal substrate critical nodes</caption>
@@ -360,10 +360,10 @@
   <td><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/notes/WEIL_LADDER.md">notes/WEIL_LADDER.md</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/BARRIERS.md">BARRIERS.md</a></td>
 </tr><tr>
   <td><strong>P-256 exact rational-point cardinality</strong><small>p256-exact-cardinality</small></td>
-  <td><span class="status status--out_of_release">Outside release</span></td>
+  <td><span class="status status--closed">Closed</span></td>
   <td>secp-parameters</td>
-  <td>blocker-p256-cardinality</td>
-  <td><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/P256Cardinality.lean">Ecdlp/Proved/P256Cardinality.lean</a></td>
+  <td>none</td>
+  <td><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/P256Cardinality.lean">Ecdlp/Proved/P256Cardinality.lean</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/P256CardinalityExact.lean">Ecdlp/Proved/P256CardinalityExact.lean</a></td>
 </tr><tr>
   <td><strong>New cryptanalytic hypothesis testing</strong><small>experimental-hypotheses</small></td>
   <td><span class="status status--parked">Parked</span></td>
@@ -393,10 +393,6 @@
   <td><strong>Weil reciprocity and divisor-degree machinery are missing</strong><small>upstream-foundation</small></td>
   <td>The reachable W1-W3 evaluation substrate is closed; W4 reciprocity is required before the pairing can be assembled.</td>
   <td>Mathlib or this repository gains the needed divisor/tame-symbol reciprocity layer.</td>
-</tr><tr>
-  <td><strong>P-256 exact cardinality needs a general point-counting/Hasse route</strong><small>out-of-scope-foundation</small></td>
-  <td>Only n divides the P-256 group cardinality is proved; the secp256k1 j=0 certificate does not transfer.</td>
-  <td>A reviewed Hasse/Schoof or curve-specific exact-cardinality proof becomes available.</td>
 </tr></tbody>
       </table></div>
     </section>
@@ -405,7 +401,7 @@
       <div class="panel-heading"><div><h2>Sync Health</h2>
         <p>The public and agent-facing views resolve back to canonical machine sources and their gates.</p></div></div>
       <div class="layout-two" style="margin-bottom:30px"><article class="surface">
-  <div class="surface__head"><div><h3>Canonical counts</h3><p>307 ledger rows / ~268 distinct</p></div><span class="status status--closed">OK</span></div>
+  <div class="surface__head"><div><h3>Canonical counts</h3><p>311 ledger rows / ~271 distinct</p></div><span class="status status--closed">OK</span></div>
   <div class="surface__body"><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/data/stats.json">data/stats.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/scripts/check_status_consistency.py">scripts/check_status_consistency.py</a></div>
 </article><article class="surface">
   <div class="surface__head"><div><h3>Decision state</h3><p>1 structural route completed / 0 promoted / 1 exact toy run completed</p></div><span class="status status--blue">OK</span></div>
@@ -414,7 +410,7 @@
   <div class="surface__head"><div><h3>Research Engine gates</h3><p>8 typed cells / 2 seeds / 0 bounded experiments</p></div><span class="status status--blue">OK</span></div>
   <div class="surface__body"><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/RESEARCH_ENGINE_V0.json">repo/RESEARCH_ENGINE_V0.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/ECDLP_TYPED_EVIDENCE_V0.json">repo/ECDLP_TYPED_EVIDENCE_V0.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/HYPOTHESIS_GENERATION_V0.json">repo/HYPOTHESIS_GENERATION_V0.json</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/scripts/check_research_engine.py">scripts/check_research_engine.py</a></div>
 </article><article class="surface">
-  <div class="surface__head"><div><h3>Generated closure</h3><p>307 theorem nodes in the knowledge graph</p></div><span class="status status--closed">OK</span></div>
+  <div class="surface__head"><div><h3>Generated closure</h3><p>311 theorem nodes in the knowledge graph</p></div><span class="status status--closed">OK</span></div>
   <div class="surface__body"><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/repo/ARTIFACTS.yaml">repo/ARTIFACTS.yaml</a><a class="source-link" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/scripts/check_repo_artifacts.py">scripts/check_repo_artifacts.py</a></div>
 </article><article class="surface">
   <div class="surface__head"><div><h3>Product boundary</h3><p>Reference deployment</p></div><span class="status status--blue">OK</span></div>

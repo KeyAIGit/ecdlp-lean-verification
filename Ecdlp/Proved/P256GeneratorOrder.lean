@@ -14,8 +14,10 @@ This is the **weak point-counting keystone**: it pins the cryptographic subgroup
 computing `#E(𝔽_p)` (no Hasse/Schoof). Proof: `n • G = 0` (native-evaluated 256-bit
 double-and-add over 𝔽_p) and `G ≠ 0`, with `n` prime (`P256PrimeN`) — so `addOrderOf G = n`
 by `addOrderOf_eq_prime`. Like every `native_decide` fact here it additionally trusts the Lean
-compiler (`TRUST_REPORT.md`). It does **not** give the strong keystone `#E(𝔽_p) = n` (cofactor
-1), which still needs the Hasse bound — this is the base-point subgroup `⟨G⟩`.
+compiler (`TRUST_REPORT.md`). By itself it does **not** give the strong keystone
+`#E(𝔽_p) = n` (cofactor 1) — this is the base-point subgroup `⟨G⟩`. The strong keystone is
+`p256_card_point_eq_n` (`P256CardinalityExact.lean`), which combines this order fact with
+`#E ≤ 2p + 1 < 3n` and a certificate that P-256 has no rational 2-torsion; no Hasse bound.
 -/
 
 open WeierstrassCurve.Affine

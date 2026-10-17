@@ -16,11 +16,11 @@ work stayed inside the base-point subgroup `⟨G⟩`). Two facts:
   divides `#E` (Lagrange on `⟨G⟩`, whose order is the proved `n`).
 
 This is only the **weak keystone**: it pins `#E ∈ {n, 2n, 3n, …}`. The **strong keystone**
-`#E = n` (cofactor 1) is **NOT** proved here for P-256. The secp256k1 curve-specific route
-(`CurveCardinalityExact.lean`: `#E ≤ 2p+1 < 3n` together with `E[2] = {O}`, the latter from
-`−7` being a non-cube so there is no nonzero 2-torsion) is `j = 0`-specific and does **not**
-transfer to P-256, whose `j`-invariant is nonzero (`c₄ = 144 ≠ 0`). A strong keystone for
-P-256 would require the general Hasse bound, still absent from Mathlib v4.31.
+`#E = n` (cofactor 1) is proved in `P256CardinalityExact.lean` (`p256_card_point_eq_n`). The
+secp256k1 `−7`-non-cube step (`CurveCardinalityExact.lean`) is `j = 0`-specific and is not used
+there; instead the curve-generic `natCard_point_eq_of_addOrderOf` (`PrimeOrderCardinality.lean`:
+`#E ≤ 2p+1 < 3n` and no rational 2-torsion) is applied with a kernel-checked certificate that
+`x³ − 3x + b` has no root in `𝔽_p` (`CubicNoRootCertificate.lean`). No Hasse bound is needed.
 -/
 
 open WeierstrassCurve.Affine
@@ -42,8 +42,8 @@ theorem p256_grp_card : Nat.card ↥p256Grp = n := by
 
 /-- **`n ∣ #E(𝔽_p)`.** The prime base-point order divides the P-256 curve cardinality —
 Lagrange applied to the subgroup `⟨G⟩` of proved order `n`. This is the weak keystone
-(`#E ∈ {n, 2n, 3n, …}`); the strong keystone `#E = n` is not established here (see the header:
-the secp256k1 `j = 0` route does not transfer, and Hasse is a Mathlib gap). -/
+(`#E ∈ {n, 2n, 3n, …}`); the strong keystone `#E = n` is `p256_card_point_eq_n` in
+`P256CardinalityExact.lean` (see the header). -/
 theorem p256_n_dvd_card_point :
     n ∣ Nat.card P256.toAffine.Point := by
   rw [← p256_grp_card]
