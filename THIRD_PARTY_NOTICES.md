@@ -24,6 +24,31 @@ This review leaves both source files byte-for-byte unchanged. Their headers and
 existing modification/provenance notices remain authoritative; this inventory
 does not certify an exhaustive comparison with the upstream PR.
 
+## Cubic no-root certificate: Apache-2.0 (upstream: Apache-2.0 OR BSD-3-Clause)
+
+File:
+- `Ecdlp/Proved/CubicNoRootCertificate.lean` (the definitions `Tri`, `mulT`, `powT`,
+  `evalT` and the lemmas `evalT_mulT`, `evalT_powT`, `noRoot_of_cert`, and
+  `cubic_ne_zero_of_cert` adapted from `noTwoTorsion_of_cert`)
+
+Adapted from pyca/verified-garbage, `lean/VerifiedGarbage/Proof/Weierstrass/Cubic.lean`
+at commit `38c744308fcd`. Upstream: https://github.com/pyca/verified-garbage . The
+upstream `LICENSE` makes the software available under *either* Apache-2.0
+(`LICENSE.APACHE`) or BSD-3-Clause (`LICENSE.BSD`, "Copyright (c) Individual
+contributors. All rights reserved."). This repository uses the code under Apache-2.0.
+License copy: [LICENSES/Apache-2.0.txt](LICENSES/Apache-2.0.txt).
+
+Changes: namespace, docstrings and formatting; two rewrite steps in `evalT_powT`; and
+the short-Weierstrass adapter restated for natural-number coefficients over `ZMod p`.
+The module docstring records the provenance. The upstream source file carries no
+per-file copyright header. The curve-generic counting argument in
+`Ecdlp/Proved/PrimeOrderCardinality.lean` is the same argument as upstream
+`VG.Proof.Weierstrass.primeOrder_of`, but its Lean code was written separately for
+Mathlib's `WeierstrassCurve` (it follows this repository's secp256k1 proof).
+
+This file is not registered in `repo/OSS_READINESS.json`: that gate registers only
+files whose source carries a `Copyright` header line, and this file has none.
+
 ## Fonts: OFL-1.1
 
 | Bundled file | Copyright notice | License text |
