@@ -1,0 +1,23 @@
+{
+  "id": "semaev_tower",
+  "name": "SemaevTower",
+  "status": "todo",
+  "difficulty": "medium",
+  "template": "semaev_summation_polynomial",
+  "why_it_matters": "Defines the general Semaev summation polynomial S_m over any commutative ring by the resultant recursion S_{m} = Res_T(S_{m-1}(..., T), S3(x_{m-2}, x_{m-1}, T)) with fixed Sylvester sizes (2^(m-3), 2), proves agreement with S3 and with the existing S4, the degree upper bound 2^(m-2) in the last variable, and the forward direction (a chain of S3 witnesses forces S_m = 0) at every level. The repository previously had only the one-step tool resultant_eq_zero_of_common_root and the secp256k1-specific projective frozen family.",
+  "default_budget": {
+    "tier0_tactics": [],
+    "escalate_if_failed": false,
+    "note": "Not a model-loop target: statements frozen before proof; the proofs were prototyped in a design study (Mathlib-only scratch file) before this freeze and are ported in the promoting commit."
+  },
+  "stem_file": "Ecdlp/Targets/semaev_tower.lean",
+  "hint": "semaevSlice_succ_eval by resultant_map_map with evalRingHom; Sm_four by rfl after rewriting; degree bound by a column-weight bound on the Sylvester determinant (weights 2 on the first 2^(s+1) columns, 0 on the last 2); forward chain by induction using resultant_eq_zero_of_common_root with the degree bound.",
+  "promotion_target_file": "Ecdlp/Proved/SemaevTower.lean",
+  "source": {
+    "family": "semaev",
+    "from": "manual (completion of SemaevFour.lean)"
+  },
+  "depends_on": [
+    "Ecdlp/Proved/SemaevFour.lean"
+  ]
+}

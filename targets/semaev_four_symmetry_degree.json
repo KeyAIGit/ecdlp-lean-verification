@@ -1,0 +1,23 @@
+{
+  "id": "semaev_four_symmetry_degree",
+  "name": "SemaevFourSymmetryDegree",
+  "status": "todo",
+  "difficulty": "medium",
+  "template": "semaev_summation_polynomial",
+  "why_it_matters": "Closes two gaps in Ecdlp/Proved/SemaevFour.lean: (1) S4_symm12, S4_symm34 and S4_block_swap generate only an order-8 subgroup of Sym(4); the missing transposition x2<->x3 gives invariance under all 24 permutations (S4_perm). (2) The degree tower deg_{x_i} S_m = 2^(m-2) had only its base case S3; this freezes deg_{x4} S4 = 4 when S3(x1,x2,x3) != 0 (leading coefficient S3(x1,x2,x3)^2), the same in every variable via S4_perm, and the at-most-four completions corollary.",
+  "default_budget": {
+    "tier0_tactics": [],
+    "escalate_if_failed": false,
+    "note": "Not a model-loop target: statements frozen before proof; the proofs were prototyped in a design study (Mathlib-only scratch file) before this freeze and are ported in the promoting commit."
+  },
+  "stem_file": "Ecdlp/Targets/semaev_four_symmetry_degree.lean",
+  "hint": "Closed form of the fixed-size (2,2) resultant via the explicit 4x4 Sylvester matrix (Matrix.det_succ_row_zero + det_fin_three), then S4_symm23 by ring on the closed form; S4_perm by Equiv.Perm.swap_induction_on, each transposition from S4_symm12/S4_symm23/S4_symm34. Degree: split S4slice as C(p^2-qt)*X^4 + X^2*L + M with natDegree L <= 1, natDegree M <= 2 (compute_degree).",
+  "promotion_target_file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+  "source": {
+    "family": "semaev",
+    "from": "manual (completion of SemaevFour.lean)"
+  },
+  "depends_on": [
+    "Ecdlp/Proved/SemaevFour.lean"
+  ]
+}
