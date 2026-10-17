@@ -318,17 +318,17 @@
       <span class="lane-badge lane-badge--ecdlp">ECDLP</span>
       <span class="trust-badge trust-badge--kernel_audited">Kernel audited</span>
     </div>
-    <a class="result-card__anchor" href="#ecdlp-ledger-248" aria-label="Permanent link to alternate/supporting · S₄ infrastructure — the S₃-as-polynomial bridge S₃poly_eval ((S₃poly …).eval x₃ = S₃ …) and S₄&#x27;s full symmetry: block swap S₄_block_swap (x₁,…">#</a>
+    <a class="result-card__anchor" href="#ecdlp-ledger-248" aria-label="Permanent link to alternate/supporting · S₄ infrastructure — the S₃-as-polynomial bridge S₃poly_eval ((S₃poly …).eval x₃ = S₃ …) and three symmetries of S₄: block swap S₄_block_swap …">#</a>
   </div>
-  <h3>alternate/supporting · S₄ infrastructure — the S₃-as-polynomial bridge S₃poly_eval ((S₃poly …).eval x₃ = S₃ …) and S₄&#x27;s full symmetry: block swap S₄_block_swap (x₁,…</h3>
+  <h3>alternate/supporting · S₄ infrastructure — the S₃-as-polynomial bridge S₃poly_eval ((S₃poly …).eval x₃ = S₃ …) and three symmetries of S₄: block swap S₄_block_swap …</h3>
   <p class="result-card__display"><code>Ecdlp.Semaev.S₃poly_eval, S₄_block_swap, S₄_symm₁₂, S₄_symm₃₄</code></p>
-  <details class="result-card__scope"><summary>Full ledger claim and scope</summary><p>*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and `S₄`&#x27;s full symmetry: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄` — so `S₄` is symmetric on all of `{x₁,x₂,x₃,x₄}`, the symmetry a summation polynomial must have</p></details>
+  <details class="result-card__scope"><summary>Full ledger claim and scope</summary><p>*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and three symmetries of `S₄`: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄`. These three generate an order-8 subgroup of the 24 permutations of `{x₁,x₂,x₃,x₄}`, not all of them; invariance under every permutation is `S₄_perm` (`Ecdlp/Proved/SemaevFourSymmetry.lean`)</p></details>
   <dl class="result-card__meta">
     <div><dt>Domain</dt><dd>ecdlp-ledger</dd></div>
     <div><dt>Method</dt><dd>Mathlib</dd></div>
     <div><dt>Canonical ledger</dt><dd><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/VERIFIED.md">VERIFIED.md</a></dd></div>
   </dl>
-  <div class="result-card__sources"><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L38"><code>Ecdlp.Semaev.S₃poly_eval</code><span>Ecdlp/Proved/SemaevFour.lean:38</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L90"><code>Ecdlp.Semaev.S₄_block_swap</code><span>Ecdlp/Proved/SemaevFour.lean:90</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L95"><code>Ecdlp.Semaev.S₄_symm₁₂</code><span>Ecdlp/Proved/SemaevFour.lean:95</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L103"><code>Ecdlp.Semaev.S₄_symm₃₄</code><span>Ecdlp/Proved/SemaevFour.lean:103</span></a></div>
+  <div class="result-card__sources"><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L38"><code>Ecdlp.Semaev.S₃poly_eval</code><span>Ecdlp/Proved/SemaevFour.lean:38</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L90"><code>Ecdlp.Semaev.S₄_block_swap</code><span>Ecdlp/Proved/SemaevFour.lean:90</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L95"><code>Ecdlp.Semaev.S₄_symm₁₂</code><span>Ecdlp/Proved/SemaevFour.lean:95</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L104"><code>Ecdlp.Semaev.S₄_symm₃₄</code><span>Ecdlp/Proved/SemaevFour.lean:104</span></a></div>
 </article><article class="result-card" id="ecdlp-ledger-211"
   data-result-tags="ecdlp kernel_audited ecdlp-ledger">
   <div class="result-card__top">
@@ -2720,7 +2720,7 @@
     <div><dt>Method</dt><dd>Mathlib (`Polynomial.resultant`, `exists_mul_add_mul_eq_C_resultant`)</dd></div>
     <div><dt>Canonical ledger</dt><dd><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/VERIFIED.md">VERIFIED.md</a></dd></div>
   </dl>
-  <div class="result-card__sources"><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L71"><code>Ecdlp.Semaev.S₄</code><span>Ecdlp/Proved/SemaevFour.lean:71</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L81"><code>Ecdlp.Semaev.S₄_eq_zero_of_common_root</code><span>Ecdlp/Proved/SemaevFour.lean:81</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L189"><code>Ecdlp.Semaev.secp256k1_semaev_four_of_common_root</code><span>Ecdlp/Proved/SemaevFour.lean:189</span></a></div>
+  <div class="result-card__sources"><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L71"><code>Ecdlp.Semaev.S₄</code><span>Ecdlp/Proved/SemaevFour.lean:71</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L81"><code>Ecdlp.Semaev.S₄_eq_zero_of_common_root</code><span>Ecdlp/Proved/SemaevFour.lean:81</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L190"><code>Ecdlp.Semaev.secp256k1_semaev_four_of_common_root</code><span>Ecdlp/Proved/SemaevFour.lean:190</span></a></div>
 </article><article class="result-card" id="ecdlp-ledger-238"
   data-result-tags="ecdlp kernel_audited ecdlp-ledger">
   <div class="result-card__top">
@@ -2864,7 +2864,7 @@
     <div><dt>Method</dt><dd>Mathlib (`Polynomial.resultant_eq_prod_eval`)</dd></div>
     <div><dt>Canonical ledger</dt><dd><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/VERIFIED.md">VERIFIED.md</a></dd></div>
   </dl>
-  <div class="result-card__sources"><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L140"><code>Ecdlp.Semaev.S₄_common_root_of_eq_zero</code><span>Ecdlp/Proved/SemaevFour.lean:140</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L199"><code>Ecdlp.Semaev.secp256k1_semaev_four_common_root_of_eq_zero</code><span>Ecdlp/Proved/SemaevFour.lean:199</span></a></div>
+  <div class="result-card__sources"><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L141"><code>Ecdlp.Semaev.S₄_common_root_of_eq_zero</code><span>Ecdlp/Proved/SemaevFour.lean:141</span></a><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L200"><code>Ecdlp.Semaev.secp256k1_semaev_four_common_root_of_eq_zero</code><span>Ecdlp/Proved/SemaevFour.lean:200</span></a></div>
 </article><article class="result-card" id="ecdlp-ledger-233"
   data-result-tags="ecdlp kernel_audited ecdlp-ledger">
   <div class="result-card__top">
@@ -2936,7 +2936,7 @@
     <div><dt>Method</dt><dd>Mathlib (`linear_combination` over `F[X]`)</dd></div>
     <div><dt>Canonical ledger</dt><dd><a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/VERIFIED.md">VERIFIED.md</a></dd></div>
   </dl>
-  <div class="result-card__sources"><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L113"><code>Ecdlp.Semaev.S₃poly_master_factor</code><span>Ecdlp/Proved/SemaevFour.lean:113</span></a></div>
+  <div class="result-card__sources"><a class="result-source" href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/SemaevFour.lean#L114"><code>Ecdlp.Semaev.S₃poly_master_factor</code><span>Ecdlp/Proved/SemaevFour.lean:114</span></a></div>
 </article><article class="result-card" id="ecdlp-ledger-096"
   data-result-tags="ecdlp kernel_audited ecdlp-ledger">
   <div class="result-card__top">

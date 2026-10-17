@@ -98,8 +98,9 @@ theorem S₄_symm₁₂ (a b x₁ x₂ x₃ x₄ : F) :
 
 /-- **`S₄` is symmetric in `x₃, x₄`** (within the second pair) — from the block swap and the
 first-pair symmetry. With `S₄_symm₁₂` and `S₄_block_swap`, `S₄` is symmetric within *each* pair
-*and* under exchanging the pairs, so it is fully symmetric on `{x₁,x₂,x₃,x₄}` — the symmetry a
-summation polynomial must have (a sum of four points vanishing to `O` is order-independent). -/
+*and* under exchanging the pairs. These three permutations generate only an order-8 subgroup of
+the 24 permutations of `{x₁,x₂,x₃,x₄}`; the missing transposition `x₂ ↔ x₃` and invariance under
+every permutation are `S₄_symm₂₃` and `S₄_perm` in `Ecdlp/Proved/SemaevFourSymmetry.lean`. -/
 theorem S₄_symm₃₄ (a b x₁ x₂ x₃ x₄ : F) :
     S₄ a b x₁ x₂ x₃ x₄ = S₄ a b x₁ x₂ x₄ x₃ := by
   rw [S₄_block_swap a b x₁ x₂ x₃ x₄, S₄_symm₁₂ a b x₃ x₄ x₁ x₂,

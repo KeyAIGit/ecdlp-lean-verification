@@ -3,7 +3,7 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "0b073697e65267cb85f7505afdaa295b368b679b61292691cac663efca15be46",
+    "data/result_registry.json": "335e7340113a4856b1fc5ed17283245ebc703f5608ff0798f0fcef61d966fcc8",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
     "data/stats.json": "c9b36376db3d3ad0ebaebf543e3ae3eebcf02f37c146380886f541e6552ebb64"
   },
@@ -342,8 +342,8 @@
       "slug": "ecdlp-ledger-248",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and `S₄`'s full symmetry: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄` — so `S₄` is symmetric on all of `{x₁,x₂,x₃,x₄}`, the symmetry a summation polynomial must have",
-      "title": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and `S₄`'s full symmetry: block swap `S₄_block_swap` `(x₁,…",
+      "claim_id": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and three symmetries of `S₄`: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄`. These three generate an order-8 subgroup of the 24 permutations of `{x₁,x₂,x₃,x₄}`, not all of them; invariance under every permutation is `S₄_perm` (`Ecdlp/Proved/SemaevFourSymmetry.lean`)",
+      "title": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and three symmetries of `S₄`: block swap `S₄_block_swap` `…",
       "display": "`Ecdlp.Semaev.S₃poly_eval`, `S₄_block_swap`, `S₄_symm₁₂`, `S₄_symm₃₄`",
       "method": "Mathlib",
       "axiom_base": null,
@@ -375,7 +375,7 @@
           "declaration": "Ecdlp.Semaev.S₄_symm₃₄",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 103
+          "line": 104
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -5564,7 +5564,7 @@
           "declaration": "Ecdlp.Semaev.secp256k1_semaev_four_of_common_root",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 189
+          "line": 190
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -5838,13 +5838,13 @@
           "declaration": "Ecdlp.Semaev.S₄_common_root_of_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 140
+          "line": 141
         },
         {
           "declaration": "Ecdlp.Semaev.secp256k1_semaev_four_common_root_of_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 199
+          "line": 200
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -5954,7 +5954,7 @@
           "declaration": "Ecdlp.Semaev.S₃poly_master_factor",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 113
+          "line": 114
         }
       ],
       "source_ledger": "VERIFIED.md",

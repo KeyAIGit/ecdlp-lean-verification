@@ -134,10 +134,10 @@ paper could carry both, or they could split).
 - `S₄`: definition as `Res_X(S₃(x₁,x₂,X), S₃(x₃,x₄,X))` on Mathlib's `Polynomial.resultant`, both
   directions — forward `S₄_eq_zero_of_common_root` (+ `secp256k1_semaev_four_of_common_root`) and
   reverse/meaning `S₄_common_root_of_eq_zero` (+ `secp256k1_semaev_four_common_root_of_eq_zero`),
-  with the slice factorization `S₃poly_master_factor` and full symmetry `S₄_block_swap`,
-  `S₄_symm₁₂`, `S₄_symm₃₄` — `SemaevFour.lean`.
-- `S₄` symmetry under every permutation of its arguments: `S₄_perm` (with the transposition
-  `S₄_symm₂₃`) — `SemaevFourSymmetry.lean`.
+  with the slice factorization `S₃poly_master_factor` and the symmetries `S₄_block_swap`,
+  `S₄_symm₁₂`, `S₄_symm₃₄` — `SemaevFour.lean`. Those three generate only an order-8 subgroup of
+  the 24 permutations; invariance under every permutation is `S₄_perm` (with the missing
+  transposition `S₄_symm₂₃`) — `SemaevFourSymmetry.lean`.
 - `S₄` degree: coefficient of `x₄⁴` equal to `S₃(x₁,x₂,x₃)²` (`S₄slice_coeff_four`), hence degree
   exactly 4 in each variable when `S₃` of the other three is nonzero (`S₄slice_natDegree`,
   `S₄_natDegree_eq_four_of_perm`) and at most 4 completions (`S₄_completions_le_four`)
