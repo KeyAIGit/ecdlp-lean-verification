@@ -13,7 +13,7 @@ base. This is a living document; counts are for the v1 corpus.
 
 | Status | Count | Meaning |
 |---|---|---|
-| **Proved** | see `VERIFIED.md` (~268 distinct results / 307 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
+| **Proved** | see `VERIFIED.md` (~272 distinct results / 311 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
 | **Tractable now** | ~55 | `GroupTheory.OrderOfElement / Subgroup` — structural group facts |
 | **Barrier: no cost model** | ~55 | complexity claims; Lean has no "group-operation count" framework |
 | **Barrier: not in Mathlib** | ~62 | 38 quantum-circuit cost model, 24 lattice reduction |
@@ -268,14 +268,15 @@ exact `Θ` statements.
   each `experiments/*/` directory. External Gröbner validation and sharper formulations are
   prerequisites before promoting this line to a publishable complexity barrier.
 
-  **Open next node — `Sₘ` degree tower `2^{m−2}` (recorded, not yet built).** The base case is
-  proved (`secp256k1_S₃poly_natDegree`: `deg S₃ = 2` in each variable) and `S₄`'s full symmetry is
-  proved (`S₄_symm₁₂`/`S₄_symm₃₄`/`S₄_block_swap`). The next quantitative step, `deg S₄ = 4` in each
-  variable, is a legitimate barrier node — it measures the degree blow-up that makes higher-order
-  decompositions intractable — but is **not built**: `S₄` is currently the *scalar* resultant
-  `Res_X(S₃(x₁,x₂,X), S₃(x₃,x₄,X))`, and stating its degree in `x₁` needs `S₄` reconstructed as a
-  *polynomial in `x₁`* (coefficients over `F[x₁]`) plus a resultant-degree-in-a-parameter lemma —
-  a real construction, not a quick corollary. Recorded here as the honest next frontier.
+  **`Sₘ` degree tower `2^{m−2}` (partly built).** The base case is proved
+  (`secp256k1_S₃poly_natDegree`: `deg S₃ = 2` in each variable). `S₄` is invariant under all 24
+  permutations of its arguments (`S₄_perm`, `SemaevFourSymmetry.lean`; the earlier
+  `S₄_symm₁₂`/`S₄_symm₃₄`/`S₄_block_swap` generate only an order-8 subgroup) and has degree exactly
+  4 in each variable when `S₃` of the other three arguments is nonzero (`S₄slice_natDegree`,
+  `S₄_natDegree_eq_four_of_perm`). The general `Sₘ` is defined by the resultant recursion with
+  `deg ≤ 2^{m−2}` in the last variable and the forward direction at every level
+  (`SemaevTower.lean`). Still open: the exact degree for `m ≥ 5` (the top coefficient
+  `S_{m−1}(…)²`), symmetry for `m ≥ 5`, and the reverse/point-level direction.
 - **Weil pairing / isogeny depth** (no elliptic-isogeny module in the audited
   pinned/current Mathlib trees) — blocks
   *formalizing the MOV/FR transfer reduction itself*; the pairing is not in Mathlib. **This is

@@ -89,6 +89,8 @@ import Ecdlp.Proved.ShamirSSS
 import Ecdlp.Proved.MovRandomQ
 import Ecdlp.Proved.SemaevThree
 import Ecdlp.Proved.SemaevFour
+import Ecdlp.Proved.SemaevFourSymmetry
+import Ecdlp.Proved.SemaevTower
 import Ecdlp.Proved.FixedDegreeProjectiveResultant
 import Ecdlp.Proved.TaskSylvesterConvention
 import Ecdlp.Proved.FrozenRecursiveProjectiveSemaev
