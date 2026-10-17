@@ -24,6 +24,29 @@ This review leaves both source files byte-for-byte unchanged. Their headers and
 existing modification/provenance notices remain authoritative; this inventory
 does not certify an exhaustive comparison with the upstream PR.
 
+## Kernel modular exponentiation (pyca/verified-garbage): Apache-2.0
+
+File:
+- `Ecdlp/Proved/KernelPowMod.lean` (the declarations `powMod`, `powMod_zero`,
+  `powMod_succ` and `powMod_eq` only; the `ZMod` bridge lemmas in the same file are
+  project-authored)
+
+Source: pyca/verified-garbage, `lean/VerifiedGarbage/Proof/Framework/Pratt.lean`, commit
+`38c744308fcd4d10fec525d975f6164fe9f8d6fe`
+(https://github.com/pyca/verified-garbage/blob/38c744308fcd4d10fec525d975f6164fe9f8d6fe/lean/VerifiedGarbage/Proof/Framework/Pratt.lean).
+Upstream license: Apache-2.0 OR BSD-3-Clause (the upstream `LICENSE` offers either
+`LICENSE.APACHE` or `LICENSE.BSD`); this repository uses the code under Apache-2.0.
+Upstream copyright notice (from `LICENSE.BSD`): "Copyright (c) Individual contributors."
+The upstream source file carries no per-file header. Modifications: the namespace was
+changed from `VG.Proof.Pratt` to `Ecdlp.Kernel` and short attribution/docstring text was
+added; the definitions and proofs are otherwise unchanged.
+License copy: [LICENSES/Apache-2.0.txt](LICENSES/Apache-2.0.txt).
+
+This entry is not registered in `repo/OSS_READINESS.json`, whose narrow detector keys on
+per-file `Copyright` headers; neither the upstream file nor the reused copy has one. The
+source, commit and license files above were read from GitHub. No legal review has been
+performed.
+
 ## Fonts: OFL-1.1
 
 | Bundled file | Copyright notice | License text |
