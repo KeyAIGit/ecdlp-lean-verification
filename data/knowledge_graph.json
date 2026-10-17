@@ -37,9 +37,9 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1187,
+    "edges": 1198,
     "by_edge_type": {
-      "imports": 525,
+      "imports": 536,
       "member_of": 307,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
@@ -12642,6 +12642,26 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44B",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44L",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44d",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsWT",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.PointDecomposition",
       "to": "Ecdlp.Proved.SemaevThree",
       "type": "imports"
@@ -14104,6 +14124,41 @@
     {
       "from": "Ecdlp",
       "to": "Ecdlp.Proved.CompressedDivisionPoly",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsF5",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44d",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44L",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44B",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsWT",
       "type": "imports"
     },
     {

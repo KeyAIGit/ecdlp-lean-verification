@@ -184,3 +184,10 @@ import Ecdlp.Proved.FourTorsionBridgeBar
 import Ecdlp.Proved.FourTorsionStructure
 import Ecdlp.Proved.FourTorsionCount
 import Ecdlp.Proved.CompressedDivisionPoly
+import Ecdlp.Proved.ParityFourier.Statements
+import Ecdlp.Proved.ParityFourier.StatementsF5
+import Ecdlp.Proved.ParityFourier.StatementsC44
+import Ecdlp.Proved.ParityFourier.StatementsC44d
+import Ecdlp.Proved.ParityFourier.StatementsC44L
+import Ecdlp.Proved.ParityFourier.StatementsC44B
+import Ecdlp.Proved.ParityFourier.StatementsWT

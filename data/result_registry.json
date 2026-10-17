@@ -7,8 +7,8 @@
   "anonymous_instance_exemptions": 7,
   "unresolved_reference_count": 0,
   "coverage_percent": 100.0,
-  "declaration_count": 1176,
-  "distinct_qualified_names": 1176,
+  "declaration_count": 1211,
+  "distinct_qualified_names": 1211,
   "verified_md_citations": 677,
   "unresolved_references": [],
   "resolution_exemptions": [
@@ -15586,6 +15586,251 @@
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256TwistSecurity.lean",
       "line": 245
+    },
+    "Ecdlp.ParityFourier.CarrySign": {
+      "name": "CarrySign",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 52
+    },
+    "Ecdlp.ParityFourier.CarrySum": {
+      "name": "CarrySum",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 45
+    },
+    "Ecdlp.ParityFourier.GInvariant": {
+      "name": "GInvariant",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 68
+    },
+    "Ecdlp.ParityFourier.GOdd": {
+      "name": "GOdd",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 63
+    },
+    "Ecdlp.ParityFourier.GammaJ": {
+      "name": "GammaJ",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+      "line": 49
+    },
+    "Ecdlp.ParityFourier.GroupHalvingRecovers": {
+      "name": "GroupHalvingRecovers",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 117
+    },
+    "Ecdlp.ParityFourier.HalvingRecovers": {
+      "name": "HalvingRecovers",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 101
+    },
+    "Ecdlp.ParityFourier.J": {
+      "name": "J",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 39
+    },
+    "Ecdlp.ParityFourier.JBalance": {
+      "name": "JBalance",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 79
+    },
+    "Ecdlp.ParityFourier.JBalanceBound": {
+      "name": "JBalanceBound",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44B.lean",
+      "line": 19
+    },
+    "Ecdlp.ParityFourier.JC": {
+      "name": "JC",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+      "line": 40
+    },
+    "Ecdlp.ParityFourier.JConcentration": {
+      "name": "JConcentration",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+      "line": 58
+    },
+    "Ecdlp.ParityFourier.JConcentrationExplicit": {
+      "name": "JConcentrationExplicit",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44L.lean",
+      "line": 27
+    },
+    "Ecdlp.ParityFourier.JEven": {
+      "name": "JEven",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 58
+    },
+    "Ecdlp.ParityFourier.JOrbitProduct": {
+      "name": "JOrbitProduct",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 73
+    },
+    "Ecdlp.ParityFourier.L1low": {
+      "name": "L1low",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+      "line": 54
+    },
+    "Ecdlp.ParityFourier.L1lowBound": {
+      "name": "L1lowBound",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44L.lean",
+      "line": 22
+    },
+    "Ecdlp.ParityFourier.NormLemma": {
+      "name": "NormLemma",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44d.lean",
+      "line": 19
+    },
+    "Ecdlp.ParityFourier.Relabel": {
+      "name": "Relabel",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 88
+    },
+    "Ecdlp.ParityFourier.SigmaHatClosedForm": {
+      "name": "SigmaHatClosedForm",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsF5.lean",
+      "line": 27
+    },
+    "Ecdlp.ParityFourier.SigmaTail": {
+      "name": "SigmaTail",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsF5.lean",
+      "line": 32
+    },
+    "Ecdlp.ParityFourier.WeilTransfer": {
+      "name": "WeilTransfer",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsWT.lean",
+      "line": 41
+    },
+    "Ecdlp.ParityFourier.WeilTransferLsb": {
+      "name": "WeilTransferLsb",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsWT.lean",
+      "line": 50
+    },
+    "Ecdlp.ParityFourier.ZeroNotInGammaJ": {
+      "name": "ZeroNotInGammaJ",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44d.lean",
+      "line": 25
+    },
+    "Ecdlp.ParityFourier.eChar": {
+      "name": "eChar",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsWT.lean",
+      "line": 33
+    },
+    "Ecdlp.ParityFourier.ft": {
+      "name": "ft",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+      "line": 32
+    },
+    "Ecdlp.ParityFourier.g": {
+      "name": "g",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 42
+    },
+    "Ecdlp.ParityFourier.groupHalvingState": {
+      "name": "groupHalvingState",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 108
+    },
+    "Ecdlp.ParityFourier.hC": {
+      "name": "hC",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+      "line": 43
+    },
+    "Ecdlp.ParityFourier.halvingState": {
+      "name": "halvingState",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 95
+    },
+    "Ecdlp.ParityFourier.sgn": {
+      "name": "sgn",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
+      "line": 36
+    },
+    "Ecdlp.ParityFourier.sigmaC": {
+      "name": "sigmaC",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+      "line": 37
+    },
+    "Ecdlp.ParityFourier.sigmaHat": {
+      "name": "sigmaHat",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsF5.lean",
+      "line": 22
+    },
+    "Ecdlp.ParityFourier.twistedSum": {
+      "name": "twistedSum",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsWT.lean",
+      "line": 37
+    },
+    "Ecdlp.ParityFourier.window": {
+      "name": "window",
+      "namespace": "Ecdlp.ParityFourier",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+      "line": 46
     },
     "Ecdlp.PohligHellman.component": {
       "name": "component",

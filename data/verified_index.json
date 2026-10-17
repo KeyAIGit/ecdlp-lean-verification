@@ -3,9 +3,9 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "c6bc609ecd87886cf0a33fd7e65162fcbc1381d97a167156a37169b930ccfcf5",
+    "data/result_registry.json": "d442f3b0d415858fe1c275a5a29b221e157fb2f601b2c0731893b034bd1eaccf",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
-    "data/stats.json": "e2165fbb75dced6b3d1862ee475e59778f1a5e3d050ad9d239decee066e783a3"
+    "data/stats.json": "fddbd5708bd1970daf03cdd31e34b6480d1bf28a08f8976ff96e7cb91b383e47"
   },
   "invariants": [
     "VERIFIED.md remains the canonical ECDLP ledger.",
