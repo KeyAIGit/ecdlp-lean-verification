@@ -28,7 +28,8 @@ base. This is a living document; counts are for the v1 corpus.
 All in `Ecdlp/` and listed in `VERIFIED.md`. The structural theorems live in the
 group-theory zone and are the realised part of "Tractable now":
 
-- secp256k1 parameters & GLV/β eigenvalue facts — `native_decide` (concrete).
+- secp256k1 parameters & GLV/β eigenvalue facts — kernel `decide +kernel` (concrete; the
+  `p mod 4`/`3 ∣ p−1`/`3 ∣ n−1` facts in `Secp256k1Params.lean` still use `native_decide`).
 - `order_dvd_card` (Lagrange), `cofactor_card_mul_index` (`#E = n·h` abstractly),
   `orderOf_eq_card_of_prime` (prime order ⇒ generator, no small subgroup),
   `cube_root_of_eigenvalue` (root of `x²+x+1` ⇒ `x³=1`) — Mathlib.

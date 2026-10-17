@@ -21,5 +21,5 @@ Current navigation counts:
 - ResearchOS ledger rows: 172
 - Aggregate navigation rows: 479 (not a security metric)
 - ResearchOS standard-base rows: 172
-- ECDLP audited rows without a committed per-row base label: 203
-- Rows with compiler trust disclosed in ledger metadata: 104
+- ECDLP audited rows without a committed per-row base label: 234
+- Rows with compiler trust disclosed in ledger metadata: 73

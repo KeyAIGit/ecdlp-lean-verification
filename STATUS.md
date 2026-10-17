@@ -16,7 +16,7 @@
 |---|---|---|
 | ledger rows | **307** | `VERIFIED.md` → `data/stats.json` |
 | distinct results | **~268** | `data/stats.json` |
-| proved modules | **179** | `data/stats.json` |
+| proved modules | **181** | `data/stats.json` |
 | `sorry` | **0** | axiom-audit + no-sorry gate |
 | custom axioms | **0** | axiom-audit gate |
 
