@@ -1,15 +1,15 @@
 {
   "schema_version": 2,
   "source": "VERIFIED.md + built public Lean source (Targets excluded)",
-  "ledger_rows": 307,
-  "ledger_reference_count": 702,
-  "ledger_named_declarations": 677,
+  "ledger_rows": 320,
+  "ledger_reference_count": 722,
+  "ledger_named_declarations": 697,
   "anonymous_instance_exemptions": 7,
   "unresolved_reference_count": 0,
   "coverage_percent": 100.0,
-  "declaration_count": 1211,
-  "distinct_qualified_names": 1211,
-  "verified_md_citations": 677,
+  "declaration_count": 1291,
+  "distinct_qualified_names": 1291,
+  "verified_md_citations": 697,
   "unresolved_references": [],
   "resolution_exemptions": [
     {
@@ -603,6 +603,26 @@
     "Ecdlp.P256.p256_twist_maxprime_prime",
     "Ecdlp.P256.p256_twist_order_factorization",
     "Ecdlp.P256.p256_twist_security_profile",
+    "Ecdlp.ParityFourier.ProofsC44.jConcentration",
+    "Ecdlp.ParityFourier.ProofsC44B.jBalanceBound",
+    "Ecdlp.ParityFourier.ProofsC44L.jConcentrationExplicit",
+    "Ecdlp.ParityFourier.ProofsC44L.l1lowBound",
+    "Ecdlp.ParityFourier.ProofsC44d.normLemma",
+    "Ecdlp.ParityFourier.ProofsC44d.zeroNotInGammaJ",
+    "Ecdlp.ParityFourier.ProofsF1.carrySign",
+    "Ecdlp.ParityFourier.ProofsF1.carrySum",
+    "Ecdlp.ParityFourier.ProofsF1.gInvariant",
+    "Ecdlp.ParityFourier.ProofsF1.gOdd",
+    "Ecdlp.ParityFourier.ProofsF1.jEven",
+    "Ecdlp.ParityFourier.ProofsF1.jOrbitProduct",
+    "Ecdlp.ParityFourier.ProofsF2.jBalance",
+    "Ecdlp.ParityFourier.ProofsF3F4a.halvingRecovers",
+    "Ecdlp.ParityFourier.ProofsF3F4a.relabel",
+    "Ecdlp.ParityFourier.ProofsF4b.groupHalvingRecovers",
+    "Ecdlp.ParityFourier.ProofsF5a.sigmaHatClosedForm",
+    "Ecdlp.ParityFourier.ProofsF5b.sigmaTail",
+    "Ecdlp.ParityFourier.ProofsWT.weilTransfer",
+    "Ecdlp.ParityFourier.ProofsWT.weilTransferLsb",
     "Ecdlp.PohligHellman.component",
     "Ecdlp.PohligHellman.projection",
     "Ecdlp.PohligHellman.reconstruct",
@@ -10075,6 +10095,338 @@
           "line": 613
         }
       ]
+    },
+    {
+      "id": "ledger-307",
+      "claim": "Carry identity for a cube root of unity mod a prime (prime `n ≠ 2`, `lam : ZMod n` with `lam² + lam + 1 = 0`, `k ≠ 0`, `[·]` the canonical representative in `[0, n)`: `[k] + [lam k] + [lam² k]` equals `n` or `2n`; the carry sign `g(k) = σ(k)·σ(lam k)·σ(lam² k)`, `σ(k) = (−1)^[k]`, is `−1` exactly when the sum is `n` and `1` otherwise. An exact identity on representatives; no oracle, no curve instance, no ECDLP advantage)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsF1.carrySum`, `carrySign`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "method": "Mathlib (`ZMod.val` arithmetic)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF1.carrySum",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF1.carrySum",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+          "line": 62
+        },
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF1.carrySign",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF1.carrySign",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "id": "ledger-308",
+      "claim": "Sign symmetries of `J` and the carry sign `g` (`J(k) = σ(lam k)·σ(lam² k)`. For prime `n ≠ 2` and `lam² + lam + 1 = 0`: `J(−k) = J(k)` for every `k`, and `g(−k) = −g(k)` for `k ≠ 0`. For every modulus `n` and every root `lam` of `lam² + lam + 1 = 0`: `g(lam k) = g(k)` and `J(k)·J(lam k)·J(lam² k) = 1`. Finite sign identities only)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsF1.jEven`, `gOdd`, `gInvariant`, `jOrbitProduct`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "method": "Mathlib",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF1.jEven",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF1.jEven",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+          "line": 108
+        },
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF1.gOdd",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF1.gOdd",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+          "line": 123
+        },
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF1.gInvariant",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF1.gInvariant",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+          "line": 132
+        },
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF1.jOrbitProduct",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF1.jOrbitProduct",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+          "line": 144
+        }
+      ]
+    },
+    {
+      "id": "ledger-309",
+      "claim": "Balance identity of `J` (prime `n ≠ 2`, `lam² + lam + 1 = 0`: `3·Σ_{k≠0} J(k) = 4M − (n − 1)`, where `M` is the number of nonzero `k` with `σ(k) = σ(lam k) = σ(lam² k)`. An exact counting identity; it does not bound `M`)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsF2.jBalance`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "method": "Mathlib (`Finset` sums, multiplication by the unit `lam` permutes `k ≠ 0`)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF2.jBalance",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF2.jBalance",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+          "line": 79
+        }
+      ]
+    },
+    {
+      "id": "ledger-310",
+      "claim": "Relabelling by a public `±1` factor preserves agreement counts (finite type `X`, integer-valued `σ, c, b, P` with `c(x) ∈ {1, −1}` and `σ = c·b` pointwise: the number of `x` with `c(x)·P(x) = σ(x)` equals the number of `x` with `P(x) = b(x)`. A counting identity; no statement about any particular predictor)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsF3F4a.relabel`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "method": "Mathlib (`Finset.filter` congruence)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF3F4a.relabel",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF3F4a.relabel",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "id": "ledger-311",
+      "claim": "An exact parity oracle recovers the discrete logarithm by halving (the halving reduction of Lauter–Stange, Prop. 2, in two forms. In `ZMod n`, `n` an odd prime: if `O(y) = [y] mod 2` for every `y`, the states `y₀ = x`, `y_{i+1} = (y_i − O(y_i))·2⁻¹` satisfy `Σ_{i<L} O(y_i)·2^i = [x]` whenever `n ≤ 2^L`. In any additive group with `addOrderOf G = n` an odd prime and `2h mod n = 1`: if `O([y]•G) = [y] mod 2` for every `y : ZMod n`, the chain `P₀ = [x]•G`, `P_{i+1} = h•(P_i − O(P_i)•G)` gives `Σ_{i<L} O(P_i)·2^i = [x]` whenever `n ≤ 2^L`; the chain uses only group operations and oracle calls. Honest scope: a reduction from an exact, always-correct parity oracle on every multiple of `G`; no such oracle is known for secp256k1, noisy or partial oracles are not covered, and this is not an ECDLP attack)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsF4b.groupHalvingRecovers`, `Ecdlp.ParityFourier.ProofsF3F4a.halvingRecovers`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
+        "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "method": "Mathlib (`Nat` division by `2^i`, `nsmul` arithmetic)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF4b.groupHalvingRecovers",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF4b.groupHalvingRecovers",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
+          "line": 65
+        },
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF3F4a.halvingRecovers",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF3F4a.halvingRecovers",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+          "line": 76
+        }
+      ]
+    },
+    {
+      "id": "ledger-312",
+      "claim": "Closed form of the parity-sign spectrum on `ℤ/n` (odd `n`, every integer `a`, `σ̂(a) = (1/n)·Σ_{k<n} (−1)^k·exp(−2πi·a·k/n)`: `‖σ̂(a)‖ = 1 / (n·abs(cos(π a / n)))`)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsF5a.sigmaHatClosedForm`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF5a.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsF5.lean"
+      ],
+      "method": "Mathlib (geometric sum, `Complex.exp`)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF5a.sigmaHatClosedForm",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF5a.sigmaHatClosedForm",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF5a.lean",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "id": "ledger-313",
+      "claim": "Tail bound of the parity-sign spectrum (odd `n`, `h = (n+1)/2`, `B ≥ 1`: `Σ_{t=B+1}^{(n−1)/2} (‖σ̂(h + t)‖² + ‖σ̂(h − t)‖²) ≤ 1/B`)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsF5b.sigmaTail`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsF5.lean"
+      ],
+      "method": "Mathlib (Jordan's inequality, telescoping sum)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsF5b.sigmaTail",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsF5b.sigmaTail",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+          "line": 185
+        }
+      ]
+    },
+    {
+      "id": "ledger-314",
+      "claim": "Low-pass `ℓ¹` norm of the parity sign grows at most logarithmically (odd `n`, `2B + 1 ≤ n`, `ft` the normalised Fourier transform on `ZMod n`, `h = (n+1)/2`: `L1low(B) = Σ_{abs(t) ≤ B} ‖ft σ (h + t)‖ ≤ 2 + log(2B + 1)`)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsC44L.l1lowBound`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44L.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44.lean"
+      ],
+      "method": "Mathlib (closed form of `σ̂`, harmonic-sum bound by induction)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsC44L.l1lowBound",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsC44L.l1lowBound",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+          "line": 125
+        }
+      ]
+    },
+    {
+      "id": "ledger-315",
+      "claim": "Fourier concentration of `J` near the set `Γ_J` (prime `n ≠ 2`, `lam² + lam + 1 = 0`, `B ≥ 1`, `Γ_J(lam, B) = {lam(h + t₁) + lam²(h + t₂) : abs(t₁), abs(t₂) ≤ B}`: `Σ_{γ ∉ Γ_J(lam, B)} ‖ft J γ‖² ≤ (1 + L1low(B))² / B` (`jConcentration`); with the `L1low` bound of the previous row and `2B + 1 ≤ n`, the same mass is at most `(3 + log(2B + 1))² / B` (`jConcentrationExplicit`, a direct composition). A concentration bound; it does not by itself give a hard-core-bit theorem)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsC44.jConcentration`, `Ecdlp.ParityFourier.ProofsC44L.jConcentrationExplicit`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+        "Ecdlp/Proved/ParityFourier/ProofsC44L.lean"
+      ],
+      "method": "Mathlib (Fourier inversion and Parseval on `ZMod n` via `ZMod.stdAddChar`) + `sigmaTail`, `l1lowBound",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsC44.jConcentration",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsC44.jConcentration",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+          "line": 352
+        },
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsC44L.jConcentrationExplicit",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsC44L.jConcentrationExplicit",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "id": "ledger-316",
+      "claim": "Norm lemma for `x + lam·y ≡ 0 mod n`, and `0 ∉ Γ_J` for small windows (prime `n`, `lam² + lam + 1 = 0`, integers `(x, y) ≠ (0, 0)` with `x + lam·y = 0` in `ZMod n` ⇒ `x² − xy + y² ≥ n` (`normLemma`); hence for `n ≠ 2` and `3(2B + 1)² < n`, `0 ∉ Γ_J(lam, B)` (`zeroNotInGammaJ`, a corollary))",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsC44d.normLemma`, `zeroNotInGammaJ`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44d.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44d.lean"
+      ],
+      "method": "Mathlib",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsC44d.normLemma",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsC44d.normLemma",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsC44d.lean",
+          "line": 14
+        },
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsC44d.zeroNotInGammaJ",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsC44d.zeroNotInGammaJ",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsC44d.lean",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "id": "ledger-317",
+      "claim": "Bias bound for `J` (prime `n ≠ 2`, `lam² + lam + 1 = 0`, `B ≥ 1`, `3(2B + 1)² < n`: `‖ft J 0‖² ≤ (3 + log(2B + 1))² / B`. A corollary of the two previous rows; a bias bound, not a hardness statement)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsC44B.jBalanceBound`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44B.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44B.lean"
+      ],
+      "method": "jConcentrationExplicit` + `zeroNotInGammaJ",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsC44B.jBalanceBound",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsC44B.jBalanceBound",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsC44B.lean",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "id": "ledger-318",
+      "claim": "Finite Fourier-transfer inequality under an assumed twisted-sum bound (`n, p > 0`, any `V : ZMod n → ZMod p`, `b : ZMod p → ℂ`, `T : ZMod n → ℂ`, real `C`, `e_m(x) = exp(2πi·[x]/m)`: if every twisted sum `Σ_{k≠0} e_p(a·V(k))·e_n(α·k)` with `a ≠ 0` has norm at most `C`, then `‖Σ_{k≠0} b(V k)·T(k)‖ ≤ ‖ft b 0‖·‖Σ_{k≠0} T(k)‖ + C·(Σ_{a≠0} ‖ft b a‖)·(Σ_α ‖ft T α‖)`. Honest scope: the twisted-sum bound is a hypothesis; it is not proved here for any elliptic-curve coordinate map)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsWT.weilTransfer`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsWT.lean"
+      ],
+      "method": "Mathlib (Fourier inversion on `ZMod n` and `ZMod p`, triangle inequality)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsWT.weilTransfer",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsWT.weilTransfer",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "id": "ledger-319",
+      "claim": "Lowest-bit correlation bound conditional on a Weil-type twisted-sum bound (odd primes `n`, `p`, any `V : ZMod n → ZMod p`: if every twisted sum of `V` with `a ≠ 0` has norm at most `2√p`, then `‖Σ_{k≠0} σ(V k)·σ(k)‖ ≤ 2√p·(2 + log p)·(2 + log n)`, with `σ(z) = (−1)^[z]`. The specialization of the previous row with `b = T = σ`. Honest scope: the `2√p` twisted-sum bound is a hypothesis, not proved here for any concrete curve map; no statement about secp256k1)",
+      "theorem_cell": "`Ecdlp.ParityFourier.ProofsWT.weilTransferLsb`",
+      "declared_files": [
+        "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsWT.lean"
+      ],
+      "method": "weilTransfer` + `l1lowBound",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.ParityFourier.ProofsWT.weilTransferLsb",
+          "canonical_name": "Ecdlp.ParityFourier.ProofsWT.weilTransferLsb",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+          "line": 140
+        }
+      ]
     }
   ],
   "declarations": {
@@ -15712,6 +16064,566 @@
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44d.lean",
       "line": 19
+    },
+    "Ecdlp.ParityFourier.ProofsC44.High": {
+      "name": "High",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 159
+    },
+    "Ecdlp.ParityFourier.ProofsC44.L1low_nonneg": {
+      "name": "L1low_nonneg",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 165
+    },
+    "Ecdlp.ParityFourier.ProofsC44.Low": {
+      "name": "Low",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 155
+    },
+    "Ecdlp.ParityFourier.ProofsC44.P_eq": {
+      "name": "P_eq",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 317
+    },
+    "Ecdlp.ParityFourier.ProofsC44.Wset": {
+      "name": "Wset",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "def",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 151
+    },
+    "Ecdlp.ParityFourier.ProofsC44.conj_e": {
+      "name": "conj_e",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 56
+    },
+    "Ecdlp.ParityFourier.ProofsC44.cover": {
+      "name": "cover",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 222
+    },
+    "Ecdlp.ParityFourier.ProofsC44.ft_High": {
+      "name": "ft_High",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 189
+    },
+    "Ecdlp.ParityFourier.ProofsC44.ft_Low": {
+      "name": "ft_Low",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 180
+    },
+    "Ecdlp.ParityFourier.ProofsC44.ft_P_zero": {
+      "name": "ft_P_zero",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 334
+    },
+    "Ecdlp.ParityFourier.ProofsC44.ft_eq": {
+      "name": "ft_eq",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 44
+    },
+    "Ecdlp.ParityFourier.ProofsC44.ft_sigma_intCast": {
+      "name": "ft_sigma_intCast",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 196
+    },
+    "Ecdlp.ParityFourier.ProofsC44.ft_sub": {
+      "name": "ft_sub",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 59
+    },
+    "Ecdlp.ParityFourier.ProofsC44.ft_sub'": {
+      "name": "ft_sub'",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 141
+    },
+    "Ecdlp.ParityFourier.ProofsC44.ft_trig": {
+      "name": "ft_trig",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 64
+    },
+    "Ecdlp.ParityFourier.ProofsC44.high_mass": {
+      "name": "high_mass",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 304
+    },
+    "Ecdlp.ParityFourier.ProofsC44.hminus": {
+      "name": "hminus",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 250
+    },
+    "Ecdlp.ParityFourier.ProofsC44.hplus": {
+      "name": "hplus",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 245
+    },
+    "Ecdlp.ParityFourier.ProofsC44.inversion": {
+      "name": "inversion",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 87
+    },
+    "Ecdlp.ParityFourier.ProofsC44.jConcentration": {
+      "name": "jConcentration",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 352
+    },
+    "Ecdlp.ParityFourier.ProofsC44.kernel_eq": {
+      "name": "kernel_eq",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 33
+    },
+    "Ecdlp.ParityFourier.ProofsC44.norm_Low_le": {
+      "name": "norm_Low_le",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 167
+    },
+    "Ecdlp.ParityFourier.ProofsC44.norm_e": {
+      "name": "norm_e",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 54
+    },
+    "Ecdlp.ParityFourier.ProofsC44.norm_sigmaC": {
+      "name": "norm_sigmaC",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 163
+    },
+    "Ecdlp.ParityFourier.ProofsC44.parseval": {
+      "name": "parseval",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 105
+    },
+    "Ecdlp.ParityFourier.ProofsC44.sum_e": {
+      "name": "sum_e",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 49
+    },
+    "Ecdlp.ParityFourier.ProofsC44.tail_le": {
+      "name": "tail_le",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "line": 255
+    },
+    "Ecdlp.ParityFourier.ProofsC44B.jBalanceBound": {
+      "name": "jBalanceBound",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44B",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44B.lean",
+      "line": 16
+    },
+    "Ecdlp.ParityFourier.ProofsC44L.harm_le": {
+      "name": "harm_le",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44L",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+      "line": 87
+    },
+    "Ecdlp.ParityFourier.ProofsC44L.jConcentrationExplicit": {
+      "name": "jConcentrationExplicit",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44L",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+      "line": 140
+    },
+    "Ecdlp.ParityFourier.ProofsC44L.l1lowBound": {
+      "name": "l1lowBound",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44L",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+      "line": 125
+    },
+    "Ecdlp.ParityFourier.ProofsC44L.term_le": {
+      "name": "term_le",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44L",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+      "line": 28
+    },
+    "Ecdlp.ParityFourier.ProofsC44L.window_succ": {
+      "name": "window_succ",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44L",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+      "line": 79
+    },
+    "Ecdlp.ParityFourier.ProofsC44d.normLemma": {
+      "name": "normLemma",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44d",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44d.lean",
+      "line": 14
+    },
+    "Ecdlp.ParityFourier.ProofsC44d.zeroNotInGammaJ": {
+      "name": "zeroNotInGammaJ",
+      "namespace": "Ecdlp.ParityFourier.ProofsC44d",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44d.lean",
+      "line": 33
+    },
+    "Ecdlp.ParityFourier.ProofsF1.carrySign": {
+      "name": "carrySign",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 92
+    },
+    "Ecdlp.ParityFourier.ProofsF1.carrySum": {
+      "name": "carrySum",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 62
+    },
+    "Ecdlp.ParityFourier.ProofsF1.gInvariant": {
+      "name": "gInvariant",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 132
+    },
+    "Ecdlp.ParityFourier.ProofsF1.gOdd": {
+      "name": "gOdd",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 123
+    },
+    "Ecdlp.ParityFourier.ProofsF1.jEven": {
+      "name": "jEven",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 108
+    },
+    "Ecdlp.ParityFourier.ProofsF1.jOrbitProduct": {
+      "name": "jOrbitProduct",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 144
+    },
+    "Ecdlp.ParityFourier.ProofsF1.lam_cube": {
+      "name": "lam_cube",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 21
+    },
+    "Ecdlp.ParityFourier.ProofsF1.lam_ne_zero": {
+      "name": "lam_ne_zero",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 47
+    },
+    "Ecdlp.ParityFourier.ProofsF1.odd_of_prime": {
+      "name": "odd_of_prime",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 44
+    },
+    "Ecdlp.ParityFourier.ProofsF1.sgn_mul_self": {
+      "name": "sgn_mul_self",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 15
+    },
+    "Ecdlp.ParityFourier.ProofsF1.sgn_neg": {
+      "name": "sgn_neg",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 27
+    },
+    "Ecdlp.ParityFourier.ProofsF1.val_sum_cast": {
+      "name": "val_sum_cast",
+      "namespace": "Ecdlp.ParityFourier.ProofsF1",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "line": 53
+    },
+    "Ecdlp.ParityFourier.ProofsF2.J_mul_lam": {
+      "name": "J_mul_lam",
+      "namespace": "Ecdlp.ParityFourier.ProofsF2",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+      "line": 31
+    },
+    "Ecdlp.ParityFourier.ProofsF2.J_mul_lam_sq": {
+      "name": "J_mul_lam_sq",
+      "namespace": "Ecdlp.ParityFourier.ProofsF2",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+      "line": 42
+    },
+    "Ecdlp.ParityFourier.ProofsF2.jBalance": {
+      "name": "jBalance",
+      "namespace": "Ecdlp.ParityFourier.ProofsF2",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+      "line": 79
+    },
+    "Ecdlp.ParityFourier.ProofsF2.lam_cube": {
+      "name": "lam_cube",
+      "namespace": "Ecdlp.ParityFourier.ProofsF2",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+      "line": 25
+    },
+    "Ecdlp.ParityFourier.ProofsF2.orbit_sum": {
+      "name": "orbit_sum",
+      "namespace": "Ecdlp.ParityFourier.ProofsF2",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+      "line": 55
+    },
+    "Ecdlp.ParityFourier.ProofsF2.sgn_cases": {
+      "name": "sgn_cases",
+      "namespace": "Ecdlp.ParityFourier.ProofsF2",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+      "line": 20
+    },
+    "Ecdlp.ParityFourier.ProofsF2.sum_mul_left": {
+      "name": "sum_mul_left",
+      "namespace": "Ecdlp.ParityFourier.ProofsF2",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+      "line": 62
+    },
+    "Ecdlp.ParityFourier.ProofsF3F4a.halvingRecovers": {
+      "name": "halvingRecovers",
+      "namespace": "Ecdlp.ParityFourier.ProofsF3F4a",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+      "line": 76
+    },
+    "Ecdlp.ParityFourier.ProofsF3F4a.relabel": {
+      "name": "relabel",
+      "namespace": "Ecdlp.ParityFourier.ProofsF3F4a",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+      "line": 18
+    },
+    "Ecdlp.ParityFourier.ProofsF3F4a.sum_binary_digits": {
+      "name": "sum_binary_digits",
+      "namespace": "Ecdlp.ParityFourier.ProofsF3F4a",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+      "line": 67
+    },
+    "Ecdlp.ParityFourier.ProofsF3F4a.two_ne_zero_zmod": {
+      "name": "two_ne_zero_zmod",
+      "namespace": "Ecdlp.ParityFourier.ProofsF3F4a",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+      "line": 29
+    },
+    "Ecdlp.ParityFourier.ProofsF3F4a.val_halve": {
+      "name": "val_halve",
+      "namespace": "Ecdlp.ParityFourier.ProofsF3F4a",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+      "line": 38
+    },
+    "Ecdlp.ParityFourier.ProofsF3F4a.val_halvingState": {
+      "name": "val_halvingState",
+      "namespace": "Ecdlp.ParityFourier.ProofsF3F4a",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+      "line": 56
+    },
+    "Ecdlp.ParityFourier.ProofsF4b.digitSum_eq_mod": {
+      "name": "digitSum_eq_mod",
+      "namespace": "Ecdlp.ParityFourier.ProofsF4b",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
+      "line": 17
+    },
+    "Ecdlp.ParityFourier.ProofsF4b.groupHalvingRecovers": {
+      "name": "groupHalvingRecovers",
+      "namespace": "Ecdlp.ParityFourier.ProofsF4b",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
+      "line": 65
+    },
+    "Ecdlp.ParityFourier.ProofsF4b.state_eq": {
+      "name": "state_eq",
+      "namespace": "Ecdlp.ParityFourier.ProofsF4b",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
+      "line": 36
+    },
+    "Ecdlp.ParityFourier.ProofsF4b.two_h_nsmul": {
+      "name": "two_h_nsmul",
+      "namespace": "Ecdlp.ParityFourier.ProofsF4b",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
+      "line": 24
+    },
+    "Ecdlp.ParityFourier.ProofsF5a.sigmaHatClosedForm": {
+      "name": "sigmaHatClosedForm",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5a",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5a.lean",
+      "line": 18
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.jordan": {
+      "name": "jordan",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 99
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.minus_bound": {
+      "name": "minus_bound",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 135
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.norm_one_add_exp": {
+      "name": "norm_one_add_exp",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 54
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.norm_sigmaHat_mul": {
+      "name": "norm_sigmaHat_mul",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 71
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.plus_bound": {
+      "name": "plus_bound",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 112
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.sigmaHat_mul_one_add": {
+      "name": "sigmaHat_mul_one_add",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 22
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.sigmaTail": {
+      "name": "sigmaTail",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 185
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.sq_norm_le": {
+      "name": "sq_norm_le",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 85
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.telescope": {
+      "name": "telescope",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 175
+    },
+    "Ecdlp.ParityFourier.ProofsF5b.term_le": {
+      "name": "term_le",
+      "namespace": "Ecdlp.ParityFourier.ProofsF5b",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "line": 159
+    },
+    "Ecdlp.ParityFourier.ProofsWT.eChar_eq": {
+      "name": "eChar_eq",
+      "namespace": "Ecdlp.ParityFourier.ProofsWT",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+      "line": 31
+    },
+    "Ecdlp.ParityFourier.ProofsWT.sum_ft_sigma_le": {
+      "name": "sum_ft_sigma_le",
+      "namespace": "Ecdlp.ParityFourier.ProofsWT",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+      "line": 115
+    },
+    "Ecdlp.ParityFourier.ProofsWT.sum_sigma_erase": {
+      "name": "sum_sigma_erase",
+      "namespace": "Ecdlp.ParityFourier.ProofsWT",
+      "kind": "lemma",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+      "line": 93
+    },
+    "Ecdlp.ParityFourier.ProofsWT.weilTransfer": {
+      "name": "weilTransfer",
+      "namespace": "Ecdlp.ParityFourier.ProofsWT",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+      "line": 39
+    },
+    "Ecdlp.ParityFourier.ProofsWT.weilTransferLsb": {
+      "name": "weilTransferLsb",
+      "namespace": "Ecdlp.ParityFourier.ProofsWT",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+      "line": 140
     },
     "Ecdlp.ParityFourier.Relabel": {
       "name": "Relabel",
