@@ -3,7 +3,7 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "40afcaf37b8e1ca94e728d889c0edadea7591a4d3cd344b22a5da811b0fe9aaa",
+    "data/result_registry.json": "4f6ff6e341afb5f4c4fa6ef9c522513cf401dd3d02fa54bffc268f12398bbaac",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
     "data/stats.json": "7edc2b3893c0766808508bdb7b4c6d946e4b5ce0ec3ba489a9110d7598e72bb6"
   },
@@ -7675,7 +7675,7 @@
       "slug": "ecdlp-ledger-279",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about `#E` itself — all prior point-counting stayed inside `⟨G⟩`. Pins `#E ∈ {n, 2n, 3n, …}`; the strong keystone `#E = n` is now proved on top, curve-specifically without Hasse/Schoof (`CurveCardinalityExact.lean`). Standard axioms only: the order keystone `secp256k1_generator_addOrderOf` behind `secp256k1_grp_card` is kernel-checked (`decide +kernel` scalar-multiplication bridge))",
+      "claim_id": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. Pins `#E ∈ {n, 2n, 3n, …}`; the strong keystone `#E = n` is now proved on top, curve-specifically without Hasse/Schoof (`CurveCardinalityExact.lean`). Standard axioms only: the order keystone `secp256k1_generator_addOrderOf` behind `secp256k1_grp_card` is kernel-checked (`decide +kernel` scalar-multiplication bridge))",
       "title": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the pro…",
       "display": "`Ecdlp.Curve.secp256k1_n_dvd_card_point`",
       "method": "Mathlib (`AddSubgroup.card_mul_index`) + `secp256k1_grp_card",

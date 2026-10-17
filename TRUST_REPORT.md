@@ -176,8 +176,8 @@ ring-identity curve invariants. Representative theorems (file → theorem):
 ### (b) `native_decide` / compiler-trusted — TCB INCLUDES the Lean compiler
 
 These depend on `Lean.ofReduceBool`. The proof's truth rests on the compiler in
-addition to the kernel. These are the concrete 256-bit / large-integer facts that no
-kernel reduction could feasibly check. Exact `file:line → theorem`:
+addition to the kernel. These are concrete large-integer facts currently discharged by
+`native_decide`. Exact `file:line → theorem`:
 
 - `Ecdlp/Proved/Secp256k1Params.lean:8`  → `p_mod_four` (`p ≡ 3 mod 4`)
 - `Ecdlp/Proved/Secp256k1Params.lean:11` → `three_dvd_p_sub_one`

@@ -7454,7 +7454,7 @@
     },
     {
       "id": "ledger-279",
-      "claim": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about `#E` itself — all prior point-counting stayed inside `⟨G⟩`. Pins `#E ∈ {n, 2n, 3n, …}`; the strong keystone `#E = n` is now proved on top, curve-specifically without Hasse/Schoof (`CurveCardinalityExact.lean`). Standard axioms only: the order keystone `secp256k1_generator_addOrderOf` behind `secp256k1_grp_card` is kernel-checked (`decide +kernel` scalar-multiplication bridge))",
+      "claim": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. Pins `#E ∈ {n, 2n, 3n, …}`; the strong keystone `#E = n` is now proved on top, curve-specifically without Hasse/Schoof (`CurveCardinalityExact.lean`). Standard axioms only: the order keystone `secp256k1_generator_addOrderOf` behind `secp256k1_grp_card` is kernel-checked (`decide +kernel` scalar-multiplication bridge))",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_n_dvd_card_point`",
       "declared_files": [
         "Ecdlp/Proved/CurveCardinality.lean"
