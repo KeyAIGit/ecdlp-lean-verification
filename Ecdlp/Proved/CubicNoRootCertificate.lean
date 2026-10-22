@@ -22,8 +22,9 @@ If `r ∈ 𝔽_p` were a root of `f`, evaluation at `r` is a ring map, `r^p = r`
 so `(g − X)(r) = 0`, and `v · (g − X) ≡ 1` would give `0 = 1` (`noRoot_of_cert`).
 
 All arithmetic is on `ℕ`, so the per-curve checks `xpow` and `inv` are closed by
-`decide +kernel`: the kernel evaluates them (with its GMP-accelerated `Nat` operations), and
-no `native_decide` is used anywhere in this file. The remaining hypothesis `[Fact p.Prime]` is
+`decide +kernel`: they are checked by kernel reduction, including the kernel's built-in
+GMP-backed `Nat` arithmetic (part of the standard kernel); no compiler trust, and no
+`native_decide` is used anywhere in this file. The remaining hypothesis `[Fact p.Prime]` is
 a hypothesis of the theorems, not an axiom; it is discharged for secp256k1 and P-256 by the
 Pratt certificates elsewhere in the repository, and not discharged here for the other curves.
 
@@ -36,12 +37,14 @@ constants are reused. For each curve the file proves
 
 * `cubic_ne_zero`: `x³ + a x + b ≠ 0` for every `x : ZMod p` (assuming `p` prime);
 * `two_mul_add_one_lt_three_mul`: `2p + 1 < 3n`;
-* `card_eq_of_addOrderOf`: a conditional exact count, `#E(𝔽_p) = n` for any curve
-  `y² = x³ + a x + b` over `𝔽_p` that has a point of additive order `n`.
+* `card_eq_of_addOrderOf`: a conditional exact count under `[Fact p.Prime]`: `#E(𝔽_p) = n`
+  for any curve `W` with `[W.IsElliptic]` (Δ ≠ 0) and equation `y² = x³ + a x + b` over `𝔽_p`
+  that has a point of additive order `n`.
 
 For curves other than secp256k1 and P-256 this file does **not** prove that `p` or `n` is
-prime, nor that the published base point has order `n`. The per-curve block is generated, and
-checked for staleness, by `scripts/certs/cubic_no_root_certs.py`.
+prime, that the curve is nonsingular, nor that the published base point has order `n`. The
+per-curve block is generated, and checked for staleness, by
+`scripts/certs/cubic_no_root_certs.py` (a manual check; no CI workflow runs it).
 
 ## Provenance (third-party code)
 
@@ -54,6 +57,17 @@ BSD-3-Clause ("Individual contributors"); the code is used here under Apache-2.0
 `cubic_ne_zero_of_cert`, adapted from VG's `noTwoTorsion_of_cert`, is stated for natural-number
 coefficients over `ZMod p` instead of VG's specification curve type. `natCard_point_eq_of_noRoot`
 and the per-curve block are written for this repository.
+
+## Prior results (same upstream commit)
+
+verified-garbage already kernel-checks the no-root (no rational 2-torsion) fact for the same
+nine curves: `VG.Proof.P256.noTwoTorsion`, and for the other eight curves the `noTwoTorsion`
+field of `VG.Proof.<Curve>.good` (built by `Good.of_cert`). verified-garbage proves `#E = n`
+for P-256/P-384/P-521 for its own specification curve type; this repository's result is for
+`Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently
+(by `scripts/certs/cubic_no_root_certs.py`; a certificate is unique, so the data coincide with
+upstream's). The ledger therefore lists the per-curve block as upstream-derived, outside the
+headline count.
 -/
 
 namespace Ecdlp.CubicCert
@@ -167,9 +181,9 @@ theorem cubic_ne_zero_of_cert (p A B n : ℕ) [Fact p.Prime] (a b : ℕ)
   exact noRoot_of_cert p A B n hn g v hg hv x (by linear_combination hx - x * hA' - hB')
 
 /-- **Exact count from a no-root fact over `ZMod p`.** For `p` an odd prime, a curve
-`y² = x³ + a x + b` over `ZMod p` whose cubic has no root, and a point of additive order `n`
-with `2p + 1 < 3n`, the curve has exactly `n` points. A specialization of
-`natCard_point_eq_of_addOrderOf`. -/
+`y² = x³ + a x + b` over `ZMod p` with `[W.IsElliptic]` (Δ ≠ 0) whose cubic has no root, and a
+point of additive order `n` with `2p + 1 < 3n`, the curve has exactly `n` points. A
+specialization of `natCard_point_eq_of_addOrderOf`. -/
 theorem natCard_point_eq_of_noRoot {p a b n : ℕ} [Fact p.Prime]
     (hcubic : ∀ x : ZMod p, x ^ 3 + (a : ZMod p) * x + (b : ZMod p) ≠ 0) (hp2 : p ≠ 2)
     (hlt : 2 * p + 1 < 3 * n) (W : WeierstrassCurve (ZMod p)) [W.IsElliptic]
@@ -237,9 +251,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for secp256k1: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for secp256k1: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}
@@ -298,9 +313,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for NIST P-192: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for NIST P-192: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}
@@ -359,9 +375,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for NIST P-224: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for NIST P-224: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}
@@ -419,9 +436,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for NIST P-256: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for NIST P-256: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}
@@ -480,9 +498,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for NIST P-384: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for NIST P-384: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}
@@ -541,9 +560,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for NIST P-521: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for NIST P-521: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}
@@ -602,9 +622,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for brainpoolP256r1: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for brainpoolP256r1: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}
@@ -663,9 +684,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for brainpoolP384r1: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for brainpoolP384r1: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}
@@ -724,9 +746,10 @@ theorem cubic_ne_zero [Fact p.Prime] :
 /-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/
 theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel
 
-/-- **Conditional exact count** for brainpoolP512r1: for a curve `y² = x³ + a x + b` over
-`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order
-of a point is a hypothesis here, not a proved fact. -/
+/-- **Conditional exact count** for brainpoolP512r1: assuming `[Fact p.Prime]`, for a curve
+`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order
+`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,
+not proved facts. -/
 theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))
     [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)
     (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}

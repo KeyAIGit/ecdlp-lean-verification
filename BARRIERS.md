@@ -13,7 +13,7 @@ base. This is a living document; counts are for the v1 corpus.
 
 | Status | Count | Meaning |
 |---|---|---|
-| **Proved** | see `VERIFIED.md` (~271 distinct results / 311 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
+| **Proved** | see `VERIFIED.md` (~270 distinct results / 310 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
 | **Tractable now** | ~55 | `GroupTheory.OrderOfElement / Subgroup` — structural group facts |
 | **Barrier: no cost model** | ~55 | complexity claims; Lean has no "group-operation count" framework |
 | **Barrier: not in Mathlib** | ~62 | 38 quantum-circuit cost model, 24 lattice reduction |
@@ -443,9 +443,12 @@ exact `Θ` statements.
   Hasse/Schoof: `n ∣ #E` plus `#E ≤ 2p+1 < 3n` plus `E[2] = {O}`. The curve-generic form
   is `natCard_point_eq_of_addOrderOf` (`PrimeOrderCardinality.lean`); `E[2] = {O}` comes from
   a kernel-checked certificate that the cubic has no root (`CubicNoRootCertificate.lean`, also
-  checked for P-192, P-224, P-384, P-521 and brainpoolP256r1/P384r1/P512r1, whose base-point
-  orders are not proved here). Both counts inherit `native_decide` trust from `n • G = 0`
-  and the Pratt certificates. This route covers cofactor-1 curves only; curves with
+  checked for P-192, P-224, P-384, P-521 and brainpoolP256r1/P384r1/P512r1, whose primality,
+  nonsingularity and base-point orders are not proved here). The same no-root facts for all
+  nine curves, and `#E = n` for P-256/P-384/P-521 for its own specification curve type, are
+  already kernel-checked in pyca/verified-garbage; the per-curve certificates are therefore
+  listed as upstream-derived in `VERIFIED.md`. Both counts inherit `native_decide` trust from
+  `n • G = 0` and the Pratt certificates. This route covers cofactor-1 curves only; curves with
   cofactor `h ≥ 2` (e.g. Curve25519) still need the Hasse bound, absent from Mathlib.
 
 **Realized despite the barrier — the transfer *resistance* of secp256k1.** Although

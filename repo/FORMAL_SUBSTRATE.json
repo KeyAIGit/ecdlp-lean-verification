@@ -33,8 +33,7 @@
       "n7-uniform",
       "n10-uniform-separability",
       "general-n-torsion",
-      "weil-w4-w5",
-      "p256-exact-cardinality"
+      "weil-w4-w5"
     ]
   },
   "status_vocabulary": {
@@ -464,8 +463,8 @@
     {
       "id": "p256-exact-cardinality",
       "title": "P-256 exact rational-point cardinality",
-      "status": "closed",
-      "release_disposition": "closed",
+      "status": "out_of_release",
+      "release_disposition": "deferred",
       "family_ids": [
         "family-curve-torsion"
       ],

@@ -7,9 +7,14 @@ import Ecdlp.Proved.AffinePointFinite
 A curve-generic form of the argument behind `secp256k1_card_point_eq_n`
 (`CurveCardinalityExact.lean`). It avoids the Hasse bound and Schoof's algorithm.
 
-Let `W` be a Weierstrass curve over a finite field `F` with `a₁ = a₃ = 0` and `2 ≠ 0` in `F`.
-Suppose the cubic `x³ + a₂x² + a₄x + a₆` has no root in `F`, and some point `G` has
-`addOrderOf G = n` with `2·#F + 1 < 3n`. Then `#W(F) = n`.
+Let `W` be a Weierstrass curve with `[W.IsElliptic]` (Δ ≠ 0) over a finite field `F`, with
+`a₁ = a₃ = 0` and `2 ≠ 0` in `F`. Suppose the cubic `x³ + a₂x² + a₄x + a₆` has no root in `F`,
+and some point `G` has `addOrderOf G = n` with `2·#F + 1 < 3n`. Then `#W(F) = n`.
+
+The instance `[W.IsElliptic]` is a hypothesis of `natCard_point_eq_of_addOrderOf` and
+`card_eq_of_prime_order_point` (part of their frozen statements). The ingredients
+`natCard_point_le`, `exists_cubic_root_of_two_nsmul_eq_zero` and
+`natCard_eq_of_dvd_of_lt_three_mul` do not take it.
 
 ## Route
 
@@ -38,7 +43,9 @@ Hasse bound, which Mathlib v4.31 does not provide.
 
 The same argument (prime point order, `#E ≤ 2p + 1`, no rational 2-torsion) is formalized for
 the specification curves of pyca/verified-garbage (`VG.Proof.Weierstrass.primeOrder_of`,
-Apache-2.0 OR BSD-3-Clause; see `THIRD_PARTY_NOTICES.md`). The code here is written against
+Apache-2.0 OR BSD-3-Clause; see `THIRD_PARTY_NOTICES.md`). verified-garbage proves `#E = n`
+for P-256/P-384/P-521 for its own specification curve type; this repository's result is for
+`Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`. The code here is written against
 Mathlib's `WeierstrassCurve.Affine.Point` and reuses this repository's
 `instFinitePoint`; it generalizes the secp256k1-specific steps of
 `CurveCardinalityExact.lean`.
@@ -164,9 +171,9 @@ theorem exists_cubic_root_of_two_nsmul_eq_zero {F : Type*} [Field F] [DecidableE
     rw [WeierstrassCurve.Affine.equation_iff, h₁, h₃, hy0] at he
     linear_combination -he
 
-/-- **Exact point count from a point of order `n`.** Let `W` have `a₁ = a₃ = 0` over a finite
-field with `2 ≠ 0`, and suppose `x³ + a₂x² + a₄x + a₆` has no root. If some point has additive
-order `n` and `2·#F + 1 < 3n`, then `#W(F) = n`. -/
+/-- **Exact point count from a point of order `n`.** Let `W` have `[W.IsElliptic]` (Δ ≠ 0) and
+`a₁ = a₃ = 0` over a finite field with `2 ≠ 0`, and suppose `x³ + a₂x² + a₄x + a₆` has no root.
+If some point has additive order `n` and `2·#F + 1 < 3n`, then `#W(F) = n`. -/
 theorem natCard_point_eq_of_addOrderOf {F : Type*} [Field F] [Fintype F] [DecidableEq F]
     (W : WeierstrassCurve F) [W.IsElliptic]
     (h₁ : W.a₁ = 0) (h₃ : W.a₃ = 0) (h2 : (2 : F) ≠ 0)
@@ -181,8 +188,8 @@ theorem natCard_point_eq_of_addOrderOf {F : Type*} [Field F] [Fintype F] [Decida
       obtain ⟨x, hx⟩ := exists_cubic_root_of_two_nsmul_eq_zero W h₁ h₃ h2 hQ hQ0
       exact hcubic x hx)
 
-/-- **Prime-order form.** The same count when the input is a prime `n` with `n • G = 0` and
-`G ≠ 0` (so `addOrderOf G = n`). -/
+/-- **Prime-order form.** The same count, also under `[W.IsElliptic]` (Δ ≠ 0), when the input
+is a prime `n` (`[Fact n.Prime]`) with `n • G = 0` and `G ≠ 0` (so `addOrderOf G = n`). -/
 theorem card_eq_of_prime_order_point {F : Type*} [Field F] [Fintype F] [DecidableEq F]
     (W : WeierstrassCurve F) [W.IsElliptic]
     (h₁ : W.a₁ = 0) (h₃ : W.a₃ = 0) (h2 : (2 : F) ≠ 0)

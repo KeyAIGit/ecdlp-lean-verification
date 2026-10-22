@@ -10,34 +10,6 @@ CI elaborates it standalone and validates the output with
 `scripts/check_axioms.py`.
 -/
 
-#print axioms Ecdlp.CubicCert.brainpoolP256r1.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.brainpoolP256r1.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.brainpoolP256r1.two_mul_add_one_lt_three_mul
-#print axioms Ecdlp.CubicCert.brainpoolP384r1.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.brainpoolP384r1.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.brainpoolP384r1.two_mul_add_one_lt_three_mul
-#print axioms Ecdlp.CubicCert.brainpoolP512r1.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.brainpoolP512r1.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.brainpoolP512r1.two_mul_add_one_lt_three_mul
-#print axioms Ecdlp.CubicCert.natCard_point_eq_of_noRoot
-#print axioms Ecdlp.CubicCert.p192.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.p192.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.p192.two_mul_add_one_lt_three_mul
-#print axioms Ecdlp.CubicCert.p224.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.p224.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.p224.two_mul_add_one_lt_three_mul
-#print axioms Ecdlp.CubicCert.p256.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.p256.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.p256.two_mul_add_one_lt_three_mul
-#print axioms Ecdlp.CubicCert.p384.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.p384.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.p384.two_mul_add_one_lt_three_mul
-#print axioms Ecdlp.CubicCert.p521.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.p521.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.p521.two_mul_add_one_lt_three_mul
-#print axioms Ecdlp.CubicCert.secp256k1.card_eq_of_addOrderOf
-#print axioms Ecdlp.CubicCert.secp256k1.cubic_ne_zero
-#print axioms Ecdlp.CubicCert.secp256k1.two_mul_add_one_lt_three_mul
 #print axioms Ecdlp.Curve.Q5
 #print axioms Ecdlp.Curve.Q5_eval
 #print axioms Ecdlp.Curve.Q5_natDegree_le

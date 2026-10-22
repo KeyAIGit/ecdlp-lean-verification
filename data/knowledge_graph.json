@@ -4,8 +4,8 @@
   "purpose": "A machine-readable, navigable index of the machine-checked (Lean 4 + Mathlib, no sorry or project-defined axioms) structure of the ECDLP landscape for secp256k1: verified ledger rows, their declaration and import dependencies, the corpus claims they verify, the formalization barriers that bound them, and the target-specific route/foundation decisions. It also carries the generated Research Engine v0 selection and retained outcome state, while keeping bounded exploration distinct from route promotion. Built for a future automated reasoner to load the known-and-verified frontier without re-deriving it.",
   "invariant": "Every ledger row resolves to declarations accepted by the Lean kernel with no sorry or project-defined axioms; compiler-trusted native_decide use is disclosed separately. This graph is derived evidence, not a proof.",
   "counts": {
-    "theorems": 311,
-    "ledger_rows": 311,
+    "theorems": 310,
+    "ledger_rows": 310,
     "barriers": 6,
     "families": 8,
     "critical_nodes": 17,
@@ -37,10 +37,10 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1208,
+    "edges": 1207,
     "by_edge_type": {
       "imports": 540,
-      "member_of": 311,
+      "member_of": 310,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
       "supports": 30,
@@ -205,11 +205,10 @@
       "exact two-chart normalization + literal fixed-mask `MvPolynomial` family + TASK-021/TASK-022 equivalences + injective base change; `native_decide` only for `card_chartEquation": 1,
       "local projective `H` identities + exact TASK-023 cover restriction + path-independent-set counts; `native_decide` only for the three cardinalities": 1,
       "exact local substitution + fixed-degree projective-resultant forward implication + balanced prefix/suffix frozen specializations + exact chart-cover restriction; `native_decide` only for the four mask cardinalities": 1,
-      "Mathlib (`addOrderOf_dvd_natCard`, `exists_prime_addOrderOf_dvd_card'`, `card_roots'`, `Finset.card_le_mul_card_image`) + `instFinitePoint": 1,
-      "decide +kernel` + ported `noRoot_of_cert` + `natCard_point_eq_of_addOrderOf": 1
+      "Mathlib (`addOrderOf_dvd_natCard`, `exists_prime_addOrderOf_dvd_card'`, `card_roots'`, `Finset.card_le_mul_card_image`) + `instFinitePoint": 1
     },
     "by_area": {
-      "curve-torsion": 155,
+      "curve-torsion": 154,
       "primality": 57,
       "other": 33,
       "generic-hardness": 30,
@@ -6396,7 +6395,7 @@
       "files": [
         "Ecdlp/Proved/PrimeOrderCardinality.lean"
       ],
-      "claim": "Exact point count `#E(𝔽) = n` from a point of order `n` — curve-generic, no Hasse/Schoof (`natCard_point_eq_of_addOrderOf`: for a Weierstrass curve `W` with `a₁ = a₃ = 0` over a finite field `F` with `2 ≠ 0`, if `x³ + a₂x² + a₄x + a₆` has no root in `F`, some point has `addOrderOf G = n`, and `2·#F + 1 < 3n`, then `Nat.card W.toAffine.Point = n`; `card_eq_of_prime_order_point` is the form with `n` prime, `n•G = 0`, `G ≠ 0`. Ingredients, each a separate theorem: `natCard_point_le` (`#E(F) ≤ 2·#F + 1` for every Weierstrass curve over a finite field, ≤ 2 roots of a monic quadratic per `x`), `exists_cubic_root_of_two_nsmul_eq_zero` (a nonzero 2-torsion point has `y = 0`, so its `x` is a root of the cubic), `natCard_eq_of_dvd_of_lt_three_mul` (`n ∣ #A ≤ N < 3n` and no element of order 2 ⇒ `#A = n`, additive Cauchy). Neither `n` nor `#F` needs to be prime. Scope: cofactor-1 curves only (with `n ≈ #F/h`, `h ≥ 2` needs Hasse). Same argument as pyca/verified-garbage `primeOrder_of` for its specification curves; this Lean code is separate, for Mathlib's `WeierstrassCurve`. Pure-kernel)",
+      "claim": "Exact point count `#E(𝔽) = n` from a point of order `n` — curve-generic, no Hasse/Schoof (`natCard_point_eq_of_addOrderOf`: for a Weierstrass curve `W` with `[W.IsElliptic]` (Δ ≠ 0) and `a₁ = a₃ = 0` over a finite field `F` with `2 ≠ 0`, if `x³ + a₂x² + a₄x + a₆` has no root in `F`, some point has `addOrderOf G = n`, and `2·#F + 1 < 3n`, then `Nat.card W.toAffine.Point = n`; `card_eq_of_prime_order_point` is the form with `[Fact n.Prime]`, `n•G = 0`, `G ≠ 0`, also under `[W.IsElliptic]` (Δ ≠ 0). Ingredients, each a separate theorem: `natCard_point_le` (`#E(F) ≤ 2·#F + 1` for every Weierstrass curve over a finite field, ≤ 2 roots of a monic quadratic per `x`), `exists_cubic_root_of_two_nsmul_eq_zero` (a nonzero 2-torsion point has `y = 0`, so its `x` is a root of the cubic), `natCard_eq_of_dvd_of_lt_three_mul` (`n ∣ #A ≤ N < 3n` and no element of order 2 ⇒ `#A = n`, additive Cauchy); these three do not take `[W.IsElliptic]`. Neither `n` nor `#F` needs to be prime. Scope: cofactor-1 curves only (with `n ≈ #F/h`, `h ≥ 2` needs Hasse). Same argument as pyca/verified-garbage `primeOrder_of` for its specification curves, which proves `#E = n` for P-256/P-384/P-521 for its own specification curve type; this Lean code is separate, for Mathlib's `WeierstrassCurve`. Pure-kernel)",
       "method": "Mathlib (`addOrderOf_dvd_natCard`, `exists_prime_addOrderOf_dvd_card'`, `card_roots'`, `Finset.card_le_mul_card_image`) + `instFinitePoint",
       "status": "proved",
       "area": "primality",
@@ -6406,26 +6405,6 @@
     },
     {
       "id": "thm-308",
-      "name": "Ecdlp.CubicCert.{secp256k1,p192,p224,p256,p384,p521,brainpoolP256r1,brainpoolP384r1,brainpoolP512r1}.cubic_ne_zero`, `Ecdlp.CubicCert.{secp256k1,p192,p224,p256,p384,p521,brainpoolP256r1,brainpoolP384r1,brainpoolP512r1}.two_mul_add_one_lt_three_mul`, `Ecdlp.CubicCert.{secp256k1,p192,p224,p256,p384,p521,brainpoolP256r1,brainpoolP384r1,brainpoolP512r1}.card_eq_of_addOrderOf`, `Ecdlp.CubicCert.natCard_point_eq_of_noRoot",
-      "short_name": "cubic_ne_zero`,",
-      "module": "Ecdlp.Proved.CubicNoRootCertificate",
-      "modules": [
-        "Ecdlp.Proved.CubicNoRootCertificate"
-      ],
-      "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "files": [
-        "Ecdlp/Proved/CubicNoRootCertificate.lean"
-      ],
-      "claim": "x³ + a x + b` has no root in `𝔽_p` for nine standard curves — kernel-checked certificates, no native_decide (`cubic_ne_zero`, for secp256k1 (SEC 2 v2 §2.4.1), NIST P-192, P-224, P-256, P-384, P-521 (FIPS 186-5 / SP 800-186 §3.2.1) and brainpoolP256r1, P384r1, P512r1 (RFC 5639): `∀ x : ZMod p, x³ + a·x + b ≠ 0`, under the hypothesis `[Fact p.Prime]`. Each instance checks a certificate `g = X^p mod (X³ − A X − B)` and `v·(g − X) ≡ 1` by `decide +kernel` on `ℕ`, via the ported soundness lemma `noRoot_of_cert` (see the ported table below). Per curve also `two_mul_add_one_lt_three_mul` (`2p + 1 < 3n`, `decide +kernel`) and `card_eq_of_addOrderOf`, a conditional count: any curve `y² = x³ + a x + b` over `𝔽_p` with a point of additive order `n` has exactly `n` points (`natCard_point_eq_of_noRoot`). Not proved here: primality of `p`, `n` for the seven curves other than secp256k1 and P-256, and that the published base point has order `n` for those seven. Certificate data generated and staleness-checked by `scripts/certs/cubic_no_root_certs.py`. Pure-kernel)",
-      "method": "decide +kernel` + ported `noRoot_of_cert` + `natCard_point_eq_of_addOrderOf",
-      "status": "proved",
-      "area": "primality",
-      "family_id": "family-primality",
-      "dependency_depth": 2,
-      "gated": true
-    },
-    {
-      "id": "thm-309",
       "name": "Ecdlp.P256.p256_card_point_eq_n`, `p256_no_two_torsion_cubic`, `p256_two_ne_zero",
       "short_name": "p256_card_point_eq_n`,",
       "module": "Ecdlp.Proved.P256CardinalityExact",
@@ -6436,16 +6415,16 @@
       "files": [
         "Ecdlp/Proved/P256CardinalityExact.lean"
       ],
-      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero` transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Not pure-kernel: inherits `Lean.ofReduceBool` (`native_decide`) through `n•G = 0`, the base-point and curve facts in `P256Curve.lean`/`P256GeneratorOrder.lean`, and the Lucas-test certificate leaves for `p` and `n`; the no-root certificate layer itself is pure-kernel)",
+      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero`, ported table below, transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Prior art: pyca/verified-garbage (`38c744308fcd`) proves `#E = n` for P-256/P-384/P-521 for its own specification curve type (`VG.Proof.P256.primeOrder`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently. Not pure-kernel: inherits `Lean.ofReduceBool` (`native_decide`) through `n•G = 0`, the base-point and curve facts in `P256Curve.lean`/`P256GeneratorOrder.lean`, and the Lucas-test certificate leaves for `p` and `n`; the no-root certificate layer itself is pure-kernel)",
       "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
       "status": "proved",
-      "area": "curve-torsion",
-      "family_id": "family-curve-torsion",
+      "area": "primality",
+      "family_id": "family-primality",
       "dependency_depth": 4,
       "gated": true
     },
     {
-      "id": "thm-310",
+      "id": "thm-309",
       "name": "Ecdlp.Curve.secp256k1_card_point_eq_n_general",
       "short_name": "secp256k1_card_point_eq_n_general",
       "module": "Ecdlp.Proved.Secp256k1CardinalityGeneral",
@@ -6456,7 +6435,7 @@
       "files": [
         "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean"
       ],
-      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`) instead of the `native_decide` cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Still inherits `native_decide` trust through `secp256k1_generator_addOrderOf` and the Lucas-test certificate leaves for `p` and `n`)",
+      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`, ported table below) instead of the `native_decide` cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Still inherits `native_decide` trust through `secp256k1_generator_addOrderOf` and the Lucas-test certificate leaves for `p` and `n`)",
       "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
       "status": "proved",
       "area": "curve-torsion",
@@ -6542,8 +6521,7 @@
         "n7-uniform",
         "n10-uniform-separability",
         "general-n-torsion",
-        "weil-w4-w5",
-        "p256-exact-cardinality"
+        "weil-w4-w5"
       ]
     },
     "families": [
@@ -6967,8 +6945,8 @@
       {
         "id": "p256-exact-cardinality",
         "title": "P-256 exact rational-point cardinality",
-        "status": "closed",
-        "release_disposition": "closed",
+        "status": "out_of_release",
+        "release_disposition": "deferred",
         "family_ids": [
           "family-curve-torsion"
         ],
@@ -15873,11 +15851,6 @@
       "type": "member_of"
     },
     {
-      "from": "thm-310",
-      "to": "family-curve-torsion",
-      "type": "member_of"
-    },
-    {
       "from": "thm-065",
       "to": "secp-parameters",
       "type": "supports",
@@ -15896,7 +15869,7 @@
       "anchor": "Ecdlp.Curve.secp256k1_card_point_eq_n"
     },
     {
-      "from": "thm-310",
+      "from": "thm-309",
       "to": "secp-rational-group",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_card_point_eq_n"
@@ -16150,7 +16123,7 @@
       "anchor": "Ecdlp.P256.p256_n_dvd_card_point"
     },
     {
-      "from": "thm-309",
+      "from": "thm-308",
       "to": "p256-exact-cardinality",
       "type": "supports",
       "anchor": "Ecdlp.P256.p256_card_point_eq_n"

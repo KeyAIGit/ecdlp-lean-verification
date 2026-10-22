@@ -25,6 +25,13 @@ existing `native_decide` facts: `n • G = 0` and the base point's nonsingularit
 (`P256GeneratorOrder.lean`), the curve facts in `P256Curve.lean`, and the Pratt certificates
 for `p` and `n` (`P256PrimeP.lean`, `P256PrimeN.lean`). It is therefore a `native_decide`
 result, not a pure-kernel one.
+
+## Prior art
+
+pyca/verified-garbage (commit `38c744308fcd`, `VG.Proof.P256.primeOrder`) proves `#E = n` for
+P-256/P-384/P-521 for its own specification curve type; this repository's result is for
+`Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently.
+See `THIRD_PARTY_NOTICES.md`.
 -/
 
 open WeierstrassCurve.Affine

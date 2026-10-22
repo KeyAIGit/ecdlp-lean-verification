@@ -1,15 +1,15 @@
 {
   "schema_version": 2,
   "source": "VERIFIED.md + built public Lean source (Targets excluded)",
-  "ledger_rows": 311,
-  "ledger_reference_count": 739,
-  "ledger_named_declarations": 714,
+  "ledger_rows": 310,
+  "ledger_reference_count": 711,
+  "ledger_named_declarations": 686,
   "anonymous_instance_exemptions": 7,
   "unresolved_reference_count": 0,
   "coverage_percent": 100.0,
   "declaration_count": 1312,
   "distinct_qualified_names": 1312,
-  "verified_md_citations": 714,
+  "verified_md_citations": 686,
   "unresolved_references": [],
   "resolution_exemptions": [
     {
@@ -78,34 +78,6 @@
   ],
   "note": "Ledger rows are canonical accounting units; grouped cells resolve to declaration-level evidence here.",
   "ledger_declarations": [
-    "Ecdlp.CubicCert.brainpoolP256r1.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.brainpoolP256r1.cubic_ne_zero",
-    "Ecdlp.CubicCert.brainpoolP256r1.two_mul_add_one_lt_three_mul",
-    "Ecdlp.CubicCert.brainpoolP384r1.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.brainpoolP384r1.cubic_ne_zero",
-    "Ecdlp.CubicCert.brainpoolP384r1.two_mul_add_one_lt_three_mul",
-    "Ecdlp.CubicCert.brainpoolP512r1.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.brainpoolP512r1.cubic_ne_zero",
-    "Ecdlp.CubicCert.brainpoolP512r1.two_mul_add_one_lt_three_mul",
-    "Ecdlp.CubicCert.natCard_point_eq_of_noRoot",
-    "Ecdlp.CubicCert.p192.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.p192.cubic_ne_zero",
-    "Ecdlp.CubicCert.p192.two_mul_add_one_lt_three_mul",
-    "Ecdlp.CubicCert.p224.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.p224.cubic_ne_zero",
-    "Ecdlp.CubicCert.p224.two_mul_add_one_lt_three_mul",
-    "Ecdlp.CubicCert.p256.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.p256.cubic_ne_zero",
-    "Ecdlp.CubicCert.p256.two_mul_add_one_lt_three_mul",
-    "Ecdlp.CubicCert.p384.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.p384.cubic_ne_zero",
-    "Ecdlp.CubicCert.p384.two_mul_add_one_lt_three_mul",
-    "Ecdlp.CubicCert.p521.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.p521.cubic_ne_zero",
-    "Ecdlp.CubicCert.p521.two_mul_add_one_lt_three_mul",
-    "Ecdlp.CubicCert.secp256k1.card_eq_of_addOrderOf",
-    "Ecdlp.CubicCert.secp256k1.cubic_ne_zero",
-    "Ecdlp.CubicCert.secp256k1.two_mul_add_one_lt_three_mul",
     "Ecdlp.Curve.Q5",
     "Ecdlp.Curve.Q5_eval",
     "Ecdlp.Curve.Q5_natDegree_le",
@@ -10115,7 +10087,7 @@
     },
     {
       "id": "ledger-307",
-      "claim": "Exact point count `#E(𝔽) = n` from a point of order `n` — curve-generic, no Hasse/Schoof (`natCard_point_eq_of_addOrderOf`: for a Weierstrass curve `W` with `a₁ = a₃ = 0` over a finite field `F` with `2 ≠ 0`, if `x³ + a₂x² + a₄x + a₆` has no root in `F`, some point has `addOrderOf G = n`, and `2·#F + 1 < 3n`, then `Nat.card W.toAffine.Point = n`; `card_eq_of_prime_order_point` is the form with `n` prime, `n•G = 0`, `G ≠ 0`. Ingredients, each a separate theorem: `natCard_point_le` (`#E(F) ≤ 2·#F + 1` for every Weierstrass curve over a finite field, ≤ 2 roots of a monic quadratic per `x`), `exists_cubic_root_of_two_nsmul_eq_zero` (a nonzero 2-torsion point has `y = 0`, so its `x` is a root of the cubic), `natCard_eq_of_dvd_of_lt_three_mul` (`n ∣ #A ≤ N < 3n` and no element of order 2 ⇒ `#A = n`, additive Cauchy). Neither `n` nor `#F` needs to be prime. Scope: cofactor-1 curves only (with `n ≈ #F/h`, `h ≥ 2` needs Hasse). Same argument as pyca/verified-garbage `primeOrder_of` for its specification curves; this Lean code is separate, for Mathlib's `WeierstrassCurve`. Pure-kernel)",
+      "claim": "Exact point count `#E(𝔽) = n` from a point of order `n` — curve-generic, no Hasse/Schoof (`natCard_point_eq_of_addOrderOf`: for a Weierstrass curve `W` with `[W.IsElliptic]` (Δ ≠ 0) and `a₁ = a₃ = 0` over a finite field `F` with `2 ≠ 0`, if `x³ + a₂x² + a₄x + a₆` has no root in `F`, some point has `addOrderOf G = n`, and `2·#F + 1 < 3n`, then `Nat.card W.toAffine.Point = n`; `card_eq_of_prime_order_point` is the form with `[Fact n.Prime]`, `n•G = 0`, `G ≠ 0`, also under `[W.IsElliptic]` (Δ ≠ 0). Ingredients, each a separate theorem: `natCard_point_le` (`#E(F) ≤ 2·#F + 1` for every Weierstrass curve over a finite field, ≤ 2 roots of a monic quadratic per `x`), `exists_cubic_root_of_two_nsmul_eq_zero` (a nonzero 2-torsion point has `y = 0`, so its `x` is a root of the cubic), `natCard_eq_of_dvd_of_lt_three_mul` (`n ∣ #A ≤ N < 3n` and no element of order 2 ⇒ `#A = n`, additive Cauchy); these three do not take `[W.IsElliptic]`. Neither `n` nor `#F` needs to be prime. Scope: cofactor-1 curves only (with `n ≈ #F/h`, `h ≥ 2` needs Hasse). Same argument as pyca/verified-garbage `primeOrder_of` for its specification curves, which proves `#E = n` for P-256/P-384/P-521 for its own specification curve type; this Lean code is separate, for Mathlib's `WeierstrassCurve`. Pure-kernel)",
       "theorem_cell": "`Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf`, `card_eq_of_prime_order_point`, `natCard_point_le`, `exists_cubic_root_of_two_nsmul_eq_zero`, `natCard_eq_of_dvd_of_lt_three_mul`",
       "declared_files": [
         "Ecdlp/Proved/PrimeOrderCardinality.lean"
@@ -10129,7 +10101,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 170
+          "line": 177
         },
         {
           "cited": "Ecdlp.Weierstrass.card_eq_of_prime_order_point",
@@ -10137,7 +10109,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 186
+          "line": 193
         },
         {
           "cited": "Ecdlp.Weierstrass.natCard_point_le",
@@ -10145,7 +10117,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 79
+          "line": 86
         },
         {
           "cited": "Ecdlp.Weierstrass.exists_cubic_root_of_two_nsmul_eq_zero",
@@ -10153,7 +10125,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 147
+          "line": 154
         },
         {
           "cited": "Ecdlp.Weierstrass.natCard_eq_of_dvd_of_lt_three_mul",
@@ -10161,249 +10133,13 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 53
+          "line": 60
         }
       ]
     },
     {
       "id": "ledger-308",
-      "claim": "x³ + a x + b` has no root in `𝔽_p` for nine standard curves — kernel-checked certificates, no native_decide (`cubic_ne_zero`, for secp256k1 (SEC 2 v2 §2.4.1), NIST P-192, P-224, P-256, P-384, P-521 (FIPS 186-5 / SP 800-186 §3.2.1) and brainpoolP256r1, P384r1, P512r1 (RFC 5639): `∀ x : ZMod p, x³ + a·x + b ≠ 0`, under the hypothesis `[Fact p.Prime]`. Each instance checks a certificate `g = X^p mod (X³ − A X − B)` and `v·(g − X) ≡ 1` by `decide +kernel` on `ℕ`, via the ported soundness lemma `noRoot_of_cert` (see the ported table below). Per curve also `two_mul_add_one_lt_three_mul` (`2p + 1 < 3n`, `decide +kernel`) and `card_eq_of_addOrderOf`, a conditional count: any curve `y² = x³ + a x + b` over `𝔽_p` with a point of additive order `n` has exactly `n` points (`natCard_point_eq_of_noRoot`). Not proved here: primality of `p`, `n` for the seven curves other than secp256k1 and P-256, and that the published base point has order `n` for those seven. Certificate data generated and staleness-checked by `scripts/certs/cubic_no_root_certs.py`. Pure-kernel)",
-      "theorem_cell": "`Ecdlp.CubicCert.{secp256k1,p192,p224,p256,p384,p521,brainpoolP256r1,brainpoolP384r1,brainpoolP512r1}.cubic_ne_zero`, `Ecdlp.CubicCert.{secp256k1,p192,p224,p256,p384,p521,brainpoolP256r1,brainpoolP384r1,brainpoolP512r1}.two_mul_add_one_lt_three_mul`, `Ecdlp.CubicCert.{secp256k1,p192,p224,p256,p384,p521,brainpoolP256r1,brainpoolP384r1,brainpoolP512r1}.card_eq_of_addOrderOf`, `Ecdlp.CubicCert.natCard_point_eq_of_noRoot`",
-      "declared_files": [
-        "Ecdlp/Proved/CubicNoRootCertificate.lean"
-      ],
-      "method": "decide +kernel` + ported `noRoot_of_cert` + `natCard_point_eq_of_addOrderOf",
-      "status": "proved",
-      "references": [
-        {
-          "cited": "Ecdlp.CubicCert.secp256k1.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.secp256k1.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 232
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p192.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.p192.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 293
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p224.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.p224.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 354
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p256.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.p256.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 414
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p384.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.p384.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 475
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p521.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.p521.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 536
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP256r1.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP256r1.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 597
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP384r1.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP384r1.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 658
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP512r1.cubic_ne_zero",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP512r1.cubic_ne_zero",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 719
-        },
-        {
-          "cited": "Ecdlp.CubicCert.secp256k1.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.secp256k1.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 238
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p192.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.p192.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 299
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p224.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.p224.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 360
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p256.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.p256.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 420
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p384.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.p384.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 481
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p521.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.p521.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 542
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP256r1.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP256r1.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 603
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP384r1.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP384r1.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 664
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP512r1.two_mul_add_one_lt_three_mul",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP512r1.two_mul_add_one_lt_three_mul",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 725
-        },
-        {
-          "cited": "Ecdlp.CubicCert.secp256k1.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.secp256k1.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 243
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p192.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.p192.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 304
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p224.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.p224.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 365
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p256.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.p256.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 425
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p384.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.p384.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 486
-        },
-        {
-          "cited": "Ecdlp.CubicCert.p521.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.p521.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 547
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP256r1.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP256r1.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 608
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP384r1.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP384r1.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 669
-        },
-        {
-          "cited": "Ecdlp.CubicCert.brainpoolP512r1.card_eq_of_addOrderOf",
-          "canonical_name": "Ecdlp.CubicCert.brainpoolP512r1.card_eq_of_addOrderOf",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 730
-        },
-        {
-          "cited": "Ecdlp.CubicCert.natCard_point_eq_of_noRoot",
-          "canonical_name": "Ecdlp.CubicCert.natCard_point_eq_of_noRoot",
-          "resolution": "exact",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-          "line": 173
-        }
-      ]
-    },
-    {
-      "id": "ledger-309",
-      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero` transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Not pure-kernel: inherits `Lean.ofReduceBool` (`native_decide`) through `n•G = 0`, the base-point and curve facts in `P256Curve.lean`/`P256GeneratorOrder.lean`, and the Lucas-test certificate leaves for `p` and `n`; the no-root certificate layer itself is pure-kernel)",
+      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero`, ported table below, transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Prior art: pyca/verified-garbage (`38c744308fcd`) proves `#E = n` for P-256/P-384/P-521 for its own specification curve type (`VG.Proof.P256.primeOrder`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently. Not pure-kernel: inherits `Lean.ofReduceBool` (`native_decide`) through `n•G = 0`, the base-point and curve facts in `P256Curve.lean`/`P256GeneratorOrder.lean`, and the Lucas-test certificate leaves for `p` and `n`; the no-root certificate layer itself is pure-kernel)",
       "theorem_cell": "`Ecdlp.P256.p256_card_point_eq_n`, `p256_no_two_torsion_cubic`, `p256_two_ne_zero`",
       "declared_files": [
         "Ecdlp/Proved/P256CardinalityExact.lean"
@@ -10417,7 +10153,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-          "line": 58
+          "line": 65
         },
         {
           "cited": "Ecdlp.P256.p256_no_two_torsion_cubic",
@@ -10425,7 +10161,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-          "line": 43
+          "line": 50
         },
         {
           "cited": "Ecdlp.P256.p256_two_ne_zero",
@@ -10433,13 +10169,13 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-          "line": 35
+          "line": 42
         }
       ]
     },
     {
-      "id": "ledger-310",
-      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`) instead of the `native_decide` cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Still inherits `native_decide` trust through `secp256k1_generator_addOrderOf` and the Lucas-test certificate leaves for `p` and `n`)",
+      "id": "ledger-309",
+      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`, ported table below) instead of the `native_decide` cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Still inherits `native_decide` trust through `secp256k1_generator_addOrderOf` and the Lucas-test certificate leaves for `p` and `n`)",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_card_point_eq_n_general`",
       "declared_files": [
         "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean"
@@ -10723,882 +10459,882 @@
       "namespace": "Ecdlp.CubicCert",
       "kind": "abbrev",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 64
+      "line": 78
     },
     "Ecdlp.CubicCert.brainpoolP256r1.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 574
+      "line": 594
     },
     "Ecdlp.CubicCert.brainpoolP256r1.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 577
+      "line": 597
     },
     "Ecdlp.CubicCert.brainpoolP256r1.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 564
+      "line": 584
     },
     "Ecdlp.CubicCert.brainpoolP256r1.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 567
+      "line": 587
     },
     "Ecdlp.CubicCert.brainpoolP256r1.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 608
+      "line": 629
     },
     "Ecdlp.CubicCert.brainpoolP256r1.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 597
+      "line": 617
     },
     "Ecdlp.CubicCert.brainpoolP256r1.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 580
+      "line": 600
     },
     "Ecdlp.CubicCert.brainpoolP256r1.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 593
+      "line": 613
     },
     "Ecdlp.CubicCert.brainpoolP256r1.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 571
+      "line": 591
     },
     "Ecdlp.CubicCert.brainpoolP256r1.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 561
+      "line": 581
     },
     "Ecdlp.CubicCert.brainpoolP256r1.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 603
+      "line": 623
     },
     "Ecdlp.CubicCert.brainpoolP256r1.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 585
+      "line": 605
     },
     "Ecdlp.CubicCert.brainpoolP256r1.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.brainpoolP256r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 590
+      "line": 610
     },
     "Ecdlp.CubicCert.brainpoolP384r1.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 635
+      "line": 656
     },
     "Ecdlp.CubicCert.brainpoolP384r1.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 638
+      "line": 659
     },
     "Ecdlp.CubicCert.brainpoolP384r1.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 625
+      "line": 646
     },
     "Ecdlp.CubicCert.brainpoolP384r1.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 628
+      "line": 649
     },
     "Ecdlp.CubicCert.brainpoolP384r1.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 669
+      "line": 691
     },
     "Ecdlp.CubicCert.brainpoolP384r1.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 658
+      "line": 679
     },
     "Ecdlp.CubicCert.brainpoolP384r1.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 641
+      "line": 662
     },
     "Ecdlp.CubicCert.brainpoolP384r1.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 654
+      "line": 675
     },
     "Ecdlp.CubicCert.brainpoolP384r1.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 632
+      "line": 653
     },
     "Ecdlp.CubicCert.brainpoolP384r1.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 622
+      "line": 643
     },
     "Ecdlp.CubicCert.brainpoolP384r1.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 664
+      "line": 685
     },
     "Ecdlp.CubicCert.brainpoolP384r1.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 646
+      "line": 667
     },
     "Ecdlp.CubicCert.brainpoolP384r1.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.brainpoolP384r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 651
+      "line": 672
     },
     "Ecdlp.CubicCert.brainpoolP512r1.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 696
+      "line": 718
     },
     "Ecdlp.CubicCert.brainpoolP512r1.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 699
+      "line": 721
     },
     "Ecdlp.CubicCert.brainpoolP512r1.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 686
+      "line": 708
     },
     "Ecdlp.CubicCert.brainpoolP512r1.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 689
+      "line": 711
     },
     "Ecdlp.CubicCert.brainpoolP512r1.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 730
+      "line": 753
     },
     "Ecdlp.CubicCert.brainpoolP512r1.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 719
+      "line": 741
     },
     "Ecdlp.CubicCert.brainpoolP512r1.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 702
+      "line": 724
     },
     "Ecdlp.CubicCert.brainpoolP512r1.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 715
+      "line": 737
     },
     "Ecdlp.CubicCert.brainpoolP512r1.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 693
+      "line": 715
     },
     "Ecdlp.CubicCert.brainpoolP512r1.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 683
+      "line": 705
     },
     "Ecdlp.CubicCert.brainpoolP512r1.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 725
+      "line": 747
     },
     "Ecdlp.CubicCert.brainpoolP512r1.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 707
+      "line": 729
     },
     "Ecdlp.CubicCert.brainpoolP512r1.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.brainpoolP512r1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 712
+      "line": 734
     },
     "Ecdlp.CubicCert.cubic_ne_zero_of_cert": {
       "name": "cubic_ne_zero_of_cert",
       "namespace": "Ecdlp.CubicCert",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 157
+      "line": 171
     },
     "Ecdlp.CubicCert.evalT": {
       "name": "evalT",
       "namespace": "Ecdlp.CubicCert",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 90
+      "line": 104
     },
     "Ecdlp.CubicCert.evalT_mulT": {
       "name": "evalT_mulT",
       "namespace": "Ecdlp.CubicCert",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 96
+      "line": 110
     },
     "Ecdlp.CubicCert.evalT_powT": {
       "name": "evalT_powT",
       "namespace": "Ecdlp.CubicCert",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 102
+      "line": 116
     },
     "Ecdlp.CubicCert.mulT": {
       "name": "mulT",
       "namespace": "Ecdlp.CubicCert",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 68
+      "line": 82
     },
     "Ecdlp.CubicCert.natCard_point_eq_of_noRoot": {
       "name": "natCard_point_eq_of_noRoot",
       "namespace": "Ecdlp.CubicCert",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 173
+      "line": 187
     },
     "Ecdlp.CubicCert.noRoot_of_cert": {
       "name": "noRoot_of_cert",
       "namespace": "Ecdlp.CubicCert",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 132
+      "line": 146
     },
     "Ecdlp.CubicCert.p192.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 270
+      "line": 285
     },
     "Ecdlp.CubicCert.p192.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 273
+      "line": 288
     },
     "Ecdlp.CubicCert.p192.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 260
+      "line": 275
     },
     "Ecdlp.CubicCert.p192.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 263
+      "line": 278
     },
     "Ecdlp.CubicCert.p192.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 304
+      "line": 320
     },
     "Ecdlp.CubicCert.p192.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 293
+      "line": 308
     },
     "Ecdlp.CubicCert.p192.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 276
+      "line": 291
     },
     "Ecdlp.CubicCert.p192.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 289
+      "line": 304
     },
     "Ecdlp.CubicCert.p192.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 267
+      "line": 282
     },
     "Ecdlp.CubicCert.p192.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 257
+      "line": 272
     },
     "Ecdlp.CubicCert.p192.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 299
+      "line": 314
     },
     "Ecdlp.CubicCert.p192.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 281
+      "line": 296
     },
     "Ecdlp.CubicCert.p192.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.p192",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 286
+      "line": 301
     },
     "Ecdlp.CubicCert.p224.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 331
+      "line": 347
     },
     "Ecdlp.CubicCert.p224.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 334
+      "line": 350
     },
     "Ecdlp.CubicCert.p224.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 321
+      "line": 337
     },
     "Ecdlp.CubicCert.p224.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 324
+      "line": 340
     },
     "Ecdlp.CubicCert.p224.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 365
+      "line": 382
     },
     "Ecdlp.CubicCert.p224.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 354
+      "line": 370
     },
     "Ecdlp.CubicCert.p224.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 337
+      "line": 353
     },
     "Ecdlp.CubicCert.p224.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 350
+      "line": 366
     },
     "Ecdlp.CubicCert.p224.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 328
+      "line": 344
     },
     "Ecdlp.CubicCert.p224.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 318
+      "line": 334
     },
     "Ecdlp.CubicCert.p224.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 360
+      "line": 376
     },
     "Ecdlp.CubicCert.p224.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 342
+      "line": 358
     },
     "Ecdlp.CubicCert.p224.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.p224",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 347
+      "line": 363
     },
     "Ecdlp.CubicCert.p256.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 391
+      "line": 408
     },
     "Ecdlp.CubicCert.p256.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 394
+      "line": 411
     },
     "Ecdlp.CubicCert.p256.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 382
+      "line": 399
     },
     "Ecdlp.CubicCert.p256.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "abbrev",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 385
+      "line": 402
     },
     "Ecdlp.CubicCert.p256.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 425
+      "line": 443
     },
     "Ecdlp.CubicCert.p256.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 414
+      "line": 431
     },
     "Ecdlp.CubicCert.p256.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 397
+      "line": 414
     },
     "Ecdlp.CubicCert.p256.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 410
+      "line": 427
     },
     "Ecdlp.CubicCert.p256.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "abbrev",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 388
+      "line": 405
     },
     "Ecdlp.CubicCert.p256.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "abbrev",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 379
+      "line": 396
     },
     "Ecdlp.CubicCert.p256.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 420
+      "line": 437
     },
     "Ecdlp.CubicCert.p256.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 402
+      "line": 419
     },
     "Ecdlp.CubicCert.p256.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.p256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 407
+      "line": 424
     },
     "Ecdlp.CubicCert.p384.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 452
+      "line": 470
     },
     "Ecdlp.CubicCert.p384.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 455
+      "line": 473
     },
     "Ecdlp.CubicCert.p384.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 442
+      "line": 460
     },
     "Ecdlp.CubicCert.p384.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 445
+      "line": 463
     },
     "Ecdlp.CubicCert.p384.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 486
+      "line": 505
     },
     "Ecdlp.CubicCert.p384.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 475
+      "line": 493
     },
     "Ecdlp.CubicCert.p384.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 458
+      "line": 476
     },
     "Ecdlp.CubicCert.p384.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 471
+      "line": 489
     },
     "Ecdlp.CubicCert.p384.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 449
+      "line": 467
     },
     "Ecdlp.CubicCert.p384.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 439
+      "line": 457
     },
     "Ecdlp.CubicCert.p384.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 481
+      "line": 499
     },
     "Ecdlp.CubicCert.p384.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 463
+      "line": 481
     },
     "Ecdlp.CubicCert.p384.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.p384",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 468
+      "line": 486
     },
     "Ecdlp.CubicCert.p521.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 513
+      "line": 532
     },
     "Ecdlp.CubicCert.p521.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 516
+      "line": 535
     },
     "Ecdlp.CubicCert.p521.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 503
+      "line": 522
     },
     "Ecdlp.CubicCert.p521.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 506
+      "line": 525
     },
     "Ecdlp.CubicCert.p521.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 547
+      "line": 567
     },
     "Ecdlp.CubicCert.p521.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 536
+      "line": 555
     },
     "Ecdlp.CubicCert.p521.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 519
+      "line": 538
     },
     "Ecdlp.CubicCert.p521.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 532
+      "line": 551
     },
     "Ecdlp.CubicCert.p521.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 510
+      "line": 529
     },
     "Ecdlp.CubicCert.p521.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 500
+      "line": 519
     },
     "Ecdlp.CubicCert.p521.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 542
+      "line": 561
     },
     "Ecdlp.CubicCert.p521.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 524
+      "line": 543
     },
     "Ecdlp.CubicCert.p521.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.p521",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 529
+      "line": 548
     },
     "Ecdlp.CubicCert.powT": {
       "name": "powT",
       "namespace": "Ecdlp.CubicCert",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 78
+      "line": 92
     },
     "Ecdlp.CubicCert.secp256k1.A": {
       "name": "A",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 209
+      "line": 223
     },
     "Ecdlp.CubicCert.secp256k1.B": {
       "name": "B",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 212
+      "line": 226
     },
     "Ecdlp.CubicCert.secp256k1.a": {
       "name": "a",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 200
+      "line": 214
     },
     "Ecdlp.CubicCert.secp256k1.b": {
       "name": "b",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 203
+      "line": 217
     },
     "Ecdlp.CubicCert.secp256k1.card_eq_of_addOrderOf": {
       "name": "card_eq_of_addOrderOf",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 243
+      "line": 258
     },
     "Ecdlp.CubicCert.secp256k1.cubic_ne_zero": {
       "name": "cubic_ne_zero",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 232
+      "line": 246
     },
     "Ecdlp.CubicCert.secp256k1.g": {
       "name": "g",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 215
+      "line": 229
     },
     "Ecdlp.CubicCert.secp256k1.inv": {
       "name": "inv",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 228
+      "line": 242
     },
     "Ecdlp.CubicCert.secp256k1.n": {
       "name": "n",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "abbrev",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 206
+      "line": 220
     },
     "Ecdlp.CubicCert.secp256k1.p": {
       "name": "p",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "abbrev",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 197
+      "line": 211
     },
     "Ecdlp.CubicCert.secp256k1.two_mul_add_one_lt_three_mul": {
       "name": "two_mul_add_one_lt_three_mul",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 238
+      "line": 252
     },
     "Ecdlp.CubicCert.secp256k1.v": {
       "name": "v",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "def",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 220
+      "line": 234
     },
     "Ecdlp.CubicCert.secp256k1.xpow": {
       "name": "xpow",
       "namespace": "Ecdlp.CubicCert.secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CubicNoRootCertificate.lean",
-      "line": 225
+      "line": 239
     },
     "Ecdlp.Curve.HasOnlySecp256k1BadPrimeDivisors": {
       "name": "HasOnlySecp256k1BadPrimeDivisors",
@@ -16785,7 +16521,7 @@
       "namespace": "Ecdlp.P256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-      "line": 58
+      "line": 65
     },
     "Ecdlp.P256.p256_embedding_degree_gt_100": {
       "name": "p256_embedding_degree_gt_100",
@@ -16841,7 +16577,7 @@
       "namespace": "Ecdlp.P256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-      "line": 43
+      "line": 50
     },
     "Ecdlp.P256.p256_trace_ordinary_nonanomalous": {
       "name": "p256_trace_ordinary_nonanomalous",
@@ -16876,7 +16612,7 @@
       "namespace": "Ecdlp.P256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-      "line": 35
+      "line": 42
     },
     "Ecdlp.PohligHellman.component": {
       "name": "component",
@@ -17793,35 +17529,35 @@
       "namespace": "Ecdlp.Weierstrass",
       "kind": "theorem",
       "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-      "line": 186
+      "line": 193
     },
     "Ecdlp.Weierstrass.exists_cubic_root_of_two_nsmul_eq_zero": {
       "name": "exists_cubic_root_of_two_nsmul_eq_zero",
       "namespace": "Ecdlp.Weierstrass",
       "kind": "theorem",
       "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-      "line": 147
+      "line": 154
     },
     "Ecdlp.Weierstrass.natCard_eq_of_dvd_of_lt_three_mul": {
       "name": "natCard_eq_of_dvd_of_lt_three_mul",
       "namespace": "Ecdlp.Weierstrass",
       "kind": "theorem",
       "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-      "line": 53
+      "line": 60
     },
     "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf": {
       "name": "natCard_point_eq_of_addOrderOf",
       "namespace": "Ecdlp.Weierstrass",
       "kind": "theorem",
       "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-      "line": 170
+      "line": 177
     },
     "Ecdlp.Weierstrass.natCard_point_le": {
       "name": "natCard_point_le",
       "namespace": "Ecdlp.Weierstrass",
       "kind": "theorem",
       "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-      "line": 79
+      "line": 86
     },
     "Ecdlp.Weil.RegularAt": {
       "name": "RegularAt",

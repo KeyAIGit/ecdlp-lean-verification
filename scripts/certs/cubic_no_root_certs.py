@@ -17,6 +17,11 @@ If r in F_p were a root of f, then r^p = r, so (g - X)(r) = 0, and v * (g - X) =
 evaluated at r gives 0 = 1. Hence f has no root in F_p. The algorithm follows
 pyca/verified-garbage `Proof/Weierstrass/Cubic.lean` (Apache-2.0 OR BSD-3-Clause, see
 `THIRD_PARTY_NOTICES.md`); this file is an independent Python implementation.
+verified-garbage (commit 38c744308fcd) already kernel-checks certificates for the same nine
+curves; a certificate is unique, so the data generated here coincide with upstream's.
+
+The staleness check (--check) is run manually; it is not wired into a CI workflow. The Lean
+kernel re-checks the certificate data regardless, so correctness does not depend on it.
 
 Parameters are cited from SEC 2 v2 (secp256k1), FIPS 186-5 / NIST SP 800-186 (P-192 ...
 P-521) and RFC 5639 (brainpool). As non-load-bearing sanity checks the script also tests,
@@ -299,9 +304,10 @@ def lean_block(c: dict) -> str:
         "/-- `2p + 1 < 3n`, the size condition of the exact-count theorem. -/",
         "theorem two_mul_add_one_lt_three_mul : 2 * p + 1 < 3 * n := by decide +kernel",
         "",
-        f"/-- **Conditional exact count** for {c['title']}: for a curve `y² = x³ + a x + b` over",
-        "`𝔽_p` (with `p` prime), any point of additive order `n` forces `#E(𝔽_p) = n`. The order",
-        "of a point is a hypothesis here, not a proved fact. -/",
+        f"/-- **Conditional exact count** for {c['title']}: assuming `[Fact p.Prime]`, for a curve",
+        "`y² = x³ + a x + b` over `𝔽_p` with `[W.IsElliptic]` (Δ ≠ 0), any point of additive order",
+        "`n` forces `#E(𝔽_p) = n`. Nonsingularity and the order of a point are hypotheses here,",
+        "not proved facts. -/",
         "theorem card_eq_of_addOrderOf [Fact p.Prime] (W : WeierstrassCurve (ZMod p))",
         "    [W.IsElliptic] (h₁ : W.a₁ = 0) (h₂ : W.a₂ = 0) (h₃ : W.a₃ = 0)",
         "    (h₄ : W.a₄ = (a : ZMod p)) (h₆ : W.a₆ = (b : ZMod p)) {G : W.toAffine.Point}",
