@@ -52,10 +52,19 @@ no-root (no rational 2-torsion) fact for the same nine curves as this file
 for the other eight). For P-256/P-384/P-521 it also establishes `#E = n`, inside the proof
 of `VG.Proof.Weierstrass.primeOrder_of`, as `Nat.card (wcC C).Point = C.n`, where `wcC C` is
 Mathlib's `WeierstrassCurve.Affine` over `ZMod C.p` built from the specification curve `C`.
-That count is not exported (the exported `VG.Proof.<Curve>.primeOrder` states that every
-point other than the identity has order `n`); this repository's addition for that count is
-the exported theorem `p256_card_point_eq_n` for `Ecdlp.P256.P256`; certificates regenerated
-independently (by
+At that commit the count is not exported (the exported `VG.Proof.<Curve>.primeOrder` states
+that every point other than the identity has order `n`). Correction (2026-10-22): since
+verified-garbage commit `702cf77ff2db` (PR #3102, merged 2026-10-22) the count is exported as
+`VG.Proof.Weierstrass.card_eq_n` (`lean/VerifiedGarbage/Proof/Weierstrass/GroupOrder.lean`):
+`Nat.card (wcC C).Point = C.n` for a specification curve `C` under `[Fact C.p.Prime]`,
+`Good C`, `C.n` prime, `G` on the curve, `n • G = O` and `2p + 1 < 3n` (`wcC C` has
+`a₁ = a₂ = a₃ = 0`). Within verified-garbage it is used by `primeOrder_of` and
+`killedByN_of`, which its P-256/P-384/P-521 files apply; no per-curve count is exported.
+This repository's counts are stated for its own Mathlib curves (`p256_card_point_eq_n` for
+`Ecdlp.P256.P256`, `secp256k1_card_point_eq_n` for secp256k1), and its curve-generic
+`natCard_point_eq_of_addOrderOf` is stated over any finite field with `2 ≠ 0`, for
+`a₁ = a₃ = 0` and any `a₂`, and for a point with `addOrderOf G = n` where `n` need not be
+prime. Certificates were regenerated independently (by
 `scripts/certs/cubic_no_root_certs.py`; a certificate is unique, so the data coincide with
 upstream's). `VERIFIED.md` therefore lists the nine per-curve instances in its
 "Ported / upstream-derived" table, outside the headline count.

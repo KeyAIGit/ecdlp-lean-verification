@@ -3,7 +3,7 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "fb7547bb277c3a1748a121c54723b7c1ae09ccbeb0b41aea88ff3bad4c381957",
+    "data/result_registry.json": "7ce2e79691dfaf7eee5e6669f67827f41dfaa4276ed1d5327cdb9cd82f821234",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
     "data/stats.json": "09b1f2859f52f16c17ea648ada039c66372e20ce1fc7391b14ec4f2f1d26f277"
   },
@@ -3534,31 +3534,31 @@
           "declaration": "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 181
+          "line": 187
         },
         {
           "declaration": "Ecdlp.Weierstrass.card_eq_of_prime_order_point",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 197
+          "line": 203
         },
         {
           "declaration": "Ecdlp.Weierstrass.natCard_point_le",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 90
+          "line": 96
         },
         {
           "declaration": "Ecdlp.Weierstrass.exists_cubic_root_of_two_nsmul_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 158
+          "line": 164
         },
         {
           "declaration": "Ecdlp.Weierstrass.natCard_eq_of_dvd_of_lt_three_mul",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 64
+          "line": 70
         }
       ],
       "source_ledger": "VERIFIED.md",
