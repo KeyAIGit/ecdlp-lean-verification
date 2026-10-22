@@ -4,8 +4,8 @@
   "purpose": "A machine-readable, navigable index of the machine-checked (Lean 4 + Mathlib, no sorry or project-defined axioms) structure of the ECDLP landscape for secp256k1: verified ledger rows, their declaration and import dependencies, the corpus claims they verify, the formalization barriers that bound them, and the target-specific route/foundation decisions. It also carries the generated Research Engine v0 selection and retained outcome state, while keeping bounded exploration distinct from route promotion. Built for a future automated reasoner to load the known-and-verified frontier without re-deriving it.",
   "invariant": "Every ledger row resolves to declarations accepted by the Lean kernel with no sorry or project-defined axioms; compiler-trusted native_decide use is disclosed separately. This graph is derived evidence, not a proof.",
   "counts": {
-    "theorems": 307,
-    "ledger_rows": 307,
+    "theorems": 309,
+    "ledger_rows": 309,
     "barriers": 6,
     "families": 8,
     "critical_nodes": 17,
@@ -37,10 +37,10 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1187,
+    "edges": 1191,
     "by_edge_type": {
-      "imports": 525,
-      "member_of": 307,
+      "imports": 527,
+      "member_of": 309,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
       "supports": 27,
@@ -82,6 +82,7 @@
       "Mathlib + `linear_combination": 2,
       "Mathlib + the bridges": 2,
       "Mathlib (`Point.neg_some`, `add_neg_cancel`)": 2,
+      "Mathlib (`exists_mul_add_mul_eq_C_resultant`)": 2,
       "Mathlib field algebra (`linear_combination`, `eq_div_iff`, `mul_right_cancel₀`)": 2,
       "Mathlib (`Iff.trans`)": 2,
       "instantiation of `Ecdlp.Schnorr.*` on `↥⟨G⟩": 2,
@@ -154,7 +155,6 @@
       "Mathlib (`Polynomial.card_roots'`, `Multiset.toFinset_card_le`)": 1,
       "Mathlib (`linear_combination`, `mul_eq_zero`)": 1,
       "Mathlib (`Polynomial.resultant`, `exists_mul_add_mul_eq_C_resultant`)": 1,
-      "Mathlib (`exists_mul_add_mul_eq_C_resultant`)": 1,
       "Mathlib + exact Sylvester resultant + existing GLV automorphism + `secp256k1_x_ne_zero": 1,
       "Mathlib (`Polynomial.resultant_eq_prod_eval`)": 1,
       "Mathlib (`linear_combination` over `F[X]`)": 1,
@@ -203,12 +203,13 @@
       "literal finite guarded `MvPolynomial` family + TASK-021 chain equivalence + injective base change; `native_decide` only for two finite-cardinality facts": 1,
       "exact two-chart normalization + literal fixed-mask `MvPolynomial` family + TASK-021/TASK-022 equivalences + injective base change; `native_decide` only for `card_chartEquation": 1,
       "local projective `H` identities + exact TASK-023 cover restriction + path-independent-set counts; `native_decide` only for the three cardinalities": 1,
-      "exact local substitution + fixed-degree projective-resultant forward implication + balanced prefix/suffix frozen specializations + exact chart-cover restriction; `native_decide` only for the four mask cardinalities": 1
+      "exact local substitution + fixed-degree projective-resultant forward implication + balanced prefix/suffix frozen specializations + exact chart-cover restriction; `native_decide` only for the four mask cardinalities": 1,
+      "Mathlib (`Polynomial.resultant`, `resultant_map_map`, `Matrix.det_apply`)": 1
     },
     "by_area": {
       "curve-torsion": 153,
       "primality": 55,
-      "other": 33,
+      "other": 35,
       "generic-hardness": 30,
       "protocol-soundness": 23,
       "attack-resistance": 7,
@@ -5177,7 +5178,7 @@
       "files": [
         "Ecdlp/Proved/SemaevFour.lean"
       ],
-      "claim": "Semaev forward direction generalized to all `n` — the resultant recursion engine (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. Every Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` inherits its forward direction from this one lemma at level `n`; `S₄_eq_zero_of_common_root` is now literally the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`, and `S₅, S₆, …` are discharged verbatim with `f` the previous slice. The mechanism-level generalization of the Semaev forward direction to the whole infinite `Sₙ` family — via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
+      "claim": "Semaev forward direction — the resultant common-root lemma (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring with `natDegree f ≤ m`, `natDegree g ≤ n` and sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. A Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` gets its forward direction from this lemma once the previous slice is defined as a polynomial with the needed degree bound. `S₄_eq_zero_of_common_root` is the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`; for every level of the general tower this is `semaevSlice_eval_eq_zero_of_chain` (`Ecdlp/Proved/SemaevTower.lean`, induction with the degree bound `semaevSlice_natDegree_le`). Via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
       "method": "Mathlib (`exists_mul_add_mul_eq_C_resultant`)",
       "status": "proved",
       "area": "other",
@@ -6379,6 +6380,46 @@
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
       "dependency_depth": 7,
+      "gated": true
+    },
+    {
+      "id": "thm-307",
+      "name": "Ecdlp.Semaev.stepPoly`, `semaevSlice`, `Sm`, `S₃poly_map`, `semaevSlice_succ_eval`, `Sm_three`, `Sm_four`, `natDegree_det_le_sum_col`, `stepPoly_coeff_natDegree_le`, `semaevSlice_natDegree_le",
+      "short_name": "stepPoly`,",
+      "module": "Ecdlp.Proved.SemaevTower",
+      "modules": [
+        "Ecdlp.Proved.SemaevTower"
+      ],
+      "file": "Ecdlp/Proved/SemaevTower.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevTower.lean"
+      ],
+      "claim": "General Semaev polynomials `Sₘ` by the resultant recursion, agreement with `S₃`/`S₄`, and the degree bound `2^(m−2)` in the last variable (`semaevSlice a b x s` is `S_{s+3}(x₀,…,x_{s+1},Y)` as a polynomial in `Y`: level 0 is `S₃poly a b x₀ x₁`, level `s+1` is the resultant in an auxiliary variable `T` of the previous slice and `S₃(x_{s+2},Y,T)` (`stepPoly`) with fixed Sylvester sizes `(2^(s+1),2)`; `Sm a b m x` evaluates level `m−3` at `x_{m−1}` (for `m ≥ 3`; for `m < 3`, `Sm` is the truncated level-0 value and the statements say nothing about Semaev polynomials). Over any commutative ring: `semaevSlice_succ_eval` (evaluating `Y` gives the scalar resultant step), `Sm_three` (`= S₃`), `Sm_four` (`= S₄`, same argument order), and `semaevSlice_natDegree_le` (`natDegree ≤ 2^(s+1)`, by a column-weight bound on the Sylvester determinant, `natDegree_det_le_sum_col`). Reuse: `natDegree_det_le_sum_col` is the column-weight, commutative-ring version of `Ecdlp.FrozenProjectiveSemaev.natDegree_det_le_sum_row` (row weights, over a field), and `semaevSlice_natDegree_le` is the general-`(a,b)` affine analogue of the secp256k1 frozen-family bound `previousSliceAtOver_frozenC_natDegree_le` (same `2^(s+1)`). Only the upper bound is proved for `m ≥ 5`; exact degree, symmetry and the reverse direction for `m ≥ 5` are not)",
+      "method": "Mathlib (`Polynomial.resultant`, `resultant_map_map`, `Matrix.det_apply`)",
+      "status": "proved",
+      "area": "other",
+      "family_id": "family-other",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-308",
+      "name": "Ecdlp.Semaev.semaevSlice_eval_eq_zero_of_chain`, `Sm_eq_zero_of_chain",
+      "short_name": "semaevSlice_eval_eq_zero_of_chain`,",
+      "module": "Ecdlp.Proved.SemaevTower",
+      "modules": [
+        "Ecdlp.Proved.SemaevTower"
+      ],
+      "file": "Ecdlp/Proved/SemaevTower.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevTower.lean"
+      ],
+      "claim": "*(alternate/supporting)* Forward direction of the Semaev tower at every level — `resultant_eq_zero_of_common_root` applied by induction with `semaevSlice_natDegree_le` (`semaevSlice_eval_eq_zero_of_chain`: over any commutative ring, if `S₃(x₀,x₁,z₀) = 0` and `S₃(zᵢ,x_{i+2},z_{i+1}) = 0` for all `i < s`, then `S_{s+3}(x₀,…,x_{s+1},z_s) = 0`; `Sm_eq_zero_of_chain`: such a chain ending at `z_{m−3} = x_{m−1}` gives `Sₘ(x₀,…,x_{m−1}) = 0` (for `m ≥ 3`; for `m < 3`, `Sm` is the truncated level-0 value and the statements say nothing about Semaev polynomials). The witnesses `zᵢ` play the role of `x(P₀+⋯+P_{i+1})`; no statement about curve points is made here)",
+      "method": "Mathlib (`exists_mul_add_mul_eq_C_resultant`)",
+      "status": "proved",
+      "area": "other",
+      "family_id": "family-other",
+      "dependency_depth": 4,
       "gated": true
     }
   ],
@@ -12857,6 +12898,11 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.SemaevTower",
+      "to": "Ecdlp.Proved.SemaevFour",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.SevenNonResidue",
       "to": "Ecdlp.Proved.Secp256k1PrimeP",
       "type": "imports"
@@ -13644,6 +13690,11 @@
     {
       "from": "Ecdlp",
       "to": "Ecdlp.Proved.SemaevFour",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.SemaevTower",
       "type": "imports"
     },
     {
@@ -15704,6 +15755,16 @@
     {
       "from": "thm-306",
       "to": "family-generic-hardness",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-307",
+      "to": "family-other",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-308",
+      "to": "family-other",
       "type": "member_of"
     },
     {

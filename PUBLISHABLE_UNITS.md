@@ -136,9 +136,14 @@ paper could carry both, or they could split).
   reverse/meaning `S₄_common_root_of_eq_zero` (+ `secp256k1_semaev_four_common_root_of_eq_zero`),
   with the slice factorization `S₃poly_master_factor` and full symmetry `S₄_block_swap`,
   `S₄_symm₁₂`, `S₄_symm₃₄` — `SemaevFour.lean`.
-- The forward direction **generalized to the whole `Sₙ` family** in one lemma:
-  `resultant_eq_zero_of_common_root` (any two univariate polys sharing an evaluation-root have
-  vanishing resultant) — every Semaev step inherits its forward direction as an instance.
+- The forward direction reduces to one lemma, `resultant_eq_zero_of_common_root` (any two
+  univariate polys of bounded degree sharing an evaluation-root have vanishing resultant); a Semaev
+  step inherits its forward direction as an instance once the previous slice is defined with its
+  degree bound.
+- General `Sₘ` by the resultant recursion (`semaevSlice`, `Sm`, for `m ≥ 3`), agreeing with `S₃`
+  and `S₄` (`Sm_three`, `Sm_four`), with `deg ≤ 2^(m−2)` in the last variable
+  (`semaevSlice_natDegree_le`) and the forward direction at every level
+  (`semaevSlice_eval_eq_zero_of_chain`, `Sm_eq_zero_of_chain`) — `SemaevTower.lean`.
 - Index-calculus meaning + one exact cost ingredient: `secp256k1_point_decomposition_semaev`
   (and `_double`) — every 2-term decomposition lies on the Semaev variety
   — `PointDecomposition.lean`; `secp256k1_S₃poly_natDegree` (degree exactly 2 in each variable) and
@@ -159,9 +164,10 @@ paper could carry both, or they could split).
 - The prime-field hardness itself is **not** a theorem here — that would settle an open conjecture.
   The proved facts map *where* the search lives and *how it branches*; the cost lower bound stays in
   the open frontier (`BARRIERS.md` B3).
-- The degree tower `deg Sₘ = 2^{m−2}` has only its base case (`deg S₃ = 2`); `deg S₄ = 4` is **not**
-  built (needs `S₄` reconstructed as a polynomial in one variable). Higher `Sₙ` concrete plumbing is
-  deliberately not pursued (scale without new content or new reach).
+- The degree tower `deg Sₘ = 2^{m−2}`: exact only for `m = 3` (`deg S₃ = 2`); for every `m ≥ 3`
+  the general `Sₘ` has the upper bound `deg ≤ 2^{m−2}` in the last variable. The exact degree for
+  `m ≥ 4`, symmetry and the reverse direction for `m ≥ 5`, and any point-level characterization
+  are not proved.
 
 ### 3b — Weil-pairing divisor foundations `W1–W3`
 
