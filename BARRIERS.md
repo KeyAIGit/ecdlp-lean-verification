@@ -13,7 +13,7 @@ base. This is a living document; counts are for the v1 corpus.
 
 | Status | Count | Meaning |
 |---|---|---|
-| **Proved** | see `VERIFIED.md` (~268 distinct results / 307 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
+| **Proved** | see `VERIFIED.md` (~269 distinct results / 310 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
 | **Tractable now** | ~55 | `GroupTheory.OrderOfElement / Subgroup` — structural group facts |
 | **Barrier: no cost model** | ~55 | complexity claims; Lean has no "group-operation count" framework |
 | **Barrier: not in Mathlib** | ~62 | 38 quantum-circuit cost model, 24 lattice reduction |
@@ -93,6 +93,11 @@ exact `Θ` statements.
   law** in every nondegenerate case (`secp256k1_semaev_three_point` for the chord case and
   `secp256k1_semaev_three_point_double` for tangent/doubling: the hypothesis is the actual
   group relation `P₁+P₂+P₃ = O` on `secp256k1.toAffine.Point`, not a coordinate equation).
+  For every curve in short normal form over a field, `Ecdlp/Proved/SemaevThreePoint.lean`
+  proves the point-level characterization on Mathlib's group law without case hypotheses:
+  `S₃(x₁,x₂,x₃) = 0` iff an affine point over `x₃` completes `P₁ + P₂` or `P₁ − P₂` to `O`
+  (`S₃_eq_zero_iff_exists_point`), equivalently `P₁ ± P₂ ± P₃ = O` for three given affine
+  points (`S₃_eq_zero_iff_signed_sum`).
   The **full `S₃` characterization is now closed** — `S₃_eq_zero_iff` /
   `secp256k1_semaev_three_iff` prove `S₃(x₁,x₂,x₃) = 0 ⟺ x₃ = x(P₁+P₂) or x(P₁−P₂)` (both
   directions), via a sympy-certified two-root master factorization. And **`S₄` is now started**

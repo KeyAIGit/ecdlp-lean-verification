@@ -4,8 +4,8 @@
   "purpose": "A machine-readable, navigable index of the machine-checked (Lean 4 + Mathlib, no sorry or project-defined axioms) structure of the ECDLP landscape for secp256k1: verified ledger rows, their declaration and import dependencies, the corpus claims they verify, the formalization barriers that bound them, and the target-specific route/foundation decisions. It also carries the generated Research Engine v0 selection and retained outcome state, while keeping bounded exploration distinct from route promotion. Built for a future automated reasoner to load the known-and-verified frontier without re-deriving it.",
   "invariant": "Every ledger row resolves to declarations accepted by the Lean kernel with no sorry or project-defined axioms; compiler-trusted native_decide use is disclosed separately. This graph is derived evidence, not a proof.",
   "counts": {
-    "theorems": 307,
-    "ledger_rows": 307,
+    "theorems": 310,
+    "ledger_rows": 310,
     "barriers": 6,
     "families": 8,
     "critical_nodes": 17,
@@ -37,13 +37,13 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1187,
+    "edges": 1193,
     "by_edge_type": {
-      "imports": 525,
-      "member_of": 307,
+      "imports": 527,
+      "member_of": 310,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
-      "supports": 27,
+      "supports": 28,
       "decision_grounded_in": 25,
       "depends_on": 18,
       "evaluated_under": 18,
@@ -159,6 +159,9 @@
       "Mathlib (`Polynomial.resultant_eq_prod_eval`)": 1,
       "Mathlib (`linear_combination` over `F[X]`)": 1,
       "Mathlib (`ring`)": 1,
+      "Mathlib (`Point.add_of_X_ne`, `Point.add_of_Y_ne`, `Point.X_eq_iff`, `Y_eq_of_X_eq`) + `S₃_root_of_eq_zero": 1,
+      "Mathlib (`Point.add_of_X_ne`, `Point.add_of_Y_ne`) + `S₃_eq_zero_of_chord`, `S₃_eq_zero_of_tangent": 1,
+      "Mathlib (`simp`, `ring`)": 1,
       "Mathlib (`Φ`, `ΨSq`, `slope_of_Y_ne`, `linear_combination`)": 1,
       "Mathlib (`addY`/`negAddY`/`negY`/`slope_of_Y_ne`, `linear_combination`, `eq_div_iff`)": 1,
       "Mathlib (`two_nsmul`, `Affine.Point.add_self_of_Y_ne`, `injection`) + the landed n=2 x-/y-formulas": 1,
@@ -206,13 +209,13 @@
       "exact local substitution + fixed-degree projective-resultant forward implication + balanced prefix/suffix frozen specializations + exact chart-cover restriction; `native_decide` only for the four mask cardinalities": 1
     },
     "by_area": {
-      "curve-torsion": 153,
-      "primality": 55,
+      "curve-torsion": 154,
+      "primality": 56,
       "other": 33,
       "generic-hardness": 30,
       "protocol-soundness": 23,
       "attack-resistance": 7,
-      "reduction": 5,
+      "reduction": 6,
       "params": 1
     }
   },
@@ -5287,6 +5290,66 @@
     },
     {
       "id": "thm-253",
+      "name": "Ecdlp.Semaev.S₃_eq_zero_iff_exists_point`, `S₃_eq_zero_iff_signed_sum`, `secp256k1_semaev_three_point_iff",
+      "short_name": "S₃_eq_zero_iff_exists_point`,",
+      "module": "Ecdlp.Proved.SemaevThreePoint",
+      "modules": [
+        "Ecdlp.Proved.SemaevThreePoint"
+      ],
+      "file": "Ecdlp/Proved/SemaevThreePoint.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevThreePoint.lean"
+      ],
+      "claim": "Semaev's `S₃` on Mathlib's group law for every curve in short normal form — characterization (iff) (`S₃_eq_zero_iff_exists_point`: for a Weierstrass curve `W` with `[W.IsShortNF]` (`y² = x³ + a·x + b`, `a = W.a₄`, `b = W.a₆` arbitrary) over any field, affine points `P₁ = (x₁,y₁)`, `P₂ = (x₂,y₂)` of `W.toAffine.Point` and any `x₃`, `S₃(x₁,x₂,x₃) = 0` iff some affine point `P₃ = (x₃,y₃)` satisfies `P₁ + P₂ + P₃ = 0` or `P₁ − P₂ + P₃ = 0`. `S₃_eq_zero_iff_signed_sum` is the same fact for three given affine points: `S₃(x₁,x₂,x₃) = 0` iff `P₁ + ε₂•P₂ + ε₃•P₃ = 0` for some `ε₂, ε₃ ∈ ℤˣ`; `secp256k1_semaev_three_point_iff` instantiates it at secp256k1 (`a = 0`, `b = 7`) with `[Fact (Nat.Prime p)]` as a hypothesis. No `x₁ ≠ x₂`, non-2-torsion, discriminant, `IsElliptic` or characteristic hypothesis. Inputs are affine points only; no `S₄`/`Sₘ` point semantics and no `HValue`/`frozenC` or fixed-target semantics. Related: Mathlib's `WeierstrassCurve.Affine.Point.sym2x_add_sub_eq_addSubMap_sym2x` (Mathlib PR #43292, from v4.34.0, not at the pinned v4.31.0) overlaps this through `S₃_eq_addSubMap`)",
+      "method": "Mathlib (`Point.add_of_X_ne`, `Point.add_of_Y_ne`, `Point.X_eq_iff`, `Y_eq_of_X_eq`) + `S₃_root_of_eq_zero",
+      "status": "proved",
+      "area": "primality",
+      "family_id": "family-primality",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-254",
+      "name": "Ecdlp.Semaev.S₃_eq_zero_of_add_add_eq_zero",
+      "short_name": "S₃_eq_zero_of_add_add_eq_zero",
+      "module": "Ecdlp.Proved.SemaevThreePoint",
+      "modules": [
+        "Ecdlp.Proved.SemaevThreePoint"
+      ],
+      "file": "Ecdlp/Proved/SemaevThreePoint.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevThreePoint.lean"
+      ],
+      "claim": "*(alternate/supporting)* Forward half of the `S₃` point-level characterization, without case hypotheses (`S₃_eq_zero_of_add_add_eq_zero`: for `W` with `[W.IsShortNF]` over any field, three affine points with `P₁ + P₂ + P₃ = 0` give `S₃(x₁,x₂,x₃) = 0`, with no `x₁ ≠ x₂` and no non-2-torsion hypothesis; the secp256k1 rows `secp256k1_semaev_three_point` (`x₁ ≠ x₂`) and `secp256k1_semaev_three_point_double` (`P₁ = P₂`, not 2-torsion) are special cases)",
+      "method": "Mathlib (`Point.add_of_X_ne`, `Point.add_of_Y_ne`) + `S₃_eq_zero_of_chord`, `S₃_eq_zero_of_tangent",
+      "status": "proved",
+      "area": "curve-torsion",
+      "family_id": "family-curve-torsion",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-255",
+      "name": "Ecdlp.Semaev.S₃_eq_addSubMap",
+      "short_name": "S₃_eq_addSubMap",
+      "module": "Ecdlp.Proved.SemaevThreePoint",
+      "modules": [
+        "Ecdlp.Proved.SemaevThreePoint"
+      ],
+      "file": "Ecdlp/Proved/SemaevThreePoint.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevThreePoint.lean"
+      ],
+      "claim": "*(alternate/supporting)* `S₃` through Mathlib's `addSubMap` (`S₃_eq_addSubMap`: for `W` with `[W.IsShortNF]` over any commutative ring, `S₃(x₁,x₂,X) = f₂·X² − f₁·X + f₀`, where `(f₀, f₁, f₂)` are the components of `W.addSubMap` evaluated at `(x₁·x₂, x₁+x₂, 1)`; a polynomial identity only, not the property of `addSubMap` stated in Mathlib's TODO)",
+      "method": "Mathlib (`simp`, `ring`)",
+      "status": "proved",
+      "area": "reduction",
+      "family_id": "family-reduction",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-256",
       "name": "Ecdlp.Curve.secp256k1_double_x_eq_Φ₂_div_Ψ₂Sq`, `secp256k1_Φ₂",
       "short_name": "secp256k1_double_x_eq_Φ₂_div_Ψ₂Sq`,",
       "module": "Ecdlp.Proved.MultiplicationFormula",
@@ -5306,7 +5369,7 @@
       "gated": true
     },
     {
-      "id": "thm-254",
+      "id": "thm-257",
       "name": "Ecdlp.Curve.secp256k1_double_y_eq_ω₂",
       "short_name": "secp256k1_double_y_eq_ω₂",
       "module": "Ecdlp.Proved.MultiplicationYFormula",
@@ -5326,7 +5389,7 @@
       "gated": true
     },
     {
-      "id": "thm-255",
+      "id": "thm-258",
       "name": "Ecdlp.Curve.secp256k1_two_nsmul_coords",
       "short_name": "secp256k1_two_nsmul_coords",
       "module": "Ecdlp.Proved.DoublingPointFormula",
@@ -5346,7 +5409,7 @@
       "gated": true
     },
     {
-      "id": "thm-256",
+      "id": "thm-259",
       "name": "Ecdlp.Curve.secp256k1_triple_y_eq_ω₃",
       "short_name": "secp256k1_triple_y_eq_ω₃",
       "module": "Ecdlp.Proved.MultiplicationYTripleFormula",
@@ -5366,7 +5429,7 @@
       "gated": true
     },
     {
-      "id": "thm-257",
+      "id": "thm-260",
       "name": "Ecdlp.Curve.secp256k1_Φ₃`, `secp256k1_ΨSq₃`, `secp256k1_Φ₃_eval`, `secp256k1_ΨSq₃_eval",
       "short_name": "secp256k1_Φ₃`,",
       "module": "Ecdlp.Proved.TripleDivisionPolynomial",
@@ -5386,7 +5449,7 @@
       "gated": true
     },
     {
-      "id": "thm-258",
+      "id": "thm-261",
       "name": "Ecdlp.Curve.secp256k1_triple_x_eq_Φ₃_div_ΨSq₃",
       "short_name": "secp256k1_triple_x_eq_Φ₃_div_ΨSq₃",
       "module": "Ecdlp.Proved.TripleMultiplicationFormula",
@@ -5406,7 +5469,7 @@
       "gated": true
     },
     {
-      "id": "thm-259",
+      "id": "thm-262",
       "name": "Ecdlp.Weil.secp256k1_torsion_iff_principal",
       "short_name": "secp256k1_torsion_iff_principal",
       "module": "Ecdlp.Proved.WeilDivisorClass",
@@ -5426,7 +5489,7 @@
       "gated": true
     },
     {
-      "id": "thm-260",
+      "id": "thm-263",
       "name": "Ecdlp.Weil.secp256k1_miller_function_exists",
       "short_name": "secp256k1_miller_function_exists",
       "module": "Ecdlp.Proved.WeilDivisorClass",
@@ -5446,7 +5509,7 @@
       "gated": true
     },
     {
-      "id": "thm-261",
+      "id": "thm-264",
       "name": "Ecdlp.Weil.secp256k1_miller_function_unique",
       "short_name": "secp256k1_miller_function_unique",
       "module": "Ecdlp.Proved.WeilDivisorClass",
@@ -5466,7 +5529,7 @@
       "gated": true
     },
     {
-      "id": "thm-262",
+      "id": "thm-265",
       "name": "Ecdlp.Weil.evalAt`, `evalAt_surjective`, `evalAt_ker",
       "short_name": "evalAt`,",
       "module": "Ecdlp.Proved.PointEvaluation",
@@ -5486,7 +5549,7 @@
       "gated": true
     },
     {
-      "id": "thm-263",
+      "id": "thm-266",
       "name": "Ecdlp.Weil.xyIdeal_isMaximal",
       "short_name": "xyIdeal_isMaximal",
       "module": "Ecdlp.Proved.PointEvaluation",
@@ -5506,7 +5569,7 @@
       "gated": true
     },
     {
-      "id": "thm-264",
+      "id": "thm-267",
       "name": "Ecdlp.Weil.evalRatAt_algebraMap",
       "short_name": "evalRatAt_algebraMap",
       "module": "Ecdlp.Proved.EvalRatAtCompat",
@@ -5526,7 +5589,7 @@
       "gated": true
     },
     {
-      "id": "thm-265",
+      "id": "thm-268",
       "name": "Ecdlp.Weil.xyIdeal_ne_of_x_ne",
       "short_name": "xyIdeal_ne_of_x_ne",
       "module": "Ecdlp.Proved.PointSeparation",
@@ -5546,7 +5609,7 @@
       "gated": true
     },
     {
-      "id": "thm-266",
+      "id": "thm-269",
       "name": "Ecdlp.Weil.xyIdeal_ne_of_ne` (+ `xyIdeal_ne_of_y_ne`)",
       "short_name": "xyIdeal_ne_of_ne`",
       "module": "Ecdlp.Proved.PointSeparation",
@@ -5566,7 +5629,7 @@
       "gated": true
     },
     {
-      "id": "thm-267",
+      "id": "thm-270",
       "name": "Ecdlp.Weil.evalRatAt_eq_zero_iff",
       "short_name": "evalRatAt_eq_zero_iff",
       "module": "Ecdlp.Proved.EvalRatAtNonvanishing",
@@ -5586,7 +5649,7 @@
       "gated": true
     },
     {
-      "id": "thm-268",
+      "id": "thm-271",
       "name": "Ecdlp.Weil.evalRatAt_ne_zero_iff_isUnit",
       "short_name": "evalRatAt_ne_zero_iff_isUnit",
       "module": "Ecdlp.Proved.EvalRatAtNonvanishing",
@@ -5606,7 +5669,7 @@
       "gated": true
     },
     {
-      "id": "thm-269",
+      "id": "thm-272",
       "name": "Ecdlp.Weil.secp256k1_psi3_root_iff_class_torsion",
       "short_name": "secp256k1_psi3_root_iff_class_torsion",
       "module": "Ecdlp.Proved.MillerDivisionPolynomialBridge",
@@ -5626,7 +5689,7 @@
       "gated": true
     },
     {
-      "id": "thm-270",
+      "id": "thm-273",
       "name": "Ecdlp.Weil.secp256k1_psi5_root_iff_class_torsion",
       "short_name": "secp256k1_psi5_root_iff_class_torsion",
       "module": "Ecdlp.Proved.MillerDivisionPolynomialBridge",
@@ -5646,7 +5709,7 @@
       "gated": true
     },
     {
-      "id": "thm-271",
+      "id": "thm-274",
       "name": "Ecdlp.Weil.secp256k1_psi7_root_iff_class_torsion",
       "short_name": "secp256k1_psi7_root_iff_class_torsion",
       "module": "Ecdlp.Proved.MillerDivisionPolynomialBridge",
@@ -5666,7 +5729,7 @@
       "gated": true
     },
     {
-      "id": "thm-272",
+      "id": "thm-275",
       "name": "Ecdlp.Curve.secp256k1_grp_nsmul_eq_zero` (+ the `Module (ZMod n) ↥⟨G⟩` instance, `secp256k1Gₙ`)",
       "short_name": "secp256k1_grp_nsmul_eq_zero`",
       "module": "Ecdlp.Proved.ProtocolInstantiation",
@@ -5686,7 +5749,7 @@
       "gated": true
     },
     {
-      "id": "thm-273",
+      "id": "thm-276",
       "name": "Ecdlp.Curve.secp256k1_dh_agree`, `secp256k1_schnorr_verify`, `secp256k1_taproot_tweak_verify`, `secp256k1_adaptor_complete",
       "short_name": "secp256k1_dh_agree`,",
       "module": "Ecdlp.Proved.ProtocolInstantiation",
@@ -5706,7 +5769,7 @@
       "gated": true
     },
     {
-      "id": "thm-274",
+      "id": "thm-277",
       "name": "Ecdlp.Curve.secp256k1_threshold_schnorr_aggregate`, `secp256k1_musig_key_aggregate`, `secp256k1_feldman_vss_verify`, `secp256k1_threshold_elgamal_combine`, `secp256k1_schnorr_batch_verify",
       "short_name": "secp256k1_threshold_schnorr_aggregate`,",
       "module": "Ecdlp.Proved.ProtocolInstantiation",
@@ -5726,7 +5789,7 @@
       "gated": true
     },
     {
-      "id": "thm-275",
+      "id": "thm-278",
       "name": "Ecdlp.Curve.secp256k1_grp_card`, `secp256k1_grp_isAddCyclic",
       "short_name": "secp256k1_grp_card`,",
       "module": "Ecdlp.Proved.SubgroupOrder",
@@ -5746,7 +5809,7 @@
       "gated": true
     },
     {
-      "id": "thm-276",
+      "id": "thm-279",
       "name": "Ecdlp.Curve.secp256k1_dlogEquiv` (+ `secp256k1_dlogHom`, `_injective`, `_surjective`, `secp256k1_gen_addOrderOf`)",
       "short_name": "secp256k1_dlogEquiv`",
       "module": "Ecdlp.Proved.SubgroupOrder",
@@ -5766,7 +5829,7 @@
       "gated": true
     },
     {
-      "id": "thm-277",
+      "id": "thm-280",
       "name": "WeierstrassCurve.Affine.instFinitePoint",
       "short_name": "instFinitePoint",
       "module": "Ecdlp.Proved.AffinePointFinite",
@@ -5786,7 +5849,7 @@
       "gated": true
     },
     {
-      "id": "thm-278",
+      "id": "thm-281",
       "name": "Ecdlp.Curve.instFiniteSecp256k1Point",
       "short_name": "instFiniteSecp256k1Point",
       "module": "Ecdlp.Proved.CurveCardinality",
@@ -5806,7 +5869,7 @@
       "gated": true
     },
     {
-      "id": "thm-279",
+      "id": "thm-282",
       "name": "Ecdlp.Curve.secp256k1_n_dvd_card_point",
       "short_name": "secp256k1_n_dvd_card_point",
       "module": "Ecdlp.Proved.CurveCardinality",
@@ -5826,7 +5889,7 @@
       "gated": true
     },
     {
-      "id": "thm-280",
+      "id": "thm-283",
       "name": "Ecdlp.Curve.secp256k1_card_point_eq_n`, `secp256k1_no_nonzero_two_torsion`, `secp256k1_card_point_le",
       "short_name": "secp256k1_card_point_eq_n`,",
       "module": "Ecdlp.Proved.CurveCardinalityExact",
@@ -5846,7 +5909,7 @@
       "gated": true
     },
     {
-      "id": "thm-281",
+      "id": "thm-284",
       "name": "Ecdlp.Curve.secp256k1_grp_eq_top`, `secp256k1_point_isAddCyclic`, `secp256k1_mem_zmultiples`, `secp256k1_glvHom_eq_zsmul_unconditional",
       "short_name": "secp256k1_grp_eq_top`,",
       "module": "Ecdlp.Proved.CurveFullGroup",
@@ -5866,7 +5929,7 @@
       "gated": true
     },
     {
-      "id": "thm-282",
+      "id": "thm-285",
       "name": "Ecdlp.Curve.secp256k1_pointGroupEquiv` (+ `secp256k1_point_group_equiv_exists`)",
       "short_name": "secp256k1_pointGroupEquiv`",
       "module": "Ecdlp.Proved.PointGroupEquiv",
@@ -5886,7 +5949,7 @@
       "gated": true
     },
     {
-      "id": "thm-283",
+      "id": "thm-286",
       "name": "Ecdlp.Curve.secp256k1_point_group_no_proper_subgroup`, `secp256k1_nonzero_point_generates",
       "short_name": "secp256k1_point_group_no_proper_subgroup`,",
       "module": "Ecdlp.Proved.PointGroupSimple",
@@ -5906,7 +5969,7 @@
       "gated": true
     },
     {
-      "id": "thm-284",
+      "id": "thm-287",
       "name": "Ecdlp.Curve.secp256k1_quintuple_x_eq_Φ₅_div_ΨSq₅`, `quint_x_core",
       "short_name": "secp256k1_quintuple_x_eq_Φ₅_div_ΨSq₅`,",
       "module": "Ecdlp.Proved.QuintupleMultiplicationFormula",
@@ -5926,7 +5989,7 @@
       "gated": true
     },
     {
-      "id": "thm-285",
+      "id": "thm-288",
       "name": "Ecdlp.Curve.secp256k1Bar_three_torsion_structure`, `secp256k1Bar_three_torsion_ncard`, `secp256k1Bar_torsionBy_three_card",
       "short_name": "secp256k1Bar_three_torsion_structure`,",
       "module": "Ecdlp.Proved.ThreeTorsionStructure",
@@ -5946,7 +6009,7 @@
       "gated": true
     },
     {
-      "id": "thm-286",
+      "id": "thm-289",
       "name": "Ecdlp.Curve.secp256k1Bar_five_torsion_structure`, `secp256k1Bar_five_nsmul_eq_zero_iff`, `secp256k1Bar_five_torsion_ncard",
       "short_name": "secp256k1Bar_five_torsion_structure`,",
       "module": "Ecdlp.Proved.FiveTorsionStructure",
@@ -5968,7 +6031,7 @@
       "gated": true
     },
     {
-      "id": "thm-287",
+      "id": "thm-290",
       "name": "Ecdlp.Curve.secp256k1Bar_seven_torsion_structure`, `secp256k1Bar_seven_nsmul_eq_zero_iff`, `secp256k1Bar_seven_torsion_ncard",
       "short_name": "secp256k1Bar_seven_torsion_structure`,",
       "module": "Ecdlp.Proved.SevenTorsionStructure",
@@ -5990,7 +6053,7 @@
       "gated": true
     },
     {
-      "id": "thm-288",
+      "id": "thm-291",
       "name": "Ecdlp.Curve.secp256k1_quadruple_x_eq_Φ₄_div_ΨSq₄`, `quad_x_core",
       "short_name": "secp256k1_quadruple_x_eq_Φ₄_div_ΨSq₄`,",
       "module": "Ecdlp.Proved.QuadrupleMultiplicationFormula",
@@ -6010,7 +6073,7 @@
       "gated": true
     },
     {
-      "id": "thm-289",
+      "id": "thm-292",
       "name": "Ecdlp.Curve.secp256k1_quadruple_y`, `quad_y_core`, `secp256k1_four_nsmul_coords_ωfree`, `secp256k1_omega_recurrence_four`, `secp256k1_psi6_evalEval",
       "short_name": "secp256k1_quadruple_y`,",
       "module": "Ecdlp.Proved.QuadrupleMultiplicationYFormula",
@@ -6034,7 +6097,7 @@
       "gated": true
     },
     {
-      "id": "thm-290",
+      "id": "thm-293",
       "name": "Ecdlp.Curve.secp256k1_cubic_separable`, `secp256k1_cubic_isCoprime_derivative`, `secp256k1_cubic_roots_card_bar`, `secp256k1_cubic_roots_nodup_bar",
       "short_name": "secp256k1_cubic_separable`,",
       "module": "Ecdlp.Proved.CubicSeparable",
@@ -6054,7 +6117,7 @@
       "gated": true
     },
     {
-      "id": "thm-291",
+      "id": "thm-294",
       "name": "Ecdlp.Curve.secp256k1Bar_two_torsion_structure`, `secp256k1Bar_two_nsmul_eq_zero_iff`, `secp256k1Bar_two_torsion_ncard",
       "short_name": "secp256k1Bar_two_torsion_structure`,",
       "module": "Ecdlp.Proved.TwoTorsionStructure",
@@ -6074,7 +6137,7 @@
       "gated": true
     },
     {
-      "id": "thm-292",
+      "id": "thm-295",
       "name": "Ecdlp.Curve.secp256k1Bar_two_nsmul_coords`, `Ecdlp.Curve.secp256k1Bar_four_nsmul_eq_zero_iff`, `Ecdlp.Curve.secp256k1Bar_four_torsion_ncard`, `Ecdlp.Curve.secp256k1Bar_four_torsion_card`, `Ecdlp.Curve.secp256k1Bar_torsionBy_four_card`, `Ecdlp.Curve.secp256k1Bar_four_torsion_structure`, `Ecdlp.Torsion.nonempty_addEquiv_zmod_four_prod_of_card_and_two_torsion",
       "short_name": "secp256k1Bar_two_nsmul_coords`,",
       "module": "Ecdlp.Proved.DoublingPointFormulaBar",
@@ -6100,7 +6163,7 @@
       "gated": true
     },
     {
-      "id": "thm-293",
+      "id": "thm-296",
       "name": "Ecdlp.Weil.evalFracAt_well_defined`, `evalFracAt_mul`, `evalAt_unit_ne_zero`, `evalRatAt_eq_evalFracAt`, `secp256k1_miller_eval_scaling",
       "short_name": "evalFracAt_well_defined`,",
       "module": "Ecdlp.Proved.FunctionFieldEval",
@@ -6120,7 +6183,7 @@
       "gated": true
     },
     {
-      "id": "thm-294",
+      "id": "thm-297",
       "name": "Ecdlp.Weil.functionField_exists_num_den`, `functionField_num_den_cross`, `evalFracAt_num_den_well_defined`, `secp256k1_miller_function_num_den",
       "short_name": "functionField_exists_num_den`,",
       "module": "Ecdlp.Proved.FunctionFieldRepr",
@@ -6140,7 +6203,7 @@
       "gated": true
     },
     {
-      "id": "thm-295",
+      "id": "thm-298",
       "name": "Ecdlp.Weil.RegularAt`, `evalReg`, `evalRatAt_eq_evalReg` (+ 14 supporting)",
       "short_name": "RegularAt`,",
       "module": "Ecdlp.Proved.FunctionFieldRegular",
@@ -6160,7 +6223,7 @@
       "gated": true
     },
     {
-      "id": "thm-296",
+      "id": "thm-299",
       "name": "Ecdlp.Weil.divEval_mul`, `evalReg_mul",
       "short_name": "divEval_mul`,",
       "module": "Ecdlp.Proved.WeilDivisorEval",
@@ -6180,7 +6243,7 @@
       "gated": true
     },
     {
-      "id": "thm-297",
+      "id": "thm-300",
       "name": "Ecdlp.Weil.divEval_smul_unit`, `divEval_smul_unit_eq`, `evalReg_smul_unit",
       "short_name": "divEval_smul_unit`,",
       "module": "Ecdlp.Proved.WeilDivisorRepIndep",
@@ -6200,7 +6263,7 @@
       "gated": true
     },
     {
-      "id": "thm-298",
+      "id": "thm-301",
       "name": "Ecdlp.Weil.secp256k1_miller_jointly_regular`, `divEval_one",
       "short_name": "secp256k1_miller_jointly_regular`,",
       "module": "Ecdlp.Proved.WeilMillerEval",
@@ -6220,7 +6283,7 @@
       "gated": true
     },
     {
-      "id": "thm-299",
+      "id": "thm-302",
       "name": "Ecdlp.Curve.secp256k1_seven_ne_zero`, `secp256k1_seven_pow_ne_one`, `secp256k1_seven_not_isSquare`, `secp256k1_x_ne_zero",
       "short_name": "secp256k1_seven_ne_zero`,",
       "module": "Ecdlp.Proved.SevenNonResidue",
@@ -6240,7 +6303,7 @@
       "gated": true
     },
     {
-      "id": "thm-300",
+      "id": "thm-303",
       "name": "Ecdlp.ProjectiveResultant.fixedDegree_resultant_eq_zero_iff_common_projective_root`, `map_fixedDegree_resultant_eq_zero_iff_common_projective_root`, `fixedDegree_resultant_eq_zero_iff_common_projective_root_over`; `Ecdlp.TaskSylvester.taskSylvester_eq_reindex_transpose`, `det_taskSylvester_eq_resultant`, `det_taskSylvester_eq_zero_iff_common_projective_root",
       "short_name": "fixedDegree_resultant_eq_zero_iff_common_projective_root`,",
       "module": "Ecdlp.Proved.FixedDegreeProjectiveResultant",
@@ -6262,7 +6325,7 @@
       "gated": true
     },
     {
-      "id": "thm-301",
+      "id": "thm-304",
       "name": "Ecdlp.FrozenProjectiveSemaev.specialize_frozenC_succ_over`, `specialize_frozenC_succ_over_affine`, `specialize_frozenC_succ_over_infinity`, `previousSliceAtOver_frozenC_natDegree_le`, `specialize_frozenC_succ_eq_zero_iff_common_projective_root`, `specialize_frozenC_succ_over_eq_zero_iff_common_projective_root",
       "short_name": "specialize_frozenC_succ_over`,",
       "module": "Ecdlp.Proved.FrozenRecursiveProjectiveSemaev",
@@ -6282,7 +6345,7 @@
       "gated": true
     },
     {
-      "id": "thm-302",
+      "id": "thm-305",
       "name": "Ecdlp.FrozenProjectiveSemaev.projectiveOutputAtOver_frozenC_isHomogeneous`, `homogenize_previousSliceAtOver_frozenC`, `eval_homogenize_previousSliceAtOver_frozenC`, `homogenize_localSliceAt`, `eval_homogenize_localSliceAt`, `specializeOver_frozenC_eq_zero_iff_projectiveChain`, `specializeOver_frozenC16_eq_zero_iff_projectiveChain` and supporting declarations",
       "short_name": "projectiveOutputAtOver_frozenC_isHomogeneous`,",
       "module": "Ecdlp.Proved.FrozenRecursiveProjectiveWitness",
@@ -6302,7 +6365,7 @@
       "gated": true
     },
     {
-      "id": "thm-303",
+      "id": "thm-306",
       "name": "Ecdlp.FrozenProjectiveSemaev.guardEquation`, `FrozenGuardedProjectiveSystem`, `frozenProjectiveChain_iff_guardedProjectiveSystem`, `frozenRecS17_iff_guardedProjectiveSystem_over`, `guardedEquation_totalDegree_le_four`, `card_guardVar_fourteen`, `card_guarded_equations_fourteen` and supporting declarations",
       "short_name": "guardEquation`,",
       "module": "Ecdlp.Proved.FrozenProjectiveGuardSystem",
@@ -6322,7 +6385,7 @@
       "gated": true
     },
     {
-      "id": "thm-304",
+      "id": "thm-307",
       "name": "Ecdlp.FrozenProjectiveSemaev.FrozenChartPolynomialCover`, `frozenProjectiveChain_iff_chartPolynomialCover`, `frozenGuardedProjectiveSystem_iff_chartPolynomialCover`, `frozenRecS17_iff_chartPolynomialCover_over`, `card_chartEquation`, `card_chartVar`, `chartPolynomialEquation_base_totalDegree_le_two`, `chartPolynomialEquation_step_totalDegree_le_four`, `chartPolynomialEquation_final_totalDegree_le_two`, `chartPolynomialEquation_totalDegree_le_four` and supporting declarations",
       "short_name": "FrozenChartPolynomialCover`,",
       "module": "Ecdlp.Proved.FrozenProjectiveChartSystem",
@@ -6342,7 +6405,7 @@
       "gated": true
     },
     {
-      "id": "thm-305",
+      "id": "thm-308",
       "name": "Ecdlp.FrozenProjectiveSemaev.HValue_third_infinity`, `HValue_first_infinity`, `HValue_middle_infinity`, `HValue_first_third_infinity`, `frozenChartSystem_separatedInfinityMask`, `frozenChartSystem_endpointCompatibleInfinityMask`, `frozenChartSystem_leftInfinity_forces_rightCoordinate`, `frozenChartSystem_rightInfinity_forces_leftCoordinate`, `frozenChartCover_iff_admissibleChartCover`, `frozenProjectiveChain_iff_admissibleChartPolynomialCover`, `frozenChartCover_iff_interiorChartCover`, `card_infinityMask`, `card_separatedInfinityMask`, `card_interiorSeparatedInfinityMask` and supporting declarations",
       "short_name": "HValue_third_infinity`,",
       "module": "Ecdlp.Proved.FrozenProjectiveInfinityStrata",
@@ -6362,7 +6425,7 @@
       "gated": true
     },
     {
-      "id": "thm-306",
+      "id": "thm-309",
       "name": "Ecdlp.FrozenProjectiveSemaev.frozenChartSystem_gapTwoInfinity_forces_det_zero`, `frozenChartCover_iff_gapTwoInteriorChartCover`, `card_gapTwoInteriorInfinityMask`, `frozenChartSystem_gapThreeInfinity_forces_HValue_zero`, `frozenChartCover_iff_gapThreeInteriorChartCover`, `card_gapThreeInteriorInfinityMask`, `frozenChartSystem_slotOneInfinity_forces_HValue_zero`, `frozenChartSystem_slotTwelveInfinity_forces_HValue_zero`, `frozenChartCover_iff_boundaryPropagatedChartCover`, `card_boundaryPropagatedInfinityMask`, `frozenChartCover_iff_boundaryGapThreeChartCover`, `card_boundaryGapThreeInfinityMask`, `specializeOver_frozenC_eq_zero_of_projectiveChain`, `propagatedPrefixValue_zero`, `balancedSuffixValue_zero`, `frozenChartSystem_internalInfinity_forces_prefix_zero`, `frozenChartSystem_balancedSuffixInfinity_forces_zero`, `frozenChartSystem_balancedPropagatedRegular_mask_eq_empty`, `frozenChartCover_iff_affineChartCover_of_balancedPropagatedRegular`, `frozenChartPolynomialCover_iff_affine_of_balancedPropagatedRegular`, `frozenRecS17_iff_affineChartPolynomialCover_over_of_balancedPropagatedRegular` and supporting declarations",
       "short_name": "frozenChartSystem_gapTwoInfinity_forces_det_zero`,",
       "module": "Ecdlp.Proved.FrozenProjectiveInfinityPropagation",
@@ -12857,6 +12920,11 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.SemaevThreePoint",
+      "to": "Ecdlp.Proved.SemaevThree",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.SevenNonResidue",
       "to": "Ecdlp.Proved.Secp256k1PrimeP",
       "type": "imports"
@@ -13704,6 +13772,11 @@
     {
       "from": "Ecdlp",
       "to": "Ecdlp.Proved.SemaevDegree",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.SemaevThreePoint",
       "type": "imports"
     },
     {
@@ -15438,7 +15511,7 @@
     },
     {
       "from": "thm-253",
-      "to": "family-curve-torsion",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
@@ -15448,7 +15521,7 @@
     },
     {
       "from": "thm-255",
-      "to": "family-curve-torsion",
+      "to": "family-reduction",
       "type": "member_of"
     },
     {
@@ -15493,7 +15566,7 @@
     },
     {
       "from": "thm-264",
-      "to": "family-primality",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -15508,12 +15581,12 @@
     },
     {
       "from": "thm-267",
-      "to": "family-other",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
       "from": "thm-268",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -15523,12 +15596,12 @@
     },
     {
       "from": "thm-270",
-      "to": "family-curve-torsion",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-271",
-      "to": "family-curve-torsion",
+      "to": "family-other",
       "type": "member_of"
     },
     {
@@ -15538,42 +15611,42 @@
     },
     {
       "from": "thm-273",
-      "to": "family-protocol-soundness",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-274",
-      "to": "family-protocol-soundness",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-275",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-276",
-      "to": "family-other",
+      "to": "family-protocol-soundness",
       "type": "member_of"
     },
     {
       "from": "thm-277",
-      "to": "family-curve-torsion",
+      "to": "family-protocol-soundness",
       "type": "member_of"
     },
     {
       "from": "thm-278",
-      "to": "family-curve-torsion",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-279",
-      "to": "family-curve-torsion",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-280",
-      "to": "family-attack-resistance",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -15588,22 +15661,22 @@
     },
     {
       "from": "thm-283",
-      "to": "family-primality",
+      "to": "family-attack-resistance",
       "type": "member_of"
     },
     {
       "from": "thm-284",
-      "to": "family-primality",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-285",
-      "to": "family-primality",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-286",
-      "to": "family-curve-torsion",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
@@ -15618,7 +15691,7 @@
     },
     {
       "from": "thm-289",
-      "to": "family-primality",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -15633,37 +15706,37 @@
     },
     {
       "from": "thm-292",
-      "to": "family-curve-torsion",
-      "type": "member_of"
-    },
-    {
-      "from": "thm-293",
-      "to": "family-curve-torsion",
-      "type": "member_of"
-    },
-    {
-      "from": "thm-294",
-      "to": "family-curve-torsion",
-      "type": "member_of"
-    },
-    {
-      "from": "thm-295",
       "to": "family-primality",
       "type": "member_of"
     },
     {
+      "from": "thm-293",
+      "to": "family-primality",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-294",
+      "to": "family-primality",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-295",
+      "to": "family-curve-torsion",
+      "type": "member_of"
+    },
+    {
       "from": "thm-296",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-297",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-298",
-      "to": "family-curve-torsion",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
@@ -15678,7 +15751,7 @@
     },
     {
       "from": "thm-301",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -15703,6 +15776,21 @@
     },
     {
       "from": "thm-306",
+      "to": "family-other",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-307",
+      "to": "family-other",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-308",
+      "to": "family-other",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-309",
       "to": "family-generic-hardness",
       "type": "member_of"
     },
@@ -15719,13 +15807,13 @@
       "anchor": "Ecdlp.Primality.secp256k1_n_prime"
     },
     {
-      "from": "thm-280",
+      "from": "thm-283",
       "to": "secp-rational-group",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_card_point_eq_n"
     },
     {
-      "from": "thm-281",
+      "from": "thm-284",
       "to": "secp-rational-group",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_grp_eq_top"
@@ -15747,7 +15835,7 @@
       "type": "depends_on"
     },
     {
-      "from": "thm-273",
+      "from": "thm-276",
       "to": "protocol-soundness",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_dh_agree"
@@ -15770,6 +15858,12 @@
     },
     {
       "from": "thm-245",
+      "to": "semaev-foundations",
+      "type": "supports",
+      "anchor": "Ecdlp.Semaev.S₃_eq_zero_iff"
+    },
+    {
+      "from": "thm-253",
       "to": "semaev-foundations",
       "type": "supports",
       "anchor": "Ecdlp.Semaev.S₃_eq_zero_iff"
@@ -15821,31 +15915,31 @@
       "type": "depends_on"
     },
     {
-      "from": "thm-291",
+      "from": "thm-294",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1Bar_two_torsion_structure"
     },
     {
-      "from": "thm-292",
+      "from": "thm-295",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1Bar_four_torsion_ncard"
     },
     {
-      "from": "thm-292",
+      "from": "thm-295",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1Bar_four_torsion_structure"
     },
     {
-      "from": "thm-292",
+      "from": "thm-295",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Torsion.nonempty_addEquiv_zmod_four_prod_of_card_and_two_torsion"
     },
     {
-      "from": "thm-287",
+      "from": "thm-290",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1Bar_seven_torsion_structure"
@@ -15867,7 +15961,7 @@
       "type": "depends_on"
     },
     {
-      "from": "thm-298",
+      "from": "thm-301",
       "to": "weil-w1-w3",
       "type": "supports",
       "anchor": "Ecdlp.Weil.secp256k1_miller_jointly_regular"
@@ -15946,7 +16040,7 @@
       "type": "blocked_by"
     },
     {
-      "from": "thm-296",
+      "from": "thm-299",
       "to": "weil-w4-w5",
       "type": "supports",
       "anchor": "Ecdlp.Weil.divEval_mul"

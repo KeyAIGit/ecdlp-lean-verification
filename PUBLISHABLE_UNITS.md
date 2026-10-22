@@ -131,6 +131,13 @@ paper could carry both, or they could split).
 - `S₃` reverse + full characterization: `S₃_root_of_eq_zero`, `S₃_eq_zero_iff`,
   `secp256k1_semaev_three_iff` (`S₃ = 0 ⟺ x₃ = x(P₁+P₂) or x(P₁−P₂)`); symmetries
   `S₃_symm₁₂`, `S₃_symm₂₃`.
+- `S₃` on Mathlib's group law for every curve in short normal form over a field, without case
+  hypotheses: forward `S₃_eq_zero_of_add_add_eq_zero`, the characterization
+  `S₃_eq_zero_iff_exists_point` (`S₃(x₁,x₂,x₃) = 0` iff an affine point over `x₃` completes
+  `P₁ ± P₂` to `O`), its signed-sum form `S₃_eq_zero_iff_signed_sum`
+  (+ `secp256k1_semaev_three_point_iff`), and the identity `S₃_eq_addSubMap` with Mathlib's
+  `WeierstrassCurve.addSubMap` — `SemaevThreePoint.lean`. Mathlib PR #43292 (from v4.34.0)
+  proves `sym2x_add_sub_eq_addSubMap_sym2x`, which overlaps the characterization.
 - `S₄`: definition as `Res_X(S₃(x₁,x₂,X), S₃(x₃,x₄,X))` on Mathlib's `Polynomial.resultant`, both
   directions — forward `S₄_eq_zero_of_common_root` (+ `secp256k1_semaev_four_of_common_root`) and
   reverse/meaning `S₄_common_root_of_eq_zero` (+ `secp256k1_semaev_four_common_root_of_eq_zero`),

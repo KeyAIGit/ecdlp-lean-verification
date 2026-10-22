@@ -101,6 +101,7 @@ import Ecdlp.Proved.SevenNonResidue
 import Ecdlp.Proved.GlvSemaevSymmetry
 import Ecdlp.Proved.PointDecomposition
 import Ecdlp.Proved.SemaevDegree
+import Ecdlp.Proved.SemaevThreePoint
 import Ecdlp.Proved.GlvNoGo
 import Ecdlp.Proved.P256Curve
 import Ecdlp.Proved.P256PrimeP
