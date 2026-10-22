@@ -234,6 +234,10 @@ def short_name(full: str) -> str:
 # wins; order matters (most specific first). Gives a future reasoner a stable
 # faceting of the corpus without re-reading every statement.
 AREA_RULES = [
+    # Checked before "primality": the parity / Fourier rows state their
+    # hypotheses with "prime n", which would otherwise file them as primality.
+    ("bit-security", ["parity", "fourier", "σ̂", "halving", "ordered-sector",
+                      "twisted sum"]),
     ("primality", ["prime", "pratt", "primality"]),
     ("attack-resistance", ["embedding degree", "anomalous", "trace of frobenius",
                            "supersingular", "mov", "smart"]),
