@@ -3,9 +3,9 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "c6bc609ecd87886cf0a33fd7e65162fcbc1381d97a167156a37169b930ccfcf5",
+    "data/result_registry.json": "51a93c7aa0a2d6ea07d83cfbffb553947d6b44b97d71c8e8ea39c95657ae6805",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
-    "data/stats.json": "e2165fbb75dced6b3d1862ee475e59778f1a5e3d050ad9d239decee066e783a3"
+    "data/stats.json": "4fd6c35e860aa1661b2fbdfb0caabcfb6c36d972d556e2335a6dd11b50a22542"
   },
   "invariants": [
     "VERIFIED.md remains the canonical ECDLP ledger.",
@@ -14,16 +14,16 @@
     "The aggregate row total is navigation only and is not a security metric."
   ],
   "counts": {
-    "navigation_rows_total": 479,
-    "ecdlp_rows": 307,
+    "navigation_rows_total": 481,
+    "ecdlp_rows": 309,
     "researchos_rows": 172,
     "kernel_standard_rows": 172,
-    "kernel_audited_rows": 203,
+    "kernel_audited_rows": 205,
     "kernel_plus_compiler_rows": 104,
     "lanes": 2,
     "domains": {
       "analysis-generic": 68,
-      "ecdlp-ledger": 307,
+      "ecdlp-ledger": 309,
       "number-theory-elementary": 11,
       "riemann-hypothesis": 93
     }
@@ -35,7 +35,7 @@
       "canonical_ledger": "VERIFIED.md",
       "registry": "data/result_registry.json",
       "headline_accounting": "data/stats.json",
-      "rows": 307
+      "rows": 309
     },
     {
       "id": "researchos",
@@ -300,6 +300,38 @@
           "kind": "theorem",
           "file": "Ecdlp/Proved/TorsionPointCount.lean",
           "line": 247
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
+      "uid": "ecdlp/ledger-308",
+      "slug": "ecdlp-ledger-308",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "*(alternate/supporting)* Forward direction of the Semaev tower at every level — `resultant_eq_zero_of_common_root` applied by induction with `semaevSlice_natDegree_le` (`semaevSlice_eval_eq_zero_of_chain`: over any commutative ring, if `S₃(x₀,x₁,z₀) = 0` and `S₃(zᵢ,x_{i+2},z_{i+1}) = 0` for all `i < s`, then `S_{s+3}(x₀,…,x_{s+1},z_s) = 0`; `Sm_eq_zero_of_chain`: such a chain ending at `z_{m−3} = x_{m−1}` gives `Sₘ(x₀,…,x_{m−1}) = 0` (for `m ≥ 3`; for `m < 3`, `Sm` is the truncated level-0 value and the statements say nothing about Semaev polynomials). The witnesses `zᵢ` play the role of `x(P₀+⋯+P_{i+1})`; no statement about curve points is made here)",
+      "title": "*(alternate/supporting)* Forward direction of the Semaev tower at every level — `resultant_eq_zero_of_common_root` applied by induction with `semaevSlice_natDegree_le` (`semaevSli…",
+      "display": "`Ecdlp.Semaev.semaevSlice_eval_eq_zero_of_chain`, `Sm_eq_zero_of_chain`",
+      "method": "Mathlib (`exists_mul_add_mul_eq_C_resultant`)",
+      "axiom_base": null,
+      "trust_level": "kernel_audited",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/SemaevTower.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.Semaev.semaevSlice_eval_eq_zero_of_chain",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 149
+        },
+        {
+          "declaration": "Ecdlp.Semaev.Sm_eq_zero_of_chain",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 168
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -3849,6 +3881,86 @@
       "source_registry": "data/result_registry.json"
     },
     {
+      "uid": "ecdlp/ledger-307",
+      "slug": "ecdlp-ledger-307",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "General Semaev polynomials `Sₘ` by the resultant recursion, agreement with `S₃`/`S₄`, and the degree bound `2^(m−2)` in the last variable (`semaevSlice a b x s` is `S_{s+3}(x₀,…,x_{s+1},Y)` as a polynomial in `Y`: level 0 is `S₃poly a b x₀ x₁`, level `s+1` is the resultant in an auxiliary variable `T` of the previous slice and `S₃(x_{s+2},Y,T)` (`stepPoly`) with fixed Sylvester sizes `(2^(s+1),2)`; `Sm a b m x` evaluates level `m−3` at `x_{m−1}` (for `m ≥ 3`; for `m < 3`, `Sm` is the truncated level-0 value and the statements say nothing about Semaev polynomials). Over any commutative ring: `semaevSlice_succ_eval` (evaluating `Y` gives the scalar resultant step), `Sm_three` (`= S₃`), `Sm_four` (`= S₄`, same argument order), and `semaevSlice_natDegree_le` (`natDegree ≤ 2^(s+1)`, by a column-weight bound on the Sylvester determinant, `natDegree_det_le_sum_col`). Reuse: `natDegree_det_le_sum_col` is the column-weight, commutative-ring version of `Ecdlp.FrozenProjectiveSemaev.natDegree_det_le_sum_row` (row weights, over a field), and `semaevSlice_natDegree_le` is the general-`(a,b)` affine analogue of the secp256k1 frozen-family bound `previousSliceAtOver_frozenC_natDegree_le` (same `2^(s+1)`). Only the upper bound is proved for `m ≥ 5`; exact degree, symmetry and the reverse direction for `m ≥ 5` are not)",
+      "title": "General Semaev polynomials `Sₘ` by the resultant recursion, agreement with `S₃`/`S₄`, and the degree bound `2^(m−2)` in the last variable (`semaevSlice a b x s` is `S_{s+3}(x₀,…,x…",
+      "display": "`Ecdlp.Semaev.stepPoly`, `semaevSlice`, `Sm`, `S₃poly_map`, `semaevSlice_succ_eval`, `Sm_three`, `Sm_four`, `natDegree_det_le_sum_col`, `stepPoly_coeff_natDegree_le`, `semaevSlice_natDegree_le`",
+      "method": "Mathlib (`Polynomial.resultant`, `resultant_map_map`, `Matrix.det_apply`)",
+      "axiom_base": null,
+      "trust_level": "kernel_audited",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/SemaevTower.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.Semaev.stepPoly",
+          "kind": "def",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 59
+        },
+        {
+          "declaration": "Ecdlp.Semaev.semaevSlice",
+          "kind": "def",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 63
+        },
+        {
+          "declaration": "Ecdlp.Semaev.Sm",
+          "kind": "def",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 69
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₃poly_map",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 53
+        },
+        {
+          "declaration": "Ecdlp.Semaev.semaevSlice_succ_eval",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 73
+        },
+        {
+          "declaration": "Ecdlp.Semaev.Sm_three",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 84
+        },
+        {
+          "declaration": "Ecdlp.Semaev.Sm_four",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 88
+        },
+        {
+          "declaration": "Ecdlp.Semaev.natDegree_det_le_sum_col",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 97
+        },
+        {
+          "declaration": "Ecdlp.Semaev.stepPoly_coeff_natDegree_le",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 110
+        },
+        {
+          "declaration": "Ecdlp.Semaev.semaevSlice_natDegree_le",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevTower.lean",
+          "line": 118
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
       "uid": "ecdlp/ledger-188",
       "slug": "ecdlp-ledger-188",
       "lane": "ecdlp",
@@ -5341,8 +5453,8 @@
       "slug": "ecdlp-ledger-247",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "Semaev forward direction generalized to all `n` — the resultant recursion engine (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. Every Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` inherits its forward direction from this one lemma at level `n`; `S₄_eq_zero_of_common_root` is now literally the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`, and `S₅, S₆, …` are discharged verbatim with `f` the previous slice. The mechanism-level generalization of the Semaev forward direction to the whole infinite `Sₙ` family — via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
-      "title": "Semaev forward direction generalized to all `n` — the resultant recursion engine (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutativ…",
+      "claim_id": "Semaev forward direction — the resultant common-root lemma (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring with `natDegree f ≤ m`, `natDegree g ≤ n` and sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. A Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` gets its forward direction from this lemma once the previous slice is defined as a polynomial with the needed degree bound. `S₄_eq_zero_of_common_root` is the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`; for every level of the general tower this is `semaevSlice_eval_eq_zero_of_chain` (`Ecdlp/Proved/SemaevTower.lean`, induction with the degree bound `semaevSlice_natDegree_le`). Via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
+      "title": "Semaev forward direction — the resultant common-root lemma (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring with `natDegree…",
       "display": "`Ecdlp.Semaev.resultant_eq_zero_of_common_root`",
       "method": "Mathlib (`exists_mul_add_mul_eq_C_resultant`)",
       "axiom_base": null,
