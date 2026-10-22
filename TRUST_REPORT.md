@@ -2,7 +2,7 @@
 
 > Counts here are a snapshot; the single canonical figure is **`STATUS.md`** (generated from `data/stats.json`). If they differ, STATUS.md wins.
 
-**Scope of the verified body.** `328 ledger rows / ~284 distinct kernel-verified
+**Scope of the verified body.** `345 ledger rows / ~291 distinct kernel-verified
 results`. A row may group several supporting declarations; the exact expansion is
 generated in `data/result_registry.json`. The built surface has **0 `sorry`, 0
 `admit`, and 0 custom axioms**. Open target stems are explicitly outside the built
@@ -168,6 +168,32 @@ ring-identity curve invariants. Representative theorems (file → theorem):
   resultant and degree bookkeeping over any commutative ring, except the three
   exact-degree/completion statements `S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`
   and `S₄_completions_le_four`, which are over a field; no `native_decide`)
+- `Ecdlp/Proved/ParityFourier/Proofs{K,CT,Zeta,C44H,C44R,C37,W,PB1,PB23,PB}.lean` →
+  `parityMismatchZero`, `evenFeatureZero`, `oddFeatureZero`, `xOnlyZero`,
+  `charTransfer`, `l1JBound`, `l1GBound`, `weilTransferLsbJ`, `weilTransferLsbG`,
+  `slopeCocycleLaw`, `zetaCoboundary`, `anomalousSumHom`, `zetaLsbTransfer`,
+  `heavyCore`, `jHeavy`, `accessCorrelation`, `gammaJCard`, `heavySetSmall`,
+  `jReductionSound`, `jRecoverFromHeavyList`, `jRecoverExplicit`,
+  `relabelDefect`, `relabelDL`, `sqrtBranch`, `windowShape`, `windowLaw`,
+  `windowRefined`, `windowX`, `majorityVote`, `voteIdentity`, `voteAdvantage`,
+  `noisyHalvingRecovers`, `noisyHalvingGrid`, `groupNoisyHalvingRecovers`
+  (second port of the parity lab: symmetry identities, Fourier transfer and
+  `ℓ¹` bounds, the slope cocycle and Weierstrass zeta function of a short
+  Weierstrass curve, the window law, and reductions; each prints a subset of
+  `{propext, Classical.choice, Quot.sound}`. Hypotheses that carry weight:
+  `charTransfer`, `weilTransferLsbJ`, `weilTransferLsbG` and `zetaLsbTransfer`
+  take a twisted-sum bound as a hypothesis; the `J` recovery theorems take a
+  list that contains every heavy Fourier coefficient; `relabelDL` takes an exact
+  decoder; the noisy halving theorems take a fixed predictor with advantage `ε`
+  and a uniformly random shift table. `ProofsZeta.lean` has four `set_option`
+  lines: `linter.unusedSimpArgs false` and `linter.unusedSectionVars false`
+  (file-wide linter switches) and `maxHeartbeats 2000000` and
+  `maxRecDepth 200000` (scoped by `in` to one `linear_combination`
+  certificate, `uniform_core8`); these are linter and resource settings that
+  do not change the trust base. The glob `Ecdlp/Proved/ParityFourier/*.lean`
+  of the earlier `ParityFourier` entry now also matches the 18 files of this
+  entry; that entry's declaration list is unchanged, and the declarations of
+  these files are the ones listed here)
 
 ### (b) `native_decide` / compiler-trusted — TCB INCLUDES the Lean compiler
 
@@ -280,7 +306,7 @@ Distinguishing *machine-enforced* (a red build blocks merge) from *documentation
 | `Ensure no incomplete proofs remain` | `grep -rniI --include='*.lean' --exclude-dir=Targets 'sorry' Ecdlp/` — fails if `sorry`/`admit` text appears in any **built** `.lean` file. `Ecdlp/Targets/` (open stems) is excluded by design. | **MACHINE-ENFORCED**, with the documented scope limit that it is a *text* grep over built files and deliberately skips `Targets/`. |
 | `Ensure no built file imports an open target stem` | `grep` for `import Ecdlp.Targets` outside `Targets/`. Closes the hole where a built file could pull a `sorry`-bearing stem into the build graph (since `sorry` is only a warning). | **MACHINE-ENFORCED.** This is the guard that makes the previous grep sound. |
 | `Fetch prebuilt Mathlib cache` + `Build and verify ALL proofs` — `lake build` | The **kernel** re-checks every built proof term. A `sorry` that reached the build graph, or any type error, fails here. | **MACHINE-ENFORCED.** This is the core verification: a green `lake build` means the kernel accepted every built theorem. |
-| `Axiom audit (no sorryAx, no custom axioms)` — `lake env lean Ecdlp/LedgerAxiomAudit.lean` → `scripts/check_axioms.py` | Generates `#print axioms` for every named declaration resolved from all 328 ledger rows. It fails on `sorryAx`, guard/custom axioms, unknown names, or any mismatch between Lean output and `data/result_registry.json`; compiler-trust markers from `native_decide` are disclosed. | **MACHINE-ENFORCED and exhaustive over the named ledger declaration set.** Seven anonymous instance targets are source-resolved exemptions because they have no source-level declaration name; their defining files are still built and their named load-bearing theorems are audited. |
+| `Axiom audit (no sorryAx, no custom axioms)` — `lake env lean Ecdlp/LedgerAxiomAudit.lean` → `scripts/check_axioms.py` | Generates `#print axioms` for every named declaration resolved from all 345 ledger rows. It fails on `sorryAx`, guard/custom axioms, unknown names, or any mismatch between Lean output and `data/result_registry.json`; compiler-trust markers from `native_decide` are disclosed. | **MACHINE-ENFORCED and exhaustive over the named ledger declaration set.** Seven anonymous instance targets are source-resolved exemptions because they have no source-level declaration name; their defining files are still built and their named load-bearing theorems are audited. |
 | `Typecheck open target stems (non-blocking)` | `lake env lean` over `Ecdlp/Targets/*.lean`; `continue-on-error: true`. | **DOCUMENTATION/INFO ONLY.** A stem failing to typecheck emits a warning, never blocks. |
 | `Featherless API smoke test`, `Prover target attempt`, report upload | All `continue-on-error: true` and skipped on PRs. | **DOCUMENTATION/INFO ONLY.** Prover orchestration; cannot affect the verification verdict. |
 
