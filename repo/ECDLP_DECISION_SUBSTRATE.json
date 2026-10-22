@@ -1397,7 +1397,7 @@
       "implementation_status": "partial",
       "needed_by_route_ids": [],
       "formal_node_ids": [],
-      "mathlib_status": "Built only from Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, and real logarithms. A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
+      "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
       "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. The layer is not a hardness theorem, constructs no parity oracle, and states nothing specific to secp256k1.",
       "resume_condition": "Any further build in this area, such as a noisy-oracle reduction, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
       "registered_by": "FD-2026-10-22-001"
@@ -1440,7 +1440,7 @@
           "exact_uncertainty": "Whether any efficiently computable public function of a point correlates with the parity of its discrete logarithm at or above the break-even bias, the predictor advantage at which a parity-oracle reduction would match the generic square-root cost. The authorized layer proves a reduction from an exact oracle and Fourier tools only; it decides no correlation and proves no hardness.",
           "success_condition": "CI kernel-checks every ported theorem, and the full-ledger axiom audit shows that each depends only on propext, Classical.choice, and Quot.sound, with no native_decide and no custom axiom. The ledger rows state the exact-oracle and assumed twisted-sum hypotheses and make no hardness or secp256k1 claim.",
           "stop_condition": "The authorization covers PR #444 only and ends when it is merged or closed. Any further build in this area requires a new dated decision.",
-          "status_basis": "implementation_status partial is the state once the authorized PR #444 port lands; until that merge the theorems exist only in the companion lab repository. If PR #444 closes unmerged, a new dated decision resets this foundation."
+          "status_basis": "The implementation lands with PR #444. implementation_status partial records the state after that merge, which follows this decision's pull request (#449) in the same merge sequence, with only PR #446, which does not touch this foundation, merged between them. Until PR #444 merges, the theorems exist only in the owner's companion lab repository. If PR #444 closes unmerged, a new dated decision resets this foundation's implementation_status."
         },
         {
           "foundation_id": "F-PRIME-ORDER-POINT-COUNT",
@@ -1453,7 +1453,7 @@
         {
           "foundation_id": "F-SEMAEV-ELIMINATION",
           "ruling": "unchanged_build_if_selected",
-          "scope": "No F-SEMAEV-ELIMINATION build is authorized; the foundation stays build_if_selected with build_now false and its resume condition is unchanged. The owner splits PR #447. Its S4 permutation symmetry (an exact S4 polynomial covariance identity under coordinate permutations, within the scope recorded by RS-2026-07-24-001), the per-variable degree facts proved with it, and its documentation correction land as maintenance of the existing S3/S4 formal layer (semaev-foundations), without reopening the completed structural lane. The general S_m tower moves to a separate draft pull request and stays parked until a dependent route is selected."
+          "scope": "No F-SEMAEV-ELIMINATION build is authorized; the foundation stays build_if_selected with build_now false and its resume condition is unchanged. The owner splits PR #447. Its S4 permutation symmetry (an exact S4 polynomial covariance identity under coordinate permutations), the per-variable degree facts proved with it, and its documentation correction land on the owner's ruling of 2026-10-22, this decision FD-2026-10-22-001, as maintenance of the existing S3/S4 formal layer (semaev-foundations). The completed structural lane recorded by RS-2026-07-24-001 is not reopened. The general S_m tower moves to a separate draft pull request and stays parked until a dependent route is selected."
         }
       ]
     }
