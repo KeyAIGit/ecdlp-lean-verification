@@ -48,3 +48,22 @@ pinned decision digest stays
 `c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28`. As above, no validation
 function, gate or statement was changed, and the previous states remain recoverable from
 the two parent commits of the merge.
+
+## Merge with `main` at `f089adc5` (2026-10-22)
+
+`main` advanced to `f089adc5c23ae59a44973d4b9ab16bb71e81a370` (#452, the point-level
+`S₃` characterization). Its child policy still pins the parent root
+`f30f9341a963d4e611a22453728117db2e6ecd03348d4c067fc04f453622d686`. After merging
+`main` into this branch (merge commit `f43211a0`), the generator chain was rerun in the
+`docs-sync.yml` order up to `hypothesis_funnel.py`. It computed
+`11099f0760f6447deb112a58afc419d1654544c1a9c7b20e24471e278e103694`, the root this
+branch already pinned, so `repo/HYPOTHESIS_SPACE_V2.json` did not change. The full chain
+was rerun again after the ledger wording corrections that followed the merge; the root
+stayed the same.
+
+Parent root on `main`: `f30f9341a963d4e611a22453728117db2e6ecd03348d4c067fc04f453622d686`.
+Parent root after the merge: `11099f0760f6447deb112a58afc419d1654544c1a9c7b20e24471e278e103694`.
+
+`repo/ECDLP_DECISION_SUBSTRATE.json` is byte-identical to `main`, so the drafter policy's
+pinned decision digest stays
+`c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28`.

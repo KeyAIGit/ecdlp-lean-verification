@@ -73,8 +73,8 @@ semantics."
 ## Unit 2 — Machine-checked Pratt primality certificates for secp256k1 `p` and `n`
 
 **Thesis.** The two security-load-bearing constants of secp256k1 — the field prime
-`p = 2²⁵⁶ − 2³² − 977` and the group order `n` — are certified prime by full, kernel-checked
-Pratt (Lucas/Pocklington) certificates whose compiler-trusted footprint is deliberately minimized.
+`p = 2²⁵⁶ − 2³² − 977` and the group order `n` — are certified prime by full Pratt
+(Lucas/Pocklington) certificates checked by the Lean kernel alone (no `native_decide`).
 
 **What is actually proved:**
 - `Ecdlp.Primality.secp256k1_p_prime` — `Ecdlp/Proved/Secp256k1PrimeP.lean`.
