@@ -7090,6 +7090,7 @@
         "Maintain the completed TASK-024 non-run kernel binding for necessary infinity-stratum pruning: affine external inputs restrict the exact cover from 16384 masks to 987 separated masks, and nonzero endpoint determinants conditionally restrict it to 377 interior masks. Keep sufficiency, unique mask selection, production enumeration, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
         "Maintain the completed TASK-025 non-run kernel binding for explicit infinity propagation: the nested local mask counts are 377 to 129 to 69 to 36, while the independent boundary-only refinement is 129 to 60; over any field, six prefix and six suffix obstruction values cover all twelve internal infinity slots, and endpoint plus BalancedPropagatedRegular assumptions make the empty-mask affine chart exact. The source-stage bridge separately requires injective base change into an algebraically closed target and mapped-target regularity. Keep symbolic nonzeroness, nonemptiness, genericity, exceptional-complement orchestration, witness uniqueness, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
         "Land exactly the bounded formal builds authorized by FD-2026-10-22-001: the PR #444 port for F-PARITY-BIT-SECURITY, the PR #446 point-count build for F-PRIME-ORDER-POINT-COUNT, and the S4 permutation-symmetry and degree slice of PR #447 as maintenance of the existing S3/S4 layer. None selects or promotes a route or authorizes an experiment.",
+        "Land exactly the bounded formal builds authorized by FD-2026-10-22-002: the five point-level S₃ statements frozen on branch lab/semaev-three-point-20261022, as maintenance of the existing S3/S4 layer, and one port of the 34 listed lab theorems that extends F-PARITY-BIT-SECURITY. Neither selects or promotes a route or authorizes an experiment.",
         "Maintain canonical provenance and regenerate affected views without changing the recorded claim boundary."
       ],
       "forbidden_work": [
@@ -7106,6 +7107,7 @@
         "Treat the completed TASK-025 conditional single-affine-chart theorem as proof that its balanced regular locus is symbolically nonzero, nonempty, dense, probable, or generic; as automatic mapped-target regularity from source-field computation; as witness uniqueness or target-witness descent; or as a production mask selector, solver result, cost result, ECDLP shortcut, or execution authorization.",
         "Treat a constant-factor result, structural identity, or toy measurement as a subgeneric attack.",
         "Build the general S_m tower, extend F-PARITY-BIT-SECURITY or F-PRIME-ORDER-POINT-COUNT beyond FD-2026-10-22-001, or add p256-exact-cardinality to release.required_nodes without a new dated decision.",
+        "Add a point-level Semaev statement beyond the five named by FD-2026-10-22-002, in particular fixed-target, HValue, or frozenC semantics or point-level S_m semantics for m >= 5, or extend F-PARITY-BIT-SECURITY beyond FD-2026-10-22-002, for example by the sparse Fourier transform step, a cost model for the reductions, or a parity-correlation experiment, without a new dated decision.",
         "Delete or rewrite provenance-bearing assets without an inventory, reference scan, and documented restore path."
       ],
       "promotion_rule": "A future dated decision may promote at most one parked route only after new evidence satisfies the acceptance gate at proposal level and tasks/ECDLP_RESEARCH.md plus experiments/HYPOTHESES.yaml explicitly authorize the same work.",
@@ -8224,10 +8226,13 @@
         "implementation_status": "partial",
         "needed_by_route_ids": [],
         "formal_node_ids": [],
-        "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
-        "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. The layer is not a hardness theorem, constructs no parity oracle, and states nothing specific to secp256k1.",
-        "resume_condition": "Any further build in this area, such as a noisy-oracle reduction, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
-        "registered_by": "FD-2026-10-22-001"
+        "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. The port extended by FD-2026-10-22-002 also uses Mathlib's Weierstrass affine point group and its slope (the zeta statements and the x-coordinate instances) and Mathlib's Hoeffding bound for bounded random variables under a finite uniform product measure (the majority-vote step of the noisy reduction). A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
+        "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001 and extended by FD-2026-10-22-002: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. Under FD-2026-10-22-002 it also takes exactly one further port, after PR #444, of 34 theorems already kernel-checked in that lab repository: exact zero-correlation identities for even and odd features, a Fourier transfer bound and L1 bounds of the ordered-sector and carry signs, the slope cocycle and the Weierstrass zeta function of a short-normal-form curve, a heavy-coefficient lemma and the correctness of the hard-core reduction for the ordered-sector sign with the sparse Fourier transform output as a hypothesis, relabelling with a defect and the exact-branch reduction, the window law, and a halving reduction from a deterministic noisy parity predictor with its failure bound. Transfer bounds keep their character-sum bounds as assumed hypotheses. The layer is not a hardness theorem, constructs no parity oracle, formalizes no cost, and states nothing specific to secp256k1.",
+        "resume_condition": "Any build in this area beyond FD-2026-10-22-002, such as the sparse Fourier transform step or a cost model for the reductions, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
+        "registered_by": "FD-2026-10-22-001",
+        "extended_by": [
+          "FD-2026-10-22-002"
+        ]
       },
       {
         "id": "F-PRIME-ORDER-POINT-COUNT",
@@ -9507,8 +9512,8 @@
       "generator_id": "ecdlp-hypothesis-generation-v0",
       "source_hashes": {
         "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-        "typed_evidence_state_sha256": "4df1cfb942fc71c1c53fffed73520093a1af93324986e8c18ab41ce526dde31f",
-        "research_claim_state_sha256": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
+        "typed_evidence_state_sha256": "2f3d829eaf0d4fc83c3b5eb01dbef9d73b8c767aba4839fb9088061d2d8e929f",
+        "research_claim_state_sha256": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e",
         "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
         "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
       },
@@ -9544,7 +9549,7 @@
         },
         "source_hashes": {
           "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-          "decision_substrate_sha256": "8a0407672343ffd70220fb73df0c355dc35c8185dae3073da2c5721de693e29a",
+          "decision_substrate_sha256": "a86e240c63687ddc262d25cda6de4412db25f3f9e76afe5ff2939cb64a9a88de",
           "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
           "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
           "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
@@ -9575,7 +9580,7 @@
           "route_promotions": 0,
           "exact_target_runs": 0
         },
-        "state_sha256": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e"
+        "state_sha256": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e"
       },
       "seed_coverage": {
         "threshold": 12,
@@ -9616,7 +9621,7 @@
           "seed_id": "HGS-5CC94AD51AE6",
           "cell_id": "CELL-M-PKC-AUXILIARY-CURVE",
           "typed_evidence_digest": "324128326a3d56dbe4ab697efafefb12d34ba6ba44983883c8d04fe2493832dc",
-          "claim_state_digest": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
+          "claim_state_digest": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -9764,7 +9769,7 @@
           "seed_id": "HGS-3266E42A729C",
           "cell_id": "CELL-M-PKC-SMOOTH-M16",
           "typed_evidence_digest": "602d93c115099c81f02b8a8ac531e33036e6988d5d3ddf2ec257b1118e5cd75d",
-          "claim_state_digest": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
+          "claim_state_digest": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -10675,24 +10680,24 @@
       "exact_target_execution": false,
       "stream_digest_version": "rfc6962-binary-leaf-v2",
       "coverage_merkle_root_sha256": "dff1e8cb52594158fc94556cbef3025be647fab310132c34ee58aed3b8399207",
-      "instance_root_sha256": "20e482430620dbe6d184fa9ee3b4c32a2c5b79d9a0d80740972784ed7612b334",
+      "instance_root_sha256": "44e33f1d68b058f379db1080bc237456ac9c2413d5df7b89dfbde0974e98b3e2",
       "challenge_indices": [
-        83824,
-        151904,
-        159809,
-        221732,
-        262853,
-        315784,
-        319211,
-        374912,
-        390699,
-        490996,
-        678860,
-        719872,
-        741146,
-        791887,
-        799353,
-        994384
+        36552,
+        77187,
+        81973,
+        84294,
+        148061,
+        148896,
+        254218,
+        434656,
+        446301,
+        532228,
+        686468,
+        837699,
+        866814,
+        921313,
+        923406,
+        938441
       ]
     },
     "coverage_boundary": "Coverage is complete only for this frozen finite Cartesian projection. It is not coverage of all ECDLP ideas or literature.",
@@ -11276,7 +11281,7 @@
     },
     "source_hashes": {
       "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-      "decision_substrate_sha256": "8a0407672343ffd70220fb73df0c355dc35c8185dae3073da2c5721de693e29a",
+      "decision_substrate_sha256": "a86e240c63687ddc262d25cda6de4412db25f3f9e76afe5ff2939cb64a9a88de",
       "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
       "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
       "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
