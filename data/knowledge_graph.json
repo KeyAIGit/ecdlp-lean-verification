@@ -10,7 +10,7 @@
     "families": 8,
     "critical_nodes": 17,
     "attack_routes": 17,
-    "decision_foundations": 11,
+    "decision_foundations": 13,
     "attack_registry_objects": 14,
     "research_engine_candidates": 6,
     "generated_hypothesis_seeds": 2,
@@ -37,7 +37,7 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1207,
+    "edges": 1208,
     "by_edge_type": {
       "imports": 540,
       "member_of": 310,
@@ -47,8 +47,8 @@
       "decision_grounded_in": 25,
       "depends_on": 18,
       "evaluated_under": 18,
+      "extends_frontier": 16,
       "detailed_by": 15,
-      "extends_frontier": 15,
       "frontier_of": 13,
       "requires_target_property": 10,
       "records_outcome_for": 9,
@@ -7089,6 +7089,7 @@
         "Maintain the completed TASK-023 non-run kernel binding for the exact affine/infinity chart-polynomial cover: each fixed InfinityMask I has exactly 14 - I.card variables and fifteen literal H equations with degree ceilings 2/4/2, and the existential cover is equivalent to the TASK-021 chain, TASK-022 guarded system, and source frozen stage-14 predicate after injective base change. Keep production mask enumeration, mask selection, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
         "Maintain the completed TASK-024 non-run kernel binding for necessary infinity-stratum pruning: affine external inputs restrict the exact cover from 16384 masks to 987 separated masks, and nonzero endpoint determinants conditionally restrict it to 377 interior masks. Keep sufficiency, unique mask selection, production enumeration, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
         "Maintain the completed TASK-025 non-run kernel binding for explicit infinity propagation: the nested local mask counts are 377 to 129 to 69 to 36, while the independent boundary-only refinement is 129 to 60; over any field, six prefix and six suffix obstruction values cover all twelve internal infinity slots, and endpoint plus BalancedPropagatedRegular assumptions make the empty-mask affine chart exact. The source-stage bridge separately requires injective base change into an algebraically closed target and mapped-target regularity. Keep symbolic nonzeroness, nonemptiness, genericity, exceptional-complement orchestration, witness uniqueness, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
+        "Land exactly the bounded formal builds authorized by FD-2026-10-22-001: the PR #444 port for F-PARITY-BIT-SECURITY, the PR #446 point-count build for F-PRIME-ORDER-POINT-COUNT, and the S4 permutation-symmetry and degree slice of PR #447 as maintenance of the existing S3/S4 layer. None selects or promotes a route or authorizes an experiment.",
         "Maintain canonical provenance and regenerate affected views without changing the recorded claim boundary."
       ],
       "forbidden_work": [
@@ -7104,6 +7105,7 @@
         "Treat the completed TASK-024 necessary infinity-stratum filter as sufficient or unique mask selection, a production mask enumeration, an independent relation system, a solver run, a solving-cost result, or execution authorization.",
         "Treat the completed TASK-025 conditional single-affine-chart theorem as proof that its balanced regular locus is symbolically nonzero, nonempty, dense, probable, or generic; as automatic mapped-target regularity from source-field computation; as witness uniqueness or target-witness descent; or as a production mask selector, solver result, cost result, ECDLP shortcut, or execution authorization.",
         "Treat a constant-factor result, structural identity, or toy measurement as a subgeneric attack.",
+        "Build the general S_m tower, extend F-PARITY-BIT-SECURITY or F-PRIME-ORDER-POINT-COUNT beyond FD-2026-10-22-001, or add p256-exact-cardinality to release.required_nodes without a new dated decision.",
         "Delete or rewrite provenance-bearing assets without an inventory, reference scan, and documented restore path."
       ],
       "promotion_rule": "A future dated decision may promote at most one parked route only after new evidence satisfies the acceptance gate at proposal level and tasks/ECDLP_RESEARCH.md plus experiments/HYPOTHESES.yaml explicitly authorize the same work.",
@@ -8212,6 +8214,36 @@
         "mathlib_status": "The source-tree audit found no elliptic isogeny module in the pinned or observed Mathlib snapshot.",
         "deliverable": "No general library now; add only the map and facts required by a concrete selected transfer.",
         "resume_condition": "An explicit efficiently computable transfer to a demonstrably weaker DLP target is proposed."
+      },
+      {
+        "id": "F-PARITY-BIT-SECURITY",
+        "title": "Scalar-parity and bit-security reduction and Fourier layer",
+        "decision": "retain_frontier",
+        "priority": "P3",
+        "build_now": false,
+        "implementation_status": "partial",
+        "needed_by_route_ids": [],
+        "formal_node_ids": [],
+        "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
+        "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. The layer is not a hardness theorem, constructs no parity oracle, and states nothing specific to secp256k1.",
+        "resume_condition": "Any further build in this area, such as a noisy-oracle reduction, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
+        "registered_by": "FD-2026-10-22-001"
+      },
+      {
+        "id": "F-PRIME-ORDER-POINT-COUNT",
+        "title": "Exact rational-point counts for prime-order short Weierstrass curves",
+        "decision": "retain_frontier",
+        "priority": "P3",
+        "build_now": false,
+        "implementation_status": "partial",
+        "needed_by_route_ids": [],
+        "formal_node_ids": [
+          "p256-exact-cardinality"
+        ],
+        "mathlib_status": "Mathlib provides the Weierstrass point group; in the pinned tag v4.31.0 the number of points appears only as an input to the L-function definition. A lexical search on 2026-10-22 found no Hasse bound and no Schoof-type point-counting theorem.",
+        "deliverable": "Only the bounded build authorized by FD-2026-10-22-001: the PR #446 curve-generic count #E(F) = n for an elliptic short Weierstrass curve over a finite field F that has a point of order n, satisfies 2*#F + 1 < 3n, and has no 2-torsion, proved from the elementary bound #E(F) <= 2*#F + 1 rather than the Hasse bound; kernel-checked no-2-torsion certificates for nine named prime-order curves; and #E = n for the repository's P-256. The secp256k1 exact count already exists separately. Counts for cofactor > 1 curves, a Hasse bound, and unconditional counts for the other seven named curves are outside this deliverable.",
+        "resume_condition": "A new dated decision is required for further point-counting work (a Hasse bound, Schoof-type counting, cofactor > 1 curves, or unconditional counts for further curves) and for adding p256-exact-cardinality to release.required_nodes.",
+        "registered_by": "FD-2026-10-22-001"
       }
     ],
     "attack_registry_index": [
@@ -9475,8 +9507,8 @@
       "generator_id": "ecdlp-hypothesis-generation-v0",
       "source_hashes": {
         "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-        "typed_evidence_state_sha256": "ee7d88da7ca26b7f0defe7fbba7a748a69bb31bc83a254615941b46af2c85f55",
-        "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+        "typed_evidence_state_sha256": "4df1cfb942fc71c1c53fffed73520093a1af93324986e8c18ab41ce526dde31f",
+        "research_claim_state_sha256": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
         "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
         "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
       },
@@ -9512,7 +9544,7 @@
         },
         "source_hashes": {
           "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-          "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
+          "decision_substrate_sha256": "8a0407672343ffd70220fb73df0c355dc35c8185dae3073da2c5721de693e29a",
           "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
           "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
           "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
@@ -9543,7 +9575,7 @@
           "route_promotions": 0,
           "exact_target_runs": 0
         },
-        "state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38"
+        "state_sha256": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e"
       },
       "seed_coverage": {
         "threshold": 12,
@@ -9584,7 +9616,7 @@
           "seed_id": "HGS-5CC94AD51AE6",
           "cell_id": "CELL-M-PKC-AUXILIARY-CURVE",
           "typed_evidence_digest": "324128326a3d56dbe4ab697efafefb12d34ba6ba44983883c8d04fe2493832dc",
-          "claim_state_digest": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+          "claim_state_digest": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -9732,7 +9764,7 @@
           "seed_id": "HGS-3266E42A729C",
           "cell_id": "CELL-M-PKC-SMOOTH-M16",
           "typed_evidence_digest": "602d93c115099c81f02b8a8ac531e33036e6988d5d3ddf2ec257b1118e5cd75d",
-          "claim_state_digest": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+          "claim_state_digest": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -10643,24 +10675,24 @@
       "exact_target_execution": false,
       "stream_digest_version": "rfc6962-binary-leaf-v2",
       "coverage_merkle_root_sha256": "dff1e8cb52594158fc94556cbef3025be647fab310132c34ee58aed3b8399207",
-      "instance_root_sha256": "e634f9148e252803cc5e8510d0c73007527e632dc04e226863668afb7614133f",
+      "instance_root_sha256": "20e482430620dbe6d184fa9ee3b4c32a2c5b79d9a0d80740972784ed7612b334",
       "challenge_indices": [
-        6839,
-        36028,
-        42717,
-        55732,
-        87873,
-        95720,
-        133921,
-        270475,
-        311294,
-        378952,
-        440854,
-        609750,
-        686091,
-        794780,
-        838002,
-        872341
+        83824,
+        151904,
+        159809,
+        221732,
+        262853,
+        315784,
+        319211,
+        374912,
+        390699,
+        490996,
+        678860,
+        719872,
+        741146,
+        791887,
+        799353,
+        994384
       ]
     },
     "coverage_boundary": "Coverage is complete only for this frozen finite Cartesian projection. It is not coverage of all ECDLP ideas or literature.",
@@ -11244,7 +11276,7 @@
     },
     "source_hashes": {
       "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-      "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
+      "decision_substrate_sha256": "8a0407672343ffd70220fb73df0c355dc35c8185dae3073da2c5721de693e29a",
       "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
       "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
       "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
@@ -16738,6 +16770,11 @@
     {
       "from": "F-ISOGENY-STACK",
       "to": "glv-rational-scope",
+      "type": "extends_frontier"
+    },
+    {
+      "from": "F-PRIME-ORDER-POINT-COUNT",
+      "to": "p256-exact-cardinality",
       "type": "extends_frontier"
     },
     {
