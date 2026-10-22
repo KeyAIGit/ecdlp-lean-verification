@@ -135,17 +135,6 @@
         "notes/FOUNDATIONS.md"
       ],
       "resume_condition": "Mathlib or this repository gains the needed divisor/tame-symbol reciprocity layer."
-    },
-    {
-      "id": "blocker-p256-cardinality",
-      "kind": "out-of-scope-foundation",
-      "title": "P-256 exact cardinality needs a general point-counting/Hasse route",
-      "description": "Only n divides the P-256 group cardinality is proved; the secp256k1 j=0 certificate does not transfer.",
-      "evidence_files": [
-        "notes/POINT_COUNTING_KEYSTONE.md",
-        "BARRIERS.md"
-      ],
-      "resume_condition": "A reviewed Hasse/Schoof or curve-specific exact-cardinality proof becomes available."
     }
   ],
   "critical_nodes": [
@@ -487,14 +476,17 @@
       "depends_on": [
         "secp-parameters"
       ],
-      "blocker_ids": [
-        "blocker-p256-cardinality"
-      ],
+      "blocker_ids": [],
       "anchors": [
-        "Ecdlp.P256.p256_n_dvd_card_point"
+        "Ecdlp.P256.p256_n_dvd_card_point",
+        "Ecdlp.P256.p256_card_point_eq_n",
+        "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf"
       ],
       "evidence_files": [
-        "Ecdlp/Proved/P256Cardinality.lean"
+        "Ecdlp/Proved/P256Cardinality.lean",
+        "Ecdlp/Proved/P256CardinalityExact.lean",
+        "Ecdlp/Proved/PrimeOrderCardinality.lean",
+        "Ecdlp/Proved/CubicNoRootCertificate.lean"
       ]
     },
     {

@@ -184,6 +184,10 @@ import Ecdlp.Proved.FourTorsionBridgeBar
 import Ecdlp.Proved.FourTorsionStructure
 import Ecdlp.Proved.FourTorsionCount
 import Ecdlp.Proved.CompressedDivisionPoly
+import Ecdlp.Proved.PrimeOrderCardinality
+import Ecdlp.Proved.CubicNoRootCertificate
+import Ecdlp.Proved.P256CardinalityExact
+import Ecdlp.Proved.Secp256k1CardinalityGeneral
 import Ecdlp.Proved.ParityFourier.Statements
 import Ecdlp.Proved.ParityFourier.ProofsF1
 import Ecdlp.Proved.ParityFourier.ProofsF2

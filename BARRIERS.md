@@ -13,7 +13,7 @@ base. This is a living document; counts are for the v1 corpus.
 
 | Status | Count | Meaning |
 |---|---|---|
-| **Proved** | see `VERIFIED.md` (~279 distinct results / 320 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
+| **Proved** | see `VERIFIED.md` (~281 distinct results / 323 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
 | **Tractable now** | ~55 | `GroupTheory.OrderOfElement / Subgroup` — structural group facts |
 | **Barrier: no cost model** | ~55 | complexity claims; Lean has no "group-operation count" framework |
 | **Barrier: not in Mathlib** | ~62 | 38 quantum-circuit cost model, 24 lattice reduction |
@@ -438,11 +438,18 @@ exact `Θ` statements.
     all of W5 (`eₙ`, bilinear/alternating/non-degenerate) stay parked behind this; the
     loop routes to the independent rung W3e-3 (support-disjointness packaging), which
     builds only on the landed `evalReg`/`divEval` layer. See `notes/WEIL_LADDER.md`.
-- **Point counting** — **closed for secp256k1**: `#E(𝔽_p) = n` is now a kernel
-  theorem (`CurveCardinalityExact.lean` — a curve-specific certificate, `n ∣ #E`
-  plus `#E ≤ 2p+1 < 3n` plus `E[2] = {O}`, no Hasse/Schoof needed). The general
-  Schoof/Hasse machinery is still absent from Mathlib, so other curves (e.g.
-  P-256, whose `j ≠ 0` blocks this certificate route) remain open.
+- **Point counting** — **closed for secp256k1 and P-256**: `#E(𝔽_p) = n` is a kernel
+  theorem for both (`CurveCardinalityExact.lean`, `P256CardinalityExact.lean`), with no
+  Hasse/Schoof: `n ∣ #E` plus `#E ≤ 2p+1 < 3n` plus `E[2] = {O}`. The curve-generic form
+  is `natCard_point_eq_of_addOrderOf` (`PrimeOrderCardinality.lean`); `E[2] = {O}` comes from
+  a kernel-checked certificate that the cubic has no root (`CubicNoRootCertificate.lean`, also
+  checked for P-192, P-224, P-384, P-521 and brainpoolP256r1/P384r1/P512r1, whose primality,
+  nonsingularity and base-point orders are not proved here). The same no-root facts for all
+  nine curves, and `#E = n` for P-256/P-384/P-521 for its own specification curve type, are
+  already kernel-checked in pyca/verified-garbage; the per-curve certificates are therefore
+  listed as upstream-derived in `VERIFIED.md`. Both counts inherit `native_decide` trust from
+  `n • G = 0` and the Pratt certificates. This route covers cofactor-1 curves only; curves with
+  cofactor `h ≥ 2` (e.g. Curve25519) still need the Hasse bound, absent from Mathlib.
 
 **Realized despite the barrier — the transfer *resistance* of secp256k1.** Although
 the transfer attacks themselves cannot yet be formalized (no pairing), the
