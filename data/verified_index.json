@@ -3,9 +3,9 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "63bc3197c1a4a97bc7b44feeeb5e5a4f83e243a3ad37354195350f3d4a630770",
+    "data/result_registry.json": "aa7c7f03ab6a1a0730986cdd1c98763b9a88874470aa5e8bcd6bd9b2ab29e227",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
-    "data/stats.json": "0341b30cbbc78d794fa19fa7e199eedad21bbb49b8fe7ded98b2c14353ff70c8"
+    "data/stats.json": "09b1f2859f52f16c17ea648ada039c66372e20ce1fc7391b14ec4f2f1d26f277"
   },
   "invariants": [
     "VERIFIED.md remains the canonical ECDLP ledger.",
@@ -896,6 +896,39 @@
       "source_registry": "data/result_registry.json"
     },
     {
+      "uid": "ecdlp/ledger-334",
+      "slug": "ecdlp-ledger-334",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "*(alternate/supporting: averaging of the previous row over the finite point group)* The finite-field Weierstrass zeta function `ζ_E` is the unique coboundary of the slope cocycle (the setting of the previous row with finitely many points, `n = #W(F)`, `ζ_E(P) = −(1/n)·Σ_R λ(P, R)`. If `n ≠ 0` in `F` (`zetaCoboundary`): `ζ_E(P + Q) = ζ_E(P) + ζ_E(Q) + λ(P, Q)`; every `z` with this property equals `ζ_E`; `ζ_E(O) = 0`, `ζ_E(−P) = −ζ_E(P)` and `Σ_P ζ_E(P) = 0`; and `ζ_E(Q) = −(1/n)·Σ_{i<n} λ([i]Q, Q)`. If `n = 0` in `F` (`anomalousSumHom`): `P ↦ Σ_R λ(P, R)` is additive. The coboundary formula and the additivity come from summing the cocycle identity of the previous row over `R`, a generic finite-group averaging argument. Exact identities; no statement about discrete logarithms)",
+      "title": "*(alternate/supporting: averaging of the previous row over the finite point group)* The finite-field Weierstrass zeta function `ζ_E` is the unique coboundary of the slope cocycle…",
+      "display": "`Ecdlp.ParityFourier.ProofsZeta.zetaCoboundary`, `anomalousSumHom`",
+      "method": "slopeCocycleLaw` + Mathlib (`Finset` sums over the finite point group)",
+      "axiom_base": null,
+      "trust_level": "kernel_audited",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsZeta.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.ParityFourier.ProofsZeta.zetaCoboundary",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+          "line": 468
+        },
+        {
+          "declaration": "Ecdlp.ParityFourier.ProofsZeta.anomalousSumHom",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+          "line": 474
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
       "uid": "ecdlp/ledger-342",
       "slug": "ecdlp-ledger-342",
       "lane": "ecdlp",
@@ -1070,6 +1103,33 @@
           "kind": "theorem",
           "file": "Ecdlp/Proved/ParityFourier/ProofsC37.lean",
           "line": 157
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
+      "uid": "ecdlp/ledger-330",
+      "slug": "ecdlp-ledger-330",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "*(alternate/supporting: inner step of `weilTransfer`)* Fourier transfer: a uniform bound on the twisted sums of `F` bounds its correlation with every `T` (`n > 0`, any `F, T : ZMod n → ℂ`, real `C`, `e_n(x) = exp(2πi·[x]/n)`: if `‖Σ_{k≠0} F(k)·e_n(α·k)‖ ≤ C` for every `α`, then `‖Σ_{k≠0} F(k)·T(k)‖ ≤ C·Σ_α ‖ft T α‖`. This is the inner step of the argument of `weilTransfer` (the `weilTransfer` row above): Fourier inversion of `T` on `ZMod n` and the triangle inequality. That proof applies the same step, for each `a ≠ 0`, to `F(k) = e_p(a·V(k))`, whose twisted sums are the twisted sums of `V` bounded in its hypothesis, and adds the Fourier expansion of `b` on `ZMod p`. Here the hypothesis is the bound on the twisted sums of `F` itself. Honest scope: the twisted-sum bound is a hypothesis; no character-sum bound is proved here)",
+      "title": "*(alternate/supporting: inner step of `weilTransfer`)* Fourier transfer: a uniform bound on the twisted sums of `F` bounds its correlation with every `T` (`n > 0`, any `F, T : ZMo…",
+      "display": "`Ecdlp.ParityFourier.ProofsCT.charTransfer`",
+      "method": "Mathlib (Fourier inversion on `ZMod n`, triangle inequality)",
+      "axiom_base": null,
+      "trust_level": "kernel_audited",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsCT.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.ParityFourier.ProofsCT.charTransfer",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
+          "line": 37
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -1592,8 +1652,8 @@
       "slug": "ecdlp-ledger-343",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "A deterministic parity predictor with arbitrarily placed errors recovers the discrete logarithm by binary division with random shifts, except on a small fraction of shift tables (an odd prime `n`, a predictor `P : ZMod n → ℕ` (group form: `Pred : A → ℕ` read at `[z]G`) that gives `[z] mod 2` for at least `(1/2 + ε)·n` points `z`, `z = 0` included; its errors may lie anywhere but are fixed in advance. The only randomness is a uniform table of `L·m` shifts `r_{t,i} : ZMod n`, and \"fraction\" is the exact fraction of such tables. Step `t < L` queries `x·2^(−t) + r_{t,i}` (group form: `[h^t]Q + [r_{t,i}]G` with `Q = [x]G` and `2h mod n = 1`), so all guesses share one answer table; each step takes a majority of binary-division votes and halves a rational guess. `noisyHalvingRecovers`: an initial guess within `Δ` of `[x]`, `(Δ + 1)/n ≤ ε` and `n ≤ 2^L` ⇒ the output differs from `x` on at most a fraction `L·exp(−2m(ε − (Δ + 1)/n)²)` of the tables. `noisyHalvingGrid`: `N ≥ 4/ε` grid guesses `(2j + 1)n/(2N)` and `1/n ≤ 7ε/8` ⇒ `x` is missing from the `N` candidates on at most a fraction `L·exp(−2m(7ε/8 − 1/n)²)`. `groupNoisyHalvingRecovers`: in an additive commutative group with decidable equality and `addOrderOf G = n`, keeping the candidates `x'` with `[x']G = Q`, the output is contained in `{x}` for every table and differs from `{x}` on at most the same fraction. The grid and group forms follow from the one-guess form. Honest scope: a predictor here is a fixed function of the queried point (randomized or adaptive oracles are not covered) and the shifts are uniformly random; no number of calls, running time, cost constant or break-even figure is formalized; nothing is instantiated on an elliptic curve)",
-      "title": "A deterministic parity predictor with arbitrarily placed errors recovers the discrete logarithm by binary division with random shifts, except on a small fraction of shift tables (…",
+      "claim_id": "A deterministic parity predictor with arbitrarily placed errors recovers the discrete logarithm by binary division with random shifts, except on a fraction of shift tables at most `L·exp(−2m·δ²)` (an odd prime `n`, a predictor `P : ZMod n → ℕ` (group form: `Pred : A → ℕ` read at `[z]G`) that gives `[z] mod 2` for at least `(1/2 + ε)·n` points `z`, `z = 0` included; its errors may lie anywhere but are fixed in advance. The only randomness is a uniform table of `L·m` shifts `r_{t,i} : ZMod n`, and \"fraction\" is the exact fraction of such tables. Step `t < L` queries `x·2^(−t) + r_{t,i}` (group form: `[h^t]Q + [r_{t,i}]G` with `Q = [x]G` and `2h mod n = 1`), so all guesses share one answer table; each step takes a majority of binary-division votes and halves a rational guess. `noisyHalvingRecovers`: an initial guess within `Δ` of `[x]`, `(Δ + 1)/n ≤ ε` and `n ≤ 2^L` ⇒ the output differs from `x` on at most a fraction `L·exp(−2m·δ²)` of the tables, with `δ = ε − (Δ + 1)/n`. `noisyHalvingGrid`: `N ≥ 4/ε` grid guesses `(2j + 1)n/(2N)` and `1/n ≤ 7ε/8` ⇒ `x` is missing from the `N` candidates on at most a fraction `L·exp(−2m·δ²)`, with `δ = 7ε/8 − 1/n`. `groupNoisyHalvingRecovers`: in an additive commutative group with decidable equality and `addOrderOf G = n`, keeping the candidates `x'` with `[x']G = Q`, the output is contained in `{x}` for every table and differs from `{x}` on at most the same fraction. The grid and group forms follow from the one-guess form. Honest scope: a predictor here is a fixed function of the queried point (randomized or adaptive oracles are not covered) and the shifts are uniformly random; no number of calls, running time, cost constant or break-even figure is formalized; nothing is instantiated on an elliptic curve)",
+      "title": "A deterministic parity predictor with arbitrarily placed errors recovers the discrete logarithm by binary division with random shifts, except on a fraction of shift tables at most…",
       "display": "`Ecdlp.ParityFourier.ProofsPB.groupNoisyHalvingRecovers`, `noisyHalvingRecovers`, `noisyHalvingGrid`",
       "method": "majorityVote` per step + union bound over the `L` steps + `voteAdvantage` + Mathlib (`round`, halving in `ZMod n`)",
       "axiom_base": null,
@@ -3702,33 +3762,6 @@
           "kind": "theorem",
           "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
           "line": 140
-        }
-      ],
-      "source_ledger": "VERIFIED.md",
-      "source_registry": "data/result_registry.json"
-    },
-    {
-      "uid": "ecdlp/ledger-330",
-      "slug": "ecdlp-ledger-330",
-      "lane": "ecdlp",
-      "domain": "ecdlp-ledger",
-      "claim_id": "Fourier transfer: a uniform bound on the twisted sums of `F` bounds its correlation with every `T` (`n > 0`, any `F, T : ZMod n → ℂ`, real `C`, `e_n(x) = exp(2πi·[x]/n)`: if `‖Σ_{k≠0} F(k)·e_n(α·k)‖ ≤ C` for every `α`, then `‖Σ_{k≠0} F(k)·T(k)‖ ≤ C·Σ_α ‖ft T α‖`. The Fourier-inversion argument of `weilTransfer`, stated for a general `F` in place of `b ∘ V`. Honest scope: the twisted-sum bound is a hypothesis; no character-sum bound is proved here)",
-      "title": "Fourier transfer: a uniform bound on the twisted sums of `F` bounds its correlation with every `T` (`n > 0`, any `F, T : ZMod n → ℂ`, real `C`, `e_n(x) = exp(2πi·[x]/n)`: if `‖Σ_{…",
-      "display": "`Ecdlp.ParityFourier.ProofsCT.charTransfer`",
-      "method": "Mathlib (Fourier inversion on `ZMod n`, triangle inequality)",
-      "axiom_base": null,
-      "trust_level": "kernel_audited",
-      "status": "proved",
-      "files": [
-        "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
-        "Ecdlp/Proved/ParityFourier/StatementsCT.lean"
-      ],
-      "references": [
-        {
-          "declaration": "Ecdlp.ParityFourier.ProofsCT.charTransfer",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
-          "line": 37
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -7061,39 +7094,6 @@
           "kind": "theorem",
           "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
           "line": 59
-        }
-      ],
-      "source_ledger": "VERIFIED.md",
-      "source_registry": "data/result_registry.json"
-    },
-    {
-      "uid": "ecdlp/ledger-334",
-      "slug": "ecdlp-ledger-334",
-      "lane": "ecdlp",
-      "domain": "ecdlp-ledger",
-      "claim_id": "The finite-field Weierstrass zeta function `ζ_E` is the unique coboundary of the slope cocycle (the setting of the previous row with finitely many points, `n = #W(F)`, `ζ_E(P) = −(1/n)·Σ_R λ(P, R)`. If `n ≠ 0` in `F` (`zetaCoboundary`): `ζ_E(P + Q) = ζ_E(P) + ζ_E(Q) + λ(P, Q)`; every `z` with this property equals `ζ_E`; `ζ_E(O) = 0`, `ζ_E(−P) = −ζ_E(P)` and `Σ_P ζ_E(P) = 0`; and `ζ_E(Q) = −(1/n)·Σ_{i<n} λ([i]Q, Q)`. If `n = 0` in `F` (`anomalousSumHom`): `P ↦ Σ_R λ(P, R)` is additive. The coboundary formula and the additivity come from summing the cocycle identity over `R`. Exact identities; no statement about discrete logarithms)",
-      "title": "The finite-field Weierstrass zeta function `ζ_E` is the unique coboundary of the slope cocycle (the setting of the previous row with finitely many points, `n = #W(F)`, `ζ_E(P) = −…",
-      "display": "`Ecdlp.ParityFourier.ProofsZeta.zetaCoboundary`, `anomalousSumHom`",
-      "method": "slopeCocycleLaw` + Mathlib (`Finset` sums over the finite point group)",
-      "axiom_base": null,
-      "trust_level": "kernel_audited",
-      "status": "proved",
-      "files": [
-        "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
-        "Ecdlp/Proved/ParityFourier/StatementsZeta.lean"
-      ],
-      "references": [
-        {
-          "declaration": "Ecdlp.ParityFourier.ProofsZeta.zetaCoboundary",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
-          "line": 468
-        },
-        {
-          "declaration": "Ecdlp.ParityFourier.ProofsZeta.anomalousSumHom",
-          "kind": "theorem",
-          "file": "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
-          "line": 474
         }
       ],
       "source_ledger": "VERIFIED.md",

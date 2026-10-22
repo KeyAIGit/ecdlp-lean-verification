@@ -15,7 +15,7 @@
 | metric | value | source |
 |---|---|---|
 | ledger rows | **345** | `VERIFIED.md` → `data/stats.json` |
-| distinct results | **~293** | `data/stats.json` |
+| distinct results | **~291** | `data/stats.json` |
 | proved modules | **221** | `data/stats.json` |
 | `sorry` | **0** | axiom-audit + no-sorry gate |
 | custom axioms | **0** | axiom-audit gate |

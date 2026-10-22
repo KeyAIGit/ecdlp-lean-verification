@@ -403,7 +403,7 @@
         "path": "VERIFIED.md",
         "reason": "the canonical ledger — every kernel-verified theorem, one row each",
         "exists": true,
-        "bytes": 208703
+        "bytes": 209341
       },
       {
         "path": "BARRIERS.md",
@@ -807,7 +807,7 @@
         "path": "VERIFIED.md",
         "reason": "the canonical ledger — every kernel-verified theorem, one row each",
         "exists": true,
-        "bytes": 208703
+        "bytes": 209341
       },
       {
         "path": "BARRIERS.md",
@@ -1005,7 +1005,7 @@
         "path": "data/knowledge_graph.json",
         "reason": "full machine-readable theorem/dependency/barrier graph",
         "exists": true,
-        "bytes": 786255
+        "bytes": 786843
       },
       {
         "path": "REPOSITORY_ARCHITECTURE.md",
@@ -1023,7 +1023,7 @@
         "path": "TRUST_REPORT.md",
         "reason": "the trust boundary: what native_decide adds to the TCB",
         "exists": true,
-        "bytes": 24819
+        "bytes": 25271
       },
       {
         "path": "experiments/engine/outcomes/REO-2026-07-24-001.json",

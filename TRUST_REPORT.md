@@ -2,7 +2,7 @@
 
 > Counts here are a snapshot; the single canonical figure is **`STATUS.md`** (generated from `data/stats.json`). If they differ, STATUS.md wins.
 
-**Scope of the verified body.** `345 ledger rows / ~293 distinct kernel-verified
+**Scope of the verified body.** `345 ledger rows / ~291 distinct kernel-verified
 results`. A row may group several supporting declarations; the exact expansion is
 generated in `data/result_registry.json`. The built surface has **0 `sorry`, 0
 `admit`, and 0 custom axioms**. Open target stems are explicitly outside the built
@@ -185,9 +185,15 @@ ring-identity curve invariants. Representative theorems (file → theorem):
   take a twisted-sum bound as a hypothesis; the `J` recovery theorems take a
   list that contains every heavy Fourier coefficient; `relabelDL` takes an exact
   decoder; the noisy halving theorems take a fixed predictor with advantage `ε`
-  and a uniformly random shift table. `ProofsZeta.lean` raises `maxHeartbeats`
-  for one `linear_combination` certificate, a resource limit that does not
-  change the trust base)
+  and a uniformly random shift table. `ProofsZeta.lean` has four `set_option`
+  lines: `linter.unusedSimpArgs false` and `linter.unusedSectionVars false`
+  (file-wide linter switches) and `maxHeartbeats 2000000` and
+  `maxRecDepth 200000` (scoped by `in` to one `linear_combination`
+  certificate, `uniform_core8`); these are linter and resource settings that
+  do not change the trust base. The glob `Ecdlp/Proved/ParityFourier/*.lean`
+  of the earlier `ParityFourier` entry now also matches the 18 files of this
+  entry; that entry's declaration list is unchanged, and the declarations of
+  these files are the ones listed here)
 
 ### (b) `native_decide` / compiler-trusted — TCB INCLUDES the Lean compiler
 
