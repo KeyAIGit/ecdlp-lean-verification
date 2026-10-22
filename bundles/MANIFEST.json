@@ -403,13 +403,13 @@
         "path": "VERIFIED.md",
         "reason": "the canonical ledger — every kernel-verified theorem, one row each",
         "exists": true,
-        "bytes": 209637
+        "bytes": 210130
       },
       {
         "path": "BARRIERS.md",
         "reason": "the no-go / blocked map — what needs missing Mathlib foundations",
         "exists": true,
-        "bytes": 43166
+        "bytes": 43671
       },
       {
         "path": "notes/SECURITY_SCOPE.md",
@@ -807,13 +807,13 @@
         "path": "VERIFIED.md",
         "reason": "the canonical ledger — every kernel-verified theorem, one row each",
         "exists": true,
-        "bytes": 209637
+        "bytes": 210130
       },
       {
         "path": "BARRIERS.md",
         "reason": "the no-go / blocked map — what needs missing Mathlib foundations",
         "exists": true,
-        "bytes": 43166
+        "bytes": 43671
       },
       {
         "path": "notes/SECURITY_SCOPE.md",

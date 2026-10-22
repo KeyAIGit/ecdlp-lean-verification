@@ -458,13 +458,18 @@ exact `Θ` statements.
 - **Point counting** — **closed for secp256k1 and P-256**: `#E(𝔽_p) = n` is a kernel
   theorem for both (`CurveCardinalityExact.lean`, `P256CardinalityExact.lean`), with no
   Hasse/Schoof: `n ∣ #E` plus `#E ≤ 2p+1 < 3n` plus `E[2] = {O}`. The curve-generic form
-  is `natCard_point_eq_of_addOrderOf` (`PrimeOrderCardinality.lean`); `E[2] = {O}` comes from
+  is `natCard_point_eq_of_addOrderOf` (`PrimeOrderCardinality.lean`: any finite field with
+  `2 ≠ 0`, `a₁ = a₃ = 0` and any `a₂`, `n` not necessarily prime); `E[2] = {O}` comes from
   a kernel-checked certificate that the cubic has no root (`CubicNoRootCertificate.lean`, also
   checked for P-192, P-224, P-384, P-521 and brainpoolP256r1/P384r1/P512r1, whose primality,
   nonsingularity and base-point orders are not proved here). The same no-root facts for all
   nine curves, and `#E = n` for P-256/P-384/P-521 (as `Nat.card` of Mathlib's point group of
-  the curve over `ZMod p`, derived inside the proof of verified-garbage's `primeOrder_of` and
-  not exported), are
+  the curve over `ZMod p`; at commit `38c744308fcd` derived inside the proof of
+  verified-garbage's `primeOrder_of` and not exported; correction, 2026-10-22: since commit
+  `702cf77ff2db` (PR #3102) exported as the curve-generic `VG.Proof.Weierstrass.card_eq_n`
+  for its specification curves under `p` and `n` prime, `Good C`, `G` on the curve,
+  `n • G = O` and `2p + 1 < 3n`, with no per-curve count exported; the counts here are stated
+  for this repository's own Mathlib curves `Ecdlp.P256.P256` and secp256k1), are
   already kernel-checked in pyca/verified-garbage; the per-curve certificates are therefore
   listed as upstream-derived in `VERIFIED.md`. Both counts inherit `native_decide` trust from
   `n • G = 0` and the Pratt certificates. This route covers cofactor-1 curves only; curves with
