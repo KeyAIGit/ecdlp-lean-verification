@@ -9,6 +9,19 @@
 > This note is kept as the honest scoping/history of the gap. Still open:
 > the geometric `E[n] ≅ (ℤ/n)²` (extension-field points) and the **P-256**
 > cardinality (the certificate exploits `j = 0`, which P-256 lacks).
+>
+> **STATUS UPDATE (2026-10-16): CLOSED for P-256.** `p256_card_point_eq_n`
+> (`Ecdlp/Proved/P256CardinalityExact.lean`) proves `#E(𝔽_p) = n` for P-256, again
+> without Hasse or Schoof. The `j = 0` non-cube step is replaced by a curve-generic
+> theorem (`PrimeOrderCardinality.lean`: `#E ≤ 2p+1 < 3n` and no rational 2-torsion)
+> and a kernel-checked certificate that `x³ − 3x + b` has no root in `𝔽_p`
+> (`CubicNoRootCertificate.lean`). The count inherits `native_decide` trust from
+> `n • G = 0` and the Pratt certificates. The route needs cofactor 1; the memo below
+> predates it. Prior art: pyca/verified-garbage proves `#E = n` for P-256/P-384/P-521 for
+> its own specification curve type, and kernel-checks the same no-root certificates; this
+> repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`
+> (`THIRD_PARTY_NOTICES.md`). The release node `p256-exact-cardinality` stays outside
+> `release.required_nodes` by the owner's ruling of 2026-10-22.
 
 ## The successor gap (TASK-005 memo, 2026-07-16): geometric `E[n] ≅ (ℤ/n)²`
 

@@ -6,7 +6,7 @@ from __future__ import annotations
 import unittest
 from pathlib import PurePosixPath, PureWindowsPath
 
-from build_knowledge_graph import stable_repo_path
+from build_knowledge_graph import classify_area, stable_repo_path
 
 
 class KnowledgeGraphDeterminismTests(unittest.TestCase):
@@ -44,6 +44,29 @@ class KnowledgeGraphDeterminismTests(unittest.TestCase):
                 "Ecdlp/Proved/Secp256k1PrimeP.lean",
             ],
             windows_order,
+        )
+
+
+class AreaClassificationTests(unittest.TestCase):
+    def test_parity_rows_are_not_filed_under_primality(self) -> None:
+        # The parity / Fourier rows mention "prime n"; the bit-security rule
+        # must win over the primality rule, by claim text or by module path.
+        self.assertEqual(
+            "bit-security",
+            classify_area(
+                "Balance identity of `J` (prime `n ≠ 2`, ...)",
+                "Ecdlp.Proved.ParityFourier.ProofsF2",
+            ),
+        )
+        self.assertEqual(
+            "bit-security",
+            classify_area("An exact parity oracle recovers the logarithm by halving", ""),
+        )
+
+    def test_primality_rows_keep_their_area(self) -> None:
+        self.assertEqual(
+            "primality",
+            classify_area("`p` is prime (Pratt certificate)", "Ecdlp.Proved.Secp256k1PrimeP"),
         )
 
 

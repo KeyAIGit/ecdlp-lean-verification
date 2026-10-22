@@ -80,18 +80,26 @@ def test_row_regex_drops_only_the_excluded_secondary_table() -> None:
     `ROW_RE` demands five non-empty cells, so a malformed or empty cell would delete a whole
     row from every generated artifact without any gate noticing. The only pipe-leading lines
     it may reject are the four-column "Ported / upstream-derived" table (header, separator and
-    its single row), which VERIFIED.md excludes from the headline count on purpose.
+    its three rows: `normEDS`, the verified-garbage certificate lemma, and the nine per-curve
+    no-root certificates that verified-garbage already kernel-checks), which VERIFIED.md
+    excludes from the headline count on purpose.
     """
     lines = (ROOT / "VERIFIED.md").read_text(encoding="utf-8").splitlines()
     dropped = [ln for ln in lines if ln.lstrip().startswith("|") and not ROW_RE.match(ln)]
-    assert len(dropped) == 3, (
+    assert len(dropped) == 5, (
         "unexpected number of unparsed table lines in VERIFIED.md "
-        f"({len(dropped)}, expected the 3 lines of the excluded four-column table): {dropped}"
+        f"({len(dropped)}, expected the 5 lines of the excluded four-column table): {dropped}"
     )
-    assert any("normEDS" in ln for ln in dropped), (
-        "the unparsed lines are no longer the excluded upstream-derived table; a real ledger "
-        f"row may be getting dropped: {dropped}"
-    )
+    for marker in (
+        "`normEDS_isEllSequence`",
+        "`Ecdlp.CubicCert.noRoot_of_cert`",
+        "`Ecdlp.CubicCert.natCard_point_eq_of_noRoot`",
+    ):
+        hits = [ln for ln in dropped if marker in ln]
+        assert len(hits) == 1, (
+            "the unparsed lines are no longer the excluded upstream-derived table; a real "
+            f"ledger row may be getting dropped (expected one row with {marker}): {dropped}"
+        )
 
 
 def main() -> int:

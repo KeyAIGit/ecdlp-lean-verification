@@ -166,10 +166,11 @@ paper could carry both, or they could split).
 - The prime-field hardness itself is **not** a theorem here — that would settle an open conjecture.
   The proved facts map *where* the search lives and *how it branches*; the cost lower bound stays in
   the open frontier (`BARRIERS.md` B3).
-- The degree tower `deg Sₘ = 2^{m−2}`: exact for `m = 3` (`deg S₃ = 2`) and `m = 4` (`deg S₄ = 4`
-  when `S₃` of the other three arguments is nonzero). `Sₘ` for `m ≥ 5` is not defined here at
-  general `(a,b)` (a recursive definition with the upper bound `deg ≤ 2^{m−2}` is parked in draft
-  PR #448), and no point-level `S₄` characterization (`S₄ = 0 ⟺ ±P₁±P₂±P₃±P₄ = O`) is built.
+- The degree tower `deg Sₘ = 2^{m−2}`: exact for `m = 3` (`deg S₃ = 2` in its last variable when
+  `x₁ ≠ x₂`, proved for secp256k1) and `m = 4` (`deg S₄ = 4` when `S₃` of the other three
+  arguments is nonzero). `Sₘ` for `m ≥ 5` is not defined here at
+  general `(a,b)` (a recursive definition with the upper bound `deg ≤ 2^{m−2}` is in draft
+  PR #448 (parked)), and no point-level `S₄` characterization (`S₄ = 0 ⟺ ±P₁±P₂±P₃±P₄ = O`) is built.
 
 ### 3b — Weil-pairing divisor foundations `W1–W3`
 

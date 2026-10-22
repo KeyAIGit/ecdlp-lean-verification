@@ -34,7 +34,11 @@ open Polynomial
 variable {F : Type*} [CommRing F]
 
 /-- The fixed-size `(2,2)` resultant of two quadratic coefficient triples, in closed form
-(valid even when a leading coefficient vanishes). -/
+(valid even when a leading coefficient vanishes).
+
+Not a new result: a public restatement of the private `resultant_quadratic` in
+`Ecdlp/Proved/GlvSemaevSymmetry.lean`, which proves the same fixed-size closed form with the
+expanded polynomial `quadraticResultant`. It is restated here because that lemma is private. -/
 theorem resultant_quadratic_two_two (a₁ b₁ c₁ a₂ b₂ c₂ : F) :
     (C a₁ * X ^ 2 + C b₁ * X + C c₁).resultant (C a₂ * X ^ 2 + C b₂ * X + C c₂) 2 2
       = (a₁ * c₂ - a₂ * c₁) ^ 2 - (a₁ * b₂ - a₂ * b₁) * (b₁ * c₂ - b₂ * c₁) := by
