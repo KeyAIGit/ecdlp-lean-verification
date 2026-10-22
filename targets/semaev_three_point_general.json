@@ -1,0 +1,23 @@
+{
+  "id": "semaev_three_point_general",
+  "name": "SemaevThreePointGeneral",
+  "status": "todo",
+  "difficulty": "medium",
+  "template": "semaev_summation_polynomial",
+  "why_it_matters": "Completes the point-level layer of Ecdlp/Proved/SemaevThree.lean. On main the point-level S3 statements exist only for secp256k1 and only in the forward direction, in two cases with case hypotheses (secp256k1_semaev_three_point: x1 != x2; secp256k1_semaev_three_point_double: P1 = P2 not 2-torsion; PointDecomposition.lean restates both in decomposition form: secp256k1_point_decomposition_semaev, secp256k1_point_decomposition_semaev_double); the reverse direction exists only at coordinate level (S3_root_of_eq_zero, S3_eq_zero_iff). This target freezes, for any Weierstrass curve W in short normal form over any field (a = W.a4, b = W.a6; no discriminant, IsElliptic or characteristic hypothesis) on Mathlib's point group: S3_eq_addSubMap (S3(x1,x2,X) = f2*X^2 - f1*X + f0 with (f0,f1,f2) Mathlib's WeierstrassCurve.addSubMap at (x1*x2, x1+x2, 1), over any commutative ring); S3_eq_zero_of_add_add_eq_zero (P1 + P2 + P3 = 0 for three affine points gives S3(x1,x2,x3) = 0, with no case hypothesis); S3_eq_zero_iff_exists_point (for fixed affine P1, P2 and any x3, S3(x1,x2,x3) = 0 iff an affine point P3 over x3 has P1 + P2 + P3 = 0 or P1 - P2 + P3 = 0); S3_eq_zero_iff_signed_sum (for three fixed affine points, S3 = 0 iff P1 +- P2 +- P3 = 0 for some signs); and its secp256k1 specialization secp256k1_semaev_three_point_iff. Point-level S4/S_m statements, projective xRep forms, and fixed-target, HValue or frozenC semantics are out of scope. Related work: Mathlib PR #43292 (included from tag v4.34.0 on, not at this pin) proves WeierstrassCurve.Affine.Point.sym2x_add_sub_eq_addSubMap_sym2x, which through S3_eq_addSubMap overlaps S3_eq_zero_iff_exists_point. Related work in this repository, not on main: open draft PR #345 (M16 chain #343-#355) proves the secp256k1 projective HValue local fiber over the algebraic closure (HValue_barKummer_zero_iff); its affine case corresponds to the secp256k1 closure-field instance of S3_eq_zero_iff_exists_point. This target adds no HValue or frozenC semantics.",
+  "default_budget": {
+    "tier0_tactics": [],
+    "escalate_if_failed": false,
+    "note": "Not a model-loop target: statements frozen before any proof search; the promoting commit must prove them unchanged. Truth of the four general statements was checked by brute force (literal Mathlib short-normal-form group law, every (a, b) including singular curves) over GF(q), q in {2, 3, 4, 5, 7, 8, 9, 11, 13}, and S3_eq_addSubMap symbolically over Z[a, b, x1, x2, x3]; this is a sanity check, not a proof."
+  },
+  "stem_file": "Ecdlp/Targets/semaev_three_point_general.lean",
+  "hint": "S3_eq_addSubMap: rewrite a1 = a2 = a3 = 0 (a1_of_isShortNF etc.), unfold addSubMap and b2, b4, b6, b8, simp the MvPolynomial.eval of the vector, ring. Forward: split on x1 = x2; if not, Point.add_of_X_ne + slope_of_X_ne give the chord relation and S3_eq_zero_of_chord applies; if so, Y_eq_of_X_eq gives y1 = y2 (Point.add_self_of_Y_ne + slope_of_Y_ne, then S3_eq_zero_of_tangent) or P2 = -P1 (then P1 + P2 = 0, so the sum forces P3 = 0, impossible for an affine point). Reverse: S3_root_of_eq_zero in the chord case, the doubling formula otherwise; take P3 = -(P1 +- P2). Signed sum: the iff above plus Point.X_eq_iff. secp256k1: an IsShortNF instance for secp256k1 by rfl fields.",
+  "promotion_target_file": "Ecdlp/Proved/SemaevThreePoint.lean",
+  "source": {
+    "family": "semaev",
+    "from": "manual (point-level completion of SemaevThree.lean)"
+  },
+  "depends_on": [
+    "Ecdlp/Proved/SemaevThree.lean"
+  ]
+}
