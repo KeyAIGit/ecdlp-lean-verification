@@ -309,6 +309,45 @@ REQUIRED_SELECTION_FIELDS = {
     "reconsideration_triggers",
     "operational_effects",
 }
+FOUNDATION_BUILD_DECISIONS_KEY = "foundation_build_decisions"
+FOUNDATION_BUILD_DECISION_ID = "FD-2026-10-22-001"
+AUTHORIZED_BUILD_RULING = "register_and_authorize_bounded_build"
+UNCHANGED_PARKED_RULING = "unchanged_build_if_selected"
+FOUNDATION_BUILD_DECISION_RULINGS = {
+    "F-PARITY-BIT-SECURITY": AUTHORIZED_BUILD_RULING,
+    "F-PRIME-ORDER-POINT-COUNT": AUTHORIZED_BUILD_RULING,
+    STRUCTURAL_FOUNDATION_ID: UNCHANGED_PARKED_RULING,
+}
+RELEASE_EXCLUDED_NODE_IDS = ("p256-exact-cardinality",)
+REQUIRED_FOUNDATION_BUILD_DECISION_FIELDS = {
+    "decision_id",
+    "decided_on",
+    "decided_by",
+    "source",
+    "kind",
+    "selected_route_ids",
+    "promoted_route_ids",
+    "authorizes_experiment",
+    "promotes_route",
+    "changes_release_required_nodes",
+    "rationale",
+    "rulings",
+}
+REQUIRED_RULING_FIELDS = {
+    AUTHORIZED_BUILD_RULING: {
+        "foundation_id",
+        "ruling",
+        "authorized_build",
+        "exact_uncertainty",
+        "success_condition",
+        "stop_condition",
+    },
+    UNCHANGED_PARKED_RULING: {"foundation_id", "ruling", "scope"},
+}
+OPTIONAL_RULING_FIELDS = {
+    AUTHORIZED_BUILD_RULING: {"status_basis"},
+    UNCHANGED_PARKED_RULING: set(),
+}
 STALE_ACTIVE_PHRASES = (
     "Hypothesis remains ACTIVE",
     "hypothesis remains ACTIVE",
@@ -542,6 +581,152 @@ def validate_bounded_authorization(
                     "singleton"
                 )
     return authorization
+
+
+def validate_foundation_build_decisions(
+    data: dict,
+    foundations: list[dict],
+    release_required_nodes: list[str],
+    problems: list[str],
+) -> None:
+    """Validate dated owner decisions that bound formal-foundation builds.
+
+    Such a decision may authorize exactly one named formal build for a
+    foundation that stays ``retain_frontier`` with ``build_now`` false, or
+    record that a ``build_if_selected`` foundation stays parked. It never
+    selects or promotes a route, authorizes an experiment, or changes the
+    formal release's required nodes.
+    """
+
+    records = data.get(FOUNDATION_BUILD_DECISIONS_KEY)
+    if not isinstance(records, list) or not records:
+        problems.append(
+            f"{FOUNDATION_BUILD_DECISIONS_KEY} must be a non-empty list of "
+            "dated decisions"
+        )
+        return
+    by_id = {
+        foundation["id"]: foundation
+        for foundation in foundations
+        if isinstance(foundation.get("id"), str)
+    }
+    authorized_by: dict[str, str] = {}
+    seen_decisions: set[str] = set()
+    for record in records:
+        decision_id = record.get("decision_id", "?")
+        missing = REQUIRED_FOUNDATION_BUILD_DECISION_FIELDS - set(record)
+        extra = set(record) - REQUIRED_FOUNDATION_BUILD_DECISION_FIELDS
+        if missing or extra:
+            problems.append(
+                f"{decision_id}: foundation build decision fields differ; "
+                f"missing={sorted(missing)}, extra={sorted(extra)}"
+            )
+            continue
+        if decision_id in seen_decisions:
+            problems.append(f"{decision_id}: duplicate foundation build decision")
+        seen_decisions.add(decision_id)
+        match = re.fullmatch(r"FD-(\d{4}-\d{2}-\d{2})-\d{3}", decision_id)
+        if not match or match.group(1) != record["decided_on"]:
+            problems.append(
+                f"{decision_id}: decision id must be FD-<decided_on>-NNN"
+            )
+        if record["decided_by"] != "owner":
+            problems.append(f"{decision_id}: only the owner records this decision")
+        if record["selected_route_ids"] != [] or record["promoted_route_ids"] != []:
+            problems.append(f"{decision_id}: must select and promote no route")
+        if record["authorizes_experiment"] is not False:
+            problems.append(f"{decision_id}: must not authorize an experiment")
+        if record["promotes_route"] is not False:
+            problems.append(f"{decision_id}: must not promote a route")
+        if record["changes_release_required_nodes"] is not False:
+            problems.append(
+                f"{decision_id}: must not change release.required_nodes"
+            )
+        rulings = record["rulings"]
+        if not isinstance(rulings, list) or not rulings:
+            problems.append(f"{decision_id}: rulings must be a non-empty list")
+            continue
+        ruled: dict[str, str] = {}
+        for ruling in rulings:
+            foundation_id = ruling.get("foundation_id", "?")
+            kind = ruling.get("ruling")
+            required = REQUIRED_RULING_FIELDS.get(kind)
+            if required is None:
+                problems.append(
+                    f"{decision_id}/{foundation_id}: invalid ruling {kind!r}"
+                )
+                continue
+            if not required <= set(ruling) <= (
+                required | OPTIONAL_RULING_FIELDS[kind]
+            ):
+                problems.append(
+                    f"{decision_id}/{foundation_id}: ruling fields differ from "
+                    f"{sorted(required)}"
+                )
+            foundation = by_id.get(foundation_id)
+            if foundation is None:
+                problems.append(
+                    f"{decision_id}: ruling for unknown foundation {foundation_id}"
+                )
+                continue
+            if foundation_id in ruled:
+                problems.append(
+                    f"{decision_id}: duplicate ruling for {foundation_id}"
+                )
+            ruled[foundation_id] = kind
+            if kind == AUTHORIZED_BUILD_RULING:
+                if (
+                    foundation["decision"] != "retain_frontier"
+                    or foundation["build_now"] is not False
+                ):
+                    problems.append(
+                        f"{foundation_id}: a bounded authorized build must keep "
+                        "decision=retain_frontier and build_now=false"
+                    )
+                if foundation.get("registered_by") != decision_id:
+                    problems.append(
+                        f"{foundation_id}: registered_by must name {decision_id}"
+                    )
+                if foundation.get("needed_by_route_ids") != []:
+                    problems.append(
+                        f"{foundation_id}: a bounded build without a selected "
+                        "route must have no dependent routes"
+                    )
+                authorized_by[foundation_id] = decision_id
+            elif (
+                foundation["decision"] != "build_if_selected"
+                or foundation["build_now"] is not False
+            ):
+                problems.append(
+                    f"{foundation_id}: a parked ruling requires "
+                    "decision=build_if_selected and build_now=false"
+                )
+        if decision_id == FOUNDATION_BUILD_DECISION_ID and (
+            ruled != FOUNDATION_BUILD_DECISION_RULINGS
+        ):
+            problems.append(
+                f"{decision_id}: rulings must be exactly "
+                f"{FOUNDATION_BUILD_DECISION_RULINGS}"
+            )
+    if FOUNDATION_BUILD_DECISION_ID not in seen_decisions:
+        problems.append(
+            f"{FOUNDATION_BUILD_DECISIONS_KEY} is missing "
+            f"{FOUNDATION_BUILD_DECISION_ID}"
+        )
+    for foundation_id, foundation in by_id.items():
+        registered_by = foundation.get("registered_by")
+        if registered_by is not None and authorized_by.get(foundation_id) != registered_by:
+            problems.append(
+                f"{foundation_id}: registered_by {registered_by} has no "
+                "authorizing ruling"
+            )
+    for node_id in RELEASE_EXCLUDED_NODE_IDS:
+        if node_id in release_required_nodes:
+            problems.append(
+                f"{node_id} must stay out of release.required_nodes under "
+                f"{FOUNDATION_BUILD_DECISION_ID}; changing that needs a new "
+                "dated decision"
+            )
 
 
 def ids_are_unique(items: list[dict], label: str, problems: list[str]) -> set[str]:
@@ -1318,6 +1503,12 @@ def validate() -> list[str]:
             "exactly F-SEMAEV-ELIMINATION must own the completed bounded foundation "
             f"slice; found {completed_structural_foundations}"
         )
+    validate_foundation_build_decisions(
+        data,
+        foundations,
+        formal_data["release"]["required_nodes"],
+        problems,
+    )
 
     experiment_hypotheses = {
         hypothesis_id: fields
@@ -1917,6 +2108,10 @@ def validate() -> list[str]:
     )
     if selection.get("decision_id") not in decisions_log:
         problems.append("route-selection decision is missing from research_decisions.md")
+    if FOUNDATION_BUILD_DECISION_ID not in decisions_log:
+        problems.append(
+            f"{FOUNDATION_BUILD_DECISION_ID} is missing from research_decisions.md"
+        )
     symbolic_closure_row = next(
         (
             line

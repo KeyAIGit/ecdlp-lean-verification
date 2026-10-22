@@ -226,6 +226,7 @@
     "Maintain the completed TASK-023 non-run kernel binding for the exact affine/infinity chart-polynomial cover: each fixed InfinityMask I has exactly 14 - I.card variables and fifteen literal H equations with degree ceilings 2/4/2, and the existential cover is equivalent to the TASK-021 chain, TASK-022 guarded system, and source frozen stage-14 predicate after injective base change. Keep production mask enumeration, mask selection, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
     "Maintain the completed TASK-024 non-run kernel binding for necessary infinity-stratum pruning: affine external inputs restrict the exact cover from 16384 masks to 987 separated masks, and nonzero endpoint determinants conditionally restrict it to 377 interior masks. Keep sufficiency, unique mask selection, production enumeration, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
     "Maintain the completed TASK-025 non-run kernel binding for explicit infinity propagation: the nested local mask counts are 377 to 129 to 69 to 36, while the independent boundary-only refinement is 129 to 60; over any field, six prefix and six suffix obstruction values cover all twelve internal infinity slots, and endpoint plus BalancedPropagatedRegular assumptions make the empty-mask affine chart exact. The source-stage bridge separately requires injective base change into an algebraically closed target and mapped-target regularity. Keep symbolic nonzeroness, nonemptiness, genericity, exceptional-complement orchestration, witness uniqueness, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
+    "Land exactly the bounded formal builds authorized by FD-2026-10-22-001: the PR #444 port for F-PARITY-BIT-SECURITY, the PR #446 point-count build for F-PRIME-ORDER-POINT-COUNT, and the S4 permutation-symmetry and degree slice of PR #447 as maintenance of the existing S3/S4 layer. None selects or promotes a route or authorizes an experiment.",
     "Maintain canonical provenance and regenerate affected views without changing the recorded claim boundary."
     ],
     "forbidden_work": [
@@ -241,6 +242,7 @@
     "Treat the completed TASK-024 necessary infinity-stratum filter as sufficient or unique mask selection, a production mask enumeration, an independent relation system, a solver run, a solving-cost result, or execution authorization.",
     "Treat the completed TASK-025 conditional single-affine-chart theorem as proof that its balanced regular locus is symbolically nonzero, nonempty, dense, probable, or generic; as automatic mapped-target regularity from source-field computation; as witness uniqueness or target-witness descent; or as a production mask selector, solver result, cost result, ECDLP shortcut, or execution authorization.",
       "Treat a constant-factor result, structural identity, or toy measurement as a subgeneric attack.",
+      "Build the general S_m tower, extend F-PARITY-BIT-SECURITY or F-PRIME-ORDER-POINT-COUNT beyond FD-2026-10-22-001, or add p256-exact-cardinality to release.required_nodes without a new dated decision.",
       "Delete or rewrite provenance-bearing assets without an inventory, reference scan, and documented restore path."
     ],
     "promotion_rule": "A future dated decision may promote at most one parked route only after new evidence satisfies the acceptance gate at proposal level and tasks/ECDLP_RESEARCH.md plus experiments/HYPOTHESES.yaml explicitly authorize the same work.",
@@ -1385,6 +1387,75 @@
       "mathlib_status": "The source-tree audit found no elliptic isogeny module in the pinned or observed Mathlib snapshot.",
       "deliverable": "No general library now; add only the map and facts required by a concrete selected transfer.",
       "resume_condition": "An explicit efficiently computable transfer to a demonstrably weaker DLP target is proposed."
+    },
+    {
+      "id": "F-PARITY-BIT-SECURITY",
+      "title": "Scalar-parity and bit-security reduction and Fourier layer",
+      "decision": "retain_frontier",
+      "priority": "P3",
+      "build_now": false,
+      "implementation_status": "partial",
+      "needed_by_route_ids": [],
+      "formal_node_ids": [],
+      "mathlib_status": "Built only from Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, and real logarithms. A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
+      "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. The layer is not a hardness theorem, constructs no parity oracle, and states nothing specific to secp256k1.",
+      "resume_condition": "Any further build in this area, such as a noisy-oracle reduction, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
+      "registered_by": "FD-2026-10-22-001"
+    },
+    {
+      "id": "F-PRIME-ORDER-POINT-COUNT",
+      "title": "Exact rational-point counts for prime-order short Weierstrass curves",
+      "decision": "retain_frontier",
+      "priority": "P3",
+      "build_now": false,
+      "implementation_status": "partial",
+      "needed_by_route_ids": [],
+      "formal_node_ids": [
+        "p256-exact-cardinality"
+      ],
+      "mathlib_status": "Mathlib provides the Weierstrass point group; in the pinned tag v4.31.0 the number of points appears only as an input to the L-function definition. A lexical search on 2026-10-22 found no Hasse bound and no Schoof-type point-counting theorem.",
+      "deliverable": "Only the bounded build authorized by FD-2026-10-22-001: the PR #446 curve-generic count #E(F) = n for an elliptic short Weierstrass curve over a finite field F that has a point of order n, satisfies 2*#F + 1 < 3n, and has no 2-torsion, proved from the elementary bound #E(F) <= 2*#F + 1 rather than the Hasse bound; kernel-checked no-2-torsion certificates for nine named prime-order curves; and #E = n for the repository's P-256. The secp256k1 exact count already exists separately. Counts for cofactor > 1 curves, a Hasse bound, and unconditional counts for the other seven named curves are outside this deliverable.",
+      "resume_condition": "A new dated decision is required for further point-counting work (a Hasse bound, Schoof-type counting, cofactor > 1 curves, or unconditional counts for further curves) and for adding p256-exact-cardinality to release.required_nodes.",
+      "registered_by": "FD-2026-10-22-001"
+    }
+  ],
+  "foundation_build_decisions": [
+    {
+      "decision_id": "FD-2026-10-22-001",
+      "decided_on": "2026-10-22",
+      "decided_by": "owner",
+      "source": "Owner instruction of 2026-10-22 on draft PRs #444, #446, and #447, recorded in the owner's companion lab repository as ADR 0024.",
+      "kind": "bounded_formal_foundation_scope",
+      "selected_route_ids": [],
+      "promoted_route_ids": [],
+      "authorizes_experiment": false,
+      "promotes_route": false,
+      "changes_release_required_nodes": false,
+      "rationale": "AUTONOMY.md requires a dated change to this file before a new formal-foundation build, and its unlock rule describes that change as selecting a route. None of these builds is attack work, so the owner authorizes them without selecting any route. The vocabulary has no decision value for an authorized build without a selected route: build_now means directly needed to evaluate every candidate or to keep project state coherent, and the checker requires it to be P0 and complete; build_if_selected waits for a selected route; monitor_only forbids construction. Both new foundations are therefore retain_frontier with build_now false, and this record bounds the authorized build to exactly the named pull request, with an exact uncertainty, a success condition, and a stop condition. It neither selects nor promotes a route and does not supersede RS-2026-07-24-001.",
+      "rulings": [
+        {
+          "foundation_id": "F-PARITY-BIT-SECURITY",
+          "ruling": "register_and_authorize_bounded_build",
+          "authorized_build": "Exactly the port in PR #444 of twenty theorems already kernel-checked in the owner's companion lab repository, with their ledger rows and generated views: the exact-oracle halving reduction, the parity Fourier spectrum, the ordered-sector and carry-sign facts, the Fourier concentration and balance bounds of the ordered-sector sign, and the transfer inequality under an assumed twisted-sum bound.",
+          "exact_uncertainty": "Whether any efficiently computable public function of a point correlates with the parity of its discrete logarithm at or above the break-even bias, the predictor advantage at which a parity-oracle reduction would match the generic square-root cost. The authorized layer proves a reduction from an exact oracle and Fourier tools only; it decides no correlation and proves no hardness.",
+          "success_condition": "CI kernel-checks every ported theorem, and the full-ledger axiom audit shows that each depends only on propext, Classical.choice, and Quot.sound, with no native_decide and no custom axiom. The ledger rows state the exact-oracle and assumed twisted-sum hypotheses and make no hardness or secp256k1 claim.",
+          "stop_condition": "The authorization covers PR #444 only and ends when it is merged or closed. Any further build in this area requires a new dated decision.",
+          "status_basis": "implementation_status partial is the state once the authorized PR #444 port lands; until that merge the theorems exist only in the companion lab repository. If PR #444 closes unmerged, a new dated decision resets this foundation."
+        },
+        {
+          "foundation_id": "F-PRIME-ORDER-POINT-COUNT",
+          "ruling": "register_and_authorize_bounded_build",
+          "authorized_build": "Exactly the formal build in PR #446: the curve-generic exact count from a point of order n, the elementary bound #E(F) <= 2*#F + 1, and a no-2-torsion certificate; the certificates for nine named prime-order curves, whose soundness lemma is adapted from pyca/verified-garbage, which already kernel-checks no-2-torsion for the same nine curves and #E = n for P-256, P-384, and P-521 on its own curve type, with that prior work disclosed; and #E = n for the repository's P-256.",
+          "exact_uncertainty": "Whether the exact group order of a prime-order short Weierstrass curve, in particular the repository's P-256, can be kernel-checked from a point of order n and a no-2-torsion certificate without formalizing the Hasse bound or Schoof's algorithm. It carries no attack information.",
+          "success_condition": "CI kernel-checks the curve-generic count, the certificates, and #E = n for P-256, and the trust base of each new declaration, kernel-only or inherited compiler trust, is disclosed per declaration.",
+          "stop_condition": "The authorization covers PR #446 only and ends when it is merged or closed. p256-exact-cardinality is not added to release.required_nodes. Further point-counting work or a release-node change requires a new dated decision."
+        },
+        {
+          "foundation_id": "F-SEMAEV-ELIMINATION",
+          "ruling": "unchanged_build_if_selected",
+          "scope": "No F-SEMAEV-ELIMINATION build is authorized; the foundation stays build_if_selected with build_now false and its resume condition is unchanged. The owner splits PR #447. Its S4 permutation symmetry (an exact S4 polynomial covariance identity under coordinate permutations, within the scope recorded by RS-2026-07-24-001), the per-variable degree facts proved with it, and its documentation correction land as maintenance of the existing S3/S4 formal layer (semaev-foundations), without reopening the completed structural lane. The general S_m tower moves to a separate draft pull request and stays parked until a dependent route is selected."
+        }
+      ]
     }
   ],
   "next_phase_gate": {

@@ -4,9 +4,9 @@
   "source_hashes": {
     "policy_sha256": "fb3e74227bd5613e33f5bab234a40d0d1dccf23a6c048e6094433a2dbebcdddf",
     "hypothesis_generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-    "typed_evidence_state_sha256": "ee7d88da7ca26b7f0defe7fbba7a748a69bb31bc83a254615941b46af2c85f55",
-    "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
-    "decision_substrate_sha256": "0d3dd95e3079d5ad21db2c1f517ba8e29b1e170e61c9dbc8a2dfcb7d56745879",
+    "typed_evidence_state_sha256": "a33ed472e5c7e0521f7e943a53f6c79f33f719a666967cba9d73c9c1be320c14",
+    "research_claim_state_sha256": "82fdf17ffad1ab108024dc971239208a311b30d4e992645949383cf609e54cab",
+    "decision_substrate_sha256": "a365c74dd80df588bdabebda03dc2b0fa09a9680b5a7f1fd77251de06c0d1770",
     "hypotheses_sha256": "12f0df0623f2a104389cb191da565e69bacbf926b305d3f298051d7bc7489afb",
     "outcome_events_sha256": "b29a7ad2d159cebc54d70771dbbdf36a0cf7d767114d63c8eb11efc7ec88744d",
     "historical_baseline_anchor_sha256": "d9de2351a499d395d09005199aac73744c1bf212ff9759ceed5d229d076ca7a3"
@@ -1259,8 +1259,8 @@
     "generator_id": "ecdlp-hypothesis-generation-v0",
     "source_hashes": {
       "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-      "typed_evidence_state_sha256": "ee7d88da7ca26b7f0defe7fbba7a748a69bb31bc83a254615941b46af2c85f55",
-      "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+      "typed_evidence_state_sha256": "a33ed472e5c7e0521f7e943a53f6c79f33f719a666967cba9d73c9c1be320c14",
+      "research_claim_state_sha256": "82fdf17ffad1ab108024dc971239208a311b30d4e992645949383cf609e54cab",
       "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
       "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
     },
@@ -1296,7 +1296,7 @@
       },
       "source_hashes": {
         "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-        "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
+        "decision_substrate_sha256": "4e9d6ff77afaa2e41a2e2f5f33f8302fa1090d23a998d8d5530c8257272dd352",
         "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
         "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
         "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
@@ -1327,7 +1327,7 @@
         "route_promotions": 0,
         "exact_target_runs": 0
       },
-      "state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38"
+      "state_sha256": "82fdf17ffad1ab108024dc971239208a311b30d4e992645949383cf609e54cab"
     },
     "seed_coverage": {
       "threshold": 12,
@@ -1368,7 +1368,7 @@
         "seed_id": "HGS-5CC94AD51AE6",
         "cell_id": "CELL-M-PKC-AUXILIARY-CURVE",
         "typed_evidence_digest": "324128326a3d56dbe4ab697efafefb12d34ba6ba44983883c8d04fe2493832dc",
-        "claim_state_digest": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+        "claim_state_digest": "82fdf17ffad1ab108024dc971239208a311b30d4e992645949383cf609e54cab",
         "route_id": "R-PETIT-COMPOSED-MAPS",
         "route_source_ids": [
           "amadori_pintore_sala2018",
@@ -1516,7 +1516,7 @@
         "seed_id": "HGS-3266E42A729C",
         "cell_id": "CELL-M-PKC-SMOOTH-M16",
         "typed_evidence_digest": "602d93c115099c81f02b8a8ac531e33036e6988d5d3ddf2ec257b1118e5cd75d",
-        "claim_state_digest": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+        "claim_state_digest": "82fdf17ffad1ab108024dc971239208a311b30d4e992645949383cf609e54cab",
         "route_id": "R-PETIT-COMPOSED-MAPS",
         "route_source_ids": [
           "amadori_pintore_sala2018",
