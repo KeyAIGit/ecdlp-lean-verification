@@ -3,9 +3,9 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "6ee9740052b29bd7640558da72096fb3ce18a0caa61fbaa6c968e6fcc431dc47",
+    "data/result_registry.json": "e836543f4fd330890237856f9fe8d27ac4cb69efe2a6494441e6cdea48315bd2",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
-    "data/stats.json": "3fd32d975b8df168c1d83fa1cf43eb227fa06fa5ed1f23d975890df50cddf3ea"
+    "data/stats.json": "484100b429ec31185d08a0780d8e0ff7c1bf836717663c5baf558a21e2505510"
   },
   "invariants": [
     "VERIFIED.md remains the canonical ECDLP ledger.",
@@ -14,16 +14,16 @@
     "The aggregate row total is navigation only and is not a security metric."
   ],
   "counts": {
-    "navigation_rows_total": 495,
-    "ecdlp_rows": 323,
+    "navigation_rows_total": 497,
+    "ecdlp_rows": 325,
     "researchos_rows": 172,
     "kernel_standard_rows": 172,
-    "kernel_audited_rows": 216,
+    "kernel_audited_rows": 218,
     "kernel_plus_compiler_rows": 107,
     "lanes": 2,
     "domains": {
       "analysis-generic": 68,
-      "ecdlp-ledger": 323,
+      "ecdlp-ledger": 325,
       "number-theory-elementary": 11,
       "riemann-hypothesis": 93
     }
@@ -35,7 +35,7 @@
       "canonical_ledger": "VERIFIED.md",
       "registry": "data/result_registry.json",
       "headline_accounting": "data/stats.json",
-      "rows": 323
+      "rows": 325
     },
     {
       "id": "researchos",
@@ -342,8 +342,8 @@
       "slug": "ecdlp-ledger-248",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and `S₄`'s full symmetry: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄` — so `S₄` is symmetric on all of `{x₁,x₂,x₃,x₄}`, the symmetry a summation polynomial must have",
-      "title": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and `S₄`'s full symmetry: block swap `S₄_block_swap` `(x₁,…",
+      "claim_id": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and three symmetries of `S₄`: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄`. These three generate an order-8 subgroup of the 24 permutations of `{x₁,x₂,x₃,x₄}`, not all of them (a group-theoretic remark, not kernel-checked); invariance under every permutation is `S₄_perm` (`Ecdlp/Proved/SemaevFourSymmetry.lean`)",
+      "title": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and three symmetries of `S₄`: block swap `S₄_block_swap` `…",
       "display": "`Ecdlp.Semaev.S₃poly_eval`, `S₄_block_swap`, `S₄_symm₁₂`, `S₄_symm₃₄`",
       "method": "Mathlib",
       "axiom_base": null,
@@ -375,7 +375,7 @@
           "declaration": "Ecdlp.Semaev.S₄_symm₃₄",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 103
+          "line": 105
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -5753,8 +5753,8 @@
       "slug": "ecdlp-ledger-247",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "Semaev forward direction generalized to all `n` — the resultant recursion engine (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. Every Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` inherits its forward direction from this one lemma at level `n`; `S₄_eq_zero_of_common_root` is now literally the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`, and `S₅, S₆, …` are discharged verbatim with `f` the previous slice. The mechanism-level generalization of the Semaev forward direction to the whole infinite `Sₙ` family — via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
-      "title": "Semaev forward direction generalized to all `n` — the resultant recursion engine (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutativ…",
+      "claim_id": "Semaev forward direction — the resultant common-root lemma (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring with `natDegree f ≤ m`, `natDegree g ≤ n` and sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. A Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` gets its forward direction from this lemma once the previous slice is defined as a polynomial with the needed degree bound. `S₄_eq_zero_of_common_root` is the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`. This repository does not define `Sₙ` for `n ≥ 5` at general `(a,b)` (the secp256k1 frozen projective family is a separate construction); a recursive definition with that degree bound is in draft PR #448 (parked). Via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
+      "title": "Semaev forward direction — the resultant common-root lemma (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring with `natDegree…",
       "display": "`Ecdlp.Semaev.resultant_eq_zero_of_common_root`",
       "method": "Mathlib (`exists_mul_add_mul_eq_C_resultant`)",
       "axiom_base": null,
@@ -5864,7 +5864,7 @@
           "declaration": "Ecdlp.Semaev.secp256k1_semaev_four_of_common_root",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 189
+          "line": 191
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -6013,6 +6013,112 @@
       "source_registry": "data/result_registry.json"
     },
     {
+      "uid": "ecdlp/ledger-324",
+      "slug": "ecdlp-ledger-324",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "Semaev's `S₄` has degree exactly 4 in each variable when `S₃` of the other three is nonzero (`S₄slice a b x₁ x₂ x₃ = S₄(x₁,x₂,x₃,X)` has `natDegree ≤ 4` over any commutative ring (`S₄slice_natDegree_le`) and coefficient of `X⁴` equal to `S₃(x₁,x₂,x₃)²` (`S₄slice_coeff_four`); over a field, `S₃(x₁,x₂,x₃) ≠ 0` gives degree exactly `4` (`S₄slice_natDegree`), with the variable in any of the four argument slots (`S₄_natDegree_eq_four_of_perm`, via `S₄_perm` over `K[X]`), and then any finite set of `x₄` with `S₄(x₁,x₂,x₃,x₄) = 0` has at most 4 elements (`S₄_completions_le_four`). The case `S₃(x₁,x₂,x₃) = 0`, where the degree drops, is not covered)",
+      "title": "Semaev's `S₄` has degree exactly 4 in each variable when `S₃` of the other three is nonzero (`S₄slice a b x₁ x₂ x₃ = S₄(x₁,x₂,x₃,X)` has `natDegree ≤ 4` over any commutative ring…",
+      "display": "`Ecdlp.Semaev.S₄slice`, `S₄slice_eval`, `S₄slice_natDegree_le`, `S₄slice_coeff_four`, `S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`, `S₄_completions_le_four`",
+      "method": "Mathlib (`compute_degree`, `Polynomial.card_roots'`)",
+      "axiom_base": null,
+      "trust_level": "kernel_audited",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/SemaevFourSymmetry.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.Semaev.S₄slice",
+          "kind": "def",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 107
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₄slice_eval",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 110
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₄slice_natDegree_le",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 116
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₄slice_coeff_four",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 154
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₄slice_natDegree",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 189
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₄_natDegree_eq_four_of_perm",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 199
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₄_completions_le_four",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 209
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
+      "uid": "ecdlp/ledger-323",
+      "slug": "ecdlp-ledger-323",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "Semaev's `S₄` is invariant under every permutation of its four arguments (`S₄_perm`: for every `σ : Equiv.Perm (Fin 4)`, `S₄(x_σ(0),x_σ(1),x_σ(2),x_σ(3)) = S₄(x₀,x₁,x₂,x₃)`, over any commutative ring. The missing transposition `S₄_symm₂₃` (`x₂ ↔ x₃`) is proved by `ring` from the closed form of the fixed-size `(2,2)` resultant (`resultant_quadratic_two_two`: `Res(a₁X²+b₁X+c₁, a₂X²+b₂X+c₂; 2,2) = (a₁c₂−a₂c₁)² − (a₁b₂−a₂b₁)(b₁c₂−b₂c₁)`, valid also when a leading coefficient vanishes; a public restatement of the private `resultant_quadratic` in `GlvSemaevSymmetry.lean`, not a new result; `S₄_closed`); the permutations fixing `S₄` form a submonoid containing the adjacent transpositions, which generate `Equiv.Perm (Fin 4)` (`Equiv.Perm.mclosure_swap_castSucc_succ`))",
+      "title": "Semaev's `S₄` is invariant under every permutation of its four arguments (`S₄_perm`: for every `σ : Equiv.Perm (Fin 4)`, `S₄(x_σ(0),x_σ(1),x_σ(2),x_σ(3)) = S₄(x₀,x₁,x₂,x₃)`, over…",
+      "display": "`Ecdlp.Semaev.S₄_perm`, `S₄_symm₂₃`, `resultant_quadratic_two_two`, `S₄_closed`",
+      "method": "Mathlib (`Polynomial.resultant`, `Matrix.det_succ_row_zero`, `ring`)",
+      "axiom_base": null,
+      "trust_level": "kernel_audited",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/SemaevFourSymmetry.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.Semaev.S₄_perm",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 85
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₄_symm₂₃",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 76
+        },
+        {
+          "declaration": "Ecdlp.Semaev.resultant_quadratic_two_two",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 42
+        },
+        {
+          "declaration": "Ecdlp.Semaev.S₄_closed",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 63
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
       "uid": "ecdlp/ledger-250",
       "slug": "ecdlp-ledger-250",
       "lane": "ecdlp",
@@ -6032,13 +6138,13 @@
           "declaration": "Ecdlp.Semaev.S₄_common_root_of_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 140
+          "line": 142
         },
         {
           "declaration": "Ecdlp.Semaev.secp256k1_semaev_four_common_root_of_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 199
+          "line": 201
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -6193,7 +6299,7 @@
           "declaration": "Ecdlp.Semaev.S₃poly_master_factor",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 113
+          "line": 115
         }
       ],
       "source_ledger": "VERIFIED.md",

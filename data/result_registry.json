@@ -1,15 +1,15 @@
 {
   "schema_version": 2,
   "source": "VERIFIED.md + built public Lean source (Targets excluded)",
-  "ledger_rows": 323,
-  "ledger_reference_count": 731,
-  "ledger_named_declarations": 706,
+  "ledger_rows": 325,
+  "ledger_reference_count": 742,
+  "ledger_named_declarations": 717,
   "anonymous_instance_exemptions": 7,
   "unresolved_reference_count": 0,
   "coverage_percent": 100.0,
-  "declaration_count": 1427,
-  "distinct_qualified_names": 1427,
-  "verified_md_citations": 706,
+  "declaration_count": 1437,
+  "distinct_qualified_names": 1437,
+  "verified_md_citations": 717,
   "unresolved_references": [],
   "resolution_exemptions": [
     {
@@ -678,15 +678,26 @@
     "Ecdlp.Semaev.S₃poly_master_factor",
     "Ecdlp.Semaev.S₄",
     "Ecdlp.Semaev.S₄_block_swap",
+    "Ecdlp.Semaev.S₄_closed",
     "Ecdlp.Semaev.S₄_common_root_of_eq_zero",
+    "Ecdlp.Semaev.S₄_completions_le_four",
     "Ecdlp.Semaev.S₄_diagonal_cube_invariant",
     "Ecdlp.Semaev.S₄_eq_zero_of_common_root",
     "Ecdlp.Semaev.S₄_glv_fibre_transport",
     "Ecdlp.Semaev.S₄_glv_target_transport",
+    "Ecdlp.Semaev.S₄_natDegree_eq_four_of_perm",
+    "Ecdlp.Semaev.S₄_perm",
     "Ecdlp.Semaev.S₄_symm₁₂",
+    "Ecdlp.Semaev.S₄_symm₂₃",
     "Ecdlp.Semaev.S₄_symm₃₄",
+    "Ecdlp.Semaev.S₄slice",
+    "Ecdlp.Semaev.S₄slice_coeff_four",
+    "Ecdlp.Semaev.S₄slice_eval",
+    "Ecdlp.Semaev.S₄slice_natDegree",
+    "Ecdlp.Semaev.S₄slice_natDegree_le",
     "Ecdlp.Semaev.glv_target_ne_self",
     "Ecdlp.Semaev.resultant_eq_zero_of_common_root",
+    "Ecdlp.Semaev.resultant_quadratic_two_two",
     "Ecdlp.Semaev.secp256k1_S₃_glv_covariance",
     "Ecdlp.Semaev.secp256k1_S₃_glv_zero_iff",
     "Ecdlp.Semaev.secp256k1_S₃poly_natDegree",
@@ -6516,13 +6527,13 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 189
+          "line": 191
         }
       ]
     },
     {
       "id": "ledger-247",
-      "claim": "Semaev forward direction generalized to all `n` — the resultant recursion engine (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. Every Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` inherits its forward direction from this one lemma at level `n`; `S₄_eq_zero_of_common_root` is now literally the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`, and `S₅, S₆, …` are discharged verbatim with `f` the previous slice. The mechanism-level generalization of the Semaev forward direction to the whole infinite `Sₙ` family — via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
+      "claim": "Semaev forward direction — the resultant common-root lemma (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring with `natDegree f ≤ m`, `natDegree g ≤ n` and sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. A Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` gets its forward direction from this lemma once the previous slice is defined as a polynomial with the needed degree bound. `S₄_eq_zero_of_common_root` is the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`. This repository does not define `Sₙ` for `n ≥ 5` at general `(a,b)` (the secp256k1 frozen projective family is a separate construction); a recursive definition with that degree bound is in draft PR #448 (parked). Via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
       "theorem_cell": "`Ecdlp.Semaev.resultant_eq_zero_of_common_root`",
       "declared_files": [
         "Ecdlp/Proved/SemaevFour.lean"
@@ -6542,7 +6553,7 @@
     },
     {
       "id": "ledger-248",
-      "claim": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and `S₄`'s full symmetry: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄` — so `S₄` is symmetric on all of `{x₁,x₂,x₃,x₄}`, the symmetry a summation polynomial must have",
+      "claim": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and three symmetries of `S₄`: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄`. These three generate an order-8 subgroup of the 24 permutations of `{x₁,x₂,x₃,x₄}`, not all of them (a group-theoretic remark, not kernel-checked); invariance under every permutation is `S₄_perm` (`Ecdlp/Proved/SemaevFourSymmetry.lean`)",
       "theorem_cell": "`Ecdlp.Semaev.S₃poly_eval`, `S₄_block_swap`, `S₄_symm₁₂`, `S₄_symm₃₄`",
       "declared_files": [
         "Ecdlp/Proved/SemaevFour.lean"
@@ -6580,7 +6591,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 103
+          "line": 105
         }
       ]
     },
@@ -6732,7 +6743,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 140
+          "line": 142
         },
         {
           "cited": "Ecdlp.Semaev.secp256k1_semaev_four_common_root_of_eq_zero",
@@ -6740,7 +6751,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 199
+          "line": 201
         }
       ]
     },
@@ -6760,7 +6771,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/SemaevFour.lean",
-          "line": 113
+          "line": 115
         }
       ]
     },
@@ -10542,6 +10553,118 @@
           "kind": "theorem",
           "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
           "line": 140
+        }
+      ]
+    },
+    {
+      "id": "ledger-323",
+      "claim": "Semaev's `S₄` is invariant under every permutation of its four arguments (`S₄_perm`: for every `σ : Equiv.Perm (Fin 4)`, `S₄(x_σ(0),x_σ(1),x_σ(2),x_σ(3)) = S₄(x₀,x₁,x₂,x₃)`, over any commutative ring. The missing transposition `S₄_symm₂₃` (`x₂ ↔ x₃`) is proved by `ring` from the closed form of the fixed-size `(2,2)` resultant (`resultant_quadratic_two_two`: `Res(a₁X²+b₁X+c₁, a₂X²+b₂X+c₂; 2,2) = (a₁c₂−a₂c₁)² − (a₁b₂−a₂b₁)(b₁c₂−b₂c₁)`, valid also when a leading coefficient vanishes; a public restatement of the private `resultant_quadratic` in `GlvSemaevSymmetry.lean`, not a new result; `S₄_closed`); the permutations fixing `S₄` form a submonoid containing the adjacent transpositions, which generate `Equiv.Perm (Fin 4)` (`Equiv.Perm.mclosure_swap_castSucc_succ`))",
+      "theorem_cell": "`Ecdlp.Semaev.S₄_perm`, `S₄_symm₂₃`, `resultant_quadratic_two_two`, `S₄_closed`",
+      "declared_files": [
+        "Ecdlp/Proved/SemaevFourSymmetry.lean"
+      ],
+      "method": "Mathlib (`Polynomial.resultant`, `Matrix.det_succ_row_zero`, `ring`)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.Semaev.S₄_perm",
+          "canonical_name": "Ecdlp.Semaev.S₄_perm",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 85
+        },
+        {
+          "cited": "Ecdlp.Semaev.S₄_symm₂₃",
+          "canonical_name": "Ecdlp.Semaev.S₄_symm₂₃",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 76
+        },
+        {
+          "cited": "Ecdlp.Semaev.resultant_quadratic_two_two",
+          "canonical_name": "Ecdlp.Semaev.resultant_quadratic_two_two",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 42
+        },
+        {
+          "cited": "Ecdlp.Semaev.S₄_closed",
+          "canonical_name": "Ecdlp.Semaev.S₄_closed",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 63
+        }
+      ]
+    },
+    {
+      "id": "ledger-324",
+      "claim": "Semaev's `S₄` has degree exactly 4 in each variable when `S₃` of the other three is nonzero (`S₄slice a b x₁ x₂ x₃ = S₄(x₁,x₂,x₃,X)` has `natDegree ≤ 4` over any commutative ring (`S₄slice_natDegree_le`) and coefficient of `X⁴` equal to `S₃(x₁,x₂,x₃)²` (`S₄slice_coeff_four`); over a field, `S₃(x₁,x₂,x₃) ≠ 0` gives degree exactly `4` (`S₄slice_natDegree`), with the variable in any of the four argument slots (`S₄_natDegree_eq_four_of_perm`, via `S₄_perm` over `K[X]`), and then any finite set of `x₄` with `S₄(x₁,x₂,x₃,x₄) = 0` has at most 4 elements (`S₄_completions_le_four`). The case `S₃(x₁,x₂,x₃) = 0`, where the degree drops, is not covered)",
+      "theorem_cell": "`Ecdlp.Semaev.S₄slice`, `S₄slice_eval`, `S₄slice_natDegree_le`, `S₄slice_coeff_four`, `S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`, `S₄_completions_le_four`",
+      "declared_files": [
+        "Ecdlp/Proved/SemaevFourSymmetry.lean"
+      ],
+      "method": "Mathlib (`compute_degree`, `Polynomial.card_roots'`)",
+      "status": "proved",
+      "references": [
+        {
+          "cited": "Ecdlp.Semaev.S₄slice",
+          "canonical_name": "Ecdlp.Semaev.S₄slice",
+          "resolution": "exact",
+          "kind": "def",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 107
+        },
+        {
+          "cited": "Ecdlp.Semaev.S₄slice_eval",
+          "canonical_name": "Ecdlp.Semaev.S₄slice_eval",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 110
+        },
+        {
+          "cited": "Ecdlp.Semaev.S₄slice_natDegree_le",
+          "canonical_name": "Ecdlp.Semaev.S₄slice_natDegree_le",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 116
+        },
+        {
+          "cited": "Ecdlp.Semaev.S₄slice_coeff_four",
+          "canonical_name": "Ecdlp.Semaev.S₄slice_coeff_four",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 154
+        },
+        {
+          "cited": "Ecdlp.Semaev.S₄slice_natDegree",
+          "canonical_name": "Ecdlp.Semaev.S₄slice_natDegree",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 189
+        },
+        {
+          "cited": "Ecdlp.Semaev.S₄_natDegree_eq_four_of_perm",
+          "canonical_name": "Ecdlp.Semaev.S₄_natDegree_eq_four_of_perm",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 199
+        },
+        {
+          "cited": "Ecdlp.Semaev.S₄_completions_le_four",
+          "canonical_name": "Ecdlp.Semaev.S₄_completions_le_four",
+          "resolution": "exact",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+          "line": 209
         }
       ]
     }
@@ -18315,7 +18438,7 @@
       "namespace": "Ecdlp.Semaev",
       "kind": "theorem",
       "file": "Ecdlp/Proved/SemaevFour.lean",
-      "line": 113
+      "line": 115
     },
     "Ecdlp.Semaev.S₃poly_natDegree_le": {
       "name": "S₃poly_natDegree_le",
@@ -18345,12 +18468,26 @@
       "file": "Ecdlp/Proved/SemaevFour.lean",
       "line": 90
     },
+    "Ecdlp.Semaev.S₄_closed": {
+      "name": "S₄_closed",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 63
+    },
     "Ecdlp.Semaev.S₄_common_root_of_eq_zero": {
       "name": "S₄_common_root_of_eq_zero",
       "namespace": "Ecdlp.Semaev",
       "kind": "theorem",
       "file": "Ecdlp/Proved/SemaevFour.lean",
-      "line": 140
+      "line": 142
+    },
+    "Ecdlp.Semaev.S₄_completions_le_four": {
+      "name": "S₄_completions_le_four",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 209
     },
     "Ecdlp.Semaev.S₄_diagonal_cube_invariant": {
       "name": "S₄_diagonal_cube_invariant",
@@ -18380,6 +18517,20 @@
       "file": "Ecdlp/Proved/GlvSemaevSymmetry.lean",
       "line": 196
     },
+    "Ecdlp.Semaev.S₄_natDegree_eq_four_of_perm": {
+      "name": "S₄_natDegree_eq_four_of_perm",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 199
+    },
+    "Ecdlp.Semaev.S₄_perm": {
+      "name": "S₄_perm",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 85
+    },
     "Ecdlp.Semaev.S₄_symm₁₂": {
       "name": "S₄_symm₁₂",
       "namespace": "Ecdlp.Semaev",
@@ -18387,19 +18538,54 @@
       "file": "Ecdlp/Proved/SemaevFour.lean",
       "line": 95
     },
+    "Ecdlp.Semaev.S₄_symm₂₃": {
+      "name": "S₄_symm₂₃",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 76
+    },
     "Ecdlp.Semaev.S₄_symm₃₄": {
       "name": "S₄_symm₃₄",
       "namespace": "Ecdlp.Semaev",
       "kind": "theorem",
       "file": "Ecdlp/Proved/SemaevFour.lean",
-      "line": 103
+      "line": 105
     },
-    "Ecdlp.Semaev.discharges": {
-      "name": "discharges",
+    "Ecdlp.Semaev.S₄slice": {
+      "name": "S₄slice",
       "namespace": "Ecdlp.Semaev",
-      "kind": "lemma",
-      "file": "Ecdlp/Proved/SemaevFour.lean",
-      "line": 56
+      "kind": "def",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 107
+    },
+    "Ecdlp.Semaev.S₄slice_coeff_four": {
+      "name": "S₄slice_coeff_four",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 154
+    },
+    "Ecdlp.Semaev.S₄slice_eval": {
+      "name": "S₄slice_eval",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 110
+    },
+    "Ecdlp.Semaev.S₄slice_natDegree": {
+      "name": "S₄slice_natDegree",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 189
+    },
+    "Ecdlp.Semaev.S₄slice_natDegree_le": {
+      "name": "S₄slice_natDegree_le",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 116
     },
     "Ecdlp.Semaev.glv_target_ne_self": {
       "name": "glv_target_ne_self",
@@ -18414,6 +18600,13 @@
       "kind": "theorem",
       "file": "Ecdlp/Proved/SemaevFour.lean",
       "line": 60
+    },
+    "Ecdlp.Semaev.resultant_quadratic_two_two": {
+      "name": "resultant_quadratic_two_two",
+      "namespace": "Ecdlp.Semaev",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "line": 42
     },
     "Ecdlp.Semaev.secp256k1_S₃_glv_covariance": {
       "name": "secp256k1_S₃_glv_covariance",
@@ -18497,14 +18690,14 @@
       "namespace": "Ecdlp.Semaev",
       "kind": "theorem",
       "file": "Ecdlp/Proved/SemaevFour.lean",
-      "line": 199
+      "line": 201
     },
     "Ecdlp.Semaev.secp256k1_semaev_four_of_common_root": {
       "name": "secp256k1_semaev_four_of_common_root",
       "namespace": "Ecdlp.Semaev",
       "kind": "theorem",
       "file": "Ecdlp/Proved/SemaevFour.lean",
-      "line": 189
+      "line": 191
     },
     "Ecdlp.Semaev.secp256k1_semaev_three_chord": {
       "name": "secp256k1_semaev_three_chord",
