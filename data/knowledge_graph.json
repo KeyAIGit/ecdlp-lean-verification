@@ -37,9 +37,9 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1272,
+    "edges": 1286,
     "by_edge_type": {
-      "imports": 585,
+      "imports": 599,
       "member_of": 328,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
@@ -72,12 +72,15 @@
     },
     "by_method": {
       "Mathlib": 108,
-      "Mathlib + native_decide": 31,
-      "native_decide": 20,
+      "Mathlib + native_decide": 19,
+      "native_decide": 18,
       "Bézout certificate + native_decide": 10,
+      "Mathlib + kernel (`decide +kernel`)": 6,
+      "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)": 4,
+      "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)": 3,
       "native_decide + Pratt (`lucas_primality`)": 2,
+      "Mathlib + kernel `β³=1` leaf (`decide +kernel`)": 2,
       "Mathlib (`map_cyclic`)": 2,
-      "Mathlib (`lucas_primality`) + native_decide": 2,
       "Mathlib (`Finite.of_injective`) via `instFinitePoint": 2,
       "Mathlib + `linear_combination": 2,
       "Mathlib + the bridges": 2,
@@ -86,7 +89,7 @@
       "Mathlib (`Iff.trans`)": 2,
       "instantiation of `Ecdlp.Schnorr.*` on `↥⟨G⟩": 2,
       "Mathlib (`Φ_ofNat`, `ΨSq_ofNat`, `preΨ'_even`) + `linear_combination` certificates": 2,
-      "Mathlib + `decide +kernel` certificate + native_decide (inherited)": 2,
+      "Mathlib (`ring`) + kernel (`decide +kernel`)": 1,
       "Mathlib (`Projective.nonsingular_iff`/`equation_iff`, `mul_eq_zero`, `pow_ne_zero`) + `linear_combination": 1,
       "Mathlib (`ZMod.pow_card`, `pow_two`/`pow_mul`/`pow_succ`) + `omega": 1,
       "Mathlib + native_decide (reuses the `p` Pratt certificate)": 1,
@@ -183,7 +186,7 @@
       "Mathlib (`AddEquiv.ofBijective`, `Nat.cast_smul_eq_nsmul`, `Int.cast_smul_eq_zsmul`, `ZMod.val_lt`)": 1,
       "Mathlib (`Finite.of_injective`)": 1,
       "Mathlib (`AddSubgroup.card_mul_index`) + `secp256k1_grp_card": 1,
-      "native_decide + Mathlib (`exists_prime_addOrderOf_dvd_card`, `ZMod.pow_card_sub_one_eq_one`, `Finset.card_le_mul_card_image`) + repo bricks": 1,
+      "kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`) + Mathlib (`exists_prime_addOrderOf_dvd_card`, `ZMod.pow_card_sub_one_eq_one`, `Finset.card_le_mul_card_image`) + repo bricks": 1,
       "Mathlib (`AddSubgroup.eq_top_of_card_eq`, `AddSubgroup.topEquiv`) + `secp256k1_card_point_eq_n": 1,
       "Mathlib (`AddEquiv.addSubgroupCongr`, `AddSubgroup.topEquiv`, `AddEquiv.trans`) + `secp256k1_dlogEquiv` + `secp256k1_grp_eq_top": 1,
       "Mathlib (`AddSubgroup.eq_bot_or_eq_top_of_prime_card`, `isSimpleAddGroup_of_prime_card`) + `secp256k1_card_point_eq_n": 1,
@@ -209,6 +212,8 @@
       "local projective `H` identities + exact TASK-023 cover restriction + path-independent-set counts; `native_decide` only for the three cardinalities": 1,
       "exact local substitution + fixed-degree projective-resultant forward implication + balanced prefix/suffix frozen specializations + exact chart-cover restriction; `native_decide` only for the four mask cardinalities": 1,
       "Mathlib (`addOrderOf_dvd_natCard`, `exists_prime_addOrderOf_dvd_card'`, `card_roots'`, `Finset.card_le_mul_card_image`) + `instFinitePoint": 1,
+      "Mathlib + `decide +kernel` certificate + native_decide (inherited)": 1,
+      "Mathlib + kernel (`decide +kernel` certificate; inherited `decide +kernel` leaves)": 1,
       "Mathlib (`ZMod.val` arithmetic)": 1,
       "Mathlib (`Finset` sums, multiplication by the unit `lam` permutes `k ≠ 0`)": 1,
       "Mathlib (`Finset.filter` congruence)": 1,
@@ -224,8 +229,8 @@
       "Mathlib (`compute_degree`, `Polynomial.card_roots'`)": 1
     },
     "by_area": {
-      "curve-torsion": 156,
-      "primality": 58,
+      "curve-torsion": 154,
+      "primality": 60,
       "other": 34,
       "generic-hardness": 30,
       "protocol-soundness": 23,
@@ -1049,11 +1054,11 @@
         "Ecdlp/Proved/Secp256k1Curve.lean"
       ],
       "claim": "secp256k1 discriminant nonzero `Δ ≠ 0` in `𝔽_p",
-      "method": "native_decide",
+      "method": "Mathlib (`ring`) + kernel (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1073,7 +1078,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1089,11 +1094,11 @@
         "Ecdlp/Proved/Secp256k1Curve.lean"
       ],
       "claim": "secp256k1 is a Mathlib `EllipticCurve` (grounds the group law)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1113,7 +1118,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1133,7 +1138,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1333,7 +1338,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1353,7 +1358,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1373,7 +1378,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1409,11 +1414,11 @@
         "Ecdlp/Proved/Secp256k1Curve.lean"
       ],
       "claim": "secp256k1 generator is a point of the Mathlib `EllipticCurve",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1429,11 +1434,11 @@
         "Ecdlp/Proved/Secp256k1Curve.lean"
       ],
       "claim": "secp256k1 generator is nonsingular (a group element)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 1,
+      "dependency_depth": 2,
       "gated": true
     },
     {
@@ -1449,11 +1454,11 @@
         "Ecdlp/Proved/GeneratorOrder.lean"
       ],
       "claim": "secp256k1 base point has exact order `n` (weak point-counting keystone: `⟨G⟩` cyclic of order `n`, no Hasse/`#E`)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1469,11 +1474,11 @@
         "Ecdlp/Proved/GeneratorOrder.lean"
       ],
       "claim": "secp256k1 GLV endomorphism acts as `[λ]` at the generator (`glvPoint G = λ·G`, unconditional)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1493,7 +1498,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -1509,11 +1514,11 @@
         "Ecdlp/Proved/GeneratorOrder.lean"
       ],
       "claim": "secp256k1 base point annihilated by `n` (`n·G = 0`, supporting `addOrderOf`)",
-      "method": "native_decide",
+      "method": "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1533,7 +1538,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1549,7 +1554,7 @@
         "Ecdlp/Proved/Secp256k1PrimeP.lean"
       ],
       "claim": "secp256k1 field prime `p` is prime (full Pratt certificate)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)",
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
@@ -1569,7 +1574,7 @@
         "Ecdlp/Proved/Secp256k1PrimeN.lean"
       ],
       "claim": "secp256k1 group order `n` is prime (full Pratt certificate)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)",
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
@@ -1713,7 +1718,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -1773,7 +1778,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1793,7 +1798,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1813,7 +1818,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1833,7 +1838,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1853,7 +1858,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1873,7 +1878,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -1893,7 +1898,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -1989,11 +1994,11 @@
         "Ecdlp/Proved/DivisionPolynomialDegree.lean"
       ],
       "claim": "deg Ψ₂Sq = 3` (2-torsion count: `#E[2] ≤ 4`)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2013,7 +2018,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2033,7 +2038,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2049,11 +2054,11 @@
         "Ecdlp/Proved/DivisionPolynomialDegree.lean"
       ],
       "claim": "deg Ψ₃ = 4` (3-torsion count `#E[3] ≤ 9`; GLV-relevant CM torsion)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2313,7 +2318,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2333,7 +2338,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2353,7 +2358,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2373,7 +2378,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2393,7 +2398,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2413,7 +2418,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2433,7 +2438,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2453,7 +2458,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2473,7 +2478,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2493,7 +2498,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2513,7 +2518,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2533,7 +2538,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2553,7 +2558,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2589,11 +2594,11 @@
         "Ecdlp/Proved/GlvEndomorphism.lean"
       ],
       "claim": "GLV endomorphism preserves the curve (`(x,y)↦(βx,y)` keeps `Y²=X³+7`, via `β³=1`)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel `β³=1` leaf (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2609,11 +2614,11 @@
         "Ecdlp/Proved/GlvEndomorphism.lean"
       ],
       "claim": "GLV endomorphism preserves nonsingularity (smooth `(x,y)` ↦ smooth `(βx,y)`; `β` a unit)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel `β³=1` leaf (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2633,7 +2638,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2653,7 +2658,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2673,7 +2678,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2693,7 +2698,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2713,7 +2718,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -2733,7 +2738,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2753,7 +2758,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -2773,7 +2778,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -2788,12 +2793,12 @@
       "files": [
         "Ecdlp/Proved/GlvDivPoly.lean"
       ],
-      "claim": "GLV covariance law of the division polynomials (`ψ_m(βx) = β^((m²−1)/2)·ψ_m(x)`: for `j=0` each `ψ_m` sits on one exponent-residue mod 3, so `β` acts by a scalar — `Ψ₃(βx)=β·Ψ₃(x)` (`secp256k1_Ψ₃_eval_glv`), and `preΨ' 5`, `preΨ' 7`, `Ψ₂Sq` are `β`-invariant (`secp256k1_{preΨ₅,preΨ₇,Ψ₂Sq}_eval_glv_invariant`), from the explicit forms + `β³=1`. Explains the failed experiment #100: `Res(preΨ' 5(X), preΨ' 5(βX)) = Res(preΨ' 5, preΨ' 5) = 0` identically because `preΨ' 5` is `β`-invariant — the split/inert resultant test was ill-posed, not a signal. The residual is closed by a kernel-only `linear_combination`, but the underlying cube fact `β³=1` lifts `Secp256k1.beta_field_eigenvalue` (`native_decide`), so these results inherit `Lean.ofReduceBool` — compiler-trusted, not kernel-only)",
+      "claim": "GLV covariance law of the division polynomials (`ψ_m(βx) = β^((m²−1)/2)·ψ_m(x)`: for `j=0` each `ψ_m` sits on one exponent-residue mod 3, so `β` acts by a scalar — `Ψ₃(βx)=β·Ψ₃(x)` (`secp256k1_Ψ₃_eval_glv`), and `preΨ' 5`, `preΨ' 7`, `Ψ₂Sq` are `β`-invariant (`secp256k1_{preΨ₅,preΨ₇,Ψ₂Sq}_eval_glv_invariant`), from the explicit forms + `β³=1`. Explains the failed experiment #100: `Res(preΨ' 5(X), preΨ' 5(βX)) = Res(preΨ' 5, preΨ' 5) = 0` identically because `preΨ' 5` is `β`-invariant — the split/inert resultant test was ill-posed, not a signal. The residual is closed by a kernel-only `linear_combination`, and the underlying cube fact `β³=1` lifts `Secp256k1.beta_field_eigenvalue_kernel`, the kernel-checked twin (`decide +kernel`) of `Secp256k1.beta_field_eigenvalue`; standard axioms only)",
       "method": "Mathlib + `cube_root_of_eigenvalue` + explicit ψ forms",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -2808,12 +2813,12 @@
       "files": [
         "Ecdlp/Proved/GlvOrbit.lean"
       ],
-      "claim": "GLV automorphism orbit structure (orbits of `glvPoint` have size ≤ 3; away from the `x=0` fixed locus exactly 3: `secp256k1_glvPoint_orbit_closed` — `{P, φP, φ²P}` is `φ`-closed (cycling via the existing `glvPoint_cube_eq_id`, `φ³=id`); `secp256k1_glvPoint_orbit_three_distinct` — the three are pairwise distinct for `x≠0`. The group root of the measured `~3×` GLV factor-base constant (P0–P4): orbit size ≤3 ⇒ at most a 3× compression, a constant, never an exponent change — not an ECDLP advantage. Compiler-trusted: the orbit facts lift `Secp256k1.beta_field_eigenvalue` (`native_decide`), so they inherit `Lean.ofReduceBool`)",
+      "claim": "GLV automorphism orbit structure (orbits of `glvPoint` have size ≤ 3; away from the `x=0` fixed locus exactly 3: `secp256k1_glvPoint_orbit_closed` — `{P, φP, φ²P}` is `φ`-closed (cycling via the existing `glvPoint_cube_eq_id`, `φ³=id`); `secp256k1_glvPoint_orbit_three_distinct` — the three are pairwise distinct for `x≠0`. The group root of the measured `~3×` GLV factor-base constant (P0–P4): orbit size ≤3 ⇒ at most a 3× compression, a constant, never an exponent change — not an ECDLP advantage. Trust: `secp256k1_glvPoint_orbit_closed` rests on the standard axioms only; `secp256k1_glvPoint_orbit_three_distinct` is compiler-trusted through `secp256k1_glvPoint_fixed_iff`, whose residue fact `secp256k1_beta_ne_one` (`β ≠ 1`) is `native_decide`, so it inherits `Lean.ofReduceBool`)",
       "method": "Mathlib + `glvPoint_cube_eq_id` + `secp256k1_glvPoint_fixed_iff",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -2833,7 +2838,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -2853,7 +2858,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -2873,7 +2878,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2893,7 +2898,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -2913,7 +2918,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2933,7 +2938,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2953,7 +2958,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2973,7 +2978,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -2993,7 +2998,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3009,11 +3014,11 @@
         "Ecdlp/Proved/TwoTorsionPoint.lean"
       ],
       "claim": "point-level 2-torsion criterion `2•P=0 ⟺ y=0` (both-directions `ψ₂↔E[2]` bridge at the point level — the criterion Mathlib records only as a TODO; upgrades the forward-only `Ψ₂Sq`-root fact)",
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -3033,7 +3038,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3053,7 +3058,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3073,7 +3078,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -3093,7 +3098,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -3113,7 +3118,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3133,7 +3138,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3153,7 +3158,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3173,7 +3178,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3193,7 +3198,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3213,7 +3218,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3233,7 +3238,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3253,7 +3258,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3273,7 +3278,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3293,7 +3298,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -3313,7 +3318,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3333,7 +3338,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -3353,7 +3358,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -3429,7 +3434,7 @@
         "Ecdlp/Proved/P256PrimeP.lean"
       ],
       "claim": "NIST P-256 field prime `p` is prime (Pratt certificate) (`p256_p_prime`: full recursive Pratt / `lucas_primality` certificate for `p = 2²⁵⁶−2²²⁴+2¹⁹²+2⁹⁶−1`, 9 recursive nodes, witness `a=6`. Discharges the `[Fact p.Prime]` hypothesis, so P-256's `IsElliptic` instance and Mathlib group law become unconditional — exactly as for secp256k1. The second curve's primality via the *same* generator `scripts/pratt_certificate.py`, the honest cross-domain proof that the machinery is curve-agnostic)",
-      "method": "Mathlib (`lucas_primality`) + native_decide",
+      "method": "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)",
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
@@ -3449,7 +3454,7 @@
         "Ecdlp/Proved/P256PrimeN.lean"
       ],
       "claim": "NIST P-256 group order `n` is prime (Pratt certificate) (`p256_n_prime`: full recursive Pratt / `lucas_primality` certificate for the base-point order `n`, 10 recursive nodes, witness `a=7`. Gives `[Fact n.Prime]` for P-256, the foundation for its prime-order group structure — the analogue of secp256k1's `Secp256k1PrimeN`. Both P-256 primes (`p`, `n`) now proved by the same curve-agnostic generator)",
-      "method": "Mathlib (`lucas_primality`) + native_decide",
+      "method": "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)",
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
@@ -3548,11 +3553,11 @@
       "files": [
         "Ecdlp/Proved/P256Cardinality.lean"
       ],
-      "claim": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about P-256's `#E` itself — all prior P-256 point-counting stayed inside `⟨G⟩`. Weak keystone: pins `#E ∈ {n, 2n, 3n, …}`. The exact count `#E = n` is proved separately as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, via the general theorem `natCard_point_eq_of_addOrderOf` and a kernel-checked no-root certificate; the secp256k1 `−7`-non-cube step is `j=0`-specific and is not used). Not pure-kernel: inherits `native_decide` compiler trust through `p256_generator_addOrderOf` (`n•G=0`) and the Lucas-test certificate leaves for `p` and `n`)",
+      "claim": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. A statement about `#E` itself, not only about `⟨G⟩`. Weak keystone: pins `#E ∈ {n, 2n, 3n, …}`. The exact count `#E = n` is proved separately as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, via the general theorem `natCard_point_eq_of_addOrderOf` and a kernel-checked no-root certificate; the secp256k1 `−7`-non-cube step is `j=0`-specific and is not used). Not pure-kernel: inherits `native_decide` compiler trust through `p256_generator_addOrderOf` (`n•G=0` and the base point's equation and nonsingularity); the Pratt certificates for `p` and `n` are kernel-checked (`decide +kernel`))",
       "method": "Mathlib (`AddSubgroup.card_mul_index`, `Nat.card_zmultiples`) + `p256_generator_addOrderOf",
       "status": "proved",
-      "area": "curve-torsion",
-      "family_id": "family-curve-torsion",
+      "area": "primality",
+      "family_id": "family-primality",
       "dependency_depth": 3,
       "gated": true
     },
@@ -3653,7 +3658,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3693,7 +3698,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3713,7 +3718,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3733,7 +3738,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3753,7 +3758,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3773,7 +3778,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3793,7 +3798,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -3813,7 +3818,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -3833,7 +3838,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -3853,7 +3858,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -3873,7 +3878,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -3893,7 +3898,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -3913,7 +3918,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -3933,7 +3938,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3953,7 +3958,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -3973,7 +3978,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -3993,7 +3998,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4033,7 +4038,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -4133,7 +4138,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4232,12 +4237,12 @@
         "Ecdlp/Proved/NsmulCoordsBaseTwo.lean",
         "Ecdlp/Proved/OmegaRecurrenceAnchors.lean"
       ],
-      "claim": "N7-uniform ω-free base: joint `(x,y)` carrier rungs `n=1,2` + ω-recurrence anchors (secp256k1) (`secp256k1_one_nsmul_coords` / `secp256k1_two_nsmul_coords_ωfree`: the `n=1,2` base cases of the joint carrier — whenever `n•P=(X,Y)` is affine, `X=Φₙ(x)/ΨSqₙ(x)` and the ω-free `y`-relation `Y·(4y)·ψₙ(P)³ = ψ(n+2)ψ(n−1)² − ψ(n−2)ψ(n+1)²`; and `secp256k1_omega_recurrence_two`/`_three`: that ω-recurrence numerator equals `4y·ωₙ` at `n=2,3`, cross-checking the group-law-derived `ω₂,ω₃`. The `y`-conjunct uses only Mathlib's `ψ` — no `ω` division polynomial. Honest scope: base leaves + anchors only; the uniform induction over all `n` stays the open target `n7_uniform_secp256k1_x` (`Ecdlp/Targets/n7_uniform_carrier_induction.lean`, whose `normEDSRec'` reduction to these leaves + named residual walls is machine-checked). These four secp256k1 forms inherit `Lean.ofReduceBool` from the secp256k1 primality/coefficient facts (`native_decide`); no *new* axioms beyond the trusted base)",
+      "claim": "N7-uniform ω-free base: joint `(x,y)` carrier rungs `n=1,2` + ω-recurrence anchors (secp256k1) (`secp256k1_one_nsmul_coords` / `secp256k1_two_nsmul_coords_ωfree`: the `n=1,2` base cases of the joint carrier — whenever `n•P=(X,Y)` is affine, `X=Φₙ(x)/ΨSqₙ(x)` and the ω-free `y`-relation `Y·(4y)·ψₙ(P)³ = ψ(n+2)ψ(n−1)² − ψ(n−2)ψ(n+1)²`; and `secp256k1_omega_recurrence_two`/`_three`: that ω-recurrence numerator equals `4y·ωₙ` at `n=2,3`, cross-checking the group-law-derived `ω₂,ω₃`. The `y`-conjunct uses only Mathlib's `ψ` — no `ω` division polynomial. Honest scope: base leaves + anchors only; the uniform induction over all `n` stays the open target `n7_uniform_secp256k1_x` (`Ecdlp/Targets/n7_uniform_carrier_induction.lean`, whose `normEDSRec'` reduction to these leaves + named residual walls is machine-checked). The secp256k1 primality and coefficient facts these forms use are kernel-checked (`decide +kernel`); standard axioms only)",
       "method": "landed `n=2,3` coordinate formulas + `ψ_isEllSequence",
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4257,7 +4262,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4277,7 +4282,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4297,7 +4302,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -4317,7 +4322,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4337,7 +4342,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4377,7 +4382,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -4397,7 +4402,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -4417,7 +4422,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4437,7 +4442,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -4457,7 +4462,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -4477,7 +4482,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -4497,7 +4502,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4517,7 +4522,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4537,7 +4542,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -4557,7 +4562,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4577,7 +4582,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4597,7 +4602,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -4617,7 +4622,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4637,7 +4642,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4657,7 +4662,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4677,7 +4682,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4697,7 +4702,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -4717,7 +4722,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4737,7 +4742,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -4757,7 +4762,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4777,7 +4782,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4797,7 +4802,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4892,12 +4897,12 @@
       "files": [
         "Ecdlp/Proved/EcdsaMalleability.lean"
       ],
-      "claim": "ECDSA signature malleability — the algebraic core of BIP-62 rule 5 / BIP-146 low-`s`; noninjectivity of the secp256k1 `x`-projection (every signature `(r,s)` has a sibling `(r,−s)` verifying the same message/key: `ecdsa_sibling_signing_equation` — the signing identity holds for `(−s,−k)`; `ecdsa_sibling_scalars` — `u/(−s) = −(u/s)` negates both verifier scalars; `secp256k1_pointX_neg` — point negation fixes the `x`-coordinate (`−(x,y)=(x,−y)`, `a₁=a₃=0`); `secp256k1_pointX_not_injective` — the concrete witnesses `G` and `−G` have equal `pointX` but are distinct because `G` is nonzero and secp256k1 has no nonzero two-torsion; `secp256k1_pointX_neg_zsmul_add` — the negated verification point has the same `pointX`. Honest scope: identity-level algebra and one representation boundary, no `Verify` predicate, no hash/DER level, no `ZMod p → ZMod n` reduction of `x`, no SGGM lower-bound instantiation, and no ECDLP speedup. Field lemmas pure-kernel; closed repository instantiations of the parameterized coordinate lemmas inherit compiler-trusted primality facts, while `secp256k1_pointX_not_injective` directly inherits `Lean.ofReduceBool` from the no-two-torsion computational certificate in `CurveCardinalityExact.lean`)",
+      "claim": "ECDSA signature malleability — the algebraic core of BIP-62 rule 5 / BIP-146 low-`s`; noninjectivity of the secp256k1 `x`-projection (every signature `(r,s)` has a sibling `(r,−s)` verifying the same message/key: `ecdsa_sibling_signing_equation` — the signing identity holds for `(−s,−k)`; `ecdsa_sibling_scalars` — `u/(−s) = −(u/s)` negates both verifier scalars; `secp256k1_pointX_neg` — point negation fixes the `x`-coordinate (`−(x,y)=(x,−y)`, `a₁=a₃=0`); `secp256k1_pointX_not_injective` — the concrete witnesses `G` and `−G` have equal `pointX` but are distinct because `G` is nonzero and secp256k1 has no nonzero two-torsion; `secp256k1_pointX_neg_zsmul_add` — the negated verification point has the same `pointX`. Honest scope: identity-level algebra and one representation boundary, no `Verify` predicate, no hash/DER level, no `ZMod p → ZMod n` reduction of `x`, no SGGM lower-bound instantiation, and no ECDLP speedup. Field lemmas pure-kernel; the primality facts used by the closed repository instantiations and the no-two-torsion certificate in `CurveCardinalityExact.lean` used by `secp256k1_pointX_not_injective` are kernel-checked (`decide +kernel`), so these results rest on the standard axioms only)",
       "method": "Mathlib (`Point.neg_some`, `div_neg`, `linear_combination`) + secp256k1 nonzero/two-torsion certificates",
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -4961,7 +4966,7 @@
       "status": "proved",
       "area": "reduction",
       "family_id": "family-reduction",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -4981,7 +4986,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5001,7 +5006,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5021,7 +5026,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5041,7 +5046,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5061,7 +5066,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5081,7 +5086,7 @@
       "status": "proved",
       "area": "generic-hardness",
       "family_id": "family-generic-hardness",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5101,7 +5106,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5121,7 +5126,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5141,7 +5146,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5161,7 +5166,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5181,7 +5186,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5201,7 +5206,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5221,7 +5226,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5241,7 +5246,7 @@
       "status": "proved",
       "area": "attack-resistance",
       "family_id": "family-attack-resistance",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -5261,7 +5266,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5281,7 +5286,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5301,7 +5306,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5321,7 +5326,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5341,7 +5346,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5361,7 +5366,7 @@
       "status": "proved",
       "area": "reduction",
       "family_id": "family-reduction",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5381,7 +5386,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5401,7 +5406,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5421,7 +5426,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5441,7 +5446,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5461,7 +5466,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -5481,7 +5486,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5501,7 +5506,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5521,7 +5526,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5541,7 +5546,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5561,7 +5566,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5581,7 +5586,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 2,
+      "dependency_depth": 3,
       "gated": true
     },
     {
@@ -5601,7 +5606,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5621,7 +5626,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5641,7 +5646,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5661,7 +5666,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5681,7 +5686,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -5701,7 +5706,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5721,7 +5726,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5741,7 +5746,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -5761,7 +5766,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5781,7 +5786,7 @@
       "status": "proved",
       "area": "protocol-soundness",
       "family_id": "family-protocol-soundness",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5801,7 +5806,7 @@
       "status": "proved",
       "area": "protocol-soundness",
       "family_id": "family-protocol-soundness",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -5821,7 +5826,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -5841,7 +5846,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -5881,7 +5886,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -5896,12 +5901,12 @@
       "files": [
         "Ecdlp/Proved/CurveCardinality.lean"
       ],
-      "claim": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about `#E` itself — all prior point-counting stayed inside `⟨G⟩`. Pins `#E ∈ {n, 2n, 3n, …}`; the strong keystone `#E = n` is now proved on top, curve-specifically without Hasse/Schoof (`CurveCardinalityExact.lean`). Compiler-trusted: inherits `Lean.ofReduceBool` from the order keystone `secp256k1_generator_addOrderOf` via `secp256k1_grp_card` — the Lagrange/finiteness step itself adds no `native_decide`)",
+      "claim": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. Pins `#E ∈ {n, 2n, 3n, …}`; the strong keystone `#E = n` is now proved on top, curve-specifically without Hasse/Schoof (`CurveCardinalityExact.lean`). Standard axioms only: the order keystone `secp256k1_generator_addOrderOf` behind `secp256k1_grp_card` is kernel-checked (`decide +kernel` scalar-multiplication bridge))",
       "method": "Mathlib (`AddSubgroup.card_mul_index`) + `secp256k1_grp_card",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -5916,12 +5921,12 @@
       "files": [
         "Ecdlp/Proved/CurveCardinalityExact.lean"
       ],
-      "claim": "The exact curve cardinality `#E(𝔽_p) = n` — cofactor 1, without Hasse or Schoof (`secp256k1_card_point_eq_n`: `Nat.card secp256k1.toAffine.Point = Secp256k1.n`). A curve-specific certificate that upgrades `n ∣ #E` to equality using the special structure of `E : Y² = X³ + 7` over `p ≡ 1 (mod 3)`: `#E ≤ 2p+1` (`secp256k1_card_point_le`, ≤2 `y` per `x`) and `2p+1 < 3n` force `#E ∈ {n, 2n}`; `2n` (even) is excluded because additive Cauchy would yield a nonzero 2-torsion point, but `E[2] = {O}` (`secp256k1_no_nonzero_two_torsion`: `2•P=0 ⟹ P=0`, since `y=0 ⟹ x³=−7` and `−7` is not a cube in `𝔽_p`, `(−7)^((p−1)/3)≠1`). Removes the last standing assumption behind Units 1–2 (the published order `n` as `#E`). Uses `native_decide` for the 256-bit non-cube leaf and the literal arithmetic (`Lean.ofReduceBool`); numeric facts independently re-checked in `scripts/certs/cardinality_secp256k1.py`, prints `CERT_OK`)",
-      "method": "native_decide + Mathlib (`exists_prime_addOrderOf_dvd_card`, `ZMod.pow_card_sub_one_eq_one`, `Finset.card_le_mul_card_image`) + repo bricks",
+      "claim": "The exact curve cardinality `#E(𝔽_p) = n` — cofactor 1, without Hasse or Schoof (`secp256k1_card_point_eq_n`: `Nat.card secp256k1.toAffine.Point = Secp256k1.n`). A curve-specific certificate that upgrades `n ∣ #E` to equality using the special structure of `E : Y² = X³ + 7` over `p ≡ 1 (mod 3)`: `#E ≤ 2p+1` (`secp256k1_card_point_le`, ≤2 `y` per `x`) and `2p+1 < 3n` force `#E ∈ {n, 2n}`; `2n` (even) is excluded because additive Cauchy would yield a nonzero 2-torsion point, but `E[2] = {O}` (`secp256k1_no_nonzero_two_torsion`: `2•P=0 ⟹ P=0`, since `y=0 ⟹ x³=−7` and `−7` is not a cube in `𝔽_p`, `(−7)^((p−1)/3)≠1`). Removes the last standing assumption behind Units 1–2 (the published order `n` as `#E`). The 256-bit non-cube leaf is evaluated by the kernel on `Nat` (`Ecdlp.Kernel.powMod`) and the literal arithmetic by `decide +kernel`; standard axioms only; numeric facts independently re-checked in `scripts/certs/cardinality_secp256k1.py`, prints `CERT_OK`)",
+      "method": "kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`) + Mathlib (`exists_prime_addOrderOf_dvd_card`, `ZMod.pow_card_sub_one_eq_one`, `Finset.card_le_mul_card_image`) + repo bricks",
       "status": "proved",
       "area": "attack-resistance",
       "family_id": "family-attack-resistance",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -5941,7 +5946,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -5956,12 +5961,12 @@
       "files": [
         "Ecdlp/Proved/PointGroupEquiv.lean"
       ],
-      "claim": "The full point-group structure theorem: `E(𝔽_p) ≃+ ℤ/n` (`secp256k1_pointGroupEquiv`: base-point multiplication `c ↦ c·G` is an additive-group isomorphism from the scalar ring `ZMod n` onto the entire rational-point group `E(𝔽_p)`, not merely `⟨G⟩`. Lifts the subgroup discrete-log iso `secp256k1_dlogEquiv` off `⟨G⟩` by transporting across cofactor 1 `⟨G⟩ = ⊤` (`AddEquiv.addSubgroupCongr secp256k1_grp_eq_top`) then stripping the `⊤` subtype (`AddSubgroup.topEquiv`). The complete group-theoretic classification of secp256k1's points: cyclic of order `n`, i.e. `≅ ℤ/n`. Unconditional given `#E = n`; computational inversion is the open ECDLP conjecture, the bijection is a theorem. Inherits `Lean.ofReduceBool` through the order keystone)",
+      "claim": "The full point-group structure theorem: `E(𝔽_p) ≃+ ℤ/n` (`secp256k1_pointGroupEquiv`: base-point multiplication `c ↦ c·G` is an additive-group isomorphism from the scalar ring `ZMod n` onto the entire rational-point group `E(𝔽_p)`, not merely `⟨G⟩`. Lifts the subgroup discrete-log iso `secp256k1_dlogEquiv` off `⟨G⟩` by transporting across cofactor 1 `⟨G⟩ = ⊤` (`AddEquiv.addSubgroupCongr secp256k1_grp_eq_top`) then stripping the `⊤` subtype (`AddSubgroup.topEquiv`). The complete group-theoretic classification of secp256k1's points: cyclic of order `n`, i.e. `≅ ℤ/n`. Unconditional given `#E = n`; computational inversion is the open ECDLP conjecture, the bijection is a theorem. Standard axioms only: the order keystone and `#E = n` are kernel-checked)",
       "method": "Mathlib (`AddEquiv.addSubgroupCongr`, `AddSubgroup.topEquiv`, `AddEquiv.trans`) + `secp256k1_dlogEquiv` + `secp256k1_grp_eq_top",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 11,
+      "dependency_depth": 12,
       "gated": true
     },
     {
@@ -5981,7 +5986,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -6001,7 +6006,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -6021,7 +6026,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -6043,7 +6048,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -6065,7 +6070,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 10,
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -6085,7 +6090,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -6109,7 +6114,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -6129,7 +6134,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 3,
+      "dependency_depth": 4,
       "gated": true
     },
     {
@@ -6149,7 +6154,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -6175,7 +6180,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -6195,7 +6200,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -6215,7 +6220,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 5,
+      "dependency_depth": 6,
       "gated": true
     },
     {
@@ -6235,7 +6240,7 @@
       "status": "proved",
       "area": "primality",
       "family_id": "family-primality",
-      "dependency_depth": 6,
+      "dependency_depth": 7,
       "gated": true
     },
     {
@@ -6255,7 +6260,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 7,
+      "dependency_depth": 8,
       "gated": true
     },
     {
@@ -6275,7 +6280,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -6295,7 +6300,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 8,
+      "dependency_depth": 9,
       "gated": true
     },
     {
@@ -6315,7 +6320,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 9,
+      "dependency_depth": 10,
       "gated": true
     },
     {
@@ -6492,7 +6497,7 @@
       "files": [
         "Ecdlp/Proved/P256CardinalityExact.lean"
       ],
-      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero`, ported table below, transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Prior art: pyca/verified-garbage (`38c744308fcd`) proves `#E = n` for P-256/P-384/P-521 for its own specification curve type (`VG.Proof.P256.primeOrder`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently. Not pure-kernel: inherits `Lean.ofReduceBool` (`native_decide`) through `n•G = 0`, the base-point and curve facts in `P256Curve.lean`/`P256GeneratorOrder.lean`, and the Lucas-test certificate leaves for `p` and `n`; the no-root certificate layer itself is pure-kernel)",
+      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero`, ported table below, transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Prior art: pyca/verified-garbage (`38c744308fcd`) proves `#E = n` for P-256/P-384/P-521 for its own specification curve type (`VG.Proof.P256.primeOrder`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently. Not pure-kernel: `p256_card_point_eq_n` inherits `Lean.ofReduceBool` (`native_decide`) through `p256_generator_addOrderOf` (`n•G = 0` and the base point's equation and nonsingularity) and through `P256_Δ_ne_zero` (the `IsElliptic` instance), in `P256GeneratorOrder.lean`/`P256Curve.lean`; the no-root certificate layer, the Pratt certificates for `p` and `n`, and the inputs `p256_no_two_torsion_cubic` and `p256_two_ne_zero` are pure-kernel)",
       "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
       "status": "proved",
       "area": "primality",
@@ -6512,12 +6517,12 @@
       "files": [
         "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean"
       ],
-      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`, ported table below) instead of the `native_decide` cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Still inherits `native_decide` trust through `secp256k1_generator_addOrderOf` and the Lucas-test certificate leaves for `p` and `n`)",
-      "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
+      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`, ported table below) instead of the `j = 0`-specific cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Kernel-only: the no-root certificate, `secp256k1_generator_addOrderOf` (`n•G = 0`) and the Pratt certificates for `p` and `n` are all checked by `decide +kernel`; standard axioms only)",
+      "method": "Mathlib + kernel (`decide +kernel` certificate; inherited `decide +kernel` leaves)",
       "status": "proved",
-      "area": "curve-torsion",
-      "family_id": "family-curve-torsion",
-      "dependency_depth": 10,
+      "area": "primality",
+      "family_id": "family-primality",
+      "dependency_depth": 11,
       "gated": true
     },
     {
@@ -6829,7 +6834,7 @@
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     },
     {
@@ -6849,7 +6854,7 @@
       "status": "proved",
       "area": "other",
       "family_id": "family-other",
-      "dependency_depth": 4,
+      "dependency_depth": 5,
       "gated": true
     }
   ],
@@ -9926,7 +9931,7 @@
       "generator_id": "ecdlp-hypothesis-generation-v0",
       "source_hashes": {
         "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-        "typed_evidence_state_sha256": "d7341b6413e319a14ef7cddb95ac4ac0ba7ff673dbe8075dd9c006e6fab067a1",
+        "typed_evidence_state_sha256": "25fa132e986479681bf07d0c3e0382ea8418954bc4e53f33344140ab5a9ab621",
         "research_claim_state_sha256": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
         "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
         "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
@@ -9965,7 +9970,7 @@
           "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
           "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
           "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-          "evidence_files_sha256": "25369ae6024fa107c9eeb211eca273508db48a2ced8b34176a38143243672616",
+          "evidence_files_sha256": "d3991745fbf11b42ba188a58aa9eb96618467bc03be74b6acd5a075ecc0dde32",
           "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
         },
         "authorization_boundary": "Typed cells and desk decisions authorize nothing. Only an open cell may seed an untrusted proposal, and every later experiment and promotion gate remains separate.",
@@ -11094,24 +11099,24 @@
       "exact_target_execution": false,
       "stream_digest_version": "rfc6962-binary-leaf-v2",
       "coverage_merkle_root_sha256": "dff1e8cb52594158fc94556cbef3025be647fab310132c34ee58aed3b8399207",
-      "instance_root_sha256": "a901e59d9a4a564588235a7c4c95b376a53235f46e406734b35f53869ce9e14d",
+      "instance_root_sha256": "a001d266d0921a50b3816e86cc36d80d8b44f560228381c8ffd24bbea8c3fad4",
       "challenge_indices": [
-        2603,
-        11674,
-        25666,
-        61894,
-        104508,
-        167432,
-        220783,
-        382465,
-        393473,
-        504560,
-        512015,
-        685328,
-        803216,
-        843922,
-        960348,
-        978436
+        120543,
+        148881,
+        168313,
+        182377,
+        231880,
+        277595,
+        297563,
+        667667,
+        705918,
+        755762,
+        852769,
+        871079,
+        890763,
+        898493,
+        912705,
+        995638
       ]
     },
     "coverage_boundary": "Coverage is complete only for this frozen finite Cartesian projection. It is not coverage of all ECDLP ideas or literature.",
@@ -11697,7 +11702,7 @@
       "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
       "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
       "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-      "evidence_files_sha256": "25369ae6024fa107c9eeb211eca273508db48a2ced8b34176a38143243672616",
+      "evidence_files_sha256": "d3991745fbf11b42ba188a58aa9eb96618467bc03be74b6acd5a075ecc0dde32",
       "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
     },
     "trust_boundary": {
@@ -12227,6 +12232,11 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.CurveCardinalityExact",
+      "to": "Ecdlp.Proved.KernelPowMod",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.CurveFullGroup",
       "to": "Ecdlp.Proved.CurveCardinalityExact",
       "type": "imports"
@@ -12727,6 +12737,11 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.GeneratorOrder",
+      "to": "Ecdlp.Proved.KernelScalarMul",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.GlvAddFormula",
       "to": "Ecdlp.Proved.Secp256k1Curve",
       "type": "imports"
@@ -13022,6 +13037,16 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.KernelScalarMul",
+      "to": "Ecdlp.Proved.Secp256k1Curve",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.KernelScalarMul",
+      "to": "Ecdlp.Proved.KernelPowMod",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.MillerDivisionPolynomialBridge",
       "to": "Ecdlp.Proved.WeilDivisorClass",
       "type": "imports"
@@ -13162,8 +13187,18 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.P256PrimeN",
+      "to": "Ecdlp.Proved.KernelPowMod",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.P256PrimeP",
       "to": "Ecdlp.Proved.P256Curve",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.P256PrimeP",
+      "to": "Ecdlp.Proved.KernelPowMod",
       "type": "imports"
     },
     {
@@ -13467,6 +13502,11 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.Secp256k1Curve",
+      "to": "Ecdlp.Proved.Secp256k1KernelFacts",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.Secp256k1GenericSecurity",
       "to": "Ecdlp.Proved.GenericGroupBound",
       "type": "imports"
@@ -13477,8 +13517,18 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.Secp256k1KernelFacts",
+      "to": "Ecdlp.Secp256k1Verified",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.Secp256k1Order",
       "to": "Ecdlp.Secp256k1Verified",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.Secp256k1Order",
+      "to": "Ecdlp.Proved.Secp256k1KernelFacts",
       "type": "imports"
     },
     {
@@ -13507,8 +13557,18 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.Secp256k1PrimeN",
+      "to": "Ecdlp.Proved.KernelPowMod",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.Secp256k1PrimeP",
       "to": "Ecdlp.Secp256k1Verified",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.Secp256k1PrimeP",
+      "to": "Ecdlp.Proved.KernelPowMod",
       "type": "imports"
     },
     {
@@ -14803,6 +14863,21 @@
     },
     {
       "from": "Ecdlp",
+      "to": "Ecdlp.Proved.KernelPowMod",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.KernelScalarMul",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.Secp256k1KernelFacts",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
       "to": "Ecdlp.Proved.PrimeOrderCardinality",
       "type": "imports"
     },
@@ -15803,7 +15878,7 @@
     },
     {
       "from": "thm-165",
-      "to": "family-curve-torsion",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
@@ -16538,7 +16613,7 @@
     },
     {
       "from": "thm-312",
-      "to": "family-curve-torsion",
+      "to": "family-primality",
       "type": "member_of"
     },
     {

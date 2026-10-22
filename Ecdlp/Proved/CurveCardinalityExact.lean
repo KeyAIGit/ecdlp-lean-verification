@@ -3,6 +3,7 @@ import Ecdlp.Proved.CurveCardinality
 import Ecdlp.Proved.TwoTorsionPoint
 import Ecdlp.Proved.TorsionPointCount
 import Ecdlp.Proved.Secp256k1PrimeP
+import Ecdlp.Proved.KernelPowMod
 
 /-!
 # The exact secp256k1 curve cardinality: `#E(𝔽_p) = n`
@@ -21,21 +22,22 @@ structure of `E : Y² = X³ + 7` over `𝔽_p` with `p ≡ 1 (mod 3)`.
    fiber counter `secp256k1_torsion_ncard_le` but over ALL `x` (image bounded by
    `Fintype.card (ZMod p) = p`); the identity `O` is added via `univ = insert 0 {P | P ≠ 0}`
    and the unconditional `Set.ncard_insert_le`.
-3. **`#E ∈ {n, 2n}`** — combine (1)+(2) with the `native_decide` literal fact
-   `2p+1 < 3n`: a positive multiple `n·k` of `n` that is `≤ 2p+1 < 3n` forces
+3. **`#E ∈ {n, 2n}`** — combine (1)+(2) with the kernel-checked literal fact
+   `2p+1 < 3n` (`decide +kernel`): a positive multiple `n·k` of `n` that is `≤ 2p+1 < 3n` forces
    `k ∈ {1, 2}` (an explicit `omega` split).
 4. **No nonzero 2-torsion** — if `2 • P = 0` for `P = (x, y)` then `y = 0`
    (`secp256k1_two_nsmul_eq_zero_iff`), so `x³ = -7`; but `-7` is not a cube in `𝔽_p`
-   (`(-7)^((p-1)/3) ≠ 1` by `native_decide`, and `(x³)^((p-1)/3) = x^(p-1) = 1` by
+   (`(-7)^((p-1)/3) ≠ 1`, a kernel-evaluated 256-bit power, and `(x³)^((p-1)/3) = x^(p-1) = 1` by
    Fermat, using `3 ∣ p-1`), a contradiction. Hence `E[2] = {O}`.
 5. **Exclude `2n`** — `2n` is even, so `2 ∣ #E`; additive Cauchy
    (`exists_prime_addOrderOf_dvd_card`) then yields a point `Q` of additive order exactly
    `2`; via `Eq.dvd` and the repo-confirmed `addOrderOf_dvd_iff_nsmul_eq_zero` this gives
    a nonzero point with `2 • Q = 0` — impossible by (4). Therefore `#E = n`.
 
-No new axioms; `native_decide` (which already carries `Lean.ofReduceBool` in this repo,
-as in `Secp256k1PrimeP.lean`) is used only for closed Nat-literal / 256-bit modular-
-exponentiation facts of the same size class as the primality witnesses.
+No new axioms and no compiler trust: the closed Nat-literal facts are checked by the
+Lean kernel (`decide +kernel`), and the 256-bit modular exponentiation is evaluated by the
+kernel on `Nat` (`Ecdlp.Kernel.powMod`, `KernelPowMod.lean`) and transferred to `ZMod p`
+— the same method as the witness leaves of the primality certificates.
 -/
 
 namespace Ecdlp.Curve
@@ -43,11 +45,16 @@ namespace Ecdlp.Curve
 open Polynomial WeierstrassCurve.Affine
 
 /-- **`−7` is not a cube in `𝔽_p`** (the Euler cubic-residue witness `(−7)^((p−1)/3) ≠ 1`,
-`p ≡ 1 mod 3`). Stated *outside* the `[Fact (Nat.Prime Secp256k1.p)]` section so the goal is a
-closed term over the global instance — `native_decide` then discharges the 256-bit modular
-exponentiation exactly as the primality witnesses in `Secp256k1PrimeP.lean` do. -/
+`p ≡ 1 mod 3`). Kernel-only: `-7` is rewritten as the cast of `p - 7`, the 256-bit power is
+evaluated by the kernel on `Nat` (`Ecdlp.Kernel.powMod`, `decide +kernel`), and the result is
+transferred to `ZMod p` (`Ecdlp.Kernel.zmod_pow_natCast`), exactly as the witness leaves of
+the primality certificate in `Secp256k1PrimeP.lean`. -/
 theorem secp256k1_neg7_pow_ne_one :
-    (-7 : ZMod Secp256k1.p) ^ ((Secp256k1.p - 1) / 3) ≠ 1 := by native_decide
+    (-7 : ZMod Secp256k1.p) ^ ((Secp256k1.p - 1) / 3) ≠ 1 := by
+  have h7 : (-7 : ZMod Secp256k1.p) = ((Secp256k1.p - 7 : ℕ) : ZMod Secp256k1.p) := by
+    rw [Nat.cast_sub (by decide +kernel), ZMod.natCast_self]; simp
+  rw [h7, Ecdlp.Kernel.zmod_pow_natCast _ (by decide +kernel) 256 _ _ (by decide +kernel)]
+  exact Ecdlp.Kernel.natCast_ne_one_of_mod _ _ (by decide +kernel)
 
 variable [Fact (Nat.Prime Secp256k1.p)]
 
@@ -146,20 +153,20 @@ theorem secp256k1_no_nonzero_two_torsion (P : secp256k1.toAffine.Point)
     -- `7 ≠ 0` in `𝔽_p`, hence `x ≠ 0`.
     have h7ne : (7 : ZMod Secp256k1.p) ≠ 0 := by
       have h7 : ((7 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-        rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+        rw [Ne, ZMod.natCast_eq_zero_iff]; decide +kernel
       simpa using h7
     have hxne : x ≠ 0 := by
       intro hx0
       rw [hx0] at hx3
       exact h7ne (by linear_combination hx3)
     -- Exponent identity `3 * ((p-1)/3) = p - 1` from `3 ∣ p-1`.
-    have h3dvd : 3 ∣ Secp256k1.p - 1 := by native_decide
+    have h3dvd : 3 ∣ Secp256k1.p - 1 := by decide +kernel
     have hexp : 3 * ((Secp256k1.p - 1) / 3) = Secp256k1.p - 1 := Nat.mul_div_cancel' h3dvd
     -- Fermat: `(-7)^((p-1)/3) = (x³)^((p-1)/3) = x^(p-1) = 1`.
     have key : ((-7 : ZMod Secp256k1.p)) ^ ((Secp256k1.p - 1) / 3) = 1 := by
       rw [← hx3, ← pow_mul, hexp]
       exact ZMod.pow_card_sub_one_eq_one hxne
-    -- But `-7` is a non-cube: `(-7)^((p-1)/3) ≠ 1` (proved above, closed-term native_decide).
+    -- But `-7` is a non-cube: `(-7)^((p-1)/3) ≠ 1` (proved above, kernel-evaluated).
     exact secp256k1_neg7_pow_ne_one key
 
 /-! ### Steps 1 + 3 + 5: assemble `#E = n` -/
@@ -184,7 +191,7 @@ theorem secp256k1_card_point_eq_n :
     rcases Nat.eq_zero_or_pos k with h0 | h0
     · exfalso; rw [h0, Nat.mul_zero] at hk; omega
     · exact h0
-  have hbound : 2 * Secp256k1.p + 1 < 3 * Secp256k1.n := by native_decide
+  have hbound : 2 * Secp256k1.p + 1 < 3 * Secp256k1.n := by decide +kernel
   have hklt : k < 3 := by
     by_contra hge
     push_neg at hge

@@ -29,7 +29,8 @@ With those in place, the protocol theorems below are *not* re-proved; they are t
 theorems of `Ecdlp.Schnorr` applied to `G = ↥⟨G⟩`. Their content is therefore: **the
 deployed secp256k1 signature/agreement/multisig protocols are correct on the real curve
 group, contingent only on the kernel-checked facts `ord(G) = n` and the abstract algebra.**
-No new axioms; `secp256k1_grp_nsmul_eq_zero` inherits `Lean.ofReduceBool` from the keystone.
+No new axioms; the keystone behind `secp256k1_grp_nsmul_eq_zero` is kernel-checked (no
+`Lean.ofReduceBool`).
 -/
 
 open WeierstrassCurve.Affine

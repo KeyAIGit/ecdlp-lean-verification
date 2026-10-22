@@ -37,7 +37,7 @@ theorem secp256k1_two_nsmul_eq_zero_iff
     (2 : ℕ) • (Point.some x y h) = 0 ↔ y = 0 := by
   have h2ne : (2 : ZMod Secp256k1.p) ≠ 0 := by
     have h2 : ((2 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-      rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+      rw [Ne, ZMod.natCast_eq_zero_iff]; decide +kernel
     simpa using h2
   have hnegY : secp256k1.toAffine.negY x y = -y := by
     simp [WeierstrassCurve.Affine.negY, secp256k1]

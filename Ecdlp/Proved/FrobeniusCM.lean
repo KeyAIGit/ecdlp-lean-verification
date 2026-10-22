@@ -40,8 +40,8 @@ nor that `a + b·ω` literally equals `π` as an element of `End(E)`: the ellipt
 curve CM theory needed for that (endomorphism rings, complex multiplication over
 finite fields) is a Mathlib foundation gap at v4.31. What is verified here is the
 integer number theory that any such `π` must satisfy — the norm, the trace, and
-the discriminant identity — in the same trust class (`native_decide`,
-`Lean.ofReduceBool`) as the repository's primality and order witnesses.
+the discriminant identity — compiler-trusted through `native_decide`
+(`Lean.ofReduceBool`).
 -/
 
 namespace Ecdlp.Curve

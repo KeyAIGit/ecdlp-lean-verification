@@ -77,7 +77,7 @@ theorem secp256k1_glvPoint_orbit_three_distinct
         + (Secp256k1.beta : ZMod Secp256k1.p) + 1 = 0 := by
       have h0 : ((Secp256k1.beta ^ 2 + Secp256k1.beta + 1 : ℕ) : ZMod Secp256k1.p) = 0 := by
         rw [ZMod.natCast_eq_zero_iff]
-        exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue
+        exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue_kernel
       push_cast at h0; linear_combination h0
     intro hb; rw [hb] at hβeig; norm_num at hβeig
   have hβx0 : (Secp256k1.beta : ZMod Secp256k1.p) * x ≠ 0 := mul_ne_zero hβ0 hx0

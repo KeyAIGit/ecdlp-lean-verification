@@ -24,24 +24,43 @@ This review leaves both source files byte-for-byte unchanged. Their headers and
 existing modification/provenance notices remain authoritative; this inventory
 does not certify an exhaustive comparison with the upstream PR.
 
-## Cubic no-root certificate: Apache-2.0 (upstream: Apache-2.0 OR BSD-3-Clause)
+## pyca/verified-garbage: Apache-2.0 (upstream: Apache-2.0 OR BSD-3-Clause)
+
+Two files reuse or adapt code from pyca/verified-garbage, both at commit
+`38c744308fcd4d10fec525d975f6164fe9f8d6fe` (upstream: https://github.com/pyca/verified-garbage).
+The upstream `LICENSE` makes the software available under *either* Apache-2.0
+(`LICENSE.APACHE`) or BSD-3-Clause (`LICENSE.BSD`, "Copyright (c) Individual
+contributors. All rights reserved."). This repository uses the code under Apache-2.0.
+Neither upstream source file carries a per-file copyright header.
+License copy: [LICENSES/Apache-2.0.txt](LICENSES/Apache-2.0.txt).
+
+### Kernel modular exponentiation (`KernelPowMod.lean`)
+
+File:
+- `Ecdlp/Proved/KernelPowMod.lean` (the declarations `powMod`, `powMod_zero`,
+  `powMod_succ` and `powMod_eq` only; the `ZMod` bridge lemmas in the same file are
+  project-authored)
+
+Source: `lean/VerifiedGarbage/Proof/Framework/Pratt.lean`
+(https://github.com/pyca/verified-garbage/blob/38c744308fcd4d10fec525d975f6164fe9f8d6fe/lean/VerifiedGarbage/Proof/Framework/Pratt.lean).
+Modifications: the namespace was changed from `VG.Proof.Pratt` to `Ecdlp.Kernel` and short
+attribution/docstring text was added; the definitions and proofs are otherwise unchanged.
+Use: the witness-power leaves of the generated Pratt certificates for the secp256k1 and
+P-256 primes `p` and `n` (`scripts/pratt_certificate.py`), and field inversion in
+`Ecdlp/Proved/KernelScalarMul.lean`. The source, commit and license files for this entry
+were read from GitHub.
+
+### Cubic no-root certificate (`CubicNoRootCertificate.lean`)
 
 File:
 - `Ecdlp/Proved/CubicNoRootCertificate.lean` (the definitions `Tri`, `mulT`, `powT`,
   `evalT` and the lemmas `evalT_mulT`, `evalT_powT`, `noRoot_of_cert`, and
   `cubic_ne_zero_of_cert` adapted from `noTwoTorsion_of_cert`)
 
-Adapted from pyca/verified-garbage, `lean/VerifiedGarbage/Proof/Weierstrass/Cubic.lean`
-at commit `38c744308fcd`. Upstream: https://github.com/pyca/verified-garbage . The
-upstream `LICENSE` makes the software available under *either* Apache-2.0
-(`LICENSE.APACHE`) or BSD-3-Clause (`LICENSE.BSD`, "Copyright (c) Individual
-contributors. All rights reserved."). This repository uses the code under Apache-2.0.
-License copy: [LICENSES/Apache-2.0.txt](LICENSES/Apache-2.0.txt).
-
+Source: `lean/VerifiedGarbage/Proof/Weierstrass/Cubic.lean`.
 Changes: namespace, docstrings and formatting; two rewrite steps in `evalT_powT`; and
 the short-Weierstrass adapter restated for natural-number coefficients over `ZMod p`.
-The module docstring records the provenance. The upstream source file carries no
-per-file copyright header. The curve-generic counting argument in
+The module docstring records the provenance. The curve-generic counting argument in
 `Ecdlp/Proved/PrimeOrderCardinality.lean` is the same argument as upstream
 `VG.Proof.Weierstrass.primeOrder_of`, but its Lean code was written separately for
 Mathlib's `WeierstrassCurve` (it follows this repository's secp256k1 proof).
@@ -58,8 +77,11 @@ has order `n`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's
 upstream's). `VERIFIED.md` therefore lists the nine per-curve instances in its
 "Ported / upstream-derived" table, outside the headline count.
 
-This file is not registered in `repo/OSS_READINESS.json`: that gate registers only
-files whose source carries a `Copyright` header line, and this file has none.
+### Registration
+
+Neither file is registered in `repo/OSS_READINESS.json`: that gate registers only files
+whose source carries a `Copyright` header line, and neither file (nor its upstream source)
+has one. No legal review is recorded for either entry.
 
 ## Fonts: OFL-1.1
 

@@ -186,6 +186,9 @@ import Ecdlp.Proved.FourTorsionBridgeBar
 import Ecdlp.Proved.FourTorsionStructure
 import Ecdlp.Proved.FourTorsionCount
 import Ecdlp.Proved.CompressedDivisionPoly
+import Ecdlp.Proved.KernelPowMod
+import Ecdlp.Proved.KernelScalarMul
+import Ecdlp.Proved.Secp256k1KernelFacts
 import Ecdlp.Proved.PrimeOrderCardinality
 import Ecdlp.Proved.CubicNoRootCertificate
 import Ecdlp.Proved.P256CardinalityExact

@@ -22,7 +22,7 @@ open Polynomial
 theorem secp256k1_Ψ₂Sq_natDegree : secp256k1.Ψ₂Sq.natDegree = 3 := by
   have h4 : (4 : ZMod Secp256k1.p) ≠ 0 := by
     have h : ((4 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-      rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+      rw [Ne, ZMod.natCast_eq_zero_iff]; decide +kernel
     simpa using h
   rw [secp256k1_Ψ₂Sq, natDegree_add_eq_left_of_natDegree_lt]
   · rw [natDegree_C_mul h4, natDegree_X_pow]
@@ -50,7 +50,7 @@ theorem secp256k1_Ψ₂Sq_ne_zero : secp256k1.Ψ₂Sq ≠ 0 := by
 theorem secp256k1_Ψ₃_natDegree : secp256k1.Ψ₃.natDegree = 4 := by
   have h3 : (3 : ZMod Secp256k1.p) ≠ 0 := by
     have h : ((3 : ℕ) : ZMod Secp256k1.p) ≠ 0 := by
-      rw [Ne, ZMod.natCast_eq_zero_iff]; native_decide
+      rw [Ne, ZMod.natCast_eq_zero_iff]; decide +kernel
     simpa using h
   rw [secp256k1_Ψ₃]
   compute_degree! <;> first | exact h3 | norm_num

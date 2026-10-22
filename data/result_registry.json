@@ -7,8 +7,8 @@
   "anonymous_instance_exemptions": 7,
   "unresolved_reference_count": 0,
   "coverage_percent": 100.0,
-  "declaration_count": 1442,
-  "distinct_qualified_names": 1442,
+  "declaration_count": 1478,
+  "distinct_qualified_names": 1478,
   "verified_md_citations": 722,
   "unresolved_references": [],
   "resolution_exemptions": [
@@ -19,7 +19,7 @@
       "namespace": "Ecdlp.Curve",
       "target": "secp256k1.IsElliptic",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 38
+      "line": 46
     },
     {
       "ledger_id": "ledger-042",
@@ -28,7 +28,7 @@
       "namespace": "Ecdlp.Curve",
       "target": "secp256k1.IsElliptic",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 38
+      "line": 46
     },
     {
       "ledger_id": "ledger-156",
@@ -46,7 +46,7 @@
       "namespace": "Ecdlp.P256.Primality",
       "target": "Fact (Nat.Prime Ecdlp.P256.p)",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 183
+      "line": 184
     },
     {
       "ledger_id": "ledger-160",
@@ -55,7 +55,7 @@
       "namespace": "Ecdlp.P256.Primality",
       "target": "Fact (Nat.Prime Ecdlp.P256.n)",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 192
+      "line": 193
     },
     {
       "ledger_id": "ledger-167",
@@ -73,7 +73,7 @@
       "namespace": "Ecdlp.Curve",
       "target": "Module (ZMod Secp256k1.n) ↥secp256k1Grp",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 63
+      "line": 64
     }
   ],
   "note": "Ledger rows are canonical accounting units; grouped cells resolve to declaration-level evidence here.",
@@ -1609,7 +1609,7 @@
       "declared_files": [
         "Ecdlp/Proved/Secp256k1Curve.lean"
       ],
-      "method": "native_decide",
+      "method": "Mathlib (`ring`) + kernel (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -1618,7 +1618,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 27
+          "line": 29
         }
       ]
     },
@@ -1649,7 +1649,7 @@
       "declared_files": [
         "Ecdlp/Proved/Secp256k1Curve.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -1659,7 +1659,7 @@
           "namespace": "Ecdlp.Curve",
           "target": "secp256k1.IsElliptic",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 38
+          "line": 46
         },
         {
           "ledger_id": "ledger-042",
@@ -1668,7 +1668,7 @@
           "namespace": "Ecdlp.Curve",
           "target": "secp256k1.IsElliptic",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 38
+          "line": 46
         }
       ]
     },
@@ -1688,7 +1688,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 30
+          "line": 38
         }
       ]
     },
@@ -1708,7 +1708,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 47
+          "line": 55
         }
       ]
     },
@@ -1908,7 +1908,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 18
+          "line": 19
         }
       ]
     },
@@ -1928,7 +1928,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 32
+          "line": 33
         }
       ]
     },
@@ -1948,7 +1948,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Order.lean",
-          "line": 48
+          "line": 49
         }
       ]
     },
@@ -1979,7 +1979,7 @@
       "declared_files": [
         "Ecdlp/Proved/Secp256k1Curve.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -1988,7 +1988,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 54
+          "line": 62
         }
       ]
     },
@@ -1999,7 +1999,7 @@
       "declared_files": [
         "Ecdlp/Proved/Secp256k1Curve.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -2008,7 +2008,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-          "line": 70
+          "line": 78
         }
       ]
     },
@@ -2019,7 +2019,7 @@
       "declared_files": [
         "Ecdlp/Proved/GeneratorOrder.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)",
       "status": "proved",
       "references": [
         {
@@ -2028,7 +2028,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GeneratorOrder.lean",
-          "line": 48
+          "line": 65
         }
       ]
     },
@@ -2039,7 +2039,7 @@
       "declared_files": [
         "Ecdlp/Proved/GeneratorOrder.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)",
       "status": "proved",
       "references": [
         {
@@ -2048,7 +2048,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GeneratorOrder.lean",
-          "line": 56
+          "line": 74
         }
       ]
     },
@@ -2079,7 +2079,7 @@
       "declared_files": [
         "Ecdlp/Proved/GeneratorOrder.lean"
       ],
-      "method": "native_decide",
+      "method": "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)",
       "status": "proved",
       "references": [
         {
@@ -2088,7 +2088,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GeneratorOrder.lean",
-          "line": 39
+          "line": 53
         }
       ]
     },
@@ -2108,7 +2108,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GeneratorOrder.lean",
-          "line": 43
+          "line": 60
         }
       ]
     },
@@ -2119,7 +2119,7 @@
       "declared_files": [
         "Ecdlp/Proved/Secp256k1PrimeP.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)",
       "status": "proved",
       "references": [
         {
@@ -2128,7 +2128,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-          "line": 193
+          "line": 194
         }
       ]
     },
@@ -2139,7 +2139,7 @@
       "declared_files": [
         "Ecdlp/Proved/Secp256k1PrimeN.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)",
       "status": "proved",
       "references": [
         {
@@ -2148,7 +2148,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-          "line": 184
+          "line": 185
         }
       ]
     },
@@ -2623,7 +2623,7 @@
       "declared_files": [
         "Ecdlp/Proved/DivisionPolynomialDegree.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -2683,7 +2683,7 @@
       "declared_files": [
         "Ecdlp/Proved/DivisionPolynomialDegree.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -3223,7 +3223,7 @@
       "declared_files": [
         "Ecdlp/Proved/GlvEndomorphism.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel `β³=1` leaf (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -3243,7 +3243,7 @@
       "declared_files": [
         "Ecdlp/Proved/GlvEndomorphism.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel `β³=1` leaf (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -3418,7 +3418,7 @@
     },
     {
       "id": "ledger-127",
-      "claim": "GLV covariance law of the division polynomials (`ψ_m(βx) = β^((m²−1)/2)·ψ_m(x)`: for `j=0` each `ψ_m` sits on one exponent-residue mod 3, so `β` acts by a scalar — `Ψ₃(βx)=β·Ψ₃(x)` (`secp256k1_Ψ₃_eval_glv`), and `preΨ' 5`, `preΨ' 7`, `Ψ₂Sq` are `β`-invariant (`secp256k1_{preΨ₅,preΨ₇,Ψ₂Sq}_eval_glv_invariant`), from the explicit forms + `β³=1`. Explains the failed experiment #100: `Res(preΨ' 5(X), preΨ' 5(βX)) = Res(preΨ' 5, preΨ' 5) = 0` identically because `preΨ' 5` is `β`-invariant — the split/inert resultant test was ill-posed, not a signal. The residual is closed by a kernel-only `linear_combination`, but the underlying cube fact `β³=1` lifts `Secp256k1.beta_field_eigenvalue` (`native_decide`), so these results inherit `Lean.ofReduceBool` — compiler-trusted, not kernel-only)",
+      "claim": "GLV covariance law of the division polynomials (`ψ_m(βx) = β^((m²−1)/2)·ψ_m(x)`: for `j=0` each `ψ_m` sits on one exponent-residue mod 3, so `β` acts by a scalar — `Ψ₃(βx)=β·Ψ₃(x)` (`secp256k1_Ψ₃_eval_glv`), and `preΨ' 5`, `preΨ' 7`, `Ψ₂Sq` are `β`-invariant (`secp256k1_{preΨ₅,preΨ₇,Ψ₂Sq}_eval_glv_invariant`), from the explicit forms + `β³=1`. Explains the failed experiment #100: `Res(preΨ' 5(X), preΨ' 5(βX)) = Res(preΨ' 5, preΨ' 5) = 0` identically because `preΨ' 5` is `β`-invariant — the split/inert resultant test was ill-posed, not a signal. The residual is closed by a kernel-only `linear_combination`, and the underlying cube fact `β³=1` lifts `Secp256k1.beta_field_eigenvalue_kernel`, the kernel-checked twin (`decide +kernel`) of `Secp256k1.beta_field_eigenvalue`; standard axioms only)",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_Ψ₃_eval_glv`, `secp256k1_preΨ₅_eval_glv_invariant`, `secp256k1_preΨ₇_eval_glv_invariant`, `secp256k1_Ψ₂Sq_eval_glv_invariant`",
       "declared_files": [
         "Ecdlp/Proved/GlvDivPoly.lean"
@@ -3432,7 +3432,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 71
+          "line": 72
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_preΨ₅_eval_glv_invariant",
@@ -3440,7 +3440,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 92
+          "line": 93
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_preΨ₇_eval_glv_invariant",
@@ -3448,7 +3448,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 108
+          "line": 109
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_Ψ₂Sq_eval_glv_invariant",
@@ -3456,13 +3456,13 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvDivPoly.lean",
-          "line": 81
+          "line": 82
         }
       ]
     },
     {
       "id": "ledger-128",
-      "claim": "GLV automorphism orbit structure (orbits of `glvPoint` have size ≤ 3; away from the `x=0` fixed locus exactly 3: `secp256k1_glvPoint_orbit_closed` — `{P, φP, φ²P}` is `φ`-closed (cycling via the existing `glvPoint_cube_eq_id`, `φ³=id`); `secp256k1_glvPoint_orbit_three_distinct` — the three are pairwise distinct for `x≠0`. The group root of the measured `~3×` GLV factor-base constant (P0–P4): orbit size ≤3 ⇒ at most a 3× compression, a constant, never an exponent change — not an ECDLP advantage. Compiler-trusted: the orbit facts lift `Secp256k1.beta_field_eigenvalue` (`native_decide`), so they inherit `Lean.ofReduceBool`)",
+      "claim": "GLV automorphism orbit structure (orbits of `glvPoint` have size ≤ 3; away from the `x=0` fixed locus exactly 3: `secp256k1_glvPoint_orbit_closed` — `{P, φP, φ²P}` is `φ`-closed (cycling via the existing `glvPoint_cube_eq_id`, `φ³=id`); `secp256k1_glvPoint_orbit_three_distinct` — the three are pairwise distinct for `x≠0`. The group root of the measured `~3×` GLV factor-base constant (P0–P4): orbit size ≤3 ⇒ at most a 3× compression, a constant, never an exponent change — not an ECDLP advantage. Trust: `secp256k1_glvPoint_orbit_closed` rests on the standard axioms only; `secp256k1_glvPoint_orbit_three_distinct` is compiler-trusted through `secp256k1_glvPoint_fixed_iff`, whose residue fact `secp256k1_beta_ne_one` (`β ≠ 1`) is `native_decide`, so it inherits `Lean.ofReduceBool`)",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_glvPoint_orbit_closed`, `secp256k1_glvPoint_orbit_three_distinct`",
       "declared_files": [
         "Ecdlp/Proved/GlvOrbit.lean"
@@ -3675,7 +3675,7 @@
       "declared_files": [
         "Ecdlp/Proved/TwoTorsionPoint.lean"
       ],
-      "method": "Mathlib + native_decide",
+      "method": "Mathlib + kernel (`decide +kernel`)",
       "status": "proved",
       "references": [
         {
@@ -4152,7 +4152,7 @@
       "declared_files": [
         "Ecdlp/Proved/P256PrimeP.lean"
       ],
-      "method": "Mathlib (`lucas_primality`) + native_decide",
+      "method": "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)",
       "status": "proved",
       "references": [
         {
@@ -4161,7 +4161,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256PrimeP.lean",
-          "line": 181
+          "line": 182
         },
         {
           "ledger_id": "ledger-159",
@@ -4170,7 +4170,7 @@
           "namespace": "Ecdlp.P256.Primality",
           "target": "Fact (Nat.Prime Ecdlp.P256.p)",
           "file": "Ecdlp/Proved/P256PrimeP.lean",
-          "line": 183
+          "line": 184
         }
       ]
     },
@@ -4181,7 +4181,7 @@
       "declared_files": [
         "Ecdlp/Proved/P256PrimeN.lean"
       ],
-      "method": "Mathlib (`lucas_primality`) + native_decide",
+      "method": "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)",
       "status": "proved",
       "references": [
         {
@@ -4190,7 +4190,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256PrimeN.lean",
-          "line": 190
+          "line": 191
         },
         {
           "ledger_id": "ledger-160",
@@ -4199,7 +4199,7 @@
           "namespace": "Ecdlp.P256.Primality",
           "target": "Fact (Nat.Prime Ecdlp.P256.n)",
           "file": "Ecdlp/Proved/P256PrimeN.lean",
-          "line": 192
+          "line": 193
         }
       ]
     },
@@ -4239,7 +4239,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256TraceOfFrobenius.lean",
-          "line": 35
+          "line": 36
         }
       ]
     },
@@ -4301,7 +4301,7 @@
     },
     {
       "id": "ledger-165",
-      "claim": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about P-256's `#E` itself — all prior P-256 point-counting stayed inside `⟨G⟩`. Weak keystone: pins `#E ∈ {n, 2n, 3n, …}`. The exact count `#E = n` is proved separately as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, via the general theorem `natCard_point_eq_of_addOrderOf` and a kernel-checked no-root certificate; the secp256k1 `−7`-non-cube step is `j=0`-specific and is not used). Not pure-kernel: inherits `native_decide` compiler trust through `p256_generator_addOrderOf` (`n•G=0`) and the Lucas-test certificate leaves for `p` and `n`)",
+      "claim": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. A statement about `#E` itself, not only about `⟨G⟩`. Weak keystone: pins `#E ∈ {n, 2n, 3n, …}`. The exact count `#E = n` is proved separately as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, via the general theorem `natCard_point_eq_of_addOrderOf` and a kernel-checked no-root certificate; the secp256k1 `−7`-non-cube step is `j=0`-specific and is not used). Not pure-kernel: inherits `native_decide` compiler trust through `p256_generator_addOrderOf` (`n•G=0` and the base point's equation and nonsingularity); the Pratt certificates for `p` and `n` are kernel-checked (`decide +kernel`))",
       "theorem_cell": "`Ecdlp.P256.p256_n_dvd_card_point` (+ `p256_grp_card`)",
       "declared_files": [
         "Ecdlp/Proved/P256Cardinality.lean"
@@ -5094,7 +5094,7 @@
     },
     {
       "id": "ledger-199",
-      "claim": "N7-uniform ω-free base: joint `(x,y)` carrier rungs `n=1,2` + ω-recurrence anchors (secp256k1) (`secp256k1_one_nsmul_coords` / `secp256k1_two_nsmul_coords_ωfree`: the `n=1,2` base cases of the joint carrier — whenever `n•P=(X,Y)` is affine, `X=Φₙ(x)/ΨSqₙ(x)` and the ω-free `y`-relation `Y·(4y)·ψₙ(P)³ = ψ(n+2)ψ(n−1)² − ψ(n−2)ψ(n+1)²`; and `secp256k1_omega_recurrence_two`/`_three`: that ω-recurrence numerator equals `4y·ωₙ` at `n=2,3`, cross-checking the group-law-derived `ω₂,ω₃`. The `y`-conjunct uses only Mathlib's `ψ` — no `ω` division polynomial. Honest scope: base leaves + anchors only; the uniform induction over all `n` stays the open target `n7_uniform_secp256k1_x` (`Ecdlp/Targets/n7_uniform_carrier_induction.lean`, whose `normEDSRec'` reduction to these leaves + named residual walls is machine-checked). These four secp256k1 forms inherit `Lean.ofReduceBool` from the secp256k1 primality/coefficient facts (`native_decide`); no *new* axioms beyond the trusted base)",
+      "claim": "N7-uniform ω-free base: joint `(x,y)` carrier rungs `n=1,2` + ω-recurrence anchors (secp256k1) (`secp256k1_one_nsmul_coords` / `secp256k1_two_nsmul_coords_ωfree`: the `n=1,2` base cases of the joint carrier — whenever `n•P=(X,Y)` is affine, `X=Φₙ(x)/ΨSqₙ(x)` and the ω-free `y`-relation `Y·(4y)·ψₙ(P)³ = ψ(n+2)ψ(n−1)² − ψ(n−2)ψ(n+1)²`; and `secp256k1_omega_recurrence_two`/`_three`: that ω-recurrence numerator equals `4y·ωₙ` at `n=2,3`, cross-checking the group-law-derived `ω₂,ω₃`. The `y`-conjunct uses only Mathlib's `ψ` — no `ω` division polynomial. Honest scope: base leaves + anchors only; the uniform induction over all `n` stays the open target `n7_uniform_secp256k1_x` (`Ecdlp/Targets/n7_uniform_carrier_induction.lean`, whose `normEDSRec'` reduction to these leaves + named residual walls is machine-checked). The secp256k1 primality and coefficient facts these forms use are kernel-checked (`decide +kernel`); standard axioms only)",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_one_nsmul_coords`, `secp256k1_two_nsmul_coords_ωfree`, `secp256k1_omega_recurrence_two`, `secp256k1_omega_recurrence_three`",
       "declared_files": [
         "Ecdlp/Proved/NsmulCoordsBaseOne.lean",
@@ -6116,7 +6116,7 @@
     },
     {
       "id": "ledger-232",
-      "claim": "ECDSA signature malleability — the algebraic core of BIP-62 rule 5 / BIP-146 low-`s`; noninjectivity of the secp256k1 `x`-projection (every signature `(r,s)` has a sibling `(r,−s)` verifying the same message/key: `ecdsa_sibling_signing_equation` — the signing identity holds for `(−s,−k)`; `ecdsa_sibling_scalars` — `u/(−s) = −(u/s)` negates both verifier scalars; `secp256k1_pointX_neg` — point negation fixes the `x`-coordinate (`−(x,y)=(x,−y)`, `a₁=a₃=0`); `secp256k1_pointX_not_injective` — the concrete witnesses `G` and `−G` have equal `pointX` but are distinct because `G` is nonzero and secp256k1 has no nonzero two-torsion; `secp256k1_pointX_neg_zsmul_add` — the negated verification point has the same `pointX`. Honest scope: identity-level algebra and one representation boundary, no `Verify` predicate, no hash/DER level, no `ZMod p → ZMod n` reduction of `x`, no SGGM lower-bound instantiation, and no ECDLP speedup. Field lemmas pure-kernel; closed repository instantiations of the parameterized coordinate lemmas inherit compiler-trusted primality facts, while `secp256k1_pointX_not_injective` directly inherits `Lean.ofReduceBool` from the no-two-torsion computational certificate in `CurveCardinalityExact.lean`)",
+      "claim": "ECDSA signature malleability — the algebraic core of BIP-62 rule 5 / BIP-146 low-`s`; noninjectivity of the secp256k1 `x`-projection (every signature `(r,s)` has a sibling `(r,−s)` verifying the same message/key: `ecdsa_sibling_signing_equation` — the signing identity holds for `(−s,−k)`; `ecdsa_sibling_scalars` — `u/(−s) = −(u/s)` negates both verifier scalars; `secp256k1_pointX_neg` — point negation fixes the `x`-coordinate (`−(x,y)=(x,−y)`, `a₁=a₃=0`); `secp256k1_pointX_not_injective` — the concrete witnesses `G` and `−G` have equal `pointX` but are distinct because `G` is nonzero and secp256k1 has no nonzero two-torsion; `secp256k1_pointX_neg_zsmul_add` — the negated verification point has the same `pointX`. Honest scope: identity-level algebra and one representation boundary, no `Verify` predicate, no hash/DER level, no `ZMod p → ZMod n` reduction of `x`, no SGGM lower-bound instantiation, and no ECDLP speedup. Field lemmas pure-kernel; the primality facts used by the closed repository instantiations and the no-two-torsion certificate in `CurveCardinalityExact.lean` used by `secp256k1_pointX_not_injective` are kernel-checked (`decide +kernel`), so these results rest on the standard axioms only)",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_pointX_neg`, `secp256k1_pointX_not_injective`, `secp256k1_pointX_neg_zsmul_add`, `Ecdlp.Schnorr.ecdsa_sibling_signing_equation`, `ecdsa_sibling_scalars`",
       "declared_files": [
         "Ecdlp/Proved/EcdsaMalleability.lean"
@@ -6130,7 +6130,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-          "line": 69
+          "line": 68
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_pointX_not_injective",
@@ -6138,7 +6138,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-          "line": 80
+          "line": 79
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_pointX_neg_zsmul_add",
@@ -6146,7 +6146,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-          "line": 101
+          "line": 100
         },
         {
           "cited": "Ecdlp.Schnorr.ecdsa_sibling_signing_equation",
@@ -6154,7 +6154,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-          "line": 116
+          "line": 115
         },
         {
           "cited": "Ecdlp.Schnorr.ecdsa_sibling_scalars",
@@ -6162,7 +6162,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-          "line": 124
+          "line": 123
         }
       ]
     },
@@ -7336,7 +7336,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 49
+          "line": 50
         },
         {
           "cited": "Ecdlp.Curve.secp256k1Gₙ",
@@ -7344,7 +7344,7 @@
           "resolution": "exact",
           "kind": "def",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 68
+          "line": 69
         },
         {
           "ledger_id": "ledger-275",
@@ -7353,7 +7353,7 @@
           "namespace": "Ecdlp.Curve",
           "target": "Module (ZMod Secp256k1.n) ↥secp256k1Grp",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 63
+          "line": 64
         }
       ]
     },
@@ -7373,7 +7373,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 78
+          "line": 79
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_schnorr_verify",
@@ -7381,7 +7381,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 85
+          "line": 86
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_taproot_tweak_verify",
@@ -7389,7 +7389,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 94
+          "line": 95
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_adaptor_complete",
@@ -7397,7 +7397,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 104
+          "line": 105
         }
       ]
     },
@@ -7417,7 +7417,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 113
+          "line": 114
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_musig_key_aggregate",
@@ -7425,7 +7425,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 122
+          "line": 123
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_feldman_vss_verify",
@@ -7433,7 +7433,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 131
+          "line": 132
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_threshold_elgamal_combine",
@@ -7441,7 +7441,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 139
+          "line": 140
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_schnorr_batch_verify",
@@ -7449,7 +7449,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-          "line": 147
+          "line": 148
         }
       ]
     },
@@ -7575,7 +7575,7 @@
     },
     {
       "id": "ledger-282",
-      "claim": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about `#E` itself — all prior point-counting stayed inside `⟨G⟩`. Pins `#E ∈ {n, 2n, 3n, …}`; the strong keystone `#E = n` is now proved on top, curve-specifically without Hasse/Schoof (`CurveCardinalityExact.lean`). Compiler-trusted: inherits `Lean.ofReduceBool` from the order keystone `secp256k1_generator_addOrderOf` via `secp256k1_grp_card` — the Lagrange/finiteness step itself adds no `native_decide`)",
+      "claim": "n ∣ #E(𝔽_p)` — base-point order divides the curve cardinality (`secp256k1_n_dvd_card_point`: `Secp256k1.n ∣ Nat.card secp256k1.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. Pins `#E ∈ {n, 2n, 3n, …}`; the strong keystone `#E = n` is now proved on top, curve-specifically without Hasse/Schoof (`CurveCardinalityExact.lean`). Standard axioms only: the order keystone `secp256k1_generator_addOrderOf` behind `secp256k1_grp_card` is kernel-checked (`decide +kernel` scalar-multiplication bridge))",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_n_dvd_card_point`",
       "declared_files": [
         "Ecdlp/Proved/CurveCardinality.lean"
@@ -7595,12 +7595,12 @@
     },
     {
       "id": "ledger-283",
-      "claim": "The exact curve cardinality `#E(𝔽_p) = n` — cofactor 1, without Hasse or Schoof (`secp256k1_card_point_eq_n`: `Nat.card secp256k1.toAffine.Point = Secp256k1.n`). A curve-specific certificate that upgrades `n ∣ #E` to equality using the special structure of `E : Y² = X³ + 7` over `p ≡ 1 (mod 3)`: `#E ≤ 2p+1` (`secp256k1_card_point_le`, ≤2 `y` per `x`) and `2p+1 < 3n` force `#E ∈ {n, 2n}`; `2n` (even) is excluded because additive Cauchy would yield a nonzero 2-torsion point, but `E[2] = {O}` (`secp256k1_no_nonzero_two_torsion`: `2•P=0 ⟹ P=0`, since `y=0 ⟹ x³=−7` and `−7` is not a cube in `𝔽_p`, `(−7)^((p−1)/3)≠1`). Removes the last standing assumption behind Units 1–2 (the published order `n` as `#E`). Uses `native_decide` for the 256-bit non-cube leaf and the literal arithmetic (`Lean.ofReduceBool`); numeric facts independently re-checked in `scripts/certs/cardinality_secp256k1.py`, prints `CERT_OK`)",
+      "claim": "The exact curve cardinality `#E(𝔽_p) = n` — cofactor 1, without Hasse or Schoof (`secp256k1_card_point_eq_n`: `Nat.card secp256k1.toAffine.Point = Secp256k1.n`). A curve-specific certificate that upgrades `n ∣ #E` to equality using the special structure of `E : Y² = X³ + 7` over `p ≡ 1 (mod 3)`: `#E ≤ 2p+1` (`secp256k1_card_point_le`, ≤2 `y` per `x`) and `2p+1 < 3n` force `#E ∈ {n, 2n}`; `2n` (even) is excluded because additive Cauchy would yield a nonzero 2-torsion point, but `E[2] = {O}` (`secp256k1_no_nonzero_two_torsion`: `2•P=0 ⟹ P=0`, since `y=0 ⟹ x³=−7` and `−7` is not a cube in `𝔽_p`, `(−7)^((p−1)/3)≠1`). Removes the last standing assumption behind Units 1–2 (the published order `n` as `#E`). The 256-bit non-cube leaf is evaluated by the kernel on `Nat` (`Ecdlp.Kernel.powMod`) and the literal arithmetic by `decide +kernel`; standard axioms only; numeric facts independently re-checked in `scripts/certs/cardinality_secp256k1.py`, prints `CERT_OK`)",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_card_point_eq_n`, `secp256k1_no_nonzero_two_torsion`, `secp256k1_card_point_le`",
       "declared_files": [
         "Ecdlp/Proved/CurveCardinalityExact.lean"
       ],
-      "method": "native_decide + Mathlib (`exists_prime_addOrderOf_dvd_card`, `ZMod.pow_card_sub_one_eq_one`, `Finset.card_le_mul_card_image`) + repo bricks",
+      "method": "kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`) + Mathlib (`exists_prime_addOrderOf_dvd_card`, `ZMod.pow_card_sub_one_eq_one`, `Finset.card_le_mul_card_image`) + repo bricks",
       "status": "proved",
       "references": [
         {
@@ -7609,7 +7609,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
-          "line": 172
+          "line": 179
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_no_nonzero_two_torsion",
@@ -7617,7 +7617,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
-          "line": 136
+          "line": 143
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_card_point_le",
@@ -7625,7 +7625,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
-          "line": 59
+          "line": 66
         }
       ]
     },
@@ -7675,7 +7675,7 @@
     },
     {
       "id": "ledger-285",
-      "claim": "The full point-group structure theorem: `E(𝔽_p) ≃+ ℤ/n` (`secp256k1_pointGroupEquiv`: base-point multiplication `c ↦ c·G` is an additive-group isomorphism from the scalar ring `ZMod n` onto the entire rational-point group `E(𝔽_p)`, not merely `⟨G⟩`. Lifts the subgroup discrete-log iso `secp256k1_dlogEquiv` off `⟨G⟩` by transporting across cofactor 1 `⟨G⟩ = ⊤` (`AddEquiv.addSubgroupCongr secp256k1_grp_eq_top`) then stripping the `⊤` subtype (`AddSubgroup.topEquiv`). The complete group-theoretic classification of secp256k1's points: cyclic of order `n`, i.e. `≅ ℤ/n`. Unconditional given `#E = n`; computational inversion is the open ECDLP conjecture, the bijection is a theorem. Inherits `Lean.ofReduceBool` through the order keystone)",
+      "claim": "The full point-group structure theorem: `E(𝔽_p) ≃+ ℤ/n` (`secp256k1_pointGroupEquiv`: base-point multiplication `c ↦ c·G` is an additive-group isomorphism from the scalar ring `ZMod n` onto the entire rational-point group `E(𝔽_p)`, not merely `⟨G⟩`. Lifts the subgroup discrete-log iso `secp256k1_dlogEquiv` off `⟨G⟩` by transporting across cofactor 1 `⟨G⟩ = ⊤` (`AddEquiv.addSubgroupCongr secp256k1_grp_eq_top`) then stripping the `⊤` subtype (`AddSubgroup.topEquiv`). The complete group-theoretic classification of secp256k1's points: cyclic of order `n`, i.e. `≅ ℤ/n`. Unconditional given `#E = n`; computational inversion is the open ECDLP conjecture, the bijection is a theorem. Standard axioms only: the order keystone and `#E = n` are kernel-checked)",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_pointGroupEquiv` (+ `secp256k1_point_group_equiv_exists`)",
       "declared_files": [
         "Ecdlp/Proved/PointGroupEquiv.lean"
@@ -7689,7 +7689,7 @@
           "resolution": "exact",
           "kind": "def",
           "file": "Ecdlp/Proved/PointGroupEquiv.lean",
-          "line": 53
+          "line": 54
         },
         {
           "cited": "Ecdlp.Curve.secp256k1_point_group_equiv_exists",
@@ -7697,7 +7697,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PointGroupEquiv.lean",
-          "line": 68
+          "line": 69
         }
       ]
     },
@@ -10251,7 +10251,7 @@
     },
     {
       "id": "ledger-311",
-      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero`, ported table below, transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Prior art: pyca/verified-garbage (`38c744308fcd`) proves `#E = n` for P-256/P-384/P-521 for its own specification curve type (`VG.Proof.P256.primeOrder`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently. Not pure-kernel: inherits `Lean.ofReduceBool` (`native_decide`) through `n•G = 0`, the base-point and curve facts in `P256Curve.lean`/`P256GeneratorOrder.lean`, and the Lucas-test certificate leaves for `p` and `n`; the no-root certificate layer itself is pure-kernel)",
+      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero`, ported table below, transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Prior art: pyca/verified-garbage (`38c744308fcd`) proves `#E = n` for P-256/P-384/P-521 for its own specification curve type (`VG.Proof.P256.primeOrder`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently. Not pure-kernel: `p256_card_point_eq_n` inherits `Lean.ofReduceBool` (`native_decide`) through `p256_generator_addOrderOf` (`n•G = 0` and the base point's equation and nonsingularity) and through `P256_Δ_ne_zero` (the `IsElliptic` instance), in `P256GeneratorOrder.lean`/`P256Curve.lean`; the no-root certificate layer, the Pratt certificates for `p` and `n`, and the inputs `p256_no_two_torsion_cubic` and `p256_two_ne_zero` are pure-kernel)",
       "theorem_cell": "`Ecdlp.P256.p256_card_point_eq_n`, `p256_no_two_torsion_cubic`, `p256_two_ne_zero`",
       "declared_files": [
         "Ecdlp/Proved/P256CardinalityExact.lean"
@@ -10265,7 +10265,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-          "line": 65
+          "line": 72
         },
         {
           "cited": "Ecdlp.P256.p256_no_two_torsion_cubic",
@@ -10273,7 +10273,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-          "line": 50
+          "line": 56
         },
         {
           "cited": "Ecdlp.P256.p256_two_ne_zero",
@@ -10281,18 +10281,18 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-          "line": 42
+          "line": 48
         }
       ]
     },
     {
       "id": "ledger-312",
-      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`, ported table below) instead of the `native_decide` cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Still inherits `native_decide` trust through `secp256k1_generator_addOrderOf` and the Lucas-test certificate leaves for `p` and `n`)",
+      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`, ported table below) instead of the `j = 0`-specific cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Kernel-only: the no-root certificate, `secp256k1_generator_addOrderOf` (`n•G = 0`) and the Pratt certificates for `p` and `n` are all checked by `decide +kernel`; standard axioms only)",
       "theorem_cell": "`Ecdlp.Curve.secp256k1_card_point_eq_n_general`",
       "declared_files": [
         "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean"
       ],
-      "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
+      "method": "Mathlib + kernel (`decide +kernel` certificate; inherited `decide +kernel` leaves)",
       "status": "proved",
       "references": [
         {
@@ -10301,7 +10301,7 @@
           "resolution": "exact",
           "kind": "theorem",
           "file": "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean",
-          "line": 31
+          "line": 35
         }
       ]
     },
@@ -12429,21 +12429,21 @@
       "namespace": "Ecdlp.Curve",
       "kind": "def",
       "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-      "line": 56
+      "line": 55
     },
     "Ecdlp.Curve.pointX_some": {
       "name": "pointX_some",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-      "line": 62
+      "line": 61
     },
     "Ecdlp.Curve.pointX_zero": {
       "name": "pointX_zero",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-      "line": 60
+      "line": 59
     },
     "Ecdlp.Curve.preNormEDS_sq_somos4": {
       "name": "preNormEDS_sq_somos4",
@@ -12506,7 +12506,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "def",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 19
+      "line": 20
     },
     "Ecdlp.Curve.secp256k1Bar": {
       "name": "secp256k1Bar",
@@ -12793,21 +12793,21 @@
       "namespace": "Ecdlp.Curve",
       "kind": "def",
       "file": "Ecdlp/Proved/GeneratorOrder.lean",
-      "line": 34
+      "line": 36
     },
     "Ecdlp.Curve.secp256k1Grp": {
       "name": "secp256k1Grp",
       "namespace": "Ecdlp.Curve",
       "kind": "abbrev",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 44
+      "line": 45
     },
     "Ecdlp.Curve.secp256k1Gₙ": {
       "name": "secp256k1Gₙ",
       "namespace": "Ecdlp.Curve",
       "kind": "def",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 68
+      "line": 69
     },
     "Ecdlp.Curve.secp256k1Z": {
       "name": "secp256k1Z",
@@ -12856,7 +12856,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 104
+      "line": 105
     },
     "Ecdlp.Curve.secp256k1_addOrderOf_five_iff_poly": {
       "name": "secp256k1_addOrderOf_five_iff_poly",
@@ -12891,7 +12891,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Order.lean",
-      "line": 18
+      "line": 19
     },
     "Ecdlp.Curve.secp256k1_b₂": {
       "name": "secp256k1_b₂",
@@ -12933,21 +12933,21 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
-      "line": 172
+      "line": 179
     },
     "Ecdlp.Curve.secp256k1_card_point_eq_n_general": {
       "name": "secp256k1_card_point_eq_n_general",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean",
-      "line": 31
+      "line": 35
     },
     "Ecdlp.Curve.secp256k1_card_point_le": {
       "name": "secp256k1_card_point_le",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
-      "line": 59
+      "line": 66
     },
     "Ecdlp.Curve.secp256k1_classical_security_profile": {
       "name": "secp256k1_classical_security_profile",
@@ -13003,7 +13003,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 30
+      "line": 38
     },
     "Ecdlp.Curve.secp256k1_c₆": {
       "name": "secp256k1_c₆",
@@ -13024,7 +13024,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 78
+      "line": 79
     },
     "Ecdlp.Curve.secp256k1_dlogEquiv": {
       "name": "secp256k1_dlogEquiv",
@@ -13108,7 +13108,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 131
+      "line": 132
     },
     "Ecdlp.Curve.secp256k1_five_nsmul_eq_zero_iff": {
       "name": "secp256k1_five_nsmul_eq_zero_iff",
@@ -13199,35 +13199,35 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GeneratorOrder.lean",
-      "line": 48
+      "line": 65
     },
     "Ecdlp.Curve.secp256k1_generator_equation": {
       "name": "secp256k1_generator_equation",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 54
+      "line": 62
     },
     "Ecdlp.Curve.secp256k1_generator_ne_zero": {
       "name": "secp256k1_generator_ne_zero",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GeneratorOrder.lean",
-      "line": 43
+      "line": 60
     },
     "Ecdlp.Curve.secp256k1_generator_nonsingular": {
       "name": "secp256k1_generator_nonsingular",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 70
+      "line": 78
     },
     "Ecdlp.Curve.secp256k1_generator_nsmul_n_eq_zero": {
       "name": "secp256k1_generator_nsmul_n_eq_zero",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GeneratorOrder.lean",
-      "line": 39
+      "line": 53
     },
     "Ecdlp.Curve.secp256k1_glvHom_eq_zsmul": {
       "name": "secp256k1_glvHom_eq_zsmul",
@@ -13290,7 +13290,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GeneratorOrder.lean",
-      "line": 56
+      "line": 74
     },
     "Ecdlp.Curve.secp256k1_glvPoint_mapsTo_torsion": {
       "name": "secp256k1_glvPoint_mapsTo_torsion",
@@ -13437,7 +13437,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 49
+      "line": 50
     },
     "Ecdlp.Curve.secp256k1_infinity_nonsingular": {
       "name": "secp256k1_infinity_nonsingular",
@@ -13591,14 +13591,14 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 47
+      "line": 55
     },
     "Ecdlp.Curve.secp256k1_lambda_orderOf": {
       "name": "secp256k1_lambda_orderOf",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Order.lean",
-      "line": 32
+      "line": 33
     },
     "Ecdlp.Curve.secp256k1_mem_torsionBy_iff_addOrderOf_dvd": {
       "name": "secp256k1_mem_torsionBy_iff_addOrderOf_dvd",
@@ -13619,7 +13619,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 122
+      "line": 123
     },
     "Ecdlp.Curve.secp256k1_n_dvd_card_point": {
       "name": "secp256k1_n_dvd_card_point",
@@ -13633,14 +13633,14 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
-      "line": 49
+      "line": 52
     },
     "Ecdlp.Curve.secp256k1_no_nonzero_two_torsion": {
       "name": "secp256k1_no_nonzero_two_torsion",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
-      "line": 136
+      "line": 143
     },
     "Ecdlp.Curve.secp256k1_nonzero_point_generates": {
       "name": "secp256k1_nonzero_point_generates",
@@ -13724,42 +13724,42 @@
       "namespace": "Ecdlp.Curve",
       "kind": "def",
       "file": "Ecdlp/Proved/PointGroupEquiv.lean",
-      "line": 53
+      "line": 54
     },
     "Ecdlp.Curve.secp256k1_pointGroupEquiv_apply": {
       "name": "secp256k1_pointGroupEquiv_apply",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/PointGroupEquiv.lean",
-      "line": 60
+      "line": 61
     },
     "Ecdlp.Curve.secp256k1_pointX_neg": {
       "name": "secp256k1_pointX_neg",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-      "line": 69
+      "line": 68
     },
     "Ecdlp.Curve.secp256k1_pointX_neg_zsmul_add": {
       "name": "secp256k1_pointX_neg_zsmul_add",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-      "line": 101
+      "line": 100
     },
     "Ecdlp.Curve.secp256k1_pointX_not_injective": {
       "name": "secp256k1_pointX_not_injective",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-      "line": 80
+      "line": 79
     },
     "Ecdlp.Curve.secp256k1_point_group_equiv_exists": {
       "name": "secp256k1_point_group_equiv_exists",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/PointGroupEquiv.lean",
-      "line": 68
+      "line": 69
     },
     "Ecdlp.Curve.secp256k1_point_group_no_proper_subgroup": {
       "name": "secp256k1_point_group_no_proper_subgroup",
@@ -13906,7 +13906,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GlvDivPoly.lean",
-      "line": 92
+      "line": 93
     },
     "Ecdlp.Curve.secp256k1_preΨ₅_natDegree": {
       "name": "secp256k1_preΨ₅_natDegree",
@@ -13962,7 +13962,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GlvDivPoly.lean",
-      "line": 108
+      "line": 109
     },
     "Ecdlp.Curve.secp256k1_preΨ₇_natDegree": {
       "name": "secp256k1_preΨ₇_natDegree",
@@ -14083,6 +14083,13 @@
       "file": "Ecdlp/Proved/QuintupleMultiplicationFormula.lean",
       "line": 347
     },
+    "Ecdlp.Curve.secp256k1_rep_G0": {
+      "name": "secp256k1_rep_G0",
+      "namespace": "Ecdlp.Curve",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/GeneratorOrder.lean",
+      "line": 41
+    },
     "Ecdlp.Curve.secp256k1_resultant_eq_intCast": {
       "name": "secp256k1_resultant_eq_intCast",
       "namespace": "Ecdlp.Curve",
@@ -14109,14 +14116,14 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 147
+      "line": 148
     },
     "Ecdlp.Curve.secp256k1_schnorr_verify": {
       "name": "secp256k1_schnorr_verify",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 85
+      "line": 86
     },
     "Ecdlp.Curve.secp256k1_secant_addX_cleared": {
       "name": "secp256k1_secant_addX_cleared",
@@ -14214,7 +14221,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 94
+      "line": 95
     },
     "Ecdlp.Curve.secp256k1_threeTorsionX_finite": {
       "name": "secp256k1_threeTorsionX_finite",
@@ -14242,7 +14249,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Order.lean",
-      "line": 48
+      "line": 49
     },
     "Ecdlp.Curve.secp256k1_three_nsmul_eq_zero_iff": {
       "name": "secp256k1_three_nsmul_eq_zero_iff",
@@ -14298,14 +14305,14 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 139
+      "line": 140
     },
     "Ecdlp.Curve.secp256k1_threshold_schnorr_aggregate": {
       "name": "secp256k1_threshold_schnorr_aggregate",
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/ProtocolInstantiation.lean",
-      "line": 113
+      "line": 114
     },
     "Ecdlp.Curve.secp256k1_toProjective_eq": {
       "name": "secp256k1_toProjective_eq",
@@ -14438,7 +14445,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1Curve.lean",
-      "line": 27
+      "line": 29
     },
     "Ecdlp.Curve.secp256k1_Φ_monic": {
       "name": "secp256k1_Φ_monic",
@@ -14529,7 +14536,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GlvDivPoly.lean",
-      "line": 81
+      "line": 82
     },
     "Ecdlp.Curve.secp256k1_Ψ₂Sq_natDegree": {
       "name": "secp256k1_Ψ₂Sq_natDegree",
@@ -14578,7 +14585,7 @@
       "namespace": "Ecdlp.Curve",
       "kind": "theorem",
       "file": "Ecdlp/Proved/GlvDivPoly.lean",
-      "line": 71
+      "line": 72
     },
     "Ecdlp.Curve.secp256k1_Ψ₃_natDegree": {
       "name": "secp256k1_Ψ₃_natDegree",
@@ -16701,6 +16708,181 @@
       "file": "Ecdlp/Proved/Secp256k1GenericSecurity.lean",
       "line": 28
     },
+    "Ecdlp.Kernel.G0": {
+      "name": "G0",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "def",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 66
+    },
+    "Ecdlp.Kernel.Rep": {
+      "name": "Rep",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "def",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 108
+    },
+    "Ecdlp.Kernel.addN": {
+      "name": "addN",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "def",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 40
+    },
+    "Ecdlp.Kernel.addN_rep": {
+      "name": "addN_rep",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 114
+    },
+    "Ecdlp.Kernel.cast_inj": {
+      "name": "cast_inj",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 85
+    },
+    "Ecdlp.Kernel.cast_invN": {
+      "name": "cast_invN",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 99
+    },
+    "Ecdlp.Kernel.cast_sub_p": {
+      "name": "cast_sub_p",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 82
+    },
+    "Ecdlp.Kernel.invN": {
+      "name": "invN",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "def",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 36
+    },
+    "Ecdlp.Kernel.kpow_eq_one": {
+      "name": "kpow_eq_one",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelPowMod.lean",
+      "line": 73
+    },
+    "Ecdlp.Kernel.kpow_ne_one": {
+      "name": "kpow_ne_one",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelPowMod.lean",
+      "line": 79
+    },
+    "Ecdlp.Kernel.lam_lt_two_pow_256": {
+      "name": "lam_lt_two_pow_256",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 80
+    },
+    "Ecdlp.Kernel.mulN": {
+      "name": "mulN",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "def",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 57
+    },
+    "Ecdlp.Kernel.mulN_G0_lam": {
+      "name": "mulN_G0_lam",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 72
+    },
+    "Ecdlp.Kernel.mulN_G0_n": {
+      "name": "mulN_G0_n",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 69
+    },
+    "Ecdlp.Kernel.mulN_rep": {
+      "name": "mulN_rep",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 198
+    },
+    "Ecdlp.Kernel.n_lt_two_pow_256": {
+      "name": "n_lt_two_pow_256",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 78
+    },
+    "Ecdlp.Kernel.natCast_ne_one_of_mod": {
+      "name": "natCast_ne_one_of_mod",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelPowMod.lean",
+      "line": 86
+    },
+    "Ecdlp.Kernel.negY_eq": {
+      "name": "negY_eq",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 89
+    },
+    "Ecdlp.Kernel.p_gt_two": {
+      "name": "p_gt_two",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 76
+    },
+    "Ecdlp.Kernel.powMod": {
+      "name": "powMod",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "def",
+      "file": "Ecdlp/Proved/KernelPowMod.lean",
+      "line": 33
+    },
+    "Ecdlp.Kernel.powMod_eq": {
+      "name": "powMod_eq",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelPowMod.lean",
+      "line": 47
+    },
+    "Ecdlp.Kernel.powMod_succ": {
+      "name": "powMod_succ",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelPowMod.lean",
+      "line": 40
+    },
+    "Ecdlp.Kernel.powMod_zero": {
+      "name": "powMod_zero",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelPowMod.lean",
+      "line": 38
+    },
+    "Ecdlp.Kernel.some_congr": {
+      "name": "some_congr",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelScalarMul.lean",
+      "line": 92
+    },
+    "Ecdlp.Kernel.zmod_pow_natCast": {
+      "name": "zmod_pow_natCast",
+      "namespace": "Ecdlp.Kernel",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/KernelPowMod.lean",
+      "line": 68
+    },
     "Ecdlp.MovReduction.mov_random_q_success_probability": {
       "name": "mov_random_q_success_probability",
       "namespace": "Ecdlp.MovReduction",
@@ -16818,147 +17000,147 @@
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 190
+      "line": 191
     },
     "Ecdlp.P256.Primality.p256_p_prime": {
       "name": "p256_p_prime",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 181
+      "line": 182
     },
     "Ecdlp.P256.Primality.pr_1002328039319": {
       "name": "pr_1002328039319",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 21
+      "line": 22
     },
     "Ecdlp.P256.Primality.pr_11290956913871": {
       "name": "pr_11290956913871",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 42
+      "line": 43
     },
     "Ecdlp.P256.Primality.pr_115792089210356248762697446949407573529996955224135760342422259061068512044369": {
       "name": "pr_115792089210356248762697446949407573529996955224135760342422259061068512044369",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 150
+      "line": 151
     },
     "Ecdlp.P256.Primality.pr_115792089210356248762697446949407573530086143415290314195533631308867097853951": {
       "name": "pr_115792089210356248762697446949407573530086143415290314195533631308867097853951",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 144
+      "line": 145
     },
     "Ecdlp.P256.Primality.pr_187019741": {
       "name": "pr_187019741",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 48
+      "line": 49
     },
     "Ecdlp.P256.Primality.pr_191039911": {
       "name": "pr_191039911",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 90
+      "line": 91
     },
     "Ecdlp.P256.Primality.pr_204061199": {
       "name": "pr_204061199",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 57
+      "line": 58
     },
     "Ecdlp.P256.Primality.pr_208150935158385979": {
       "name": "pr_208150935158385979",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 108
+      "line": 109
     },
     "Ecdlp.P256.Primality.pr_2624747550333869278416773953": {
       "name": "pr_2624747550333869278416773953",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 132
+      "line": 133
     },
     "Ecdlp.P256.Primality.pr_311245691": {
       "name": "pr_311245691",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 60
+      "line": 61
     },
     "Ecdlp.P256.Primality.pr_34282281433": {
       "name": "pr_34282281433",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 75
+      "line": 76
     },
     "Ecdlp.P256.Primality.pr_3969899": {
       "name": "pr_3969899",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 9
+      "line": 10
     },
     "Ecdlp.P256.Primality.pr_46076956964474543": {
       "name": "pr_46076956964474543",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 90
+      "line": 91
     },
     "Ecdlp.P256.Primality.pr_622491383": {
       "name": "pr_622491383",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 81
+      "line": 82
     },
     "Ecdlp.P256.Primality.pr_66417393611": {
       "name": "pr_66417393611",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 21
+      "line": 22
     },
     "Ecdlp.P256.Primality.pr_6700417": {
       "name": "pr_6700417",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 9
+      "line": 10
     },
     "Ecdlp.P256.Primality.pr_774023187263532362759620327192479577272145303": {
       "name": "pr_774023187263532362759620327192479577272145303",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 108
+      "line": 109
     },
     "Ecdlp.P256.Primality.pr_835945042244614951780389953367877943453916927241": {
       "name": "pr_835945042244614951780389953367877943453916927241",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeP.lean",
-      "line": 129
+      "line": 130
     },
     "Ecdlp.P256.Primality.pr_9350987": {
       "name": "pr_9350987",
       "namespace": "Ecdlp.P256.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256PrimeN.lean",
-      "line": 33
+      "line": 34
     },
     "Ecdlp.P256.TwistPrimality.pr_110244005101": {
       "name": "pr_110244005101",
@@ -17077,7 +17259,7 @@
       "namespace": "Ecdlp.P256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-      "line": 65
+      "line": 72
     },
     "Ecdlp.P256.p256_embedding_degree_gt_100": {
       "name": "p256_embedding_degree_gt_100",
@@ -17133,14 +17315,14 @@
       "namespace": "Ecdlp.P256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-      "line": 50
+      "line": 56
     },
     "Ecdlp.P256.p256_trace_ordinary_nonanomalous": {
       "name": "p256_trace_ordinary_nonanomalous",
       "namespace": "Ecdlp.P256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256TraceOfFrobenius.lean",
-      "line": 35
+      "line": 36
     },
     "Ecdlp.P256.p256_twist_maxprime_prime": {
       "name": "p256_twist_maxprime_prime",
@@ -17168,7 +17350,7 @@
       "namespace": "Ecdlp.P256",
       "kind": "theorem",
       "file": "Ecdlp/Proved/P256CardinalityExact.lean",
-      "line": 42
+      "line": 48
     },
     "Ecdlp.ParityFourier.CarrySign": {
       "name": "CarrySign",
@@ -18001,154 +18183,154 @@
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 24
+      "line": 25
     },
     "Ecdlp.Primality.pr_107590001": {
       "name": "pr_107590001",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 69
+      "line": 70
     },
     "Ecdlp.Primality.pr_115792089237316195423570985008687907852837564279074904382605163141518161494337": {
       "name": "pr_115792089237316195423570985008687907852837564279074904382605163141518161494337",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 159
+      "line": 160
     },
     "Ecdlp.Primality.pr_115792089237316195423570985008687907853269984665640564039457584007908834671663": {
       "name": "pr_115792089237316195423570985008687907853269984665640564039457584007908834671663",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 174
+      "line": 175
     },
     "Ecdlp.Primality.pr_1206781": {
       "name": "pr_1206781",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 87
+      "line": 88
     },
     "Ecdlp.Primality.pr_132896956044521568488119": {
       "name": "pr_132896956044521568488119",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 57
+      "line": 58
     },
     "Ecdlp.Primality.pr_13331831": {
       "name": "pr_13331831",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 9
+      "line": 10
     },
     "Ecdlp.Primality.pr_1627771": {
       "name": "pr_1627771",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 90
+      "line": 91
     },
     "Ecdlp.Primality.pr_173378833005251801": {
       "name": "pr_173378833005251801",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 24
+      "line": 25
     },
     "Ecdlp.Primality.pr_174723607534414371449": {
       "name": "pr_174723607534414371449",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 54
+      "line": 55
     },
     "Ecdlp.Primality.pr_205115282021455665897114700593932402728804164701536103180137503955397371": {
       "name": "pr_205115282021455665897114700593932402728804164701536103180137503955397371",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 147
+      "line": 148
     },
     "Ecdlp.Primality.pr_22149492674086928081353": {
       "name": "pr_22149492674086928081353",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 42
+      "line": 43
     },
     "Ecdlp.Primality.pr_255515944373312847190720520512484175977": {
       "name": "pr_255515944373312847190720520512484175977",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 114
+      "line": 115
     },
     "Ecdlp.Primality.pr_29047611873442575647497758179": {
       "name": "pr_29047611873442575647497758179",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 126
+      "line": 127
     },
     "Ecdlp.Primality.pr_297159362677": {
       "name": "pr_297159362677",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 108
+      "line": 109
     },
     "Ecdlp.Primality.pr_341948486974166000522343609283189": {
       "name": "pr_341948486974166000522343609283189",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 144
+      "line": 145
     },
     "Ecdlp.Primality.pr_44706919": {
       "name": "pr_44706919",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 39
+      "line": 40
     },
     "Ecdlp.Primality.pr_4681609": {
       "name": "pr_4681609",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 9
+      "line": 10
     },
     "Ecdlp.Primality.pr_545358713": {
       "name": "pr_545358713",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 75
+      "line": 76
     },
     "Ecdlp.Primality.pr_7240687": {
       "name": "pr_7240687",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 102
+      "line": 103
     },
     "Ecdlp.Primality.secp256k1_n_prime": {
       "name": "secp256k1_n_prime",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeN.lean",
-      "line": 184
+      "line": 185
     },
     "Ecdlp.Primality.secp256k1_p_prime": {
       "name": "secp256k1_p_prime",
       "namespace": "Ecdlp.Primality",
       "kind": "theorem",
       "file": "Ecdlp/Proved/Secp256k1PrimeP.lean",
-      "line": 193
+      "line": 194
     },
     "Ecdlp.ProjectiveResultant.HasCommonProjectiveRoot": {
       "name": "HasCommonProjectiveRoot",
@@ -18295,14 +18477,14 @@
       "namespace": "Ecdlp.Schnorr",
       "kind": "theorem",
       "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-      "line": 124
+      "line": 123
     },
     "Ecdlp.Schnorr.ecdsa_sibling_signing_equation": {
       "name": "ecdsa_sibling_signing_equation",
       "namespace": "Ecdlp.Schnorr",
       "kind": "theorem",
       "file": "Ecdlp/Proved/EcdsaMalleability.lean",
-      "line": 116
+      "line": 115
     },
     "Ecdlp.Schnorr.elgamal_additively_homomorphic": {
       "name": "elgamal_additively_homomorphic",
@@ -19655,12 +19837,26 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 16
     },
+    "Secp256k1.beta_field_eigenvalue_kernel": {
+      "name": "beta_field_eigenvalue_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 39
+    },
     "Secp256k1.beta_is_cube_root": {
       "name": "beta_is_cube_root",
       "namespace": "Secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 18
+    },
+    "Secp256k1.beta_is_cube_root_kernel": {
+      "name": "beta_is_cube_root_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 42
     },
     "Secp256k1.beta_lt_p": {
       "name": "beta_lt_p",
@@ -19669,6 +19865,13 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 21
     },
+    "Secp256k1.beta_lt_p_kernel": {
+      "name": "beta_lt_p_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 48
+    },
     "Secp256k1.generator_on_curve": {
       "name": "generator_on_curve",
       "namespace": "Secp256k1",
@@ -19676,12 +19879,26 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 29
     },
+    "Secp256k1.generator_on_curve_kernel": {
+      "name": "generator_on_curve_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 52
+    },
     "Secp256k1.glv_lambda_eigenvalue": {
       "name": "glv_lambda_eigenvalue",
       "namespace": "Secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 10
+    },
+    "Secp256k1.glv_lambda_eigenvalue_kernel": {
+      "name": "glv_lambda_eigenvalue_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 30
     },
     "Secp256k1.lam": {
       "name": "lam",
@@ -19697,6 +19914,13 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 20
     },
+    "Secp256k1.lam_lt_n_kernel": {
+      "name": "lam_lt_n_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 45
+    },
     "Secp256k1.lambda_is_cube_root": {
       "name": "lambda_is_cube_root",
       "namespace": "Secp256k1",
@@ -19704,12 +19928,26 @@
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 12
     },
+    "Secp256k1.lambda_is_cube_root_kernel": {
+      "name": "lambda_is_cube_root_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 33
+    },
     "Secp256k1.lambda_ne_one": {
       "name": "lambda_ne_one",
       "namespace": "Secp256k1",
       "kind": "theorem",
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 14
+    },
+    "Secp256k1.lambda_ne_one_kernel": {
+      "name": "lambda_ne_one_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 36
     },
     "Secp256k1.n": {
       "name": "n",
@@ -19731,6 +19969,13 @@
       "kind": "theorem",
       "file": "Ecdlp/Secp256k1Verified.lean",
       "line": 8
+    },
+    "Secp256k1.p_special_form_kernel": {
+      "name": "p_special_form_kernel",
+      "namespace": "Secp256k1",
+      "kind": "theorem",
+      "file": "Ecdlp/Proved/Secp256k1KernelFacts.lean",
+      "line": 27
     },
     "WeierstrassCurve.Affine.instFinitePoint": {
       "name": "instFinitePoint",
@@ -20117,6 +20362,13 @@
       "file": "ResearchOS/AnalyticNumberTheory/RiemannHypothesis/ZeroSetSlice.lean",
       "line": 581
     },
+    "in": {
+      "name": "in",
+      "namespace": "",
+      "kind": "instance",
+      "file": "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean",
+      "line": 22
+    },
     "isClosed_riemannXi_divisor_support": {
       "name": "isClosed_riemannXi_divisor_support",
       "namespace": "",
@@ -20283,7 +20535,7 @@
       "namespace": "",
       "kind": "structure",
       "file": "Ecdlp/Proved/CurveCardinalityExact.lean",
-      "line": 13
+      "line": 14
     },
     "of_oddRec_evenRec": {
       "name": "of_oddRec_evenRec",

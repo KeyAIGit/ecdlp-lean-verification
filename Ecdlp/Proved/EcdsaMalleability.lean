@@ -37,12 +37,11 @@ Trust note: no `native_decide` appears in this file, and the field-side lemmas a
 pure-kernel. The curve-coordinate lemmas `secp256k1_pointX_neg` and
 `secp256k1_pointX_neg_zsmul_add` are stated under
 `[Fact (Nat.Prime Secp256k1.p)]` (the repo convention); discharging that fact downstream
-uses the Pratt certificate (`Secp256k1PrimeP.lean`), which relies on `native_decide`.
-The concrete theorem `secp256k1_pointX_not_injective` additionally invokes
-`secp256k1_no_nonzero_two_torsion`, whose certificate in
-`CurveCardinalityExact.lean` directly uses `native_decide`. Consequently that theorem,
-and instantiated concrete curve-side results generally, inherit `Lean.ofReduceBool`;
-the claim is not pure-kernel.
+uses the Pratt certificate (`Secp256k1PrimeP.lean`), whose arithmetic leaves are checked
+by the kernel (`decide +kernel`). The concrete theorem `secp256k1_pointX_not_injective`
+additionally invokes `secp256k1_no_nonzero_two_torsion`, whose certificate in
+`CurveCardinalityExact.lean` is likewise kernel-checked. The ledger axiom audit shows
+these results depend only on `propext`, `Classical.choice` and `Quot.sound`.
 -/
 
 namespace Ecdlp.Curve

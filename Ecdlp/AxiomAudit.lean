@@ -46,26 +46,27 @@ sample that should surface `Lean.ofReduceBool`). `#print axioms` prints each dep
 #print axioms Ecdlp.Curve.secp256k1_generator_nonsingular
 
 -- base-point exact order `n` (weak point-counting keystone) + GLV `[λ]` at the generator
--- (these surface `Lean.ofReduceBool`: `native_decide` over the Mathlib group law)
+-- (kernel-only: `[n]G`, `[λ]G` evaluated by `decide +kernel` on `ℕ` coordinates and transported
+-- by `Ecdlp.Kernel.mulN_rep`; standard axioms only)
 #print axioms Ecdlp.Curve.secp256k1_generator_addOrderOf
 #print axioms Ecdlp.Curve.secp256k1_glvPoint_generator
 #print axioms Ecdlp.Curve.secp256k1_glvPoint_eq_lam_on_zmultiples
 
 -- protocol algebra instantiated on the concrete secp256k1 subgroup ⟨G⟩
--- (bridge lemma inherits `Lean.ofReduceBool` from the order keystone)
+-- (the order keystone behind the bridge lemma is kernel-only)
 #print axioms Ecdlp.Curve.secp256k1_grp_nsmul_eq_zero
 #print axioms Ecdlp.Curve.secp256k1_dh_agree
 #print axioms Ecdlp.Curve.secp256k1_schnorr_verify
 #print axioms Ecdlp.Curve.secp256k1_taproot_tweak_verify
 
 -- ⟨G⟩ group structure: exactly n elements, cyclic, and the discrete-log isomorphism
--- ZMod n ≃+ ⟨G⟩ (inherits `Lean.ofReduceBool` from the order keystone)
+-- ZMod n ≃+ ⟨G⟩ (the order keystone is kernel-only)
 #print axioms Ecdlp.Curve.secp256k1_grp_card
 #print axioms Ecdlp.Curve.secp256k1_grp_isAddCyclic
 #print axioms Ecdlp.Curve.secp256k1_dlogEquiv
 
 -- strong keystone: the exact curve cardinality #E(𝔽_p) = n, curve-specifically
--- (no Hasse/Schoof); inherits `Lean.ofReduceBool` from the native_decide non-cube leaf
+-- (no Hasse/Schoof); kernel-only (the non-cube leaf is a kernel-evaluated `powMod`)
 #print axioms Ecdlp.Curve.secp256k1_card_point_eq_n
 #print axioms Ecdlp.Curve.secp256k1_no_nonzero_two_torsion
 #print axioms Ecdlp.Curve.secp256k1_card_point_le
@@ -237,8 +238,14 @@ sample that should surface `Lean.ofReduceBool`). `#print axioms` prints each dep
 #print axioms Ecdlp.Curve25519.Curve25519_generator_equation
 
 -- native_decide samples (these SHOULD surface `Lean.ofReduceBool`)
+#print axioms Ecdlp.Curve.p_mod_four
+#print axioms Ecdlp.Curve.secp256k1_c₆_ne_zero
 #print axioms Secp256k1.p_special_form
 #print axioms Secp256k1.beta_field_eigenvalue
+
+-- kernel-checked twins of the same 256-bit literal facts (`decide +kernel`; standard base only)
+#print axioms Secp256k1.p_special_form_kernel
+#print axioms Secp256k1.beta_field_eigenvalue_kernel
 
 -- NON-ECC domain (elementary number theory): the second-subject portability instance.
 -- Pure `norm_num`, so these should depend ONLY on the standard base (no `Lean.ofReduceBool`).

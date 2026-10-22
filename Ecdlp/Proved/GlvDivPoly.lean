@@ -54,6 +54,7 @@ open Polynomial
 
 /-- The secp256k1 GLV field factor `β` is a cube root of unity: `β³ = 1`.
 Derived from the primitive-root eigenvalue `β² + β + 1 = 0` (itself the field lift of
+`Secp256k1.beta_field_eigenvalue_kernel`, the kernel-checked twin of
 `Secp256k1.beta_field_eigenvalue`) via `Ecdlp.Proved.cube_root_of_eigenvalue`. -/
 private theorem secp256k1_beta_cube :
     (Secp256k1.beta : ZMod Secp256k1.p) ^ 3 = 1 := by
@@ -61,7 +62,7 @@ private theorem secp256k1_beta_cube :
       + (Secp256k1.beta : ZMod Secp256k1.p) + 1 = 0 := by
     have h0 : ((Secp256k1.beta ^ 2 + Secp256k1.beta + 1 : ℕ) : ZMod Secp256k1.p) = 0 := by
       rw [ZMod.natCast_eq_zero_iff]
-      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue
+      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue_kernel
     push_cast at h0
     linear_combination h0
   exact Ecdlp.Proved.cube_root_of_eigenvalue _ hβeig

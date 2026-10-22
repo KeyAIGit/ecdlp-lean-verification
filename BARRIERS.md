@@ -460,9 +460,12 @@ exact `Θ` statements.
   nonsingularity and base-point orders are not proved here). The same no-root facts for all
   nine curves, and `#E = n` for P-256/P-384/P-521 for its own specification curve type, are
   already kernel-checked in pyca/verified-garbage; the per-curve certificates are therefore
-  listed as upstream-derived in `VERIFIED.md`. Both counts inherit `native_decide` trust from
-  `n • G = 0` and the Pratt certificates. This route covers cofactor-1 curves only; curves with
-  cofactor `h ≥ 2` (e.g. Curve25519) still need the Hasse bound, absent from Mathlib.
+  listed as upstream-derived in `VERIFIED.md`. The secp256k1 count (both derivations) is
+  kernel-only. The P-256 count inherits `native_decide` trust from `n • G = 0`, the base
+  point's equation and nonsingularity, and `Δ ≠ 0` (`P256GeneratorOrder.lean`,
+  `P256Curve.lean`); its Pratt certificates are kernel-checked. This route covers cofactor-1
+  curves only; curves with cofactor `h ≥ 2` (e.g. Curve25519) still need the Hasse bound,
+  absent from Mathlib.
 
 **Realized despite the barrier — the transfer *resistance* of secp256k1.** Although
 the transfer attacks themselves cannot yet be formalized (no pairing), the

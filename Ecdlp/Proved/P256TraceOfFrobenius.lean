@@ -21,8 +21,9 @@ verified boundary nodes: ECDLP on P-256 does not leak through MOV/FR or Smart/SS
 
 Scope note: the theorem below is arithmetic on `t = p + 1 − n`. Reading `t` as the trace of
 Frobenius uses `#E(𝔽_p) = n` (cofactor 1), which is proved in `P256CardinalityExact.lean`
-(`p256_card_point_eq_n`, with `native_decide` compiler trust inherited from `n • G = 0` and the
-Pratt certificates). The definition of the trace as `p + 1 − #E` is not itself formalized
+(`p256_card_point_eq_n`, with `native_decide` compiler trust inherited from `n • G = 0`, the
+base point's equation and nonsingularity, and `Δ ≠ 0`; the Pratt certificates are
+kernel-checked). The definition of the trace as `p + 1 − #E` is not itself formalized
 here. What is verified in this file is the exact arithmetic that makes the attack boundary
 hold *given* that order.
 -/

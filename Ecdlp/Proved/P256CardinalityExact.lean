@@ -19,12 +19,18 @@ algorithm is used. The proof instantiates the curve-generic theorem
 
 ## Trust base
 
-The certificate layer and the generic theorem use only `propext`, `Classical.choice` and
-`Quot.sound`. The final count additionally inherits compiler trust (`Lean.ofReduceBool`) from
-existing `native_decide` facts: `n • G = 0` and the base point's nonsingularity
-(`P256GeneratorOrder.lean`), the curve facts in `P256Curve.lean`, and the Pratt certificates
-for `p` and `n` (`P256PrimeP.lean`, `P256PrimeN.lean`). It is therefore a `native_decide`
-result, not a pure-kernel one.
+The certificate layer, the generic theorem, the Pratt certificates for `p` and `n`
+(`P256PrimeP.lean`, `P256PrimeN.lean`, `decide +kernel`), and the two inputs
+`p256_two_ne_zero` and `p256_no_two_torsion_cubic` use only `propext`, `Classical.choice` and
+`Quot.sound`. Only the final count `p256_card_point_eq_n` inherits compiler trust
+(`Lean.ofReduceBool`), from four existing `native_decide` facts:
+
+* through `p256_generator_addOrderOf` (`P256GeneratorOrder.lean`):
+  `p256_generator_nsmul_n_eq_zero` (`n • G = 0`), `p256_generator_nonsingular`, and
+  `P256_generator_equation` (`P256Curve.lean`);
+* through the `P256.IsElliptic` instance (`P256Curve.lean`): `P256_Δ_ne_zero`.
+
+`p256_card_point_eq_n` is therefore a `native_decide` result, not a pure-kernel one.
 
 ## Prior art
 
@@ -60,8 +66,9 @@ theorem p256_no_two_torsion_cubic :
 
 /-- **The exact NIST P-256 point count: `#E(𝔽_p) = n`** (cofactor 1). From the curve-generic
 `natCard_point_eq_of_addOrderOf`, the no-root certificate, and `addOrderOf G = n`. Inherits
-`native_decide` compiler trust through `p256_generator_addOrderOf` and the primality
-instances (see the module header). -/
+`native_decide` compiler trust through `p256_generator_addOrderOf` and the `P256.IsElliptic`
+instance (`P256_Δ_ne_zero`), not through the primality instances, which are kernel-checked
+(see the module header). -/
 theorem p256_card_point_eq_n : Nat.card P256.toAffine.Point = n :=
   Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf P256 rfl rfl p256_two_ne_zero
     p256_no_two_torsion_cubic p256_generator_addOrderOf
