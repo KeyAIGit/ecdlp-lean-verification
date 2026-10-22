@@ -3,7 +3,7 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "aa7c7f03ab6a1a0730986cdd1c98763b9a88874470aa5e8bcd6bd9b2ab29e227",
+    "data/result_registry.json": "fb7547bb277c3a1748a121c54723b7c1ae09ccbeb0b41aea88ff3bad4c381957",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
     "data/stats.json": "09b1f2859f52f16c17ea648ada039c66372e20ce1fc7391b14ec4f2f1d26f277"
   },
@@ -3534,31 +3534,31 @@
           "declaration": "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 177
+          "line": 181
         },
         {
           "declaration": "Ecdlp.Weierstrass.card_eq_of_prime_order_point",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 193
+          "line": 197
         },
         {
           "declaration": "Ecdlp.Weierstrass.natCard_point_le",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 86
+          "line": 90
         },
         {
           "declaration": "Ecdlp.Weierstrass.exists_cubic_root_of_two_nsmul_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 154
+          "line": 158
         },
         {
           "declaration": "Ecdlp.Weierstrass.natCard_eq_of_dvd_of_lt_three_mul",
           "kind": "theorem",
           "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
-          "line": 60
+          "line": 64
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -6329,8 +6329,8 @@
       "slug": "ecdlp-ledger-242",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "Semaev polynomial has degree exactly 2 in each variable (`secp256k1_S₃poly_natDegree`: for `x₁ ≠ x₂` over `𝔽_p`, `S₃(x₁,x₂,·)` is a degree-exactly-2 univariate polynomial, leading coefficient `(x₁−x₂)² ≠ 0`. Base case of the classical `deg_{xᵢ} Sₘ = 2^{m−2}` degree tower — the doubling that makes higher-order decompositions blow up. Via `Polynomial.natDegree_quadratic`)",
-      "title": "Semaev polynomial has degree exactly 2 in each variable (`secp256k1_S₃poly_natDegree`: for `x₁ ≠ x₂` over `𝔽_p`, `S₃(x₁,x₂,·)` is a degree-exactly-2 univariate polynomial, leading…",
+      "claim_id": "Semaev polynomial has degree exactly 2 in its last variable when `x₁ ≠ x₂` (secp256k1) (`secp256k1_S₃poly_natDegree`: for `x₁ ≠ x₂` over `𝔽_p`, `S₃(x₁,x₂,·)` is a degree-exactly-2 univariate polynomial, leading coefficient `(x₁−x₂)² ≠ 0`. Base case of the classical `deg_{xᵢ} Sₘ = 2^{m−2}` degree tower — the doubling that makes higher-order decompositions blow up. Via `Polynomial.natDegree_quadratic`)",
+      "title": "Semaev polynomial has degree exactly 2 in its last variable when `x₁ ≠ x₂` (secp256k1) (`secp256k1_S₃poly_natDegree`: for `x₁ ≠ x₂` over `𝔽_p`, `S₃(x₁,x₂,·)` is a degree-exactly-2…",
       "display": "`Ecdlp.Semaev.secp256k1_S₃poly_natDegree`",
       "method": "Mathlib (`Polynomial.natDegree_quadratic`)",
       "axiom_base": null,

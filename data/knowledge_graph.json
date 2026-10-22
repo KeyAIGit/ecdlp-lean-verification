@@ -5113,7 +5113,7 @@
       "files": [
         "Ecdlp/Proved/SemaevDegree.lean"
       ],
-      "claim": "Semaev polynomial has degree exactly 2 in each variable (`secp256k1_S₃poly_natDegree`: for `x₁ ≠ x₂` over `𝔽_p`, `S₃(x₁,x₂,·)` is a degree-exactly-2 univariate polynomial, leading coefficient `(x₁−x₂)² ≠ 0`. Base case of the classical `deg_{xᵢ} Sₘ = 2^{m−2}` degree tower — the doubling that makes higher-order decompositions blow up. Via `Polynomial.natDegree_quadratic`)",
+      "claim": "Semaev polynomial has degree exactly 2 in its last variable when `x₁ ≠ x₂` (secp256k1) (`secp256k1_S₃poly_natDegree`: for `x₁ ≠ x₂` over `𝔽_p`, `S₃(x₁,x₂,·)` is a degree-exactly-2 univariate polynomial, leading coefficient `(x₁−x₂)² ≠ 0`. Base case of the classical `deg_{xᵢ} Sₘ = 2^{m−2}` degree tower — the doubling that makes higher-order decompositions blow up. Via `Polynomial.natDegree_quadratic`)",
       "method": "Mathlib (`Polynomial.natDegree_quadratic`)",
       "status": "proved",
       "area": "other",

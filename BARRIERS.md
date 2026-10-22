@@ -103,7 +103,8 @@ exact `Θ` statements.
   directions), via a sympy-certified two-root master factorization. And **`S₄` is now started**
   (`Ecdlp/Proved/SemaevFour.lean`): `S₄ = Res_X(S₃(x₁,x₂,X), S₃(x₃,x₄,X))` built on Mathlib's
   `Polynomial.resultant`, with **both directions**: the forward `S₄_eq_zero_of_common_root` (a shared root of the two
-  `S₃` slices ⟹ `S₄ = 0`) and the reverse/meaning `S₄_common_root_of_eq_zero` (`S₄ = 0` ⟹ the
+  `S₃` slices ⟹ `S₄ = 0`) and the reverse/meaning `S₄_common_root_of_eq_zero` (over a field `K`,
+  for `x₁ ≠ x₂` that are x-coordinates of `K`-points on `y² = x³ + ax + b`: `S₄ = 0` ⟹ the
   two slices share a root **in the field**, since `S₃`'s slice splits with the known roots
   `x(P₁±P₂)` — via `resultant_eq_prod_eval`), plus symmetries — the first `S₄` in Lean, and the
   recursion index calculus over `𝔽_{p^k}` actually uses.
@@ -137,8 +138,9 @@ exact `Θ` statements.
   (`Ecdlp/Proved/PointDecomposition.lean`): a target `R = P₁ + P₂` forces
   `S₃(x(P₁),x(P₂),x(R)) = 0`, so every 2-term decomposition lies on the Semaev variety — the
   structural reduction index calculus rests on. And one exact quantitative ingredient of the cost
-  is proved (`Ecdlp/Proved/SemaevDegree.lean`): `S₃` has degree **exactly 2** in each variable
-  (base of the `deg Sₘ = 2^{m−2}` tower), so each factor-base coordinate has **≤ 2 completions** —
+  is proved (`Ecdlp/Proved/SemaevDegree.lean`): for secp256k1, `S₃` has degree **exactly 2** in
+  its last variable when `x₁ ≠ x₂` (`secp256k1_S₃poly_natDegree`; base of the `deg Sₘ = 2^{m−2}`
+  tower), so each factor-base coordinate has **≤ 2 completions** —
   bounded relation fan-out. **What remains genuinely open (NOT a theorem here):** that this
   bounded-fan-out plus factor-base balance yields *no* subexponential algorithm over `𝔽_p`. The
   obstruction is that a prime field affords **no Weil restriction** to split the raw
@@ -280,12 +282,14 @@ exact `Θ` statements.
   coefficient being `(x₁ − x₂)²`). `S₄` is invariant under all 24
   permutations of its arguments (`S₄_perm`, `SemaevFourSymmetry.lean`; the earlier
   `S₄_symm₁₂`/`S₄_symm₃₄`/`S₄_block_swap` generate only an order-8 subgroup, a group-theoretic
-  remark that is not kernel-checked) and has degree exactly 4 in each variable when `S₃` of the
-  other three arguments is nonzero (`S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`). Still
+  remark that is not kernel-checked) and, over a field, has degree exactly 4 in each variable
+  when `S₃` of the other three arguments is nonzero (`S₄slice_natDegree`,
+  `S₄_natDegree_eq_four_of_perm`). Still
   open: `Sₘ` for `m ≥ 5` at general `(a,b)` (its definition, exact degree with top coefficient
   `S_{m−1}(…)²`, symmetry, and the reverse direction; a recursive definition with
   `deg ≤ 2^{m−2}` in the last variable and the forward direction is in draft PR #448 (parked)).
-  The reverse direction is proved for `S₄` (`S₄_common_root_of_eq_zero`), and the secp256k1
+  The reverse direction is proved for `S₄` (`S₄_common_root_of_eq_zero`: over a field `K`, for
+  `x₁ ≠ x₂` that are x-coordinates of `K`-points on `y² = x³ + ax + b`), and the secp256k1
   frozen projective family has its own
   (`specialize_frozenC_succ_eq_zero_iff_common_projective_root`). Point-level characterizations
   (`S₄ = 0 ⟺ ±P₁±P₂±P₃±P₄ = O`) are not built.
@@ -458,7 +462,9 @@ exact `Θ` statements.
   a kernel-checked certificate that the cubic has no root (`CubicNoRootCertificate.lean`, also
   checked for P-192, P-224, P-384, P-521 and brainpoolP256r1/P384r1/P512r1, whose primality,
   nonsingularity and base-point orders are not proved here). The same no-root facts for all
-  nine curves, and `#E = n` for P-256/P-384/P-521 for its own specification curve type, are
+  nine curves, and `#E = n` for P-256/P-384/P-521 (as `Nat.card` of Mathlib's point group of
+  the curve over `ZMod p`, derived inside the proof of verified-garbage's `primeOrder_of` and
+  not exported), are
   already kernel-checked in pyca/verified-garbage; the per-curve certificates are therefore
   listed as upstream-derived in `VERIFIED.md`. Both counts inherit `native_decide` trust from
   `n • G = 0` and the Pratt certificates. This route covers cofactor-1 curves only; curves with

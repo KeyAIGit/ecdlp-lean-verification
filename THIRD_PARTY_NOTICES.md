@@ -43,17 +43,19 @@ the short-Weierstrass adapter restated for natural-number coefficients over `ZMo
 The module docstring records the provenance. The upstream source file carries no
 per-file copyright header. The curve-generic counting argument in
 `Ecdlp/Proved/PrimeOrderCardinality.lean` is the same argument as upstream
-`VG.Proof.Weierstrass.primeOrder_of`, but its Lean code was written separately for
-Mathlib's `WeierstrassCurve` (it follows this repository's secp256k1 proof).
+`VG.Proof.Weierstrass.primeOrder_of`, but its Lean code was written separately (it follows
+this repository's secp256k1 proof); both count Mathlib's `WeierstrassCurve.Affine.Point`.
 
 Prior results at the same upstream commit: verified-garbage already kernel-checks the
 no-root (no rational 2-torsion) fact for the same nine curves as this file
 (`VG.Proof.P256.noTwoTorsion`, and the `noTwoTorsion` field of `VG.Proof.<Curve>.good`
-for the other eight). verified-garbage proves `#E = n` for P-256/P-384/P-521 for its own
-specification curve type (the count is established inside `VG.Proof.Weierstrass.primeOrder_of`;
-the exported `VG.Proof.<Curve>.primeOrder` states that every point other than the identity
-has order `n`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's
-`WeierstrassCurve`; certificates regenerated independently (by
+for the other eight). For P-256/P-384/P-521 it also establishes `#E = n`, inside the proof
+of `VG.Proof.Weierstrass.primeOrder_of`, as `Nat.card (wcC C).Point = C.n`, where `wcC C` is
+Mathlib's `WeierstrassCurve.Affine` over `ZMod C.p` built from the specification curve `C`.
+That count is not exported (the exported `VG.Proof.<Curve>.primeOrder` states that every
+point other than the identity has order `n`); this repository's addition for that count is
+the exported theorem `p256_card_point_eq_n` for `Ecdlp.P256.P256`; certificates regenerated
+independently (by
 `scripts/certs/cubic_no_root_certs.py`; a certificate is unique, so the data coincide with
 upstream's). `VERIFIED.md` therefore lists the nine per-curve instances in its
 "Ported / upstream-derived" table, outside the headline count.
