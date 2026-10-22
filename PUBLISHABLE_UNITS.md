@@ -136,19 +136,16 @@ paper could carry both, or they could split).
   reverse/meaning `S₄_common_root_of_eq_zero` (+ `secp256k1_semaev_four_common_root_of_eq_zero`),
   with the slice factorization `S₃poly_master_factor` and the symmetries `S₄_block_swap`,
   `S₄_symm₁₂`, `S₄_symm₃₄` — `SemaevFour.lean`. Those three generate only an order-8 subgroup of
-  the 24 permutations; invariance under every permutation is `S₄_perm` (with the missing
+  the 24 permutations (not kernel-checked); invariance under every permutation is `S₄_perm` (with the missing
   transposition `S₄_symm₂₃`) — `SemaevFourSymmetry.lean`.
 - `S₄` degree: coefficient of `x₄⁴` equal to `S₃(x₁,x₂,x₃)²` (`S₄slice_coeff_four`), hence degree
   exactly 4 in each variable when `S₃` of the other three is nonzero (`S₄slice_natDegree`,
   `S₄_natDegree_eq_four_of_perm`) and at most 4 completions (`S₄_completions_le_four`)
   — `SemaevFourSymmetry.lean`.
-- General `Sₘ` by the resultant recursion (`semaevSlice`, `Sm`), agreeing with `S₃` and `S₄`
-  (`Sm_three`, `Sm_four`), with `deg ≤ 2^(m−2)` in the last variable (`semaevSlice_natDegree_le`)
-  and the forward direction at every level (`semaevSlice_eval_eq_zero_of_chain`,
-  `Sm_eq_zero_of_chain`) — `SemaevTower.lean`.
-- The forward direction **generalized to the whole `Sₙ` family** in one lemma:
-  `resultant_eq_zero_of_common_root` (any two univariate polys sharing an evaluation-root have
-  vanishing resultant) — every Semaev step inherits its forward direction as an instance.
+- The forward direction reduces to one lemma, `resultant_eq_zero_of_common_root` (any two
+  univariate polys of bounded degree sharing an evaluation-root have vanishing resultant); a Semaev
+  step inherits its forward direction as an instance once the previous slice is defined with its
+  degree bound. No general `Sₙ` for `n ≥ 5` is defined here.
 - Index-calculus meaning + one exact cost ingredient: `secp256k1_point_decomposition_semaev`
   (and `_double`) — every 2-term decomposition lies on the Semaev variety
   — `PointDecomposition.lean`; `secp256k1_S₃poly_natDegree` (degree exactly 2 in each variable) and
@@ -170,10 +167,9 @@ paper could carry both, or they could split).
   The proved facts map *where* the search lives and *how it branches*; the cost lower bound stays in
   the open frontier (`BARRIERS.md` B3).
 - The degree tower `deg Sₘ = 2^{m−2}`: exact for `m = 3` (`deg S₃ = 2`) and `m = 4` (`deg S₄ = 4`
-  when `S₃` of the other three arguments is nonzero); for `m ≥ 5` only the upper bound
-  `deg ≤ 2^{m−2}` in the last variable is proved. Symmetry and the reverse direction for `m ≥ 5`
-  are not proved, and no point-level `S₄` characterization (`S₄ = 0 ⟺ ±P₁±P₂±P₃±P₄ = O`) is
-  built.
+  when `S₃` of the other three arguments is nonzero). `Sₘ` for `m ≥ 5` is not defined here at
+  general `(a,b)` (a recursive definition with the upper bound `deg ≤ 2^{m−2}` is parked in draft
+  PR #448), and no point-level `S₄` characterization (`S₄ = 0 ⟺ ±P₁±P₂±P₃±P₄ = O`) is built.
 
 ### 3b — Weil-pairing divisor foundations `W1–W3`
 

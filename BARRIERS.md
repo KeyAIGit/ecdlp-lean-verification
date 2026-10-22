@@ -13,7 +13,7 @@ base. This is a living document; counts are for the v1 corpus.
 
 | Status | Count | Meaning |
 |---|---|---|
-| **Proved** | see `VERIFIED.md` (~272 distinct results / 311 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
+| **Proved** | see `VERIFIED.md` (~270 distinct results / 309 rows) | accepted by the Lean kernel, no `sorry`, no custom axioms |
 | **Tractable now** | ~55 | `GroupTheory.OrderOfElement / Subgroup` — structural group facts |
 | **Barrier: no cost model** | ~55 | complexity claims; Lean has no "group-operation count" framework |
 | **Barrier: not in Mathlib** | ~62 | 38 quantum-circuit cost model, 24 lattice reduction |
@@ -117,15 +117,15 @@ exact `Θ` statements.
   their defining recursion, now machine-checked, but they compute nothing about any specific
   discrete log on a prime-field curve. `S₃` (base case, fully characterized) together with `S₄`
   (first recursion step, both directions) is the **conceptually complete unit**: it establishes
-  the object *and* proves the resultant recursion means what it should. And the **forward
-  direction is now generalized to the whole infinite family in a single lemma**
-  (`resultant_eq_zero_of_common_root`, `Ecdlp/Proved/SemaevFour.lean`): for *any* two univariate
-  polynomials sharing an evaluation-root, their resultant vanishes — so since each Semaev step is
-  `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))`, "the two slices share a root ⟹ `Sₙ₊₁ = 0`" holds at *every*
-  level `n` by instantiating that one lemma (`S₄`'s forward direction is literally its `n = 3`
-  case). Higher `Sₙ` (`n ≥ 5`) are thus the *same* recursion at larger degree — their forward
-  direction is already covered by the engine lemma, and the concrete plumbing is deliberately
-  **not** pursued, as it adds scale without new content or new reach against the curve.
+  the object *and* proves the resultant recursion means what it should. The **forward
+  direction reduces to a single lemma** (`resultant_eq_zero_of_common_root`,
+  `Ecdlp/Proved/SemaevFour.lean`): for *any* two univariate polynomials of bounded degree sharing
+  an evaluation-root, their resultant vanishes. Each Semaev step is
+  `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))`, so once the previous slice is defined as a polynomial with its
+  degree bound, "the two slices share a root ⟹ `Sₙ₊₁ = 0`" is an instance of that lemma (`S₄`'s
+  forward direction is its `n = 3` case). This repository defines no `Sₙ` for `n ≥ 5` at general
+  `(a,b)`; a recursive definition with its degree bound and the forward direction at every level
+  is parked in draft PR #448 while `F-SEMAEV-ELIMINATION` is `build_now: false`.
 
   **Decomposition layer + the prime-field cost frontier (partial, honestly bounded).** On top of
   the polynomials, the *point-decomposition* meaning is now machine-checked
@@ -268,15 +268,19 @@ exact `Θ` statements.
   each `experiments/*/` directory. External Gröbner validation and sharper formulations are
   prerequisites before promoting this line to a publishable complexity barrier.
 
-  **`Sₘ` degree tower `2^{m−2}` (partly built).** The base case is proved
+  **`Sₘ` degree tower `2^{m−2}` (exact for `m = 3, 4`).** The base case is proved
   (`secp256k1_S₃poly_natDegree`: `deg S₃ = 2` in each variable). `S₄` is invariant under all 24
   permutations of its arguments (`S₄_perm`, `SemaevFourSymmetry.lean`; the earlier
-  `S₄_symm₁₂`/`S₄_symm₃₄`/`S₄_block_swap` generate only an order-8 subgroup) and has degree exactly
-  4 in each variable when `S₃` of the other three arguments is nonzero (`S₄slice_natDegree`,
-  `S₄_natDegree_eq_four_of_perm`). The general `Sₘ` is defined by the resultant recursion with
-  `deg ≤ 2^{m−2}` in the last variable and the forward direction at every level
-  (`SemaevTower.lean`). Still open: the exact degree for `m ≥ 5` (the top coefficient
-  `S_{m−1}(…)²`), symmetry for `m ≥ 5`, and the reverse/point-level direction.
+  `S₄_symm₁₂`/`S₄_symm₃₄`/`S₄_block_swap` generate only an order-8 subgroup, a group-theoretic
+  remark that is not kernel-checked) and has degree exactly 4 in each variable when `S₃` of the
+  other three arguments is nonzero (`S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`). Still
+  open: `Sₘ` for `m ≥ 5` at general `(a,b)` (its definition, exact degree with top coefficient
+  `S_{m−1}(…)²`, symmetry, and the reverse direction; a recursive definition with
+  `deg ≤ 2^{m−2}` in the last variable and the forward direction is parked in draft PR #448).
+  The reverse direction is proved for `S₄` (`S₄_common_root_of_eq_zero`), and the secp256k1
+  frozen projective family has its own
+  (`specialize_frozenC_succ_eq_zero_iff_common_projective_root`). Point-level characterizations
+  (`S₄ = 0 ⟺ ±P₁±P₂±P₃±P₄ = O`) are not built.
 - **Weil pairing / isogeny depth** (no elliptic-isogeny module in the audited
   pinned/current Mathlib trees) — blocks
   *formalizing the MOV/FR transfer reduction itself*; the pairing is not in Mathlib. **This is

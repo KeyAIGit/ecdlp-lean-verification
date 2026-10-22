@@ -47,16 +47,16 @@ theorem S₃poly_natDegree_le (a b x₁ x₂ : F) : (S₃poly a b x₁ x₂).nat
 theorem S₃poly_symm (a b x₁ x₂ : F) : S₃poly a b x₁ x₂ = S₃poly a b x₂ x₁ := by
   simp only [S₃poly]; ring_nf
 
-/-- **The resultant recursion engine, in full generality — the forward direction of the *whole*
-Semaev family in one lemma.** For *any* two univariate polynomials `f, g` over a commutative
-ring sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), their resultant vanishes (provided
-the Sylvester sizes are not both zero). Every Semaev step is `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))`,
-so "the two slices share a root ⟹ the resultant is `0`" is exactly this statement at level `n` —
-`S₄`'s forward direction below is the case `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`, and the same
-lemma discharges `S₅`, `S₆`, … verbatim, with `f` the previous polynomial slice. It needs only
-the Bézout identity for the resultant (`exists_mul_add_mul_eq_C_resultant`), valid over any
-commutative ring: no field, no algebraic closure, no degree bookkeeping beyond `natDegree ≤ size`.
-This is the mechanism-level generalization of the Semaev forward direction to all `n`. -/
+/-- **The resultant common-root lemma behind the Semaev forward direction.** For *any* two
+univariate polynomials `f, g` over a commutative ring with `natDegree f ≤ m`, `natDegree g ≤ n`
+and sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), their resultant vanishes (provided
+the Sylvester sizes are not both zero). A Semaev step is `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))`, so
+"the two slices share a root ⟹ the resultant is `0`" is this statement once the previous slice
+`Sₙ(…,X)` is defined as a polynomial with a degree bound `natDegree ≤ m`. `S₄`'s forward
+direction below is the case `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`. A higher level needs that
+definition and degree bound first; this lemma does not supply them. It needs only the Bézout
+identity for the resultant (`exists_mul_add_mul_eq_C_resultant`), valid over any commutative
+ring: no field, no algebraic closure. -/
 theorem resultant_eq_zero_of_common_root {m n : ℕ} (f g : F[X]) (X₀ : F)
     (hf : f.natDegree ≤ m) (hg : g.natDegree ≤ n) (H : m ≠ 0 ∨ n ≠ 0)
     (hfr : f.eval X₀ = 0) (hgr : g.eval X₀ = 0) :
@@ -99,8 +99,9 @@ theorem S₄_symm₁₂ (a b x₁ x₂ x₃ x₄ : F) :
 /-- **`S₄` is symmetric in `x₃, x₄`** (within the second pair) — from the block swap and the
 first-pair symmetry. With `S₄_symm₁₂` and `S₄_block_swap`, `S₄` is symmetric within *each* pair
 *and* under exchanging the pairs. These three permutations generate only an order-8 subgroup of
-the 24 permutations of `{x₁,x₂,x₃,x₄}`; the missing transposition `x₂ ↔ x₃` and invariance under
-every permutation are `S₄_symm₂₃` and `S₄_perm` in `Ecdlp/Proved/SemaevFourSymmetry.lean`. -/
+the 24 permutations of `{x₁,x₂,x₃,x₄}` (a group-theoretic remark, not kernel-checked); the
+missing transposition `x₂ ↔ x₃` and invariance under every permutation are `S₄_symm₂₃` and
+`S₄_perm` in `Ecdlp/Proved/SemaevFourSymmetry.lean`. -/
 theorem S₄_symm₃₄ (a b x₁ x₂ x₃ x₄ : F) :
     S₄ a b x₁ x₂ x₃ x₄ = S₄ a b x₁ x₂ x₄ x₃ := by
   rw [S₄_block_swap a b x₁ x₂ x₃ x₄, S₄_symm₁₂ a b x₃ x₄ x₁ x₂,

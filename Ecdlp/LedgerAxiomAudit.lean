@@ -574,10 +574,6 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.Schnorr.threshold_elgamal_combine
 #print axioms Ecdlp.Schnorr.threshold_schnorr_aggregate
 #print axioms Ecdlp.Secp256k1Schnorr.secp256k1_schnorr_extract
-#print axioms Ecdlp.Semaev.Sm
-#print axioms Ecdlp.Semaev.Sm_eq_zero_of_chain
-#print axioms Ecdlp.Semaev.Sm_four
-#print axioms Ecdlp.Semaev.Sm_three
 #print axioms Ecdlp.Semaev.S₃_diagonal_cube_covariance
 #print axioms Ecdlp.Semaev.S₃_diagonal_cube_zero_iff
 #print axioms Ecdlp.Semaev.S₃_eq_zero_iff
@@ -587,7 +583,6 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.Semaev.S₃_symm₁₂
 #print axioms Ecdlp.Semaev.S₃_symm₂₃
 #print axioms Ecdlp.Semaev.S₃poly_eval
-#print axioms Ecdlp.Semaev.S₃poly_map
 #print axioms Ecdlp.Semaev.S₃poly_master_factor
 #print axioms Ecdlp.Semaev.S₄
 #print axioms Ecdlp.Semaev.S₄_block_swap
@@ -609,7 +604,6 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.Semaev.S₄slice_natDegree
 #print axioms Ecdlp.Semaev.S₄slice_natDegree_le
 #print axioms Ecdlp.Semaev.glv_target_ne_self
-#print axioms Ecdlp.Semaev.natDegree_det_le_sum_col
 #print axioms Ecdlp.Semaev.resultant_eq_zero_of_common_root
 #print axioms Ecdlp.Semaev.resultant_quadratic_two_two
 #print axioms Ecdlp.Semaev.secp256k1_S₃_glv_covariance
@@ -630,12 +624,6 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.Semaev.secp256k1_semaev_three_point
 #print axioms Ecdlp.Semaev.secp256k1_semaev_three_point_double
 #print axioms Ecdlp.Semaev.secp256k1_semaev_three_tangent
-#print axioms Ecdlp.Semaev.semaevSlice
-#print axioms Ecdlp.Semaev.semaevSlice_eval_eq_zero_of_chain
-#print axioms Ecdlp.Semaev.semaevSlice_natDegree_le
-#print axioms Ecdlp.Semaev.semaevSlice_succ_eval
-#print axioms Ecdlp.Semaev.stepPoly
-#print axioms Ecdlp.Semaev.stepPoly_coeff_natDegree_le
 #print axioms Ecdlp.Targets.glv_eigenvalue_zmod
 #print axioms Ecdlp.TaskSylvester.det_taskSylvester_eq_resultant
 #print axioms Ecdlp.TaskSylvester.det_taskSylvester_eq_zero_iff_common_projective_root
