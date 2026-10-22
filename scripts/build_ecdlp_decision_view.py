@@ -259,6 +259,8 @@ def render(data: dict, sources: dict[str, dict]) -> str:
         )
         for ruling in record["rulings"]:
             lines.append(f"- **{ruling['foundation_id']}** (`{ruling['ruling']}`)")
+            if "extends_decision_id" in ruling:
+                lines.append(f"  - **Extends:** {ruling['extends_decision_id']}")
             for field, label in (
                 ("authorized_build", "Authorized build"),
                 ("exact_uncertainty", "Exact uncertainty"),
@@ -269,6 +271,12 @@ def render(data: dict, sources: dict[str, dict]) -> str:
             ):
                 if field in ruling:
                     lines.append(f"  - **{label}:** {ruling[field]}")
+            if "lab_declarations" in ruling:
+                names = ruling["lab_declarations"]
+                lines.append(
+                    f"  - **Lab declarations ({len(names)}):** "
+                    + ", ".join(f"`{name}`" for name in names)
+                )
         lines.append("")
 
     lines.extend(["### Upstream Mathlib snapshot", ""])

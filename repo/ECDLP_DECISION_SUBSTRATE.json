@@ -227,6 +227,7 @@
     "Maintain the completed TASK-024 non-run kernel binding for necessary infinity-stratum pruning: affine external inputs restrict the exact cover from 16384 masks to 987 separated masks, and nonzero endpoint determinants conditionally restrict it to 377 interior masks. Keep sufficiency, unique mask selection, production enumeration, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
     "Maintain the completed TASK-025 non-run kernel binding for explicit infinity propagation: the nested local mask counts are 377 to 129 to 69 to 36, while the independent boundary-only refinement is 129 to 60; over any field, six prefix and six suffix obstruction values cover all twelve internal infinity slots, and endpoint plus BalancedPropagatedRegular assumptions make the empty-mask affine chart exact. The source-stage bridge separately requires injective base change into an algebraically closed target and mapped-target regularity. Keep symbolic nonzeroness, nonemptiness, genericity, exceptional-complement orchestration, witness uniqueness, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
     "Land exactly the bounded formal builds authorized by FD-2026-10-22-001: the PR #444 port for F-PARITY-BIT-SECURITY, the PR #446 point-count build for F-PRIME-ORDER-POINT-COUNT, and the S4 permutation-symmetry and degree slice of PR #447 as maintenance of the existing S3/S4 layer. None selects or promotes a route or authorizes an experiment.",
+    "Land exactly the bounded formal builds authorized by FD-2026-10-22-002: the five point-level S₃ statements frozen on branch lab/semaev-three-point-20261022, as maintenance of the existing S3/S4 layer, and one port of the 34 listed lab theorems that extends F-PARITY-BIT-SECURITY. Neither selects or promotes a route or authorizes an experiment.",
     "Maintain canonical provenance and regenerate affected views without changing the recorded claim boundary."
     ],
     "forbidden_work": [
@@ -243,6 +244,7 @@
     "Treat the completed TASK-025 conditional single-affine-chart theorem as proof that its balanced regular locus is symbolically nonzero, nonempty, dense, probable, or generic; as automatic mapped-target regularity from source-field computation; as witness uniqueness or target-witness descent; or as a production mask selector, solver result, cost result, ECDLP shortcut, or execution authorization.",
       "Treat a constant-factor result, structural identity, or toy measurement as a subgeneric attack.",
       "Build the general S_m tower, extend F-PARITY-BIT-SECURITY or F-PRIME-ORDER-POINT-COUNT beyond FD-2026-10-22-001, or add p256-exact-cardinality to release.required_nodes without a new dated decision.",
+      "Add a point-level Semaev statement beyond the five named by FD-2026-10-22-002, in particular fixed-target, HValue, or frozenC semantics or point-level S_m semantics for m >= 5, or extend F-PARITY-BIT-SECURITY beyond FD-2026-10-22-002, for example by the sparse Fourier transform step, a cost model for the reductions, or a parity-correlation experiment, without a new dated decision.",
       "Delete or rewrite provenance-bearing assets without an inventory, reference scan, and documented restore path."
     ],
     "promotion_rule": "A future dated decision may promote at most one parked route only after new evidence satisfies the acceptance gate at proposal level and tasks/ECDLP_RESEARCH.md plus experiments/HYPOTHESES.yaml explicitly authorize the same work.",
@@ -1397,10 +1399,13 @@
       "implementation_status": "partial",
       "needed_by_route_ids": [],
       "formal_node_ids": [],
-      "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
-      "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. The layer is not a hardness theorem, constructs no parity oracle, and states nothing specific to secp256k1.",
-      "resume_condition": "Any further build in this area, such as a noisy-oracle reduction, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
-      "registered_by": "FD-2026-10-22-001"
+      "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. The port extended by FD-2026-10-22-002 also uses Mathlib's Weierstrass affine point group and its slope (the zeta statements and the x-coordinate instances) and Mathlib's Hoeffding bound for bounded random variables under a finite uniform product measure (the majority-vote step of the noisy reduction). A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
+      "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001 and extended by FD-2026-10-22-002: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. Under FD-2026-10-22-002 it also takes exactly one further port, after PR #444, of 34 theorems already kernel-checked in that lab repository: exact zero-correlation identities for even and odd features, a Fourier transfer bound and L1 bounds of the ordered-sector and carry signs, the slope cocycle and the Weierstrass zeta function of a short-normal-form curve, a heavy-coefficient lemma and the correctness of the hard-core reduction for the ordered-sector sign with the sparse Fourier transform output as a hypothesis, relabelling with a defect and the exact-branch reduction, the window law, and a halving reduction from a deterministic noisy parity predictor with its failure bound. Transfer bounds keep their character-sum bounds as assumed hypotheses. The layer is not a hardness theorem, constructs no parity oracle, formalizes no cost, and states nothing specific to secp256k1.",
+      "resume_condition": "Any build in this area beyond FD-2026-10-22-002, such as the sparse Fourier transform step or a cost model for the reductions, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
+      "registered_by": "FD-2026-10-22-001",
+      "extended_by": [
+        "FD-2026-10-22-002"
+      ]
     },
     {
       "id": "F-PRIME-ORDER-POINT-COUNT",
@@ -1454,6 +1459,71 @@
           "foundation_id": "F-SEMAEV-ELIMINATION",
           "ruling": "unchanged_build_if_selected",
           "scope": "No F-SEMAEV-ELIMINATION build is authorized; the foundation stays build_if_selected with build_now false and its resume condition is unchanged. The owner splits PR #447. Its S4 permutation symmetry (an exact S4 polynomial covariance identity under coordinate permutations), the per-variable degree facts proved with it, and its documentation correction land on the owner's ruling of 2026-10-22, this decision FD-2026-10-22-001, as maintenance of the existing S3/S4 formal layer (semaev-foundations). The completed structural lane recorded by RS-2026-07-24-001 is not reopened. The general S_m tower moves to a separate draft pull request and stays parked until a dependent route is selected."
+        }
+      ]
+    },
+    {
+      "decision_id": "FD-2026-10-22-002",
+      "decided_on": "2026-10-22",
+      "decided_by": "owner",
+      "source": "Owner answers of 2026-10-22, recorded verbatim with the questions in the owner's companion lab repository as ADR 0025. Asked whether a new dated entry may admit the five point-level S₃ theorems, the owner answered \"2. да.\" (\"2. yes.\"). Asked whether to export the lab's 34 new theorems under an entry that extends F-PARITY-BIT-SECURITY, the owner answered \"3. да выгружай\" (\"3. yes, export\").",
+      "kind": "bounded_formal_foundation_scope",
+      "selected_route_ids": [],
+      "promoted_route_ids": [],
+      "authorizes_experiment": false,
+      "promotes_route": false,
+      "changes_release_required_nodes": false,
+      "rationale": "AUTONOMY.md requires a dated change to this file before a new formal-foundation build. This record follows FD-2026-10-22-001: neither addition is attack work, so the owner admits both without selecting a route, and each ruling states exactly what it admits; anything beyond it needs a new dated decision. The point-level S₃ statements are exact algebraic identities on the existing S3/S4 layer, so F-SEMAEV-ELIMINATION stays build_if_selected with build_now false, as in the ruling of FD-2026-10-22-001 on the S4 symmetry slice. The export extends F-PARITY-BIT-SECURITY, which FD-2026-10-22-001 registered, by exactly one further port; the foundation keeps retain_frontier, build_now false, its implementation_status and its registration, and lists this decision in extended_by. It neither selects nor promotes a route and does not supersede RS-2026-07-24-001.",
+      "rulings": [
+        {
+          "foundation_id": "F-SEMAEV-ELIMINATION",
+          "ruling": "unchanged_build_if_selected",
+          "scope": "No F-SEMAEV-ELIMINATION build is authorized; the foundation stays build_if_selected with build_now false, and its deliverable, resume condition and structural lane are unchanged. On the owner's ruling of 2026-10-22, this decision FD-2026-10-22-002, exactly five point-level S₃ statements land as maintenance of the existing S3/S4 formal layer (semaev-foundations): S₃_eq_addSubMap, S₃_eq_zero_of_add_add_eq_zero, S₃_eq_zero_iff_exists_point, S₃_eq_zero_iff_signed_sum and secp256k1_semaev_three_point_iff, as frozen before any proof search at commit 3c7d7a67 on branch lab/semaev-three-point-20261022. For a Weierstrass curve in short normal form over any field (over any commutative ring for S₃_eq_addSubMap) and on Mathlib's affine point group, they express S₃ through Mathlib's addSubMap, derive S₃(x1, x2, x3) = 0 from P1 + P2 + P3 = 0 without a case hypothesis, characterize S₃(x1, x2, x3) = 0 by an affine point P3 over x3 with P1 + P2 + P3 = 0 or P1 - P2 + P3 = 0, and, for three fixed affine points, by a signed sum P1 ± P2 ± P3 = 0, which the last statement specializes to secp256k1. They carry no attack information. Nothing beyond these five is admitted: no fixed-target, HValue or frozenC semantics and no point-level S_m semantics for m >= 5. The completed structural lane recorded by RS-2026-07-24-001 is not reopened, and the general S_m tower stays parked."
+        },
+        {
+          "foundation_id": "F-PARITY-BIT-SECURITY",
+          "ruling": "extend_authorized_bounded_build",
+          "extends_decision_id": "FD-2026-10-22-001",
+          "authorized_build": "Exactly one pull request, after PR #444, that ports the 34 theorems in lab_declarations, already kernel-checked in the owner's companion lab repository, with their statements unchanged, their statement definitions, the supporting definitions and lemmas of their proof files, their ledger rows and generated views. The names are relative to the lab namespace KeyaiFormal, which PR #444 maps to Ecdlp.ParityFourier with unchanged short names. By block: K, exact zero correlation over the nonzero scalars of even features with the parity and carry signs (and, for n = 3 mod 4, the Legendre symbol) and of odd features with the ordered-sector sign (and, for n = 1 mod 4, the Legendre symbol), including any function of the x-coordinate on any Weierstrass curve; CT, a Fourier transfer bound for any complex functions under an assumed twisted-sum bound, L1 bounds of the ordered-sector and carry signs, and lowest-bit transfer bounds against both signs under an assumed twisted-sum bound; Zeta, the slope 2-cocycle of a short-normal-form curve over a field, the Weierstrass zeta function as its coboundary when the point count is a unit, additivity of the slope sum when it is zero, and lowest-bit transfer bounds for the zeta function conditional on an assumed twisted-sum bound for it; C44H and C44R, a heavy-coefficient lemma, the correlation and table-count lemmas, a Parseval bound on the number of heavy frequencies, and the correctness of the hard-core reduction for the ordered-sector sign with the sparse Fourier transform output taken as a hypothesis; C37, relabelling a predictor by a public sign with a defect, recovery of the discrete logarithm from an exact branch oracle and a public label, and the sign relation between two square roots of the same nonzero element; W, the window law; PB, a majority-vote bound, the vote identity and vote advantage, and a halving reduction from a deterministic parity predictor with arbitrarily placed errors and a uniform random shift table, with its failure bound, in ZMod n and in any group with an element of odd prime order.",
+          "lab_declarations": [
+            "ProofsK.parityMismatchZero",
+            "ProofsK.evenFeatureZero",
+            "ProofsK.oddFeatureZero",
+            "ProofsK.xOnlyZero",
+            "ProofsCT.charTransfer",
+            "ProofsCT.l1JBound",
+            "ProofsCT.l1GBound",
+            "ProofsCT.weilTransferLsbJ",
+            "ProofsCT.weilTransferLsbG",
+            "ProofsZeta.slopeCocycleLaw",
+            "ProofsZeta.zetaCoboundary",
+            "ProofsZeta.anomalousSumHom",
+            "ProofsZeta.zetaLsbTransfer",
+            "ProofsC44H.heavyCore",
+            "ProofsC44H.jHeavy",
+            "ProofsC44R.accessCorrelation",
+            "ProofsC44R.gammaJCard",
+            "ProofsC44R.heavySetSmall",
+            "ProofsC44R.jReductionSound",
+            "ProofsC44R.jRecoverFromHeavyList",
+            "ProofsC44R.jRecoverExplicit",
+            "ProofsC37.relabelDefect",
+            "ProofsC37.relabelDL",
+            "ProofsC37.sqrtBranch",
+            "ProofsW.windowShape",
+            "ProofsW.windowLaw",
+            "ProofsW.windowRefined",
+            "ProofsW.windowX",
+            "ProofsPB1.majorityVote",
+            "ProofsPB23.voteIdentity",
+            "ProofsPB23.voteAdvantage",
+            "ProofsPB.noisyHalvingRecovers",
+            "ProofsPB.noisyHalvingGrid",
+            "ProofsPB.groupNoisyHalvingRecovers"
+          ],
+          "exact_uncertainty": "Unchanged from FD-2026-10-22-001: whether any efficiently computable public function of a point correlates with the parity of its discrete logarithm at or above the break-even bias. The extension proves exact zero-correlation identities for symmetric features, transfer bounds under assumed character-sum bounds, the correctness of reductions whose algorithmic inputs (the sparse Fourier transform output, an exact branch oracle, a noisy predictor) are hypotheses, and a failure bound for the noisy reduction; it decides no correlation, formalizes no cost, and proves no hardness.",
+          "success_condition": "CI kernel-checks every ported theorem with its statement unchanged from the lab's frozen statement, and the full-ledger axiom audit shows that each depends only on propext, Classical.choice, and Quot.sound, with no native_decide and no custom axiom. The ledger rows state the assumed hypotheses (the twisted-sum bounds, including the one for the zeta function, the sparse Fourier transform output, the exact branch oracle, the square-root relation, and the deterministic predictor with its error fraction) and make no hardness, cost, or secp256k1 claim.",
+          "stop_condition": "The authorization covers that one pull request only and ends when it is merged or closed; the port builds on the files of PR #444 (merged as 032d02a9). Any further build in this area, such as the sparse Fourier transform step, a cost model or break-even bound, the hard-core lemma or reduction for the carry sign, a proof of a twisted-sum bound for an elliptic-curve coordinate map or for the zeta function, or a parity-correlation experiment, requires a new dated decision."
         }
       ]
     }

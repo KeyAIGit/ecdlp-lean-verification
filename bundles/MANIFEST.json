@@ -23,7 +23,7 @@
         "path": "repo/ECDLP_DECISION_SUBSTRATE.json",
         "reason": "exact target, route dispositions, evidence gates, and foundation priority",
         "exists": true,
-        "bytes": 95607
+        "bytes": 106188
       },
       {
         "path": "repo/RESEARCH_ENGINE_V0.json",
@@ -77,7 +77,7 @@
         "path": "data/hypothesis_space_state.json",
         "reason": "generated one-million-cell screening state and bounded review queue",
         "exists": true,
-        "bytes": 97527
+        "bytes": 97524
       },
       {
         "path": "data/hypothesis_space_map.json",
@@ -211,7 +211,7 @@
         "path": "repo/ECDLP_DECISION_SUBSTRATE.json",
         "reason": "exact target, route dispositions, evidence gates, and foundation priority",
         "exists": true,
-        "bytes": 95607
+        "bytes": 106188
       },
       {
         "path": "repo/RESEARCH_ENGINE_V0.json",
@@ -265,7 +265,7 @@
         "path": "data/hypothesis_space_state.json",
         "reason": "generated one-million-cell screening state and bounded review queue",
         "exists": true,
-        "bytes": 97527
+        "bytes": 97524
       },
       {
         "path": "data/hypothesis_space_map.json",
@@ -615,7 +615,7 @@
         "path": "repo/ECDLP_DECISION_SUBSTRATE.json",
         "reason": "exact target, route dispositions, evidence gates, and foundation priority",
         "exists": true,
-        "bytes": 95607
+        "bytes": 106188
       },
       {
         "path": "repo/RESEARCH_ENGINE_V0.json",
@@ -669,7 +669,7 @@
         "path": "data/hypothesis_space_state.json",
         "reason": "generated one-million-cell screening state and bounded review queue",
         "exists": true,
-        "bytes": 97527
+        "bytes": 97524
       },
       {
         "path": "data/hypothesis_space_map.json",
@@ -1005,7 +1005,7 @@
         "path": "data/knowledge_graph.json",
         "reason": "full machine-readable theorem/dependency/barrier graph",
         "exists": true,
-        "bytes": 735547
+        "bytes": 737540
       },
       {
         "path": "REPOSITORY_ARCHITECTURE.md",
