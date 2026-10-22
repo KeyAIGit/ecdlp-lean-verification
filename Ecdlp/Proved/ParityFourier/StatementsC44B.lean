@@ -7,10 +7,10 @@ This file fixes the statement before any proof is searched. Proof files must
 not edit it.
 
 C44-B: if `1 ≤ B` and `3 (2B + 1)^2 < n`, then
-`|J_hat(0)|^2 ≤ (3 + log (2B + 1))^2 / B`. Taking the largest such `B`
-(about `sqrt(n/12)`) gives `|J_hat(0)| = O(n^(-1/4) log n)`, a rigorous form
-of the balance of `J` (Section 3.6 of the C44 document gives `O(n^(-1/4))`
-on paper).
+`|J_hat(0)|^2 ≤ (3 + log (2B + 1))^2 / B`. (Paper argument, not formalized
+here: taking the largest such `B`, about `sqrt(n/12)`, gives
+`|J_hat(0)| = O(n^(-1/4) log n)`; Section 3.6 of the C44 document gives
+`O(n^(-1/4))` on paper. Neither asymptotic form is a Lean statement.)
 -/
 
 namespace Ecdlp.ParityFourier

@@ -9,8 +9,9 @@ not edit it.
 * C44-N, the norm lemma of the C44 document: if `x + lam y = 0` in `ZMod n`
   for integers `(x, y) ≠ (0, 0)`, then `x^2 - x y + y^2 ≥ n`.
 * C44-6d, Proposition 6(d) of the C44 document: if `3 (2B + 1)^2 < n`, the
-  frequency `0` is not in `GammaJ lam B`. The reduction (Theorem 10) uses this
-  to know that the heavy coefficient it finds is invertible.
+  frequency `0` is not in `GammaJ lam B`. (Paper argument, not formalized
+  here: the reduction of the C44 document, Theorem 10, uses this to know that
+  the heavy coefficient it finds is invertible.)
 -/
 
 namespace Ecdlp.ParityFourier

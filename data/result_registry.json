@@ -10193,7 +10193,7 @@
     },
     {
       "id": "ledger-310",
-      "claim": "Relabelling by a public `±1` factor preserves agreement counts (finite type `X`, integer-valued `σ, c, b, P` with `c(x) ∈ {1, −1}` and `σ = c·b` pointwise: the number of `x` with `c(x)·P(x) = σ(x)` equals the number of `x` with `P(x) = b(x)`. A counting identity; no statement about any particular predictor)",
+      "claim": "*(alternate/supporting: elementary counting lemma)* Relabelling by a public `±1` factor preserves agreement counts (finite type `X`, integer-valued `σ, c, b, P` with `c(x) ∈ {1, −1}` and `σ = c·b` pointwise: the number of `x` with `c(x)·P(x) = σ(x)` equals the number of `x` with `P(x) = b(x)`. A counting identity obtained by cancelling the unit `c(x)`; it is listed for completeness and is not counted as a distinct result. No statement about any particular predictor)",
       "theorem_cell": "`Ecdlp.ParityFourier.ProofsF3F4a.relabel`",
       "declared_files": [
         "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
@@ -10214,7 +10214,7 @@
     },
     {
       "id": "ledger-311",
-      "claim": "An exact parity oracle recovers the discrete logarithm by halving (the halving reduction of Lauter–Stange, Prop. 2, in two forms. In `ZMod n`, `n` an odd prime: if `O(y) = [y] mod 2` for every `y`, the states `y₀ = x`, `y_{i+1} = (y_i − O(y_i))·2⁻¹` satisfy `Σ_{i<L} O(y_i)·2^i = [x]` whenever `n ≤ 2^L`. In any additive group with `addOrderOf G = n` an odd prime and `2h mod n = 1`: if `O([y]•G) = [y] mod 2` for every `y : ZMod n`, the chain `P₀ = [x]•G`, `P_{i+1} = h•(P_i − O(P_i)•G)` gives `Σ_{i<L} O(P_i)·2^i = [x]` whenever `n ≤ 2^L`; the chain uses only group operations and oracle calls. Honest scope: a reduction from an exact, always-correct parity oracle on every multiple of `G`; no such oracle is known for secp256k1, noisy or partial oracles are not covered, and this is not an ECDLP attack)",
+      "claim": "An exact parity oracle recovers the discrete logarithm by halving (the parity-oracle halving reduction stated as Proposition 2 in §7 of Lauter–Stange, arXiv:0803.0728v2 (2008), in two forms. In `ZMod n`, `n` an odd prime: if `O(y) = [y] mod 2` for every `y`, the states `y₀ = x`, `y_{i+1} = (y_i − O(y_i))·2⁻¹` satisfy `Σ_{i<L} O(y_i)·2^i = [x]` whenever `n ≤ 2^L`. In any additive group with `addOrderOf G = n` an odd prime and `2h mod n = 1`: if `O([y]•G) = [y] mod 2` for every `y : ZMod n`, the chain `P₀ = [x]•G`, `P_{i+1} = h•(P_i − O(P_i)•G)` gives `Σ_{i<L} O(P_i)·2^i = [x]` whenever `n ≤ 2^L`; the chain uses only group operations and oracle calls. Honest scope: a reduction from an exact, always-correct parity oracle on every multiple of `G`; no such oracle is known for secp256k1, noisy or partial oracles are not covered, and this is not an ECDLP attack)",
       "theorem_cell": "`Ecdlp.ParityFourier.ProofsF4b.groupHalvingRecovers`, `Ecdlp.ParityFourier.ProofsF3F4a.halvingRecovers`",
       "declared_files": [
         "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
@@ -10367,7 +10367,7 @@
     },
     {
       "id": "ledger-317",
-      "claim": "Bias bound for `J` (prime `n ≠ 2`, `lam² + lam + 1 = 0`, `B ≥ 1`, `3(2B + 1)² < n`: `‖ft J 0‖² ≤ (3 + log(2B + 1))² / B`. A corollary of the two previous rows; a bias bound, not a hardness statement)",
+      "claim": "*(alternate/supporting: direct corollary)* Bias bound for `J` (prime `n ≠ 2`, `lam² + lam + 1 = 0`, `B ≥ 1`, `3(2B + 1)² < n`: `‖ft J 0‖² ≤ (3 + log(2B + 1))² / B`. A direct corollary of the two previous rows (`0 ∉ Γ_J`, so `‖ft J 0‖²` is one term of the mass bounded by `jConcentrationExplicit`), not counted as a distinct result; a bias bound, not a hardness statement)",
       "theorem_cell": "`Ecdlp.ParityFourier.ProofsC44B.jBalanceBound`",
       "declared_files": [
         "Ecdlp/Proved/ParityFourier/ProofsC44B.lean",
@@ -10409,7 +10409,7 @@
     },
     {
       "id": "ledger-319",
-      "claim": "Lowest-bit correlation bound conditional on a Weil-type twisted-sum bound (odd primes `n`, `p`, any `V : ZMod n → ZMod p`: if every twisted sum of `V` with `a ≠ 0` has norm at most `2√p`, then `‖Σ_{k≠0} σ(V k)·σ(k)‖ ≤ 2√p·(2 + log p)·(2 + log n)`, with `σ(z) = (−1)^[z]`. The specialization of the previous row with `b = T = σ`. Honest scope: the `2√p` twisted-sum bound is a hypothesis, not proved here for any concrete curve map; no statement about secp256k1)",
+      "claim": "Lowest-bit correlation bound conditional on an assumed twisted-sum bound `2√p` (odd primes `n`, `p`, any `V : ZMod n → ZMod p`: if every twisted sum of `V` with `a ≠ 0` has norm at most `2√p`, then `‖Σ_{k≠0} σ(V k)·σ(k)‖ ≤ 2√p·(2 + log p)·(2 + log n)`, with `σ(z) = (−1)^[z]`. The specialization of the previous row with `b = T = σ`, with explicit bounds added: the `ℓ¹` norms of `σ̂` on `ZMod p` and on `ZMod n` are at most `2 + log p` and `2 + log n` (from `l1lowBound`), and `Σ_{k≠0} σ(k) = 0` removes the `σ̂(0)` term. Honest scope: the `2√p` twisted-sum bound is an assumed hypothesis, not proved here for any map; the constant `2√p` is not known to hold for elliptic-curve coordinate maps (the standard bound for a function `f` is `2·deg(f)·√p`); `weilTransfer` covers a general `C`. No statement about secp256k1)",
       "theorem_cell": "`Ecdlp.ParityFourier.ProofsWT.weilTransferLsb`",
       "declared_files": [
         "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
@@ -15944,63 +15944,63 @@
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 52
+      "line": 53
     },
     "Ecdlp.ParityFourier.CarrySum": {
       "name": "CarrySum",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 45
+      "line": 46
     },
     "Ecdlp.ParityFourier.GInvariant": {
       "name": "GInvariant",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 68
+      "line": 69
     },
     "Ecdlp.ParityFourier.GOdd": {
       "name": "GOdd",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 63
+      "line": 64
     },
     "Ecdlp.ParityFourier.GammaJ": {
       "name": "GammaJ",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
-      "line": 49
+      "line": 52
     },
     "Ecdlp.ParityFourier.GroupHalvingRecovers": {
       "name": "GroupHalvingRecovers",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 117
+      "line": 118
     },
     "Ecdlp.ParityFourier.HalvingRecovers": {
       "name": "HalvingRecovers",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 101
+      "line": 102
     },
     "Ecdlp.ParityFourier.J": {
       "name": "J",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 39
+      "line": 40
     },
     "Ecdlp.ParityFourier.JBalance": {
       "name": "JBalance",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 79
+      "line": 80
     },
     "Ecdlp.ParityFourier.JBalanceBound": {
       "name": "JBalanceBound",
@@ -16014,14 +16014,14 @@
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
-      "line": 40
+      "line": 43
     },
     "Ecdlp.ParityFourier.JConcentration": {
       "name": "JConcentration",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
-      "line": 58
+      "line": 61
     },
     "Ecdlp.ParityFourier.JConcentrationExplicit": {
       "name": "JConcentrationExplicit",
@@ -16035,21 +16035,21 @@
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 58
+      "line": 59
     },
     "Ecdlp.ParityFourier.JOrbitProduct": {
       "name": "JOrbitProduct",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 73
+      "line": 74
     },
     "Ecdlp.ParityFourier.L1low": {
       "name": "L1low",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
-      "line": 54
+      "line": 57
     },
     "Ecdlp.ParityFourier.L1lowBound": {
       "name": "L1lowBound",
@@ -16063,7 +16063,7 @@
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44d.lean",
-      "line": 19
+      "line": 20
     },
     "Ecdlp.ParityFourier.ProofsC44.High": {
       "name": "High",
@@ -16630,7 +16630,7 @@
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 88
+      "line": 89
     },
     "Ecdlp.ParityFourier.SigmaHatClosedForm": {
       "name": "SigmaHatClosedForm",
@@ -16651,77 +16651,77 @@
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsWT.lean",
-      "line": 41
+      "line": 44
     },
     "Ecdlp.ParityFourier.WeilTransferLsb": {
       "name": "WeilTransferLsb",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsWT.lean",
-      "line": 50
+      "line": 54
     },
     "Ecdlp.ParityFourier.ZeroNotInGammaJ": {
       "name": "ZeroNotInGammaJ",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44d.lean",
-      "line": 25
+      "line": 26
     },
     "Ecdlp.ParityFourier.eChar": {
       "name": "eChar",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsWT.lean",
-      "line": 33
+      "line": 36
     },
     "Ecdlp.ParityFourier.ft": {
       "name": "ft",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
-      "line": 32
+      "line": 35
     },
     "Ecdlp.ParityFourier.g": {
       "name": "g",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 42
+      "line": 43
     },
     "Ecdlp.ParityFourier.groupHalvingState": {
       "name": "groupHalvingState",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 108
+      "line": 109
     },
     "Ecdlp.ParityFourier.hC": {
       "name": "hC",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
-      "line": 43
+      "line": 46
     },
     "Ecdlp.ParityFourier.halvingState": {
       "name": "halvingState",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 95
+      "line": 96
     },
     "Ecdlp.ParityFourier.sgn": {
       "name": "sgn",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/Statements.lean",
-      "line": 36
+      "line": 37
     },
     "Ecdlp.ParityFourier.sigmaC": {
       "name": "sigmaC",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
-      "line": 37
+      "line": 40
     },
     "Ecdlp.ParityFourier.sigmaHat": {
       "name": "sigmaHat",
@@ -16735,14 +16735,14 @@
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsWT.lean",
-      "line": 37
+      "line": 40
     },
     "Ecdlp.ParityFourier.window": {
       "name": "window",
       "namespace": "Ecdlp.ParityFourier",
       "kind": "def",
       "file": "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
-      "line": 46
+      "line": 49
     },
     "Ecdlp.PohligHellman.component": {
       "name": "component",

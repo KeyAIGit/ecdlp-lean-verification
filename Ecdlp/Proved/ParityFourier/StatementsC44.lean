@@ -19,9 +19,12 @@ Notation, all on `ZMod n` with `n` prime and `n ≠ 2`:
 
 Statement C44-6'. The Fourier mass of `J` outside `GammaJ lam B` is at most
 `(1 + L1low B)^2 / B`. This is Proposition 6(b) of the C44 document with the
-uniform Gibbs bound (Lemma 3) replaced by the L1 bound (Lemma 4). Since
-`L1low B` grows like `(2/pi) log B`, the bound is `O(log^2 B / B)`, which still
-makes J well concentrated in Akavia's sense, up to the logarithm.
+uniform Gibbs bound (Lemma 3) replaced by the L1 bound (Lemma 4). (Paper
+argument, not formalized here: since `L1low B` grows like `(2/pi) log B`, the
+bound is `O(log^2 B / B)`, which the C44 document reads as concentration of
+`J` in Akavia's sense, up to the logarithm. Neither the asymptotic form nor
+Akavia's notion of concentration is a Lean statement; the explicit bound on
+`L1low` that is proved is C44-L4 in `StatementsC44L.lean`.)
 -/
 
 namespace Ecdlp.ParityFourier

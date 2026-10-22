@@ -9,8 +9,8 @@ that exactly these statements were proved.
 
 Setting:
 * `n` is a prime, `n ≠ 2`;
-* `lam : ZMod n` satisfies `lam ^ 2 + lam + 1 = 0`, i.e. `lam` is a
-  primitive cube root of unity mod `n`;
+* `lam : ZMod n` satisfies `lam ^ 2 + lam + 1 = 0`, i.e. `lam` is a root of
+  `x ^ 2 + x + 1` (a primitive cube root of unity mod `n` when `n ≠ 3`);
 * `[k]` is `k.val`, the representative of `k` in `[0, n)`.
 
 Definitions:
@@ -24,8 +24,9 @@ Statements:
 * F2: the balance identity of J;
 * F3: public relabelling transfers predictor agreement exactly (C37 note);
 * F4: an exact parity oracle recovers the discrete logarithm by halving
-  (Lauter-Stange, Prop. 2), first in `ZMod n` and then in any additive
-  group, using group operations only.
+  (the halving reduction of Lauter-Stange 2008, arXiv:0803.0728v2, Section 7,
+  Proposition 2), first in `ZMod n` and then in any additive group, using
+  group operations only.
 -/
 
 namespace Ecdlp.ParityFourier

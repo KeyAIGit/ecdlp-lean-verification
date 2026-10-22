@@ -17,12 +17,15 @@ curve, `k ↦ V([k]G)`), `b : ZMod p → ℂ` reads a bit of `V`, and
   `|∑_{k ≠ 0} b(V k) T(k)| ≤ |b̂(0)| |∑_{k ≠ 0} T(k)| + C (∑_{a ≠ 0} |b̂(a)|) (∑_α |T̂(α)|)`,
   with `ft` the normalised Fourier transform of `StatementsC44.lean`.
 * WT-lsb: for odd primes `n` and `p`, with `b = T = (-1)^val` (the lowest bit
-  of `V` against the parity of `k`) and `C = 2 sqrt p`, the correlation sum is
-  at most `2 sqrt p (2 + log p) (2 + log n)`.
+  of `V` against the parity of `k`) and an assumed twisted-sum bound
+  `C = 2 sqrt p`, the correlation sum is at most
+  `2 sqrt p (2 + log p) (2 + log n)`.
 
 The hypothesis on twisted sums is the analytic input (for the Weierstrass zeta
-of a prime-order curve it is hypothesis D2.2.1). These statements only check
-the finite Fourier transfer.
+of a prime-order curve it is the lab's unproved hypothesis D2.2.1). The
+constant `2 sqrt p` is not known to hold for elliptic-curve coordinate maps
+(the standard bound for a function `f` is `2 deg(f) sqrt p`); WT covers a
+general `C`. These statements only check the finite Fourier transfer.
 -/
 
 namespace Ecdlp.ParityFourier
@@ -46,7 +49,8 @@ def WeilTransfer : Prop :=
         ‖ft b 0‖ * ‖∑ k ∈ (univ.erase (0 : ZMod n)), T k‖ +
           C * (∑ a ∈ (univ.erase (0 : ZMod p)), ‖ft b a‖) * (∑ α : ZMod n, ‖ft T α‖)
 
-/-- WT-lsb. Lowest bit of `V` against the parity of the index, with `C = 2 sqrt p`. -/
+/-- WT-lsb. Lowest bit of `V` against the parity of the index, with an assumed
+twisted-sum bound `C = 2 sqrt p`. -/
 def WeilTransferLsb : Prop :=
   ∀ (n p : ℕ) [NeZero n] [NeZero p] [Fact n.Prime] [Fact p.Prime], n ≠ 2 → p ≠ 2 →
     ∀ V : ZMod n → ZMod p,
