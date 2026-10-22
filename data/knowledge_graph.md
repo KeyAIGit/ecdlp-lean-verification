@@ -2,7 +2,7 @@
 
 > Auto-generated from `VERIFIED.md` + the Lean import surface by `scripts/build_knowledge_graph.py`. Machine source of truth: `data/knowledge_graph.json`. Every ledger row below cites kernel-checked declarations (no `sorry`, no custom axioms).
 
-**323 ledger-row nodes** · **9 result families** · **17 critical nodes** · **17 attack routes** · **13 decision foundations** · **1 bounded structural route recorded** · **0 routes promoted** · **8 typed evidence cells** · **4 desk-decided cells** · **2 research-question seeds** · **4 shadow proposal stubs** · **0 bounded explorations selected** · **1 exact decision-level toy authorization** · **9 retained outcomes** · **1262 edges**
+**323 ledger-row nodes** · **9 result families** · **17 critical nodes** · **17 attack routes** · **13 decision foundations** · **1 bounded structural route recorded** · **0 routes promoted** · **8 typed evidence cells** · **4 desk-decided cells** · **2 research-question seeds** · **4 shadow proposal stubs** · **0 bounded explorations selected** · **1 exact decision-level toy authorization** · **9 retained outcomes** · **1283 edges**
 
 > A ledger-row node may cite several Lean declarations. `STATUS.md` owns headline counts; `data/result_registry.json` owns declaration-level resolution.
 
@@ -10,7 +10,7 @@ By proof method: Mathlib (108), Mathlib + native_decide (31), native_decide (20)
 
 By research area: curve-torsion (154), primality (57), other (33), generic-hardness (30), protocol-soundness (23), bit-security (13), attack-resistance (7), reduction (5), params (1)
 
-By edge type: imports (581), member_of (323), grounded_in_source_claim (62), requires_foundation (41), supports (30), decision_grounded_in (25), depends_on (18), evaluated_under (18), extends_frontier (16), detailed_by (15), frontier_of (13), requires_target_property (10), records_outcome_for (9), updates_hypothesis (9), records_route_evidence (9), instantiates_mechanism (8), evaluates_route (8), must_change_cost_quantity (8), binds_target_feature (8), binds_mechanism_primitive (8), binds_unresolved_question (8), blocked_by (6), tests_hypothesis (6), explores_route (6), governs_hypothesis (4), bounded_by_research_barrier (4), follows_up_cell (3), depends_on_candidate (3), generated_from_cell (2), follows_up_source (1)
+By edge type: imports (602), member_of (323), grounded_in_source_claim (62), requires_foundation (41), supports (30), decision_grounded_in (25), depends_on (18), evaluated_under (18), extends_frontier (16), detailed_by (15), frontier_of (13), requires_target_property (10), records_outcome_for (9), updates_hypothesis (9), records_route_evidence (9), instantiates_mechanism (8), evaluates_route (8), must_change_cost_quantity (8), binds_target_feature (8), binds_mechanism_primitive (8), binds_unresolved_question (8), blocked_by (6), tests_hypothesis (6), explores_route (6), governs_hypothesis (4), bounded_by_research_barrier (4), follows_up_cell (3), depends_on_candidate (3), generated_from_cell (2), follows_up_source (1)
 
 ## secp256k1 route decisions
 

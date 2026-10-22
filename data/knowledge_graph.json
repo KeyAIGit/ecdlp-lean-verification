@@ -37,9 +37,9 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1262,
+    "edges": 1283,
     "by_edge_type": {
-      "imports": 581,
+      "imports": 602,
       "member_of": 323,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
@@ -13162,7 +13162,22 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC37",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.StatementsC44B",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44H",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44H",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
       "type": "imports"
     },
@@ -13172,13 +13187,63 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44R",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44R",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.StatementsC44d",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsCT",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsCT",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsWT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsK",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsPB",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsW",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsW",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsK",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.StatementsWT",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsZeta",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsZeta",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsWT",
       "type": "imports"
     },
     {
@@ -14779,6 +14844,46 @@
     {
       "from": "Ecdlp",
       "to": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsK",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsCT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsZeta",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44H",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44R",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC37",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsW",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsPB",
       "type": "imports"
     },
     {

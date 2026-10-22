@@ -1005,7 +1005,7 @@
         "path": "data/knowledge_graph.json",
         "reason": "full machine-readable theorem/dependency/barrier graph",
         "exists": true,
-        "bytes": 735547
+        "bytes": 738404
       },
       {
         "path": "REPOSITORY_ARCHITECTURE.md",

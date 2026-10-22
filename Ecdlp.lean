@@ -206,3 +206,11 @@ import Ecdlp.Proved.ParityFourier.StatementsC44B
 import Ecdlp.Proved.ParityFourier.ProofsC44B
 import Ecdlp.Proved.ParityFourier.StatementsWT
 import Ecdlp.Proved.ParityFourier.ProofsWT
+import Ecdlp.Proved.ParityFourier.StatementsK
+import Ecdlp.Proved.ParityFourier.StatementsCT
+import Ecdlp.Proved.ParityFourier.StatementsZeta
+import Ecdlp.Proved.ParityFourier.StatementsC44H
+import Ecdlp.Proved.ParityFourier.StatementsC44R
+import Ecdlp.Proved.ParityFourier.StatementsC37
+import Ecdlp.Proved.ParityFourier.StatementsW
+import Ecdlp.Proved.ParityFourier.StatementsPB
