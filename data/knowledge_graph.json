@@ -4,13 +4,13 @@
   "purpose": "A machine-readable, navigable index of the machine-checked (Lean 4 + Mathlib, no sorry or project-defined axioms) structure of the ECDLP landscape for secp256k1: verified ledger rows, their declaration and import dependencies, the corpus claims they verify, the formalization barriers that bound them, and the target-specific route/foundation decisions. It also carries the generated Research Engine v0 selection and retained outcome state, while keeping bounded exploration distinct from route promotion. Built for a future automated reasoner to load the known-and-verified frontier without re-deriving it.",
   "invariant": "Every ledger row resolves to declarations accepted by the Lean kernel with no sorry or project-defined axioms; compiler-trusted native_decide use is disclosed separately. This graph is derived evidence, not a proof.",
   "counts": {
-    "theorems": 310,
-    "ledger_rows": 310,
+    "theorems": 328,
+    "ledger_rows": 328,
     "barriers": 6,
-    "families": 8,
+    "families": 9,
     "critical_nodes": 17,
     "attack_routes": 17,
-    "decision_foundations": 11,
+    "decision_foundations": 13,
     "attack_registry_objects": 14,
     "research_engine_candidates": 6,
     "generated_hypothesis_seeds": 2,
@@ -37,18 +37,18 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1193,
+    "edges": 1272,
     "by_edge_type": {
-      "imports": 527,
-      "member_of": 310,
+      "imports": 585,
+      "member_of": 328,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
-      "supports": 28,
+      "supports": 31,
       "decision_grounded_in": 25,
       "depends_on": 18,
       "evaluated_under": 18,
+      "extends_frontier": 16,
       "detailed_by": 15,
-      "extends_frontier": 15,
       "frontier_of": 13,
       "requires_target_property": 10,
       "records_outcome_for": 9,
@@ -60,7 +60,7 @@
       "binds_target_feature": 8,
       "binds_mechanism_primitive": 8,
       "binds_unresolved_question": 8,
-      "blocked_by": 7,
+      "blocked_by": 6,
       "tests_hypothesis": 6,
       "explores_route": 6,
       "governs_hypothesis": 4,
@@ -71,7 +71,7 @@
       "follows_up_source": 1
     },
     "by_method": {
-      "Mathlib": 106,
+      "Mathlib": 108,
       "Mathlib + native_decide": 31,
       "native_decide": 20,
       "Bézout certificate + native_decide": 10,
@@ -86,6 +86,7 @@
       "Mathlib (`Iff.trans`)": 2,
       "instantiation of `Ecdlp.Schnorr.*` on `↥⟨G⟩": 2,
       "Mathlib (`Φ_ofNat`, `ΨSq_ofNat`, `preΨ'_even`) + `linear_combination` certificates": 2,
+      "Mathlib + `decide +kernel` certificate + native_decide (inherited)": 2,
       "Mathlib (`Projective.nonsingular_iff`/`equation_iff`, `mul_eq_zero`, `pow_ne_zero`) + `linear_combination": 1,
       "Mathlib (`ZMod.pow_card`, `pow_two`/`pow_mul`/`pow_succ`) + `omega": 1,
       "Mathlib + native_decide (reuses the `p` Pratt certificate)": 1,
@@ -206,14 +207,29 @@
       "literal finite guarded `MvPolynomial` family + TASK-021 chain equivalence + injective base change; `native_decide` only for two finite-cardinality facts": 1,
       "exact two-chart normalization + literal fixed-mask `MvPolynomial` family + TASK-021/TASK-022 equivalences + injective base change; `native_decide` only for `card_chartEquation": 1,
       "local projective `H` identities + exact TASK-023 cover restriction + path-independent-set counts; `native_decide` only for the three cardinalities": 1,
-      "exact local substitution + fixed-degree projective-resultant forward implication + balanced prefix/suffix frozen specializations + exact chart-cover restriction; `native_decide` only for the four mask cardinalities": 1
+      "exact local substitution + fixed-degree projective-resultant forward implication + balanced prefix/suffix frozen specializations + exact chart-cover restriction; `native_decide` only for the four mask cardinalities": 1,
+      "Mathlib (`addOrderOf_dvd_natCard`, `exists_prime_addOrderOf_dvd_card'`, `card_roots'`, `Finset.card_le_mul_card_image`) + `instFinitePoint": 1,
+      "Mathlib (`ZMod.val` arithmetic)": 1,
+      "Mathlib (`Finset` sums, multiplication by the unit `lam` permutes `k ≠ 0`)": 1,
+      "Mathlib (`Finset.filter` congruence)": 1,
+      "Mathlib (`Nat` division by `2^i`, `nsmul` arithmetic)": 1,
+      "Mathlib (geometric sum, `Complex.exp`)": 1,
+      "Mathlib (Jordan's inequality, telescoping sum)": 1,
+      "Mathlib (closed form of `σ̂`, harmonic-sum bound by induction)": 1,
+      "Mathlib (Fourier inversion and Parseval on `ZMod n` via `ZMod.stdAddChar`) + `sigmaTail`, `l1lowBound": 1,
+      "jConcentrationExplicit` + `zeroNotInGammaJ": 1,
+      "Mathlib (Fourier inversion on `ZMod n` and `ZMod p`, triangle inequality)": 1,
+      "weilTransfer` + `l1lowBound": 1,
+      "Mathlib (`Polynomial.resultant`, `Matrix.det_succ_row_zero`, `ring`)": 1,
+      "Mathlib (`compute_degree`, `Polynomial.card_roots'`)": 1
     },
     "by_area": {
-      "curve-torsion": 154,
-      "primality": 56,
-      "other": 33,
+      "curve-torsion": 156,
+      "primality": 58,
+      "other": 34,
       "generic-hardness": 30,
       "protocol-soundness": 23,
+      "bit-security": 13,
       "attack-resistance": 7,
       "reduction": 6,
       "params": 1
@@ -3472,7 +3488,7 @@
       "files": [
         "Ecdlp/Proved/P256TraceOfFrobenius.lean"
       ],
-      "claim": "NIST P-256 is ordinary, non-anomalous, Hasse-consistent (Smart/SSSA boundary) (`p256_trace_ordinary_nonanomalous`: with `#E=n`, the trace `t=p+1−n` satisfies `t≠0` (not supersingular), `t≠1` (not anomalous — Smart/SSSA inapplicable), `t²≤4p` (Hasse; `t` is 127-bit, cofactor 1). The second live domain's SSSA boundary rung, mirroring secp256k1's `TraceOfFrobenius.lean`; conditional on the published `#E=n` as for secp256k1)",
+      "claim": "NIST P-256 is ordinary, non-anomalous, Hasse-consistent (Smart/SSSA boundary) (`p256_trace_ordinary_nonanomalous`: with `#E=n`, the trace `t=p+1−n` satisfies `t≠0` (not supersingular), `t≠1` (not anomalous — Smart/SSSA inapplicable), `t²≤4p` (Hasse; `t` is 127-bit, cofactor 1). The second live domain's SSSA boundary rung, mirroring secp256k1's `TraceOfFrobenius.lean`. The theorem is arithmetic on `t=p+1−n`; reading `t` as the trace uses `#E=n`, now proved as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, native_decide trust))",
       "method": "Mathlib + native_decide",
       "status": "proved",
       "area": "attack-resistance",
@@ -3492,7 +3508,7 @@
       "files": [
         "Ecdlp/Proved/P256GeneratorOrder.lean"
       ],
-      "claim": "NIST P-256 base point has exact order `n` (weak point-counting keystone) (`p256_generator_addOrderOf`: the SEC 2 generator `G=(Gx,Gy)` in Mathlib's point group has `addOrderOf G = n`, so `⟨G⟩` is cyclic of order `n` — the crypto subgroup pinned WITHOUT computing `#E(𝔽_p)` (no Hasse/Schoof). Proof: `n•G=0` (native double-and-add over 𝔽_p) + `G≠0`, `n` prime ⇒ `addOrderOf_eq_prime`. Mirrors secp256k1's `GeneratorOrder.lean`; server-verified on the warm Lean toolchain then CI. Does NOT give the strong keystone `#E=n`)",
+      "claim": "NIST P-256 base point has exact order `n` (weak point-counting keystone) (`p256_generator_addOrderOf`: the SEC 2 generator `G=(Gx,Gy)` in Mathlib's point group has `addOrderOf G = n`, so `⟨G⟩` is cyclic of order `n` — the crypto subgroup pinned WITHOUT computing `#E(𝔽_p)` (no Hasse/Schoof). Proof: `n•G=0` (native double-and-add over 𝔽_p) + `G≠0`, `n` prime ⇒ `addOrderOf_eq_prime`. Mirrors secp256k1's `GeneratorOrder.lean`; server-verified on the warm Lean toolchain then CI. By itself it does not give `#E=n`; that is `p256_card_point_eq_n` (`P256CardinalityExact.lean`), which uses this order fact)",
       "method": "Mathlib (`addOrderOf_eq_prime`) + native_decide",
       "status": "proved",
       "area": "primality",
@@ -3532,7 +3548,7 @@
       "files": [
         "Ecdlp/Proved/P256Cardinality.lean"
       ],
-      "claim": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about P-256's `#E` itself — all prior P-256 point-counting stayed inside `⟨G⟩`. Weak keystone: pins `#E ∈ {n, 2n, 3n, …}`. The strong keystone `#E = n` is NOT proved for P-256: the secp256k1 `j=0` / `−7`-non-cube 2-torsion route is `j=0`-specific and does not transfer (P-256 has `c₄=144≠0`, `j≠0`), and the general Hasse bound is a Mathlib gap. Pure-kernel)",
+      "claim": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about P-256's `#E` itself — all prior P-256 point-counting stayed inside `⟨G⟩`. Weak keystone: pins `#E ∈ {n, 2n, 3n, …}`. The exact count `#E = n` is proved separately as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, via the general theorem `natCard_point_eq_of_addOrderOf` and a kernel-checked no-root certificate; the secp256k1 `−7`-non-cube step is `j=0`-specific and is not used). Not pure-kernel: inherits `native_decide` compiler trust through `p256_generator_addOrderOf` (`n•G=0`) and the Lucas-test certificate leaves for `p` and `n`)",
       "method": "Mathlib (`AddSubgroup.card_mul_index`, `Nat.card_zmultiples`) + `p256_generator_addOrderOf",
       "status": "proved",
       "area": "curve-torsion",
@@ -3552,7 +3568,7 @@
       "files": [
         "Ecdlp/Proved/P256TwistSecurity.lean"
       ],
-      "claim": "NIST P-256 quadratic-twist security certificate — cross-curve companion of the secp256k1 twist limitation (`p256_twist_security_profile`: the number `2p+2−n` factors exactly as `3·5·13·179·Q` with `Q` a 241-bit prime (`p256_twist_maxprime_prime`, full Pratt certificate; `p256_twist_order_factorization`). Honest scope: interpreting `2p+2−n` as the twist order `#Ẽ = p+1+t` rests on `#E = n`, which for P-256 is NOT in-repo (only `n ∣ #E` is proved; parked on Hasse) — the theorems themselves are unconditional arithmetic about the literal number. Consequences: (1) cofactor `3·5·13·179 = 34905 ≈ 2¹⁵ > 1` — the twist has small-order subgroups; (2) `2²⁴⁰ < Q < 2²⁴¹`, so generic twist-DLP `≈ √Q ≈ 2¹²⁰ < 2¹²⁸` — the machine-checked form of the publicly tabulated ~2^120.3 P-256 twist-security figure. Cross-curve: secp256k1's twist (`2¹¹⁰`, cofactor `2³⁷`) is weaker than P-256's (`2¹²⁰`, cofactor `2¹⁵`); point validation mandatory for `x`-only code on both. Inherits `Lean.ofReduceBool` from `native_decide` + Pratt)",
+      "claim": "NIST P-256 quadratic-twist security certificate — cross-curve companion of the secp256k1 twist limitation (`p256_twist_security_profile`: the number `2p+2−n` factors exactly as `3·5·13·179·Q` with `Q` a 241-bit prime (`p256_twist_maxprime_prime`, full Pratt certificate; `p256_twist_order_factorization`). Honest scope: interpreting `2p+2−n` as the twist order `#Ẽ = p+1+t` rests on `#E = n`, now proved as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, native_decide trust); the twist-order identity `#Ẽ = 2p+2−#E` itself is not formalized here — the theorems themselves are unconditional arithmetic about the literal number. Consequences: (1) cofactor `3·5·13·179 = 34905 ≈ 2¹⁵ > 1` — the twist has small-order subgroups; (2) `2²⁴⁰ < Q < 2²⁴¹`, so generic twist-DLP `≈ √Q ≈ 2¹²⁰ < 2¹²⁸` — the machine-checked form of the publicly tabulated ~2^120.3 P-256 twist-security figure. Cross-curve: secp256k1's twist (`2¹¹⁰`, cofactor `2³⁷`) is weaker than P-256's (`2¹²⁰`, cofactor `2¹⁵`); point validation mandatory for `x`-only code on both. Inherits `Lean.ofReduceBool` from `native_decide` + Pratt)",
       "method": "native_decide + Pratt (`lucas_primality`)",
       "status": "proved",
       "area": "primality",
@@ -5180,7 +5196,7 @@
       "files": [
         "Ecdlp/Proved/SemaevFour.lean"
       ],
-      "claim": "Semaev forward direction generalized to all `n` — the resultant recursion engine (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. Every Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` inherits its forward direction from this one lemma at level `n`; `S₄_eq_zero_of_common_root` is now literally the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`, and `S₅, S₆, …` are discharged verbatim with `f` the previous slice. The mechanism-level generalization of the Semaev forward direction to the whole infinite `Sₙ` family — via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
+      "claim": "Semaev forward direction — the resultant common-root lemma (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring with `natDegree f ≤ m`, `natDegree g ≤ n` and sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. A Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` gets its forward direction from this lemma once the previous slice is defined as a polynomial with the needed degree bound. `S₄_eq_zero_of_common_root` is the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`. This repository does not define `Sₙ` for `n ≥ 5` at general `(a,b)` (the secp256k1 frozen projective family is a separate construction); a recursive definition with that degree bound is in draft PR #448 (parked). Via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
       "method": "Mathlib (`exists_mul_add_mul_eq_C_resultant`)",
       "status": "proved",
       "area": "other",
@@ -5200,7 +5216,7 @@
       "files": [
         "Ecdlp/Proved/SemaevFour.lean"
       ],
-      "claim": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and `S₄`'s full symmetry: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄` — so `S₄` is symmetric on all of `{x₁,x₂,x₃,x₄}`, the symmetry a summation polynomial must have",
+      "claim": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and three symmetries of `S₄`: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄`. These three generate an order-8 subgroup of the 24 permutations of `{x₁,x₂,x₃,x₄}`, not all of them (a group-theoretic remark, not kernel-checked); invariance under every permutation is `S₄_perm` (`Ecdlp/Proved/SemaevFourSymmetry.lean`)",
       "method": "Mathlib",
       "status": "proved",
       "area": "other",
@@ -6443,6 +6459,398 @@
       "family_id": "family-generic-hardness",
       "dependency_depth": 7,
       "gated": true
+    },
+    {
+      "id": "thm-310",
+      "name": "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf`, `card_eq_of_prime_order_point`, `natCard_point_le`, `exists_cubic_root_of_two_nsmul_eq_zero`, `natCard_eq_of_dvd_of_lt_three_mul",
+      "short_name": "natCard_point_eq_of_addOrderOf`,",
+      "module": "Ecdlp.Proved.PrimeOrderCardinality",
+      "modules": [
+        "Ecdlp.Proved.PrimeOrderCardinality"
+      ],
+      "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
+      "files": [
+        "Ecdlp/Proved/PrimeOrderCardinality.lean"
+      ],
+      "claim": "Exact point count `#E(𝔽) = n` from a point of order `n` — curve-generic, no Hasse/Schoof (`natCard_point_eq_of_addOrderOf`: for a Weierstrass curve `W` with `[W.IsElliptic]` (Δ ≠ 0) and `a₁ = a₃ = 0` over a finite field `F` with `2 ≠ 0`, if `x³ + a₂x² + a₄x + a₆` has no root in `F`, some point has `addOrderOf G = n`, and `2·#F + 1 < 3n`, then `Nat.card W.toAffine.Point = n`; `card_eq_of_prime_order_point` is the form with `[Fact n.Prime]`, `n•G = 0`, `G ≠ 0`, also under `[W.IsElliptic]` (Δ ≠ 0). Ingredients, each a separate theorem: `natCard_point_le` (`#E(F) ≤ 2·#F + 1` for every Weierstrass curve over a finite field, ≤ 2 roots of a monic quadratic per `x`), `exists_cubic_root_of_two_nsmul_eq_zero` (a nonzero 2-torsion point has `y = 0`, so its `x` is a root of the cubic), `natCard_eq_of_dvd_of_lt_three_mul` (`n ∣ #A ≤ N < 3n` and no element of order 2 ⇒ `#A = n`, additive Cauchy); these three do not take `[W.IsElliptic]`. Neither `n` nor `#F` needs to be prime. Scope: cofactor-1 curves only (with `n ≈ #F/h`, `h ≥ 2` needs Hasse). Same argument as pyca/verified-garbage `primeOrder_of` for its specification curves, which proves `#E = n` for P-256/P-384/P-521 for its own specification curve type; this Lean code is separate, for Mathlib's `WeierstrassCurve`. Pure-kernel)",
+      "method": "Mathlib (`addOrderOf_dvd_natCard`, `exists_prime_addOrderOf_dvd_card'`, `card_roots'`, `Finset.card_le_mul_card_image`) + `instFinitePoint",
+      "status": "proved",
+      "area": "primality",
+      "family_id": "family-primality",
+      "dependency_depth": 1,
+      "gated": true
+    },
+    {
+      "id": "thm-311",
+      "name": "Ecdlp.P256.p256_card_point_eq_n`, `p256_no_two_torsion_cubic`, `p256_two_ne_zero",
+      "short_name": "p256_card_point_eq_n`,",
+      "module": "Ecdlp.Proved.P256CardinalityExact",
+      "modules": [
+        "Ecdlp.Proved.P256CardinalityExact"
+      ],
+      "file": "Ecdlp/Proved/P256CardinalityExact.lean",
+      "files": [
+        "Ecdlp/Proved/P256CardinalityExact.lean"
+      ],
+      "claim": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero`, ported table below, transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Prior art: pyca/verified-garbage (`38c744308fcd`) proves `#E = n` for P-256/P-384/P-521 for its own specification curve type (`VG.Proof.P256.primeOrder`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently. Not pure-kernel: inherits `Lean.ofReduceBool` (`native_decide`) through `n•G = 0`, the base-point and curve facts in `P256Curve.lean`/`P256GeneratorOrder.lean`, and the Lucas-test certificate leaves for `p` and `n`; the no-root certificate layer itself is pure-kernel)",
+      "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
+      "status": "proved",
+      "area": "primality",
+      "family_id": "family-primality",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-312",
+      "name": "Ecdlp.Curve.secp256k1_card_point_eq_n_general",
+      "short_name": "secp256k1_card_point_eq_n_general",
+      "module": "Ecdlp.Proved.Secp256k1CardinalityGeneral",
+      "modules": [
+        "Ecdlp.Proved.Secp256k1CardinalityGeneral"
+      ],
+      "file": "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean",
+      "files": [
+        "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean"
+      ],
+      "claim": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`, ported table below) instead of the `native_decide` cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Still inherits `native_decide` trust through `secp256k1_generator_addOrderOf` and the Lucas-test certificate leaves for `p` and `n`)",
+      "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
+      "status": "proved",
+      "area": "curve-torsion",
+      "family_id": "family-curve-torsion",
+      "dependency_depth": 10,
+      "gated": true
+    },
+    {
+      "id": "thm-313",
+      "name": "Ecdlp.ParityFourier.ProofsF1.carrySum`, `carrySign",
+      "short_name": "carrySum`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsF1",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsF1",
+        "Ecdlp.Proved.ParityFourier.Statements"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "claim": "Carry identity for a cube root of unity mod a prime (prime `n ≠ 2`, `lam : ZMod n` with `lam² + lam + 1 = 0`, `k ≠ 0`, `[·]` the canonical representative in `[0, n)`: `[k] + [lam k] + [lam² k]` equals `n` or `2n`; the carry sign `g(k) = σ(k)·σ(lam k)·σ(lam² k)`, `σ(k) = (−1)^[k]`, is `−1` exactly when the sum is `n` and `1` otherwise. An exact identity on representatives; no oracle, no curve instance, no ECDLP advantage)",
+      "method": "Mathlib (`ZMod.val` arithmetic)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 1,
+      "gated": true
+    },
+    {
+      "id": "thm-314",
+      "name": "Ecdlp.ParityFourier.ProofsF1.jEven`, `gOdd`, `gInvariant`, `jOrbitProduct",
+      "short_name": "jEven`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsF1",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsF1",
+        "Ecdlp.Proved.ParityFourier.Statements"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF1.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "claim": "Sign symmetries of `J` and the carry sign `g` (`J(k) = σ(lam k)·σ(lam² k)`. For prime `n ≠ 2` and `lam² + lam + 1 = 0`: `J(−k) = J(k)` for every `k`, and `g(−k) = −g(k)` for `k ≠ 0`. For every modulus `n` and every root `lam` of `lam² + lam + 1 = 0`: `g(lam k) = g(k)` and `J(k)·J(lam k)·J(lam² k) = 1`. Finite sign identities only)",
+      "method": "Mathlib",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 1,
+      "gated": true
+    },
+    {
+      "id": "thm-315",
+      "name": "Ecdlp.ParityFourier.ProofsF2.jBalance",
+      "short_name": "jBalance",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsF2",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsF2",
+        "Ecdlp.Proved.ParityFourier.Statements"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF2.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "claim": "Balance identity of `J` (prime `n ≠ 2`, `lam² + lam + 1 = 0`: `3·Σ_{k≠0} J(k) = 4M − (n − 1)`, where `M` is the number of nonzero `k` with `σ(k) = σ(lam k) = σ(lam² k)`. An exact counting identity; it does not bound `M`)",
+      "method": "Mathlib (`Finset` sums, multiplication by the unit `lam` permutes `k ≠ 0`)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 1,
+      "gated": true
+    },
+    {
+      "id": "thm-316",
+      "name": "Ecdlp.ParityFourier.ProofsF3F4a.relabel",
+      "short_name": "relabel",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsF3F4a",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsF3F4a",
+        "Ecdlp.Proved.ParityFourier.Statements"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "claim": "*(alternate/supporting: elementary counting lemma)* Relabelling by a public `±1` factor preserves agreement counts (finite type `X`, integer-valued `σ, c, b, P` with `c(x) ∈ {1, −1}` and `σ = c·b` pointwise: the number of `x` with `c(x)·P(x) = σ(x)` equals the number of `x` with `P(x) = b(x)`. A counting identity obtained by cancelling the unit `c(x)`; it is listed for completeness and is not counted as a distinct result. No statement about any particular predictor)",
+      "method": "Mathlib (`Finset.filter` congruence)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 1,
+      "gated": true
+    },
+    {
+      "id": "thm-317",
+      "name": "Ecdlp.ParityFourier.ProofsF4b.groupHalvingRecovers`, `Ecdlp.ParityFourier.ProofsF3F4a.halvingRecovers",
+      "short_name": "groupHalvingRecovers`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsF4b",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsF4b",
+        "Ecdlp.Proved.ParityFourier.ProofsF3F4a",
+        "Ecdlp.Proved.ParityFourier.Statements"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF4b.lean",
+        "Ecdlp/Proved/ParityFourier/ProofsF3F4a.lean",
+        "Ecdlp/Proved/ParityFourier/Statements.lean"
+      ],
+      "claim": "An exact parity oracle recovers the discrete logarithm by halving (the parity-oracle halving reduction stated as Proposition 2 in §7 of Lauter–Stange, arXiv:0803.0728v2 (2008), in two forms. In `ZMod n`, `n` an odd prime: if `O(y) = [y] mod 2` for every `y`, the states `y₀ = x`, `y_{i+1} = (y_i − O(y_i))·2⁻¹` satisfy `Σ_{i<L} O(y_i)·2^i = [x]` whenever `n ≤ 2^L`. In any additive group with `addOrderOf G = n` an odd prime and `2h mod n = 1`: if `O([y]•G) = [y] mod 2` for every `y : ZMod n`, the chain `P₀ = [x]•G`, `P_{i+1} = h•(P_i − O(P_i)•G)` gives `Σ_{i<L} O(P_i)·2^i = [x]` whenever `n ≤ 2^L`; the chain uses only group operations and oracle calls. Honest scope: a reduction from an exact, always-correct parity oracle on every multiple of `G`; no such oracle is known for secp256k1, noisy or partial oracles are not covered, and this is not an ECDLP attack)",
+      "method": "Mathlib (`Nat` division by `2^i`, `nsmul` arithmetic)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 1,
+      "gated": true
+    },
+    {
+      "id": "thm-318",
+      "name": "Ecdlp.ParityFourier.ProofsF5a.sigmaHatClosedForm",
+      "short_name": "sigmaHatClosedForm",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsF5a",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsF5a",
+        "Ecdlp.Proved.ParityFourier.StatementsF5"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5a.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF5a.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsF5.lean"
+      ],
+      "claim": "Closed form of the parity-sign spectrum on `ℤ/n` (odd `n`, every integer `a`, `σ̂(a) = (1/n)·Σ_{k<n} (−1)^k·exp(−2πi·a·k/n)`: `‖σ̂(a)‖ = 1 / (n·abs(cos(π a / n)))`)",
+      "method": "Mathlib (geometric sum, `Complex.exp`)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 1,
+      "gated": true
+    },
+    {
+      "id": "thm-319",
+      "name": "Ecdlp.ParityFourier.ProofsF5b.sigmaTail",
+      "short_name": "sigmaTail",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsF5b",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsF5b",
+        "Ecdlp.Proved.ParityFourier.StatementsF5"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsF5b.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsF5.lean"
+      ],
+      "claim": "Tail bound of the parity-sign spectrum (odd `n`, `h = (n+1)/2`, `B ≥ 1`: `Σ_{t=B+1}^{(n−1)/2} (‖σ̂(h + t)‖² + ‖σ̂(h − t)‖²) ≤ 1/B`)",
+      "method": "Mathlib (Jordan's inequality, telescoping sum)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 1,
+      "gated": true
+    },
+    {
+      "id": "thm-320",
+      "name": "Ecdlp.ParityFourier.ProofsC44L.l1lowBound",
+      "short_name": "l1lowBound",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC44L",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC44L",
+        "Ecdlp.Proved.ParityFourier.StatementsC44L",
+        "Ecdlp.Proved.ParityFourier.StatementsC44"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44L.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44L.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44.lean"
+      ],
+      "claim": "Low-pass `ℓ¹` norm of the parity sign grows at most logarithmically (odd `n`, `2B + 1 ≤ n`, `ft` the normalised Fourier transform on `ZMod n`, `h = (n+1)/2`: `L1low(B) = Σ_{abs(t) ≤ B} ‖ft σ (h + t)‖ ≤ 2 + log(2B + 1)`)",
+      "method": "Mathlib (closed form of `σ̂`, harmonic-sum bound by induction)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-321",
+      "name": "Ecdlp.ParityFourier.ProofsC44.jConcentration`, `Ecdlp.ParityFourier.ProofsC44L.jConcentrationExplicit",
+      "short_name": "jConcentration`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC44",
+        "Ecdlp.Proved.ParityFourier.StatementsC44",
+        "Ecdlp.Proved.ParityFourier.ProofsC44L"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44.lean",
+        "Ecdlp/Proved/ParityFourier/ProofsC44L.lean"
+      ],
+      "claim": "Fourier concentration of `J` near the set `Γ_J` (prime `n ≠ 2`, `lam² + lam + 1 = 0`, `B ≥ 1`, `Γ_J(lam, B) = {lam(h + t₁) + lam²(h + t₂) : abs(t₁), abs(t₂) ≤ B}`: `Σ_{γ ∉ Γ_J(lam, B)} ‖ft J γ‖² ≤ (1 + L1low(B))² / B` (`jConcentration`); with the `L1low` bound of the previous row and `2B + 1 ≤ n`, the same mass is at most `(3 + log(2B + 1))² / B` (`jConcentrationExplicit`, a direct composition). A concentration bound; it does not by itself give a hard-core-bit theorem)",
+      "method": "Mathlib (Fourier inversion and Parseval on `ZMod n` via `ZMod.stdAddChar`) + `sigmaTail`, `l1lowBound",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-322",
+      "name": "Ecdlp.ParityFourier.ProofsC44d.normLemma`, `zeroNotInGammaJ",
+      "short_name": "normLemma`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC44d",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC44d",
+        "Ecdlp.Proved.ParityFourier.StatementsC44d"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44d.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44d.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44d.lean"
+      ],
+      "claim": "Norm lemma for `x + lam·y ≡ 0 mod n`, and `0 ∉ Γ_J` for small windows (prime `n`, `lam² + lam + 1 = 0`, integers `(x, y) ≠ (0, 0)` with `x + lam·y = 0` in `ZMod n` ⇒ `x² − xy + y² ≥ n` (`normLemma`); hence for `n ≠ 2` and `3(2B + 1)² < n`, `0 ∉ Γ_J(lam, B)` (`zeroNotInGammaJ`, a corollary))",
+      "method": "Mathlib",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 2,
+      "gated": true
+    },
+    {
+      "id": "thm-323",
+      "name": "Ecdlp.ParityFourier.ProofsC44B.jBalanceBound",
+      "short_name": "jBalanceBound",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC44B",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC44B",
+        "Ecdlp.Proved.ParityFourier.StatementsC44B"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44B.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44B.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44B.lean"
+      ],
+      "claim": "*(alternate/supporting: direct corollary)* Bias bound for `J` (prime `n ≠ 2`, `lam² + lam + 1 = 0`, `B ≥ 1`, `3(2B + 1)² < n`: `‖ft J 0‖² ≤ (3 + log(2B + 1))² / B`. A direct corollary of the two previous rows (`0 ∉ Γ_J`, so `‖ft J 0‖²` is one term of the mass bounded by `jConcentrationExplicit`), not counted as a distinct result; a bias bound, not a hardness statement)",
+      "method": "jConcentrationExplicit` + `zeroNotInGammaJ",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-324",
+      "name": "Ecdlp.ParityFourier.ProofsWT.weilTransfer",
+      "short_name": "weilTransfer",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsWT",
+        "Ecdlp.Proved.ParityFourier.StatementsWT"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsWT.lean"
+      ],
+      "claim": "Finite Fourier-transfer inequality under an assumed twisted-sum bound (`n, p > 0`, any `V : ZMod n → ZMod p`, `b : ZMod p → ℂ`, `T : ZMod n → ℂ`, real `C`, `e_m(x) = exp(2πi·[x]/m)`: if every twisted sum `Σ_{k≠0} e_p(a·V(k))·e_n(α·k)` with `a ≠ 0` has norm at most `C`, then `‖Σ_{k≠0} b(V k)·T(k)‖ ≤ ‖ft b 0‖·‖Σ_{k≠0} T(k)‖ + C·(Σ_{a≠0} ‖ft b a‖)·(Σ_α ‖ft T α‖)`. Honest scope: the twisted-sum bound is a hypothesis; it is not proved here for any elliptic-curve coordinate map)",
+      "method": "Mathlib (Fourier inversion on `ZMod n` and `ZMod p`, triangle inequality)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-325",
+      "name": "Ecdlp.ParityFourier.ProofsWT.weilTransferLsb",
+      "short_name": "weilTransferLsb",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsWT",
+        "Ecdlp.Proved.ParityFourier.StatementsWT"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsWT.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsWT.lean"
+      ],
+      "claim": "Lowest-bit correlation bound conditional on an assumed twisted-sum bound `2√p` (odd primes `n`, `p`, any `V : ZMod n → ZMod p`: if every twisted sum of `V` with `a ≠ 0` has norm at most `2√p`, then `‖Σ_{k≠0} σ(V k)·σ(k)‖ ≤ 2√p·(2 + log p)·(2 + log n)`, with `σ(z) = (−1)^[z]`. The specialization of the previous row with `b = T = σ`, with explicit bounds added: the `ℓ¹` norms of `σ̂` on `ZMod p` and on `ZMod n` are at most `2 + log p` and `2 + log n` (from `l1lowBound`), and `Σ_{k≠0} σ(k) = 0` removes the `σ̂(0)` term. Honest scope: the `2√p` twisted-sum bound is an assumed hypothesis, not proved here for any map; the constant `2√p` is not known to hold for elliptic-curve coordinate maps (the standard bound for a function `f` is `2·deg(f)·√p`); `weilTransfer` covers a general `C`. No statement about secp256k1)",
+      "method": "weilTransfer` + `l1lowBound",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-326",
+      "name": "Ecdlp.Semaev.S₄_perm`, `S₄_symm₂₃`, `resultant_quadratic_two_two`, `S₄_closed",
+      "short_name": "S₄_perm`,",
+      "module": "Ecdlp.Proved.SemaevFourSymmetry",
+      "modules": [
+        "Ecdlp.Proved.SemaevFourSymmetry"
+      ],
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevFourSymmetry.lean"
+      ],
+      "claim": "Semaev's `S₄` is invariant under every permutation of its four arguments (`S₄_perm`: for every `σ : Equiv.Perm (Fin 4)`, `S₄(x_σ(0),x_σ(1),x_σ(2),x_σ(3)) = S₄(x₀,x₁,x₂,x₃)`, over any commutative ring. The missing transposition `S₄_symm₂₃` (`x₂ ↔ x₃`) is proved by `ring` from the closed form of the fixed-size `(2,2)` resultant (`resultant_quadratic_two_two`: `Res(a₁X²+b₁X+c₁, a₂X²+b₂X+c₂; 2,2) = (a₁c₂−a₂c₁)² − (a₁b₂−a₂b₁)(b₁c₂−b₂c₁)`, valid also when a leading coefficient vanishes; a public restatement of the private `resultant_quadratic` in `GlvSemaevSymmetry.lean`, not a new result; `S₄_closed`); the permutations fixing `S₄` form a submonoid containing the adjacent transpositions, which generate `Equiv.Perm (Fin 4)` (`Equiv.Perm.mclosure_swap_castSucc_succ`))",
+      "method": "Mathlib (`Polynomial.resultant`, `Matrix.det_succ_row_zero`, `ring`)",
+      "status": "proved",
+      "area": "curve-torsion",
+      "family_id": "family-curve-torsion",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-327",
+      "name": "Ecdlp.Semaev.S₄slice`, `S₄slice_eval`, `S₄slice_natDegree_le`, `S₄slice_coeff_four`, `S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`, `S₄_completions_le_four",
+      "short_name": "S₄slice`,",
+      "module": "Ecdlp.Proved.SemaevFourSymmetry",
+      "modules": [
+        "Ecdlp.Proved.SemaevFourSymmetry"
+      ],
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevFourSymmetry.lean"
+      ],
+      "claim": "Semaev's `S₄` has degree exactly 4 in each variable when `S₃` of the other three is nonzero (`S₄slice a b x₁ x₂ x₃ = S₄(x₁,x₂,x₃,X)` has `natDegree ≤ 4` over any commutative ring (`S₄slice_natDegree_le`) and coefficient of `X⁴` equal to `S₃(x₁,x₂,x₃)²` (`S₄slice_coeff_four`); over a field, `S₃(x₁,x₂,x₃) ≠ 0` gives degree exactly `4` (`S₄slice_natDegree`), with the variable in any of the four argument slots (`S₄_natDegree_eq_four_of_perm`, via `S₄_perm` over `K[X]`), and then any finite set of `x₄` with `S₄(x₁,x₂,x₃,x₄) = 0` has at most 4 elements (`S₄_completions_le_four`). The case `S₃(x₁,x₂,x₃) = 0`, where the degree drops, is not covered)",
+      "method": "Mathlib (`compute_degree`, `Polynomial.card_roots'`)",
+      "status": "proved",
+      "area": "other",
+      "family_id": "family-other",
+      "dependency_depth": 4,
+      "gated": true
     }
   ],
   "barriers": [
@@ -6547,6 +6955,11 @@
         "title": "Protocol algebra and concrete secp256k1 instantiations"
       },
       {
+        "id": "family-bit-security",
+        "area": "bit-security",
+        "title": "Parity-bit Fourier facts and the exact-parity-oracle halving reduction (finite and conditional statements; no hardness claim)"
+      },
+      {
         "id": "family-attack-resistance",
         "area": "attack-resistance",
         "title": "Classical structural attack-resistance facts"
@@ -6613,17 +7026,6 @@
           "notes/FOUNDATIONS.md"
         ],
         "resume_condition": "Mathlib or this repository gains the needed divisor/tame-symbol reciprocity layer."
-      },
-      {
-        "id": "blocker-p256-cardinality",
-        "kind": "out-of-scope-foundation",
-        "title": "P-256 exact cardinality needs a general point-counting/Hasse route",
-        "description": "Only n divides the P-256 group cardinality is proved; the secp256k1 j=0 certificate does not transfer.",
-        "evidence_files": [
-          "notes/POINT_COUNTING_KEYSTONE.md",
-          "BARRIERS.md"
-        ],
-        "resume_condition": "A reviewed Hasse/Schoof or curve-specific exact-cardinality proof becomes available."
       }
     ],
     "critical_nodes": [
@@ -6965,14 +7367,17 @@
         "depends_on": [
           "secp-parameters"
         ],
-        "blocker_ids": [
-          "blocker-p256-cardinality"
-        ],
+        "blocker_ids": [],
         "anchors": [
-          "Ecdlp.P256.p256_n_dvd_card_point"
+          "Ecdlp.P256.p256_n_dvd_card_point",
+          "Ecdlp.P256.p256_card_point_eq_n",
+          "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf"
         ],
         "evidence_files": [
-          "Ecdlp/Proved/P256Cardinality.lean"
+          "Ecdlp/Proved/P256Cardinality.lean",
+          "Ecdlp/Proved/P256CardinalityExact.lean",
+          "Ecdlp/Proved/PrimeOrderCardinality.lean",
+          "Ecdlp/Proved/CubicNoRootCertificate.lean"
         ]
       },
       {
@@ -7098,6 +7503,8 @@
         "Maintain the completed TASK-023 non-run kernel binding for the exact affine/infinity chart-polynomial cover: each fixed InfinityMask I has exactly 14 - I.card variables and fifteen literal H equations with degree ceilings 2/4/2, and the existential cover is equivalent to the TASK-021 chain, TASK-022 guarded system, and source frozen stage-14 predicate after injective base change. Keep production mask enumeration, mask selection, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
         "Maintain the completed TASK-024 non-run kernel binding for necessary infinity-stratum pruning: affine external inputs restrict the exact cover from 16384 masks to 987 separated masks, and nonzero endpoint determinants conditionally restrict it to 377 interior masks. Keep sufficiency, unique mask selection, production enumeration, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
         "Maintain the completed TASK-025 non-run kernel binding for explicit infinity propagation: the nested local mask counts are 377 to 129 to 69 to 36, while the independent boundary-only refinement is 129 to 60; over any field, six prefix and six suffix obstruction values cover all twelve internal infinity slots, and endpoint plus BalancedPropagatedRegular assumptions make the empty-mask affine chart exact. The source-stage bridge separately requires injective base change into an algebraically closed target and mapped-target regularity. Keep symbolic nonzeroness, nonemptiness, genericity, exceptional-complement orchestration, witness uniqueness, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
+        "Land exactly the bounded formal builds authorized by FD-2026-10-22-001: the PR #444 port for F-PARITY-BIT-SECURITY, the PR #446 point-count build for F-PRIME-ORDER-POINT-COUNT, and the S4 permutation-symmetry and degree slice of PR #447 as maintenance of the existing S3/S4 layer. None selects or promotes a route or authorizes an experiment.",
+        "Land exactly the bounded formal builds authorized by FD-2026-10-22-002: the five point-level S₃ statements frozen on branch lab/semaev-three-point-20261022, as maintenance of the existing S3/S4 layer, and one port of the 34 listed lab theorems that extends F-PARITY-BIT-SECURITY. Neither selects or promotes a route or authorizes an experiment.",
         "Maintain canonical provenance and regenerate affected views without changing the recorded claim boundary."
       ],
       "forbidden_work": [
@@ -7113,6 +7520,8 @@
         "Treat the completed TASK-024 necessary infinity-stratum filter as sufficient or unique mask selection, a production mask enumeration, an independent relation system, a solver run, a solving-cost result, or execution authorization.",
         "Treat the completed TASK-025 conditional single-affine-chart theorem as proof that its balanced regular locus is symbolically nonzero, nonempty, dense, probable, or generic; as automatic mapped-target regularity from source-field computation; as witness uniqueness or target-witness descent; or as a production mask selector, solver result, cost result, ECDLP shortcut, or execution authorization.",
         "Treat a constant-factor result, structural identity, or toy measurement as a subgeneric attack.",
+        "Build the general S_m tower, extend F-PARITY-BIT-SECURITY or F-PRIME-ORDER-POINT-COUNT beyond FD-2026-10-22-001, or add p256-exact-cardinality to release.required_nodes without a new dated decision.",
+        "Add a point-level Semaev statement beyond the five named by FD-2026-10-22-002, in particular fixed-target, HValue, or frozenC semantics or point-level S_m semantics for m >= 5, or extend F-PARITY-BIT-SECURITY beyond FD-2026-10-22-002, for example by the sparse Fourier transform step, a cost model for the reductions, or a parity-correlation experiment, without a new dated decision.",
         "Delete or rewrite provenance-bearing assets without an inventory, reference scan, and documented restore path."
       ],
       "promotion_rule": "A future dated decision may promote at most one parked route only after new evidence satisfies the acceptance gate at proposal level and tasks/ECDLP_RESEARCH.md plus experiments/HYPOTHESES.yaml explicitly authorize the same work.",
@@ -8221,6 +8630,39 @@
         "mathlib_status": "The source-tree audit found no elliptic isogeny module in the pinned or observed Mathlib snapshot.",
         "deliverable": "No general library now; add only the map and facts required by a concrete selected transfer.",
         "resume_condition": "An explicit efficiently computable transfer to a demonstrably weaker DLP target is proposed."
+      },
+      {
+        "id": "F-PARITY-BIT-SECURITY",
+        "title": "Scalar-parity and bit-security reduction and Fourier layer",
+        "decision": "retain_frontier",
+        "priority": "P3",
+        "build_now": false,
+        "implementation_status": "partial",
+        "needed_by_route_ids": [],
+        "formal_node_ids": [],
+        "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. The port extended by FD-2026-10-22-002 also uses Mathlib's Weierstrass affine point group and its slope (the zeta statements and the x-coordinate instances) and Mathlib's Hoeffding bound for bounded random variables under a finite uniform product measure (the majority-vote step of the noisy reduction). A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
+        "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001 and extended by FD-2026-10-22-002: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. Under FD-2026-10-22-002 it also takes exactly one further port, after PR #444, of 34 theorems already kernel-checked in that lab repository: exact zero-correlation identities for even and odd features, a Fourier transfer bound and L1 bounds of the ordered-sector and carry signs, the slope cocycle and the Weierstrass zeta function of a short-normal-form curve, a heavy-coefficient lemma and the correctness of the hard-core reduction for the ordered-sector sign with the sparse Fourier transform output as a hypothesis, relabelling with a defect and the exact-branch reduction, the window law, and a halving reduction from a deterministic noisy parity predictor with its failure bound. Transfer bounds keep their character-sum bounds as assumed hypotheses. The layer is not a hardness theorem, constructs no parity oracle, formalizes no cost, and states nothing specific to secp256k1.",
+        "resume_condition": "Any build in this area beyond FD-2026-10-22-002, such as the sparse Fourier transform step or a cost model for the reductions, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
+        "registered_by": "FD-2026-10-22-001",
+        "extended_by": [
+          "FD-2026-10-22-002"
+        ]
+      },
+      {
+        "id": "F-PRIME-ORDER-POINT-COUNT",
+        "title": "Exact rational-point counts for prime-order short Weierstrass curves",
+        "decision": "retain_frontier",
+        "priority": "P3",
+        "build_now": false,
+        "implementation_status": "partial",
+        "needed_by_route_ids": [],
+        "formal_node_ids": [
+          "p256-exact-cardinality"
+        ],
+        "mathlib_status": "Mathlib provides the Weierstrass point group; in the pinned tag v4.31.0 the number of points appears only as an input to the L-function definition. A lexical search on 2026-10-22 found no Hasse bound and no Schoof-type point-counting theorem.",
+        "deliverable": "Only the bounded build authorized by FD-2026-10-22-001: the PR #446 curve-generic count #E(F) = n for an elliptic short Weierstrass curve over a finite field F that has a point of order n, satisfies 2*#F + 1 < 3n, and has no 2-torsion, proved from the elementary bound #E(F) <= 2*#F + 1 rather than the Hasse bound; kernel-checked no-2-torsion certificates for nine named prime-order curves; and #E = n for the repository's P-256. The secp256k1 exact count already exists separately. Counts for cofactor > 1 curves, a Hasse bound, and unconditional counts for the other seven named curves are outside this deliverable.",
+        "resume_condition": "A new dated decision is required for further point-counting work (a Hasse bound, Schoof-type counting, cofactor > 1 curves, or unconditional counts for further curves) and for adding p256-exact-cardinality to release.required_nodes.",
+        "registered_by": "FD-2026-10-22-001"
       }
     ],
     "attack_registry_index": [
@@ -9484,8 +9926,8 @@
       "generator_id": "ecdlp-hypothesis-generation-v0",
       "source_hashes": {
         "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-        "typed_evidence_state_sha256": "ee7d88da7ca26b7f0defe7fbba7a748a69bb31bc83a254615941b46af2c85f55",
-        "research_claim_state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+        "typed_evidence_state_sha256": "d7341b6413e319a14ef7cddb95ac4ac0ba7ff673dbe8075dd9c006e6fab067a1",
+        "research_claim_state_sha256": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
         "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
         "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
       },
@@ -9521,9 +9963,9 @@
         },
         "source_hashes": {
           "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-          "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
+          "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
           "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-          "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
+          "evidence_files_sha256": "25369ae6024fa107c9eeb211eca273508db48a2ced8b34176a38143243672616",
           "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
         },
         "authorization_boundary": "Typed cells and desk decisions authorize nothing. Only an open cell may seed an untrusted proposal, and every later experiment and promotion gate remains separate.",
@@ -9552,7 +9994,7 @@
           "route_promotions": 0,
           "exact_target_runs": 0
         },
-        "state_sha256": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38"
+        "state_sha256": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2"
       },
       "seed_coverage": {
         "threshold": 12,
@@ -9593,7 +10035,7 @@
           "seed_id": "HGS-5CC94AD51AE6",
           "cell_id": "CELL-M-PKC-AUXILIARY-CURVE",
           "typed_evidence_digest": "324128326a3d56dbe4ab697efafefb12d34ba6ba44983883c8d04fe2493832dc",
-          "claim_state_digest": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+          "claim_state_digest": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -9741,7 +10183,7 @@
           "seed_id": "HGS-3266E42A729C",
           "cell_id": "CELL-M-PKC-SMOOTH-M16",
           "typed_evidence_digest": "602d93c115099c81f02b8a8ac531e33036e6988d5d3ddf2ec257b1118e5cd75d",
-          "claim_state_digest": "24ba13ca696b3affdd28acc7058a2d921e244dc37a39d39593c260eedf78bd38",
+          "claim_state_digest": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -10652,24 +11094,24 @@
       "exact_target_execution": false,
       "stream_digest_version": "rfc6962-binary-leaf-v2",
       "coverage_merkle_root_sha256": "dff1e8cb52594158fc94556cbef3025be647fab310132c34ee58aed3b8399207",
-      "instance_root_sha256": "e634f9148e252803cc5e8510d0c73007527e632dc04e226863668afb7614133f",
+      "instance_root_sha256": "a901e59d9a4a564588235a7c4c95b376a53235f46e406734b35f53869ce9e14d",
       "challenge_indices": [
-        6839,
-        36028,
-        42717,
-        55732,
-        87873,
-        95720,
-        133921,
-        270475,
-        311294,
-        378952,
-        440854,
-        609750,
-        686091,
-        794780,
-        838002,
-        872341
+        2603,
+        11674,
+        25666,
+        61894,
+        104508,
+        167432,
+        220783,
+        382465,
+        393473,
+        504560,
+        512015,
+        685328,
+        803216,
+        843922,
+        960348,
+        978436
       ]
     },
     "coverage_boundary": "Coverage is complete only for this frozen finite Cartesian projection. It is not coverage of all ECDLP ideas or literature.",
@@ -11253,9 +11695,9 @@
     },
     "source_hashes": {
       "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-      "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
+      "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
       "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-      "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
+      "evidence_files_sha256": "25369ae6024fa107c9eeb211eca273508db48a2ced8b34176a38143243672616",
       "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
     },
     "trust_boundary": {
@@ -11727,6 +12169,21 @@
     {
       "from": "Ecdlp.Proved.CoprimePsi5Psi7",
       "to": "Ecdlp.Proved.CoprimePsi3Psi7",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.CubicNoRootCertificate",
+      "to": "Ecdlp.Secp256k1Verified",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.CubicNoRootCertificate",
+      "to": "Ecdlp.Proved.P256Curve",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.CubicNoRootCertificate",
+      "to": "Ecdlp.Proved.PrimeOrderCardinality",
       "type": "imports"
     },
     {
@@ -12665,6 +13122,21 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.P256CardinalityExact",
+      "to": "Ecdlp.Proved.P256Cardinality",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.P256CardinalityExact",
+      "to": "Ecdlp.Proved.PrimeOrderCardinality",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.P256CardinalityExact",
+      "to": "Ecdlp.Proved.CubicNoRootCertificate",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.P256EmbeddingDegree",
       "to": "Ecdlp.Proved.P256Curve",
       "type": "imports"
@@ -12702,6 +13174,121 @@
     {
       "from": "Ecdlp.Proved.P256TwistSecurity",
       "to": "Ecdlp.Proved.P256Curve",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsF5",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF5b",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44B",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44B",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44B",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44L",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44B",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44d",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44L",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44L",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44L",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF5a",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44L",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44d",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44d",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsF1",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsF2",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsF3F4a",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsF4b",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsF5a",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsF5",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsF5b",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsF5",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsWT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44L",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44B",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44L",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44d",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsWT",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
       "type": "imports"
     },
     {
@@ -12752,6 +13339,11 @@
     {
       "from": "Ecdlp.Proved.PrePsiSomos4",
       "to": "Ecdlp.Proved.DivisionPolynomialDegree",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.PrimeOrderCardinality",
+      "to": "Ecdlp.Proved.AffinePointFinite",
       "type": "imports"
     },
     {
@@ -12850,6 +13442,26 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.Secp256k1CardinalityGeneral",
+      "to": "Ecdlp.Proved.CurveCardinalityExact",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.Secp256k1CardinalityGeneral",
+      "to": "Ecdlp.Proved.GeneratorOrder",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.Secp256k1CardinalityGeneral",
+      "to": "Ecdlp.Proved.PrimeOrderCardinality",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.Secp256k1CardinalityGeneral",
+      "to": "Ecdlp.Proved.CubicNoRootCertificate",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.Secp256k1Curve",
       "to": "Ecdlp.Secp256k1Verified",
       "type": "imports"
@@ -12912,6 +13524,11 @@
     {
       "from": "Ecdlp.Proved.SemaevFour",
       "to": "Ecdlp.Proved.SemaevThree",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.SemaevFourSymmetry",
+      "to": "Ecdlp.Proved.SemaevFour",
       "type": "imports"
     },
     {
@@ -13716,6 +14333,11 @@
     },
     {
       "from": "Ecdlp",
+      "to": "Ecdlp.Proved.SemaevFourSymmetry",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
       "to": "Ecdlp.Proved.FixedDegreeProjectiveResultant",
       "type": "imports"
     },
@@ -14177,6 +14799,116 @@
     {
       "from": "Ecdlp",
       "to": "Ecdlp.Proved.CompressedDivisionPoly",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.PrimeOrderCardinality",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.CubicNoRootCertificate",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.P256CardinalityExact",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.Secp256k1CardinalityGeneral",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF1",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF2",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF3F4a",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF4b",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsF5",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF5a",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF5b",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44d",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44d",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44L",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44L",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44B",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44B",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsWT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsWT",
       "type": "imports"
     },
     {
@@ -15795,6 +16527,96 @@
       "type": "member_of"
     },
     {
+      "from": "thm-310",
+      "to": "family-primality",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-311",
+      "to": "family-primality",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-312",
+      "to": "family-curve-torsion",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-313",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-314",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-315",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-316",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-317",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-318",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-319",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-320",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-321",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-322",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-323",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-324",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-325",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-326",
+      "to": "family-curve-torsion",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-327",
+      "to": "family-other",
+      "type": "member_of"
+    },
+    {
       "from": "thm-065",
       "to": "secp-parameters",
       "type": "supports",
@@ -15808,6 +16630,12 @@
     },
     {
       "from": "thm-283",
+      "to": "secp-rational-group",
+      "type": "supports",
+      "anchor": "Ecdlp.Curve.secp256k1_card_point_eq_n"
+    },
+    {
+      "from": "thm-312",
       "to": "secp-rational-group",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_card_point_eq_n"
@@ -16067,14 +16895,21 @@
       "anchor": "Ecdlp.P256.p256_n_dvd_card_point"
     },
     {
-      "from": "p256-exact-cardinality",
-      "to": "secp-parameters",
-      "type": "depends_on"
+      "from": "thm-311",
+      "to": "p256-exact-cardinality",
+      "type": "supports",
+      "anchor": "Ecdlp.P256.p256_card_point_eq_n"
+    },
+    {
+      "from": "thm-310",
+      "to": "p256-exact-cardinality",
+      "type": "supports",
+      "anchor": "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf"
     },
     {
       "from": "p256-exact-cardinality",
-      "to": "blocker-p256-cardinality",
-      "type": "blocked_by"
+      "to": "secp-parameters",
+      "type": "depends_on"
     },
     {
       "from": "thm-243",
@@ -16675,6 +17510,11 @@
     {
       "from": "F-ISOGENY-STACK",
       "to": "glv-rational-scope",
+      "type": "extends_frontier"
+    },
+    {
+      "from": "F-PRIME-ORDER-POINT-COUNT",
+      "to": "p256-exact-cardinality",
       "type": "extends_frontier"
     },
     {

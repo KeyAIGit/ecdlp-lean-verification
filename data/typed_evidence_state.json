@@ -4,9 +4,9 @@
   "target_id": "secp256k1-classical-single-target-plain",
   "source_hashes": {
     "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-    "decision_substrate_sha256": "9cdaec7be46068996c3d7da6c1956aa3cae060298547e8d54354209340edf75d",
+    "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
     "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-    "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
+    "evidence_files_sha256": "25369ae6024fa107c9eeb211eca273508db48a2ced8b34176a38143243672616",
     "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
   },
   "trust_boundary": {

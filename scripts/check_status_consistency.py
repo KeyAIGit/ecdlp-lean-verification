@@ -336,8 +336,8 @@ def main() -> int:
           "data/knowledge_graph.json must expose counts.theorems")
     check(graph_counts.get("ledger_rows") == ledger_rows,
           "data/knowledge_graph.json counts.ledger_rows must match data/stats.json")
-    check(graph_counts.get("families") == 8,
-          "data/knowledge_graph.json must expose the exhaustive eight-family partition")
+    check(graph_counts.get("families") == 9,
+          "data/knowledge_graph.json must expose the exhaustive nine-family partition")
     check(graph_counts.get("critical_nodes", 0) > 0,
           "data/knowledge_graph.json must expose formal critical-path nodes")
     check(graph_counts.get("attack_routes") == 17,
