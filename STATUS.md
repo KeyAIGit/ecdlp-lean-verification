@@ -86,7 +86,7 @@ recorded **1 route in completed bounded structural work**
 (`R-GLV-SEMAEV`), while promoting
 **0 routes**. The completed work resolved one exact S3/S4 polynomial-symmetry
 question and one S4 fixed-target uncertainty; it was not an attack experiment or a route promotion. The map contains
-**11 foundation decisions**,
+**13 foundation decisions**,
 bounded exploration authorized = **false**,
 promotion experiments authorized =
 **false**, selected attack route =
