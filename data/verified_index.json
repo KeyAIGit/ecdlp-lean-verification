@@ -3,9 +3,9 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "c6bc609ecd87886cf0a33fd7e65162fcbc1381d97a167156a37169b930ccfcf5",
+    "data/result_registry.json": "2d09d80dd090c7f509437df5e701bca49ad2fa23fb61e07ea5d776a9fccb5c98",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
-    "data/stats.json": "e2165fbb75dced6b3d1862ee475e59778f1a5e3d050ad9d239decee066e783a3"
+    "data/stats.json": "35ed85ba2115462a3447cfbfb2a35b23f4c6204d66e44e9d9e060a4260ec77dd"
   },
   "invariants": [
     "VERIFIED.md remains the canonical ECDLP ledger.",
@@ -14,16 +14,16 @@
     "The aggregate row total is navigation only and is not a security metric."
   ],
   "counts": {
-    "navigation_rows_total": 479,
-    "ecdlp_rows": 307,
+    "navigation_rows_total": 482,
+    "ecdlp_rows": 310,
     "researchos_rows": 172,
     "kernel_standard_rows": 172,
     "kernel_audited_rows": 203,
-    "kernel_plus_compiler_rows": 104,
+    "kernel_plus_compiler_rows": 107,
     "lanes": 2,
     "domains": {
       "analysis-generic": 68,
-      "ecdlp-ledger": 307,
+      "ecdlp-ledger": 310,
       "number-theory-elementary": 11,
       "riemann-hypothesis": 93
     }
@@ -35,7 +35,7 @@
       "canonical_ledger": "VERIFIED.md",
       "registry": "data/result_registry.json",
       "headline_accounting": "data/stats.json",
-      "rows": 307
+      "rows": 310
     },
     {
       "id": "researchos",
@@ -2856,6 +2856,56 @@
       "source_registry": "data/result_registry.json"
     },
     {
+      "uid": "ecdlp/ledger-307",
+      "slug": "ecdlp-ledger-307",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "Exact point count `#E(𝔽) = n` from a point of order `n` — curve-generic, no Hasse/Schoof (`natCard_point_eq_of_addOrderOf`: for a Weierstrass curve `W` with `[W.IsElliptic]` (Δ ≠ 0) and `a₁ = a₃ = 0` over a finite field `F` with `2 ≠ 0`, if `x³ + a₂x² + a₄x + a₆` has no root in `F`, some point has `addOrderOf G = n`, and `2·#F + 1 < 3n`, then `Nat.card W.toAffine.Point = n`; `card_eq_of_prime_order_point` is the form with `[Fact n.Prime]`, `n•G = 0`, `G ≠ 0`, also under `[W.IsElliptic]` (Δ ≠ 0). Ingredients, each a separate theorem: `natCard_point_le` (`#E(F) ≤ 2·#F + 1` for every Weierstrass curve over a finite field, ≤ 2 roots of a monic quadratic per `x`), `exists_cubic_root_of_two_nsmul_eq_zero` (a nonzero 2-torsion point has `y = 0`, so its `x` is a root of the cubic), `natCard_eq_of_dvd_of_lt_three_mul` (`n ∣ #A ≤ N < 3n` and no element of order 2 ⇒ `#A = n`, additive Cauchy); these three do not take `[W.IsElliptic]`. Neither `n` nor `#F` needs to be prime. Scope: cofactor-1 curves only (with `n ≈ #F/h`, `h ≥ 2` needs Hasse). Same argument as pyca/verified-garbage `primeOrder_of` for its specification curves, which proves `#E = n` for P-256/P-384/P-521 for its own specification curve type; this Lean code is separate, for Mathlib's `WeierstrassCurve`. Pure-kernel)",
+      "title": "Exact point count `#E(𝔽) = n` from a point of order `n` — curve-generic, no Hasse/Schoof (`natCard_point_eq_of_addOrderOf`: for a Weierstrass curve `W` with `[W.IsElliptic]` (Δ ≠…",
+      "display": "`Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf`, `card_eq_of_prime_order_point`, `natCard_point_le`, `exists_cubic_root_of_two_nsmul_eq_zero`, `natCard_eq_of_dvd_of_lt_three_mul`",
+      "method": "Mathlib (`addOrderOf_dvd_natCard`, `exists_prime_addOrderOf_dvd_card'`, `card_roots'`, `Finset.card_le_mul_card_image`) + `instFinitePoint",
+      "axiom_base": null,
+      "trust_level": "kernel_audited",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/PrimeOrderCardinality.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
+          "line": 177
+        },
+        {
+          "declaration": "Ecdlp.Weierstrass.card_eq_of_prime_order_point",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
+          "line": 193
+        },
+        {
+          "declaration": "Ecdlp.Weierstrass.natCard_point_le",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
+          "line": 86
+        },
+        {
+          "declaration": "Ecdlp.Weierstrass.exists_cubic_root_of_two_nsmul_eq_zero",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
+          "line": 154
+        },
+        {
+          "declaration": "Ecdlp.Weierstrass.natCard_eq_of_dvd_of_lt_three_mul",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/PrimeOrderCardinality.lean",
+          "line": 60
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
       "uid": "ecdlp/ledger-218",
       "slug": "ecdlp-ledger-218",
       "lane": "ecdlp",
@@ -4203,7 +4253,7 @@
       "slug": "ecdlp-ledger-163",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "NIST P-256 base point has exact order `n` (weak point-counting keystone) (`p256_generator_addOrderOf`: the SEC 2 generator `G=(Gx,Gy)` in Mathlib's point group has `addOrderOf G = n`, so `⟨G⟩` is cyclic of order `n` — the crypto subgroup pinned WITHOUT computing `#E(𝔽_p)` (no Hasse/Schoof). Proof: `n•G=0` (native double-and-add over 𝔽_p) + `G≠0`, `n` prime ⇒ `addOrderOf_eq_prime`. Mirrors secp256k1's `GeneratorOrder.lean`; server-verified on the warm Lean toolchain then CI. Does NOT give the strong keystone `#E=n`)",
+      "claim_id": "NIST P-256 base point has exact order `n` (weak point-counting keystone) (`p256_generator_addOrderOf`: the SEC 2 generator `G=(Gx,Gy)` in Mathlib's point group has `addOrderOf G = n`, so `⟨G⟩` is cyclic of order `n` — the crypto subgroup pinned WITHOUT computing `#E(𝔽_p)` (no Hasse/Schoof). Proof: `n•G=0` (native double-and-add over 𝔽_p) + `G≠0`, `n` prime ⇒ `addOrderOf_eq_prime`. Mirrors secp256k1's `GeneratorOrder.lean`; server-verified on the warm Lean toolchain then CI. By itself it does not give `#E=n`; that is `p256_card_point_eq_n` (`P256CardinalityExact.lean`), which uses this order fact)",
       "title": "NIST P-256 base point has exact order `n` (weak point-counting keystone) (`p256_generator_addOrderOf`: the SEC 2 generator `G=(Gx,Gy)` in Mathlib's point group has `addOrderOf G =…",
       "display": "`Ecdlp.P256.p256_generator_addOrderOf` (+ `p256_generator_nonsingular`, `p256_generator_nsmul_n_eq_zero`)",
       "method": "Mathlib (`addOrderOf_eq_prime`) + native_decide",
@@ -4218,19 +4268,57 @@
           "declaration": "Ecdlp.P256.p256_generator_addOrderOf",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256GeneratorOrder.lean",
-          "line": 44
+          "line": 46
         },
         {
           "declaration": "Ecdlp.P256.p256_generator_nonsingular",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256GeneratorOrder.lean",
-          "line": 26
+          "line": 28
         },
         {
           "declaration": "Ecdlp.P256.p256_generator_nsmul_n_eq_zero",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256GeneratorOrder.lean",
-          "line": 36
+          "line": 38
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
+      "uid": "ecdlp/ledger-308",
+      "slug": "ecdlp-ledger-308",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with `p256_no_two_torsion_cubic` (the kernel-checked certificate `Ecdlp.CubicCert.p256.cubic_ne_zero`, ported table below, transported to `P256`'s coefficients), `p256_generator_addOrderOf`, and `2p + 1 < 3n`. Upgrades `p256_n_dvd_card_point`. Prior art: pyca/verified-garbage (`38c744308fcd`) proves `#E = n` for P-256/P-384/P-521 for its own specification curve type (`VG.Proof.P256.primeOrder`); this repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently. Not pure-kernel: inherits `Lean.ofReduceBool` (`native_decide`) through `n•G = 0`, the base-point and curve facts in `P256Curve.lean`/`P256GeneratorOrder.lean`, and the Lucas-test certificate leaves for `p` and `n`; the no-root certificate layer itself is pure-kernel)",
+      "title": "NIST P-256 exact point count `#E(𝔽_p) = n` — cofactor 1 (`p256_card_point_eq_n`: `Nat.card P256.toAffine.Point = n`, from the general theorem `natCard_point_eq_of_addOrderOf` with…",
+      "display": "`Ecdlp.P256.p256_card_point_eq_n`, `p256_no_two_torsion_cubic`, `p256_two_ne_zero`",
+      "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
+      "axiom_base": null,
+      "trust_level": "kernel_plus_compiler",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/P256CardinalityExact.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.P256.p256_card_point_eq_n",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/P256CardinalityExact.lean",
+          "line": 65
+        },
+        {
+          "declaration": "Ecdlp.P256.p256_no_two_torsion_cubic",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/P256CardinalityExact.lean",
+          "line": 50
+        },
+        {
+          "declaration": "Ecdlp.P256.p256_two_ne_zero",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/P256CardinalityExact.lean",
+          "line": 42
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -4363,7 +4451,7 @@
       "slug": "ecdlp-ledger-162",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "NIST P-256 is ordinary, non-anomalous, Hasse-consistent (Smart/SSSA boundary) (`p256_trace_ordinary_nonanomalous`: with `#E=n`, the trace `t=p+1−n` satisfies `t≠0` (not supersingular), `t≠1` (not anomalous — Smart/SSSA inapplicable), `t²≤4p` (Hasse; `t` is 127-bit, cofactor 1). The second live domain's SSSA boundary rung, mirroring secp256k1's `TraceOfFrobenius.lean`; conditional on the published `#E=n` as for secp256k1)",
+      "claim_id": "NIST P-256 is ordinary, non-anomalous, Hasse-consistent (Smart/SSSA boundary) (`p256_trace_ordinary_nonanomalous`: with `#E=n`, the trace `t=p+1−n` satisfies `t≠0` (not supersingular), `t≠1` (not anomalous — Smart/SSSA inapplicable), `t²≤4p` (Hasse; `t` is 127-bit, cofactor 1). The second live domain's SSSA boundary rung, mirroring secp256k1's `TraceOfFrobenius.lean`. The theorem is arithmetic on `t=p+1−n`; reading `t` as the trace uses `#E=n`, now proved as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, native_decide trust))",
       "title": "NIST P-256 is ordinary, non-anomalous, Hasse-consistent (Smart/SSSA boundary) (`p256_trace_ordinary_nonanomalous`: with `#E=n`, the trace `t=p+1−n` satisfies `t≠0` (not supersingu…",
       "display": "`Ecdlp.P256.p256_trace_ordinary_nonanomalous`",
       "method": "Mathlib + native_decide",
@@ -4378,7 +4466,7 @@
           "declaration": "Ecdlp.P256.p256_trace_ordinary_nonanomalous",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256TraceOfFrobenius.lean",
-          "line": 33
+          "line": 35
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -4389,7 +4477,7 @@
       "slug": "ecdlp-ledger-166",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "NIST P-256 quadratic-twist security certificate — cross-curve companion of the secp256k1 twist limitation (`p256_twist_security_profile`: the number `2p+2−n` factors exactly as `3·5·13·179·Q` with `Q` a 241-bit prime (`p256_twist_maxprime_prime`, full Pratt certificate; `p256_twist_order_factorization`). Honest scope: interpreting `2p+2−n` as the twist order `#Ẽ = p+1+t` rests on `#E = n`, which for P-256 is NOT in-repo (only `n ∣ #E` is proved; parked on Hasse) — the theorems themselves are unconditional arithmetic about the literal number. Consequences: (1) cofactor `3·5·13·179 = 34905 ≈ 2¹⁵ > 1` — the twist has small-order subgroups; (2) `2²⁴⁰ < Q < 2²⁴¹`, so generic twist-DLP `≈ √Q ≈ 2¹²⁰ < 2¹²⁸` — the machine-checked form of the publicly tabulated ~2^120.3 P-256 twist-security figure. Cross-curve: secp256k1's twist (`2¹¹⁰`, cofactor `2³⁷`) is weaker than P-256's (`2¹²⁰`, cofactor `2¹⁵`); point validation mandatory for `x`-only code on both. Inherits `Lean.ofReduceBool` from `native_decide` + Pratt)",
+      "claim_id": "NIST P-256 quadratic-twist security certificate — cross-curve companion of the secp256k1 twist limitation (`p256_twist_security_profile`: the number `2p+2−n` factors exactly as `3·5·13·179·Q` with `Q` a 241-bit prime (`p256_twist_maxprime_prime`, full Pratt certificate; `p256_twist_order_factorization`). Honest scope: interpreting `2p+2−n` as the twist order `#Ẽ = p+1+t` rests on `#E = n`, now proved as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, native_decide trust); the twist-order identity `#Ẽ = 2p+2−#E` itself is not formalized here — the theorems themselves are unconditional arithmetic about the literal number. Consequences: (1) cofactor `3·5·13·179 = 34905 ≈ 2¹⁵ > 1` — the twist has small-order subgroups; (2) `2²⁴⁰ < Q < 2²⁴¹`, so generic twist-DLP `≈ √Q ≈ 2¹²⁰ < 2¹²⁸` — the machine-checked form of the publicly tabulated ~2^120.3 P-256 twist-security figure. Cross-curve: secp256k1's twist (`2¹¹⁰`, cofactor `2³⁷`) is weaker than P-256's (`2¹²⁰`, cofactor `2¹⁵`); point validation mandatory for `x`-only code on both. Inherits `Lean.ofReduceBool` from `native_decide` + Pratt)",
       "title": "NIST P-256 quadratic-twist security certificate — cross-curve companion of the secp256k1 twist limitation (`p256_twist_security_profile`: the number `2p+2−n` factors exactly as `3…",
       "display": "`Ecdlp.P256.p256_twist_security_profile`, `p256_twist_order_factorization`, `p256_twist_maxprime_prime`",
       "method": "native_decide + Pratt (`lucas_primality`)",
@@ -4416,7 +4504,7 @@
           "declaration": "Ecdlp.P256.p256_twist_maxprime_prime",
           "kind": "theorem",
           "file": "Ecdlp/Proved/P256TwistSecurity.lean",
-          "line": 222
+          "line": 221
         }
       ],
       "source_ledger": "VERIFIED.md",
@@ -7643,12 +7731,12 @@
       "slug": "ecdlp-ledger-165",
       "lane": "ecdlp",
       "domain": "ecdlp-ledger",
-      "claim_id": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about P-256's `#E` itself — all prior P-256 point-counting stayed inside `⟨G⟩`. Weak keystone: pins `#E ∈ {n, 2n, 3n, …}`. The strong keystone `#E = n` is NOT proved for P-256: the secp256k1 `j=0` / `−7`-non-cube 2-torsion route is `j=0`-specific and does not transfer (P-256 has `c₄=144≠0`, `j≠0`), and the general Hasse bound is a Mathlib gap. Pure-kernel)",
+      "claim_id": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `n`) + finiteness. The first verified fact about P-256's `#E` itself — all prior P-256 point-counting stayed inside `⟨G⟩`. Weak keystone: pins `#E ∈ {n, 2n, 3n, …}`. The exact count `#E = n` is proved separately as `p256_card_point_eq_n` (`P256CardinalityExact.lean`, via the general theorem `natCard_point_eq_of_addOrderOf` and a kernel-checked no-root certificate; the secp256k1 `−7`-non-cube step is `j=0`-specific and is not used). Not pure-kernel: inherits `native_decide` compiler trust through `p256_generator_addOrderOf` (`n•G=0`) and the Lucas-test certificate leaves for `p` and `n`)",
       "title": "n ∣ #E(𝔽_p)` for P-256 — base-point order divides the curve cardinality (`p256_n_dvd_card_point`: `P256.n ∣ Nat.card P256.toAffine.Point`, by Lagrange on `⟨G⟩` (order the proved `…",
       "display": "`Ecdlp.P256.p256_n_dvd_card_point` (+ `p256_grp_card`)",
       "method": "Mathlib (`AddSubgroup.card_mul_index`, `Nat.card_zmultiples`) + `p256_generator_addOrderOf",
       "axiom_base": null,
-      "trust_level": "kernel_audited",
+      "trust_level": "kernel_plus_compiler",
       "status": "proved",
       "files": [
         "Ecdlp/Proved/P256Cardinality.lean"
@@ -8379,6 +8467,32 @@
           "kind": "theorem",
           "file": "Ecdlp/Proved/GlvSubgroupEigenvalue.lean",
           "line": 27
+        }
+      ],
+      "source_ledger": "VERIFIED.md",
+      "source_registry": "data/result_registry.json"
+    },
+    {
+      "uid": "ecdlp/ledger-309",
+      "slug": "ecdlp-ledger-309",
+      "lane": "ecdlp",
+      "domain": "ecdlp-ledger",
+      "claim_id": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_point_eq_n`, obtained from `card_eq_of_addOrderOf` for secp256k1 (`natCard_point_eq_of_addOrderOf` + the kernel-checked certificate `Ecdlp.CubicCert.secp256k1.cubic_ne_zero`, ported table below) instead of the `native_decide` cube-residue witness `secp256k1_neg7_pow_ne_one`. The existing theorem and proof are unchanged. Still inherits `native_decide` trust through `secp256k1_generator_addOrderOf` and the Lucas-test certificate leaves for `p` and `n`)",
+      "title": "secp256k1 `#E(𝔽_p) = n` through the general exact-count theorem — alternate-form, second derivation (`secp256k1_card_point_eq_n_general`: the same statement as `secp256k1_card_poi…",
+      "display": "`Ecdlp.Curve.secp256k1_card_point_eq_n_general`",
+      "method": "Mathlib + `decide +kernel` certificate + native_decide (inherited)",
+      "axiom_base": null,
+      "trust_level": "kernel_plus_compiler",
+      "status": "proved",
+      "files": [
+        "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean"
+      ],
+      "references": [
+        {
+          "declaration": "Ecdlp.Curve.secp256k1_card_point_eq_n_general",
+          "kind": "theorem",
+          "file": "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean",
+          "line": 31
         }
       ],
       "source_ledger": "VERIFIED.md",
