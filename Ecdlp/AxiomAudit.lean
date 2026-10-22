@@ -149,6 +149,12 @@ sample that should surface `Lean.ofReduceBool`). `#print axioms` prints each dep
 #print axioms Ecdlp.Semaev.secp256k1_S₃poly_natDegree
 #print axioms Ecdlp.Semaev.secp256k1_decomposition_completions_le_two
 
+-- Semaev S₃ on Mathlib's group law for every short Weierstrass curve (point-level forward
+-- direction without case hypotheses, and the signed-sum characterization)
+#print axioms Ecdlp.Semaev.S₃_eq_zero_of_add_add_eq_zero
+#print axioms Ecdlp.Semaev.S₃_eq_zero_iff_exists_point
+#print axioms Ecdlp.Semaev.S₃_eq_zero_iff_signed_sum
+
 -- Distinct-prime torsion x-locus disjointness (no-go certificate family): E[3] ⊥ E[5],
 -- E[2] ⊥ E[5], E[3] ⊥ E[7] (missing from Mathlib; explicit 𝔽_p Bézout, native_decide residues)
 #print axioms Ecdlp.Curve.secp256k1_preΨ₅

@@ -600,7 +600,11 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.Secp256k1Schnorr.secp256k1_schnorr_extract
 #print axioms Ecdlp.Semaev.S₃_diagonal_cube_covariance
 #print axioms Ecdlp.Semaev.S₃_diagonal_cube_zero_iff
+#print axioms Ecdlp.Semaev.S₃_eq_addSubMap
 #print axioms Ecdlp.Semaev.S₃_eq_zero_iff
+#print axioms Ecdlp.Semaev.S₃_eq_zero_iff_exists_point
+#print axioms Ecdlp.Semaev.S₃_eq_zero_iff_signed_sum
+#print axioms Ecdlp.Semaev.S₃_eq_zero_of_add_add_eq_zero
 #print axioms Ecdlp.Semaev.S₃_eq_zero_of_chord
 #print axioms Ecdlp.Semaev.S₃_eq_zero_of_tangent
 #print axioms Ecdlp.Semaev.S₃_root_of_eq_zero
@@ -647,6 +651,7 @@ CI elaborates it standalone and validates the output with
 #print axioms Ecdlp.Semaev.secp256k1_semaev_three_iff
 #print axioms Ecdlp.Semaev.secp256k1_semaev_three_point
 #print axioms Ecdlp.Semaev.secp256k1_semaev_three_point_double
+#print axioms Ecdlp.Semaev.secp256k1_semaev_three_point_iff
 #print axioms Ecdlp.Semaev.secp256k1_semaev_three_tangent
 #print axioms Ecdlp.Targets.glv_eigenvalue_zmod
 #print axioms Ecdlp.TaskSylvester.det_taskSylvester_eq_resultant
