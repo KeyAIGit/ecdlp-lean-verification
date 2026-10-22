@@ -17,9 +17,9 @@ Start here:
 - ECDLP route map: explore.html
 
 Current navigation counts:
-- ECDLP ledger rows: 325
+- ECDLP ledger rows: 328
 - ResearchOS ledger rows: 172
-- Aggregate navigation rows: 497 (not a security metric)
+- Aggregate navigation rows: 500 (not a security metric)
 - ResearchOS standard-base rows: 172
-- ECDLP audited rows without a committed per-row base label: 241
+- ECDLP audited rows without a committed per-row base label: 244
 - Rows with compiler trust disclosed in ledger metadata: 84
