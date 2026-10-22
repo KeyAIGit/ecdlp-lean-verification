@@ -9821,8 +9821,8 @@
       "generator_id": "ecdlp-hypothesis-generation-v0",
       "source_hashes": {
         "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-        "typed_evidence_state_sha256": "2f3d829eaf0d4fc83c3b5eb01dbef9d73b8c767aba4839fb9088061d2d8e929f",
-        "research_claim_state_sha256": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e",
+        "typed_evidence_state_sha256": "03c81ebcf574772232aba882e927acd60a988341e88eaf9f417960d946e5dce8",
+        "research_claim_state_sha256": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
         "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
         "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
       },
@@ -9858,7 +9858,7 @@
         },
         "source_hashes": {
           "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-          "decision_substrate_sha256": "a86e240c63687ddc262d25cda6de4412db25f3f9e76afe5ff2939cb64a9a88de",
+          "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
           "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
           "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
           "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
@@ -9889,7 +9889,7 @@
           "route_promotions": 0,
           "exact_target_runs": 0
         },
-        "state_sha256": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e"
+        "state_sha256": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2"
       },
       "seed_coverage": {
         "threshold": 12,
@@ -9930,7 +9930,7 @@
           "seed_id": "HGS-5CC94AD51AE6",
           "cell_id": "CELL-M-PKC-AUXILIARY-CURVE",
           "typed_evidence_digest": "324128326a3d56dbe4ab697efafefb12d34ba6ba44983883c8d04fe2493832dc",
-          "claim_state_digest": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e",
+          "claim_state_digest": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -10078,7 +10078,7 @@
           "seed_id": "HGS-3266E42A729C",
           "cell_id": "CELL-M-PKC-SMOOTH-M16",
           "typed_evidence_digest": "602d93c115099c81f02b8a8ac531e33036e6988d5d3ddf2ec257b1118e5cd75d",
-          "claim_state_digest": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e",
+          "claim_state_digest": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -10989,24 +10989,24 @@
       "exact_target_execution": false,
       "stream_digest_version": "rfc6962-binary-leaf-v2",
       "coverage_merkle_root_sha256": "dff1e8cb52594158fc94556cbef3025be647fab310132c34ee58aed3b8399207",
-      "instance_root_sha256": "44e33f1d68b058f379db1080bc237456ac9c2413d5df7b89dfbde0974e98b3e2",
+      "instance_root_sha256": "8d2c16a7dc3adc9873ce778af3ce2868f11f1c59c5222aeae04eb2b45cc48c6c",
       "challenge_indices": [
-        36552,
-        77187,
-        81973,
-        84294,
-        148061,
-        148896,
-        254218,
-        434656,
-        446301,
-        532228,
-        686468,
-        837699,
-        866814,
-        921313,
-        923406,
-        938441
+        431,
+        79547,
+        150491,
+        290728,
+        312038,
+        314880,
+        365159,
+        392174,
+        404436,
+        642328,
+        778165,
+        847086,
+        873637,
+        881823,
+        947525,
+        955280
       ]
     },
     "coverage_boundary": "Coverage is complete only for this frozen finite Cartesian projection. It is not coverage of all ECDLP ideas or literature.",
@@ -11590,7 +11590,7 @@
     },
     "source_hashes": {
       "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-      "decision_substrate_sha256": "a86e240c63687ddc262d25cda6de4412db25f3f9e76afe5ff2939cb64a9a88de",
+      "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
       "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
       "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
       "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"

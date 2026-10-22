@@ -12,7 +12,7 @@
       "typed_evidence_state": "data/typed_evidence_state.json",
       "decision_state": "repo/ECDLP_DECISION_SUBSTRATE.json",
       "required_decision_mode": "post_task026_proposal_only_promotion_closed",
-      "required_decision_sha256": "a86e240c63687ddc262d25cda6de4412db25f3f9e76afe5ff2939cb64a9a88de",
+      "required_decision_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
       "input_provenance_bound": true,
       "skip_submitted_seeds_by_default": true,
       "admissions": [

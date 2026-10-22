@@ -23,7 +23,7 @@
         "path": "repo/ECDLP_DECISION_SUBSTRATE.json",
         "reason": "exact target, route dispositions, evidence gates, and foundation priority",
         "exists": true,
-        "bytes": 106194
+        "bytes": 106188
       },
       {
         "path": "repo/RESEARCH_ENGINE_V0.json",
@@ -211,7 +211,7 @@
         "path": "repo/ECDLP_DECISION_SUBSTRATE.json",
         "reason": "exact target, route dispositions, evidence gates, and foundation priority",
         "exists": true,
-        "bytes": 106194
+        "bytes": 106188
       },
       {
         "path": "repo/RESEARCH_ENGINE_V0.json",
@@ -615,7 +615,7 @@
         "path": "repo/ECDLP_DECISION_SUBSTRATE.json",
         "reason": "exact target, route dispositions, evidence gates, and foundation priority",
         "exists": true,
-        "bytes": 106194
+        "bytes": 106188
       },
       {
         "path": "repo/RESEARCH_ENGINE_V0.json",

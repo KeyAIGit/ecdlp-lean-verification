@@ -4,8 +4,8 @@
   "status": "shadow_non_executing",
   "source_hashes": {
     "source_registry_sha256": "5eab3470a7285091ff15ae474daa89555b6e13675e89e6fae59f58f9dfe65aba",
-    "typed_evidence_state_sha256": "e256a5d26c07eb218ad4e31b19a6788987c0296041060459fa52b76b7488ab72",
-    "research_claim_state_sha256": "a344f7473c5486dadbf24bbc1258f04caa3090b9ab5e1d89041314f73fcb365e"
+    "typed_evidence_state_sha256": "dfbb87e11c72b54fca716461ab4835d1f7f3728c516198ec8bf17f4333ce0fb3",
+    "research_claim_state_sha256": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2"
   },
   "counts": {
     "proposal_stubs": 4,
