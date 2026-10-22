@@ -64,6 +64,11 @@
       "title": "Protocol algebra and concrete secp256k1 instantiations"
     },
     {
+      "id": "family-bit-security",
+      "area": "bit-security",
+      "title": "Parity-bit Fourier facts and the exact-parity-oracle halving reduction (finite and conditional statements; no hardness claim)"
+    },
+    {
       "id": "family-attack-resistance",
       "area": "attack-resistance",
       "title": "Classical structural attack-resistance facts"
