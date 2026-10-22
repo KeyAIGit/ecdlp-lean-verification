@@ -2,7 +2,7 @@
 
 > Counts here are a snapshot; the single canonical figure is **`STATUS.md`** (generated from `data/stats.json`). If they differ, STATUS.md wins.
 
-**Scope of the verified body.** `307 ledger rows / ~268 distinct kernel-verified
+**Scope of the verified body.** `325 ledger rows / ~283 distinct kernel-verified
 results`. A row may group several supporting declarations; the exact expansion is
 generated in `data/result_registry.json`. The built surface has **0 `sorry`, 0
 `admit`, and 0 custom axioms**. Open target stems are explicitly outside the built
@@ -48,12 +48,13 @@ accepts. The kernel is a small, fixed type-checker; trusting a proof means trust
 
 **Kernel `Nat` arithmetic.** Large closed numeric facts that are *not* `native_decide`
 (for example the 256-bit witness powers of the secp256k1 and P-256 primality certificates,
-`n • G = 0`, `glvPoint G = λ • G`, and the kernel-checked twins of the secp256k1 literal
-facts in `Secp256k1KernelFacts.lean`) are checked with `decide +kernel`: the kernel itself
-evaluates the computation on `Nat` (`Ecdlp.Kernel.powMod`, `Ecdlp.Kernel.mulN`), using its
-built-in arbitrary-precision (GMP-backed) natural-number operations. These operations are part
-of the Lean 4 kernel (item 1); `decide +kernel` adds no axiom and no compiler trust, and
-`#print axioms` shows only the standard three.
+`n • G = 0`, `glvPoint G = λ • G`, the kernel-checked twins of the secp256k1 literal
+facts in `Secp256k1KernelFacts.lean`, and the 192- to 521-bit no-root certificates of
+`CubicNoRootCertificate.lean`) are checked with `decide +kernel`: the kernel itself
+evaluates the computation on `Nat` (`Ecdlp.Kernel.powMod`, `Ecdlp.Kernel.mulN`,
+`Ecdlp.CubicCert.powT`), using its built-in arbitrary-precision (GMP-backed) natural-number
+operations. These operations are part of the Lean 4 kernel (item 1); `decide +kernel` adds
+no axiom and no compiler trust, and `#print axioms` shows only the standard three.
 
 Nothing in the repo depends on `sorryAx`, `Lean.trustCompiler`, or `Lean.guardMsgsAx`;
 these are on the audit's permanent forbidden list.
@@ -168,6 +169,10 @@ ring-identity curve invariants. Representative theorems (file → theorem):
     group by the kernel-checked bridge `Ecdlp.Kernel.mulN_rep`, `KernelScalarMul.lean`)
   - `Ecdlp/Proved/CurveCardinalityExact.lean` → `secp256k1_card_point_eq_n`,
     `secp256k1_no_nonzero_two_torsion`, `secp256k1_neg7_pow_ne_one`
+  - `Ecdlp/Proved/Secp256k1CardinalityGeneral.lean` → `secp256k1_card_point_eq_n_general`
+    (second derivation of `secp256k1_card_point_eq_n` through the curve-generic theorem and
+    the no-root certificate below; kernel-only because `secp256k1_generator_addOrderOf` and
+    the Pratt certificates it rests on are)
   - `Ecdlp/Proved/CurveFullGroup.lean`, `PointGroupEquiv.lean`,
     `GlvSubgroupEigenvalue.lean` → `secp256k1_grp_eq_top`, `secp256k1_point_isAddCyclic`,
     `secp256k1_pointGroupEquiv`, `secp256k1_glvPoint_eq_lam_on_zmultiples`,
@@ -177,6 +182,35 @@ ring-identity curve invariants. Representative theorems (file → theorem):
     `secp256k1_glv_cube_relation`, `secp256k1_glv_preserves_equation`,
     `secp256k1_glv_preserves_nonsingular`, `secp256k1_Ψ₂Sq_natDegree`,
     `secp256k1_Ψ₃_natDegree`
+- `Ecdlp/Proved/PrimeOrderCardinality.lean` → `natCard_point_eq_of_addOrderOf`,
+  `card_eq_of_prime_order_point`, `natCard_point_le`, `exists_cubic_root_of_two_nsmul_eq_zero`,
+  `natCard_eq_of_dvd_of_lt_three_mul` (curve-generic exact count; no `native_decide`)
+- `Ecdlp/Proved/CubicNoRootCertificate.lean` → `noRoot_of_cert` (adapted from
+  pyca/verified-garbage), `natCard_point_eq_of_noRoot`, and for nine standard curves
+  `cubic_ne_zero`, `two_mul_add_one_lt_three_mul`, `card_eq_of_addOrderOf` (upstream-derived;
+  see the ported table in `VERIFIED.md`). The 192- to 521-bit certificate checks use
+  `decide +kernel`: the kernel evaluates them on `Nat` with its built-in GMP-backed
+  arithmetic, as described in §1 "Kernel `Nat` arithmetic"; no axiom beyond the standard
+  three and no compiler trust.
+- `Ecdlp/Proved/P256CardinalityExact.lean` → `p256_two_ne_zero`, `p256_no_two_torsion_cubic`
+  (the P-256 inputs of the exact count; kernel-only because the P-256 Pratt certificates
+  are; the count `p256_card_point_eq_n` itself is still compiler-trusted, see (c))
+- `Ecdlp/Proved/ParityFourier/*.lean` → `carrySum`, `carrySign`, `jEven`,
+  `gOdd`, `gInvariant`, `jOrbitProduct`, `jBalance`, `relabel`,
+  `halvingRecovers`, `groupHalvingRecovers`, `sigmaHatClosedForm`,
+  `sigmaTail`, `l1lowBound`, `jConcentration`, `jConcentrationExplicit`,
+  `normLemma`, `zeroNotInGammaJ`, `jBalanceBound`, `weilTransfer`,
+  `weilTransferLsb` (finite Fourier analysis on `ZMod n` and halving with an
+  exact parity oracle; each prints a subset of
+  `{propext, Classical.choice, Quot.sound}`; `weilTransfer` and
+  `weilTransferLsb` take the twisted-sum bound as a hypothesis, and the
+  halving theorems take an exact parity oracle as a hypothesis)
+- `Ecdlp/Proved/SemaevFourSymmetry.lean` → `S₄_perm`, `S₄_symm₂₃`,
+  `resultant_quadratic_two_two`, `S₄slice_coeff_four`, `S₄slice_natDegree`,
+  `S₄_natDegree_eq_four_of_perm`, `S₄_completions_le_four` (polynomial identities,
+  resultant and degree bookkeeping over any commutative ring, except the three
+  exact-degree/completion statements `S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`
+  and `S₄_completions_le_four`, which are over a field; no `native_decide`)
 
 ### (b) `native_decide` / compiler-trusted — TCB INCLUDES the Lean compiler
 
@@ -246,6 +280,13 @@ depends on `Lean.ofReduceBool`). These are the rows tagged "Mathlib + native_dec
   `secp256k1_lambda_orderOf`, `secp256k1_three_cube_roots_of_unity` (order-3 / cube-root
   count; the `≠ 0` leaves go via `ZMod.natCast_eq_zero_iff` + `native_decide`)
 - `Ecdlp/Proved/FourDivisionPolynomial.lean:42` → `secp256k1_preΨ₄_natDegree`
+- `Ecdlp/Proved/P256CardinalityExact.lean` → `p256_card_point_eq_n` (not its inputs
+  `p256_two_ne_zero` and `p256_no_two_torsion_cubic`, which are in (a)): the argument, the
+  no-root certificate and the P-256 Pratt certificates are kernel-only, but the count
+  inherits `native_decide` through `p256_generator_addOrderOf` (`P256GeneratorOrder.lean`:
+  `p256_generator_nsmul_n_eq_zero` (`n • G = 0`), `p256_generator_nonsingular`, and
+  `P256_generator_equation` from `P256Curve.lean`) and through `P256_Δ_ne_zero`
+  (`P256Curve.lean`, via the `P256.IsElliptic` instance)
 
 #### The primality certificates (`Secp256k1PrimeP.lean` / `Secp256k1PrimeN.lean`) — kernel-only
 
@@ -259,7 +300,9 @@ kernel-checked lemmas `kpow_eq_one` / `kpow_ne_one` (`KernelPowMod.lean`). They 
 bucket (a) and do not depend on `Lean.ofReduceBool`; the same holds for the P-256
 certificates produced by the same generator. They therefore no longer contribute compiler
 trust to the secp256k1 group-structure chain (`#E(𝔽_p) = n`, `E(𝔽_p) ≃+ ℤ/n`, the GLV
-`[λ]` corollaries). (Note: the ~22 internal recursive Pratt sub-lemmas are *not* counted as
+`[λ]` corollaries), nor to `p256_two_ne_zero` and `p256_no_two_torsion_cubic`; the P-256
+count `p256_card_point_eq_n` is still compiler-trusted through other leaves (bucket (c)).
+(Note: the ~22 internal recursive Pratt sub-lemmas are *not* counted as
 separate ledger results — see the retired "128" figure in `VERIFIED.md`.)
 
 **Count.** The generated full-ledger axiom audit prints the exact compiler-trusted set
@@ -280,7 +323,7 @@ Distinguishing *machine-enforced* (a red build blocks merge) from *documentation
 | `Ensure no incomplete proofs remain` | `grep -rniI --include='*.lean' --exclude-dir=Targets 'sorry' Ecdlp/` — fails if `sorry`/`admit` text appears in any **built** `.lean` file. `Ecdlp/Targets/` (open stems) is excluded by design. | **MACHINE-ENFORCED**, with the documented scope limit that it is a *text* grep over built files and deliberately skips `Targets/`. |
 | `Ensure no built file imports an open target stem` | `grep` for `import Ecdlp.Targets` outside `Targets/`. Closes the hole where a built file could pull a `sorry`-bearing stem into the build graph (since `sorry` is only a warning). | **MACHINE-ENFORCED.** This is the guard that makes the previous grep sound. |
 | `Fetch prebuilt Mathlib cache` + `Build and verify ALL proofs` — `lake build` | The **kernel** re-checks every built proof term. A `sorry` that reached the build graph, or any type error, fails here. | **MACHINE-ENFORCED.** This is the core verification: a green `lake build` means the kernel accepted every built theorem. |
-| `Axiom audit (no sorryAx, no custom axioms)` — `lake env lean Ecdlp/LedgerAxiomAudit.lean` → `scripts/check_axioms.py` | Generates `#print axioms` for every named declaration resolved from all 307 ledger rows. It fails on `sorryAx`, guard/custom axioms, unknown names, or any mismatch between Lean output and `data/result_registry.json`; compiler-trust markers from `native_decide` are disclosed. | **MACHINE-ENFORCED and exhaustive over the named ledger declaration set.** Seven anonymous instance targets are source-resolved exemptions because they have no source-level declaration name; their defining files are still built and their named load-bearing theorems are audited. |
+| `Axiom audit (no sorryAx, no custom axioms)` — `lake env lean Ecdlp/LedgerAxiomAudit.lean` → `scripts/check_axioms.py` | Generates `#print axioms` for every named declaration resolved from all 325 ledger rows. It fails on `sorryAx`, guard/custom axioms, unknown names, or any mismatch between Lean output and `data/result_registry.json`; compiler-trust markers from `native_decide` are disclosed. | **MACHINE-ENFORCED and exhaustive over the named ledger declaration set.** Seven anonymous instance targets are source-resolved exemptions because they have no source-level declaration name; their defining files are still built and their named load-bearing theorems are audited. |
 | `Typecheck open target stems (non-blocking)` | `lake env lean` over `Ecdlp/Targets/*.lean`; `continue-on-error: true`. | **DOCUMENTATION/INFO ONLY.** A stem failing to typecheck emits a warning, never blocks. |
 | `Featherless API smoke test`, `Prover target attempt`, report upload | All `continue-on-error: true` and skipped on PRs. | **DOCUMENTATION/INFO ONLY.** Prover orchestration; cannot affect the verification verdict. |
 

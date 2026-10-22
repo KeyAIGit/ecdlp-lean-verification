@@ -30,7 +30,7 @@ SCAN: list[str] = [
     "PUBLISHABLE_UNITS.md", "ROADMAP.md",
     "data/knowledge_graph.md", "COVERAGE.md",
 ]
-SCAN_GLOBS: list[str] = ["Ecdlp/Proved/*.lean", "prompts/*.md", "notes/*.md"]
+SCAN_GLOBS: list[str] = ["Ecdlp/Proved/**/*.lean", "prompts/*.md", "notes/*.md"]
 
 # Curated banned substrings (case-sensitive), each a phrasing removed in the correction pass.
 FORBIDDEN: list[tuple[str, str]] = [

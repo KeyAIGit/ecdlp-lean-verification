@@ -108,7 +108,7 @@ def compute_stats() -> dict:
 
     # Cross-checks derived from the tree (not authoritative, but surfaced).
     proved_dir = ROOT / "Ecdlp" / "Proved"
-    proved_modules = len(list(proved_dir.glob("*.lean"))) if proved_dir.is_dir() else 0
+    proved_modules = len(list(proved_dir.rglob("*.lean"))) if proved_dir.is_dir() else 0
 
     return {
         "schemaVersion": 1,

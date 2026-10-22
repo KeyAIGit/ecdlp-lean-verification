@@ -14,9 +14,9 @@
 ## Verified asset (the ledger)
 | metric | value | source |
 |---|---|---|
-| ledger rows | **307** | `VERIFIED.md` → `data/stats.json` |
-| distinct results | **~268** | `data/stats.json` |
-| proved modules | **182** | `data/stats.json` |
+| ledger rows | **325** | `VERIFIED.md` → `data/stats.json` |
+| distinct results | **~283** | `data/stats.json` |
+| proved modules | **205** | `data/stats.json` |
 | `sorry` | **0** | axiom-audit + no-sorry gate |
 | custom axioms | **0** | axiom-audit gate |
 
@@ -86,7 +86,7 @@ recorded **1 route in completed bounded structural work**
 (`R-GLV-SEMAEV`), while promoting
 **0 routes**. The completed work resolved one exact S3/S4 polynomial-symmetry
 question and one S4 fixed-target uncertainty; it was not an attack experiment or a route promotion. The map contains
-**11 foundation decisions**,
+**13 foundation decisions**,
 bounded exploration authorized = **false**,
 promotion experiments authorized =
 **false**, selected attack route =

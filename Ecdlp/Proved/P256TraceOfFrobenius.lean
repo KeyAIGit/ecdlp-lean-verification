@@ -19,10 +19,13 @@ Hasse-consistent: `t ≠ 0` (ordinary), `t ≠ 1` (not anomalous — SSSA inappl
 range, confirming cofactor 1). Together with `P256EmbeddingDegree.lean` these are the
 verified boundary nodes: ECDLP on P-256 does not leak through MOV/FR or Smart/SSSA.
 
-Scope note: as for secp256k1, the statement is conditional on the published `#E = n`
-(cofactor 1) — the *strong* keystone `#E(𝔽_p) = n` still needs the Hasse bound / point
-counting, absent from Mathlib. What is verified here is the exact arithmetic that makes the
-attack boundary hold *given* that order.
+Scope note: the theorem below is arithmetic on `t = p + 1 − n`. Reading `t` as the trace of
+Frobenius uses `#E(𝔽_p) = n` (cofactor 1), which is proved in `P256CardinalityExact.lean`
+(`p256_card_point_eq_n`, with `native_decide` compiler trust inherited from `n • G = 0`, the
+base point's equation and nonsingularity, and `Δ ≠ 0`; the Pratt certificates are
+kernel-checked). The definition of the trace as `p + 1 − #E` is not itself formalized
+here. What is verified in this file is the exact arithmetic that makes the attack boundary
+hold *given* that order.
 -/
 
 namespace Ecdlp.P256

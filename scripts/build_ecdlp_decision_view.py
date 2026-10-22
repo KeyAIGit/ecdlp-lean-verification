@@ -238,7 +238,48 @@ def render(data: dict, sources: dict[str, dict]) -> str:
             f"{cell(foundation['resume_condition'])} |"
         )
 
-    lines.extend(["", "### Upstream Mathlib snapshot", ""])
+    lines.extend(["", "### Dated foundation build decisions", ""])
+    for record in data["foundation_build_decisions"]:
+        lines.extend(
+            [
+                f"Decision **{record['decision_id']}** on "
+                f"`{record['decided_on']}` by the {record['decided_by']} "
+                f"(`{record['kind']}`). {record['source']}",
+                "",
+                f"Selected routes: **{len(record['selected_route_ids'])}**. "
+                f"Promoted routes: **{len(record['promoted_route_ids'])}**. "
+                f"Experiment authorized: "
+                f"**{str(record['authorizes_experiment']).lower()}**. "
+                f"Release required nodes changed: "
+                f"**{str(record['changes_release_required_nodes']).lower()}**.",
+                "",
+                record["rationale"],
+                "",
+            ]
+        )
+        for ruling in record["rulings"]:
+            lines.append(f"- **{ruling['foundation_id']}** (`{ruling['ruling']}`)")
+            if "extends_decision_id" in ruling:
+                lines.append(f"  - **Extends:** {ruling['extends_decision_id']}")
+            for field, label in (
+                ("authorized_build", "Authorized build"),
+                ("exact_uncertainty", "Exact uncertainty"),
+                ("success_condition", "Success"),
+                ("stop_condition", "Stop"),
+                ("status_basis", "Status basis"),
+                ("scope", "Scope"),
+            ):
+                if field in ruling:
+                    lines.append(f"  - **{label}:** {ruling[field]}")
+            if "lab_declarations" in ruling:
+                names = ruling["lab_declarations"]
+                lines.append(
+                    f"  - **Lab declarations ({len(names)}):** "
+                    + ", ".join(f"`{name}`" for name in names)
+                )
+        lines.append("")
+
+    lines.extend(["### Upstream Mathlib snapshot", ""])
     upstream = data["upstream_snapshot"]
     lines.extend(
         [

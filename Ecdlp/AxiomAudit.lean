@@ -136,6 +136,11 @@ sample that should surface `Lean.ofReduceBool`). `#print axioms` prints each dep
 #print axioms Ecdlp.Semaev.S₄_common_root_of_eq_zero
 #print axioms Ecdlp.Semaev.secp256k1_semaev_four_common_root_of_eq_zero
 #print axioms Ecdlp.Semaev.S₄_symm₃₄
+#print axioms Ecdlp.Semaev.S₄_symm₂₃
+#print axioms Ecdlp.Semaev.S₄_perm
+#print axioms Ecdlp.Semaev.S₄slice_natDegree
+#print axioms Ecdlp.Semaev.S₄_natDegree_eq_four_of_perm
+#print axioms Ecdlp.Semaev.S₄_completions_le_four
 
 -- Point decomposition ⇒ Semaev relation (index-calculus entry point): R = P₁+P₂ ⇒ S₃ root
 #print axioms Ecdlp.Semaev.secp256k1_point_decomposition_semaev
