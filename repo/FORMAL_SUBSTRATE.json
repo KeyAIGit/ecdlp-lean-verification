@@ -66,7 +66,7 @@
     {
       "id": "family-bit-security",
       "area": "bit-security",
-      "title": "Parity-bit Fourier facts and the exact-parity-oracle halving reduction (finite and conditional statements; no hardness claim)"
+      "title": "Parity-bit Fourier facts and halving reductions from exact or noisy parity predictors (finite and conditional statements; no hardness claim)"
     },
     {
       "id": "family-attack-resistance",
