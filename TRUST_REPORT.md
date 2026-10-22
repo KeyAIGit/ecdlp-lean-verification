@@ -2,7 +2,7 @@
 
 > Counts here are a snapshot; the single canonical figure is **`STATUS.md`** (generated from `data/stats.json`). If they differ, STATUS.md wins.
 
-**Scope of the verified body.** `340 ledger rows / ~290 distinct kernel-verified
+**Scope of the verified body.** `345 ledger rows / ~293 distinct kernel-verified
 results`. A row may group several supporting declarations; the exact expansion is
 generated in `data/result_registry.json`. The built surface has **0 `sorry`, 0
 `admit`, and 0 custom axioms**. Open target stems are explicitly outside the built
@@ -108,6 +108,11 @@ ring-identity curve invariants. Representative theorems (file → theorem):
   `GlvAddFormula.lean`, `GlvHom.lean` → `secp256k1_glv_slope_of_X_ne`,
   `secp256k1_glv_slope_of_Y_ne`, `secp256k1_glv_slope`, `secp256k1_glv_addX`,
   `secp256k1_glv_addY`, **`glvPoint_add`** / **`glvHom`**
+- `Ecdlp/Proved/SemaevThreePoint.lean` → `S₃_eq_addSubMap`,
+  `S₃_eq_zero_of_add_add_eq_zero`, `S₃_eq_zero_iff_exists_point`,
+  `S₃_eq_zero_iff_signed_sum`, `secp256k1_semaev_three_point_iff` (the secp256k1
+  form uses a local `IsShortNF` instance by `rfl` and keeps `[Fact (Nat.Prime p)]` as a
+  hypothesis; it does not use the `native_decide` discriminant fact)
 - `Ecdlp/Proved/FrozenProjectiveGuardSystem.lean` →
   `guardedEquation_totalDegree_le_four`,
   `frozenProjectiveChain_iff_guardedProjectiveSystem`,
@@ -157,6 +162,12 @@ ring-identity curve invariants. Representative theorems (file → theorem):
   `{propext, Classical.choice, Quot.sound}`; `weilTransfer` and
   `weilTransferLsb` take the twisted-sum bound as a hypothesis, and the
   halving theorems take an exact parity oracle as a hypothesis)
+- `Ecdlp/Proved/SemaevFourSymmetry.lean` → `S₄_perm`, `S₄_symm₂₃`,
+  `resultant_quadratic_two_two`, `S₄slice_coeff_four`, `S₄slice_natDegree`,
+  `S₄_natDegree_eq_four_of_perm`, `S₄_completions_le_four` (polynomial identities,
+  resultant and degree bookkeeping over any commutative ring, except the three
+  exact-degree/completion statements `S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`
+  and `S₄_completions_le_four`, which are over a field; no `native_decide`)
 - `Ecdlp/Proved/ParityFourier/Proofs{K,CT,Zeta,C44H,C44R,C37,W,PB1,PB23,PB}.lean` →
   `parityMismatchZero`, `evenFeatureZero`, `oddFeatureZero`, `xOnlyZero`,
   `charTransfer`, `l1JBound`, `l1GBound`, `weilTransferLsbJ`, `weilTransferLsbG`,
@@ -289,7 +300,7 @@ Distinguishing *machine-enforced* (a red build blocks merge) from *documentation
 | `Ensure no incomplete proofs remain` | `grep -rniI --include='*.lean' --exclude-dir=Targets 'sorry' Ecdlp/` — fails if `sorry`/`admit` text appears in any **built** `.lean` file. `Ecdlp/Targets/` (open stems) is excluded by design. | **MACHINE-ENFORCED**, with the documented scope limit that it is a *text* grep over built files and deliberately skips `Targets/`. |
 | `Ensure no built file imports an open target stem` | `grep` for `import Ecdlp.Targets` outside `Targets/`. Closes the hole where a built file could pull a `sorry`-bearing stem into the build graph (since `sorry` is only a warning). | **MACHINE-ENFORCED.** This is the guard that makes the previous grep sound. |
 | `Fetch prebuilt Mathlib cache` + `Build and verify ALL proofs` — `lake build` | The **kernel** re-checks every built proof term. A `sorry` that reached the build graph, or any type error, fails here. | **MACHINE-ENFORCED.** This is the core verification: a green `lake build` means the kernel accepted every built theorem. |
-| `Axiom audit (no sorryAx, no custom axioms)` — `lake env lean Ecdlp/LedgerAxiomAudit.lean` → `scripts/check_axioms.py` | Generates `#print axioms` for every named declaration resolved from all 340 ledger rows. It fails on `sorryAx`, guard/custom axioms, unknown names, or any mismatch between Lean output and `data/result_registry.json`; compiler-trust markers from `native_decide` are disclosed. | **MACHINE-ENFORCED and exhaustive over the named ledger declaration set.** Seven anonymous instance targets are source-resolved exemptions because they have no source-level declaration name; their defining files are still built and their named load-bearing theorems are audited. |
+| `Axiom audit (no sorryAx, no custom axioms)` — `lake env lean Ecdlp/LedgerAxiomAudit.lean` → `scripts/check_axioms.py` | Generates `#print axioms` for every named declaration resolved from all 345 ledger rows. It fails on `sorryAx`, guard/custom axioms, unknown names, or any mismatch between Lean output and `data/result_registry.json`; compiler-trust markers from `native_decide` are disclosed. | **MACHINE-ENFORCED and exhaustive over the named ledger declaration set.** Seven anonymous instance targets are source-resolved exemptions because they have no source-level declaration name; their defining files are still built and their named load-bearing theorems are audited. |
 | `Typecheck open target stems (non-blocking)` | `lake env lean` over `Ecdlp/Targets/*.lean`; `continue-on-error: true`. | **DOCUMENTATION/INFO ONLY.** A stem failing to typecheck emits a warning, never blocks. |
 | `Featherless API smoke test`, `Prover target attempt`, report upload | All `continue-on-error: true` and skipped on PRs. | **DOCUMENTATION/INFO ONLY.** Prover orchestration; cannot affect the verification verdict. |
 

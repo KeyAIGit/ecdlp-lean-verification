@@ -89,6 +89,7 @@ import Ecdlp.Proved.ShamirSSS
 import Ecdlp.Proved.MovRandomQ
 import Ecdlp.Proved.SemaevThree
 import Ecdlp.Proved.SemaevFour
+import Ecdlp.Proved.SemaevFourSymmetry
 import Ecdlp.Proved.FixedDegreeProjectiveResultant
 import Ecdlp.Proved.TaskSylvesterConvention
 import Ecdlp.Proved.FrozenRecursiveProjectiveSemaev
@@ -101,6 +102,7 @@ import Ecdlp.Proved.SevenNonResidue
 import Ecdlp.Proved.GlvSemaevSymmetry
 import Ecdlp.Proved.PointDecomposition
 import Ecdlp.Proved.SemaevDegree
+import Ecdlp.Proved.SemaevThreePoint
 import Ecdlp.Proved.GlvNoGo
 import Ecdlp.Proved.P256Curve
 import Ecdlp.Proved.P256PrimeP

@@ -4,8 +4,8 @@
   "purpose": "A machine-readable, navigable index of the machine-checked (Lean 4 + Mathlib, no sorry or project-defined axioms) structure of the ECDLP landscape for secp256k1: verified ledger rows, their declaration and import dependencies, the corpus claims they verify, the formalization barriers that bound them, and the target-specific route/foundation decisions. It also carries the generated Research Engine v0 selection and retained outcome state, while keeping bounded exploration distinct from route promotion. Built for a future automated reasoner to load the known-and-verified frontier without re-deriving it.",
   "invariant": "Every ledger row resolves to declarations accepted by the Lean kernel with no sorry or project-defined axioms; compiler-trusted native_decide use is disclosed separately. This graph is derived evidence, not a proof.",
   "counts": {
-    "theorems": 340,
-    "ledger_rows": 340,
+    "theorems": 345,
+    "ledger_rows": 345,
     "barriers": 6,
     "families": 9,
     "critical_nodes": 17,
@@ -37,13 +37,13 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1335,
+    "edges": 1345,
     "by_edge_type": {
-      "imports": 637,
-      "member_of": 340,
+      "imports": 641,
+      "member_of": 345,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
-      "supports": 30,
+      "supports": 31,
       "decision_grounded_in": 25,
       "depends_on": 18,
       "evaluated_under": 18,
@@ -160,6 +160,9 @@
       "Mathlib (`Polynomial.resultant_eq_prod_eval`)": 1,
       "Mathlib (`linear_combination` over `F[X]`)": 1,
       "Mathlib (`ring`)": 1,
+      "Mathlib (`Point.add_of_X_ne`, `Point.add_of_Y_ne`, `Point.X_eq_iff`, `Y_eq_of_X_eq`) + `S₃_root_of_eq_zero": 1,
+      "Mathlib (`Point.add_of_X_ne`, `Point.add_of_Y_ne`) + `S₃_eq_zero_of_chord`, `S₃_eq_zero_of_tangent": 1,
+      "Mathlib (`simp`, `ring`)": 1,
       "Mathlib (`Φ`, `ΨSq`, `slope_of_Y_ne`, `linear_combination`)": 1,
       "Mathlib (`addY`/`negAddY`/`negY`/`slope_of_Y_ne`, `linear_combination`, `eq_div_iff`)": 1,
       "Mathlib (`two_nsmul`, `Affine.Point.add_self_of_Y_ne`, `injection`) + the landed n=2 x-/y-formulas": 1,
@@ -217,6 +220,8 @@
       "jConcentrationExplicit` + `zeroNotInGammaJ": 1,
       "Mathlib (Fourier inversion on `ZMod n` and `ZMod p`, triangle inequality)": 1,
       "weilTransfer` + `l1lowBound": 1,
+      "Mathlib (`Polynomial.resultant`, `Matrix.det_succ_row_zero`, `ring`)": 1,
+      "Mathlib (`compute_degree`, `Polynomial.card_roots'`)": 1,
       "Mathlib (reindexing `k ↦ −k`, `legendreSym`) + `jEven`, `gOdd": 1,
       "evenFeatureZero` + Mathlib (negation on `WeierstrassCurve.Affine.Point`)": 1,
       "Mathlib (Fourier inversion on `ZMod n`, triangle inequality)": 1,
@@ -236,14 +241,14 @@
       "Mathlib (Hoeffding: `HasSubgaussianMGF.measure_sum_ge_le_of_iIndepFun`, `hasSubgaussianMGF_of_mem_Icc_of_integral_eq_zero`; `ZMod.val_add`)": 1
     },
     "by_area": {
-      "curve-torsion": 154,
-      "primality": 57,
-      "other": 33,
+      "curve-torsion": 156,
+      "primality": 58,
+      "other": 34,
       "generic-hardness": 30,
       "bit-security": 30,
       "protocol-soundness": 23,
       "attack-resistance": 7,
-      "reduction": 5,
+      "reduction": 6,
       "params": 1
     }
   },
@@ -5208,7 +5213,7 @@
       "files": [
         "Ecdlp/Proved/SemaevFour.lean"
       ],
-      "claim": "Semaev forward direction generalized to all `n` — the resultant recursion engine (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. Every Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` inherits its forward direction from this one lemma at level `n`; `S₄_eq_zero_of_common_root` is now literally the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`, and `S₅, S₆, …` are discharged verbatim with `f` the previous slice. The mechanism-level generalization of the Semaev forward direction to the whole infinite `Sₙ` family — via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
+      "claim": "Semaev forward direction — the resultant common-root lemma (`resultant_eq_zero_of_common_root`: for *any* two univariate polynomials `f, g` over a commutative ring with `natDegree f ≤ m`, `natDegree g ≤ n` and sharing an evaluation-root `X₀` (`f(X₀) = g(X₀) = 0`), `Res(f,g,m,n) = 0`, provided the Sylvester sizes are not both zero. A Semaev step `Sₙ₊₁ = Res_X(Sₙ(…,X), S₃(…,X))` gets its forward direction from this lemma once the previous slice is defined as a polynomial with the needed degree bound. `S₄_eq_zero_of_common_root` is the instance `f = S₃(x₁,x₂,·)`, `g = S₃(x₃,x₄,·)`. This repository does not define `Sₙ` for `n ≥ 5` at general `(a,b)` (the secp256k1 frozen projective family is a separate construction); a recursive definition with that degree bound is in draft PR #448 (parked). Via the Bézout identity `exists_mul_add_mul_eq_C_resultant`, over any commutative ring, no field or closure)",
       "method": "Mathlib (`exists_mul_add_mul_eq_C_resultant`)",
       "status": "proved",
       "area": "other",
@@ -5228,7 +5233,7 @@
       "files": [
         "Ecdlp/Proved/SemaevFour.lean"
       ],
-      "claim": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and `S₄`'s full symmetry: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄` — so `S₄` is symmetric on all of `{x₁,x₂,x₃,x₄}`, the symmetry a summation polynomial must have",
+      "claim": "*(alternate/supporting)* `S₄` infrastructure — the `S₃`-as-polynomial bridge `S₃poly_eval` (`(S₃poly …).eval x₃ = S₃ …`) and three symmetries of `S₄`: block swap `S₄_block_swap` `(x₁,x₂)↔(x₃,x₄)` (from `resultant_comm`) and within-pair `S₄_symm₁₂`, `S₄_symm₃₄`. These three generate an order-8 subgroup of the 24 permutations of `{x₁,x₂,x₃,x₄}`, not all of them (a group-theoretic remark, not kernel-checked); invariance under every permutation is `S₄_perm` (`Ecdlp/Proved/SemaevFourSymmetry.lean`)",
       "method": "Mathlib",
       "status": "proved",
       "area": "other",
@@ -5318,6 +5323,66 @@
     },
     {
       "id": "thm-253",
+      "name": "Ecdlp.Semaev.S₃_eq_zero_iff_exists_point`, `S₃_eq_zero_iff_signed_sum`, `secp256k1_semaev_three_point_iff",
+      "short_name": "S₃_eq_zero_iff_exists_point`,",
+      "module": "Ecdlp.Proved.SemaevThreePoint",
+      "modules": [
+        "Ecdlp.Proved.SemaevThreePoint"
+      ],
+      "file": "Ecdlp/Proved/SemaevThreePoint.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevThreePoint.lean"
+      ],
+      "claim": "Semaev's `S₃` on Mathlib's group law for every curve in short normal form — characterization (iff) (`S₃_eq_zero_iff_exists_point`: for a Weierstrass curve `W` with `[W.IsShortNF]` (`y² = x³ + a·x + b`, `a = W.a₄`, `b = W.a₆` arbitrary) over any field, affine points `P₁ = (x₁,y₁)`, `P₂ = (x₂,y₂)` of `W.toAffine.Point` and any `x₃`, `S₃(x₁,x₂,x₃) = 0` iff some affine point `P₃ = (x₃,y₃)` satisfies `P₁ + P₂ + P₃ = 0` or `P₁ − P₂ + P₃ = 0`. `S₃_eq_zero_iff_signed_sum` is the same fact for three given affine points: `S₃(x₁,x₂,x₃) = 0` iff `P₁ + ε₂•P₂ + ε₃•P₃ = 0` for some `ε₂, ε₃ ∈ ℤˣ`; `secp256k1_semaev_three_point_iff` instantiates it at secp256k1 (`a = 0`, `b = 7`) with `[Fact (Nat.Prime p)]` as a hypothesis. No `x₁ ≠ x₂`, non-2-torsion, discriminant, `IsElliptic` or characteristic hypothesis. Inputs are affine points only; no `S₄`/`Sₘ` point semantics and no `HValue`/`frozenC` or fixed-target semantics. Related: Mathlib's `WeierstrassCurve.Affine.Point.sym2x_add_sub_eq_addSubMap_sym2x` (Mathlib PR #43292, from v4.34.0, not at the pinned v4.31.0) overlaps this through `S₃_eq_addSubMap`)",
+      "method": "Mathlib (`Point.add_of_X_ne`, `Point.add_of_Y_ne`, `Point.X_eq_iff`, `Y_eq_of_X_eq`) + `S₃_root_of_eq_zero",
+      "status": "proved",
+      "area": "primality",
+      "family_id": "family-primality",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-254",
+      "name": "Ecdlp.Semaev.S₃_eq_zero_of_add_add_eq_zero",
+      "short_name": "S₃_eq_zero_of_add_add_eq_zero",
+      "module": "Ecdlp.Proved.SemaevThreePoint",
+      "modules": [
+        "Ecdlp.Proved.SemaevThreePoint"
+      ],
+      "file": "Ecdlp/Proved/SemaevThreePoint.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevThreePoint.lean"
+      ],
+      "claim": "*(alternate/supporting)* Forward half of the `S₃` point-level characterization, without case hypotheses (`S₃_eq_zero_of_add_add_eq_zero`: for `W` with `[W.IsShortNF]` over any field, three affine points with `P₁ + P₂ + P₃ = 0` give `S₃(x₁,x₂,x₃) = 0`, with no `x₁ ≠ x₂` and no non-2-torsion hypothesis; the secp256k1 rows `secp256k1_semaev_three_point` (`x₁ ≠ x₂`) and `secp256k1_semaev_three_point_double` (`P₁ = P₂`, not 2-torsion) are special cases)",
+      "method": "Mathlib (`Point.add_of_X_ne`, `Point.add_of_Y_ne`) + `S₃_eq_zero_of_chord`, `S₃_eq_zero_of_tangent",
+      "status": "proved",
+      "area": "curve-torsion",
+      "family_id": "family-curve-torsion",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-255",
+      "name": "Ecdlp.Semaev.S₃_eq_addSubMap",
+      "short_name": "S₃_eq_addSubMap",
+      "module": "Ecdlp.Proved.SemaevThreePoint",
+      "modules": [
+        "Ecdlp.Proved.SemaevThreePoint"
+      ],
+      "file": "Ecdlp/Proved/SemaevThreePoint.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevThreePoint.lean"
+      ],
+      "claim": "*(alternate/supporting)* `S₃` through Mathlib's `addSubMap` (`S₃_eq_addSubMap`: for `W` with `[W.IsShortNF]` over any commutative ring, `S₃(x₁,x₂,X) = f₂·X² − f₁·X + f₀`, where `(f₀, f₁, f₂)` are the components of `W.addSubMap` evaluated at `(x₁·x₂, x₁+x₂, 1)`; a polynomial identity only, not the property of `addSubMap` stated in Mathlib's TODO)",
+      "method": "Mathlib (`simp`, `ring`)",
+      "status": "proved",
+      "area": "reduction",
+      "family_id": "family-reduction",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-256",
       "name": "Ecdlp.Curve.secp256k1_double_x_eq_Φ₂_div_Ψ₂Sq`, `secp256k1_Φ₂",
       "short_name": "secp256k1_double_x_eq_Φ₂_div_Ψ₂Sq`,",
       "module": "Ecdlp.Proved.MultiplicationFormula",
@@ -5337,7 +5402,7 @@
       "gated": true
     },
     {
-      "id": "thm-254",
+      "id": "thm-257",
       "name": "Ecdlp.Curve.secp256k1_double_y_eq_ω₂",
       "short_name": "secp256k1_double_y_eq_ω₂",
       "module": "Ecdlp.Proved.MultiplicationYFormula",
@@ -5357,7 +5422,7 @@
       "gated": true
     },
     {
-      "id": "thm-255",
+      "id": "thm-258",
       "name": "Ecdlp.Curve.secp256k1_two_nsmul_coords",
       "short_name": "secp256k1_two_nsmul_coords",
       "module": "Ecdlp.Proved.DoublingPointFormula",
@@ -5377,7 +5442,7 @@
       "gated": true
     },
     {
-      "id": "thm-256",
+      "id": "thm-259",
       "name": "Ecdlp.Curve.secp256k1_triple_y_eq_ω₃",
       "short_name": "secp256k1_triple_y_eq_ω₃",
       "module": "Ecdlp.Proved.MultiplicationYTripleFormula",
@@ -5397,7 +5462,7 @@
       "gated": true
     },
     {
-      "id": "thm-257",
+      "id": "thm-260",
       "name": "Ecdlp.Curve.secp256k1_Φ₃`, `secp256k1_ΨSq₃`, `secp256k1_Φ₃_eval`, `secp256k1_ΨSq₃_eval",
       "short_name": "secp256k1_Φ₃`,",
       "module": "Ecdlp.Proved.TripleDivisionPolynomial",
@@ -5417,7 +5482,7 @@
       "gated": true
     },
     {
-      "id": "thm-258",
+      "id": "thm-261",
       "name": "Ecdlp.Curve.secp256k1_triple_x_eq_Φ₃_div_ΨSq₃",
       "short_name": "secp256k1_triple_x_eq_Φ₃_div_ΨSq₃",
       "module": "Ecdlp.Proved.TripleMultiplicationFormula",
@@ -5437,7 +5502,7 @@
       "gated": true
     },
     {
-      "id": "thm-259",
+      "id": "thm-262",
       "name": "Ecdlp.Weil.secp256k1_torsion_iff_principal",
       "short_name": "secp256k1_torsion_iff_principal",
       "module": "Ecdlp.Proved.WeilDivisorClass",
@@ -5457,7 +5522,7 @@
       "gated": true
     },
     {
-      "id": "thm-260",
+      "id": "thm-263",
       "name": "Ecdlp.Weil.secp256k1_miller_function_exists",
       "short_name": "secp256k1_miller_function_exists",
       "module": "Ecdlp.Proved.WeilDivisorClass",
@@ -5477,7 +5542,7 @@
       "gated": true
     },
     {
-      "id": "thm-261",
+      "id": "thm-264",
       "name": "Ecdlp.Weil.secp256k1_miller_function_unique",
       "short_name": "secp256k1_miller_function_unique",
       "module": "Ecdlp.Proved.WeilDivisorClass",
@@ -5497,7 +5562,7 @@
       "gated": true
     },
     {
-      "id": "thm-262",
+      "id": "thm-265",
       "name": "Ecdlp.Weil.evalAt`, `evalAt_surjective`, `evalAt_ker",
       "short_name": "evalAt`,",
       "module": "Ecdlp.Proved.PointEvaluation",
@@ -5517,7 +5582,7 @@
       "gated": true
     },
     {
-      "id": "thm-263",
+      "id": "thm-266",
       "name": "Ecdlp.Weil.xyIdeal_isMaximal",
       "short_name": "xyIdeal_isMaximal",
       "module": "Ecdlp.Proved.PointEvaluation",
@@ -5537,7 +5602,7 @@
       "gated": true
     },
     {
-      "id": "thm-264",
+      "id": "thm-267",
       "name": "Ecdlp.Weil.evalRatAt_algebraMap",
       "short_name": "evalRatAt_algebraMap",
       "module": "Ecdlp.Proved.EvalRatAtCompat",
@@ -5557,7 +5622,7 @@
       "gated": true
     },
     {
-      "id": "thm-265",
+      "id": "thm-268",
       "name": "Ecdlp.Weil.xyIdeal_ne_of_x_ne",
       "short_name": "xyIdeal_ne_of_x_ne",
       "module": "Ecdlp.Proved.PointSeparation",
@@ -5577,7 +5642,7 @@
       "gated": true
     },
     {
-      "id": "thm-266",
+      "id": "thm-269",
       "name": "Ecdlp.Weil.xyIdeal_ne_of_ne` (+ `xyIdeal_ne_of_y_ne`)",
       "short_name": "xyIdeal_ne_of_ne`",
       "module": "Ecdlp.Proved.PointSeparation",
@@ -5597,7 +5662,7 @@
       "gated": true
     },
     {
-      "id": "thm-267",
+      "id": "thm-270",
       "name": "Ecdlp.Weil.evalRatAt_eq_zero_iff",
       "short_name": "evalRatAt_eq_zero_iff",
       "module": "Ecdlp.Proved.EvalRatAtNonvanishing",
@@ -5617,7 +5682,7 @@
       "gated": true
     },
     {
-      "id": "thm-268",
+      "id": "thm-271",
       "name": "Ecdlp.Weil.evalRatAt_ne_zero_iff_isUnit",
       "short_name": "evalRatAt_ne_zero_iff_isUnit",
       "module": "Ecdlp.Proved.EvalRatAtNonvanishing",
@@ -5637,7 +5702,7 @@
       "gated": true
     },
     {
-      "id": "thm-269",
+      "id": "thm-272",
       "name": "Ecdlp.Weil.secp256k1_psi3_root_iff_class_torsion",
       "short_name": "secp256k1_psi3_root_iff_class_torsion",
       "module": "Ecdlp.Proved.MillerDivisionPolynomialBridge",
@@ -5657,7 +5722,7 @@
       "gated": true
     },
     {
-      "id": "thm-270",
+      "id": "thm-273",
       "name": "Ecdlp.Weil.secp256k1_psi5_root_iff_class_torsion",
       "short_name": "secp256k1_psi5_root_iff_class_torsion",
       "module": "Ecdlp.Proved.MillerDivisionPolynomialBridge",
@@ -5677,7 +5742,7 @@
       "gated": true
     },
     {
-      "id": "thm-271",
+      "id": "thm-274",
       "name": "Ecdlp.Weil.secp256k1_psi7_root_iff_class_torsion",
       "short_name": "secp256k1_psi7_root_iff_class_torsion",
       "module": "Ecdlp.Proved.MillerDivisionPolynomialBridge",
@@ -5697,7 +5762,7 @@
       "gated": true
     },
     {
-      "id": "thm-272",
+      "id": "thm-275",
       "name": "Ecdlp.Curve.secp256k1_grp_nsmul_eq_zero` (+ the `Module (ZMod n) ↥⟨G⟩` instance, `secp256k1Gₙ`)",
       "short_name": "secp256k1_grp_nsmul_eq_zero`",
       "module": "Ecdlp.Proved.ProtocolInstantiation",
@@ -5717,7 +5782,7 @@
       "gated": true
     },
     {
-      "id": "thm-273",
+      "id": "thm-276",
       "name": "Ecdlp.Curve.secp256k1_dh_agree`, `secp256k1_schnorr_verify`, `secp256k1_taproot_tweak_verify`, `secp256k1_adaptor_complete",
       "short_name": "secp256k1_dh_agree`,",
       "module": "Ecdlp.Proved.ProtocolInstantiation",
@@ -5737,7 +5802,7 @@
       "gated": true
     },
     {
-      "id": "thm-274",
+      "id": "thm-277",
       "name": "Ecdlp.Curve.secp256k1_threshold_schnorr_aggregate`, `secp256k1_musig_key_aggregate`, `secp256k1_feldman_vss_verify`, `secp256k1_threshold_elgamal_combine`, `secp256k1_schnorr_batch_verify",
       "short_name": "secp256k1_threshold_schnorr_aggregate`,",
       "module": "Ecdlp.Proved.ProtocolInstantiation",
@@ -5757,7 +5822,7 @@
       "gated": true
     },
     {
-      "id": "thm-275",
+      "id": "thm-278",
       "name": "Ecdlp.Curve.secp256k1_grp_card`, `secp256k1_grp_isAddCyclic",
       "short_name": "secp256k1_grp_card`,",
       "module": "Ecdlp.Proved.SubgroupOrder",
@@ -5777,7 +5842,7 @@
       "gated": true
     },
     {
-      "id": "thm-276",
+      "id": "thm-279",
       "name": "Ecdlp.Curve.secp256k1_dlogEquiv` (+ `secp256k1_dlogHom`, `_injective`, `_surjective`, `secp256k1_gen_addOrderOf`)",
       "short_name": "secp256k1_dlogEquiv`",
       "module": "Ecdlp.Proved.SubgroupOrder",
@@ -5797,7 +5862,7 @@
       "gated": true
     },
     {
-      "id": "thm-277",
+      "id": "thm-280",
       "name": "WeierstrassCurve.Affine.instFinitePoint",
       "short_name": "instFinitePoint",
       "module": "Ecdlp.Proved.AffinePointFinite",
@@ -5817,7 +5882,7 @@
       "gated": true
     },
     {
-      "id": "thm-278",
+      "id": "thm-281",
       "name": "Ecdlp.Curve.instFiniteSecp256k1Point",
       "short_name": "instFiniteSecp256k1Point",
       "module": "Ecdlp.Proved.CurveCardinality",
@@ -5837,7 +5902,7 @@
       "gated": true
     },
     {
-      "id": "thm-279",
+      "id": "thm-282",
       "name": "Ecdlp.Curve.secp256k1_n_dvd_card_point",
       "short_name": "secp256k1_n_dvd_card_point",
       "module": "Ecdlp.Proved.CurveCardinality",
@@ -5857,7 +5922,7 @@
       "gated": true
     },
     {
-      "id": "thm-280",
+      "id": "thm-283",
       "name": "Ecdlp.Curve.secp256k1_card_point_eq_n`, `secp256k1_no_nonzero_two_torsion`, `secp256k1_card_point_le",
       "short_name": "secp256k1_card_point_eq_n`,",
       "module": "Ecdlp.Proved.CurveCardinalityExact",
@@ -5877,7 +5942,7 @@
       "gated": true
     },
     {
-      "id": "thm-281",
+      "id": "thm-284",
       "name": "Ecdlp.Curve.secp256k1_grp_eq_top`, `secp256k1_point_isAddCyclic`, `secp256k1_mem_zmultiples`, `secp256k1_glvHom_eq_zsmul_unconditional",
       "short_name": "secp256k1_grp_eq_top`,",
       "module": "Ecdlp.Proved.CurveFullGroup",
@@ -5897,7 +5962,7 @@
       "gated": true
     },
     {
-      "id": "thm-282",
+      "id": "thm-285",
       "name": "Ecdlp.Curve.secp256k1_pointGroupEquiv` (+ `secp256k1_point_group_equiv_exists`)",
       "short_name": "secp256k1_pointGroupEquiv`",
       "module": "Ecdlp.Proved.PointGroupEquiv",
@@ -5917,7 +5982,7 @@
       "gated": true
     },
     {
-      "id": "thm-283",
+      "id": "thm-286",
       "name": "Ecdlp.Curve.secp256k1_point_group_no_proper_subgroup`, `secp256k1_nonzero_point_generates",
       "short_name": "secp256k1_point_group_no_proper_subgroup`,",
       "module": "Ecdlp.Proved.PointGroupSimple",
@@ -5937,7 +6002,7 @@
       "gated": true
     },
     {
-      "id": "thm-284",
+      "id": "thm-287",
       "name": "Ecdlp.Curve.secp256k1_quintuple_x_eq_Φ₅_div_ΨSq₅`, `quint_x_core",
       "short_name": "secp256k1_quintuple_x_eq_Φ₅_div_ΨSq₅`,",
       "module": "Ecdlp.Proved.QuintupleMultiplicationFormula",
@@ -5957,7 +6022,7 @@
       "gated": true
     },
     {
-      "id": "thm-285",
+      "id": "thm-288",
       "name": "Ecdlp.Curve.secp256k1Bar_three_torsion_structure`, `secp256k1Bar_three_torsion_ncard`, `secp256k1Bar_torsionBy_three_card",
       "short_name": "secp256k1Bar_three_torsion_structure`,",
       "module": "Ecdlp.Proved.ThreeTorsionStructure",
@@ -5977,7 +6042,7 @@
       "gated": true
     },
     {
-      "id": "thm-286",
+      "id": "thm-289",
       "name": "Ecdlp.Curve.secp256k1Bar_five_torsion_structure`, `secp256k1Bar_five_nsmul_eq_zero_iff`, `secp256k1Bar_five_torsion_ncard",
       "short_name": "secp256k1Bar_five_torsion_structure`,",
       "module": "Ecdlp.Proved.FiveTorsionStructure",
@@ -5999,7 +6064,7 @@
       "gated": true
     },
     {
-      "id": "thm-287",
+      "id": "thm-290",
       "name": "Ecdlp.Curve.secp256k1Bar_seven_torsion_structure`, `secp256k1Bar_seven_nsmul_eq_zero_iff`, `secp256k1Bar_seven_torsion_ncard",
       "short_name": "secp256k1Bar_seven_torsion_structure`,",
       "module": "Ecdlp.Proved.SevenTorsionStructure",
@@ -6021,7 +6086,7 @@
       "gated": true
     },
     {
-      "id": "thm-288",
+      "id": "thm-291",
       "name": "Ecdlp.Curve.secp256k1_quadruple_x_eq_Φ₄_div_ΨSq₄`, `quad_x_core",
       "short_name": "secp256k1_quadruple_x_eq_Φ₄_div_ΨSq₄`,",
       "module": "Ecdlp.Proved.QuadrupleMultiplicationFormula",
@@ -6041,7 +6106,7 @@
       "gated": true
     },
     {
-      "id": "thm-289",
+      "id": "thm-292",
       "name": "Ecdlp.Curve.secp256k1_quadruple_y`, `quad_y_core`, `secp256k1_four_nsmul_coords_ωfree`, `secp256k1_omega_recurrence_four`, `secp256k1_psi6_evalEval",
       "short_name": "secp256k1_quadruple_y`,",
       "module": "Ecdlp.Proved.QuadrupleMultiplicationYFormula",
@@ -6065,7 +6130,7 @@
       "gated": true
     },
     {
-      "id": "thm-290",
+      "id": "thm-293",
       "name": "Ecdlp.Curve.secp256k1_cubic_separable`, `secp256k1_cubic_isCoprime_derivative`, `secp256k1_cubic_roots_card_bar`, `secp256k1_cubic_roots_nodup_bar",
       "short_name": "secp256k1_cubic_separable`,",
       "module": "Ecdlp.Proved.CubicSeparable",
@@ -6085,7 +6150,7 @@
       "gated": true
     },
     {
-      "id": "thm-291",
+      "id": "thm-294",
       "name": "Ecdlp.Curve.secp256k1Bar_two_torsion_structure`, `secp256k1Bar_two_nsmul_eq_zero_iff`, `secp256k1Bar_two_torsion_ncard",
       "short_name": "secp256k1Bar_two_torsion_structure`,",
       "module": "Ecdlp.Proved.TwoTorsionStructure",
@@ -6105,7 +6170,7 @@
       "gated": true
     },
     {
-      "id": "thm-292",
+      "id": "thm-295",
       "name": "Ecdlp.Curve.secp256k1Bar_two_nsmul_coords`, `Ecdlp.Curve.secp256k1Bar_four_nsmul_eq_zero_iff`, `Ecdlp.Curve.secp256k1Bar_four_torsion_ncard`, `Ecdlp.Curve.secp256k1Bar_four_torsion_card`, `Ecdlp.Curve.secp256k1Bar_torsionBy_four_card`, `Ecdlp.Curve.secp256k1Bar_four_torsion_structure`, `Ecdlp.Torsion.nonempty_addEquiv_zmod_four_prod_of_card_and_two_torsion",
       "short_name": "secp256k1Bar_two_nsmul_coords`,",
       "module": "Ecdlp.Proved.DoublingPointFormulaBar",
@@ -6131,7 +6196,7 @@
       "gated": true
     },
     {
-      "id": "thm-293",
+      "id": "thm-296",
       "name": "Ecdlp.Weil.evalFracAt_well_defined`, `evalFracAt_mul`, `evalAt_unit_ne_zero`, `evalRatAt_eq_evalFracAt`, `secp256k1_miller_eval_scaling",
       "short_name": "evalFracAt_well_defined`,",
       "module": "Ecdlp.Proved.FunctionFieldEval",
@@ -6151,7 +6216,7 @@
       "gated": true
     },
     {
-      "id": "thm-294",
+      "id": "thm-297",
       "name": "Ecdlp.Weil.functionField_exists_num_den`, `functionField_num_den_cross`, `evalFracAt_num_den_well_defined`, `secp256k1_miller_function_num_den",
       "short_name": "functionField_exists_num_den`,",
       "module": "Ecdlp.Proved.FunctionFieldRepr",
@@ -6171,7 +6236,7 @@
       "gated": true
     },
     {
-      "id": "thm-295",
+      "id": "thm-298",
       "name": "Ecdlp.Weil.RegularAt`, `evalReg`, `evalRatAt_eq_evalReg` (+ 14 supporting)",
       "short_name": "RegularAt`,",
       "module": "Ecdlp.Proved.FunctionFieldRegular",
@@ -6191,7 +6256,7 @@
       "gated": true
     },
     {
-      "id": "thm-296",
+      "id": "thm-299",
       "name": "Ecdlp.Weil.divEval_mul`, `evalReg_mul",
       "short_name": "divEval_mul`,",
       "module": "Ecdlp.Proved.WeilDivisorEval",
@@ -6211,7 +6276,7 @@
       "gated": true
     },
     {
-      "id": "thm-297",
+      "id": "thm-300",
       "name": "Ecdlp.Weil.divEval_smul_unit`, `divEval_smul_unit_eq`, `evalReg_smul_unit",
       "short_name": "divEval_smul_unit`,",
       "module": "Ecdlp.Proved.WeilDivisorRepIndep",
@@ -6231,7 +6296,7 @@
       "gated": true
     },
     {
-      "id": "thm-298",
+      "id": "thm-301",
       "name": "Ecdlp.Weil.secp256k1_miller_jointly_regular`, `divEval_one",
       "short_name": "secp256k1_miller_jointly_regular`,",
       "module": "Ecdlp.Proved.WeilMillerEval",
@@ -6251,7 +6316,7 @@
       "gated": true
     },
     {
-      "id": "thm-299",
+      "id": "thm-302",
       "name": "Ecdlp.Curve.secp256k1_seven_ne_zero`, `secp256k1_seven_pow_ne_one`, `secp256k1_seven_not_isSquare`, `secp256k1_x_ne_zero",
       "short_name": "secp256k1_seven_ne_zero`,",
       "module": "Ecdlp.Proved.SevenNonResidue",
@@ -6271,7 +6336,7 @@
       "gated": true
     },
     {
-      "id": "thm-300",
+      "id": "thm-303",
       "name": "Ecdlp.ProjectiveResultant.fixedDegree_resultant_eq_zero_iff_common_projective_root`, `map_fixedDegree_resultant_eq_zero_iff_common_projective_root`, `fixedDegree_resultant_eq_zero_iff_common_projective_root_over`; `Ecdlp.TaskSylvester.taskSylvester_eq_reindex_transpose`, `det_taskSylvester_eq_resultant`, `det_taskSylvester_eq_zero_iff_common_projective_root",
       "short_name": "fixedDegree_resultant_eq_zero_iff_common_projective_root`,",
       "module": "Ecdlp.Proved.FixedDegreeProjectiveResultant",
@@ -6293,7 +6358,7 @@
       "gated": true
     },
     {
-      "id": "thm-301",
+      "id": "thm-304",
       "name": "Ecdlp.FrozenProjectiveSemaev.specialize_frozenC_succ_over`, `specialize_frozenC_succ_over_affine`, `specialize_frozenC_succ_over_infinity`, `previousSliceAtOver_frozenC_natDegree_le`, `specialize_frozenC_succ_eq_zero_iff_common_projective_root`, `specialize_frozenC_succ_over_eq_zero_iff_common_projective_root",
       "short_name": "specialize_frozenC_succ_over`,",
       "module": "Ecdlp.Proved.FrozenRecursiveProjectiveSemaev",
@@ -6313,7 +6378,7 @@
       "gated": true
     },
     {
-      "id": "thm-302",
+      "id": "thm-305",
       "name": "Ecdlp.FrozenProjectiveSemaev.projectiveOutputAtOver_frozenC_isHomogeneous`, `homogenize_previousSliceAtOver_frozenC`, `eval_homogenize_previousSliceAtOver_frozenC`, `homogenize_localSliceAt`, `eval_homogenize_localSliceAt`, `specializeOver_frozenC_eq_zero_iff_projectiveChain`, `specializeOver_frozenC16_eq_zero_iff_projectiveChain` and supporting declarations",
       "short_name": "projectiveOutputAtOver_frozenC_isHomogeneous`,",
       "module": "Ecdlp.Proved.FrozenRecursiveProjectiveWitness",
@@ -6333,7 +6398,7 @@
       "gated": true
     },
     {
-      "id": "thm-303",
+      "id": "thm-306",
       "name": "Ecdlp.FrozenProjectiveSemaev.guardEquation`, `FrozenGuardedProjectiveSystem`, `frozenProjectiveChain_iff_guardedProjectiveSystem`, `frozenRecS17_iff_guardedProjectiveSystem_over`, `guardedEquation_totalDegree_le_four`, `card_guardVar_fourteen`, `card_guarded_equations_fourteen` and supporting declarations",
       "short_name": "guardEquation`,",
       "module": "Ecdlp.Proved.FrozenProjectiveGuardSystem",
@@ -6353,7 +6418,7 @@
       "gated": true
     },
     {
-      "id": "thm-304",
+      "id": "thm-307",
       "name": "Ecdlp.FrozenProjectiveSemaev.FrozenChartPolynomialCover`, `frozenProjectiveChain_iff_chartPolynomialCover`, `frozenGuardedProjectiveSystem_iff_chartPolynomialCover`, `frozenRecS17_iff_chartPolynomialCover_over`, `card_chartEquation`, `card_chartVar`, `chartPolynomialEquation_base_totalDegree_le_two`, `chartPolynomialEquation_step_totalDegree_le_four`, `chartPolynomialEquation_final_totalDegree_le_two`, `chartPolynomialEquation_totalDegree_le_four` and supporting declarations",
       "short_name": "FrozenChartPolynomialCover`,",
       "module": "Ecdlp.Proved.FrozenProjectiveChartSystem",
@@ -6373,7 +6438,7 @@
       "gated": true
     },
     {
-      "id": "thm-305",
+      "id": "thm-308",
       "name": "Ecdlp.FrozenProjectiveSemaev.HValue_third_infinity`, `HValue_first_infinity`, `HValue_middle_infinity`, `HValue_first_third_infinity`, `frozenChartSystem_separatedInfinityMask`, `frozenChartSystem_endpointCompatibleInfinityMask`, `frozenChartSystem_leftInfinity_forces_rightCoordinate`, `frozenChartSystem_rightInfinity_forces_leftCoordinate`, `frozenChartCover_iff_admissibleChartCover`, `frozenProjectiveChain_iff_admissibleChartPolynomialCover`, `frozenChartCover_iff_interiorChartCover`, `card_infinityMask`, `card_separatedInfinityMask`, `card_interiorSeparatedInfinityMask` and supporting declarations",
       "short_name": "HValue_third_infinity`,",
       "module": "Ecdlp.Proved.FrozenProjectiveInfinityStrata",
@@ -6393,7 +6458,7 @@
       "gated": true
     },
     {
-      "id": "thm-306",
+      "id": "thm-309",
       "name": "Ecdlp.FrozenProjectiveSemaev.frozenChartSystem_gapTwoInfinity_forces_det_zero`, `frozenChartCover_iff_gapTwoInteriorChartCover`, `card_gapTwoInteriorInfinityMask`, `frozenChartSystem_gapThreeInfinity_forces_HValue_zero`, `frozenChartCover_iff_gapThreeInteriorChartCover`, `card_gapThreeInteriorInfinityMask`, `frozenChartSystem_slotOneInfinity_forces_HValue_zero`, `frozenChartSystem_slotTwelveInfinity_forces_HValue_zero`, `frozenChartCover_iff_boundaryPropagatedChartCover`, `card_boundaryPropagatedInfinityMask`, `frozenChartCover_iff_boundaryGapThreeChartCover`, `card_boundaryGapThreeInfinityMask`, `specializeOver_frozenC_eq_zero_of_projectiveChain`, `propagatedPrefixValue_zero`, `balancedSuffixValue_zero`, `frozenChartSystem_internalInfinity_forces_prefix_zero`, `frozenChartSystem_balancedSuffixInfinity_forces_zero`, `frozenChartSystem_balancedPropagatedRegular_mask_eq_empty`, `frozenChartCover_iff_affineChartCover_of_balancedPropagatedRegular`, `frozenChartPolynomialCover_iff_affine_of_balancedPropagatedRegular`, `frozenRecS17_iff_affineChartPolynomialCover_over_of_balancedPropagatedRegular` and supporting declarations",
       "short_name": "frozenChartSystem_gapTwoInfinity_forces_det_zero`,",
       "module": "Ecdlp.Proved.FrozenProjectiveInfinityPropagation",
@@ -6413,7 +6478,7 @@
       "gated": true
     },
     {
-      "id": "thm-307",
+      "id": "thm-310",
       "name": "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf`, `card_eq_of_prime_order_point`, `natCard_point_le`, `exists_cubic_root_of_two_nsmul_eq_zero`, `natCard_eq_of_dvd_of_lt_three_mul",
       "short_name": "natCard_point_eq_of_addOrderOf`,",
       "module": "Ecdlp.Proved.PrimeOrderCardinality",
@@ -6433,7 +6498,7 @@
       "gated": true
     },
     {
-      "id": "thm-308",
+      "id": "thm-311",
       "name": "Ecdlp.P256.p256_card_point_eq_n`, `p256_no_two_torsion_cubic`, `p256_two_ne_zero",
       "short_name": "p256_card_point_eq_n`,",
       "module": "Ecdlp.Proved.P256CardinalityExact",
@@ -6453,7 +6518,7 @@
       "gated": true
     },
     {
-      "id": "thm-309",
+      "id": "thm-312",
       "name": "Ecdlp.Curve.secp256k1_card_point_eq_n_general",
       "short_name": "secp256k1_card_point_eq_n_general",
       "module": "Ecdlp.Proved.Secp256k1CardinalityGeneral",
@@ -6473,7 +6538,7 @@
       "gated": true
     },
     {
-      "id": "thm-310",
+      "id": "thm-313",
       "name": "Ecdlp.ParityFourier.ProofsF1.carrySum`, `carrySign",
       "short_name": "carrySum`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsF1",
@@ -6495,7 +6560,7 @@
       "gated": true
     },
     {
-      "id": "thm-311",
+      "id": "thm-314",
       "name": "Ecdlp.ParityFourier.ProofsF1.jEven`, `gOdd`, `gInvariant`, `jOrbitProduct",
       "short_name": "jEven`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsF1",
@@ -6517,7 +6582,7 @@
       "gated": true
     },
     {
-      "id": "thm-312",
+      "id": "thm-315",
       "name": "Ecdlp.ParityFourier.ProofsF2.jBalance",
       "short_name": "jBalance",
       "module": "Ecdlp.Proved.ParityFourier.ProofsF2",
@@ -6539,7 +6604,7 @@
       "gated": true
     },
     {
-      "id": "thm-313",
+      "id": "thm-316",
       "name": "Ecdlp.ParityFourier.ProofsF3F4a.relabel",
       "short_name": "relabel",
       "module": "Ecdlp.Proved.ParityFourier.ProofsF3F4a",
@@ -6561,7 +6626,7 @@
       "gated": true
     },
     {
-      "id": "thm-314",
+      "id": "thm-317",
       "name": "Ecdlp.ParityFourier.ProofsF4b.groupHalvingRecovers`, `Ecdlp.ParityFourier.ProofsF3F4a.halvingRecovers",
       "short_name": "groupHalvingRecovers`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsF4b",
@@ -6585,7 +6650,7 @@
       "gated": true
     },
     {
-      "id": "thm-315",
+      "id": "thm-318",
       "name": "Ecdlp.ParityFourier.ProofsF5a.sigmaHatClosedForm",
       "short_name": "sigmaHatClosedForm",
       "module": "Ecdlp.Proved.ParityFourier.ProofsF5a",
@@ -6607,7 +6672,7 @@
       "gated": true
     },
     {
-      "id": "thm-316",
+      "id": "thm-319",
       "name": "Ecdlp.ParityFourier.ProofsF5b.sigmaTail",
       "short_name": "sigmaTail",
       "module": "Ecdlp.Proved.ParityFourier.ProofsF5b",
@@ -6629,7 +6694,7 @@
       "gated": true
     },
     {
-      "id": "thm-317",
+      "id": "thm-320",
       "name": "Ecdlp.ParityFourier.ProofsC44L.l1lowBound",
       "short_name": "l1lowBound",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC44L",
@@ -6653,7 +6718,7 @@
       "gated": true
     },
     {
-      "id": "thm-318",
+      "id": "thm-321",
       "name": "Ecdlp.ParityFourier.ProofsC44.jConcentration`, `Ecdlp.ParityFourier.ProofsC44L.jConcentrationExplicit",
       "short_name": "jConcentration`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC44",
@@ -6677,7 +6742,7 @@
       "gated": true
     },
     {
-      "id": "thm-319",
+      "id": "thm-322",
       "name": "Ecdlp.ParityFourier.ProofsC44d.normLemma`, `zeroNotInGammaJ",
       "short_name": "normLemma`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC44d",
@@ -6699,7 +6764,7 @@
       "gated": true
     },
     {
-      "id": "thm-320",
+      "id": "thm-323",
       "name": "Ecdlp.ParityFourier.ProofsC44B.jBalanceBound",
       "short_name": "jBalanceBound",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC44B",
@@ -6721,7 +6786,7 @@
       "gated": true
     },
     {
-      "id": "thm-321",
+      "id": "thm-324",
       "name": "Ecdlp.ParityFourier.ProofsWT.weilTransfer",
       "short_name": "weilTransfer",
       "module": "Ecdlp.Proved.ParityFourier.ProofsWT",
@@ -6743,7 +6808,7 @@
       "gated": true
     },
     {
-      "id": "thm-322",
+      "id": "thm-325",
       "name": "Ecdlp.ParityFourier.ProofsWT.weilTransferLsb",
       "short_name": "weilTransferLsb",
       "module": "Ecdlp.Proved.ParityFourier.ProofsWT",
@@ -6765,7 +6830,47 @@
       "gated": true
     },
     {
-      "id": "thm-323",
+      "id": "thm-326",
+      "name": "Ecdlp.Semaev.S₄_perm`, `S₄_symm₂₃`, `resultant_quadratic_two_two`, `S₄_closed",
+      "short_name": "S₄_perm`,",
+      "module": "Ecdlp.Proved.SemaevFourSymmetry",
+      "modules": [
+        "Ecdlp.Proved.SemaevFourSymmetry"
+      ],
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevFourSymmetry.lean"
+      ],
+      "claim": "Semaev's `S₄` is invariant under every permutation of its four arguments (`S₄_perm`: for every `σ : Equiv.Perm (Fin 4)`, `S₄(x_σ(0),x_σ(1),x_σ(2),x_σ(3)) = S₄(x₀,x₁,x₂,x₃)`, over any commutative ring. The missing transposition `S₄_symm₂₃` (`x₂ ↔ x₃`) is proved by `ring` from the closed form of the fixed-size `(2,2)` resultant (`resultant_quadratic_two_two`: `Res(a₁X²+b₁X+c₁, a₂X²+b₂X+c₂; 2,2) = (a₁c₂−a₂c₁)² − (a₁b₂−a₂b₁)(b₁c₂−b₂c₁)`, valid also when a leading coefficient vanishes; a public restatement of the private `resultant_quadratic` in `GlvSemaevSymmetry.lean`, not a new result; `S₄_closed`); the permutations fixing `S₄` form a submonoid containing the adjacent transpositions, which generate `Equiv.Perm (Fin 4)` (`Equiv.Perm.mclosure_swap_castSucc_succ`))",
+      "method": "Mathlib (`Polynomial.resultant`, `Matrix.det_succ_row_zero`, `ring`)",
+      "status": "proved",
+      "area": "curve-torsion",
+      "family_id": "family-curve-torsion",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-327",
+      "name": "Ecdlp.Semaev.S₄slice`, `S₄slice_eval`, `S₄slice_natDegree_le`, `S₄slice_coeff_four`, `S₄slice_natDegree`, `S₄_natDegree_eq_four_of_perm`, `S₄_completions_le_four",
+      "short_name": "S₄slice`,",
+      "module": "Ecdlp.Proved.SemaevFourSymmetry",
+      "modules": [
+        "Ecdlp.Proved.SemaevFourSymmetry"
+      ],
+      "file": "Ecdlp/Proved/SemaevFourSymmetry.lean",
+      "files": [
+        "Ecdlp/Proved/SemaevFourSymmetry.lean"
+      ],
+      "claim": "Semaev's `S₄` has degree exactly 4 in each variable when `S₃` of the other three is nonzero (`S₄slice a b x₁ x₂ x₃ = S₄(x₁,x₂,x₃,X)` has `natDegree ≤ 4` over any commutative ring (`S₄slice_natDegree_le`) and coefficient of `X⁴` equal to `S₃(x₁,x₂,x₃)²` (`S₄slice_coeff_four`); over a field, `S₃(x₁,x₂,x₃) ≠ 0` gives degree exactly `4` (`S₄slice_natDegree`), with the variable in any of the four argument slots (`S₄_natDegree_eq_four_of_perm`, via `S₄_perm` over `K[X]`), and then any finite set of `x₄` with `S₄(x₁,x₂,x₃,x₄) = 0` has at most 4 elements (`S₄_completions_le_four`). The case `S₃(x₁,x₂,x₃) = 0`, where the degree drops, is not covered)",
+      "method": "Mathlib (`compute_degree`, `Polynomial.card_roots'`)",
+      "status": "proved",
+      "area": "other",
+      "family_id": "family-other",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-328",
       "name": "Ecdlp.ParityFourier.ProofsK.parityMismatchZero`, `evenFeatureZero`, `oddFeatureZero",
       "short_name": "parityMismatchZero`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsK",
@@ -6787,7 +6892,7 @@
       "gated": true
     },
     {
-      "id": "thm-324",
+      "id": "thm-329",
       "name": "Ecdlp.ParityFourier.ProofsK.xOnlyZero",
       "short_name": "xOnlyZero",
       "module": "Ecdlp.Proved.ParityFourier.ProofsK",
@@ -6809,7 +6914,7 @@
       "gated": true
     },
     {
-      "id": "thm-325",
+      "id": "thm-330",
       "name": "Ecdlp.ParityFourier.ProofsCT.charTransfer",
       "short_name": "charTransfer",
       "module": "Ecdlp.Proved.ParityFourier.ProofsCT",
@@ -6831,7 +6936,7 @@
       "gated": true
     },
     {
-      "id": "thm-326",
+      "id": "thm-331",
       "name": "Ecdlp.ParityFourier.ProofsCT.l1JBound`, `l1GBound",
       "short_name": "l1JBound`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsCT",
@@ -6853,7 +6958,7 @@
       "gated": true
     },
     {
-      "id": "thm-327",
+      "id": "thm-332",
       "name": "Ecdlp.ParityFourier.ProofsCT.weilTransferLsbJ`, `weilTransferLsbG",
       "short_name": "weilTransferLsbJ`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsCT",
@@ -6875,7 +6980,7 @@
       "gated": true
     },
     {
-      "id": "thm-328",
+      "id": "thm-333",
       "name": "Ecdlp.ParityFourier.ProofsZeta.slopeCocycleLaw",
       "short_name": "slopeCocycleLaw",
       "module": "Ecdlp.Proved.ParityFourier.ProofsZeta",
@@ -6897,7 +7002,7 @@
       "gated": true
     },
     {
-      "id": "thm-329",
+      "id": "thm-334",
       "name": "Ecdlp.ParityFourier.ProofsZeta.zetaCoboundary`, `anomalousSumHom",
       "short_name": "zetaCoboundary`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsZeta",
@@ -6919,7 +7024,7 @@
       "gated": true
     },
     {
-      "id": "thm-330",
+      "id": "thm-335",
       "name": "Ecdlp.ParityFourier.ProofsZeta.zetaLsbTransfer",
       "short_name": "zetaLsbTransfer",
       "module": "Ecdlp.Proved.ParityFourier.ProofsZeta",
@@ -6941,7 +7046,7 @@
       "gated": true
     },
     {
-      "id": "thm-331",
+      "id": "thm-336",
       "name": "Ecdlp.ParityFourier.ProofsC44H.heavyCore`, `jHeavy",
       "short_name": "heavyCore`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC44H",
@@ -6963,7 +7068,7 @@
       "gated": true
     },
     {
-      "id": "thm-332",
+      "id": "thm-337",
       "name": "Ecdlp.ParityFourier.ProofsC44R.jRecoverFromHeavyList`, `jReductionSound",
       "short_name": "jRecoverFromHeavyList`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC44R",
@@ -6985,7 +7090,7 @@
       "gated": true
     },
     {
-      "id": "thm-333",
+      "id": "thm-338",
       "name": "Ecdlp.ParityFourier.ProofsC44R.jRecoverExplicit",
       "short_name": "jRecoverExplicit",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC44R",
@@ -7007,7 +7112,7 @@
       "gated": true
     },
     {
-      "id": "thm-334",
+      "id": "thm-339",
       "name": "Ecdlp.ParityFourier.ProofsC44R.accessCorrelation`, `gammaJCard`, `heavySetSmall",
       "short_name": "accessCorrelation`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC44R",
@@ -7029,7 +7134,7 @@
       "gated": true
     },
     {
-      "id": "thm-335",
+      "id": "thm-340",
       "name": "Ecdlp.ParityFourier.ProofsC37.relabelDefect`, `relabelDL`, `sqrtBranch",
       "short_name": "relabelDefect`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsC37",
@@ -7051,7 +7156,7 @@
       "gated": true
     },
     {
-      "id": "thm-336",
+      "id": "thm-341",
       "name": "Ecdlp.ParityFourier.ProofsW.windowLaw`, `windowShape`, `windowRefined",
       "short_name": "windowLaw`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsW",
@@ -7073,7 +7178,7 @@
       "gated": true
     },
     {
-      "id": "thm-337",
+      "id": "thm-342",
       "name": "Ecdlp.ParityFourier.ProofsW.windowX",
       "short_name": "windowX",
       "module": "Ecdlp.Proved.ParityFourier.ProofsW",
@@ -7095,7 +7200,7 @@
       "gated": true
     },
     {
-      "id": "thm-338",
+      "id": "thm-343",
       "name": "Ecdlp.ParityFourier.ProofsPB.groupNoisyHalvingRecovers`, `noisyHalvingRecovers`, `noisyHalvingGrid",
       "short_name": "groupNoisyHalvingRecovers`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsPB",
@@ -7121,7 +7226,7 @@
       "gated": true
     },
     {
-      "id": "thm-339",
+      "id": "thm-344",
       "name": "Ecdlp.ParityFourier.ProofsPB1.majorityVote`, `Ecdlp.ParityFourier.ProofsPB23.voteIdentity`, `voteAdvantage",
       "short_name": "majorityVote`,",
       "module": "Ecdlp.Proved.ParityFourier.ProofsPB1",
@@ -7796,6 +7901,7 @@
         "Maintain the completed TASK-024 non-run kernel binding for necessary infinity-stratum pruning: affine external inputs restrict the exact cover from 16384 masks to 987 separated masks, and nonzero endpoint determinants conditionally restrict it to 377 interior masks. Keep sufficiency, unique mask selection, production enumeration, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
         "Maintain the completed TASK-025 non-run kernel binding for explicit infinity propagation: the nested local mask counts are 377 to 129 to 69 to 36, while the independent boundary-only refinement is 129 to 60; over any field, six prefix and six suffix obstruction values cover all twelve internal infinity slots, and endpoint plus BalancedPropagatedRegular assumptions make the empty-mask affine chart exact. The source-stage bridge separately requires injective base change into an algebraically closed target and mapped-target regularity. Keep symbolic nonzeroness, nonemptiness, genericity, exceptional-complement orchestration, witness uniqueness, relation independence, yield, rank, solving, recovery, cost, experiments, and route promotion downstream and non-authorizing.",
         "Land exactly the bounded formal builds authorized by FD-2026-10-22-001: the PR #444 port for F-PARITY-BIT-SECURITY, the PR #446 point-count build for F-PRIME-ORDER-POINT-COUNT, and the S4 permutation-symmetry and degree slice of PR #447 as maintenance of the existing S3/S4 layer. None selects or promotes a route or authorizes an experiment.",
+        "Land exactly the bounded formal builds authorized by FD-2026-10-22-002: the five point-level S₃ statements frozen on branch lab/semaev-three-point-20261022, as maintenance of the existing S3/S4 layer, and one port of the 34 listed lab theorems that extends F-PARITY-BIT-SECURITY. Neither selects or promotes a route or authorizes an experiment.",
         "Maintain canonical provenance and regenerate affected views without changing the recorded claim boundary."
       ],
       "forbidden_work": [
@@ -7812,6 +7918,7 @@
         "Treat the completed TASK-025 conditional single-affine-chart theorem as proof that its balanced regular locus is symbolically nonzero, nonempty, dense, probable, or generic; as automatic mapped-target regularity from source-field computation; as witness uniqueness or target-witness descent; or as a production mask selector, solver result, cost result, ECDLP shortcut, or execution authorization.",
         "Treat a constant-factor result, structural identity, or toy measurement as a subgeneric attack.",
         "Build the general S_m tower, extend F-PARITY-BIT-SECURITY or F-PRIME-ORDER-POINT-COUNT beyond FD-2026-10-22-001, or add p256-exact-cardinality to release.required_nodes without a new dated decision.",
+        "Add a point-level Semaev statement beyond the five named by FD-2026-10-22-002, in particular fixed-target, HValue, or frozenC semantics or point-level S_m semantics for m >= 5, or extend F-PARITY-BIT-SECURITY beyond FD-2026-10-22-002, for example by the sparse Fourier transform step, a cost model for the reductions, or a parity-correlation experiment, without a new dated decision.",
         "Delete or rewrite provenance-bearing assets without an inventory, reference scan, and documented restore path."
       ],
       "promotion_rule": "A future dated decision may promote at most one parked route only after new evidence satisfies the acceptance gate at proposal level and tasks/ECDLP_RESEARCH.md plus experiments/HYPOTHESES.yaml explicitly authorize the same work.",
@@ -8930,10 +9037,13 @@
         "implementation_status": "partial",
         "needed_by_route_ids": [],
         "formal_node_ids": [],
-        "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
-        "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. The layer is not a hardness theorem, constructs no parity oracle, and states nothing specific to secp256k1.",
-        "resume_condition": "Any further build in this area, such as a noisy-oracle reduction, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
-        "registered_by": "FD-2026-10-22-001"
+        "mathlib_status": "Every file of the PR #444 port imports Mathlib, directly or through a sibling statement file. The layer uses Mathlib's ZMod arithmetic, finite sums, additive characters, complex exponentials, Real.cos, Real.sin, Real.sqrt, Real.pi, and real logarithms, and states the halving reduction for any additive commutative group through addOrderOf. The port extended by FD-2026-10-22-002 also uses Mathlib's Weierstrass affine point group and its slope (the zeta statements and the x-coordinate instances) and Mathlib's Hoeffding bound for bounded random variables under a finite uniform product measure (the majority-vote step of the noisy reduction). A lexical search of the pinned Mathlib tag v4.31.0 on 2026-10-22 found no discrete-logarithm, hard-core-bit, or bit-security module.",
+        "deliverable": "Only the bounded layer authorized by FD-2026-10-22-001 and extended by FD-2026-10-22-002: the PR #444 port of theorems already kernel-checked in the owner's companion lab repository. They are a halving reduction that recovers a discrete logarithm from an exact parity oracle correct on every multiple of the generator, the Fourier spectrum of the parity sign, ordered-sector and carry-sign facts for a cube root of unity modulo a prime, Fourier concentration and balance bounds for the ordered-sector sign, and a transfer inequality that takes a twisted character-sum bound as an assumed hypothesis. Under FD-2026-10-22-002 it also takes exactly one further port, after PR #444, of 34 theorems already kernel-checked in that lab repository: exact zero-correlation identities for even and odd features, a Fourier transfer bound and L1 bounds of the ordered-sector and carry signs, the slope cocycle and the Weierstrass zeta function of a short-normal-form curve, a heavy-coefficient lemma and the correctness of the hard-core reduction for the ordered-sector sign with the sparse Fourier transform output as a hypothesis, relabelling with a defect and the exact-branch reduction, the window law, and a halving reduction from a deterministic noisy parity predictor with its failure bound. Transfer bounds keep their character-sum bounds as assumed hypotheses. The layer is not a hardness theorem, constructs no parity oracle, formalizes no cost, and states nothing specific to secp256k1.",
+        "resume_condition": "Any build in this area beyond FD-2026-10-22-002, such as the sparse Fourier transform step or a cost model for the reductions, a proof of a twisted-sum bound for an elliptic-curve coordinate map, or a parity-correlation experiment, requires a new dated decision.",
+        "registered_by": "FD-2026-10-22-001",
+        "extended_by": [
+          "FD-2026-10-22-002"
+        ]
       },
       {
         "id": "F-PRIME-ORDER-POINT-COUNT",
@@ -10213,8 +10323,8 @@
       "generator_id": "ecdlp-hypothesis-generation-v0",
       "source_hashes": {
         "generation_policy_sha256": "a753b9991261ffbd684da4a7d132cbbaba5b94e1a568f6776192bd5f19293880",
-        "typed_evidence_state_sha256": "4df1cfb942fc71c1c53fffed73520093a1af93324986e8c18ab41ce526dde31f",
-        "research_claim_state_sha256": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
+        "typed_evidence_state_sha256": "d7341b6413e319a14ef7cddb95ac4ac0ba7ff673dbe8075dd9c006e6fab067a1",
+        "research_claim_state_sha256": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
         "proposals_sha256": "9fdfac0dc49a6879b09eda5cf3e0d178be26ff9bebf81385195a8150d07cf1b9",
         "reviews_sha256": "c192d5d3b290b6fad50d600c14bc194af150005cff6595e2b65330f49ff37b12"
       },
@@ -10250,9 +10360,9 @@
         },
         "source_hashes": {
           "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-          "decision_substrate_sha256": "8a0407672343ffd70220fb73df0c355dc35c8185dae3073da2c5721de693e29a",
+          "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
           "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-          "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
+          "evidence_files_sha256": "25369ae6024fa107c9eeb211eca273508db48a2ced8b34176a38143243672616",
           "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
         },
         "authorization_boundary": "Typed cells and desk decisions authorize nothing. Only an open cell may seed an untrusted proposal, and every later experiment and promotion gate remains separate.",
@@ -10281,7 +10391,7 @@
           "route_promotions": 0,
           "exact_target_runs": 0
         },
-        "state_sha256": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e"
+        "state_sha256": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2"
       },
       "seed_coverage": {
         "threshold": 12,
@@ -10322,7 +10432,7 @@
           "seed_id": "HGS-5CC94AD51AE6",
           "cell_id": "CELL-M-PKC-AUXILIARY-CURVE",
           "typed_evidence_digest": "324128326a3d56dbe4ab697efafefb12d34ba6ba44983883c8d04fe2493832dc",
-          "claim_state_digest": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
+          "claim_state_digest": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -10470,7 +10580,7 @@
           "seed_id": "HGS-3266E42A729C",
           "cell_id": "CELL-M-PKC-SMOOTH-M16",
           "typed_evidence_digest": "602d93c115099c81f02b8a8ac531e33036e6988d5d3ddf2ec257b1118e5cd75d",
-          "claim_state_digest": "6ee3528eb343bda03a2734f63753060e93f8e0fb62321469f39572ceb7aa634e",
+          "claim_state_digest": "ce171d70d5de03f7329e9060ac1c50260fb4253f74c9dbcbb1cb97e88941c3c2",
           "route_id": "R-PETIT-COMPOSED-MAPS",
           "route_source_ids": [
             "amadori_pintore_sala2018",
@@ -11381,24 +11491,24 @@
       "exact_target_execution": false,
       "stream_digest_version": "rfc6962-binary-leaf-v2",
       "coverage_merkle_root_sha256": "dff1e8cb52594158fc94556cbef3025be647fab310132c34ee58aed3b8399207",
-      "instance_root_sha256": "20e482430620dbe6d184fa9ee3b4c32a2c5b79d9a0d80740972784ed7612b334",
+      "instance_root_sha256": "a901e59d9a4a564588235a7c4c95b376a53235f46e406734b35f53869ce9e14d",
       "challenge_indices": [
-        83824,
-        151904,
-        159809,
-        221732,
-        262853,
-        315784,
-        319211,
-        374912,
-        390699,
-        490996,
-        678860,
-        719872,
-        741146,
-        791887,
-        799353,
-        994384
+        2603,
+        11674,
+        25666,
+        61894,
+        104508,
+        167432,
+        220783,
+        382465,
+        393473,
+        504560,
+        512015,
+        685328,
+        803216,
+        843922,
+        960348,
+        978436
       ]
     },
     "coverage_boundary": "Coverage is complete only for this frozen finite Cartesian projection. It is not coverage of all ECDLP ideas or literature.",
@@ -11982,9 +12092,9 @@
     },
     "source_hashes": {
       "policy_sha256": "25a7398e0f89f5088655fc1eac8a4244bafc5dad44ba966d95f371957b5bbdb1",
-      "decision_substrate_sha256": "8a0407672343ffd70220fb73df0c355dc35c8185dae3073da2c5721de693e29a",
+      "decision_substrate_sha256": "c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28",
       "source_registry_identity_sha256": "535619fd9e64481c52999dda62f333e73573cfa16d46e699b29582ca95075459",
-      "evidence_files_sha256": "b2e0e60945c399415ebbeba9868d7f9203aaa528082ad3a6b1ea3987a323a3f6",
+      "evidence_files_sha256": "25369ae6024fa107c9eeb211eca273508db48a2ced8b34176a38143243672616",
       "desk_decisions_sha256": "1e66e8b2f3e196736c2196042817a23632b7760b02dbd1663408f81359dad608"
     },
     "trust_boundary": {
@@ -14004,8 +14114,18 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.SemaevFourSymmetry",
+      "to": "Ecdlp.Proved.SemaevFour",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.SemaevThree",
       "to": "Ecdlp.Proved.Secp256k1Curve",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.SemaevThreePoint",
+      "to": "Ecdlp.Proved.SemaevThree",
       "type": "imports"
     },
     {
@@ -14800,6 +14920,11 @@
     },
     {
       "from": "Ecdlp",
+      "to": "Ecdlp.Proved.SemaevFourSymmetry",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
       "to": "Ecdlp.Proved.FixedDegreeProjectiveResultant",
       "type": "imports"
     },
@@ -14856,6 +14981,11 @@
     {
       "from": "Ecdlp",
       "to": "Ecdlp.Proved.SemaevDegree",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.SemaevThreePoint",
       "type": "imports"
     },
     {
@@ -16790,7 +16920,7 @@
     },
     {
       "from": "thm-253",
-      "to": "family-curve-torsion",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
@@ -16800,7 +16930,7 @@
     },
     {
       "from": "thm-255",
-      "to": "family-curve-torsion",
+      "to": "family-reduction",
       "type": "member_of"
     },
     {
@@ -16845,7 +16975,7 @@
     },
     {
       "from": "thm-264",
-      "to": "family-primality",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -16860,12 +16990,12 @@
     },
     {
       "from": "thm-267",
-      "to": "family-other",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
       "from": "thm-268",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -16875,12 +17005,12 @@
     },
     {
       "from": "thm-270",
-      "to": "family-curve-torsion",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-271",
-      "to": "family-curve-torsion",
+      "to": "family-other",
       "type": "member_of"
     },
     {
@@ -16890,42 +17020,42 @@
     },
     {
       "from": "thm-273",
-      "to": "family-protocol-soundness",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-274",
-      "to": "family-protocol-soundness",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-275",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-276",
-      "to": "family-other",
+      "to": "family-protocol-soundness",
       "type": "member_of"
     },
     {
       "from": "thm-277",
-      "to": "family-curve-torsion",
+      "to": "family-protocol-soundness",
       "type": "member_of"
     },
     {
       "from": "thm-278",
-      "to": "family-curve-torsion",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-279",
-      "to": "family-curve-torsion",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-280",
-      "to": "family-attack-resistance",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -16940,22 +17070,22 @@
     },
     {
       "from": "thm-283",
-      "to": "family-primality",
+      "to": "family-attack-resistance",
       "type": "member_of"
     },
     {
       "from": "thm-284",
-      "to": "family-primality",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-285",
-      "to": "family-primality",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-286",
-      "to": "family-curve-torsion",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
@@ -16970,7 +17100,7 @@
     },
     {
       "from": "thm-289",
-      "to": "family-primality",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -16985,37 +17115,37 @@
     },
     {
       "from": "thm-292",
-      "to": "family-curve-torsion",
-      "type": "member_of"
-    },
-    {
-      "from": "thm-293",
-      "to": "family-curve-torsion",
-      "type": "member_of"
-    },
-    {
-      "from": "thm-294",
-      "to": "family-curve-torsion",
-      "type": "member_of"
-    },
-    {
-      "from": "thm-295",
       "to": "family-primality",
       "type": "member_of"
     },
     {
+      "from": "thm-293",
+      "to": "family-primality",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-294",
+      "to": "family-primality",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-295",
+      "to": "family-curve-torsion",
+      "type": "member_of"
+    },
+    {
       "from": "thm-296",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-297",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-298",
-      "to": "family-curve-torsion",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
@@ -17030,7 +17160,7 @@
     },
     {
       "from": "thm-301",
-      "to": "family-other",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -17055,37 +17185,37 @@
     },
     {
       "from": "thm-306",
-      "to": "family-generic-hardness",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-307",
-      "to": "family-primality",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-308",
-      "to": "family-primality",
+      "to": "family-other",
       "type": "member_of"
     },
     {
       "from": "thm-309",
-      "to": "family-curve-torsion",
+      "to": "family-generic-hardness",
       "type": "member_of"
     },
     {
       "from": "thm-310",
-      "to": "family-bit-security",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
       "from": "thm-311",
-      "to": "family-bit-security",
+      "to": "family-primality",
       "type": "member_of"
     },
     {
       "from": "thm-312",
-      "to": "family-bit-security",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
@@ -17155,12 +17285,12 @@
     },
     {
       "from": "thm-326",
-      "to": "family-bit-security",
+      "to": "family-curve-torsion",
       "type": "member_of"
     },
     {
       "from": "thm-327",
-      "to": "family-bit-security",
+      "to": "family-other",
       "type": "member_of"
     },
     {
@@ -17224,6 +17354,31 @@
       "type": "member_of"
     },
     {
+      "from": "thm-340",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-341",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-342",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-343",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-344",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
       "from": "thm-065",
       "to": "secp-parameters",
       "type": "supports",
@@ -17236,19 +17391,19 @@
       "anchor": "Ecdlp.Primality.secp256k1_n_prime"
     },
     {
-      "from": "thm-280",
+      "from": "thm-283",
       "to": "secp-rational-group",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_card_point_eq_n"
     },
     {
-      "from": "thm-309",
+      "from": "thm-312",
       "to": "secp-rational-group",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_card_point_eq_n"
     },
     {
-      "from": "thm-281",
+      "from": "thm-284",
       "to": "secp-rational-group",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_grp_eq_top"
@@ -17270,7 +17425,7 @@
       "type": "depends_on"
     },
     {
-      "from": "thm-273",
+      "from": "thm-276",
       "to": "protocol-soundness",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1_dh_agree"
@@ -17293,6 +17448,12 @@
     },
     {
       "from": "thm-245",
+      "to": "semaev-foundations",
+      "type": "supports",
+      "anchor": "Ecdlp.Semaev.S₃_eq_zero_iff"
+    },
+    {
+      "from": "thm-253",
       "to": "semaev-foundations",
       "type": "supports",
       "anchor": "Ecdlp.Semaev.S₃_eq_zero_iff"
@@ -17344,31 +17505,31 @@
       "type": "depends_on"
     },
     {
-      "from": "thm-291",
+      "from": "thm-294",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1Bar_two_torsion_structure"
     },
     {
-      "from": "thm-292",
+      "from": "thm-295",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1Bar_four_torsion_ncard"
     },
     {
-      "from": "thm-292",
+      "from": "thm-295",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1Bar_four_torsion_structure"
     },
     {
-      "from": "thm-292",
+      "from": "thm-295",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Torsion.nonempty_addEquiv_zmod_four_prod_of_card_and_two_torsion"
     },
     {
-      "from": "thm-287",
+      "from": "thm-290",
       "to": "small-torsion-family",
       "type": "supports",
       "anchor": "Ecdlp.Curve.secp256k1Bar_seven_torsion_structure"
@@ -17390,7 +17551,7 @@
       "type": "depends_on"
     },
     {
-      "from": "thm-298",
+      "from": "thm-301",
       "to": "weil-w1-w3",
       "type": "supports",
       "anchor": "Ecdlp.Weil.secp256k1_miller_jointly_regular"
@@ -17469,7 +17630,7 @@
       "type": "blocked_by"
     },
     {
-      "from": "thm-296",
+      "from": "thm-299",
       "to": "weil-w4-w5",
       "type": "supports",
       "anchor": "Ecdlp.Weil.divEval_mul"
@@ -17496,13 +17657,13 @@
       "anchor": "Ecdlp.P256.p256_n_dvd_card_point"
     },
     {
-      "from": "thm-308",
+      "from": "thm-311",
       "to": "p256-exact-cardinality",
       "type": "supports",
       "anchor": "Ecdlp.P256.p256_card_point_eq_n"
     },
     {
-      "from": "thm-307",
+      "from": "thm-310",
       "to": "p256-exact-cardinality",
       "type": "supports",
       "anchor": "Ecdlp.Weierstrass.natCard_point_eq_of_addOrderOf"
