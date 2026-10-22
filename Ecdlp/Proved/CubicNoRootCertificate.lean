@@ -62,12 +62,16 @@ and the per-curve block are written for this repository.
 
 verified-garbage already kernel-checks the no-root (no rational 2-torsion) fact for the same
 nine curves: `VG.Proof.P256.noTwoTorsion`, and for the other eight curves the `noTwoTorsion`
-field of `VG.Proof.<Curve>.good` (built by `Good.of_cert`). verified-garbage proves `#E = n`
-for P-256/P-384/P-521 for its own specification curve type; this repository's result is for
-`Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`; certificates regenerated independently
-(by `scripts/certs/cubic_no_root_certs.py`; a certificate is unique, so the data coincide with
-upstream's). The ledger therefore lists the per-curve block as upstream-derived, outside the
-headline count.
+field of `VG.Proof.<Curve>.good` (built by `Good.of_cert`). For P-256/P-384/P-521 it also
+establishes `#E = n`, inside the proof of `VG.Proof.Weierstrass.primeOrder_of`, as
+`Nat.card (wcC C).Point = C.n`; there `wcC C` is Mathlib's `WeierstrassCurve.Affine` over
+`ZMod C.p`, built from the specification curve `C`. That count is not exported: the exported
+`VG.Proof.<Curve>.primeOrder` states that every point other than the identity has order `n`.
+This repository's addition for that count is the exported theorem `p256_card_point_eq_n` for
+`Ecdlp.P256.P256` (`P256CardinalityExact.lean`). The certificates here were regenerated
+independently (by `scripts/certs/cubic_no_root_certs.py`; a certificate is unique, so the
+data coincide with upstream's). The ledger therefore lists the per-curve block as
+upstream-derived, outside the headline count.
 -/
 
 namespace Ecdlp.CubicCert
