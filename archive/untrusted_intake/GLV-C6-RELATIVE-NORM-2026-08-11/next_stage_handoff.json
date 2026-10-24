@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "id": "GLV-C6-RELATIVE-NORM-NEXT-001",
+  "date": "2026-08-11",
+  "status": "design_only_non_executable",
+  "route_id": "R-GLV-SEMAEV",
+  "threat_model": "classical-single-target-plain",
+  "authorization": {
+    "experiment_authorized": false,
+    "route_promotion_authorized": false,
+    "secp256k1_target_authorized": false,
+    "real_world_key_material_allowed": false
+  },
+  "integration": {
+    "theta_upstream": {
+      "pull_request": 356,
+      "branch": "research/theta-screen-002",
+      "role": "bounded theta Kummer and Jacobi screen",
+      "rule": "reference_without_copying_until_reviewed"
+    },
+    "current_intake": {
+      "pull_request": 361,
+      "branch": "research/glv-c6-relative-norm-intake-20260811",
+      "role": "exact C6 relative-phase norm and bounded F4 evidence"
+    },
+    "execution_environment": {
+      "task_id": "ECDLP-LAB-001",
+      "path": "experiments/ecdlp_lab",
+      "current_repo_phase": "P01_ready_after_P00_complete",
+      "rule": "no_parallel_runner"
+    }
+  },
+  "existing_evidence": {
+    "identity_sha256": "4c9975adce8af4f2ef56743a2df2a9b42e20299caa44ce0299cf55c9e142c0f6",
+    "msolve_run_id": 31537739286,
+    "msolve_workflow_head": "ee1c70e8915b24c4b6a71bbf9c65f07ef701b570",
+    "msolve_version": "0.10.1",
+    "systems_completed": 52,
+    "timeouts": 0,
+    "nonzero_exits": 0,
+    "k_ge_2_paired_fixtures": 11,
+    "q_wins_on_peak_and_cumulative_matrix_work": 11,
+    "median_peak_ratio": "0.227",
+    "median_cumulative_ratio": "0.258",
+    "startup_penalty_at_k1": true,
+    "permanent_evidence_path": "archive/untrusted_intake/GLV-C6-RELATIVE-NORM-2026-08-11/msolve_52"
+  },
+  "algebraic_family": {
+    "curve": "E_b/F_p: y^2=x^3+b",
+    "automorphism_group": "H=<phi,-1>~=C6, phi(x,y)=(beta*x,y)",
+    "orbit_coordinate": "q(P)=y(P)^2=x(P)^3+b",
+    "factor_base": "F_k=union_{j=1}^k H.R_j",
+    "factor_base_polynomial": "f_k(T)=product_j(T-q(R_j))",
+    "local_identity": "U3(x1^3+b,x2^3+b,x3^3+b)=product_{a,c in Z/3} S3(x1,beta^a*x2,beta^c*x3)",
+    "m_term_system": "balanced relation tree with one U3(left,right,parent)=0 per internal node, f_k(q_i)=0 at leaves, and root fixed to q(Q)"
+  },
+  "question": "Does exact elimination of all local C6 phases through U3 preserve complete relation semantics and polynomially bounded phase recovery while reducing the growth rate of end-to-end algebraic cost per independently verified relation as both factor-base orbit count k and relation-tree size m increase, relative to every faithful Semaev/GLV presentation?",
+  "primary_metric": {
+    "matrix_work": "W_A=sum_d nnz(M_d(J_A))",
+    "verified_relations": "V_A=number of independently verified nonduplicate relations",
+    "recovery_work": "P_A=explicit phase-recovery operation count",
+    "validation_work": "D_A=independent validation operation count",
+    "cost_per_relation": "C_A=(W_A+P_A+D_A)/max(1,V_A)",
+    "paired_ratio": "R=C_q/min(C_x,C_y,C_u_faithful)"
+  },
+  "stages": [
+    {
+      "id": "A_REPLAY",
+      "matrix": "replay all 52 frozen systems",
+      "gate": "same exit classifications and normalized matrix metrics"
+    },
+    {
+      "id": "B_FACTOR_BASE_SCALING",
+      "m": [3],
+      "k": [5, 6, 8],
+      "minimum_curves_per_cell": 3,
+      "minimum_targets_per_curve": 3,
+      "presentations": ["x_plain", "y_c3_quotient", "q_c6_orbit", "u_faithful_glv"]
+    },
+    {
+      "id": "C_RELATION_TREE_SCALING",
+      "m": [4, 5],
+      "k": [2, 3, 4, 5],
+      "minimum_curves_per_cell": 3,
+      "minimum_targets_per_curve": 3,
+      "tree": "balanced",
+      "presentations": ["x_plain", "y_c3_quotient", "q_c6_orbit", "u_faithful_glv"]
+    },
+    {
+      "id": "D_INDEPENDENT_SOLVER",
+      "gate": "second solver or independently implemented Macaulay reducer with no shared decisive matrix-generation code"
+    }
+  ],
+  "controls": [
+    "ordinary x-coordinate Semaev",
+    "y-coordinate C3 quotient",
+    "faithful lifted x,u system",
+    "degree-and-term-count-matched null destroying orbit identity",
+    "generic targets outside collision locus",
+    "separately labelled collision-locus targets",
+    "free-orbit factor bases",
+    "separately labelled exceptional or short orbits",
+    "independent brute-force relation enumeration where feasible"
+  ],
+  "outcome_rules": {
+    "representation_supported": [
+      "zero missing and zero spurious relations",
+      "q wins primary paired metric on at least 80 percent of nonexceptional fixtures on both new axes",
+      "upper 95 percent interval for median R below 0.75",
+      "no two consecutive new rungs with median R at least 1",
+      "phase-recovery branching remains polynomially bounded on tested family"
+    ],
+    "bounded_negative": [
+      "missing or spurious relations",
+      "nonrecoverable orbit tags outside preregistered exceptional locus",
+      "median R at least 1 on two consecutive new k or m rungs",
+      "exponential recovery branching",
+      "exceptional-locus saturation removes advantage",
+      "independent solver reverses advantage"
+    ],
+    "inconclusive_or_resource_exhausted": "retain exactly; do not relabel",
+    "asymptotic_candidate": "requires at least three successive new scales on both axes, independent replication, and a separately reviewed mathematical persistence mechanism"
+  },
+  "ultimate_cost_identity": "C_relations+C_phase_recovery+C_sparse_linear_algebra+C_target_decomposition=o(sqrt(n))",
+  "known_missing_components": [
+    "full-rank relation yield",
+    "sparse global linear algebra",
+    "target decomposition",
+    "secp256k1 resource estimate",
+    "proof of asymptotic persistence",
+    "global novelty review"
+  ],
+  "retention": {
+    "retain_positive": true,
+    "retain_negative": true,
+    "retain_inconclusive": true,
+    "retain_resource_exhausted": true,
+    "retain_operational_failures_separately": true,
+    "operational_failure_is_scientific_negative": false,
+    "required_fields": [
+      "source_commit",
+      "clean_or_dirty_state",
+      "input_hashes",
+      "configuration_hash",
+      "producer_dependency_hashes",
+      "validator_dependency_hashes",
+      "raw_logs",
+      "normalized_metrics",
+      "scope",
+      "forbidden_interpretations",
+      "outcome",
+      "reopening_condition"
+    ]
+  }
+}
