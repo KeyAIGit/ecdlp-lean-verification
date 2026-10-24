@@ -1,0 +1,92 @@
+{
+  "scope": "bounded synthetic toy screen; no real-world ECDLP target",
+  "environment": {
+    "solver": "SymPy Groebner basis implementation",
+    "sympy_version": "1.14.0",
+    "timings_are_asymptotic_evidence": false
+  },
+  "distinct_point_records": [
+    {
+      "p": 19,
+      "direct_lex_seconds": 0.03742188000001079,
+      "direct_grlex_seconds": 0.19719358799989095,
+      "projective_grlex_seconds": 1.7800647789999857,
+      "direct_lex_basis": {"polynomials": 3, "terms": 27, "max_total_degree": 6},
+      "direct_grlex_basis": {"polynomials": 11, "terms": 133, "max_total_degree": 4},
+      "projective_grlex_basis": {"polynomials": 83, "terms": 239, "max_total_degree": 3}
+    },
+    {
+      "p": 23,
+      "direct_lex_seconds": 0.03815546800001357,
+      "direct_grlex_seconds": 0.19265518399993198,
+      "projective_grlex_seconds": 1.8336228459997983,
+      "direct_lex_basis": {"polynomials": 3, "terms": 26, "max_total_degree": 6},
+      "direct_grlex_basis": {"polynomials": 11, "terms": 133, "max_total_degree": 4},
+      "projective_grlex_basis": {"polynomials": 83, "terms": 240, "max_total_degree": 3}
+    },
+    {
+      "p": 29,
+      "direct_lex_seconds": 0.04001385800006574,
+      "direct_grlex_seconds": 0.19299564199991437,
+      "projective_grlex_seconds": 2.0506205679998857,
+      "direct_lex_basis": {"polynomials": 3, "terms": 27, "max_total_degree": 6},
+      "direct_grlex_basis": {"polynomials": 11, "terms": 133, "max_total_degree": 4},
+      "projective_grlex_basis": {"polynomials": 83, "terms": 240, "max_total_degree": 3}
+    },
+    {
+      "p": 31,
+      "direct_lex_seconds": 0.038414820999832955,
+      "direct_grlex_seconds": 0.19893475999992916,
+      "projective_grlex_seconds": 1.8109725879999132,
+      "direct_lex_basis": {"polynomials": 3, "terms": 27, "max_total_degree": 6},
+      "direct_grlex_basis": {"polynomials": 11, "terms": 111, "max_total_degree": 4},
+      "projective_grlex_basis": {"polynomials": 83, "terms": 240, "max_total_degree": 3}
+    },
+    {
+      "p": 43,
+      "direct_lex_seconds": 0.03940594499999861,
+      "direct_grlex_seconds": 0.20561669599987908,
+      "projective_grlex_seconds": 1.7831678600000487,
+      "direct_lex_basis": {"polynomials": 3, "terms": 25, "max_total_degree": 6},
+      "direct_grlex_basis": {"polynomials": 11, "terms": 133, "max_total_degree": 4},
+      "projective_grlex_basis": {"polynomials": 83, "terms": 240, "max_total_degree": 3}
+    },
+    {
+      "p": 47,
+      "direct_lex_seconds": 0.03982984200001738,
+      "direct_grlex_seconds": 0.19791579200000342,
+      "projective_grlex_seconds": 1.810916546000044,
+      "direct_lex_basis": {"polynomials": 3, "terms": 27, "max_total_degree": 6},
+      "direct_grlex_basis": {"polynomials": 11, "terms": 129, "max_total_degree": 4},
+      "projective_grlex_basis": {"polynomials": 83, "terms": 240, "max_total_degree": 3}
+    }
+  ],
+  "factorbase_scaling_F43": [
+    {
+      "h": 1,
+      "x_factor_base_size": 4,
+      "direct_lex_seconds": 0.04161940400013009,
+      "direct_grlex_seconds": 0.20546864400012055,
+      "projective_grlex_seconds": 1.7435313040000437
+    },
+    {
+      "h": 2,
+      "x_factor_base_size": 8,
+      "direct_lex_seconds": 1.5769614839998667,
+      "direct_grlex": {"status": "timeout", "seconds": 20},
+      "projective_grlex": {"status": "timeout", "seconds": 20}
+    },
+    {
+      "h": 3,
+      "x_factor_base_size": 12,
+      "direct_lex_seconds": 14.62839542000006,
+      "projective_grlex": {"status": "timeout", "seconds": 20}
+    }
+  ],
+  "guardrails": [
+    "The Jacobi-native factor base deliberately favors the projective representation.",
+    "The current results do not establish an asymptotic lower or upper bound.",
+    "A lower final Groebner degree is not success without lower total solving cost.",
+    "The next independent check is SageMath/Singular on the same frozen systems."
+  ]
+}
