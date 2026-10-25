@@ -105,7 +105,8 @@ rather than a standalone full paper — strongest as the reproducibility backbon
 **Opening sentence.** "We present kernel-checked Pratt primality certificates in Lean 4 for both
 secp256k1 constants — the 256-bit field characteristic and the prime group order — in which the
 kernel checks the whole Lucas–Pocklington recursion, including every arithmetic leaf, with no
-`native_decide` and no compiled code in the trusted base."
+`native_decide`: the trusted base is the Lean kernel, including its built-in GMP-backed `Nat`
+arithmetic, and the Lean compiler is not trusted."
 
 ---
 

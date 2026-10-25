@@ -86,3 +86,23 @@ Parent root after the merge: `11099f0760f6447deb112a58afc419d1654544c1a9c7b20e24
 `repo/ECDLP_DECISION_SUBSTRATE.json` is byte-identical to `main`, so the drafter policy's
 pinned decision digest stays
 `c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28`.
+
+## Pratt certificate docstrings (2026-10-25)
+
+The generated module docstrings of the four Pratt certificate files now name each
+kind of leaf: witness powers by `decide +kernel` on `Ecdlp.Kernel.powMod`, the
+factorisations of `m - 1` by `decide +kernel` on `Nat` arithmetic, and the primality
+of each prime factor below 2^20 by `norm_num`. The proofs are unchanged.
+`Ecdlp/Proved/Secp256k1PrimeP.lean` is an evidence file of
+`repo/ECDLP_TYPED_EVIDENCE_V0.json`, so its hash is an input of the projection and the
+parent root changed. The generator chain was rerun in the `docs-sync.yml` order up to
+`hypothesis_funnel.py`, the child policy's expected parent root was set to the root it
+computed, and the full chain was rerun.
+
+Parent root on `main`: `f30f9341a963d4e611a22453728117db2e6ecd03348d4c067fc04f453622d686`.
+Parent root before this change: `11099f0760f6447deb112a58afc419d1654544c1a9c7b20e24471e278e103694`.
+Parent root after this change: `f04be3548a1d66a59ca4653038ef0f78291f6ef12a2b5fc510501f25b86bfcf8`.
+
+`repo/ECDLP_DECISION_SUBSTRATE.json` is byte-identical to `main`, so the drafter policy's
+pinned decision digest stays
+`c561d201f03021526dca413714afd355dd94d2515693c15b1260f4001585bb28`.
