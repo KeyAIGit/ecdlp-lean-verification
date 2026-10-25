@@ -46,6 +46,16 @@ accepts. The kernel is a small, fixed type-checker; trusting a proof means trust
    correctness": for the `native_decide` rows, the compiler is *also* a judge. The
    axiom audit (Section 3) makes this dependency explicit rather than hidden.
 
+**Kernel `Nat` arithmetic.** Large closed numeric facts that are *not* `native_decide`
+(for example the 256-bit witness powers of the secp256k1 and P-256 primality certificates,
+`n • G = 0`, `glvPoint G = λ • G`, the kernel-checked twins of the secp256k1 literal
+facts in `Secp256k1KernelFacts.lean`, and the 192- to 521-bit no-root certificates of
+`CubicNoRootCertificate.lean`) are checked with `decide +kernel`: the kernel itself
+evaluates the computation on `Nat` (`Ecdlp.Kernel.powMod`, `Ecdlp.Kernel.mulN`,
+`Ecdlp.CubicCert.powT`), using its built-in arbitrary-precision (GMP-backed) natural-number
+operations. These operations are part of the Lean 4 kernel (item 1); `decide +kernel` adds
+no axiom and no compiler trust, and `#print axioms` shows at most the standard three.
+
 Nothing in the repo depends on `sorryAx`, `Lean.trustCompiler`, or `Lean.guardMsgsAx`;
 these are on the audit's permanent forbidden list.
 
@@ -143,6 +153,40 @@ ring-identity curve invariants. Representative theorems (file → theorem):
   (the local implications and the one-way resultant propagation hold over any
   field; the final source bridge reuses the injective algebraically closed
   target assumption; none of these structural results uses `native_decide`)
+- **secp256k1 group structure, kernel-only** (large arithmetic evaluated by the kernel with
+  `decide +kernel`, see §1 "Kernel `Nat` arithmetic"):
+  - `Ecdlp/Proved/Secp256k1KernelFacts.lean` → `Secp256k1.p_special_form_kernel`,
+    `glv_lambda_eigenvalue_kernel`, `lambda_is_cube_root_kernel`, `lambda_ne_one_kernel`,
+    `beta_field_eigenvalue_kernel`, `beta_is_cube_root_kernel`, `lam_lt_n_kernel`,
+    `beta_lt_p_kernel`, `generator_on_curve_kernel`: kernel-checked twins, with identical
+    statements, of the nine `native_decide` facts in `Ecdlp/Secp256k1Verified.lean`
+    (bucket (b)). They are infrastructure and have no ledger rows of their own; the
+    downstream proofs below use them instead of the `native_decide` originals
+  - `Ecdlp/Proved/Secp256k1PrimeP.lean`, `Secp256k1PrimeN.lean` → `secp256k1_p_prime`,
+    `secp256k1_n_prime` (full Pratt certificates; witness powers via `Ecdlp.Kernel.powMod`,
+    `KernelPowMod.lean`); likewise `P256PrimeP.lean`, `P256PrimeN.lean` →
+    `p256_p_prime`, `p256_n_prime` (same generator)
+  - `Ecdlp/Proved/Secp256k1Curve.lean` → `secp256k1_Δ_ne_zero`, the `IsElliptic` instance,
+    `secp256k1_generator_equation`, `secp256k1_generator_nonsingular`
+  - `Ecdlp/Proved/GeneratorOrder.lean` → `secp256k1_generator_nsmul_n_eq_zero`,
+    `secp256k1_generator_addOrderOf`, `secp256k1_glvPoint_generator` (`[n]G`, `[λ]G`
+    evaluated on `ℕ` coordinates by `Ecdlp.Kernel.mulN` and transported to Mathlib's point
+    group by the kernel-checked bridge `Ecdlp.Kernel.mulN_rep`, `KernelScalarMul.lean`)
+  - `Ecdlp/Proved/CurveCardinalityExact.lean` → `secp256k1_card_point_eq_n`,
+    `secp256k1_no_nonzero_two_torsion`, `secp256k1_neg7_pow_ne_one`
+  - `Ecdlp/Proved/Secp256k1CardinalityGeneral.lean` → `secp256k1_card_point_eq_n_general`
+    (second derivation of `secp256k1_card_point_eq_n` through the curve-generic theorem and
+    the no-root certificate below; kernel-only because `secp256k1_generator_addOrderOf` and
+    the Pratt certificates it rests on are)
+  - `Ecdlp/Proved/CurveFullGroup.lean`, `PointGroupEquiv.lean`,
+    `GlvSubgroupEigenvalue.lean` → `secp256k1_grp_eq_top`, `secp256k1_point_isAddCyclic`,
+    `secp256k1_pointGroupEquiv`, `secp256k1_glvPoint_eq_lam_on_zmultiples`,
+    `secp256k1_glvHom_eq_zsmul_unconditional`
+  - `Ecdlp/Proved/TwoTorsionPoint.lean`, `GlvCubeRelation.lean`, `GlvEndomorphism.lean`,
+    `DivisionPolynomialDegree.lean` → `secp256k1_two_nsmul_eq_zero_iff`,
+    `secp256k1_glv_cube_relation`, `secp256k1_glv_preserves_equation`,
+    `secp256k1_glv_preserves_nonsingular`, `secp256k1_Ψ₂Sq_natDegree`,
+    `secp256k1_Ψ₃_natDegree`
 - `Ecdlp/Proved/PrimeOrderCardinality.lean` → `natCard_point_eq_of_addOrderOf`,
   `card_eq_of_prime_order_point`, `natCard_point_le`, `exists_cubic_root_of_two_nsmul_eq_zero`,
   `natCard_eq_of_dvd_of_lt_three_mul` (curve-generic exact count; no `native_decide`)
@@ -150,8 +194,12 @@ ring-identity curve invariants. Representative theorems (file → theorem):
   pyca/verified-garbage), `natCard_point_eq_of_noRoot`, and for nine standard curves
   `cubic_ne_zero`, `two_mul_add_one_lt_three_mul`, `card_eq_of_addOrderOf` (upstream-derived;
   see the ported table in `VERIFIED.md`). The 192- to 521-bit certificate checks use
-  `decide +kernel`: they are checked by kernel reduction, including the kernel's built-in
-  GMP-backed `Nat` arithmetic (part of the standard kernel); no compiler trust.
+  `decide +kernel`: the kernel evaluates them on `Nat` with its built-in GMP-backed
+  arithmetic, as described in §1 "Kernel `Nat` arithmetic"; no axiom beyond the standard
+  three and no compiler trust.
+- `Ecdlp/Proved/P256CardinalityExact.lean` → `p256_two_ne_zero`, `p256_no_two_torsion_cubic`
+  (the P-256 inputs of the exact count; kernel-only because the P-256 Pratt certificates
+  are; the count `p256_card_point_eq_n` itself is still compiler-trusted, see (c))
 - `Ecdlp/Proved/ParityFourier/*.lean` → `carrySum`, `carrySign`, `jEven`,
   `gOdd`, `gInvariant`, `jOrbitProduct`, `jBalance`, `relabel`,
   `halvingRecovers`, `groupHalvingRecovers`, `sigmaHatClosedForm`,
@@ -198,8 +246,8 @@ ring-identity curve invariants. Representative theorems (file → theorem):
 ### (b) `native_decide` / compiler-trusted — TCB INCLUDES the Lean compiler
 
 These depend on `Lean.ofReduceBool`. The proof's truth rests on the compiler in
-addition to the kernel. These are the concrete 256-bit / large-integer facts that no
-kernel reduction could feasibly check. Exact `file:line → theorem`:
+addition to the kernel. These are concrete large-integer facts currently discharged by
+`native_decide`. Exact `file:line → theorem`:
 
 - `Ecdlp/Secp256k1Verified.lean:8`  → `Secp256k1.p_special_form` (`p = 2²⁵⁶−2³²−977`)
 - `Ecdlp/Secp256k1Verified.lean:10` → `Secp256k1.glv_lambda_eigenvalue`
@@ -210,10 +258,16 @@ kernel reduction could feasibly check. Exact `file:line → theorem`:
 - `Ecdlp/Secp256k1Verified.lean:20` → `Secp256k1.lam_lt_n`
 - `Ecdlp/Secp256k1Verified.lean:21` → `Secp256k1.beta_lt_p`
 - `Ecdlp/Secp256k1Verified.lean:29` → `Secp256k1.generator_on_curve` (`Gy²≡Gx³+7 mod p`)
+
+  These nine ledger rows are unchanged. `Ecdlp/Secp256k1Verified.lean` stays byte-for-byte
+  as it is because its SHA-256 is pinned as an upstream binding of the committed
+  `experiments/engine/pkc_smooth_m16_regime_assurance_desk` artifact. Each of the nine
+  statements also has a kernel-checked twin in `Ecdlp/Proved/Secp256k1KernelFacts.lean`
+  (bucket (a), suffix `_kernel`), and the kernel-only group-structure chain uses only the
+  twins, so these `native_decide` originals are not in its trust base.
 - `Ecdlp/Proved/Secp256k1Params.lean:8`  → `p_mod_four` (`p ≡ 3 mod 4`)
 - `Ecdlp/Proved/Secp256k1Params.lean:11` → `three_dvd_p_sub_one`
 - `Ecdlp/Proved/Secp256k1Params.lean:15` → `three_dvd_n_sub_one`
-- `Ecdlp/Proved/Secp256k1Curve.lean:27`  → `secp256k1_Δ_ne_zero`
 - `Ecdlp/Proved/Invariants.lean:28`      → `secp256k1_c₆_ne_zero`
 - `Ecdlp/Proved/EmbeddingDegree.lean:32/34` → `secp256k1_embedding_degree_gt_100`
   (`pᵏ ≢ 1 mod n` for `1≤k≤100`; MOV/FR resistance)
@@ -256,37 +310,31 @@ depends on `Lean.ofReduceBool`). These are the rows tagged "Mathlib + native_dec
 - `Ecdlp/Proved/Secp256k1Order.lean:28,42` → `secp256k1_beta_orderOf`,
   `secp256k1_lambda_orderOf`, `secp256k1_three_cube_roots_of_unity` (order-3 / cube-root
   count; the `≠ 0` leaves go via `ZMod.natCast_eq_zero_iff` + `native_decide`)
-- `Ecdlp/Proved/DivisionPolynomialDegree.lean:25,53` → `secp256k1_Ψ₂Sq_natDegree`,
-  `secp256k1_Ψ₃_natDegree` (leading-coeff `≠ 0` leaf via `native_decide`)
 - `Ecdlp/Proved/FourDivisionPolynomial.lean:42` → `secp256k1_preΨ₄_natDegree`
-- `Ecdlp/Proved/Secp256k1Curve.lean:76` → `IsElliptic` instance,
-  `secp256k1_generator_equation`, `secp256k1_generator_nonsingular`
-- `Ecdlp/Proved/GlvEndomorphism.lean:` → `secp256k1_glv_preserves_equation`,
-  `secp256k1_glv_preserves_nonsingular` (β³=1 leaf is `native_decide`)
-- `Ecdlp/Proved/P256CardinalityExact.lean` → `p256_card_point_eq_n` (with
-  `p256_no_two_torsion_cubic`, `p256_two_ne_zero`): the argument and the no-root certificate
-  are kernel-only, but the result inherits `native_decide` through `p256_generator_addOrderOf`
-  (`n • G = 0`), the curve facts of `P256Curve.lean`, and the Pratt certificates
-- `Ecdlp/Proved/Secp256k1CardinalityGeneral.lean` → `secp256k1_card_point_eq_n_general`
-  (second derivation of `secp256k1_card_point_eq_n`; its 2-torsion step is kernel-only, the
-  order fact `secp256k1_generator_addOrderOf` and the Pratt certificates are not)
+- `Ecdlp/Proved/P256CardinalityExact.lean` → `p256_card_point_eq_n` (not its inputs
+  `p256_two_ne_zero` and `p256_no_two_torsion_cubic`, which are in (a)): the argument, the
+  no-root certificate and the P-256 Pratt certificates are kernel-only, but the count
+  inherits `native_decide` through `p256_generator_addOrderOf` (`P256GeneratorOrder.lean`:
+  `p256_generator_nsmul_n_eq_zero` (`n • G = 0`), `p256_generator_nonsingular`, and
+  `P256_generator_equation` from `P256Curve.lean`) and through `P256_Δ_ne_zero`
+  (`P256Curve.lean`, via the `P256.IsElliptic` instance)
 
-#### IMPORTANT mitigation — the primality certificates (`Secp256k1PrimeP.lean` / `Secp256k1PrimeN.lean`)
+#### The primality certificates (`Secp256k1PrimeP.lean` / `Secp256k1PrimeN.lean`) — kernel-only
 
 `secp256k1_p_prime` and `secp256k1_n_prime` are the most security-load-bearing facts in
-the repo, and they are deliberately structured to **minimize compiler trust**. They are
-**full Pratt certificates**: a kernel-checked recursion using Mathlib's
-`lucas_primality`, where the heavy mathematical content (the Lucas/Pocklington
-argument, factor primality propagated up a tree of sub-primes) is verified **by the
-kernel**, and `native_decide` is invoked only to discharge **small, local checks** —
-e.g. a single witness exponentiation `a^((p-1)/q) ≠ 1 mod p`, or a factorization
-identity `p − 1 = 2^a·(q₁·…)` (see `Secp256k1PrimeN.lean:10–12`, `:127`, `:160`;
-`Secp256k1PrimeP.lean:10–12`, `:175`). The compiler is therefore trusted only for
-bounded arithmetic facts that sit *inside* a kernel-checked Lucas argument — not for the
-primality conclusion itself. This is the correct way to use `native_decide` for a
-high-stakes fact, and is the reason the trade-off in Section 4 is acceptable.
-(Note: the ~22 internal recursive Pratt sub-lemmas are *not* counted as separate ledger
-results — see the retired "128" figure in `VERIFIED.md`.)
+the repo. They are **full Pratt certificates** generated by `scripts/pratt_certificate.py`:
+a kernel-checked recursion using Mathlib's `lucas_primality`. Every arithmetic leaf (each
+witness exponentiation `a^((m-1)/q) ≠ 1 mod m`, `a^(m-1) = 1 mod m`, and each factorization
+identity `m − 1 = ∏ qᵢ^eᵢ`) is now checked by the **kernel** with `decide +kernel`: the
+powers are computed on `Nat` by `Ecdlp.Kernel.powMod` and moved into `ZMod m` by the
+kernel-checked lemmas `kpow_eq_one` / `kpow_ne_one` (`KernelPowMod.lean`). They are in
+bucket (a) and do not depend on `Lean.ofReduceBool`; the same holds for the P-256
+certificates produced by the same generator. They therefore no longer contribute compiler
+trust to the secp256k1 group-structure chain (`#E(𝔽_p) = n`, `E(𝔽_p) ≃+ ℤ/n`, the GLV
+`[λ]` corollaries), nor to `p256_two_ne_zero` and `p256_no_two_torsion_cubic`; the P-256
+count `p256_card_point_eq_n` is still compiler-trusted through other leaves (bucket (c)).
+(Note: the ~22 internal recursive Pratt sub-lemmas are *not* counted as
+separate ledger results — see the retired "128" figure in `VERIFIED.md`.)
 
 **Count.** The generated full-ledger axiom audit prints the exact compiler-trusted set
 for every CI run; `scripts/check_axioms.py` reports the count and fails on any
@@ -331,10 +379,10 @@ count-consistency and stem-typecheck steps are doc-hygiene, not correctness guar
   judge of correctness" is, strictly, **not true for those declarations** — the compiler is
   also a judge. This is **`archive/docs/REVIEW_DOSSIER.md` finding 9** ("`native_decide` enlarges the
   TCB beyond the kernel"; severity LOW), whose verdict is *ACCEPTABLE trade-off,
-  honestly fixable*: the mitigation is correct where it matters most — the primality of
-  `p` and `n` structures `native_decide` to discharge only small checks inside a
-  kernel-checked Lucas argument (Section 2(c)). This report is the disclosure that
-  finding 9 asked VERIFIED.md to carry.
+  honestly fixable*. It is now fixed where it matters most: the primality of `p` and `n`
+  and the secp256k1 group-structure chain (`n • G = 0`, `#E(𝔽_p) = n`, `E(𝔽_p) ≃+ ℤ/n`,
+  the GLV `[λ]` corollaries) are kernel-only (Section 2(a)). This report is the disclosure
+  that finding 9 asked VERIFIED.md to carry for the remaining compiler-trusted results.
 
 - **The GLV map is proved an ADDITIVE endomorphism, but the eigenvalue identity is
   NOT proved.** `Ecdlp.Curve.glvPoint_add` (bundled as `glvHom : Point →+ Point` in

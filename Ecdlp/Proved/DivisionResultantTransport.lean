@@ -127,8 +127,8 @@ theorem secp256k1_isCoprime_preΨ'_odd_primes_of_torsion_bridge
     (hmOdd : Odd m) (hnOdd : Odd n) (hmn : m ≠ n) :
     IsCoprime (secp256k1.preΨ' m) (secp256k1.preΨ' n) := by
   classical
-  -- The existing secp256k1 field-primality and ellipticity instances are machine
-  -- certificates, so their already audited `Lean.ofReduceBool` dependency is inherited.
+  -- The secp256k1 field-primality and ellipticity instances are kernel-checked
+  -- (`decide +kernel`); this theorem depends on the standard axioms only.
   exact isCoprime_preΨ'_odd_primes_of_algebraicClosure_torsion_bridge
     secp256k1 (by simpa [Secp256k1OddDivisionPolynomialTorsionBridge] using hbridge)
     hm hn hmOdd hnOdd hmn
@@ -273,7 +273,7 @@ theorem secp256k1_isCoprime_preΨ'_of_integral_resultant_bad_prime_support
         (secp256k1Z.preΨ' m).resultant (secp256k1Z.preΨ' n)
           (oddDivisionDegree m) (oddDivisionDegree n) :=
       (ZMod.intCast_zmod_eq_zero_iff_dvd _ _).mp hzero
-    -- The imported primality certificate is the audited source of `Lean.ofReduceBool`.
+    -- The imported primality certificate is kernel-checked (`decide +kernel`).
     have hbad := hsupport Secp256k1.p Ecdlp.Primality.secp256k1_p_prime hpdiv
     norm_num [Secp256k1.p] at hbad
 

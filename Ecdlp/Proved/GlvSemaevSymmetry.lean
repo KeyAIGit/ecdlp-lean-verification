@@ -262,7 +262,7 @@ private theorem secp256k1_beta_cube :
         ((Secp256k1.beta ^ 2 + Secp256k1.beta + 1 : ℕ) :
           ZMod Secp256k1.p) = 0 := by
       rw [ZMod.natCast_eq_zero_iff]
-      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue
+      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue_kernel
     push_cast at h0
     linear_combination h0
   exact Ecdlp.Proved.cube_root_of_eigenvalue _ hβeig
@@ -307,7 +307,7 @@ private theorem secp256k1_beta_ne_one :
         ((Secp256k1.beta ^ 2 + Secp256k1.beta + 1 : ℕ) :
           ZMod Secp256k1.p) = 0 := by
       rw [ZMod.natCast_eq_zero_iff]
-      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue
+      exact Nat.dvd_of_mod_eq_zero Secp256k1.beta_field_eigenvalue_kernel
     push_cast at h0
     linear_combination h0
   have h3 : (3 : ZMod Secp256k1.p) ≠ 0 := by

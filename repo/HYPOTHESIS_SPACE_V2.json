@@ -9,7 +9,7 @@
     "state_path": "data/hypothesis_funnel_state.json",
     "expected_funnel_id": "HYP-SELECT-005-100K",
     "expected_attempts": 100000,
-    "expected_merkle_root_sha256": "f30f9341a963d4e611a22453728117db2e6ecd03348d4c067fc04f453622d686"
+    "expected_merkle_root_sha256": "f04be3548a1d66a59ca4653038ef0f78291f6ef12a2b5fc510501f25b86bfcf8"
   },
   "evidence_snapshot": {
     "paths": [

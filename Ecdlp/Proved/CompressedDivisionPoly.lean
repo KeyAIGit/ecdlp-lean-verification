@@ -17,7 +17,9 @@ import Ecdlp.Proved.CoprimePsi3Psi7
 > accepted by the Lean kernel in CI (`build` green) and imported into `Ecdlp.lean` — it is
 > part of the built, completeness-gated base (Lean v4.31.0, `mathlib4 @
 > fabf563a7c95a166b8d7b6efca11c8b4dc9d911f`). No axioms beyond the trusted base; the concrete
-> `m ∈ {3,5,7,9,11,13}` results inherit `Lean.ofReduceBool` from the `native_decide` degree facts.
+> `m ∈ {5,7,9,11,13}` results inherit `Lean.ofReduceBool` from the `native_decide` degree facts.
+> The `m = 3` form `secp256k1_Ψ₃_compressed` does not: its degree fact
+> `secp256k1_Ψ₃_natDegree` is checked by `decide +kernel`.
 
 ## The claim (FBL-PURE-008)
 

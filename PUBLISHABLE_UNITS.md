@@ -73,8 +73,8 @@ semantics."
 ## Unit 2 — Machine-checked Pratt primality certificates for secp256k1 `p` and `n`
 
 **Thesis.** The two security-load-bearing constants of secp256k1 — the field prime
-`p = 2²⁵⁶ − 2³² − 977` and the group order `n` — are certified prime by full, kernel-checked
-Pratt (Lucas/Pocklington) certificates whose compiler-trusted footprint is deliberately minimized.
+`p = 2²⁵⁶ − 2³² − 977` and the group order `n` — are certified prime by full Pratt
+(Lucas/Pocklington) certificates checked by the Lean kernel alone (no `native_decide`).
 
 **What is actually proved:**
 - `Ecdlp.Primality.secp256k1_p_prime` — `Ecdlp/Proved/Secp256k1PrimeP.lean`.
@@ -87,14 +87,13 @@ Pratt (Lucas/Pocklington) certificates whose compiler-trusted footprint is delib
   (`#{a | addOrderOf a = n} = n − 1`, i.e. `φ(n)` valid keys) — `ScalarGroupStructure.lean`.
 
 **Honest scope / caveats.**
-- These are **not kernel-pure**. Each is a kernel-checked recursion using Mathlib's
-  `lucas_primality`, where the heavy content (the Lucas/Pocklington argument and the tree of factor
-  sub-primes) is verified *by the kernel*, and `native_decide` discharges only small local leaves —
-  a single witness exponentiation `a^((p−1)/q) ≠ 1 mod p`, or a factorization identity
-  `p − 1 = 2^a·(q₁·…)`. So the Lean **compiler** (via `Lean.ofReduceBool`) is trusted for bounded
-  arithmetic *inside* a kernel-checked argument, never for the primality conclusion itself. This is
-  the correct minimization, but it must be disclosed — it is `archive/docs/REVIEW_DOSSIER.md` finding 9, verdict
-  "acceptable trade-off," and the whole point of `TRUST_REPORT.md` §2(c).
+- These are **kernel-only**. Each is a kernel-checked recursion using Mathlib's
+  `lucas_primality`; the arithmetic leaves (each witness exponentiation `a^((p−1)/q) ≠ 1 mod p`
+  and each factorization identity `p − 1 = 2^a·(q₁·…)`) are evaluated by the kernel on `Nat`
+  (`decide +kernel`, `Ecdlp.Kernel.powMod` in `KernelPowMod.lean`). `#print axioms` shows only
+  `propext`, `Classical.choice`, `Quot.sound`; the trusted base is the Lean kernel, including its
+  built-in big-number `Nat` arithmetic (`TRUST_REPORT.md` §1). Earlier versions discharged these
+  leaves with `native_decide` (`archive/docs/REVIEW_DOSSIER.md` finding 9).
 - Scope is exactly these two specific constants. The *method* (Pratt in Lean) is general; the
   *deliverable* is a fully machine-auditable certificate for secp256k1's `p` and `n`.
 - Internal recursive Pratt sub-lemmas (~22) are not separate ledger results.
@@ -104,9 +103,10 @@ contribution (the certificates as reusable `Fact` instances). Realistically a se
 rather than a standalone full paper — strongest as the reproducibility backbone cited by Unit 1.
 
 **Opening sentence.** "We present kernel-checked Pratt primality certificates in Lean 4 for both
-secp256k1 constants — the 256-bit field characteristic and the prime group order — structured so
-that native compilation is trusted only for bounded arithmetic leaves inside an otherwise
-kernel-verified Lucas–Pocklington recursion."
+secp256k1 constants — the 256-bit field characteristic and the prime group order — in which the
+kernel checks the whole Lucas–Pocklington recursion, including every arithmetic leaf, with no
+`native_decide`: the trusted base is the Lean kernel, including its built-in GMP-backed `Nat`
+arithmetic, and the Lean compiler is not trusted."
 
 ---
 
@@ -303,9 +303,11 @@ be conflated with Units 1–3:
 
 - **"0 axioms" means no axioms beyond `{propext, Classical.choice, Quot.sound}`** — not axiom-free
   foundations. Machine-enforced by the axiom-audit gate on a headline set (not the whole ledger).
-- **~33 load-bearing 256-bit facts use `native_decide`** and therefore trust the Lean compiler via
-  `Lean.ofReduceBool` (TCB beyond the kernel). This includes the two primality theorems, where the
-  trust is minimized to bounded leaves (Unit 2). `TRUST_REPORT.md` is the disclosure.
+- **Some concrete large-integer facts use `native_decide`** and therefore trust the Lean compiler
+  via `Lean.ofReduceBool` (TCB beyond the kernel); `TRUST_REPORT.md` §2(b)/(c) is the disclosure.
+  The two primality theorems (Unit 2) and the secp256k1 group-structure chain (`#E = n`,
+  `E(𝔽_p) ≃+ ℤ/n`, the GLV `[λ]` corollaries) do not: their 256-bit arithmetic is evaluated by
+  the kernel (`decide +kernel`).
 - **`#E(𝔽_p) = n` is proved** (curve-specifically, no Schoof — `CurveCardinalityExact.lean`: `#E≤2p+1<3n`
   plus `E[2]={O}`), so secp256k1 cofactor 1 is unconditional. Still open: the **geometric** torsion
   structure `E[n](F̄_p) ≅ (ℤ/n)²` (a distinct object from the rational `#E=n`), and general Hasse/Schoof.

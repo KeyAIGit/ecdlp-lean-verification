@@ -16,8 +16,10 @@
 > theorem (`PrimeOrderCardinality.lean`: `#E ≤ 2p+1 < 3n` and no rational 2-torsion)
 > and a kernel-checked certificate that `x³ − 3x + b` has no root in `𝔽_p`
 > (`CubicNoRootCertificate.lean`). The count inherits `native_decide` trust from
-> `n • G = 0` and the Pratt certificates. The route needs cofactor 1; the memo below
-> predates it. Prior art: pyca/verified-garbage proves `#E = n` for P-256/P-384/P-521 for
+> `n • G = 0`, the base point's equation and nonsingularity, and `Δ ≠ 0`
+> (`P256GeneratorOrder.lean`, `P256Curve.lean`); the P-256 Pratt certificates are
+> kernel-checked. (The secp256k1 count is kernel-only.) The route needs cofactor 1; the
+> memo below predates it. Prior art: pyca/verified-garbage proves `#E = n` for P-256/P-384/P-521 for
 > its own specification curve type, and kernel-checks the same no-root certificates; this
 > repository's result is for `Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`
 > (`THIRD_PARTY_NOTICES.md`). The release node `p256-exact-cardinality` stays outside

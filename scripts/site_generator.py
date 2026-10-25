@@ -377,7 +377,7 @@ def featured_results(product: dict, verified_index: dict) -> str:
             "A checked foundation for the curve field",
             "A formal primality certificate establishes that the secp256k1 field modulus p is prime.",
             "Provides an explicit foundation for subsequent arithmetic over the finite field.",
-            "The certificate uses compiler trust. Primality alone does not establish the security of a protocol.",
+            "The Lean kernel checks the whole certificate; its arithmetic leaves use decide +kernel with the kernel's built-in big-number arithmetic, so no compiler trust is involved. Primality alone does not establish the security of a protocol.",
         ),
         (
             "Complex.exists_polynomial_of_norm_le_pow",
