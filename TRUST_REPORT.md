@@ -54,7 +54,7 @@ facts in `Secp256k1KernelFacts.lean`, and the 192- to 521-bit no-root certificat
 evaluates the computation on `Nat` (`Ecdlp.Kernel.powMod`, `Ecdlp.Kernel.mulN`,
 `Ecdlp.CubicCert.powT`), using its built-in arbitrary-precision (GMP-backed) natural-number
 operations. These operations are part of the Lean 4 kernel (item 1); `decide +kernel` adds
-no axiom and no compiler trust, and `#print axioms` shows only the standard three.
+no axiom and no compiler trust, and `#print axioms` shows at most the standard three.
 
 Nothing in the repo depends on `sorryAx`, `Lean.trustCompiler`, or `Lean.guardMsgsAx`;
 these are on the audit's permanent forbidden list.

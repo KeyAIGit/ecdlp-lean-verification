@@ -79,7 +79,7 @@
       "Mathlib (`lucas_primality`) + kernel (`decide +kernel`, `Ecdlp.Kernel.powMod`)": 4,
       "Mathlib + kernel scalar-multiplication bridge (`decide +kernel`, `KernelScalarMul.lean`)": 3,
       "native_decide + Pratt (`lucas_primality`)": 2,
-      "Mathlib + kernel `β³=1` leaf (`decide +kernel`)": 2,
+      "Mathlib + kernel leaf `β²+β+1 ≡ 0 (mod p)` (`beta_field_eigenvalue_kernel`, `decide +kernel`)": 2,
       "Mathlib (`map_cyclic`)": 2,
       "Mathlib (`Finite.of_injective`) via `instFinitePoint": 2,
       "Mathlib + `linear_combination": 2,
@@ -2611,7 +2611,7 @@
         "Ecdlp/Proved/GlvEndomorphism.lean"
       ],
       "claim": "GLV endomorphism preserves the curve (`(x,y)↦(βx,y)` keeps `Y²=X³+7`, via `β³=1`)",
-      "method": "Mathlib + kernel `β³=1` leaf (`decide +kernel`)",
+      "method": "Mathlib + kernel leaf `β²+β+1 ≡ 0 (mod p)` (`beta_field_eigenvalue_kernel`, `decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -2631,7 +2631,7 @@
         "Ecdlp/Proved/GlvEndomorphism.lean"
       ],
       "claim": "GLV endomorphism preserves nonsingularity (smooth `(x,y)` ↦ smooth `(βx,y)`; `β` a unit)",
-      "method": "Mathlib + kernel `β³=1` leaf (`decide +kernel`)",
+      "method": "Mathlib + kernel leaf `β²+β+1 ≡ 0 (mod p)` (`beta_field_eigenvalue_kernel`, `decide +kernel`)",
       "status": "proved",
       "area": "curve-torsion",
       "family_id": "family-curve-torsion",
@@ -2810,7 +2810,7 @@
       "files": [
         "Ecdlp/Proved/GlvDivPoly.lean"
       ],
-      "claim": "GLV covariance law of the division polynomials (`ψ_m(βx) = β^((m²−1)/2)·ψ_m(x)`: for `j=0` each `ψ_m` sits on one exponent-residue mod 3, so `β` acts by a scalar — `Ψ₃(βx)=β·Ψ₃(x)` (`secp256k1_Ψ₃_eval_glv`), and `preΨ' 5`, `preΨ' 7`, `Ψ₂Sq` are `β`-invariant (`secp256k1_{preΨ₅,preΨ₇,Ψ₂Sq}_eval_glv_invariant`), from the explicit forms + `β³=1`. Explains the failed experiment #100: `Res(preΨ' 5(X), preΨ' 5(βX)) = Res(preΨ' 5, preΨ' 5) = 0` identically because `preΨ' 5` is `β`-invariant — the split/inert resultant test was ill-posed, not a signal. The residual is closed by a kernel-only `linear_combination`, and the underlying cube fact `β³=1` lifts `Secp256k1.beta_field_eigenvalue_kernel`, the kernel-checked twin (`decide +kernel`) of `Secp256k1.beta_field_eigenvalue`; standard axioms only)",
+      "claim": "GLV covariance law of the division polynomials (`ψ_m(βx) = β^((m²−1)/2)·ψ_m(x)`: for `j=0` each `ψ_m` sits on one exponent-residue mod 3, so `β` acts by a scalar — `Ψ₃(βx)=β·Ψ₃(x)` (`secp256k1_Ψ₃_eval_glv`), and `preΨ' 5`, `preΨ' 7`, `Ψ₂Sq` are `β`-invariant (`secp256k1_{preΨ₅,preΨ₇,Ψ₂Sq}_eval_glv_invariant`), from the explicit forms + `β³=1`. Explains the failed experiment #100: `Res(preΨ' 5(X), preΨ' 5(βX)) = Res(preΨ' 5, preΨ' 5) = 0` identically because `preΨ' 5` is `β`-invariant — the split/inert resultant test was ill-posed, not a signal. The residual is closed by a kernel-only `linear_combination`; the cube fact `β³=1` is derived by `cube_root_of_eigenvalue` from `β²+β+1 = 0` in `𝔽_p`, which follows from `Secp256k1.beta_field_eigenvalue_kernel` (`(β²+β+1) mod p = 0` by `decide +kernel`), the kernel-checked twin of the `native_decide` fact `Secp256k1.beta_field_eigenvalue`, which these proofs no longer use; standard axioms only)",
       "method": "Mathlib + `cube_root_of_eigenvalue` + explicit ψ forms",
       "status": "proved",
       "area": "curve-torsion",
@@ -3270,7 +3270,7 @@
       "files": [
         "Ecdlp/Proved/CompressedDivisionPoly.lean"
       ],
-      "claim": "Compressed division polynomials — cube-covariance structural core + `m∈{3,5,7}` forms (`cube_covariant_support`/`exists_comp_X_pow_of_invariant`/`exists_X_mul_comp_of_covariant`: over any field with a primitive cube root `β`, `p(βX)=c·p(X)` forces every support exponent `k` to satisfy `β^k=c`, hence `c=1 ⇒ p∈F[X³]` and `c=β ⇒ p∈X·F[X³]` with the matching `deg` drop — the foundation-free structural heart. Applied unconditionally to secp256k1's concrete forms: `Ψ₃=X·R₃(X³)` (`deg R₃=1`), `preΨ₅=R₅(X³)` (`deg R₅=4`), `preΨ₇=R₇(X³)` (`deg R₇=8`), plus the new bare degree `deg preΨ₉=40`. For `m∈{9,11,13}` the compressed form is stated conditional on the polynomial-level `β`-covariance of `ψ_m` (`preΨ'_compressed_of_{invariant,covariant}`) — the isolated missing lemma (repo has only the `eval`-level covariance, `m∈{3,5,7}`). Concrete forms inherit `Lean.ofReduceBool` from `native_decide` degree facts; the structural core does not. Drafted with the Kimi K3 proof-drafter, kernel-verified in CI)",
+      "claim": "Compressed division polynomials — cube-covariance structural core + `m∈{3,5,7}` forms (`cube_covariant_support`/`exists_comp_X_pow_of_invariant`/`exists_X_mul_comp_of_covariant`: over any field with a primitive cube root `β`, `p(βX)=c·p(X)` forces every support exponent `k` to satisfy `β^k=c`, hence `c=1 ⇒ p∈F[X³]` and `c=β ⇒ p∈X·F[X³]` with the matching `deg` drop — the foundation-free structural heart. Applied unconditionally to secp256k1's concrete forms: `Ψ₃=X·R₃(X³)` (`deg R₃=1`), `preΨ₅=R₅(X³)` (`deg R₅=4`), `preΨ₇=R₇(X³)` (`deg R₇=8`), plus the new bare degree `deg preΨ₉=40`. For `m∈{9,11,13}` the compressed form is stated conditional on the polynomial-level `β`-covariance of `ψ_m` (`preΨ'_compressed_of_{invariant,covariant}`) — the isolated missing lemma (repo has only the `eval`-level covariance, `m∈{3,5,7}`). `secp256k1_preΨ₅_compressed`, `secp256k1_preΨ₇_compressed` and `secp256k1_preΨ₉_natDegree` inherit `Lean.ofReduceBool` from `native_decide` degree facts; `secp256k1_Ψ₃_compressed` does not (its degree fact `secp256k1_Ψ₃_natDegree` is checked by `decide +kernel`), nor does the structural core. Drafted with the Kimi K3 proof-drafter, kernel-verified in CI)",
       "method": "Mathlib (`Polynomial.expand`/`contract`/`comp`) + repo concrete `ψ_m` forms + `natDegree_preΨ'",
       "status": "proved",
       "area": "curve-torsion",
