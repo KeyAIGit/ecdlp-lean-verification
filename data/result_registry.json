@@ -7,8 +7,8 @@
   "anonymous_instance_exemptions": 7,
   "unresolved_reference_count": 0,
   "coverage_percent": 100.0,
-  "declaration_count": 1673,
-  "distinct_qualified_names": 1673,
+  "declaration_count": 1672,
+  "distinct_qualified_names": 1672,
   "verified_md_citations": 756,
   "unresolved_references": [],
   "resolution_exemptions": [
@@ -22256,13 +22256,6 @@
       "kind": "theorem",
       "file": "ResearchOS/AnalyticNumberTheory/RiemannHypothesis/ZeroSetSlice.lean",
       "line": 581
-    },
-    "in": {
-      "name": "in",
-      "namespace": "",
-      "kind": "instance",
-      "file": "Ecdlp/Proved/Secp256k1CardinalityGeneral.lean",
-      "line": 22
     },
     "isClosed_riemannXi_divisor_support": {
       "name": "isClosed_riemannXi_divisor_support",

@@ -3,7 +3,7 @@
   "kind": "navigation_only_aggregate",
   "purpose": "Cross-lane discovery of verified results while preserving the two canonical ledger and accounting boundaries.",
   "generated_from": {
-    "data/result_registry.json": "5c3dd2ceb88e0679a60595b6ea6da192b7933661d4e0c435f5ee6be789060a77",
+    "data/result_registry.json": "dffe3e393e971be5e925c6ea4802d2f37a44c7ac7a0168a798e0214e236315ef",
     "data/researchos_result_registry.json": "480fdf20fd6e53ca9d46344aa2f2c3268ae4b44d05bc421a02f2f0ef2925b02a",
     "data/stats.json": "5d460fb8285d1f3dbdc7be77bc31a9a4bf9f766cb4e03fd5411360a714e3a37e"
   },

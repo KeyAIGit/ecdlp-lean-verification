@@ -18,8 +18,8 @@ the same count is obtained from the curve-generic
 The existing theorem and its proof are unchanged. This corollary is kernel-only: its other
 inputs, `secp256k1_generator_addOrderOf` (`n • G = 0`, `GeneratorOrder.lean`), the curve facts
 of `Secp256k1Curve.lean` and the Pratt certificates for `p` and `n`, are checked by
-`decide +kernel` (the hypothesis `[Fact (Nat.Prime p)]` is discharged at use sites by the
-instance in `Secp256k1PrimeP.lean`), and `#print axioms` shows only `propext`,
+`decide +kernel` (the hypothesis `[Fact (Nat.Prime p)]` is discharged at use sites by the instance
+in `Secp256k1PrimeP.lean`), and `#print axioms` shows only `propext`,
 `Classical.choice` and `Quot.sound`.
 -/
 

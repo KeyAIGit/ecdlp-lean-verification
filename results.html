@@ -77,7 +77,7 @@
   <p>A formal primality certificate establishes that the secp256k1 field modulus p is prime.</p>
   <dl class="result-explainer">
     <div><dt>Why it is useful</dt><dd>Provides an explicit foundation for subsequent arithmetic over the finite field.</dd></div>
-    <div><dt>Scope</dt><dd>The certificate uses compiler trust. Primality alone does not establish the security of a protocol.</dd></div>
+    <div><dt>Scope</dt><dd>The Lean kernel checks the whole certificate; its arithmetic leaves use decide +kernel with the kernel&#x27;s built-in big-number arithmetic, so no compiler trust is involved. Primality alone does not establish the security of a protocol.</dd></div>
   </dl>
   <div class="card-links"><a href="results.html#ecdlp-ledger-065">Read the ledger entry</a>
     <a href="https://github.com/KeyAIGit/-ecdlp-lean-verification/blob/main/Ecdlp/Proved/Secp256k1PrimeP.lean#L194">Lean source</a></div>
