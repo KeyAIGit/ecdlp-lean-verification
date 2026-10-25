@@ -4,8 +4,8 @@
   "purpose": "A machine-readable, navigable index of the machine-checked (Lean 4 + Mathlib, no sorry or project-defined axioms) structure of the ECDLP landscape for secp256k1: verified ledger rows, their declaration and import dependencies, the corpus claims they verify, the formalization barriers that bound them, and the target-specific route/foundation decisions. It also carries the generated Research Engine v0 selection and retained outcome state, while keeping bounded exploration distinct from route promotion. Built for a future automated reasoner to load the known-and-verified frontier without re-deriving it.",
   "invariant": "Every ledger row resolves to declarations accepted by the Lean kernel with no sorry or project-defined axioms; compiler-trusted native_decide use is disclosed separately. This graph is derived evidence, not a proof.",
   "counts": {
-    "theorems": 328,
-    "ledger_rows": 328,
+    "theorems": 345,
+    "ledger_rows": 345,
     "barriers": 6,
     "families": 9,
     "critical_nodes": 17,
@@ -37,10 +37,10 @@
     "decision_level_bounded_authorizations": 1,
     "selected_structural_routes": 1,
     "promoted_routes": 0,
-    "edges": 1286,
+    "edges": 1359,
     "by_edge_type": {
-      "imports": 599,
-      "member_of": 328,
+      "imports": 655,
+      "member_of": 345,
       "grounded_in_source_claim": 62,
       "requires_foundation": 41,
       "supports": 31,
@@ -226,15 +226,32 @@
       "Mathlib (Fourier inversion on `ZMod n` and `ZMod p`, triangle inequality)": 1,
       "weilTransfer` + `l1lowBound": 1,
       "Mathlib (`Polynomial.resultant`, `Matrix.det_succ_row_zero`, `ring`)": 1,
-      "Mathlib (`compute_degree`, `Polynomial.card_roots'`)": 1
+      "Mathlib (`compute_degree`, `Polynomial.card_roots'`)": 1,
+      "Mathlib (reindexing `k ↦ −k`, `legendreSym`) + `jEven`, `gOdd": 1,
+      "evenFeatureZero` + Mathlib (negation on `WeierstrassCurve.Affine.Point`)": 1,
+      "Mathlib (Fourier inversion on `ZMod n`, triangle inequality)": 1,
+      "Mathlib (Fourier inversion on `ZMod n`) + the `ℓ¹` bound of `σ̂` from `ProofsWT": 1,
+      "weilTransfer` + `l1JBound`, `l1GBound` + the `ℓ¹` bound of `σ̂": 1,
+      "Mathlib (`WeierstrassCurve.Affine` slope and addition formulas) + one `linear_combination` certificate, elaborated under a raised `maxHeartbeats` (2000000)": 1,
+      "slopeCocycleLaw` + Mathlib (`Finset` sums over the finite point group)": 1,
+      "weilTransferLsb`, `weilTransferLsbJ`, `weilTransferLsbG": 1,
+      "Mathlib (Cauchy–Schwarz, Fourier inversion via `ZMod.stdAddChar`) + the low-pass approximation of `J` from the `jConcentration` proof (re-derived here)": 1,
+      "jHeavy` + `accessCorrelation` + `zeroNotInGammaJ` + Mathlib (`addOrderOf`, `nsmul` arithmetic)": 1,
+      "the `jRecoverFromHeavyList` argument + `l1lowBound": 1,
+      "Mathlib (reindexing by a unit, `Finset` counting, Parseval on `ZMod n`) + `normLemma": 1,
+      "Mathlib (`Finset.card` bounds, `sq_eq_one_iff`) + `relabel`, `groupHalvingRecovers": 1,
+      "Mathlib (reindexing along the involution `k ↦ 2c − k`, triangle inequality)": 1,
+      "windowRefined` + negation on `WeierstrassCurve.Affine.Point": 1,
+      "majorityVote` per step + union bound over the `L` steps + `voteAdvantage` + Mathlib (`round`, halving in `ZMod n`)": 1,
+      "Mathlib (Hoeffding: `HasSubgaussianMGF.measure_sum_ge_le_of_iIndepFun`, `hasSubgaussianMGF_of_mem_Icc_of_integral_eq_zero`; `ZMod.val_add`)": 1
     },
     "by_area": {
       "curve-torsion": 154,
       "primality": 60,
       "other": 34,
       "generic-hardness": 30,
+      "bit-security": 30,
       "protocol-soundness": 23,
-      "bit-security": 13,
       "attack-resistance": 7,
       "reduction": 6,
       "params": 1
@@ -5101,7 +5118,7 @@
       "files": [
         "Ecdlp/Proved/SemaevDegree.lean"
       ],
-      "claim": "Semaev polynomial has degree exactly 2 in each variable (`secp256k1_S₃poly_natDegree`: for `x₁ ≠ x₂` over `𝔽_p`, `S₃(x₁,x₂,·)` is a degree-exactly-2 univariate polynomial, leading coefficient `(x₁−x₂)² ≠ 0`. Base case of the classical `deg_{xᵢ} Sₘ = 2^{m−2}` degree tower — the doubling that makes higher-order decompositions blow up. Via `Polynomial.natDegree_quadratic`)",
+      "claim": "Semaev polynomial has degree exactly 2 in its last variable when `x₁ ≠ x₂` (secp256k1) (`secp256k1_S₃poly_natDegree`: for `x₁ ≠ x₂` over `𝔽_p`, `S₃(x₁,x₂,·)` is a degree-exactly-2 univariate polynomial, leading coefficient `(x₁−x₂)² ≠ 0`. Base case of the classical `deg_{xᵢ} Sₘ = 2^{m−2}` degree tower — the doubling that makes higher-order decompositions blow up. Via `Polynomial.natDegree_quadratic`)",
       "method": "Mathlib (`Polynomial.natDegree_quadratic`)",
       "status": "proved",
       "area": "other",
@@ -6856,6 +6873,386 @@
       "family_id": "family-other",
       "dependency_depth": 5,
       "gated": true
+    },
+    {
+      "id": "thm-328",
+      "name": "Ecdlp.ParityFourier.ProofsK.parityMismatchZero`, `evenFeatureZero`, `oddFeatureZero",
+      "short_name": "parityMismatchZero`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsK",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsK",
+        "Ecdlp.Proved.ParityFourier.StatementsK"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsK.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsK.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsK.lean"
+      ],
+      "claim": "Even and odd functions are orthogonal on the nonzero residues; features of `[k]G` that are even or odd under negation have zero correlation with the parity, carry and ordered-sector signs (`parityMismatchZero`: odd `n > 0`, prime or not, `F, T : ZMod n → ℂ` with `F(−k) = F(k)` for every `k` and `T(−k) = −T(k)` for `k ≠ 0`: `Σ_{k≠0} F(k)·T(k) = 0`. `evenFeatureZero`: an additive commutative group `A`, `G : A` with `addOrderOf G = n` an odd prime, `[k]G = k.val • G`, `Φ : A → ℂ` with `Φ(−P) = Φ(P)` for every `P`: `Σ_{k≠0} Φ([k]G)·σ(k) = 0`; `Σ_{k≠0} Φ([k]G)·g(k) = 0` for every root `lam` of `lam² + lam + 1 = 0`; and `Σ_{k≠0} Φ([k]G)·(k/n) = 0` (Legendre symbol) when `n ≡ 3 (mod 4)`. `oddFeatureZero`: the same setting with `Ψ(−P) = −Ψ(P)` whenever `P ≠ −P`: `Σ_{k≠0} Ψ([k]G)·J(k) = 0` for every root `lam`, and `Σ_{k≠0} Ψ([k]G)·(k/n) = 0` when `n ≡ 1 (mod 4)`. Exact symmetry identities: the terms at `k` and `−k` cancel. Nothing is stated about features that are neither even nor odd, and nothing about recovering `k`)",
+      "method": "Mathlib (reindexing `k ↦ −k`, `legendreSym`) + `jEven`, `gOdd",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 2,
+      "gated": true
+    },
+    {
+      "id": "thm-329",
+      "name": "Ecdlp.ParityFourier.ProofsK.xOnlyZero",
+      "short_name": "xOnlyZero",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsK",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsK",
+        "Ecdlp.Proved.ParityFourier.StatementsK"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsK.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsK.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsK.lean"
+      ],
+      "claim": "*(alternate/supporting: curve instance)* x-only features of a Weierstrass point have zero correlation with the parity and carry signs (any field `K`, any Weierstrass curve `W` over `K`, a point `G` with `addOrderOf G = n` an odd prime, `Φ : K → ℂ` and any value `c₀` at `O`, the feature `P ↦ Φ(x(P))`: `Σ_{k≠0} Φ(x([k]G))·σ(k) = 0`, the same with `g(k)` for every root `lam` of `lam² + lam + 1 = 0`, and with `(k/n)` when `n ≡ 3 (mod 4)`. The previous row's `evenFeatureZero` applied to the x-coordinate, which negation of a point does not change; not counted as a distinct result)",
+      "method": "evenFeatureZero` + Mathlib (negation on `WeierstrassCurve.Affine.Point`)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 2,
+      "gated": true
+    },
+    {
+      "id": "thm-330",
+      "name": "Ecdlp.ParityFourier.ProofsCT.charTransfer",
+      "short_name": "charTransfer",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsCT",
+        "Ecdlp.Proved.ParityFourier.StatementsCT"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsCT.lean"
+      ],
+      "claim": "*(alternate/supporting: inner step of `weilTransfer`)* Fourier transfer: a uniform bound on the twisted sums of `F` bounds its correlation with every `T` (`n > 0`, any `F, T : ZMod n → ℂ`, real `C`, `e_n(x) = exp(2πi·[x]/n)`: if `‖Σ_{k≠0} F(k)·e_n(α·k)‖ ≤ C` for every `α`, then `‖Σ_{k≠0} F(k)·T(k)‖ ≤ C·Σ_α ‖ft T α‖`. This is the inner step of the argument of `weilTransfer` (the `weilTransfer` row above): Fourier inversion of `T` on `ZMod n` and the triangle inequality. That proof applies the same step, for each `a ≠ 0`, to `F(k) = e_p(a·V(k))`, whose twisted sums are the twisted sums of `V` bounded in its hypothesis, and adds the Fourier expansion of `b` on `ZMod p`. Here the hypothesis is the bound on the twisted sums of `F` itself. Honest scope: the twisted-sum bound is a hypothesis; no character-sum bound is proved here)",
+      "method": "Mathlib (Fourier inversion on `ZMod n`, triangle inequality)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 5,
+      "gated": true
+    },
+    {
+      "id": "thm-331",
+      "name": "Ecdlp.ParityFourier.ProofsCT.l1JBound`, `l1GBound",
+      "short_name": "l1JBound`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsCT",
+        "Ecdlp.Proved.ParityFourier.StatementsCT"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsCT.lean"
+      ],
+      "claim": "Fourier `ℓ¹` bounds of the ordered-sector sign `J` and the carry sign `g` (odd `n > 0`, prime or not, and every `lam : ZMod n`: `Σ_γ ‖ft J γ‖ ≤ (2 + log n)²` and `Σ_γ ‖ft g γ‖ ≤ (2 + log n)³`. `J` and `g` are products of two and three dilated parity signs, so their Fourier expansions have `ℓ¹` norm at most the square and the cube of that of `σ̂`, which is at most `2 + log n`)",
+      "method": "Mathlib (Fourier inversion on `ZMod n`) + the `ℓ¹` bound of `σ̂` from `ProofsWT",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 5,
+      "gated": true
+    },
+    {
+      "id": "thm-332",
+      "name": "Ecdlp.ParityFourier.ProofsCT.weilTransferLsbJ`, `weilTransferLsbG",
+      "short_name": "weilTransferLsbJ`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsCT",
+        "Ecdlp.Proved.ParityFourier.StatementsCT"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsCT.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsCT.lean"
+      ],
+      "claim": "*(alternate/supporting: direct corollary)* Lowest-bit correlation bounds against `J` and `g`, conditional on an assumed twisted-sum bound `2√p` (odd primes `n`, `p`, any `V : ZMod n → ZMod p` whose twisted sums with `a ≠ 0` all have norm at most `2√p`: for every `lam`, `‖Σ_{k≠0} σ(V k)·J(k)‖ ≤ (n − 1)/p + 2√p·(2 + log p)·(2 + log n)²`; for every root `lam` of `lam² + lam + 1 = 0`, `‖Σ_{k≠0} σ(V k)·g(k)‖ ≤ 2√p·(2 + log p)·(2 + log n)³`. `weilTransfer` with `b = σ` on `ZMod p` and `T = J` or `g`, combined with the `ℓ¹` bounds of the previous row and of `σ̂` on `ZMod p`; for `g` the `σ̂(0)` term vanishes because `Σ_{k≠0} g(k) = 0`. Not counted as a distinct result. Honest scope: the `2√p` bound is assumed, not proved here for any map, and is not known to hold for elliptic-curve coordinate maps; for small `n` and `p` the right-hand sides exceed the trivial bound `n − 1`)",
+      "method": "weilTransfer` + `l1JBound`, `l1GBound` + the `ℓ¹` bound of `σ̂",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 5,
+      "gated": true
+    },
+    {
+      "id": "thm-333",
+      "name": "Ecdlp.ParityFourier.ProofsZeta.slopeCocycleLaw",
+      "short_name": "slopeCocycleLaw",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsZeta",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsZeta",
+        "Ecdlp.Proved.ParityFourier.StatementsZeta"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsZeta.lean"
+      ],
+      "claim": "The chord–tangent slope is a normalised symmetric 2-cocycle on a short Weierstrass curve (any field `F`, a curve `W` with `[W.IsElliptic]` and `[W.IsShortNF]` (`y² = x³ + a₄x + a₆`, `Δ ≠ 0`), `λ(P, R)` Mathlib's slope of the line through two affine points (the tangent slope when they coincide, `0` for a vertical pair) and `λ = 0` when `P` or `R` is `O`: for all points `P, Q, R`, `λ(P, Q) + λ(P + Q, R) = λ(Q, R) + λ(P, Q + R)`, `λ(P, Q) = λ(Q, P)` and `λ(O, Q) = 0`. An exact identity on Mathlib's point group; curves that are not in short normal form are not covered)",
+      "method": "Mathlib (`WeierstrassCurve.Affine` slope and addition formulas) + one `linear_combination` certificate, elaborated under a raised `maxHeartbeats` (2000000)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 6,
+      "gated": true
+    },
+    {
+      "id": "thm-334",
+      "name": "Ecdlp.ParityFourier.ProofsZeta.zetaCoboundary`, `anomalousSumHom",
+      "short_name": "zetaCoboundary`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsZeta",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsZeta",
+        "Ecdlp.Proved.ParityFourier.StatementsZeta"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsZeta.lean"
+      ],
+      "claim": "*(alternate/supporting: averaging of the previous row over the finite point group)* The finite-field Weierstrass zeta function `ζ_E` is the unique coboundary of the slope cocycle (the setting of the previous row with finitely many points, `n = #W(F)`, `ζ_E(P) = −(1/n)·Σ_R λ(P, R)`. If `n ≠ 0` in `F` (`zetaCoboundary`): `ζ_E(P + Q) = ζ_E(P) + ζ_E(Q) + λ(P, Q)`; every `z` with this property equals `ζ_E`; `ζ_E(O) = 0`, `ζ_E(−P) = −ζ_E(P)` and `Σ_P ζ_E(P) = 0`; and `ζ_E(Q) = −(1/n)·Σ_{i<n} λ([i]Q, Q)`. If `n = 0` in `F` (`anomalousSumHom`): `P ↦ Σ_R λ(P, R)` is additive. The coboundary formula and the additivity come from summing the cocycle identity of the previous row over `R`, a generic finite-group averaging argument. Exact identities; no statement about discrete logarithms)",
+      "method": "slopeCocycleLaw` + Mathlib (`Finset` sums over the finite point group)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 6,
+      "gated": true
+    },
+    {
+      "id": "thm-335",
+      "name": "Ecdlp.ParityFourier.ProofsZeta.zetaLsbTransfer",
+      "short_name": "zetaLsbTransfer",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsZeta",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsZeta",
+        "Ecdlp.Proved.ParityFourier.StatementsZeta"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsZeta.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsZeta.lean"
+      ],
+      "claim": "*(alternate/supporting: instantiation)* Lowest-bit correlation bounds for the zeta values `ζ_E([k]G)`, conditional on an assumed twisted-sum bound for them (odd primes `p ≠ n`, a curve `W` over `ZMod p` with `[W.IsElliptic]`, `[W.IsShortNF]` and exactly `n` points, `G ≠ O`: if every twisted sum of `k ↦ ζ_E([k]G)` with `a ≠ 0` has norm at most `2√p`, then the bounds of `weilTransferLsb` (against `σ`), `weilTransferLsbJ` (against `J`, every `lam`) and `weilTransferLsbG` (against `g`, every root `lam`) hold for `V(k) = ζ_E([k]G)`. Those three theorems instantiated at this `V`; the implication does not use the curve hypotheses. Not counted as a distinct result. Honest scope: the twisted-sum bound for `ζ_E` is an assumption and is not proved here; nothing is stated about secp256k1)",
+      "method": "weilTransferLsb`, `weilTransferLsbJ`, `weilTransferLsbG",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 6,
+      "gated": true
+    },
+    {
+      "id": "thm-336",
+      "name": "Ecdlp.ParityFourier.ProofsC44H.heavyCore`, `jHeavy",
+      "short_name": "heavyCore`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC44H",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC44H",
+        "Ecdlp.Proved.ParityFourier.StatementsC44H"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44H.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44H.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44H.lean"
+      ],
+      "claim": "A correlation with a function close to a trigonometric polynomial forces a heavy Fourier coefficient; the case of `J` (`heavyCore`: `n > 0`, `w, f, F : ZMod n → ℂ` with `F(x) = Σ_{i∈I} c_i·e_n(m_i·x)`, `‖w‖ ≤ 1`, `η > 0`, `2η ≤ Re((1/n)·Σ_x w(x)·f(x))` and `(1/n)·Σ_x ‖f(x) − F(x)‖² ≤ η²` ⇒ some `i ∈ I` has `η ≤ (Σ_j ‖c_j‖)·‖ft w (−m_i)‖`. `jHeavy`: prime `n ≠ 2`, `lam² + lam + 1 = 0`, `B ≥ 1`, real `w` with `abs(w) ≤ 1`, `k ≠ 0`, `η > 0` with `(1 + L1low(B))²/B ≤ η²`: if `(1/n)·Σ_x w(x)·J(x·k) ≥ 2η`, then some `α ∈ Γ_J(lam, B)` has `η ≤ L1low(B)²·‖ft w (α·k)‖`. The hypotheses force `η ≤ 1/2`; for small `n`, `Γ_J(lam, B)` can be all of `ZMod n`, and then the conclusion carries no concentration content)",
+      "method": "Mathlib (Cauchy–Schwarz, Fourier inversion via `ZMod.stdAddChar`) + the low-pass approximation of `J` from the `jConcentration` proof (re-derived here)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-337",
+      "name": "Ecdlp.ParityFourier.ProofsC44R.jRecoverFromHeavyList`, `jReductionSound",
+      "short_name": "jRecoverFromHeavyList`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC44R",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC44R",
+        "Ecdlp.Proved.ParityFourier.StatementsC44R"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44R.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44R.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44R.lean"
+      ],
+      "claim": "Recovery of the discrete logarithm from a predictor of `J`, given a list that contains every heavy Fourier coefficient of the access function (an additive group `A` with decidable equality, `G` with `addOrderOf G = n` a prime `≠ 2`, `lam² + lam + 1 = 0`, a predictor `Pred : A → ℤ` with values `±1` at the nonzero multiples of `G` and `#{u ≠ 0 : Pred([u]G) = J(u)} ≥ (1/2 + ε)(n − 1)`, `η = ε − 1/n > 0`, `B ≥ 1` with `3(2B + 1)² < n` and `(1 + L1low(B))²/B ≤ η²`, a threshold `τ ≤ (η / L1low(B)²)²`, any `k : ZMod n` and any finite `Lst` that contains every `β` with `‖ft w β‖² ≥ τ`, where `w(x) = Pred([x]([k]G))` for `x ≠ 0` and `w(0) = 1`. The reduction proposes `β·α⁻¹` for every table hit `[β]G = [α]([k]G)` with `β ∈ Lst`, `α ∈ Γ_J(lam, B)`, keeps a proposal only if it passes the check `[β·α⁻¹]G = [k]G`, and outputs `{0}` when `[k]G = O`. Its output set equals `{k}` (`jRecoverFromHeavyList`), and for every list it is contained in `{k}` (`jReductionSound`, any `B`, any `lam`, `addOrderOf G = n > 0`). The condition on `B` uses the kernel-checked expression `(1 + L1low(B))²/B` of `jConcentration`; the paper argument behind this row uses a sharper threshold, so `B` must be larger here. Honest scope: the list is a hypothesis: no sparse Fourier transform algorithm, success probability, list size, running time or cost is formalized, and nothing is said about the existence of such a predictor or about secp256k1)",
+      "method": "jHeavy` + `accessCorrelation` + `zeroNotInGammaJ` + Mathlib (`addOrderOf`, `nsmul` arithmetic)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-338",
+      "name": "Ecdlp.ParityFourier.ProofsC44R.jRecoverExplicit",
+      "short_name": "jRecoverExplicit",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC44R",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC44R",
+        "Ecdlp.Proved.ParityFourier.StatementsC44R"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44R.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44R.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44R.lean"
+      ],
+      "claim": "*(alternate/supporting: instantiation)* The recovery of the previous row with explicit parameters (the setting of the previous row with `(3 + log(2B + 1))²/B ≤ η²` and a list that contains every `β` with `‖ft w β‖² ≥ (η / (2 + log(2B + 1))²)²`: the output set equals `{k}`. A direct consequence of `jRecoverFromHeavyList` and `l1lowBound` (`L1low(B) ≤ 2 + log(2B + 1)`); not counted as a distinct result. The same honest scope: the list is a hypothesis, and no algorithm, probability or cost is formalized)",
+      "method": "the `jRecoverFromHeavyList` argument + `l1lowBound",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-339",
+      "name": "Ecdlp.ParityFourier.ProofsC44R.accessCorrelation`, `gammaJCard`, `heavySetSmall",
+      "short_name": "accessCorrelation`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC44R",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC44R",
+        "Ecdlp.Proved.ParityFourier.StatementsC44R"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC44R.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC44R.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC44R.lean"
+      ],
+      "claim": "*(alternate/supporting: steps and size facts of the recovery row)* Correlation of the access function, size of the table `Γ_J`, and the number of heavy Fourier coefficients (`accessCorrelation`: prime `n`, `addOrderOf G = n`, any `lam`, a predictor `Pred` with values `±1` at the nonzero multiples of `G` and `#{u ≠ 0 : Pred([u]G) = J(u)} ≥ (1/2 + ε)(n − 1)`: for every `k ≠ 0`, the access function `w` of the recovery row satisfies `(1/n)·Σ_x w(x)·J(x·k) ≥ 2(ε − 1/n)`, a counting identity. `gammaJCard`: prime `n`, `lam² + lam + 1 = 0`: `#Γ_J(lam, B) ≤ (2B + 1)²`, with equality when `12B² < n` (injectivity from `normLemma`). `heavySetSmall`: `n > 0`, `‖w‖ ≤ 1`, `τ > 0`: `τ·#{β : ‖ft w β‖² ≥ τ} ≤ 1` (Parseval). Supporting facts, not counted as distinct results; the size bounds are not cost statements)",
+      "method": "Mathlib (reindexing by a unit, `Finset` counting, Parseval on `ZMod n`) + `normLemma",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 4,
+      "gated": true
+    },
+    {
+      "id": "thm-340",
+      "name": "Ecdlp.ParityFourier.ProofsC37.relabelDefect`, `relabelDL`, `sqrtBranch",
+      "short_name": "relabelDefect`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsC37",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsC37",
+        "Ecdlp.Proved.ParityFourier.StatementsC37"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsC37.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsC37.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsC37.lean"
+      ],
+      "claim": "*(alternate/supporting: elementary lemmas and a direct corollary of `groupHalvingRecovers`)* Relabelling a predictor by a public sign with an exceptional set; an exact decoder of the relabelled bit gives the discrete logarithm; two square roots differ by a sign (`relabelDefect`: finite `X`, `σ, b, P : X → ℤ`, a partial label `c : X → Option ℤ` with values `±1` where defined, and `Ω ⊆ X` with `#Ω ≤ δ·#X` such that outside `Ω` the label is defined and `σ = c·b`; the relabelled predictor is `c·P` where `c` is defined and `+1` elsewhere: agreement at least `(1/2 + ε)·#X` with `b` gives agreement at least `(1/2 + ε − δ)·#X` with `σ`, the same from `σ` to `b`, and the counts are equal when `Ω = ∅` (this generalizes `relabel`). `relabelDL`: `G` with `addOrderOf G = n` an odd prime, `2h mod n = 1`, a label `c` defined with `σ(y) = c·b` at every `[y]G`, `y ≠ 0`, and an exact decoder `D = b` there: the halving chain of `groupHalvingRecovers`, driven by the parity bit read from `c·D`, returns `[x]` from `[x]G` in `L` steps when `n ≤ 2^L`. `sqrtBranch`: in any field, `R ≠ 0` and `M² = s² = s'² = R` ⇒ `M/s = ±1`, `s/s' = ±1` and `M/s' = (M/s)·(s/s')`. Not counted as distinct results. Honest scope: the decoder is exact on every nonzero multiple of `G`; no Miller function or pairing evaluator is formalized (`M² = R` is a hypothesis); nothing is claimed about cost or about which labels are public)",
+      "method": "Mathlib (`Finset.card` bounds, `sq_eq_one_iff`) + `relabel`, `groupHalvingRecovers",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 2,
+      "gated": true
+    },
+    {
+      "id": "thm-341",
+      "name": "Ecdlp.ParityFourier.ProofsW.windowLaw`, `windowShape`, `windowRefined",
+      "short_name": "windowLaw`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsW",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsW",
+        "Ecdlp.Proved.ParityFourier.StatementsW"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsW.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsW.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsW.lean"
+      ],
+      "claim": "Window law for correlations with the parity sign (odd `n > 0`, an integer `c` with `2·abs(c) < n`, the window `W_c = {1, …, 2c}` for `c > 0` and `{2c, …, −1}` (as residues) for `c ≤ 0`, empty for `c = 0`. `windowShape`: `#W_c = 2·abs(c)`, `0 ∉ W_c`, `c ∈ W_c` when `c ≠ 0`, and `k ↦ 2c − k` maps nonzero residues outside `W_c` to nonzero residues outside `W_c` with `σ(2c − k) = −σ(k)`. `windowLaw`: for every `F : ZMod n → ℂ`, `Σ_{k≠0} F(k)·σ(k) = Σ_{k∈W_c} F(k)·σ(k) + (1/2)·Σ_{k≠0, k∉W_c} σ(k)·(F(k) − F(2c − k))`, and if `‖F‖ ≤ 1` the left side has norm at most `#{k ∈ W_c : F(k) ≠ 0} + (1/2)·Σ_{k≠0, k∉W_c} ‖F(k) − F(2c − k)‖`. `windowRefined`, a direct corollary: if `c ≠ 0`, `‖F‖ ≤ 1`, `F(c) = 0` and `F(2c − k) = F(k)` for nonzero `k ∉ W_c`, the norm is at most `2·abs(c) − 1`. Exact finite statements on `ZMod n`)",
+      "method": "Mathlib (reindexing along the involution `k ↦ 2c − k`, triangle inequality)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-342",
+      "name": "Ecdlp.ParityFourier.ProofsW.windowX",
+      "short_name": "windowX",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsW",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsW",
+        "Ecdlp.Proved.ParityFourier.StatementsW"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsW.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsW.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsW.lean"
+      ],
+      "claim": "*(alternate/supporting: curve instance)* Window bound for x-coordinate features of shifted points (any field `K`, any Weierstrass curve `W` over `K`, `G` with `addOrderOf G = n` odd, an integer `r ≠ 0` with `2·abs(r) < n`, `Φ : K → ℂ` with `‖Φ‖ ≤ 1`, and `F(k) = Φ(x([k]G + [r]G))`, with `F(k) = 0` where `[k]G + [r]G = O`: `‖Σ_{k≠0} F(k)·σ(k)‖ ≤ 2·abs(r) − 1`. `windowRefined` with `c = −r`, since the point for `2c − k` is `−([k]G + [r]G)`, which has the same x-coordinate; not counted as a distinct result)",
+      "method": "windowRefined` + negation on `WeierstrassCurve.Affine.Point",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-343",
+      "name": "Ecdlp.ParityFourier.ProofsPB.groupNoisyHalvingRecovers`, `noisyHalvingRecovers`, `noisyHalvingGrid",
+      "short_name": "groupNoisyHalvingRecovers`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsPB",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsPB",
+        "Ecdlp.Proved.ParityFourier.ProofsPB1",
+        "Ecdlp.Proved.ParityFourier.ProofsPB23",
+        "Ecdlp.Proved.ParityFourier.StatementsPB"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsPB.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsPB.lean",
+        "Ecdlp/Proved/ParityFourier/ProofsPB1.lean",
+        "Ecdlp/Proved/ParityFourier/ProofsPB23.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsPB.lean"
+      ],
+      "claim": "A deterministic parity predictor with arbitrarily placed errors recovers the discrete logarithm by binary division with random shifts, except on a fraction of shift tables at most `L·exp(−2m·δ²)` (an odd prime `n`, a predictor `P : ZMod n → ℕ` (group form: `Pred : A → ℕ` read at `[z]G`) that gives `[z] mod 2` for at least `(1/2 + ε)·n` points `z`, `z = 0` included; its errors may lie anywhere but are fixed in advance. The only randomness is a uniform table of `L·m` shifts `r_{t,i} : ZMod n`, and \"fraction\" is the exact fraction of such tables. Step `t < L` queries `x·2^(−t) + r_{t,i}` (group form: `[h^t]Q + [r_{t,i}]G` with `Q = [x]G` and `2h mod n = 1`), so all guesses share one answer table; each step takes a majority of binary-division votes and halves a rational guess. `noisyHalvingRecovers`: an initial guess within `Δ` of `[x]`, `(Δ + 1)/n ≤ ε` and `n ≤ 2^L` ⇒ the output differs from `x` on at most a fraction `L·exp(−2m·δ²)` of the tables, with `δ = ε − (Δ + 1)/n`. `noisyHalvingGrid`: `N ≥ 4/ε` grid guesses `(2j + 1)n/(2N)` and `1/n ≤ 7ε/8` ⇒ `x` is missing from the `N` candidates on at most a fraction `L·exp(−2m·δ²)`, with `δ = 7ε/8 − 1/n`. `groupNoisyHalvingRecovers`: in an additive commutative group with decidable equality and `addOrderOf G = n`, keeping the candidates `x'` with `[x']G = Q`, the output is contained in `{x}` for every table and differs from `{x}` on at most the same fraction. The grid and group forms follow from the one-guess form. Honest scope: a predictor here is a fixed function of the queried point (randomized or adaptive oracles are not covered) and the shifts are uniformly random; no number of calls, running time, cost constant or break-even figure is formalized; nothing is instantiated on an elliptic curve)",
+      "method": "majorityVote` per step + union bound over the `L` steps + `voteAdvantage` + Mathlib (`round`, halving in `ZMod n`)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 3,
+      "gated": true
+    },
+    {
+      "id": "thm-344",
+      "name": "Ecdlp.ParityFourier.ProofsPB1.majorityVote`, `Ecdlp.ParityFourier.ProofsPB23.voteIdentity`, `voteAdvantage",
+      "short_name": "majorityVote`,",
+      "module": "Ecdlp.Proved.ParityFourier.ProofsPB1",
+      "modules": [
+        "Ecdlp.Proved.ParityFourier.ProofsPB1",
+        "Ecdlp.Proved.ParityFourier.ProofsPB23",
+        "Ecdlp.Proved.ParityFourier.StatementsPB"
+      ],
+      "file": "Ecdlp/Proved/ParityFourier/ProofsPB1.lean",
+      "files": [
+        "Ecdlp/Proved/ParityFourier/ProofsPB1.lean",
+        "Ecdlp/Proved/ParityFourier/ProofsPB23.lean",
+        "Ecdlp/Proved/ParityFourier/StatementsPB.lean"
+      ],
+      "claim": "*(alternate/supporting: Mathlib's Hoeffding inequality in counting form and steps of the previous row)* Majority-vote bound, binary-division vote identity, and vote advantage (`majorityVote`: a finite nonempty `Ω` in which the good elements have density at least `1/2 + δ`, `δ ≥ 0`: the fraction of tuples in `Ω^m` with at most half of the entries good is at most `exp(−2mδ²)`. This is Mathlib's Hoeffding inequality for independent bounded variables under the uniform product measure, converted to counting. `voteIdentity`: odd `n > 0`, `y, r : ZMod n`: `[y + r] mod 2 = ([y] + [r] + w) mod 2` with `w = 1` if `n ≤ [y] + [r]` and `w = 0` otherwise. `voteAdvantage`: odd `n > 0`, any `P : ZMod n → ℕ`, `y : ZMod n` and a rational `c` with `abs(c − [y]) ≤ Δ`: the vote `(P(y + r) + [r] + v) mod 2`, with `v = 1` if `n − c ≤ [r]` and `v = 0` otherwise, equals `[y] mod 2` for at least `#{z : P(z) = [z] mod 2} − (Δ + 1)` shifts `r`. Not counted as distinct results)",
+      "method": "Mathlib (Hoeffding: `HasSubgaussianMGF.measure_sum_ge_le_of_iIndepFun`, `hasSubgaussianMGF_of_mem_Icc_of_integral_eq_zero`; `ZMod.val_add`)",
+      "status": "proved",
+      "area": "bit-security",
+      "family_id": "family-bit-security",
+      "dependency_depth": 2,
+      "gated": true
     }
   ],
   "barriers": [
@@ -6962,7 +7359,7 @@
       {
         "id": "family-bit-security",
         "area": "bit-security",
-        "title": "Parity-bit Fourier facts and the exact-parity-oracle halving reduction (finite and conditional statements; no hardness claim)"
+        "title": "Parity-bit Fourier facts and halving reductions from exact or noisy parity predictors (finite and conditional statements; no hardness claim)"
       },
       {
         "id": "family-attack-resistance",
@@ -13212,6 +13609,21 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC37",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC37",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC37",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF3F4a",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC37",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF4b",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.ProofsC44",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
       "type": "imports"
@@ -13242,6 +13654,16 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44H",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44H",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44H",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.ProofsC44L",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44L",
       "type": "imports"
@@ -13257,8 +13679,48 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44R",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44R",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44R",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44H",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44R",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44d",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsC44R",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44L",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.ProofsC44d",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44d",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsCT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsK",
       "type": "imports"
     },
     {
@@ -13292,6 +13754,51 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsK",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsK",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsK",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF1",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsPB",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsPB1",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsPB",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsPB23",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsPB1",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsPB",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsPB23",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsPB",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsPB23",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsF3F4a",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsW",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsW",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsW",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsK",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.ProofsWT",
       "to": "Ecdlp.Proved.ParityFourier.StatementsWT",
       "type": "imports"
@@ -13307,7 +13814,37 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsZeta",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsZeta",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsZeta",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.ProofsZeta",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC37",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.StatementsC44B",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44H",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44H",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
       "type": "imports"
     },
@@ -13317,13 +13854,63 @@
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44R",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsC44R",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.StatementsC44d",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
       "type": "imports"
     },
     {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsCT",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsCT",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsWT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsK",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsPB",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsW",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsW",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsK",
+      "type": "imports"
+    },
+    {
       "from": "Ecdlp.Proved.ParityFourier.StatementsWT",
       "to": "Ecdlp.Proved.ParityFourier.StatementsC44",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsZeta",
+      "to": "Ecdlp.Proved.ParityFourier.Statements",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp.Proved.ParityFourier.StatementsZeta",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsWT",
       "type": "imports"
     },
     {
@@ -14984,6 +15571,96 @@
     {
       "from": "Ecdlp",
       "to": "Ecdlp.Proved.ParityFourier.ProofsWT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsK",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsK",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsCT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsCT",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsZeta",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsZeta",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44H",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44H",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC44R",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC44R",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsC37",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsC37",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsW",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsW",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.StatementsPB",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsPB1",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsPB23",
+      "type": "imports"
+    },
+    {
+      "from": "Ecdlp",
+      "to": "Ecdlp.Proved.ParityFourier.ProofsPB",
       "type": "imports"
     },
     {
@@ -16689,6 +17366,91 @@
     {
       "from": "thm-327",
       "to": "family-other",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-328",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-329",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-330",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-331",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-332",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-333",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-334",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-335",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-336",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-337",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-338",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-339",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-340",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-341",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-342",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-343",
+      "to": "family-bit-security",
+      "type": "member_of"
+    },
+    {
+      "from": "thm-344",
+      "to": "family-bit-security",
       "type": "member_of"
     },
     {

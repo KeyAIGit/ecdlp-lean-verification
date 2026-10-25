@@ -43,10 +43,20 @@ Hasse bound, which Mathlib v4.31 does not provide.
 
 The same argument (prime point order, `#E ≤ 2p + 1`, no rational 2-torsion) is formalized for
 the specification curves of pyca/verified-garbage (`VG.Proof.Weierstrass.primeOrder_of`,
-Apache-2.0 OR BSD-3-Clause; see `THIRD_PARTY_NOTICES.md`). verified-garbage proves `#E = n`
-for P-256/P-384/P-521 for its own specification curve type; this repository's result is for
-`Ecdlp.P256.P256` over Mathlib's `WeierstrassCurve`. The code here is written against
-Mathlib's `WeierstrassCurve.Affine.Point` and reuses this repository's
+Apache-2.0 OR BSD-3-Clause; see `THIRD_PARTY_NOTICES.md`). At commit `38c744308fcd`
+verified-garbage derives `Nat.card (wcC C).Point = C.n` inside that proof, where `wcC C` is
+Mathlib's `WeierstrassCurve.Affine` over `ZMod C.p` built from the specification curve `C`,
+and it applies `primeOrder_of` to P-256/P-384/P-521. At that commit the count is not exported;
+the exported statement is `PrimeOrder C` (every point other than the identity has order `n`).
+Correction (2026-10-22): since verified-garbage commit `702cf77ff2db` (PR #3102) the count is
+exported as `VG.Proof.Weierstrass.card_eq_n`, `Nat.card (wcC C).Point = C.n` for a
+specification curve `C` under `[Fact C.p.Prime]`, `Good C`, `C.n` prime, `G` on the curve,
+`n • G = O` and `2p + 1 < 3n` (`wcC C` has `a₁ = a₂ = a₃ = 0`); no per-curve count is
+exported. This file states the count for a Weierstrass curve `W` in Mathlib's
+`WeierstrassCurve` over any finite field (`natCard_point_eq_of_addOrderOf`, under the
+hypotheses above: `a₂` is allowed and `n` need not be prime), and
+`P256CardinalityExact.lean` instantiates it for `Ecdlp.P256.P256`. The code here was written
+separately, against Mathlib's `WeierstrassCurve.Affine.Point` and this repository's
 `instFinitePoint`; it generalizes the secp256k1-specific steps of
 `CurveCardinalityExact.lean`.
 -/

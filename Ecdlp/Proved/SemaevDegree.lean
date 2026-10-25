@@ -9,8 +9,8 @@ Index calculus decomposes a target point `R = P₁ + P₂` and, by `PointDecompo
 such decomposition satisfies the Semaev relation `S₃(x₁, x₂, x_R) = 0`. The *cost* of the attack is
 governed by how many decompositions there are and how hard the Semaev system is to solve. This file
 proves the one exact, kernel-checkable quantitative fact underneath that cost analysis: **the Semaev
-polynomial has degree exactly `2` in each variable, so for a fixed base coordinate there are at most
-`2` completions to a 2-decomposition of `R`.**
+polynomial has degree exactly `2` in its last variable when `x₁ ≠ x₂`, so for a fixed base
+coordinate there are at most `2` completions to a 2-decomposition of `R`.**
 
 * `secp256k1_S₃poly_natDegree` — for `x₁ ≠ x₂`, `S₃(x₁, x₂, ·)` is a degree-**exactly**-`2`
   polynomial (leading coefficient `(x₁ − x₂)²`, nonzero over the field `𝔽_p`). This is the base
@@ -35,11 +35,11 @@ open Polynomial Ecdlp.Curve
 
 variable [Fact (Nat.Prime Secp256k1.p)]
 
-/-- **The Semaev polynomial has degree exactly `2` in each variable (secp256k1).** For `x₁ ≠ x₂`,
-`S₃(x₁, x₂, ·)` — as a univariate polynomial over the field `𝔽_p` — has `natDegree = 2`, its leading
-coefficient being `(x₁ − x₂)² ≠ 0`. Base case of the `deg Sₘ = 2^{m−2}` degree tower. `S₃poly` is
-literally `C ((x₁−x₂)²)·X² + C(·)·X + C(·)`, so `natDegree_quadratic` applies once the leading
-coefficient is shown nonzero. -/
+/-- **The Semaev polynomial has degree exactly `2` in its last variable (secp256k1).**
+For `x₁ ≠ x₂`, `S₃(x₁, x₂, ·)` — as a univariate polynomial over the field `𝔽_p` — has
+`natDegree = 2`, its leading coefficient being `(x₁ − x₂)² ≠ 0`. Base case of the
+`deg Sₘ = 2^{m−2}` degree tower. `S₃poly` is literally `C ((x₁−x₂)²)·X² + C(·)·X + C(·)`, so
+`natDegree_quadratic` applies once the leading coefficient is shown nonzero. -/
 theorem secp256k1_S₃poly_natDegree (x₁ x₂ : ZMod Secp256k1.p) (hx : x₁ ≠ x₂) :
     (S₃poly (0 : ZMod Secp256k1.p) 7 x₁ x₂).natDegree = 2 := by
   rw [S₃poly]

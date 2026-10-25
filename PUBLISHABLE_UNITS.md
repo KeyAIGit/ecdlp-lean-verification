@@ -154,7 +154,8 @@ paper could carry both, or they could split).
   degree bound. No general `Sₙ` for `n ≥ 5` is defined here.
 - Index-calculus meaning + one exact cost ingredient: `secp256k1_point_decomposition_semaev`
   (and `_double`) — every 2-term decomposition lies on the Semaev variety
-  — `PointDecomposition.lean`; `secp256k1_S₃poly_natDegree` (degree exactly 2 in each variable) and
+  — `PointDecomposition.lean`; `secp256k1_S₃poly_natDegree` (degree exactly 2 in its last
+  variable when `x₁ ≠ x₂`) and
   `secp256k1_decomposition_completions_le_two` (≤ 2 completions per factor-base point)
   — `SemaevDegree.lean`.
 
